@@ -1,4 +1,7 @@
 ﻿#include "FieldManager.h"
+#include "CellManager.h"
+#include "MoleculeManager.h"
+
 
 void Main()
 {
@@ -9,5 +12,9 @@ void Main()
 	while (s3d::System::Update())
 	{
 		g_fieldManager->Update();
+
+		// Moleculeの描画
+
+		// Cellの描画
 	}
 }
