@@ -6,7 +6,7 @@ Vector2D Rigidbody::GetVelocity(const Vector2D& position) const
 	auto delta = position - m_position;
 
 
-	//return m_velocity + delta.rotated(Math::Pi) * m_angularVelocity;
+	return m_velocity + delta.rotated(pi) * m_angularVelocity;
 }
 
 void Rigidbody::AddForceInWorld(const Vector2D& force, const Vector2D& worldPosition)

@@ -15,6 +15,8 @@ void Main()
 	{
 		const auto& m = g_moleculeManager->AddMolecule();
 
+		m->m_mass = 1.0;
+		m->m_radius = 2.0;
 		m->m_position.m_x = s3d::Random(640);
 		m->m_position.m_y = s3d::Random(480);
 		
