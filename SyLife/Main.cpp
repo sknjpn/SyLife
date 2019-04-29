@@ -17,6 +17,10 @@ void Main()
 	}
 
 	// Cellの追加
+	for (int i = 0; i < 100; i++)
+	{
+		const auto& c = g_cellManager->AddCell();
+	}
 
 	while (s3d::System::Update())
 	{
