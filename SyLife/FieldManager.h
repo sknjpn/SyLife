@@ -1,10 +1,12 @@
 #pragma once
 
-class Molecule;
-class Cell;
+class Rigidbody;
 
 class FieldManager
 {
+public:
+	vector<shared_ptr<Rigidbody>>	m_rigidbodies;
+
 public:
 	FieldManager();
 	~FieldManager();

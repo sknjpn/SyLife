@@ -17,6 +17,12 @@ void Main()
 
 		m->m_position.m_x = s3d::Random(640);
 		m->m_position.m_y = s3d::Random(480);
+		
+		{
+			auto f = s3d::RandomVec2(1.0);
+
+			m->AddForceInWorld(Vector2D(f.x, f.y)*5.0, m->m_position);
+		}
 	}
 
 	// Cellの追加
