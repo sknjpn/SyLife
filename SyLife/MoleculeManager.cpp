@@ -1,4 +1,5 @@
 #include "MoleculeManager.h"
+#include "Molecule.h"
 
 unique_ptr<MoleculeManager> g_moleculeManager;
 

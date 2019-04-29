@@ -1,4 +1,5 @@
 #include "CellManager.h"
+#include "Cell.h"
 
 unique_ptr<CellManager>	g_cellManager;
 
