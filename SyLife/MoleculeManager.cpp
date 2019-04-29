@@ -13,5 +13,5 @@ MoleculeManager::~MoleculeManager()
 
 const shared_ptr<Molecule>& MoleculeManager::AddMolecule()
 {
-	return m_molecules.emplace_back();
+	return m_molecules.emplace_back(make_shared<Molecule>());
 }
