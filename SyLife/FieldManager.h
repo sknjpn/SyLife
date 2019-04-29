@@ -6,6 +6,7 @@ class FieldManager
 {
 public:
 	vector<shared_ptr<Rigidbody>>	m_rigidbodies;
+	Vector2D	m_size;
 
 public:
 	FieldManager();

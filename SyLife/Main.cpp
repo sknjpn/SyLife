@@ -12,14 +12,14 @@ void Main()
 	g_fieldManager->Init();
 
 	// Moleculeの追加
-	for (int i = 0; i < 10000; i++)
+	for (int i = 0; i < 1000; i++)
 	{
 		const auto& m = g_moleculeManager->AddMolecule();
 
 		m->m_radius = 4.0;
 		m->m_mass = m->m_radius * m->m_radius * 2.0;
-		m->m_position.m_x = s3d::Random(640);
-		m->m_position.m_y = s3d::Random(480);
+		m->m_position.m_x = s3d::Random(800);
+		m->m_position.m_y = s3d::Random(600);
 
 		{
 			auto f = s3d::RandomVec2(1.0);
@@ -31,14 +31,14 @@ void Main()
 	}
 
 	// Cellの追加
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		const auto& c = g_cellManager->AddCell();
 
 		c->m_radius = 32.0;
 		c->m_mass = c->m_radius * c->m_radius * 2.0;
-		c->m_position.m_x = s3d::Random(640);
-		c->m_position.m_y = s3d::Random(480);
+		c->m_position.m_x = s3d::Random(800);
+		c->m_position.m_y = s3d::Random(600);
 
 		{
 			auto f = s3d::RandomVec2(1.0);
