@@ -35,13 +35,14 @@ void Main()
 		// Moleculeの描画
 		for (const auto& m : g_moleculeManager->m_molecules)
 		{
-			s3d::Circle(m->m_position.m_x, m->m_position.m_y, 8).draw(s3d::Palette::Green).drawFrame();
+			s3d::Circle(m->m_position.m_x, m->m_position.m_y, 2).draw(s3d::Palette::Green).drawFrame(1.0, s3d::Palette::Black);
 		}
 
 		// Cellの描画
 		for (const auto& c : g_cellManager->m_cells)
 		{
-			s3d::Circle(c->m_position.m_x, c->m_position.m_y, 16).draw(s3d::Palette::Pink).drawFrame();
+			s3d::Circle(c->m_position.m_x, c->m_position.m_y, 16).draw(s3d::Palette::Lightpink).drawFrame(1.0, s3d::Palette::Black);
+			s3d::Circle(c->m_position.m_x, c->m_position.m_y, 4).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Black);
 		}
 	}
 }
