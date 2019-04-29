@@ -13,5 +13,5 @@ CellManager::~CellManager()
 
 const shared_ptr<Cell>& CellManager::AddCell()
 {
-	return m_cells.emplace_back();
+	return m_cells.emplace_back(make_shared<Cell>());
 }
