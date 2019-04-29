@@ -59,6 +59,10 @@ Field::~Field()
 {
 }
 
-void Field::Start()
+void Field::Init()
+{
+}
+
+void Field::Update()
 {
 }

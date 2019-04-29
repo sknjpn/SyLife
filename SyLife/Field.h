@@ -6,7 +6,8 @@ public:
 	Field();
 	~Field();
 
-	void	Start();
+	void	Init();
+	void	Update();
 };
 
 extern unique_ptr<Field>	g_field;
