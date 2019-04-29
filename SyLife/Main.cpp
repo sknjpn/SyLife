@@ -11,7 +11,10 @@ void Main()
 	g_fieldManager->Init();
 
 	// Moleculeの追加
-	g_fieldManager->AddMolecule();
+	for (int i = 0; i < 100; i++)
+	{
+		const auto& m = g_moleculeManager->AddMolecule();
+	}
 
 	// Cellの追加
 
