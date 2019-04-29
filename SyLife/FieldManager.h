@@ -1,5 +1,8 @@
 #pragma once
 
+class Molecule;
+class Cell;
+
 class FieldManager
 {
 public:

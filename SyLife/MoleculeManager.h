@@ -10,6 +10,8 @@ public:
 public:
 	MoleculeManager();
 	~MoleculeManager();
+
+	const shared_ptr<Molecule>&	AddMolecule();
 };
 
 extern unique_ptr<MoleculeManager> g_moleculeManager;

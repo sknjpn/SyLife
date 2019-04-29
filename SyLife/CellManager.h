@@ -10,6 +10,8 @@ public:
 public:
 	CellManager();
 	~CellManager();
+
+	const shared_ptr<Cell>&	AddCell();
 };
 
 extern unique_ptr<CellManager>	g_cellManager;

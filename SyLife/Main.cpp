@@ -10,6 +10,11 @@ void Main()
 
 	g_fieldManager->Init();
 
+	// Moleculeの追加
+	g_fieldManager->AddMolecule();
+
+	// Cellの追加
+
 	while (s3d::System::Update())
 	{
 		g_fieldManager->Update();
