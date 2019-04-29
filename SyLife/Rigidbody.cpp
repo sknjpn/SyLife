@@ -11,7 +11,7 @@ Vector2D Rigidbody::GetVelocity(const Vector2D& position) const
 
 void Rigidbody::AddForceInWorld(const Vector2D& force, const Vector2D& worldPosition)
 {
-	//AddImpulseInWorld(force * g_fieldManagerPtr->GetDeltaTime(), worldPosition);
+	AddImpulseInWorld(force * g_fieldManager->GetDeltaTime(), worldPosition);
 }
 
 void Rigidbody::AddImpulseInWorld(const Vector2D& impulse, const Vector2D& worldPosition)
