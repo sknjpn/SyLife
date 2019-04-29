@@ -11,15 +11,21 @@ void Main()
 	g_fieldManager->Init();
 
 	// Moleculeの追加
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 1000; i++)
 	{
 		const auto& m = g_moleculeManager->AddMolecule();
+
+		m->m_position.m_x = s3d::Random(640);
+		m->m_position.m_y = s3d::Random(480);
 	}
 
 	// Cellの追加
 	for (int i = 0; i < 100; i++)
 	{
 		const auto& c = g_cellManager->AddCell();
+
+		c->m_position.m_x = s3d::Random(640);
+		c->m_position.m_y = s3d::Random(480);
 	}
 
 	while (s3d::System::Update())
