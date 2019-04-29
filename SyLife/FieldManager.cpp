@@ -44,12 +44,14 @@ void FieldManager::Update()
 			}
 		}
 
+		// •Ç‚Å‚Ì”½ŽË
 		if (r->m_position.m_x < 0 && r->m_velocity.m_x < 0) r->m_velocity.m_x = -r->m_velocity.m_x;
 		if (r->m_position.m_y < 0 && r->m_velocity.m_y < 0) r->m_velocity.m_y = -r->m_velocity.m_y;
 		if (r->m_position.m_x > m_size.m_x && r->m_velocity.m_x > 0) r->m_velocity.m_x = -r->m_velocity.m_x;
 		if (r->m_position.m_y > m_size.m_y && r->m_velocity.m_y > 0) r->m_velocity.m_y = -r->m_velocity.m_y;
 
-		r->m_velocity *= 0.99;
+		// –€ŽC’ïR
+		r->m_velocity *= 0.95;
 	}
 
 	for (const auto& r : m_rigidbodies)
