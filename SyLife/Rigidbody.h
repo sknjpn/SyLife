@@ -17,6 +17,8 @@ public:
 	Rigidbody() = default;
 	virtual ~Rigidbody() = default;
 
+	void	Init();
+
 	Vector2D	GetVelocity(const Vector2D& position) const;
 
 	const Vector2D&	GetWorldPosition(const Vector2D& localPosition) const { return m_position + localPosition.rotated(m_rotation); }

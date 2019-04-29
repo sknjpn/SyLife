@@ -1,6 +1,12 @@
 ﻿#include "Rigidbody.h"
 #include "FieldManager.h"
 
+void Rigidbody::Init()
+{
+	// 角運動量の計算
+	m_inertia = m_mass * m_radius * m_radius * 0.5;
+}
+
 Vector2D Rigidbody::GetVelocity(const Vector2D& position) const
 {
 	auto delta = position - m_position;
@@ -16,18 +22,18 @@ void Rigidbody::AddForceInWorld(const Vector2D& force, const Vector2D& worldPosi
 
 void Rigidbody::AddImpulseInWorld(const Vector2D& impulse, const Vector2D& worldPosition)
 {
-	//運動量
+	// 運動量
 	auto momentum = m_velocity * m_mass + impulse;
 
-	//速度
+	// 速度
 	m_velocity = momentum / m_mass;
 
-	//力のモーメント
+	// 力のモーメント
 	auto momentOfForce = (worldPosition - m_position).cross(impulse);
 
-	//角運動量
+	// 角運動量
 	auto angularMomentum = momentOfForce + m_inertia * m_angularVelocity;
 
-	//角速度
+	// 角速度
 	m_angularVelocity = angularMomentum / m_inertia;
 }
