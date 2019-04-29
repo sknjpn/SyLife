@@ -70,4 +70,8 @@ void FieldManager::Init()
 
 void FieldManager::Update()
 {
+	for (const auto& r : m_rigidbodies)
+	{
+		r->m_position += r->m_velocity;
+	}
 }
