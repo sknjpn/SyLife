@@ -48,13 +48,9 @@ void Main()
 		c->Init();
 	}
 
-	RigidbodyCloud cloud;
-	RigidbodyAdaptor index(2, cloud, KDTreeSingleIndexAdaptorParams(20));
-
 	while (s3d::System::Update())
 	{
 		g_fieldManager->Update();
-		index.buildIndex();
 
 		// Moleculeの描画
 		for (const auto& m : g_moleculeManager->m_molecules)
@@ -68,23 +64,15 @@ void Main()
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, 0.0)).drawFrame(1.0, s3d::Palette::Gray);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius / 4.0).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Black);
 
+			const auto& list = g_fieldManager->GetNearRigidbodies(c->m_position, c->m_radius);
+
+			for (auto l : list)
 			{
-				const int query_pt[2] = { c->m_position.m_x, c->m_position.m_y };
-				const int search_radius = c->m_radius * c->m_radius;
-				std::vector<std::pair<size_t, int> >   ret_matches;
+				const auto& target = g_fieldManager->m_rigidbodies[l.first];
+				s3d::Vec2 p1(c->m_position.m_x, c->m_position.m_y);
+				s3d::Vec2 p2(target->m_position.m_x, target->m_position.m_y);
 
-				nanoflann::SearchParams params;
-				const size_t nMatches = index.radiusSearch(&query_pt[0], search_radius, ret_matches, params);
-
-				for (size_t i = 0; i < nMatches; i++)
-				{
-
-					const auto& target = g_fieldManager->m_rigidbodies[ret_matches[i].first];
-					s3d::Vec2 p1(c->m_position.m_x, c->m_position.m_y);
-					s3d::Vec2 p2(target->m_position.m_x, target->m_position.m_y);
-
-					s3d::Line(p1, p2).draw();
-				}
+				s3d::Line(p1, p2).draw();
 			}
 		}
 	}

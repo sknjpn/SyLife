@@ -1,7 +1,6 @@
 #pragma once
 
 #include "nanoflann.hpp"
-#include "FieldManager.h"
 
 class Rigidbody {
 
@@ -33,12 +32,9 @@ public:
 
 struct RigidbodyCloud
 {
-	inline size_t kdtree_get_point_count() const { return g_fieldManager->m_rigidbodies.size(); }
+	size_t kdtree_get_point_count() const;
 
-	inline double kdtree_get_pt(const size_t idx, const size_t dim) const
-	{
-		return (dim == 0) ? g_fieldManager->m_rigidbodies[idx]->m_position.m_x : g_fieldManager->m_rigidbodies[idx]->m_position.m_y;
-	}
+	double kdtree_get_pt(const size_t idx, const size_t dim) const;
 
 	template <class BBOX>
 	bool kdtree_get_bbox(BBOX& /* bb */) const { return false; }

@@ -37,3 +37,13 @@ void Rigidbody::AddImpulseInWorld(const Vector2D& impulse, const Vector2D& world
 	// 角速度
 	m_angularVelocity = angularMomentum / m_inertia;
 }
+
+size_t RigidbodyCloud::kdtree_get_point_count() const
+{ { return g_fieldManager->m_rigidbodies.size(); }
+}
+
+double RigidbodyCloud::kdtree_get_pt(const size_t idx, const size_t dim) const
+{
+	return (dim == 0) ? g_fieldManager->m_rigidbodies[idx]->m_position.m_x : g_fieldManager->m_rigidbodies[idx]->m_position.m_y;
+
+}
