@@ -15,16 +15,18 @@ void Main()
 	{
 		const auto& m = g_moleculeManager->AddMolecule();
 
-		m->m_mass = 1.0;
 		m->m_radius = 2.0;
+		m->m_mass = m->m_radius * m->m_radius * 2.0;
 		m->m_position.m_x = s3d::Random(640);
 		m->m_position.m_y = s3d::Random(480);
 		
 		{
 			auto f = s3d::RandomVec2(1.0);
 
-			m->AddForceInWorld(Vector2D(f.x, f.y)*5.0, m->m_position);
+			m->AddForceInWorld(Vector2D(f.x, f.y)*m->m_mass * 2.0, m->m_position);
 		}
+
+		m->Init();
 	}
 
 	// Cellの追加
@@ -32,8 +34,18 @@ void Main()
 	{
 		const auto& c = g_cellManager->AddCell();
 
+		c->m_radius = 16.0;
+		c->m_mass = c->m_radius * c->m_radius * 2.0;
 		c->m_position.m_x = s3d::Random(640);
 		c->m_position.m_y = s3d::Random(480);
+
+		{
+			auto f = s3d::RandomVec2(1.0);
+
+			c->AddForceInWorld(Vector2D(f.x, f.y)*c->m_mass * 2.0, c->m_position);
+		}
+
+		c->Init();
 	}
 
 	while (s3d::System::Update())
@@ -43,14 +55,14 @@ void Main()
 		// Moleculeの描画
 		for (const auto& m : g_moleculeManager->m_molecules)
 		{
-			s3d::Circle(m->m_position.m_x, m->m_position.m_y, 2).draw(s3d::Palette::Green).drawFrame(1.0, s3d::Palette::Black);
+			s3d::Circle(m->m_position.m_x, m->m_position.m_y, m->m_radius).draw(s3d::Palette::Green).drawFrame(1.0, s3d::Palette::Black);
 		}
 
 		// Cellの描画
 		for (const auto& c : g_cellManager->m_cells)
 		{
-			s3d::Circle(c->m_position.m_x, c->m_position.m_y, 16).draw(s3d::Palette::Lightpink).drawFrame(1.0, s3d::Palette::Black);
-			s3d::Circle(c->m_position.m_x, c->m_position.m_y, 4).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Black);
+			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::Palette::Lightpink).drawFrame(1.0, s3d::Palette::Black);
+			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius / 4.0).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Black);
 		}
 	}
 }
