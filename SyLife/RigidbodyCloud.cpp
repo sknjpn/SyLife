@@ -1,4 +1,5 @@
 #include "RigidbodyCloud.h"
+#include "Rigidbody.h"
 #include "FieldManager.h"
 
 size_t RigidbodyCloud::kdtree_get_point_count() const
