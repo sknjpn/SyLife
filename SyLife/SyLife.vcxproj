@@ -201,7 +201,7 @@
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="CellScript.cpp" />
     <ClCompile Include="DNA.cpp" />
-    <ClCompile Include="Field.cpp" />
+    <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
@@ -287,7 +287,7 @@
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="CellScript.h" />
     <ClInclude Include="DNA.h" />
-    <ClInclude Include="Field.h" />
+    <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="MoleculeManager.h" />
     <ClInclude Include="nanoflann.hpp" />

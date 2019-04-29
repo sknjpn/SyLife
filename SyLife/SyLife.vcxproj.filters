@@ -63,6 +63,9 @@
     <Filter Include="Source Files\Other">
       <UniqueIdentifier>{39fa7e08-19ef-4be5-95a5-0684242098c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{9c1b5efc-b9cd-4ea2-90d9-1000a33f17e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -74,13 +77,7 @@
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CellManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DNA.cpp">
@@ -98,17 +95,23 @@
     <ClCompile Include="CellScript.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PartScript.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Field.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Vector2D.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CellManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PartScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldManager.cpp">
+      <Filter>Source Files\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,25 +292,16 @@
     <ClInclude Include="Cell.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CellManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="DNA.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Molecule.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="MoleculeManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Nucleus.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Part.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartScript.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CellScript.h">
@@ -319,14 +313,23 @@
     <ClInclude Include="Storage.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Field.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="nanoflann.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculeManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CellManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PartScript.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

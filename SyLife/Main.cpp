@@ -1,6 +1,6 @@
-﻿#include "Field.h"
+﻿#include "FieldManager.h"
 
 void Main()
 {
-	g_field = make_unique<Field>();
+	g_fieldManager = make_unique<FieldManager>();
 }
