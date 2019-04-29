@@ -209,6 +209,8 @@
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="PartScript.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="RigidbodyCloud.cpp" />
+    <ClCompile Include="RigidbodySearcher.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -295,6 +297,8 @@
     <ClInclude Include="Part.h" />
     <ClInclude Include="PartScript.h" />
     <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="RigidbodyCloud.h" />
+    <ClInclude Include="RigidbodySearcher.h" />
     <ClInclude Include="sol.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />

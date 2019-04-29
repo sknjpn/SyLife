@@ -113,6 +113,12 @@
     <ClCompile Include="FieldManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="RigidbodySearcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidbodyCloud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -331,5 +337,7 @@
     <ClInclude Include="FieldManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="RigidbodySearcher.h" />
+    <ClInclude Include="RigidbodyCloud.h" />
   </ItemGroup>
 </Project>
