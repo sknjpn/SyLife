@@ -1,12 +1,12 @@
-#include "stdafx.h"
 #include "RigidbodyCloud.h"
+#include "FieldManager.h"
 
-
-RigidbodyCloud::RigidbodyCloud()
+size_t RigidbodyCloud::kdtree_get_point_count() const
 {
+	return g_fieldManager->m_rigidbodies.size();
 }
 
-
-RigidbodyCloud::~RigidbodyCloud()
+double RigidbodyCloud::kdtree_get_pt(const size_t idx, const size_t dim) const
 {
+	return (dim == 0) ? g_fieldManager->m_rigidbodies[idx]->m_position.m_x : g_fieldManager->m_rigidbodies[idx]->m_position.m_y;
 }
