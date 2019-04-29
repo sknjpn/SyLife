@@ -14,7 +14,16 @@ void Main()
 		g_fieldManager->Update();
 
 		// Moleculeの描画
+		for (const auto& c : g_cellManager->m_cells)
+		{
+
+		}
 
 		// Cellの描画
+
+		for (const auto& m : g_moleculeManager->m_molecules)
+		{
+
+		}
 	}
 }

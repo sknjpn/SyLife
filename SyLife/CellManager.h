@@ -5,7 +5,7 @@ class Cell;
 class CellManager
 {
 public:
-	vector<shared_ptr<Cell>>	g_cells;
+	vector<shared_ptr<Cell>>	m_cells;
 
 public:
 	CellManager();

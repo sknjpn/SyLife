@@ -4,6 +4,7 @@ class Molecule;
 
 class MoleculeManager
 {
+public:
 	vector<shared_ptr<Molecule>>	m_molecules;
 
 public:
