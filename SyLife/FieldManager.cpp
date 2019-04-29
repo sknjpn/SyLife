@@ -26,6 +26,25 @@ void FieldManager::Update()
 {
 	for (const auto& r : m_rigidbodies)
 	{
+		auto list = g_rigidbodySearcher->GetNearRigidbodies(r->m_position, r->m_radius * 2.0);
+
+		for (const auto& l : list)
+		{
+			auto t = m_rigidbodies[l.first];
+			auto length = (t->m_position - r->m_position).length();
+
+			if (t != r && length - t->m_radius - r->m_radius < 0.0)
+			{
+				auto f = 64.0 * (length - t->m_radius - r->m_radius) * (t->m_position - r->m_position) / length;
+
+				r->AddForceInWorld(f, r->m_position);
+				t->AddForceInWorld(-f, t->m_position);
+			}
+		}
+	}
+
+	for (const auto& r : m_rigidbodies)
+	{
 		r->m_position += r->m_velocity;
 	}
 

@@ -12,11 +12,11 @@ void Main()
 	g_fieldManager->Init();
 
 	// Moleculeの追加
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 10000; i++)
 	{
 		const auto& m = g_moleculeManager->AddMolecule();
 
-		m->m_radius = 2.0;
+		m->m_radius = 4.0;
 		m->m_mass = m->m_radius * m->m_radius * 2.0;
 		m->m_position.m_x = s3d::Random(640);
 		m->m_position.m_y = s3d::Random(480);
