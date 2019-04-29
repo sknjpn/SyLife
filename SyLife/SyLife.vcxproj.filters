@@ -337,7 +337,11 @@
     <ClInclude Include="FieldManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="RigidbodySearcher.h" />
-    <ClInclude Include="RigidbodyCloud.h" />
+    <ClInclude Include="RigidbodyCloud.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidbodySearcher.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
