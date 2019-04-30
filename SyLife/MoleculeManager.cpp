@@ -28,6 +28,15 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecu
 	return m;
 }
 
+const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecule::Model>& model, const Vector2D & position)
+{
+	const auto& m = AddMolecule(model);
+
+	m->m_position = position;
+	
+	return m;
+}
+
 void MoleculeManager::AddMoleculesRandom(const shared_ptr<Molecule::Model>& model, size_t size)
 {
 	for (int i = 0; i < size; i++)
@@ -47,7 +56,27 @@ const shared_ptr<Molecule::Model>& MoleculeManager::AddModel()
 	return m;
 }
 
+const shared_ptr<Molecule::Model>& MoleculeManager::GetModel(const string& name) const
+{
+	for (auto it = m_models.begin(); it != m_models.end(); ++it)
+	{
+		if ((*it)->m_name == name) return *it;
+	}
+}
+
 void MoleculeManager::Update()
 {
+	for (const auto& m : m_molecules)
+	{
+		if (m->m_model == GetModel("Amino acid") && rand() % 100 == 0)
+		{
+			AddMolecule(GetModel("Nitrogen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
+			AddMolecule(GetModel("Carbon"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
+			AddMolecule(GetModel("Oxygen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
+
+			m->m_destroyFlag = true;
+		}
+	}
+
 	m_molecules.erase(remove_if(m_molecules.begin(), m_molecules.end(), [](const auto& m) { return m->m_destroyFlag; }), m_molecules.end());
 }

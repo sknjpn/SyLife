@@ -52,7 +52,7 @@ void CellManager::Update()
 
 		for(auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it)
 		{
-			if ((*it).second > 0)
+			if ((*it).second > 10)
 			{
 				auto v = Vector2D(1.0, 0.0).rotated(rand() / 360.0);
 				const auto& t = g_moleculeManager->AddMolecule((*it).first);

@@ -13,9 +13,13 @@ public:
 	~MoleculeManager();
 
 	const shared_ptr<Molecule>&			AddMolecule(const shared_ptr<Molecule::Model>& model);
+	const shared_ptr<Molecule>&			AddMolecule(const shared_ptr<Molecule::Model>& model, const Vector2D& position);
 	const shared_ptr<Molecule::Model>&	AddModel();
 
+	const shared_ptr<Molecule::Model>&	GetModel(const string& name) const;
+
 	void	AddMoleculesRandom(const shared_ptr<Molecule::Model>& model, size_t size);
+
 
 	void	Update();
 };
