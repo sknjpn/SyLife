@@ -3,7 +3,7 @@
 
 Cell::Cell()
 {
-	m_deathTimer = 1.0;
+	m_deathTimer = 10.0;
 }
 
 Cell::~Cell()
