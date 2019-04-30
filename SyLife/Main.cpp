@@ -61,7 +61,7 @@ void Main()
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, 0.0)).drawFrame(1.0, s3d::Palette::Gray);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius / 4.0).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Black);
 
-			const auto& list = g_rigidbodySearcher->GetNearRigidbodies(c->m_position, c->m_radius * 2.0);
+			/*const auto& list = g_rigidbodySearcher->GetNearRigidbodies(c->m_position, c->m_radius * 2.0);
 
 			for (auto l : list)
 			{
@@ -70,7 +70,7 @@ void Main()
 				s3d::Vec2 p2(target->m_position.m_x, target->m_position.m_y);
 
 				s3d::Line(p1, p2).draw();
-			}
+			}*/
 		}
 	}
 }
