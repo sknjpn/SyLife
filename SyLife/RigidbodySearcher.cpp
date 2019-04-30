@@ -13,11 +13,11 @@ RigidbodySearcher::~RigidbodySearcher()
 
 }
 
-std::vector<std::pair<size_t, int>>  RigidbodySearcher::GetNearRigidbodies(Vector2D position, double radius) const
+std::vector<std::pair<size_t, double>>  RigidbodySearcher::GetNearRigidbodies(Vector2D position, double radius) const
 {
-	const int query_pt[2] = { position.m_x, position.m_y };
-	const int search_radius = radius * radius;
-	std::vector<std::pair<size_t, int>>   ret_matches;
+	const double query_pt[2] = {  position.m_x, position.m_y };
+	const double search_radius = radius * radius;
+	std::vector<std::pair<size_t, double>>   ret_matches;
 	nanoflann::SearchParams params;
 
 	const size_t nMatches = m_index.radiusSearch(&query_pt[0], search_radius, ret_matches, params);

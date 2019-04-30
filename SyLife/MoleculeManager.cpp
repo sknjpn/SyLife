@@ -17,7 +17,7 @@ MoleculeManager::~MoleculeManager()
 
 int MoleculeManager::NumMolecule(const shared_ptr<Molecule::Model>& model)
 {
-	return count_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m->m_model == model; });
+	return static_cast<int>(count_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m->m_model == model; }));
 }
 
 const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecule::Model>& model)
@@ -38,7 +38,7 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecu
 	const auto& m = AddMolecule(model);
 
 	m->m_position = position;
-	
+
 	return m;
 }
 
@@ -67,6 +67,8 @@ const shared_ptr<Molecule::Model>& MoleculeManager::GetModel(const string& name)
 	{
 		if ((*it)->m_name == name) return *it;
 	}
+
+	throw new exception;
 }
 
 void MoleculeManager::Update()

@@ -10,4 +10,4 @@ struct RigidbodyCloud
 	bool kdtree_get_bbox(BBOX& /* bb */) const { return false; }
 };
 
-typedef KDTreeSingleIndexAdaptor<L2_Simple_Adaptor<int, RigidbodyCloud>, RigidbodyCloud, 2> RigidbodyAdaptor;
+typedef KDTreeSingleIndexAdaptor<L2_Simple_Adaptor<double, RigidbodyCloud>, RigidbodyCloud, 2> RigidbodyAdaptor;
