@@ -4,7 +4,7 @@
 #include "Rigidbody.h"
 #include "RigidbodySearcher.h"
 
-unique_ptr<FieldManager>	g_fieldManager;
+unique_ptr<FieldManager>	g_fieldManagerPtr;
 
 FieldManager::FieldManager()
 	: m_size(800, 600)
@@ -19,16 +19,16 @@ FieldManager::~FieldManager()
 
 void FieldManager::Init()
 {
-	g_moleculeManager = make_unique<MoleculeManager>();
-	g_cellManager = make_unique<CellManager>();
-	g_rigidbodySearcher = make_unique<RigidbodySearcher>();
+	g_moleculeManagerPtr = make_unique<MoleculeManager>();
+	g_cellManagerPtr = make_unique<CellManager>();
+	g_rigidbodySearcherPtr = make_unique<RigidbodySearcher>();
 }
 
 void FieldManager::Update()
 {
 	for (const auto& r : m_rigidbodies)
 	{
-		auto list = g_rigidbodySearcher->GetNearRigidbodies(r->m_position, r->m_radius * 2.0);
+		auto list = g_rigidbodySearcherPtr->GetNearRigidbodies(r->m_position, r->m_radius * 2.0);
 
 		for (const auto& l : list)
 		{
@@ -58,9 +58,9 @@ void FieldManager::Update()
 		r->m_velocity /= (1.0 + r->m_radius * 0.001);
 	}
 
-	g_cellManager->Update();
-	g_moleculeManager->Update();
+	g_cellManagerPtr->Update();
+	g_moleculeManagerPtr->Update();
 
 	m_rigidbodies.erase(remove_if(m_rigidbodies.begin(), m_rigidbodies.end(), [](const auto& r) { return r->m_destroyFlag; }), m_rigidbodies.end());
-	g_rigidbodySearcher->m_index.buildIndex();
+	g_rigidbodySearcherPtr->m_index.buildIndex();
 }

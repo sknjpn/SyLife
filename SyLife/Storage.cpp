@@ -38,7 +38,7 @@ int Storage::NumMolecule(const shared_ptr<Molecule::Model>& model) const
 
 int Storage::NumMolecule(const string& name) const
 {
-	return NumMolecule(g_moleculeManager->GetModel(name));
+	return NumMolecule(g_moleculeManagerPtr->GetModel(name));
 }
 
 void Storage::PullMolecule(const shared_ptr<Molecule::Model>& model)

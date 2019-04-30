@@ -16,4 +16,4 @@ public:
 	void	Update();
 };
 
-extern unique_ptr<CellManager>	g_cellManager;
+extern unique_ptr<CellManager>	g_cellManagerPtr;

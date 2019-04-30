@@ -7,41 +7,41 @@
 
 void Main()
 {
-	g_fieldManager = make_unique<FieldManager>();
+	g_fieldManagerPtr = make_unique<FieldManager>();
 
-	g_fieldManager->Init();
+	g_fieldManagerPtr->Init();
 
 	// MoleculeModelの追加
-	const auto& oxygen = g_moleculeManager->AddModel();
+	const auto& oxygen = g_moleculeManagerPtr->AddModel();
 	oxygen->m_name = "Oxygen";
 	oxygen->m_mass = 12.0;
 	oxygen->m_radius = sqrt(oxygen->m_mass);
 
-	const auto& carbon = g_moleculeManager->AddModel();
+	const auto& carbon = g_moleculeManagerPtr->AddModel();
 	carbon->m_name = "Carbon";
 	carbon->m_mass = 9.0;
 	carbon->m_radius = sqrt(carbon->m_mass);
 
-	const auto& nitrogen = g_moleculeManager->AddModel();
+	const auto& nitrogen = g_moleculeManagerPtr->AddModel();
 	nitrogen->m_name = "Nitrogen";
 	nitrogen->m_mass = 14.0;
 	nitrogen->m_radius = sqrt(nitrogen->m_mass);
 
-	const auto& aminoAcid = g_moleculeManager->AddModel();
+	const auto& aminoAcid = g_moleculeManagerPtr->AddModel();
 	aminoAcid->m_name = "Amino acid";
 	aminoAcid->m_mass = oxygen->m_mass + carbon->m_mass + nitrogen->m_mass;
 	aminoAcid->m_radius = sqrt(aminoAcid->m_mass);
 
 	// Moleculeの追加
-	g_moleculeManager->AddMoleculesRandom(oxygen, 1000);
-	g_moleculeManager->AddMoleculesRandom(carbon, 1000);
-	g_moleculeManager->AddMoleculesRandom(nitrogen, 500);
-	g_moleculeManager->AddMoleculesRandom(aminoAcid, 0);
+	g_moleculeManagerPtr->AddMoleculesRandom(oxygen, 1000);
+	g_moleculeManagerPtr->AddMoleculesRandom(carbon, 1000);
+	g_moleculeManagerPtr->AddMoleculesRandom(nitrogen, 500);
+	g_moleculeManagerPtr->AddMoleculesRandom(aminoAcid, 0);
 
 	// Cellの追加
 	for (int i = 0; i < 10; i++)
 	{
-		const auto& c = g_cellManager->AddCell();
+		const auto& c = g_cellManagerPtr->AddCell();
 
 		c->m_radius = 32.0;
 		c->m_mass = c->m_radius * c->m_radius * 1.0;
@@ -51,7 +51,7 @@ void Main()
 		c->Init();
 	}
 
-	g_rigidbodySearcher->m_index.buildIndex();
+	g_rigidbodySearcherPtr->m_index.buildIndex();
 	s3d::Font font(12);
 	s3d::Font printFont(16);
 
@@ -60,15 +60,15 @@ void Main()
 	while (s3d::System::Update())
 	{
 
-		g_fieldManager->Update();
+		g_fieldManagerPtr->Update();
 
 		if (s3d::MouseL.down())
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
-			for (auto l : g_rigidbodySearcher->GetNearRigidbodies(cursorPos, 100))
+			for (auto l : g_rigidbodySearcherPtr->GetNearRigidbodies(cursorPos, 100))
 			{
-				const auto& target = g_fieldManager->m_rigidbodies[l.first];
+				const auto& target = g_fieldManagerPtr->m_rigidbodies[l.first];
 
 				if (target->m_radius > (target->m_position - cursorPos).length())
 				{
@@ -84,7 +84,7 @@ void Main()
 		else selectedRigidbody = nullptr;
 
 		// Moleculeの描画
-		for (const auto& m : g_moleculeManager->m_molecules)
+		for (const auto& m : g_moleculeManagerPtr->m_molecules)
 		{
 			s3d::Color color = s3d::Palette::White;
 			if (m->m_model == oxygen) color = s3d::Palette::Red;
@@ -96,7 +96,7 @@ void Main()
 		}
 
 		// Cellの描画
-		for (const auto& c : g_cellManager->m_cells)
+		for (const auto& c : g_cellManagerPtr->m_cells)
 		{
 			double a = min(0.5, c->m_deathTimer);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, a)).drawFrame(1.0, s3d::Palette::Gray);
@@ -105,11 +105,11 @@ void Main()
 			string text;
 			for (const auto& m : c->m_storage.m_molecules) text += m.first->m_name + to_string(m.second) + "\n";
 			font(s3d::Unicode::Widen(text)).drawAt(c->m_position.m_x, c->m_position.m_y);
-			/*const auto& list = g_rigidbodySearcher->GetNearRigidbodies(c->m_position, c->m_radius * 2.0);
+			/*const auto& list = g_rigidbodySearcherPtr->GetNearRigidbodies(c->m_position, c->m_radius * 2.0);
 
 			for (auto l : list)
 			{
-				const auto& target = g_fieldManager->m_rigidbodies[l.first];
+				const auto& target = g_fieldManagerPtr->m_rigidbodies[l.first];
 				s3d::Vec2 p1(c->m_position.m_x, c->m_position.m_y);
 				s3d::Vec2 p2(target->m_position.m_x, target->m_position.m_y);
 
@@ -118,17 +118,17 @@ void Main()
 		}
 
 		s3d::Rect(192, 80).draw(s3d::ColorF(s3d::Palette::Gray, 0.75));
-		for (int i = 0; i < g_moleculeManager->m_models.size(); ++i)
+		for (int i = 0; i < g_moleculeManagerPtr->m_models.size(); ++i)
 		{
-			const auto& m = g_moleculeManager->m_models[i];
+			const auto& m = g_moleculeManagerPtr->m_models[i];
 			s3d::Color color = s3d::Palette::White;
 			if (m == oxygen) color = s3d::Palette::Red;
 			if (m == carbon) color = s3d::Palette::Black;
 			if (m == nitrogen) color = s3d::Palette::Green;
 			if (m == aminoAcid) color = s3d::Palette::Yellow;
 
-			printFont(s3d::Unicode::Widen(m->m_name + " size=" + to_string(g_moleculeManager->NumMolecule(m)))).draw(0 + 1, i * 16 + 1, s3d::Palette::White);
-			printFont(s3d::Unicode::Widen(m->m_name + " size=" + to_string(g_moleculeManager->NumMolecule(m)))).draw(0, i * 16, color);
+			printFont(s3d::Unicode::Widen(m->m_name + " size=" + to_string(g_moleculeManagerPtr->NumMolecule(m)))).draw(0 + 1, i * 16 + 1, s3d::Palette::White);
+			printFont(s3d::Unicode::Widen(m->m_name + " size=" + to_string(g_moleculeManagerPtr->NumMolecule(m)))).draw(0, i * 16, color);
 		}
 	}
 }

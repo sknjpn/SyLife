@@ -2,7 +2,7 @@
 #include "Molecule.h"
 #include "FieldManager.h"
 
-unique_ptr<MoleculeManager> g_moleculeManager;
+unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
 MoleculeManager::MoleculeManager()
 {
@@ -28,7 +28,7 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecu
 	m->m_radius = model->m_radius;
 	m->m_mass = model->m_mass;
 
-	g_fieldManager->m_rigidbodies.emplace_back(m);
+	g_fieldManagerPtr->m_rigidbodies.emplace_back(m);
 
 	return m;
 }
@@ -46,9 +46,9 @@ void MoleculeManager::AddMoleculesRandom(const shared_ptr<Molecule::Model>& mode
 {
 	for (int i = 0; i < size; i++)
 	{
-		const auto& m = g_moleculeManager->AddMolecule(model);
-		m->m_position.m_x = rand() % int(g_fieldManager->m_size.m_x);
-		m->m_position.m_y = rand() % int(g_fieldManager->m_size.m_y);
+		const auto& m = g_moleculeManagerPtr->AddMolecule(model);
+		m->m_position.m_x = rand() % int(g_fieldManagerPtr->m_size.m_x);
+		m->m_position.m_y = rand() % int(g_fieldManagerPtr->m_size.m_y);
 
 		m->Init();
 	}

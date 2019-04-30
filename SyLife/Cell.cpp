@@ -29,7 +29,7 @@ void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)
 void Cell::ExpireMolecule(const shared_ptr<Molecule::Model>& model) const
 {
 	auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
-	const auto& t = g_moleculeManager->AddMolecule(model);
+	const auto& t = g_moleculeManagerPtr->AddMolecule(model);
 
 	t->m_position = m_position + v * (m_radius + model->m_radius);
 	t->m_velocity = v * 1.0;

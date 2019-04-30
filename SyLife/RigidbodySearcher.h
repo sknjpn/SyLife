@@ -15,4 +15,4 @@ public:
 	std::vector<std::pair<size_t, int>>	GetNearRigidbodies(Vector2D position, double radius) const;
 };
 
-extern unique_ptr<RigidbodySearcher> g_rigidbodySearcher;
+extern unique_ptr<RigidbodySearcher> g_rigidbodySearcherPtr;

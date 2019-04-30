@@ -25,4 +25,4 @@ public:
 	void	Update();
 };
 
-extern unique_ptr<MoleculeManager> g_moleculeManager;
+extern unique_ptr<MoleculeManager> g_moleculeManagerPtr;

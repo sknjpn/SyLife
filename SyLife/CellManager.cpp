@@ -5,7 +5,7 @@
 #include "Molecule.h"
 #include "MoleculeManager.h"
 
-unique_ptr<CellManager>	g_cellManager;
+unique_ptr<CellManager>	g_cellManagerPtr;
 
 CellManager::CellManager()
 {
@@ -21,7 +21,7 @@ const shared_ptr<Cell>& CellManager::AddCell()
 {
 	const auto& c = m_cells.emplace_back(make_shared<Cell>());
 
-	g_fieldManager->m_rigidbodies.emplace_back(c);
+	g_fieldManagerPtr->m_rigidbodies.emplace_back(c);
 
 	return c;
 }
@@ -31,9 +31,9 @@ void CellManager::Update()
 	for (const auto& c : m_cells)
 	{
 		// ÚG‚µ‚½Molecule‚ÌŽæ‚èž‚Ý
-		for (const auto& l : g_rigidbodySearcher->GetNearRigidbodies(c->m_position, c->m_radius * 2.0))
+		for (const auto& l : g_rigidbodySearcherPtr->GetNearRigidbodies(c->m_position, c->m_radius * 2.0))
 		{
-			auto t = g_fieldManager->m_rigidbodies[l.first];
+			auto t = g_fieldManagerPtr->m_rigidbodies[l.first];
 			auto length = (t->m_position - c->m_position).length();
 
 			if (!t->m_destroyFlag && t != c && length - t->m_radius - c->m_radius < 0.0)
@@ -60,21 +60,21 @@ void CellManager::Update()
 			c->m_storage.NumMolecule("Oxygen") > 0 &&
 			c->m_storage.NumMolecule("Nitrogen") > 0)
 		{
-			c->m_storage.AddMolecule(g_moleculeManager->GetModel("Amino acid"));
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Carbon"));
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"));
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Nitrogen"));
+			c->m_storage.AddMolecule(g_moleculeManagerPtr->GetModel("Amino acid"));
+			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"));
+			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"));
+			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Nitrogen"));
 		}
 
 		if (c->m_storage.NumMolecule("Amino acid") >= 5 &&
 			c->m_storage.NumMolecule("Carbon") >= 5 &&
 			c->m_storage.NumMolecule("Oxygen") >= 5)
 		{
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Amino acid"), 5);
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Carbon"), 5);
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"), 5);
+			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
+			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
 
-			const auto& nc = g_cellManager->AddCell();
+			const auto& nc = g_cellManagerPtr->AddCell();
 
 			nc->m_radius = 32.0;
 			nc->m_mass = nc->m_radius * nc->m_radius * 1.0;
@@ -82,14 +82,14 @@ void CellManager::Update()
 			nc->Init();
 		}
 
-		c->m_deathTimer -= g_fieldManager->GetDeltaTime();
+		c->m_deathTimer -= g_fieldManagerPtr->GetDeltaTime();
 		if (c->m_deathTimer <= 0.0)
 		{
 			for (auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it) c->ExpireMolecule((*it).first, (*it).second);
 
-			c->ExpireMolecule(g_moleculeManager->GetModel("Amino acid"), 5);
-			c->ExpireMolecule(g_moleculeManager->GetModel("Carbon"), 5);
-			c->ExpireMolecule(g_moleculeManager->GetModel("Oxygen"), 5);
+			c->ExpireMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+			c->ExpireMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
+			c->ExpireMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
 
 			c->m_destroyFlag = true;
 		}

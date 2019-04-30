@@ -25,4 +25,4 @@ std::vector<std::pair<size_t, int>>  RigidbodySearcher::GetNearRigidbodies(Vecto
 	return ret_matches;
 }
 
-unique_ptr<RigidbodySearcher> g_rigidbodySearcher = nullptr;
+unique_ptr<RigidbodySearcher> g_rigidbodySearcherPtr = nullptr;
