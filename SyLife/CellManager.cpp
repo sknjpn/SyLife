@@ -54,20 +54,30 @@ void CellManager::Update()
 		{
 			if ((*it).second > 10)
 			{
-				auto v = Vector2D(1.0, 0.0).rotated(rand() / 360.0);
-				const auto& t = g_moleculeManager->AddMolecule((*it).first);
-				t->m_position = c->m_position + v * (c->m_radius + (*it).first->m_radius);
-				t->m_velocity = v * 1.0;
-
+				c->ExpireMolecule((*it).first);
 				c->m_storage.PullMolecule((*it).first);
 				break;
 			}
 		}
 
-		if (c->m_storage.NumMolecule("Amino acid") >= 5 && c->m_storage.NumMolecule("Carbon") >= 10)
+		if (c->m_storage.NumMolecule("Amino acid") < 5 &&
+			c->m_storage.NumMolecule("Carbon") > 0 &&
+			c->m_storage.NumMolecule("Oxygen") > 0 &&
+			c->m_storage.NumMolecule("Nitrogen") > 0)
+		{
+			c->m_storage.AddMolecule(g_moleculeManager->GetModel("Amino acid"));
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Carbon"));
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"));
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"));
+		}
+
+		if (c->m_storage.NumMolecule("Amino acid") >= 5 &&
+			c->m_storage.NumMolecule("Carbon") >= 10 &&
+			c->m_storage.NumMolecule("Oxygen") >= 10)
 		{
 			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Amino acid"), 5);
 			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Carbon"), 10);
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"), 10);
 
 			const auto& nc = g_cellManager->AddCell();
 
@@ -77,9 +87,11 @@ void CellManager::Update()
 			nc->Init();
 		}
 
-		if (rand() % 100 == 0)
+		if (rand() % 1000 == 0)
 		{
-
+			c->ExpireMolecule(g_moleculeManager->GetModel("Amino acid"), 5);
+			c->ExpireMolecule(g_moleculeManager->GetModel("Carbon"), 10);
+			c->ExpireMolecule(g_moleculeManager->GetModel("Oxygen"), 10);
 
 			c->m_destroyFlag = true;
 		}
