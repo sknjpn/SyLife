@@ -12,6 +12,7 @@ public:
 	double	m_rotation = 0.0;
 	double	m_inertia = 0.0;
 	double	m_angularVelocity = 0.0;
+	bool	m_destroyFlag = false;
 
 public:
 	Rigidbody() = default;
