@@ -1,10 +1,10 @@
 #pragma once
 
-class Molecule;
+#include "Molecule.h"
 
 class Storage
 {
-	vector<pair<shared_ptr<Molecule>, int>>	m_molecules;
+	vector<pair<shared_ptr<Molecule::Model>, int>>	m_molecules;
 
 public:
 	Storage();

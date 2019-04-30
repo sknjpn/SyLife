@@ -11,18 +11,32 @@ void Main()
 
 	g_fieldManager->Init();
 
+	// MoleculeModelの追加
+	const auto& oxygen = g_moleculeManager->AddModel();
+	oxygen->m_name = "Oxygen";
+	oxygen->m_mass = 12.0;
+	oxygen->m_radius = sqrt(oxygen->m_mass);
+
+	const auto& carbon = g_moleculeManager->AddModel();
+	carbon->m_name = "Carbon";
+	carbon->m_mass = 9.0;
+	carbon->m_radius = sqrt(carbon->m_mass);
+
+	const auto& nitrogen = g_moleculeManager->AddModel();
+	nitrogen->m_name = "Nitrogen";
+	nitrogen->m_mass = 14.0;
+	nitrogen->m_radius = sqrt(nitrogen->m_mass);
+
+	const auto& aminoAcid = g_moleculeManager->AddModel();
+	aminoAcid->m_name = "Amino acid";
+	aminoAcid->m_mass = 70.0;
+	aminoAcid->m_radius = sqrt(aminoAcid->m_mass);
+
 	// Moleculeの追加
-	for (int i = 0; i <2000; i++)
-	{
-		const auto& m = g_moleculeManager->AddMolecule();
-
-		m->m_radius = 4.0;
-		m->m_mass = m->m_radius * m->m_radius * 1.0;
-		m->m_position.m_x = s3d::Random(800);
-		m->m_position.m_y = s3d::Random(600);
-
-		m->Init();
-	}
+	g_moleculeManager->AddMoleculesRandom(oxygen, 500);
+	g_moleculeManager->AddMoleculesRandom(carbon, 500);
+	g_moleculeManager->AddMoleculesRandom(nitrogen, 500);
+	g_moleculeManager->AddMoleculesRandom(aminoAcid, 100);
 
 	// Cellの追加
 	for (int i = 0; i < 50; i++)
