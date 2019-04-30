@@ -58,7 +58,7 @@ void Main()
 		// Cellの描画
 		for (const auto& c : g_cellManager->m_cells)
 		{
-			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, 0.0)).drawFrame(1.0, s3d::Palette::Gray);
+			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, 0.5)).drawFrame(1.0, s3d::Palette::Black);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius / 4.0).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Black);
 
 			/*const auto& list = g_rigidbodySearcher->GetNearRigidbodies(c->m_position, c->m_radius * 2.0);
