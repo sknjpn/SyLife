@@ -37,13 +37,15 @@ void CellManager::Update()
 			auto t = g_fieldManager->m_rigidbodies[l.first];
 			auto length = (t->m_position - c->m_position).length();
 
-			if (t != c && length - t->m_radius - c->m_radius < 0.0)
+			if (!t->m_destroyFlag && t != c && length - t->m_radius - c->m_radius < 0.0)
 			{
 				auto m = dynamic_pointer_cast<Molecule>(t);
 
 				if (m != nullptr)
 				{
 					m->m_destroyFlag = true;
+
+					c->m_storage.AddMolecule(m);
 				}
 			}
 		}

@@ -8,6 +8,7 @@ class Part;
 
 class Cell : public Rigidbody
 {
+public:
 	Nucleus m_nucleus;
 	Storage	m_storage;
 	vector<shared_ptr<Part>>	m_part;
