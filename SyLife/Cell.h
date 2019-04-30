@@ -3,6 +3,7 @@
 #include "Rigidbody.h"
 #include "Storage.h"
 #include "Nucleus.h"
+#include "Molecule.h"
 
 class Part;
 
@@ -19,5 +20,7 @@ public:
 
 	void	Update();
 	void	Draw();
+
+	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model) const;
 };
 
