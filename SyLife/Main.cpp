@@ -98,7 +98,7 @@ void Main()
 		// Cellの描画
 		for (const auto& c : g_cellManager->m_cells)
 		{
-			double a = min(0.5, (60 * 10 - c->m_timer) / 600.0);
+			double a = min(0.5, c->m_deathTimer);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, a)).drawFrame(1.0, s3d::Palette::Gray);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius / 4.0).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Gray);
 

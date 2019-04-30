@@ -30,9 +30,8 @@ void CellManager::Update()
 {
 	for (const auto& c : m_cells)
 	{
-		auto list = g_rigidbodySearcher->GetNearRigidbodies(c->m_position, c->m_radius * 2.0);
-
-		for (const auto& l : list)
+		// ÚG‚µ‚½Molecule‚ÌŽæ‚èž‚Ý
+		for (const auto& l : g_rigidbodySearcher->GetNearRigidbodies(c->m_position, c->m_radius * 2.0))
 		{
 			auto t = g_fieldManager->m_rigidbodies[l.first];
 			auto length = (t->m_position - c->m_position).length();
@@ -41,15 +40,11 @@ void CellManager::Update()
 			{
 				auto m = dynamic_pointer_cast<Molecule>(t);
 
-				if (m != nullptr)
-				{
-					m->m_destroyFlag = true;
-
-					c->m_storage.AddMolecule(m);
-				}
+				if (m != nullptr) c->TakeMolecule(m);
 			}
 		}
 
+		// —]è‚ÌMolecule‚Ì“ŠŠü
 		for (auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it)
 		{
 			if ((*it).second > 10)
@@ -87,8 +82,8 @@ void CellManager::Update()
 			nc->Init();
 		}
 
-		c->m_timer++;
-		if (c->m_timer >= 60 * 10)
+		c->m_deathTimer -= g_fieldManager->GetDeltaTime();
+		if (c->m_deathTimer <= 0.0)
 		{
 			for (auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it) c->ExpireMolecule((*it).first, (*it).second);
 
