@@ -54,15 +54,32 @@ void Main()
 	g_rigidbodySearcher->m_index.buildIndex();
 	s3d::Font font(12);
 
+	shared_ptr<Rigidbody> selectedRigidbody = nullptr;
+
 	while (s3d::System::Update())
 	{
 		g_fieldManager->Update();
 
+		if (s3d::MouseL.down())
+		{
+			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
+
+			for (auto l : g_rigidbodySearcher->GetNearRigidbodies(cursorPos, 100))
+			{
+				const auto& target = g_fieldManager->m_rigidbodies[l.first];
+
+				if (target->m_radius > (target->m_position - cursorPos).length())
+				{
+					selectedRigidbody = target;
+				}
+			}
+		}
+
 		if (s3d::MouseL.pressed())
 		{
-			g_cellManager->m_cells.front()->m_position.m_x = s3d::Cursor::PosF().x;
-			g_cellManager->m_cells.front()->m_position.m_y = s3d::Cursor::PosF().y;
+			if (selectedRigidbody != nullptr) selectedRigidbody->m_position = Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 		}
+		else selectedRigidbody = nullptr;
 
 		// Moleculeの描画
 		for (const auto& m : g_moleculeManager->m_molecules)
