@@ -3,7 +3,7 @@
 #include "nanoflann.hpp"
 
 RigidbodySearcher::RigidbodySearcher()
-	: m_index(2, m_cloud, KDTreeSingleIndexAdaptorParams(20))
+	: m_index(2, m_cloud, KDTreeSingleIndexAdaptorParams(100000))
 {
 
 }

@@ -6,6 +6,7 @@ unique_ptr<MoleculeManager> g_moleculeManager;
 
 MoleculeManager::MoleculeManager()
 {
+	m_molecules.reserve(10000);
 }
 
 

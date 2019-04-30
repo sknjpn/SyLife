@@ -6,6 +6,7 @@ unique_ptr<CellManager>	g_cellManager;
 
 CellManager::CellManager()
 {
+	m_cells.reserve(10000);
 }
 
 
