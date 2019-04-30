@@ -49,6 +49,20 @@ void CellManager::Update()
 				}
 			}
 		}
+
+		for(auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it)
+		{
+			if ((*it).second > 0)
+			{
+				auto v = Vector2D(1.0, 0.0).rotated(rand() / 360.0);
+				const auto& t = g_moleculeManager->AddMolecule((*it).first);
+				t->m_position = c->m_position + v * (c->m_radius + (*it).first->m_radius);
+				t->m_velocity = v * 1.0;
+
+				c->m_storage.PullMolecule((*it).first);
+				break;
+			}
+		}
 	}
 
 	m_cells.erase(remove_if(m_cells.begin(), m_cells.end(), [](const auto& c) { return c->m_destroyFlag; }), m_cells.end());
