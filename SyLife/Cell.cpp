@@ -26,3 +26,8 @@ void Cell::ExpireMolecule(const shared_ptr<Molecule::Model>& model) const
 	t->m_position = m_position + v * (m_radius + model->m_radius);
 	t->m_velocity = v * 1.0;
 }
+
+void Cell::ExpireMolecule(const shared_ptr<Molecule::Model>& model, int size) const
+{
+	for (int i = 0; i < size; ++i) ExpireMolecule(model);
+}

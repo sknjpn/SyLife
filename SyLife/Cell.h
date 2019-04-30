@@ -22,5 +22,6 @@ public:
 	void	Draw();
 
 	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model) const;
+	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model, int size) const;
 };
 
