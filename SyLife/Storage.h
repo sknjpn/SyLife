@@ -13,5 +13,7 @@ public:
 
 	void	AddMolecule(const shared_ptr<Molecule>& molecule);
 	int		NumMolecule(const shared_ptr<Molecule::Model>& model) const;
+	void	PullMolecule(const shared_ptr<Molecule::Model>& model);
+	void	PullMolecule(const shared_ptr<Molecule::Model>& model, int size);
 };
 

@@ -34,3 +34,25 @@ int Storage::NumMolecule(const shared_ptr<Molecule::Model>& model) const
 
 	return 0;
 }
+
+void Storage::PullMolecule(const shared_ptr<Molecule::Model>& model)
+{
+	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
+	{
+		if ((*it).first == model)
+		{
+			if (--(*it).second <= 0) m_molecules.erase(it);
+		}
+	}
+}
+
+void Storage::PullMolecule(const shared_ptr<Molecule::Model>& model, int size)
+{
+	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
+	{
+		if ((*it).first == model)
+		{
+			if (((*it).second -= size) <= 0) m_molecules.erase(it);
+		}
+	}
+}
