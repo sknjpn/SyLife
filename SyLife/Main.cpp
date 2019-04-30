@@ -52,7 +52,7 @@ void Main()
 	}
 
 	g_rigidbodySearcher->m_index.buildIndex();
-	s3d::Font font(16);
+	s3d::Font font(12);
 
 	while (s3d::System::Update())
 	{
@@ -79,8 +79,8 @@ void Main()
 		// Cellの描画
 		for (const auto& c : g_cellManager->m_cells)
 		{
-			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, 0.5)).drawFrame(1.0, s3d::Palette::Black);
-			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius / 4.0).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Black);
+			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, 0.5)).drawFrame(1.0, s3d::Palette::Gray);
+			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius / 4.0).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Gray);
 
 			string text;
 			for (const auto& m : c->m_storage.m_molecules) text += m.first->m_name + to_string(m.second) + "\n";
