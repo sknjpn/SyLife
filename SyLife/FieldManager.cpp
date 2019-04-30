@@ -58,5 +58,7 @@ void FieldManager::Update()
 		r->m_velocity /= (1.0 + r->m_radius * 0.001);
 	}
 
+	g_cellManager->Update();
+
 	g_rigidbodySearcher->m_index.buildIndex();
 }

@@ -12,6 +12,8 @@ public:
 	~CellManager();
 
 	const shared_ptr<Cell>&	AddCell();
+
+	void	Update();
 };
 
 extern unique_ptr<CellManager>	g_cellManager;
