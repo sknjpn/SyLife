@@ -22,3 +22,8 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule()
 
 	return m;
 }
+
+void MoleculeManager::Update()
+{
+	m_molecules.erase(remove_if(m_molecules.begin(), m_molecules.end(), [](const auto& m) { return m->m_destroyFlag; }), m_molecules.end());
+}

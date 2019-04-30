@@ -43,20 +43,11 @@ void CellManager::Update()
 
 				if (m != nullptr)
 				{
-					{
-						auto it = find(g_moleculeManager->m_molecules.begin(), g_moleculeManager->m_molecules.end(), m);
-						g_moleculeManager->m_molecules.erase(it);
-					}
-					{
-						auto it = find(g_fieldManager->m_rigidbodies.begin(), g_fieldManager->m_rigidbodies.end(), m);
-						g_fieldManager->m_rigidbodies.erase(it);
-					}
+					m->m_destroyFlag = true;
 				}
-
-				g_rigidbodySearcher->m_index.buildIndex();
-
-				break;
 			}
 		}
 	}
+
+	m_cells.erase(remove_if(m_cells.begin(), m_cells.end(), [](const auto& c) { return c->m_destroyFlag; }), m_cells.end());
 }

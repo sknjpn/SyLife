@@ -59,6 +59,8 @@ void FieldManager::Update()
 	}
 
 	g_cellManager->Update();
+	g_moleculeManager->Update();
 
+	m_rigidbodies.erase(remove_if(m_rigidbodies.begin(), m_rigidbodies.end(), [](const auto& r) { return r->m_destroyFlag; }), m_rigidbodies.end());
 	g_rigidbodySearcher->m_index.buildIndex();
 }
