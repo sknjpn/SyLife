@@ -59,6 +59,10 @@ void Main()
 
 	while (s3d::System::Update())
 	{
+		s3d::ClearPrint();
+		s3d::Print << g_fieldManagerPtr->m_rigidbodies.size();
+		s3d::Print << g_cellManagerPtr->m_cells.size();
+		s3d::Print << g_moleculeManagerPtr->m_molecules.size();
 
 		g_fieldManagerPtr->Update();
 

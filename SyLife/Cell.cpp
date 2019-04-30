@@ -22,6 +22,7 @@ void Cell::Draw()
 void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)
 {
 	m_storage.AddMolecule(molecule->m_model);
+	m_molecules.AddMolecule(molecule->m_model);
 
 	molecule->m_destroyFlag = true;
 }

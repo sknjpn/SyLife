@@ -13,9 +13,14 @@ RigidbodySearcher::~RigidbodySearcher()
 
 }
 
+void RigidbodySearcher::ForEachNearRigidbodies(Vector2D position, double radius, function<void(const shared_ptr<Rigidbody>&, double)> func) const
+{
+	for (const auto& l : GetNearRigidbodies(position, radius)) func(g_fieldManagerPtr->m_rigidbodies[l.first], l.second);
+}
+
 std::vector<std::pair<size_t, double>>  RigidbodySearcher::GetNearRigidbodies(Vector2D position, double radius) const
 {
-	const double query_pt[2] = {  position.m_x, position.m_y };
+	const double query_pt[2] = { position.m_x, position.m_y };
 	const double search_radius = radius * radius;
 	std::vector<std::pair<size_t, double>>   ret_matches;
 	nanoflann::SearchParams params;
