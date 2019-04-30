@@ -19,7 +19,7 @@ std::vector<std::pair<size_t, double>>  RigidbodySearcher::GetNearRigidbodies(Ve
 	const double search_radius = radius * radius;
 	std::vector<std::pair<size_t, double>>   ret_matches;
 	nanoflann::SearchParams params;
-
+	params.sorted = false;	//‚æ‚è‘‚­
 	const size_t nMatches = m_index.radiusSearch(&query_pt[0], search_radius, ret_matches, params);
 
 	return ret_matches;
