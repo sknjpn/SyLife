@@ -29,12 +29,12 @@ void Main()
 
 	const auto& aminoAcid = g_moleculeManager->AddModel();
 	aminoAcid->m_name = "Amino acid";
-	aminoAcid->m_mass = 70.0;
+	aminoAcid->m_mass = oxygen->m_mass + carbon->m_mass + nitrogen->m_mass;
 	aminoAcid->m_radius = sqrt(aminoAcid->m_mass);
 
 	// Moleculeの追加
 	g_moleculeManager->AddMoleculesRandom(oxygen, 500);
-	g_moleculeManager->AddMoleculesRandom(carbon, 500);
+	g_moleculeManager->AddMoleculesRandom(carbon, 1000);
 	g_moleculeManager->AddMoleculesRandom(nitrogen, 500);
 	g_moleculeManager->AddMoleculesRandom(aminoAcid, 100);
 
@@ -67,7 +67,13 @@ void Main()
 		// Moleculeの描画
 		for (const auto& m : g_moleculeManager->m_molecules)
 		{
-			s3d::Circle(m->m_position.m_x, m->m_position.m_y, m->m_radius).draw(s3d::Palette::Green).drawFrame(1.0, s3d::Palette::Black);
+			s3d::Color color = s3d::Palette::White;
+			if (m->m_model == oxygen) color = s3d::Palette::Red;
+			if (m->m_model == carbon) color = s3d::Palette::Black;
+			if (m->m_model == nitrogen) color = s3d::Palette::Green;
+			if (m->m_model == aminoAcid) color = s3d::Palette::Yellow;
+
+			s3d::Circle(m->m_position.m_x, m->m_position.m_y, m->m_radius).draw(color).drawFrame(1.0, s3d::Palette::Gray);
 		}
 
 		// Cellの描画
