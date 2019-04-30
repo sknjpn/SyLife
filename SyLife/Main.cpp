@@ -39,7 +39,7 @@ void Main()
 	g_moleculeManager->AddMoleculesRandom(aminoAcid, 100);
 
 	// Cellの追加
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		const auto& c = g_cellManager->AddCell();
 
@@ -57,7 +57,7 @@ void Main()
 	{
 		g_fieldManager->Update();
 
-		//if (s3d::KeyEnter.pressed())
+		if (s3d::MouseL.pressed())
 		{
 			g_cellManager->m_cells.front()->m_position.m_x = s3d::Cursor::PosF().x;
 			g_cellManager->m_cells.front()->m_position.m_y = s3d::Cursor::PosF().y;
