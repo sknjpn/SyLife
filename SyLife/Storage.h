@@ -12,6 +12,7 @@ public:
 	~Storage();
 
 	void	AddMolecule(const shared_ptr<Molecule::Model>& model);
+	void	AddMolecule(const shared_ptr<Molecule::Model>& model, int size);
 	int		NumMolecule(const shared_ptr<Molecule::Model>& model) const;
 	int		NumMolecule(const string& name) const;
 	void	PullMolecule(const shared_ptr<Molecule::Model>& model);

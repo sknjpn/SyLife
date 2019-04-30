@@ -12,20 +12,21 @@ void Main()
 	g_fieldManagerPtr->Init();
 
 	// MoleculeModelの追加
-	const auto& oxygen = g_moleculeManagerPtr->AddModel();
-	oxygen->m_name = "Oxygen";
-	oxygen->m_mass = 12.0;
-	oxygen->m_radius = sqrt(oxygen->m_mass);
 
 	const auto& carbon = g_moleculeManagerPtr->AddModel();
 	carbon->m_name = "Carbon";
-	carbon->m_mass = 9.0;
+	carbon->m_mass = 12.0;
 	carbon->m_radius = sqrt(carbon->m_mass);
 
 	const auto& nitrogen = g_moleculeManagerPtr->AddModel();
 	nitrogen->m_name = "Nitrogen";
-	nitrogen->m_mass = 14.0;
+	nitrogen->m_mass = 24.0;
 	nitrogen->m_radius = sqrt(nitrogen->m_mass);
+
+	const auto& oxygen = g_moleculeManagerPtr->AddModel();
+	oxygen->m_name = "Oxygen";
+	oxygen->m_mass = 36.0;
+	oxygen->m_radius = sqrt(oxygen->m_mass);
 
 	const auto& aminoAcid = g_moleculeManagerPtr->AddModel();
 	aminoAcid->m_name = "Amino acid";
@@ -42,9 +43,10 @@ void Main()
 	for (int i = 0; i < 10; i++)
 	{
 		const auto& c = g_cellManagerPtr->AddCell();
-
-		c->m_radius = 32.0;
-		c->m_mass = c->m_radius * c->m_radius * 1.0;
+		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
+		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
+		c->RecalculatePhysicalProperty();
 		c->m_position.m_x = s3d::Random(800);
 		c->m_position.m_y = s3d::Random(600);
 
@@ -59,12 +61,36 @@ void Main()
 
 	while (s3d::System::Update())
 	{
+		/*
 		s3d::ClearPrint();
 		s3d::Print << g_fieldManagerPtr->m_rigidbodies.size();
 		s3d::Print << g_cellManagerPtr->m_cells.size();
 		s3d::Print << g_moleculeManagerPtr->m_molecules.size();
+		*/
 
 		g_fieldManagerPtr->Update();
+
+		if (s3d::MouseR.pressed())
+		{
+			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
+
+			for (auto l : g_rigidbodySearcherPtr->GetNearRigidbodies(cursorPos, 100))
+			{
+				const auto& target = g_fieldManagerPtr->m_rigidbodies[l.first];
+
+				if (target->m_radius > (target->m_position - cursorPos).length() && dynamic_pointer_cast<Cell>(target) != nullptr)
+				{
+					const auto& c = dynamic_pointer_cast<Cell>(target);
+
+					// Moleculeの吐き出し
+					for (const auto& m : c->m_molecules.m_molecules)
+						for (int i = 0; i < m.second; i++)
+							g_moleculeManagerPtr->AddMolecule(m.first)->m_position = c->m_position + Vector2D((rand() % 100) / 100.0 * c->m_radius, 0.0).rotated(rand() / 3600.0);
+
+					c->m_destroyFlag = true;
+				}
+			}
+		}
 
 		if (s3d::MouseL.down())
 		{
@@ -92,7 +118,7 @@ void Main()
 		{
 			s3d::Color color = s3d::Palette::White;
 			if (m->m_model == oxygen) color = s3d::Palette::Red;
-			if (m->m_model == carbon) color = s3d::Palette::Black;
+			if (m->m_model == carbon) color = s3d::Palette::Skyblue;
 			if (m->m_model == nitrogen) color = s3d::Palette::Green;
 			if (m->m_model == aminoAcid) color = s3d::Palette::Yellow;
 
@@ -102,7 +128,7 @@ void Main()
 		// Cellの描画
 		for (const auto& c : g_cellManagerPtr->m_cells)
 		{
-			double a = min(0.5, c->m_deathTimer);
+			double a = min(0.5, c->m_deathTimer * 0.25);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, a)).drawFrame(1.0, s3d::Palette::Gray);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius / 4.0).draw(s3d::Palette::Violet).drawFrame(1.0, s3d::Palette::Gray);
 
@@ -127,7 +153,7 @@ void Main()
 			const auto& m = g_moleculeManagerPtr->m_models[i];
 			s3d::Color color = s3d::Palette::White;
 			if (m == oxygen) color = s3d::Palette::Red;
-			if (m == carbon) color = s3d::Palette::Black;
+			if (m == carbon) color = s3d::Palette::Skyblue;
 			if (m == nitrogen) color = s3d::Palette::Green;
 			if (m == aminoAcid) color = s3d::Palette::Yellow;
 

@@ -30,6 +30,8 @@ void CellManager::Update()
 {
 	for (const auto& c : m_cells)
 	{
+		if (c->m_destroyFlag) continue;
+
 		// ÚG‚µ‚½Molecule‚ÌŽæ‚èž‚Ý
 		for (const auto& l : g_rigidbodySearcherPtr->GetNearRigidbodies(c->m_position, c->m_radius * 2.0))
 		{
@@ -50,11 +52,11 @@ void CellManager::Update()
 			if ((*it).second > 10)
 			{
 				c->ExpireMolecule((*it).first);
-				c->m_storage.PullMolecule((*it).first);
 				break;
 			}
 		}
 
+		// Amino acid‚Ì‡¬
 		if (c->m_storage.NumMolecule("Amino acid") < 5 &&
 			c->m_storage.NumMolecule("Carbon") > 0 &&
 			c->m_storage.NumMolecule("Oxygen") > 0 &&
@@ -64,8 +66,13 @@ void CellManager::Update()
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"));
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"));
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Nitrogen"));
+			c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino acid"));
+			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"));
+			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"));
+			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Nitrogen"));
 		}
 
+		// •ª—ôˆ—
 		if (c->m_storage.NumMolecule("Amino acid") >= 5 &&
 			c->m_storage.NumMolecule("Carbon") >= 5 &&
 			c->m_storage.NumMolecule("Oxygen") >= 5)
@@ -73,23 +80,28 @@ void CellManager::Update()
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
+			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
+			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
+			c->RecalculatePhysicalProperty();
 
 			const auto& nc = g_cellManagerPtr->AddCell();
-
-			nc->m_radius = 32.0;
-			nc->m_mass = nc->m_radius * nc->m_radius * 1.0;
 			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
+			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
+			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
+			nc->RecalculatePhysicalProperty();
 			nc->Init();
 		}
 
+		// Ž€–Sˆ—
 		c->m_deathTimer -= g_fieldManagerPtr->GetDeltaTime();
 		if (c->m_deathTimer <= 0.0)
 		{
-			for (auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it) c->ExpireMolecule((*it).first, (*it).second);
-
-			c->ExpireMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
-			c->ExpireMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
-			c->ExpireMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
+			// Molecule‚Ì“f‚«o‚µ
+			for (const auto& m : c->m_molecules.m_molecules) 
+				for (int i = 0; i < m.second; i++) 
+					g_moleculeManagerPtr->AddMolecule(m.first)->m_position = c->m_position + Vector2D((rand() % 100) / 100.0 * c->m_radius, 0.0).rotated(rand() / 3600.0);
 
 			c->m_destroyFlag = true;
 		}

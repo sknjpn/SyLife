@@ -26,6 +26,21 @@ void Storage::AddMolecule(const shared_ptr<Molecule::Model>& model)
 	m_molecules.emplace_back(model, 1);
 }
 
+void Storage::AddMolecule(const shared_ptr<Molecule::Model>& model, int size)
+{
+	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
+	{
+		if ((*it).first == model)
+		{
+			(*it).second += size;
+
+			return;
+		}
+	}
+
+	m_molecules.emplace_back(model, size);
+}
+
 int Storage::NumMolecule(const shared_ptr<Molecule::Model>& model) const
 {
 	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)

@@ -20,11 +20,15 @@ public:
 	Cell();
 	~Cell();
 
+	void	RecalculatePhysicalProperty();
 	void	Update();
 	void	Draw();
 
+	// Field‚©‚çStorage‚Éó‚¯æ‚é
 	void	TakeMolecule(const shared_ptr<Molecule>& molecule);
-	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model) const;
-	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model, int size) const;
+
+	// Storage‚©‚çField‚É“f‚«o‚·
+	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model);
+	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model, int size);
 };
 

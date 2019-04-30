@@ -35,7 +35,7 @@ void FieldManager::Update()
 				if (r->m_radius < t->m_radius) return;
 				if (r->m_radius == t->m_radius && r < t) return;
 
-				auto f = 128.0 * (distance - t->m_radius - r->m_radius) * (t->m_position - r->m_position) / distance;
+				auto f = 64.0 * (distance - t->m_radius - r->m_radius) * (t->m_position - r->m_position) / distance;
 				r->AddForceInWorld(f, r->m_position);
 				t->AddForceInWorld(-f, t->m_position);
 			}
