@@ -1,5 +1,5 @@
 #include "Storage.h"
-
+#include "MoleculeManager.h"
 
 Storage::Storage()
 {
@@ -35,6 +35,11 @@ int Storage::NumMolecule(const shared_ptr<Molecule::Model>& model) const
 	return 0;
 }
 
+int Storage::NumMolecule(const string& name) const
+{
+	return NumMolecule(g_moleculeManager->GetModel(name));
+}
+
 void Storage::PullMolecule(const shared_ptr<Molecule::Model>& model)
 {
 	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
@@ -45,8 +50,9 @@ void Storage::PullMolecule(const shared_ptr<Molecule::Model>& model)
 			{
 				m_molecules.erase(it);
 				
-				return;
 			}
+
+			return;
 		}
 	}
 }
@@ -61,8 +67,9 @@ void Storage::PullMolecule(const shared_ptr<Molecule::Model>& model, int size)
 			{
 				m_molecules.erase(it);
 
-				return;
 			}
+
+			return;
 		}
 	}
 }

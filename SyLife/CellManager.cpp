@@ -50,7 +50,7 @@ void CellManager::Update()
 			}
 		}
 
-		for(auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it)
+		for (auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it)
 		{
 			if ((*it).second > 10)
 			{
@@ -62,6 +62,26 @@ void CellManager::Update()
 				c->m_storage.PullMolecule((*it).first);
 				break;
 			}
+		}
+
+		if (c->m_storage.NumMolecule("Amino acid") >= 5 && c->m_storage.NumMolecule("Carbon") >= 10)
+		{
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Amino acid"), 5);
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Carbon"), 10);
+
+			const auto& nc = g_cellManager->AddCell();
+
+			nc->m_radius = 32.0;
+			nc->m_mass = nc->m_radius * nc->m_radius * 1.0;
+			nc->m_position = c->m_position += Vector2D(5.0, 0.0).rotated(rand() / 360.0);
+			nc->Init();
+		}
+
+		if (rand() % 100 == 0)
+		{
+
+
+			c->m_destroyFlag = true;
 		}
 	}
 

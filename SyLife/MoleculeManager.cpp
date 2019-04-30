@@ -68,7 +68,7 @@ void MoleculeManager::Update()
 {
 	for (const auto& m : m_molecules)
 	{
-		if (m->m_model == GetModel("Amino acid") && rand() % 100 == 0)
+		if (m->m_model == GetModel("Amino acid") && rand() % 100 == -1)
 		{
 			AddMolecule(GetModel("Nitrogen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
 			AddMolecule(GetModel("Carbon"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
