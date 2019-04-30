@@ -83,7 +83,7 @@ void CellManager::Update()
 
 			nc->m_radius = 32.0;
 			nc->m_mass = nc->m_radius * nc->m_radius * 1.0;
-			nc->m_position = c->m_position + Vector2D(50.0, 0.0).rotated(rand() / 360.0);
+			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
 			nc->Init();
 		}
 
