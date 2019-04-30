@@ -72,12 +72,12 @@ void CellManager::Update()
 		}
 
 		if (c->m_storage.NumMolecule("Amino acid") >= 5 &&
-			c->m_storage.NumMolecule("Carbon") >= 10 &&
-			c->m_storage.NumMolecule("Oxygen") >= 10)
+			c->m_storage.NumMolecule("Carbon") >= 5 &&
+			c->m_storage.NumMolecule("Oxygen") >= 5)
 		{
 			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Amino acid"), 5);
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Carbon"), 10);
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"), 10);
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Carbon"), 5);
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"), 5);
 
 			const auto& nc = g_cellManager->AddCell();
 
@@ -90,8 +90,8 @@ void CellManager::Update()
 		if (rand() % 1000 == 0)
 		{
 			c->ExpireMolecule(g_moleculeManager->GetModel("Amino acid"), 5);
-			c->ExpireMolecule(g_moleculeManager->GetModel("Carbon"), 10);
-			c->ExpireMolecule(g_moleculeManager->GetModel("Oxygen"), 10);
+			c->ExpireMolecule(g_moleculeManager->GetModel("Carbon"), 5);
+			c->ExpireMolecule(g_moleculeManager->GetModel("Oxygen"), 5);
 
 			c->m_destroyFlag = true;
 		}
