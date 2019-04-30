@@ -10,6 +10,7 @@ class Part;
 class Cell : public Rigidbody
 {
 public:
+	int		m_timer;
 	Nucleus m_nucleus;
 	Storage	m_storage;
 	vector<shared_ptr<Part>>	m_part;

@@ -68,7 +68,7 @@ void CellManager::Update()
 			c->m_storage.AddMolecule(g_moleculeManager->GetModel("Amino acid"));
 			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Carbon"));
 			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"));
-			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Oxygen"));
+			c->m_storage.PullMolecule(g_moleculeManager->GetModel("Nitrogen"));
 		}
 
 		if (c->m_storage.NumMolecule("Amino acid") >= 5 &&
@@ -83,12 +83,15 @@ void CellManager::Update()
 
 			nc->m_radius = 32.0;
 			nc->m_mass = nc->m_radius * nc->m_radius * 1.0;
-			nc->m_position = c->m_position += Vector2D(5.0, 0.0).rotated(rand() / 360.0);
+			nc->m_position = c->m_position + Vector2D(50.0, 0.0).rotated(rand() / 360.0);
 			nc->Init();
 		}
 
-		if (rand() % 1000 == 0)
+		c->m_timer++;
+		if (c->m_timer >= 60 * 10)
 		{
+			for (auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it) c->ExpireMolecule((*it).first, (*it).second);
+
 			c->ExpireMolecule(g_moleculeManager->GetModel("Amino acid"), 5);
 			c->ExpireMolecule(g_moleculeManager->GetModel("Carbon"), 5);
 			c->ExpireMolecule(g_moleculeManager->GetModel("Oxygen"), 5);

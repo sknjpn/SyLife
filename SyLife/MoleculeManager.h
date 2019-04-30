@@ -12,6 +12,7 @@ public:
 	MoleculeManager();
 	~MoleculeManager();
 
+	int NumMolecule(const shared_ptr<Molecule::Model>& model);
 	const shared_ptr<Molecule>&			AddMolecule(const shared_ptr<Molecule::Model>& model);
 	const shared_ptr<Molecule>&			AddMolecule(const shared_ptr<Molecule::Model>& model, const Vector2D& position);
 	const shared_ptr<Molecule::Model>&	AddModel();

@@ -15,6 +15,11 @@ MoleculeManager::~MoleculeManager()
 {
 }
 
+int MoleculeManager::NumMolecule(const shared_ptr<Molecule::Model>& model)
+{
+	return count_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m->m_model == model; });
+}
+
 const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecule::Model>& model)
 {
 	const auto& m = m_molecules.emplace_back(make_shared<Molecule>());
