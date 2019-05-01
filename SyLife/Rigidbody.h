@@ -6,16 +6,11 @@
 class Rigidbody 
 	: public Particle
 {
-
 public:
-	double	m_mass = 0.0;
 	double	m_radius = 0.0;
-	Vector2D	m_position;
-	Vector2D	m_velocity;
 	double	m_rotation = 0.0;
 	double	m_inertia = 0.0;
 	double	m_angularVelocity = 0.0;
-	bool	m_destroyFlag = false;
 
 public:
 	Rigidbody() = default;
