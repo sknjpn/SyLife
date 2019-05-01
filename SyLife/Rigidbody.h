@@ -1,8 +1,11 @@
 #pragma once
 
+#include "Particle.h"
 #include "nanoflann.hpp"
 
-class Rigidbody {
+class Rigidbody 
+	: public Particle
+{
 
 public:
 	double	m_mass = 0.0;
