@@ -119,6 +119,9 @@
     <ClCompile Include="RigidbodyCloud.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -343,5 +346,6 @@
     <ClInclude Include="RigidbodySearcher.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Particle.h" />
   </ItemGroup>
 </Project>

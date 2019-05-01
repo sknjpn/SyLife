@@ -207,6 +207,7 @@
     <ClCompile Include="MoleculeManager.cpp" />
     <ClCompile Include="Nucleus.cpp" />
     <ClCompile Include="Part.cpp" />
+    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartScript.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="RigidbodyCloud.cpp" />
@@ -295,6 +296,7 @@
     <ClInclude Include="nanoflann.hpp" />
     <ClInclude Include="Nucleus.h" />
     <ClInclude Include="Part.h" />
+    <ClInclude Include="Particle.h" />
     <ClInclude Include="PartScript.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="RigidbodyCloud.h" />
