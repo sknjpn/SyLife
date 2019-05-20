@@ -67,19 +67,17 @@ void Main()
 		*/
 
 		g_fieldManagerPtr->Update();
-		/*
+		
 		if (s3d::MouseR.pressed())
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
-			for (auto l : g_particleSearcherPtr->GetNearParticles(cursorPos, 100))
+			for (auto l : g_cellManagerPtr->m_indexer.GetNearParticles(cursorPos, 100))
 			{
-				const auto& target = g_fieldManagerPtr->m_rigidbodies[l.first];
+				const auto& c = g_cellManagerPtr->m_indexer.GetParticles()[l.first];
 
-				if (target->m_radius > (target->m_position - cursorPos).length() && dynamic_pointer_cast<Cell>(target) != nullptr)
+				if (c->m_radius > (c->m_position - cursorPos).length())
 				{
-					const auto& c = dynamic_pointer_cast<Cell>(target);
-
 					// Moleculeの吐き出し
 					for (const auto& m : c->m_molecules.m_molecules)
 						for (int i = 0; i < m.second; i++)
@@ -94,16 +92,16 @@ void Main()
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
-			for (auto l : g_particleSearcherPtr->GetNearParticles(cursorPos, 100))
+			for (auto l : g_fieldManagerPtr->m_indexer.GetNearParticles(cursorPos, 100))
 			{
-				const auto& target = g_fieldManagerPtr->m_rigidbodies[l.first];
+				const auto& target = g_fieldManagerPtr->m_indexer.GetParticles()[l.first];
 
 				if (target->m_radius > (target->m_position - cursorPos).length())
 				{
 					selectedRigidbody = target;
 				}
 			}
-		}*/
+		}
 
 		if (s3d::MouseL.pressed())
 		{
