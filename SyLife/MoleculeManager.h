@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Indexer.h"
 #include "Molecule.h"
 
 class MoleculeManager
@@ -7,6 +8,7 @@ class MoleculeManager
 public:
 	vector<shared_ptr<Molecule>>		m_molecules;
 	vector<shared_ptr<Molecule::Model>>	m_models;
+	Indexer<Molecule>	m_indexer;
 
 public:
 	MoleculeManager();

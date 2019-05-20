@@ -3,15 +3,15 @@
 #include "Cloud.h"
 
 template<typename T>
-class Searcher
+class Indexer
 {
 public:
 	Cloud<T>	m_cloud;
 	Adaptor<T>	m_index;
 
 public:
-	Searcher() : m_index(2, m_cloud, KDTreeSingleIndexAdaptorParams(10000)) { }
-	~Searcher() = default;
+	Indexer() : m_index(2, m_cloud, KDTreeSingleIndexAdaptorParams(10000)) { }
+	~Indexer() = default;
 
 	void	ForEachNearParticles(Vector2D position, double radius, function<void(const shared_ptr<T>&, double)> func) const
 	{
