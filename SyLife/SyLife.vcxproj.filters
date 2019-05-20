@@ -57,9 +57,6 @@
     <Filter Include="Resource Files\nlp\japanese\jumanpp">
       <UniqueIdentifier>{f6fe2a89-c647-48e2-bb2c-27b03b1aeced}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Field">
-      <UniqueIdentifier>{25237b9a-8963-4e91-bd64-0c348c37f17e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Other">
       <UniqueIdentifier>{39fa7e08-19ef-4be5-95a5-0684242098c6}</UniqueIdentifier>
     </Filter>
@@ -113,13 +110,13 @@
     <ClCompile Include="FieldManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="RigidbodySearcher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RigidbodyCloud.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleCloud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSearcher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -340,12 +337,14 @@
     <ClInclude Include="FieldManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="RigidbodyCloud.h">
+    <ClInclude Include="ParticleCloud.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="RigidbodySearcher.h">
+    <ClInclude Include="ParticleSearcher.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h" />
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

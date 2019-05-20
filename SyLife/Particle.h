@@ -10,6 +10,6 @@ public:
 
 public:
 	Particle();
-	~Particle();
+	virtual ~Particle();
 };
 

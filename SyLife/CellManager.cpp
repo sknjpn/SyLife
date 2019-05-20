@@ -1,9 +1,10 @@
 #include "CellManager.h"
 #include "Cell.h"
 #include "FieldManager.h"
-#include "RigidbodySearcher.h"
+#include "ParticleSearcher.h"
 #include "Molecule.h"
 #include "MoleculeManager.h"
+#include "ParticleSearcher.h"
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 
@@ -22,6 +23,7 @@ const shared_ptr<Cell>& CellManager::AddCell()
 	const auto& c = m_cells.emplace_back(make_shared<Cell>());
 
 	g_fieldManagerPtr->m_rigidbodies.emplace_back(c);
+	g_particleSearcherPtr->m_cloud.m_particles.emplace_back(c);
 
 	return c;
 }
@@ -33,7 +35,7 @@ void CellManager::Update()
 		if (c->m_destroyFlag) continue;
 
 		// ÚG‚µ‚½Molecule‚ÌŽæ‚èž‚Ý
-		for (const auto& l : g_rigidbodySearcherPtr->GetNearRigidbodies(c->m_position, c->m_radius * 2.0))
+		for (const auto& l : g_particleSearcherPtr->GetNearParticles(c->m_position, c->m_radius * 2.0))
 		{
 			auto t = g_fieldManagerPtr->m_rigidbodies[l.first];
 			auto length = (t->m_position - c->m_position).length();

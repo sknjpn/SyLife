@@ -1,7 +1,7 @@
 ﻿#include "FieldManager.h"
 #include "CellManager.h"
 #include "MoleculeManager.h"
-#include "RigidbodySearcher.h"
+#include "ParticleSearcher.h"
 #include "Cell.h"
 #include "Molecule.h"
 
@@ -53,7 +53,7 @@ void Main()
 		c->Init();
 	}
 
-	g_rigidbodySearcherPtr->m_index.buildIndex();
+	g_particleSearcherPtr->m_index.buildIndex();
 	s3d::Font font(12);
 	s3d::Font printFont(16);
 
@@ -74,7 +74,7 @@ void Main()
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
-			for (auto l : g_rigidbodySearcherPtr->GetNearRigidbodies(cursorPos, 100))
+			for (auto l : g_particleSearcherPtr->GetNearParticles(cursorPos, 100))
 			{
 				const auto& target = g_fieldManagerPtr->m_rigidbodies[l.first];
 
@@ -96,7 +96,7 @@ void Main()
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
-			for (auto l : g_rigidbodySearcherPtr->GetNearRigidbodies(cursorPos, 100))
+			for (auto l : g_particleSearcherPtr->GetNearParticles(cursorPos, 100))
 			{
 				const auto& target = g_fieldManagerPtr->m_rigidbodies[l.first];
 
@@ -135,7 +135,7 @@ void Main()
 			string text;
 			for (const auto& m : c->m_storage.m_molecules) text += m.first->m_name + to_string(m.second) + "\n";
 			font(s3d::Unicode::Widen(text)).drawAt(c->m_position.m_x, c->m_position.m_y);
-			/*const auto& list = g_rigidbodySearcherPtr->GetNearRigidbodies(c->m_position, c->m_radius * 2.0);
+			/*const auto& list = g_particleSearcherPtr->GetNearParticles(c->m_position, c->m_radius * 2.0);
 
 			for (auto l : list)
 			{
