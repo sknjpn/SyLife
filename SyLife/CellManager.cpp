@@ -1,10 +1,10 @@
 #include "CellManager.h"
 #include "Cell.h"
 #include "FieldManager.h"
-#include "ParticleSearcher.h"
+#include "Searcher.h"
 #include "Molecule.h"
 #include "MoleculeManager.h"
-#include "ParticleSearcher.h"
+#include "Searcher.h"
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 

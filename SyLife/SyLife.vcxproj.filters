@@ -63,6 +63,9 @@
     <Filter Include="Source Files\Manager">
       <UniqueIdentifier>{9c1b5efc-b9cd-4ea2-90d9-1000a33f17e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Search">
+      <UniqueIdentifier>{aeb34d7c-3d7b-496e-92ac-f5bc6a193b99}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -113,11 +116,11 @@
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleCloud.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Cloud.cpp">
+      <Filter>Source Files\Search</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleSearcher.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Indexer.cpp">
+      <Filter>Source Files\Search</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -337,14 +340,14 @@
     <ClInclude Include="FieldManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleCloud.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleSearcher.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cloud.h">
+      <Filter>Source Files\Search</Filter>
+    </ClInclude>
+    <ClInclude Include="Indexer.h">
+      <Filter>Source Files\Search</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

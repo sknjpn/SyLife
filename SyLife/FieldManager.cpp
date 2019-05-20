@@ -2,7 +2,7 @@
 #include "MoleculeManager.h"
 #include "CellManager.h"
 #include "Rigidbody.h"
-#include "ParticleSearcher.h"
+#include "Searcher.h"
 
 unique_ptr<FieldManager>	g_fieldManagerPtr;
 
@@ -21,7 +21,6 @@ void FieldManager::Init()
 {
 	g_moleculeManagerPtr = make_unique<MoleculeManager>();
 	g_cellManagerPtr = make_unique<CellManager>();
-	g_particleSearcherPtr = make_unique<ParticleSearcher>();
 }
 
 void FieldManager::Update()
