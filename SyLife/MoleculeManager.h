@@ -6,7 +6,6 @@
 class MoleculeManager
 {
 public:
-	vector<shared_ptr<Molecule>>		m_molecules;
 	vector<shared_ptr<Molecule::Model>>	m_models;
 	Indexer<Molecule>	m_indexer;
 
@@ -23,6 +22,8 @@ public:
 
 	void	AddMoleculesRandom(const shared_ptr<Molecule::Model>& model, size_t size);
 
+	vector<shared_ptr<Molecule>>&	GetMolecules() { return m_indexer.m_cloud.m_particles; }
+	const vector<shared_ptr<Molecule>>&	GetMolecules() const { return m_indexer.m_cloud.m_particles; }
 
 	void	Update();
 };

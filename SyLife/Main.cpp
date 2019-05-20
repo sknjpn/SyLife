@@ -59,13 +59,6 @@ void Main()
 
 	while (s3d::System::Update())
 	{
-		/*
-		s3d::ClearPrint();
-		s3d::Print << g_fieldManagerPtr->m_rigidbodies.size();
-		s3d::Print << g_cellManagerPtr->m_cells.size();
-		s3d::Print << g_moleculeManagerPtr->m_molecules.size();
-		*/
-
 		g_fieldManagerPtr->Update();
 		
 		if (s3d::MouseR.pressed())
@@ -110,7 +103,7 @@ void Main()
 		else selectedRigidbody = nullptr;
 
 		// Moleculeの描画
-		for (const auto& m : g_moleculeManagerPtr->m_molecules)
+		for (const auto& m : g_moleculeManagerPtr->GetMolecules())
 		{
 			s3d::Color color = s3d::Palette::White;
 			if (m->m_model == oxygen) color = s3d::Palette::Red;
@@ -122,7 +115,7 @@ void Main()
 		}
 
 		// Cellの描画
-		for (const auto& c : g_cellManagerPtr->m_cells)
+		for (const auto& c : g_cellManagerPtr->GetCells())
 		{
 			double a = min(0.5, c->m_deathTimer * 0.25);
 			s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).draw(s3d::ColorF(s3d::Palette::Lightpink, a)).drawFrame(1.0, s3d::Palette::Gray);

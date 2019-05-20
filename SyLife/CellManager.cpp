@@ -8,19 +8,19 @@ unique_ptr<CellManager>	g_cellManagerPtr;
 
 CellManager::CellManager()
 {
-	m_cells.reserve(10000);
+
 }
 
 
 CellManager::~CellManager()
 {
+
 }
 
 const shared_ptr<Cell>& CellManager::AddCell()
 {
-	const auto& c = m_cells.emplace_back(make_shared<Cell>());
+	const auto& c = GetCells().emplace_back(make_shared<Cell>());
 
-	g_fieldManagerPtr->m_rigidbodies.emplace_back(c);
 	m_indexer.AddParticle(c);
 	g_fieldManagerPtr->m_indexer.AddParticle(c);
 
@@ -29,7 +29,7 @@ const shared_ptr<Cell>& CellManager::AddCell()
 
 void CellManager::Update()
 {
-	for (const auto& c : m_cells)
+	for (const auto& c : GetCells())
 	{
 		if (c->m_destroyFlag) continue;
 
@@ -103,6 +103,6 @@ void CellManager::Update()
 		}
 	}
 
-	m_cells.erase(remove_if(m_cells.begin(), m_cells.end(), [](const auto& c) { return c->m_destroyFlag; }), m_cells.end());
+	GetCells().erase(remove_if(GetCells().begin(), GetCells().end(), [](const auto& c) { return c->m_destroyFlag; }), GetCells().end());
 	m_indexer.Update();
 }

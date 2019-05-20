@@ -8,7 +8,7 @@ unique_ptr<FieldManager>	g_fieldManagerPtr;
 FieldManager::FieldManager()
 	: m_size(800, 600)
 {
-	m_rigidbodies.reserve(10000);
+
 }
 
 FieldManager::~FieldManager()
@@ -24,7 +24,7 @@ void FieldManager::Init()
 
 void FieldManager::Update()
 {
-	for (const auto& r : m_rigidbodies)
+	for (const auto& r : m_indexer.GetParticles())
 	{
 		m_indexer.ForEachNearParticles(r->m_position, r->m_radius * 2.0, [r](const auto& p, double distance) {
 			auto t = dynamic_pointer_cast<Rigidbody>(p);
@@ -57,6 +57,5 @@ void FieldManager::Update()
 	g_cellManagerPtr->Update();
 	g_moleculeManagerPtr->Update();
 
-	m_rigidbodies.erase(remove_if(m_rigidbodies.begin(), m_rigidbodies.end(), [](const auto& r) { return r->m_destroyFlag; }), m_rigidbodies.end());
 	m_indexer.Update();
 }

@@ -6,7 +6,6 @@ unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
 MoleculeManager::MoleculeManager()
 {
-	m_molecules.reserve(10000);
 	m_models.reserve(1000);
 }
 
@@ -17,18 +16,17 @@ MoleculeManager::~MoleculeManager()
 
 int MoleculeManager::NumMolecule(const shared_ptr<Molecule::Model>& model)
 {
-	return static_cast<int>(count_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m->m_model == model; }));
+	return static_cast<int>(count_if(GetMolecules().begin(), GetMolecules().end(), [&model](const auto& m) { return m->m_model == model; }));
 }
 
 const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecule::Model>& model)
 {
-	const auto& m = m_molecules.emplace_back(make_shared<Molecule>());
+	const auto& m = GetMolecules().emplace_back(make_shared<Molecule>());
 
 	m->m_model = model;
 	m->m_radius = model->m_radius;
 	m->m_mass = model->m_mass;
 
-	g_fieldManagerPtr->m_rigidbodies.emplace_back(m);
 	m_indexer.AddParticle(m);
 	g_fieldManagerPtr->m_indexer.AddParticle(m);
 	return m;
@@ -74,7 +72,7 @@ const shared_ptr<Molecule::Model>& MoleculeManager::GetModel(const string& name)
 
 void MoleculeManager::Update()
 {
-	for (const auto& m : m_molecules)
+	for (const auto& m : GetMolecules())
 	{
 		if (m->m_model == GetModel("Amino acid") && rand() % 100 == 0)
 		{
@@ -86,6 +84,6 @@ void MoleculeManager::Update()
 		}
 	}
 
-	m_molecules.erase(remove_if(m_molecules.begin(), m_molecules.end(), [](const auto& m) { return m->m_destroyFlag; }), m_molecules.end());
+	GetMolecules().erase(remove_if(GetMolecules().begin(), GetMolecules().end(), [](const auto& m) { return m->m_destroyFlag; }), GetMolecules().end());
 	m_indexer.Update();
 }

@@ -7,10 +7,10 @@ class Indexer
 {
 public:
 	Cloud<T>	m_cloud;
-	Adaptor<T>	m_index;
+	Adaptor<T>	m_adaptor;
 
 public:
-	Indexer() : m_index(2, m_cloud, KDTreeSingleIndexAdaptorParams(10000)) { }
+	Indexer() : m_adaptor(2, m_cloud, KDTreeSingleIndexAdaptorParams(10000)) { m_cloud.m_particles.reserve(10000); }
 	~Indexer() = default;
 
 	void	ForEachNearParticles(Vector2D position, double radius, function<void(const shared_ptr<T>&, double)> func) const
@@ -25,7 +25,7 @@ public:
 		std::vector<std::pair<size_t, double>>   ret_matches;
 		nanoflann::SearchParams params;
 		params.sorted = false;	//‚æ‚è‘‚­
-		const size_t nMatches = m_index.radiusSearch(&query_pt[0], search_radius, ret_matches, params);
+		const size_t nMatches = m_adaptor.radiusSearch(&query_pt[0], search_radius, ret_matches, params);
 
 		return ret_matches;
 	}
@@ -36,6 +36,6 @@ public:
 	void	Update() 
 	{
 		m_cloud.m_particles.erase(remove_if(m_cloud.m_particles.begin(), m_cloud.m_particles.end(), [](const auto& r) { return r->m_destroyFlag; }), m_cloud.m_particles.end());
-		m_index.buildIndex();
+		m_adaptor.buildIndex();
 	}
 };
