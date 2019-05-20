@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Indexer.h"
-
-class Cell;
+#include "Cell.h"
 
 class CellManager
 {

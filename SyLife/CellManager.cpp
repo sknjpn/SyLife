@@ -1,10 +1,8 @@
 #include "CellManager.h"
 #include "Cell.h"
 #include "FieldManager.h"
-#include "Searcher.h"
 #include "Molecule.h"
 #include "MoleculeManager.h"
-#include "Searcher.h"
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 
@@ -24,6 +22,7 @@ const shared_ptr<Cell>& CellManager::AddCell()
 
 	g_fieldManagerPtr->m_rigidbodies.emplace_back(c);
 	m_indexer.AddParticle(c);
+	g_fieldManagerPtr->m_indexer.AddParticle(c);
 
 	return c;
 }
@@ -40,7 +39,7 @@ void CellManager::Update()
 			auto m = g_moleculeManagerPtr->m_indexer.GetParticles()[l.first];
 			auto length = (m->m_position - c->m_position).length();
 
-			if (!m->m_destroyFlag && m != c && length - m->m_radius - c->m_radius < 0.0) c->TakeMolecule(m);
+			if (!m->m_destroyFlag && length - m->m_radius - c->m_radius < 0.0) c->TakeMolecule(m);
 		}
 
 		// —]è‚ÌMolecule‚Ì“ŠŠü
@@ -105,4 +104,5 @@ void CellManager::Update()
 	}
 
 	m_cells.erase(remove_if(m_cells.begin(), m_cells.end(), [](const auto& c) { return c->m_destroyFlag; }), m_cells.end());
+	m_indexer.Update();
 }

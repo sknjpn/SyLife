@@ -33,7 +33,7 @@ public:
 	const vector<shared_ptr<T>>&	GetParticles() const { return m_cloud.m_particles; }
 	void	AddParticle(const shared_ptr<T>& t) { m_cloud.m_particles.emplace_back(t); }
 	
-	void	Update() const 
+	void	Update() 
 	{
 		m_cloud.m_particles.erase(remove_if(m_cloud.m_particles.begin(), m_cloud.m_particles.end(), [](const auto& r) { return r->m_destroyFlag; }), m_cloud.m_particles.end());
 		m_index.buildIndex();

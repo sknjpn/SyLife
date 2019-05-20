@@ -1,7 +1,6 @@
 ﻿#include "FieldManager.h"
 #include "CellManager.h"
 #include "MoleculeManager.h"
-#include "Searcher.h"
 #include "Cell.h"
 #include "Molecule.h"
 
@@ -53,7 +52,6 @@ void Main()
 		c->Init();
 	}
 
-	g_particleSearcherPtr->m_index.buildIndex();
 	s3d::Font font(12);
 	s3d::Font printFont(16);
 
@@ -69,7 +67,7 @@ void Main()
 		*/
 
 		g_fieldManagerPtr->Update();
-
+		/*
 		if (s3d::MouseR.pressed())
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
@@ -105,7 +103,7 @@ void Main()
 					selectedRigidbody = target;
 				}
 			}
-		}
+		}*/
 
 		if (s3d::MouseL.pressed())
 		{

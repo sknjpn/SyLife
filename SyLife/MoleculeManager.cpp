@@ -1,7 +1,6 @@
 #include "MoleculeManager.h"
 #include "Molecule.h"
 #include "FieldManager.h"
-#include "Searcher.h"
 
 unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
@@ -30,7 +29,8 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecu
 	m->m_mass = model->m_mass;
 
 	g_fieldManagerPtr->m_rigidbodies.emplace_back(m);
-	g_particleSearcherPtr->m_cloud.m_particles.emplace_back(m);
+	m_indexer.AddParticle(m);
+	g_fieldManagerPtr->m_indexer.AddParticle(m);
 	return m;
 }
 
@@ -87,4 +87,5 @@ void MoleculeManager::Update()
 	}
 
 	m_molecules.erase(remove_if(m_molecules.begin(), m_molecules.end(), [](const auto& m) { return m->m_destroyFlag; }), m_molecules.end());
+	m_indexer.Update();
 }

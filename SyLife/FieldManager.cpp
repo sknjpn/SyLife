@@ -2,7 +2,6 @@
 #include "MoleculeManager.h"
 #include "CellManager.h"
 #include "Rigidbody.h"
-#include "Searcher.h"
 
 unique_ptr<FieldManager>	g_fieldManagerPtr;
 
@@ -27,7 +26,7 @@ void FieldManager::Update()
 {
 	for (const auto& r : m_rigidbodies)
 	{
-		g_particleSearcherPtr->ForEachNearParticles(r->m_position, r->m_radius * 2.0, [r](const auto& p, double distance) {
+		m_indexer.ForEachNearParticles(r->m_position, r->m_radius * 2.0, [r](const auto& p, double distance) {
 			auto t = dynamic_pointer_cast<Rigidbody>(p);
 
 			distance = sqrt(distance);
@@ -59,6 +58,5 @@ void FieldManager::Update()
 	g_moleculeManagerPtr->Update();
 
 	m_rigidbodies.erase(remove_if(m_rigidbodies.begin(), m_rigidbodies.end(), [](const auto& r) { return r->m_destroyFlag; }), m_rigidbodies.end());
-	g_particleSearcherPtr->m_cloud.m_particles.erase(remove_if(g_particleSearcherPtr->m_cloud.m_particles.begin(), g_particleSearcherPtr->m_cloud.m_particles.end(), [](const auto& r) { return r->m_destroyFlag; }), g_particleSearcherPtr->m_cloud.m_particles.end());
-	g_particleSearcherPtr->m_index.buildIndex();
+	m_indexer.Update();
 }
