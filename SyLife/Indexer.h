@@ -31,6 +31,7 @@ public:
 	}
 
 	const vector<shared_ptr<T>>&	GetParticles() const { return m_cloud.m_particles; }
+	void	AddParticle(const shared_ptr<T>& t) { m_cloud.m_particles.emplace_back(t); }
 	
 	void	Update() const 
 	{
