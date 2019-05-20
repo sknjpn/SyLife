@@ -60,15 +60,13 @@ void Main()
 	while (s3d::System::Update())
 	{
 		g_fieldManagerPtr->Update();
-		
+
 		if (s3d::MouseR.pressed())
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
-			for (auto l : g_cellManagerPtr->m_indexer.GetNearParticles(cursorPos, 100))
+			for (const auto& c : g_cellManagerPtr->m_indexer.GetNearParticles(cursorPos, 100))
 			{
-				const auto& c = g_cellManagerPtr->m_indexer.GetParticles()[l.first];
-
 				if (c->m_radius > (c->m_position - cursorPos).length())
 				{
 					// Moleculeの吐き出し
@@ -85,14 +83,9 @@ void Main()
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
-			for (auto l : g_fieldManagerPtr->m_indexer.GetNearParticles(cursorPos, 100))
+			for (auto target : g_fieldManagerPtr->m_indexer.GetNearParticles(cursorPos, 100))
 			{
-				const auto& target = g_fieldManagerPtr->m_indexer.GetParticles()[l.first];
-
-				if (target->m_radius > (target->m_position - cursorPos).length())
-				{
-					selectedRigidbody = target;
-				}
+				if (target->m_radius > (target->m_position - cursorPos).length()) selectedRigidbody = target;
 			}
 		}
 

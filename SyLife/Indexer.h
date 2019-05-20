@@ -15,19 +15,28 @@ public:
 
 	void	ForEachNearParticles(Vector2D position, double radius, function<void(const shared_ptr<T>&, double)> func) const
 	{
-		for (const auto& l : GetNearParticles(position, radius)) func(m_cloud.m_particles[l.first], l.second);
+		for (const auto& l : GetNearParticleIDs(position, radius)) func(m_cloud.m_particles[l.first], l.second);
 	}
 
-	std::vector<std::pair<size_t, double>>	GetNearParticles(Vector2D position, double radius) const
+	vector<pair<size_t, double>>	GetNearParticleIDs(Vector2D position, double radius) const
 	{
 		const double query_pt[2] = { position.m_x, position.m_y };
 		const double search_radius = radius * radius;
-		std::vector<std::pair<size_t, double>>   ret_matches;
+		vector<pair<size_t, double>>   ret_matches;
 		nanoflann::SearchParams params;
 		params.sorted = false;	//ÇÊÇËëÅÇ≠
 		const size_t nMatches = m_adaptor.radiusSearch(&query_pt[0], search_radius, ret_matches, params);
 
 		return ret_matches;
+	}
+
+	vector<shared_ptr<T>>	GetNearParticles(Vector2D position, double radius) const
+	{
+		vector<shared_ptr<T>>	result;
+
+		for (const auto& id : GetNearParticleIDs(position, radius)) result.emplace_back(m_cloud.m_particles[id.first]);
+
+		return result;
 	}
 
 	const vector<shared_ptr<T>>&	GetParticles() const { return m_cloud.m_particles; }

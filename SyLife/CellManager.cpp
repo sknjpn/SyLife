@@ -34,9 +34,8 @@ void CellManager::Update()
 		if (c->m_destroyFlag) continue;
 
 		// ÚG‚µ‚½Molecule‚ÌŽæ‚èž‚Ý
-		for (const auto& l : g_moleculeManagerPtr->m_indexer.GetNearParticles(c->m_position, c->m_radius * 2.0))
+		for (const auto& m : g_moleculeManagerPtr->m_indexer.GetNearParticles(c->m_position, c->m_radius * 2.0))
 		{
-			auto m = g_moleculeManagerPtr->m_indexer.GetParticles()[l.first];
 			auto length = (m->m_position - c->m_position).length();
 
 			if (!m->m_destroyFlag && length - m->m_radius - c->m_radius < 0.0) c->TakeMolecule(m);
