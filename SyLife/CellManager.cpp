@@ -23,7 +23,7 @@ const shared_ptr<Cell>& CellManager::AddCell()
 	const auto& c = m_cells.emplace_back(make_shared<Cell>());
 
 	g_fieldManagerPtr->m_rigidbodies.emplace_back(c);
-	g_particleSearcherPtr->m_cloud.m_particles.emplace_back(c);
+	m_indexer.AddParticle(c);
 
 	return c;
 }
@@ -35,17 +35,12 @@ void CellManager::Update()
 		if (c->m_destroyFlag) continue;
 
 		// ÚG‚µ‚½Molecule‚Ìæ‚è‚İ
-		for (const auto& l : g_particleSearcherPtr->GetNearParticles(c->m_position, c->m_radius * 2.0))
+		for (const auto& l : g_moleculeManagerPtr->m_indexer.GetNearParticles(c->m_position, c->m_radius * 2.0))
 		{
-			auto t = g_fieldManagerPtr->m_rigidbodies[l.first];
-			auto length = (t->m_position - c->m_position).length();
+			auto m = g_moleculeManagerPtr->m_indexer.GetParticles()[l.first];
+			auto length = (m->m_position - c->m_position).length();
 
-			if (!t->m_destroyFlag && t != c && length - t->m_radius - c->m_radius < 0.0)
-			{
-				auto m = dynamic_pointer_cast<Molecule>(t);
-
-				if (m != nullptr) c->TakeMolecule(m);
-			}
+			if (!m->m_destroyFlag && m != c && length - m->m_radius - c->m_radius < 0.0) c->TakeMolecule(m);
 		}
 
 		// —]è‚ÌMolecule‚Ì“ŠŠü
