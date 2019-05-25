@@ -63,6 +63,15 @@
     <Filter Include="Source Files\Search">
       <UniqueIdentifier>{aeb34d7c-3d7b-496e-92ac-f5bc6a193b99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Molecule">
+      <UniqueIdentifier>{16a152cb-d7d8-4493-94d1-c382c4bdf3fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cell">
+      <UniqueIdentifier>{dbe7ebe6-6032-4da0-a064-996325e60ae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Thridparty">
+      <UniqueIdentifier>{8bd23f4d-5074-4b4b-b351-042d95e9e18e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -71,53 +80,53 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\Other</Filter>
     </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DNA.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Nucleus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Part.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Storage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellScript.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MoleculeManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="CellManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="PartScript.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FieldManager.cpp">
       <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cloud.cpp">
       <Filter>Source Files\Search</Filter>
     </ClCompile>
     <ClCompile Include="Indexer.cpp">
       <Filter>Source Files\Search</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="CellScript.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="DNA.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files\Molecule</Filter>
+    </ClCompile>
+    <ClCompile Include="Nucleus.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Part.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="PartScript.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Source Files\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -243,41 +252,8 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sol.hpp">
-      <Filter>Source Files\Other</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Source Files\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DNA.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Molecule.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Nucleus.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Part.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellScript.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Storage.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nanoflann.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="MoleculeManager.h">
       <Filter>Source Files\Manager</Filter>
@@ -285,20 +261,53 @@
     <ClInclude Include="CellManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="PartScript.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="FieldManager.h">
       <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Cloud.h">
       <Filter>Source Files\Search</Filter>
     </ClInclude>
     <ClInclude Include="Indexer.h">
       <Filter>Source Files\Search</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="CellScript.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="DNA.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Molecule.h">
+      <Filter>Source Files\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="nanoflann.hpp">
+      <Filter>Source Files\Thridparty</Filter>
+    </ClInclude>
+    <ClInclude Include="sol.hpp">
+      <Filter>Source Files\Thridparty</Filter>
+    </ClInclude>
+    <ClInclude Include="Nucleus.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="PartScript.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Source Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Source Files\Other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
