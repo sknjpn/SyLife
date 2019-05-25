@@ -33,9 +33,9 @@ void Main()
 	aminoAcid->m_radius = sqrt(aminoAcid->m_mass);
 
 	// Moleculeの追加
-	g_moleculeManagerPtr->AddMoleculesRandom(oxygen, 1000);
-	g_moleculeManagerPtr->AddMoleculesRandom(carbon, 1000);
-	g_moleculeManagerPtr->AddMoleculesRandom(nitrogen, 500);
+	g_moleculeManagerPtr->AddMoleculesRandom(oxygen, 2000);
+	g_moleculeManagerPtr->AddMoleculesRandom(carbon, 2000);
+	g_moleculeManagerPtr->AddMoleculesRandom(nitrogen, 1000);
 	g_moleculeManagerPtr->AddMoleculesRandom(aminoAcid, 0);
 
 	// Cellの追加
