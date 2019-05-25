@@ -9,9 +9,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Resource Files\example">
-      <UniqueIdentifier>{8b04c3b0-3b5b-4f9a-add9-f54abc0118ed}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\engine">
       <UniqueIdentifier>{972ca6b5-b566-47a1-b6e5-5cd538d7268c}</UniqueIdentifier>
     </Filter>
@@ -127,12 +124,6 @@
     <Image Include="App\icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="App\example\siv3d-kun.png">
-      <Filter>Resource Files\example</Filter>
-    </Image>
-    <Image Include="App\example\windmill.png">
-      <Filter>Resource Files\example</Filter>
-    </Image>
     <Image Include="App\engine\texture\box-shadow\128.png">
       <Filter>Resource Files\engine\texture\box-shadow</Filter>
     </Image>
@@ -158,26 +149,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="App\example\shot.mp3">
-      <Filter>Resource Files\example</Filter>
-    </Media>
-    <Media Include="App\example\test.mp3">
-      <Filter>Resource Files\example</Filter>
-    </Media>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App\example\test.ini">
-      <Filter>Resource Files\example</Filter>
-    </None>
-    <None Include="App\example\test.json">
-      <Filter>Resource Files\example</Filter>
-    </None>
-    <None Include="App\example\test.toml">
-      <Filter>Resource Files\example</Filter>
-    </None>
-    <None Include="App\example\empty.bin">
-      <Filter>Resource Files\example</Filter>
-    </None>
     <None Include="App\engine\emoji\noto7_dictionary.dat">
       <Filter>Resource Files\engine\emoji</Filter>
     </None>
@@ -229,12 +200,6 @@
     <None Include="App\engine\shader\line_dot.ps">
       <Filter>Resource Files\engine\shader</Filter>
     </None>
-    <None Include="App\example\a1a_testing">
-      <Filter>Resource Files\example</Filter>
-    </None>
-    <None Include="App\example\a1a_training">
-      <Filter>Resource Files\example</Filter>
-    </None>
     <None Include="App\engine\font\fontawesome\brands.otf.zst">
       <Filter>Resource Files\engine\font\fontawesome</Filter>
     </None>
@@ -270,26 +235,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="App\example\test.txt">
-      <Filter>Resource Files\example</Filter>
-    </Text>
-    <Text Include="App\example\LICENSE.txt">
-      <Filter>Resource Files\example</Filter>
-    </Text>
-    <Text Include="App\example\script.txt">
-      <Filter>Resource Files\example</Filter>
-    </Text>
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt">
       <Filter>Resource Files\engine\font\noto</Filter>
     </Text>
     <Text Include="App\engine\font\fontawesome\LICENSE.txt">
       <Filter>Resource Files\engine\font\fontawesome</Filter>
     </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="App\example\test.xml">
-      <Filter>Resource Files\example</Filter>
-    </Xml>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sol.hpp">

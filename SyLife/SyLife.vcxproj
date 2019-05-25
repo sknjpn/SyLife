@@ -228,16 +228,10 @@
     <Image Include="App\engine\texture\box-shadow\32.png" />
     <Image Include="App\engine\texture\box-shadow\64.png" />
     <Image Include="App\engine\texture\box-shadow\8.png" />
-    <Image Include="App\example\siv3d-kun.png" />
-    <Image Include="App\example\windmill.png" />
     <Image Include="App\icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="App\Resource.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="App\example\shot.mp3" />
-    <Media Include="App\example\test.mp3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App\engine\emoji\noto7_dictionary.dat" />
@@ -265,12 +259,6 @@
     <None Include="App\engine\shader\sprite.vs" />
     <None Include="App\engine\shader\sprite_sdf.ps" />
     <None Include="App\engine\soundfont\GMGSx.sf2.zst" />
-    <None Include="App\example\a1a_testing" />
-    <None Include="App\example\a1a_training" />
-    <None Include="App\example\empty.bin" />
-    <None Include="App\example\test.ini" />
-    <None Include="App\example\test.json" />
-    <None Include="App\example\test.toml" />
     <None Include="App\nlp\japanese\jumanpp\LICENSE" />
     <None Include="App\nlp\japanese\jumanpp\README.md" />
     <None Include="packages.config" />
@@ -278,12 +266,6 @@
   <ItemGroup>
     <Text Include="App\engine\font\fontawesome\LICENSE.txt" />
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt" />
-    <Text Include="App\example\LICENSE.txt" />
-    <Text Include="App\example\script.txt" />
-    <Text Include="App\example\test.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="App\example\test.xml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
