@@ -48,7 +48,7 @@ void Cell::ExpireMolecule(const shared_ptr<Molecule::Model>& model)
 	// “f‚«o‚³‚ê‚½Molecule
 	const auto& t = g_moleculeManagerPtr->AddMolecule(model);
 	t->m_position = m_position + v * (m_radius + model->m_radius);
-	t->m_velocity = v * 1.0;
+	t->m_velocity = v * 2.0;
 
 	// Storage‚©‚ço‚·
 	m_storage.PullMolecule(model);

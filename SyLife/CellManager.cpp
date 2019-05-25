@@ -94,9 +94,17 @@ void CellManager::Update()
 		if (c->m_deathTimer <= 0.0)
 		{
 			// Molecule‚Ì“f‚«o‚µ
-			for (const auto& m : c->m_molecules.m_molecules) 
-				for (int i = 0; i < m.second; i++) 
-					g_moleculeManagerPtr->AddMolecule(m.first)->m_position = c->m_position + Vector2D((rand() % 100) / 100.0 * c->m_radius, 0.0).rotated(rand() / 3600.0);
+			for (const auto& m : c->m_molecules.m_molecules)
+			{
+				for (int i = 0; i < m.second; i++)
+				{
+					auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
+					auto& t = g_moleculeManagerPtr->AddMolecule(m.first);
+
+					t->m_position = c->m_position + v * (rand() % 100) / 100.0 * (c->m_radius + t->m_radius);
+					t->m_velocity = v * 2.0;
+				}
+			}
 
 			c->m_destroyFlag = true;
 		}
