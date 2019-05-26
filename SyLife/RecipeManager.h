@@ -1,4 +1,5 @@
 #pragma once
+
 class RecipeManager
 {
 public:
@@ -6,3 +7,4 @@ public:
 	~RecipeManager();
 };
 
+extern unique_ptr<RecipeManager>	g_recipeManagerPtr;
