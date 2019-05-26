@@ -1,6 +1,7 @@
 #include "FieldManager.h"
 #include "MoleculeManager.h"
 #include "CellManager.h"
+#include "RecipeManager.h"
 #include "Rigidbody.h"
 
 unique_ptr<FieldManager>	g_fieldManagerPtr;
@@ -20,6 +21,7 @@ void FieldManager::Init()
 {
 	g_moleculeManagerPtr = make_unique<MoleculeManager>();
 	g_cellManagerPtr = make_unique<CellManager>();
+	g_recipeManagerPtr = make_unique<RecipeManager>();
 }
 
 void FieldManager::Update()
