@@ -128,6 +128,12 @@
     <ClCompile Include="Vector2D.cpp">
       <Filter>Source Files\Other</Filter>
     </ClCompile>
+    <ClCompile Include="RecipeManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipe.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -308,6 +314,12 @@
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
       <Filter>Source Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="RecipeManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipe.h">
+      <Filter>Source Files\Cell</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -209,6 +209,8 @@
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartScript.cpp" />
+    <ClCompile Include="Recipe.cpp" />
+    <ClCompile Include="RecipeManager.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="Indexer.cpp" />
@@ -280,6 +282,8 @@
     <ClInclude Include="Part.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartScript.h" />
+    <ClInclude Include="Recipe.h" />
+    <ClInclude Include="RecipeManager.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Cloud.h" />
     <ClInclude Include="Indexer.h" />
