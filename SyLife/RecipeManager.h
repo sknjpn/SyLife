@@ -9,6 +9,8 @@ class RecipeManager
 public:
 	RecipeManager();
 	~RecipeManager();
+
+	const shared_ptr<Recipe>&	AddRecipe();
 };
 
 extern unique_ptr<RecipeManager>	g_recipeManagerPtr;
