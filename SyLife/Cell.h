@@ -2,7 +2,6 @@
 
 #include "Rigidbody.h"
 #include "Storage.h"
-#include "Nucleus.h"
 #include "Molecule.h"
 
 class Part;
@@ -11,7 +10,6 @@ class Cell : public Rigidbody
 {
 public:
 	double	m_deathTimer;
-	Nucleus m_nucleus;
 	Storage	m_storage;
 	Storage	m_molecules;
 	vector<shared_ptr<Part>>	m_part;

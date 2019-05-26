@@ -199,16 +199,12 @@
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
-    <ClCompile Include="CellScript.cpp" />
-    <ClCompile Include="DNA.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
-    <ClCompile Include="Nucleus.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="PartScript.cpp" />
     <ClCompile Include="Recipe.cpp" />
     <ClCompile Include="RecipeManager.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
@@ -272,16 +268,12 @@
   <ItemGroup>
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
-    <ClInclude Include="CellScript.h" />
-    <ClInclude Include="DNA.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="MoleculeManager.h" />
     <ClInclude Include="nanoflann.hpp" />
-    <ClInclude Include="Nucleus.h" />
     <ClInclude Include="Part.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="PartScript.h" />
     <ClInclude Include="Recipe.h" />
     <ClInclude Include="RecipeManager.h" />
     <ClInclude Include="Rigidbody.h" />

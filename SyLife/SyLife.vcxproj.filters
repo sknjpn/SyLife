@@ -98,22 +98,10 @@
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files\Cell</Filter>
     </ClCompile>
-    <ClCompile Include="CellScript.cpp">
-      <Filter>Source Files\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="DNA.cpp">
-      <Filter>Source Files\Cell</Filter>
-    </ClCompile>
     <ClCompile Include="Molecule.cpp">
       <Filter>Source Files\Molecule</Filter>
     </ClCompile>
-    <ClCompile Include="Nucleus.cpp">
-      <Filter>Source Files\Cell</Filter>
-    </ClCompile>
     <ClCompile Include="Part.cpp">
-      <Filter>Source Files\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="PartScript.cpp">
       <Filter>Source Files\Cell</Filter>
     </ClCompile>
     <ClCompile Include="Storage.cpp">
@@ -279,12 +267,6 @@
     <ClInclude Include="Cell.h">
       <Filter>Source Files\Cell</Filter>
     </ClInclude>
-    <ClInclude Include="CellScript.h">
-      <Filter>Source Files\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="DNA.h">
-      <Filter>Source Files\Cell</Filter>
-    </ClInclude>
     <ClInclude Include="Molecule.h">
       <Filter>Source Files\Molecule</Filter>
     </ClInclude>
@@ -294,13 +276,7 @@
     <ClInclude Include="sol.hpp">
       <Filter>Source Files\Thridparty</Filter>
     </ClInclude>
-    <ClInclude Include="Nucleus.h">
-      <Filter>Source Files\Cell</Filter>
-    </ClInclude>
     <ClInclude Include="Part.h">
-      <Filter>Source Files\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="PartScript.h">
       <Filter>Source Files\Cell</Filter>
     </ClInclude>
     <ClInclude Include="Storage.h">
