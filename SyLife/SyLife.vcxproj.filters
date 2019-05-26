@@ -122,6 +122,9 @@
     <ClCompile Include="Recipe.cpp">
       <Filter>Source Files\Cell</Filter>
     </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -296,6 +299,9 @@
     </ClInclude>
     <ClInclude Include="Recipe.h">
       <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
