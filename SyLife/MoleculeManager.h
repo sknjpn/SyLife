@@ -25,6 +25,7 @@ public:
 	vector<shared_ptr<Molecule>>&	GetMolecules() { return m_indexer.m_cloud.m_particles; }
 	const vector<shared_ptr<Molecule>>&	GetMolecules() const { return m_indexer.m_cloud.m_particles; }
 
+	void	Init();
 	void	Update();
 };
 

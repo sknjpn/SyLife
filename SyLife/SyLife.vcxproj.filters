@@ -122,8 +122,17 @@
     <ClCompile Include="Recipe.cpp">
       <Filter>Source Files\Cell</Filter>
     </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
     <ClCompile Include="Random.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="PartManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeManager_Init.cpp">
+      <Filter>Source Files\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,8 +309,14 @@
     <ClInclude Include="Recipe.h">
       <Filter>Source Files\Cell</Filter>
     </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Source Files\Other</Filter>
+    </ClInclude>
     <ClInclude Include="Random.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="PartManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

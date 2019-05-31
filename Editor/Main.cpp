@@ -21,17 +21,24 @@ void Main()
 
 	while (System::Update())
 	{
+		ClearPrint();
+
 		int scale = 10;
 
 		const double thickness = 3.0 / scale;
 		const Vec2 boxSize = Vec2(5.0, 5.0) / scale;
-		auto t = Transformer2D(Mat3x2::Scale(scale), true);
+		auto t = Transformer2D(Mat3x2::Scale(scale).translated(Window::Size() / 2.0), true);
 
-		for (int x = 0; x < Window::Size().x / scale; x += 1) Line(x, 0, x, Window::Size().y).draw(1.0 / scale, ColorF(1.0, 0.25));
-		for (int y = 0; y < Window::Size().y / scale; y += 1) Line(0, y, Window::Size().x, y).draw(1.0 / scale, ColorF(1.0, 0.25));
+		Line(-Window::Size().x, 0, Window::Size().x, 0).draw(2.0 / scale, Palette::Red);
+		Line(0, -Window::Size().y, 0, Window::Size().y).draw(2.0 / scale, Palette::Red);
+
+		for (int x = -Window::Size().x / scale; x < Window::Size().x / scale; x += 1) Line(x, -Window::Size().y, x, Window::Size().y).draw(1.0 / scale, ColorF(1.0, 0.25));
+		for (int y = -Window::Size().y / scale; y < Window::Size().y / scale; y += 1) Line(-Window::Size().x, y, Window::Size().x, y).draw(1.0 / scale, ColorF(1.0, 0.25));
 
 		Point cursor = Cursor::Pos();
 		RectF pointer(Arg::center(cursor), boxSize);
+
+		Print << cursor;
 
 		// Draw
 		{

@@ -1,4 +1,5 @@
 #include "Cell.h"
+#include "Part.h"
 #include "MoleculeManager.h"
 #include <numeric>
 
@@ -24,6 +25,7 @@ void Cell::Update()
 
 void Cell::Draw()
 {
+	for (const auto& p : m_parts) p->Draw();
 }
 
 void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)

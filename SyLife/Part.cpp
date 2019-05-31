@@ -9,3 +9,7 @@ Part::Part()
 Part::~Part()
 {
 }
+
+void Part::Draw()
+{
+}

@@ -12,7 +12,7 @@ public:
 	double	m_deathTimer;
 	Storage	m_storage;
 	Storage	m_molecules;
-	vector<shared_ptr<Part>>	m_part;
+	vector<shared_ptr<Part>>	m_parts;
 
 public:
 	Cell();
