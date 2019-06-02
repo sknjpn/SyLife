@@ -22,6 +22,8 @@ void FieldManager::Init()
 	g_moleculeManagerPtr = make_unique<MoleculeManager>();
 	g_cellManagerPtr = make_unique<CellManager>();
 	g_recipeManagerPtr = make_unique<RecipeManager>();
+
+	g_moleculeManagerPtr->Init();
 }
 
 void FieldManager::Update()

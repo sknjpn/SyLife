@@ -12,25 +12,10 @@ void Main()
 
 	// MoleculeModelの追加
 
-	const auto& carbon = g_moleculeManagerPtr->AddModel();
-	carbon->m_name = "Carbon";
-	carbon->m_mass = 12.0;
-	carbon->m_radius = sqrt(carbon->m_mass);
-
-	const auto& nitrogen = g_moleculeManagerPtr->AddModel();
-	nitrogen->m_name = "Nitrogen";
-	nitrogen->m_mass = 24.0;
-	nitrogen->m_radius = sqrt(nitrogen->m_mass);
-
-	const auto& oxygen = g_moleculeManagerPtr->AddModel();
-	oxygen->m_name = "Oxygen";
-	oxygen->m_mass = 36.0;
-	oxygen->m_radius = sqrt(oxygen->m_mass);
-
-	const auto& aminoAcid = g_moleculeManagerPtr->AddModel();
-	aminoAcid->m_name = "Amino acid";
-	aminoAcid->m_mass = oxygen->m_mass + carbon->m_mass + nitrogen->m_mass;
-	aminoAcid->m_radius = sqrt(aminoAcid->m_mass);
+	const auto& carbon = g_moleculeManagerPtr->GetModel("Carbon");
+	const auto& nitrogen = g_moleculeManagerPtr->GetModel("Nitrogen");
+	const auto& oxygen = g_moleculeManagerPtr->GetModel("Oxygen");
+	const auto& aminoAcid = g_moleculeManagerPtr->GetModel("Amino Acid");
 
 	// Moleculeの追加
 	g_moleculeManagerPtr->AddMoleculesRandom(oxygen, 2000);
@@ -42,7 +27,7 @@ void Main()
 	for (int i = 0; i < 10; i++)
 	{
 		const auto& c = g_cellManagerPtr->AddCell();
-		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"), 5);
 		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
 		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
 		c->RecalculatePhysicalProperty();

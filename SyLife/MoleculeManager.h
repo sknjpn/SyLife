@@ -27,6 +27,8 @@ public:
 
 	void	Init();
 	void	Update();
+
+	void	ImportModelFromFile(const string& filePath);
 };
 
 extern unique_ptr<MoleculeManager> g_moleculeManagerPtr;

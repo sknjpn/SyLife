@@ -51,38 +51,38 @@ void CellManager::Update()
 			}
 		}
 
-		// Amino acid‚Ì‡¬
-		if (c->m_storage.NumMolecule("Amino acid") < 5 &&
+		// Amino Acid‚Ì‡¬
+		if (c->m_storage.NumMolecule("Amino Acid") < 5 &&
 			c->m_storage.NumMolecule("Carbon") > 0 &&
 			c->m_storage.NumMolecule("Oxygen") > 0 &&
 			c->m_storage.NumMolecule("Nitrogen") > 0)
 		{
-			c->m_storage.AddMolecule(g_moleculeManagerPtr->GetModel("Amino acid"));
+			c->m_storage.AddMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"));
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"));
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"));
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Nitrogen"));
-			c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino acid"));
+			c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"));
 			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"));
 			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"));
 			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Nitrogen"));
 		}
 
 		// •ª—ôˆ—
-		if (c->m_storage.NumMolecule("Amino acid") >= 5 &&
+		if (c->m_storage.NumMolecule("Amino Acid") >= 5 &&
 			c->m_storage.NumMolecule("Carbon") >= 5 &&
 			c->m_storage.NumMolecule("Oxygen") >= 5)
 		{
-			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"), 5);
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
 			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
-			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"), 5);
 			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
 			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
 			c->RecalculatePhysicalProperty();
 
 			const auto& nc = g_cellManagerPtr->AddCell();
 			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
-			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino acid"), 5);
+			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"), 5);
 			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
 			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
 			nc->RecalculatePhysicalProperty();

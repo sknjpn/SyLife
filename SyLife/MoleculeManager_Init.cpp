@@ -1,23 +1,20 @@
 #include "MoleculeManager.h"
-#include <fstream>
-#include <iostream>
-#include <string>
+#include <boost/filesystem/path.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/fstream.hpp>
 
 void MoleculeManager::Init()
 {
-	/*
-	std::ifstream ifs("./data/1alk.fa");
-	int buf_size = 81;
+	namespace fs = boost::filesystem;
 
-	char str[buf_size];
-	if (ifs.fail()) {
-		std::cerr << "Failed to open file." << std::endl;
-		return -1;
+	//s3d::Print << fs::path("\assets");
+	fs::directory_iterator end;
+	for (fs::directory_iterator it(fs::path("assets/molecule")); it != end; ++it)
+	{
+		if (!fs::is_directory(*it))
+		{
+			s3d::Print << s3d::Unicode::Widen( (*it).path().string());
+			ImportModelFromFile((*it).path().string());
+		}
 	}
-	while (ifs.getline(str, buf_size)) {
-		std::cout << "#" << str << std::endl;
-	}
-	return 0;
-	*/
-
 }

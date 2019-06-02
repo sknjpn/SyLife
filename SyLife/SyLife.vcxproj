@@ -211,6 +211,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
+    <ClCompile Include="MoleculeManager_ImportModelFromFile.cpp" />
     <ClCompile Include="MoleculeManager_Init.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />

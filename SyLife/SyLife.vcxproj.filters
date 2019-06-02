@@ -134,6 +134,9 @@
     <ClCompile Include="MoleculeManager_Init.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="MoleculeManager_ImportModelFromFile.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
