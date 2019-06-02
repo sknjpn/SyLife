@@ -5,6 +5,7 @@
 
 void MoleculeManager::Init()
 {
+	/*
 	std::ifstream ifs("./data/1alk.fa");
 	int buf_size = 81;
 
@@ -17,4 +18,6 @@ void MoleculeManager::Init()
 		std::cout << "#" << str << std::endl;
 	}
 	return 0;
+	*/
+
 }
