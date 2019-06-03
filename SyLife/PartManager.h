@@ -14,6 +14,8 @@ public:
 	const shared_ptr<PartModel>&	AddModel();
 	const shared_ptr<PartModel>&	GetModel(const string& name) const;
 
+	void	Init();
+
 	void	ImportModelFromFile(const string& filePath);
 };
 

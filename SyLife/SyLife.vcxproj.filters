@@ -158,6 +158,9 @@
     <ClCompile Include="PartManager_ImportModelFromFile.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="PartManager_Init.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">

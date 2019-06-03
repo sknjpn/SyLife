@@ -29,3 +29,7 @@ const shared_ptr<PartModel>& PartManager::GetModel(const string & name) const
 
 	throw new exception;
 }
+
+void PartManager::Init()
+{
+}
