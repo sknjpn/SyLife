@@ -11,10 +11,6 @@ void MoleculeManager::Init()
 	fs::directory_iterator end;
 	for (fs::directory_iterator it(fs::path("assets/molecule")); it != end; ++it)
 	{
-		if (!fs::is_directory(*it))
-		{
-			s3d::Print << s3d::Unicode::Widen( (*it).path().string());
-			ImportModelFromFile((*it).path().string());
-		}
+		if (!fs::is_directory(*it)) ImportModelFromFile((*it).path().string());
 	}
 }
