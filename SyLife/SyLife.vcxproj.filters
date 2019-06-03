@@ -149,6 +149,9 @@
     <ClCompile Include="Module.cpp">
       <Filter>Source Files\Cell\Part</Filter>
     </ClCompile>
+    <ClCompile Include="FieldManager_Update.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
