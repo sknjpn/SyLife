@@ -1,32 +1,41 @@
-#include "MoleculeManager.h"
 #include "FieldManager.h"
+#include "CellManager.h"
+#include "MoleculeManager.h"
 
-void MoleculeManager::Update()
+void FieldManager::Update()
 {
-	for (const auto& m : GetMolecules())
+	for (const auto& r : m_indexer.GetParticles())
 	{
-		if (m->m_model == GetModel("Amino Acid") && rand() % 100 == 0)
-		{
-			AddMolecule(GetModel("Nitrogen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
-			AddMolecule(GetModel("Carbon"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
-			AddMolecule(GetModel("Oxygen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
+		m_indexer.ForEachNearParticles(r->m_position, r->m_radius * 2.0, [r](const auto& p, double distance) {
+			auto t = dynamic_pointer_cast<Rigidbody>(p);
 
-			m->m_destroyFlag = true;
-		}
+			distance = sqrt(distance);
+			if (t->m_position != r->m_position && distance - t->m_radius - r->m_radius < 0.0)
+			{
+				if (r->m_radius < t->m_radius) return;
+				if (r->m_radius == t->m_radius && r < t) return;
+
+				auto f = 64.0 * (distance - t->m_radius - r->m_radius) * (t->m_position - r->m_position) / distance;
+				r->AddForceInWorld(f, r->m_position);
+				t->AddForceInWorld(-f, t->m_position);
+			}
+		});
 
 		// •Ài‰^“®
-		m->m_position += m->m_velocity;
+		r->m_position += r->m_velocity;
 
 		// •Ç‚Å‚Ì”½ŽË
-		if (m->m_position.m_x < 0 && m->m_velocity.m_x < 0) m->m_velocity.m_x = -m->m_velocity.m_x;
-		if (m->m_position.m_y < 0 && m->m_velocity.m_y < 0) m->m_velocity.m_y = -m->m_velocity.m_y;
-		if (m->m_position.m_x > g_fieldManagerPtr->m_size.m_x && m->m_velocity.m_x > 0) m->m_velocity.m_x = -m->m_velocity.m_x;
-		if (m->m_position.m_y > g_fieldManagerPtr->m_size.m_y && m->m_velocity.m_y > 0) m->m_velocity.m_y = -m->m_velocity.m_y;
+		if (r->m_position.m_x < 0 && r->m_velocity.m_x < 0) r->m_velocity.m_x = -r->m_velocity.m_x;
+		if (r->m_position.m_y < 0 && r->m_velocity.m_y < 0) r->m_velocity.m_y = -r->m_velocity.m_y;
+		if (r->m_position.m_x > m_size.m_x && r->m_velocity.m_x > 0) r->m_velocity.m_x = -r->m_velocity.m_x;
+		if (r->m_position.m_y > m_size.m_y && r->m_velocity.m_y > 0) r->m_velocity.m_y = -r->m_velocity.m_y;
 
 		// –€ŽC’ïR
-		m->m_velocity /= (1.0 + m->m_radius * 0.001);
+		r->m_velocity /= (1.0 + r->m_radius * 0.001);
 	}
 
-	GetMolecules().erase(remove_if(GetMolecules().begin(), GetMolecules().end(), [](const auto& m) { return m->m_destroyFlag; }), GetMolecules().end());
+	g_cellManagerPtr->Update();
+	g_moleculeManagerPtr->Update();
+
 	m_indexer.Update();
 }

@@ -13,6 +13,8 @@ public:
 
 	const shared_ptr<PartModel>&	AddModel();
 	const shared_ptr<PartModel>&	GetModel(const string& name) const;
+
+	void	ImportModelFromFile(const string& filePath);
 };
 
 extern shared_ptr<PartManager>	g_partManagerPtr;

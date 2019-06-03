@@ -149,7 +149,13 @@
     <ClCompile Include="Module.cpp">
       <Filter>Source Files\Cell\Part</Filter>
     </ClCompile>
+    <ClCompile Include="MoleculeManager_Update.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
     <ClCompile Include="FieldManager_Update.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PartManager_ImportModelFromFile.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
   </ItemGroup>

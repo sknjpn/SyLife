@@ -211,6 +211,7 @@
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldManager_Update.cpp" />
+    <ClCompile Include="MoleculeManager_Update.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
@@ -220,6 +221,7 @@
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartManager.cpp" />
+    <ClCompile Include="PartManager_ImportModelFromFile.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Recipe.cpp" />
     <ClCompile Include="RecipeManager.cpp" />

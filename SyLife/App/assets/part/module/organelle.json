@@ -1,8 +1,7 @@
 {
   "name": "Organelle",
-  "type": "Organelle",
-  "rotation": 10.0,
-  "position": [ 100, 20 ],
+  "type": "Module",
+  "mass": 10.0,
   "material": [
       { "name": "Amino Acid", "size": 2 }
   ]
