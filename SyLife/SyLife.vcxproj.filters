@@ -72,6 +72,9 @@
     <Filter Include="Source Files\Thridparty">
       <UniqueIdentifier>{8bd23f4d-5074-4b4b-b351-042d95e9e18e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Cell\Part">
+      <UniqueIdentifier>{ab194333-e3f5-4943-af64-dccb954d300b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -136,6 +139,15 @@
     </ClCompile>
     <ClCompile Include="MoleculeManager_ImportModelFromFile.cpp">
       <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Body.cpp">
+      <Filter>Source Files\Cell\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>Source Files\Cell\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files\Cell\Part</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +332,15 @@
     </ClInclude>
     <ClInclude Include="PartManager.h">
       <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files\Cell\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Source Files\Cell\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files\Cell\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

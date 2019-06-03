@@ -1,0 +1,6 @@
+{
+  "name": "Body",
+  "type": "Body",
+  "rotation": 10.0,
+  "position": [ 100, 20 ]
+}

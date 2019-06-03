@@ -1,0 +1,9 @@
+{
+  "name": "Organelle",
+  "type": "Organelle",
+  "rotation": 10.0,
+  "position": [ 100, 20 ],
+  "material": [
+      { "name": "Amino Acid", "size": 2 }
+  ]
+}

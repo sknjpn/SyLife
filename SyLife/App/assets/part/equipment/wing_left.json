@@ -1,0 +1,6 @@
+{
+  "name": "Wing Left",
+  "type": "Organelle",
+  "rotation": 10.0,
+  "position": [ 100, 20 ]
+}

@@ -2,27 +2,22 @@
 
 #include "Shape.h"
 
+class PartModel
+{
+public:
+	string		m_name;
+	double		m_mass;
+};
+
 class Part
 {
 public:
-	class Model
-	{
-	public:
-		double		m_mass;
-		double		m_inertia;
-		string		m_name;
-		Shape		m_shape;
-		Vector2D	m_lu;
-		Vector2D	m_rd;
-	};
-
-	double		m_rotation;
-	Vector2D	m_position;
-	shared_ptr<Model>	m_model;
+	shared_ptr<PartModel>	m_model;
 
 public:
 	Part();
-	~Part();
+	virtual ~Part() {}
 
-	void	Draw();
+	virtual void	Draw() {}
+	virtual void	Update() {}
 };
