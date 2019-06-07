@@ -5,17 +5,17 @@
 class Storage
 {
 public:
-	vector<pair<shared_ptr<Molecule::Model>, int>>	m_molecules;
+	vector<pair<shared_ptr<MoleculeModel>, int>>	m_molecules;
 
 public:
 	Storage();
 	~Storage();
 
-	void	AddMolecule(const shared_ptr<Molecule::Model>& model);
-	void	AddMolecule(const shared_ptr<Molecule::Model>& model, int size);
-	int		NumMolecule(const shared_ptr<Molecule::Model>& model) const;
+	void	AddMolecule(const shared_ptr<MoleculeModel>& model);
+	void	AddMolecule(const shared_ptr<MoleculeModel>& model, int size);
+	int		NumMolecule(const shared_ptr<MoleculeModel>& model) const;
 	int		NumMolecule(const string& name) const;
-	void	PullMolecule(const shared_ptr<Molecule::Model>& model);
-	void	PullMolecule(const shared_ptr<Molecule::Model>& model, int size);
+	void	PullMolecule(const shared_ptr<MoleculeModel>& model);
+	void	PullMolecule(const shared_ptr<MoleculeModel>& model, int size);
 };
 

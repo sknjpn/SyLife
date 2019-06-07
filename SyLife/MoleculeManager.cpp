@@ -14,12 +14,12 @@ MoleculeManager::~MoleculeManager()
 {
 }
 
-int MoleculeManager::NumMolecule(const shared_ptr<Molecule::Model>& model)
+int MoleculeManager::NumMolecule(const shared_ptr<MoleculeModel>& model)
 {
 	return static_cast<int>(count_if(GetMolecules().begin(), GetMolecules().end(), [&model](const auto& m) { return m->m_model == model; }));
 }
 
-const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecule::Model>& model)
+const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<MoleculeModel>& model)
 {
 	const auto& m = GetMolecules().emplace_back(make_shared<Molecule>());
 
@@ -31,7 +31,7 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecu
 	return m;
 }
 
-const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecule::Model>& model, const Vector2D & position)
+const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<MoleculeModel>& model, const Vector2D & position)
 {
 	const auto& m = AddMolecule(model);
 
@@ -40,7 +40,7 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecu
 	return m;
 }
 
-void MoleculeManager::AddMoleculesRandom(const shared_ptr<Molecule::Model>& model, size_t size)
+void MoleculeManager::AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -52,14 +52,14 @@ void MoleculeManager::AddMoleculesRandom(const shared_ptr<Molecule::Model>& mode
 	}
 }
 
-const shared_ptr<Molecule::Model>& MoleculeManager::AddModel()
+const shared_ptr<MoleculeModel>& MoleculeManager::AddModel()
 {
-	const auto& m = m_models.emplace_back(make_shared<Molecule::Model>());
+	const auto& m = m_models.emplace_back(make_shared<MoleculeModel>());
 
 	return m;
 }
 
-const shared_ptr<Molecule::Model>& MoleculeManager::GetModel(const string& name) const
+const shared_ptr<MoleculeModel>& MoleculeManager::GetModel(const string& name) const
 {
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)
 	{

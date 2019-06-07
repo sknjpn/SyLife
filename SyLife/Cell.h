@@ -30,7 +30,7 @@ public:
 	void	TakeMolecule(const shared_ptr<Molecule>& molecule);
 
 	// Storage‚©‚çField‚É“f‚«o‚·
-	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model);
-	void	ExpireMolecule(const shared_ptr<Molecule::Model>& model, int size);
+	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model);
+	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, int size);
 };
 

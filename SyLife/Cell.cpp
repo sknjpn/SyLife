@@ -46,7 +46,7 @@ void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)
 	molecule->m_destroyFlag = true;
 }
 
-void Cell::ExpireMolecule(const shared_ptr<Molecule::Model>& model)
+void Cell::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 {
 	m_mass -= model->m_mass;
 	m_radius = sqrt(m_mass);
@@ -66,7 +66,7 @@ void Cell::ExpireMolecule(const shared_ptr<Molecule::Model>& model)
 	m_molecules.PullMolecule(model);
 }
 
-void Cell::ExpireMolecule(const shared_ptr<Molecule::Model>& model, int size)
+void Cell::ExpireMolecule(const shared_ptr<MoleculeModel>& model, int size)
 {
 	for (int i = 0; i < size; ++i) ExpireMolecule(model);
 }

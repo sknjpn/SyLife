@@ -5,8 +5,8 @@
 class Recipe
 {
 	string	m_name;
-	vector<pair<shared_ptr<Molecule::Model>, int>>	m_material;
-	vector<pair<shared_ptr<Molecule::Model>, int>>	m_product;
+	vector<pair<shared_ptr<MoleculeModel>, int>>	m_material;
+	vector<pair<shared_ptr<MoleculeModel>, int>>	m_product;
 
 public:
 	Recipe();
