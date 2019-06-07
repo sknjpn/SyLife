@@ -161,6 +161,9 @@
     <ClCompile Include="PartManager_Init.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -353,6 +356,9 @@
     </ClInclude>
     <ClInclude Include="Module.h">
       <Filter>Source Files\Cell\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -205,6 +205,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
@@ -286,6 +287,7 @@
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
