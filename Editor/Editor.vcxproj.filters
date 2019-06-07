@@ -89,6 +89,9 @@
     <ClCompile Include="Part.cpp">
       <Filter>Source Files\Part</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -230,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="Part.h">
       <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
