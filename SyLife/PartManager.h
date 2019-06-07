@@ -11,7 +11,8 @@ public:
 	PartManager();
 	~PartManager();
 
-	const shared_ptr<PartModel>&	AddModel();
+	template <typename T>
+	const shared_ptr<T>&	AddModel() { auto t = make_shared<T>(); m_models.emplace_back(t); return t; }
 	const shared_ptr<PartModel>&	GetModel(const string& name) const;
 
 	void	Init();

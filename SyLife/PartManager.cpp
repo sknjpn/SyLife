@@ -13,13 +13,6 @@ PartManager::~PartManager()
 
 }
 
-const shared_ptr<PartModel>& PartManager::AddModel()
-{
-	const auto& m = m_models.emplace_back(make_shared<PartModel>());
-
-	return m;
-}
-
 const shared_ptr<PartModel>& PartManager::GetModel(const string & name) const
 {
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)
