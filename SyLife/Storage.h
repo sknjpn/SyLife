@@ -8,9 +8,6 @@ public:
 	vector<pair<shared_ptr<MoleculeModel>, int>>	m_molecules;
 
 public:
-	Storage();
-	~Storage();
-
 	void	AddMolecule(const shared_ptr<MoleculeModel>& model);
 	void	AddMolecule(const shared_ptr<MoleculeModel>& model, int size);
 	int		NumMolecule(const shared_ptr<MoleculeModel>& model) const;

@@ -10,8 +10,7 @@ public:
 	Vector2D	m_size;
 
 public:
-	FieldManager();
-	~FieldManager();
+	FieldManager() : m_size(800, 600) {}
 
 	void	Init();
 	void	Update();

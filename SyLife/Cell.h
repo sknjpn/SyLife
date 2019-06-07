@@ -19,8 +19,7 @@ public:
 	vector<shared_ptr<Equipment>>	m_equipments;
 
 public:
-	Cell();
-	~Cell();
+	Cell() { m_deathTimer = 10.0; }
 
 	void	RecalculatePhysicalProperty();
 	void	Update();

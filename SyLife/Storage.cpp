@@ -1,16 +1,6 @@
 #include "Storage.h"
 #include "MoleculeManager.h"
 
-Storage::Storage()
-{
-
-}
-
-Storage::~Storage()
-{
-
-}
-
 void Storage::AddMolecule(const shared_ptr<MoleculeModel>& model)
 {
 	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)

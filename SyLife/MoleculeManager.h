@@ -10,8 +10,7 @@ public:
 	Indexer<Molecule>	m_indexer;
 
 public:
-	MoleculeManager();
-	~MoleculeManager();
+	MoleculeManager(){ m_models.reserve(1000); }
 
 	int NumMolecule(const shared_ptr<MoleculeModel>& model);
 	const shared_ptr<Molecule>&			AddMolecule(const shared_ptr<MoleculeModel>& model);

@@ -8,8 +8,7 @@ public:
 	vector<shared_ptr<PartModel>>	m_models;
 
 public:
-	PartManager();
-	~PartManager();
+	PartManager() { m_models.reserve(10000); }
 
 	template <typename T>
 	const shared_ptr<T>&	AddModel() { auto t = make_shared<T>(); m_models.emplace_back(t); return t; }

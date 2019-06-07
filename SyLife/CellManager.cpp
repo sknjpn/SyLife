@@ -6,17 +6,6 @@
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 
-CellManager::CellManager()
-{
-
-}
-
-
-CellManager::~CellManager()
-{
-
-}
-
 const shared_ptr<Cell>& CellManager::AddCell()
 {
 	const auto& c = GetCells().emplace_back(make_shared<Cell>());

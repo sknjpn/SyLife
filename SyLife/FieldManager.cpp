@@ -8,17 +8,6 @@
 
 unique_ptr<FieldManager>	g_fieldManagerPtr;
 
-FieldManager::FieldManager()
-	: m_size(800, 600)
-{
-
-}
-
-FieldManager::~FieldManager()
-{
-
-}
-
 void FieldManager::Init()
 {
 	g_assetManagerPtr = make_unique<AssetManager>();

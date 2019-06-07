@@ -3,16 +3,6 @@
 #include "MoleculeManager.h"
 #include <numeric>
 
-Cell::Cell()
-{
-	m_deathTimer = 10.0;
-}
-
-Cell::~Cell()
-{
-
-}
-
 void Cell::RecalculatePhysicalProperty()
 {
 	m_mass = accumulate(m_molecules.m_molecules.begin(), m_molecules.m_molecules.end(), 0.0, [](double s, const auto& m) { return s + m.first->m_mass * m.second; });

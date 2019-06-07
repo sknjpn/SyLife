@@ -9,7 +9,5 @@ class Recipe
 	vector<pair<shared_ptr<MoleculeModel>, int>>	m_product;
 
 public:
-	Recipe();
-	~Recipe();
 };
 

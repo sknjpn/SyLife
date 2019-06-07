@@ -9,9 +9,6 @@ public:
 	Indexer<Cell>	m_indexer;
 
 public:
-	CellManager();
-	~CellManager();
-
 	const shared_ptr<Cell>&	AddCell();
 
 	vector<shared_ptr<Cell>>&	GetCells() { return m_indexer.m_cloud.m_particles; }

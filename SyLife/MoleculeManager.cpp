@@ -4,16 +4,6 @@
 
 unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
-MoleculeManager::MoleculeManager()
-{
-	m_models.reserve(1000);
-}
-
-
-MoleculeManager::~MoleculeManager()
-{
-}
-
 int MoleculeManager::NumMolecule(const shared_ptr<MoleculeModel>& model)
 {
 	return static_cast<int>(count_if(GetMolecules().begin(), GetMolecules().end(), [&model](const auto& m) { return m->m_model == model; }));
