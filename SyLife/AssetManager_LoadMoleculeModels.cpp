@@ -8,9 +8,10 @@ void	AssetManager::LoadMoleculeModels()
 {
 	namespace fs = boost::filesystem;
 
-	const fs::path path("assets/molecule");
-
-	BOOST_FOREACH(const fs::path& p, std::make_pair(fs::recursive_directory_iterator(path), fs::recursive_directory_iterator())) {
-		if (!fs::is_directory(p)) LoadMoleculeModel(p.string());
+	//s3d::Print << fs::path("\assets");
+	fs::directory_iterator end;
+	for (fs::directory_iterator it(fs::path("assets/molecule")); it != end; ++it)
+	{
+		if (!fs::is_directory(*it)) LoadMoleculeModel((*it).path().string());
 	}
 }
