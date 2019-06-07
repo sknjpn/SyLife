@@ -164,6 +164,9 @@
     <ClCompile Include="AssetManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="SystemManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -358,6 +361,9 @@
       <Filter>Source Files\Cell\Part</Filter>
     </ClInclude>
     <ClInclude Include="AssetManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>

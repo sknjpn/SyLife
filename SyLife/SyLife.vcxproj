@@ -238,6 +238,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +311,7 @@
     <ClInclude Include="sol.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
+    <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

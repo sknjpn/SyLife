@@ -5,4 +5,4 @@ class AssetManager
 public:
 };
 
-extern unique_ptr<AssetManager>	g_assetManager;
+extern unique_ptr<AssetManager>	g_assetManagerPtr;
