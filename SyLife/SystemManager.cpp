@@ -18,7 +18,5 @@ SystemManager::SystemManager()
 	g_recipeManagerPtr = make_unique<RecipeManager>();
 
 	g_assetManagerPtr->Init();
-	g_moleculeManagerPtr->Init();
-	g_partManagerPtr->Init();
 	g_fieldManagerPtr->Init();
 }

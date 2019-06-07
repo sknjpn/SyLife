@@ -134,12 +134,6 @@
     <ClCompile Include="PartManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="MoleculeManager_Init.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeManager_ImportModelFromFile.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="Body.cpp">
       <Filter>Source Files\Cell\Part</Filter>
     </ClCompile>
@@ -153,12 +147,6 @@
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="FieldManager_Update.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="PartManager_ImportModelFromFile.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="PartManager_Init.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager.cpp">

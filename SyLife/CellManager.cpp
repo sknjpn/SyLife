@@ -1,6 +1,7 @@
 #include "CellManager.h"
 #include "Cell.h"
 #include "FieldManager.h"
+#include "AssetManager.h"
 #include "Molecule.h"
 #include "MoleculeManager.h"
 
@@ -46,14 +47,14 @@ void CellManager::Update()
 			c->m_storage.NumMolecule("Oxygen") > 0 &&
 			c->m_storage.NumMolecule("Nitrogen") > 0)
 		{
-			c->m_storage.AddMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"));
-			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"));
-			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"));
-			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Nitrogen"));
-			c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"));
-			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"));
-			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"));
-			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Nitrogen"));
+			c->m_storage.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"));
+			c->m_storage.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"));
+			c->m_storage.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"));
+			c->m_storage.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Nitrogen"));
+			c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"));
+			c->m_molecules.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"));
+			c->m_molecules.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"));
+			c->m_molecules.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Nitrogen"));
 		}
 
 		// •ª—ôˆ—
@@ -61,19 +62,19 @@ void CellManager::Update()
 			c->m_storage.NumMolecule("Carbon") >= 5 &&
 			c->m_storage.NumMolecule("Oxygen") >= 5)
 		{
-			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"), 5);
-			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
-			c->m_storage.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
-			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"), 5);
-			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
-			c->m_molecules.PullMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
+			c->m_storage.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"), 5);
+			c->m_storage.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), 5);
+			c->m_storage.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), 5);
+			c->m_molecules.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"), 5);
+			c->m_molecules.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), 5);
+			c->m_molecules.PullMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), 5);
 			c->RecalculatePhysicalProperty();
 
 			const auto& nc = g_cellManagerPtr->AddCell();
 			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
-			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"), 5);
-			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
-			nc->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
+			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"), 5);
+			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), 5);
+			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), 5);
 			nc->RecalculatePhysicalProperty();
 			nc->Init();
 		}

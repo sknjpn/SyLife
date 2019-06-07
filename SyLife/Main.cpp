@@ -1,6 +1,7 @@
 ﻿#include "FieldManager.h"
 #include "CellManager.h"
 #include "MoleculeManager.h"
+#include "AssetManager.h"
 #include "Cell.h"
 #include "Molecule.h"
 
@@ -12,10 +13,10 @@ void Main()
 
 	// MoleculeModelの追加
 
-	const auto& carbon = g_moleculeManagerPtr->GetModel("Carbon");
-	const auto& nitrogen = g_moleculeManagerPtr->GetModel("Nitrogen");
-	const auto& oxygen = g_moleculeManagerPtr->GetModel("Oxygen");
-	const auto& aminoAcid = g_moleculeManagerPtr->GetModel("Amino Acid");
+	const auto& carbon = g_assetManagerPtr->GetMoleculeModel("Carbon");
+	const auto& nitrogen = g_assetManagerPtr->GetMoleculeModel("Nitrogen");
+	const auto& oxygen = g_assetManagerPtr->GetMoleculeModel("Oxygen");
+	const auto& aminoAcid = g_assetManagerPtr->GetMoleculeModel("Amino Acid");
 
 	// Moleculeの追加
 	g_moleculeManagerPtr->AddMoleculesRandom(oxygen, 2000);
@@ -27,9 +28,9 @@ void Main()
 	for (int i = 0; i < 10; i++)
 	{
 		const auto& c = g_cellManagerPtr->AddCell();
-		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Amino Acid"), 5);
-		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Carbon"), 5);
-		c->m_molecules.AddMolecule(g_moleculeManagerPtr->GetModel("Oxygen"), 5);
+		c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"), 5);
+		c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), 5);
+		c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), 5);
 		c->RecalculatePhysicalProperty();
 		c->m_position.m_x = s3d::Random(800);
 		c->m_position.m_y = s3d::Random(600);
@@ -115,9 +116,9 @@ void Main()
 		}
 
 		s3d::Rect(192, 80).draw(s3d::ColorF(s3d::Palette::Gray, 0.75));
-		for (int i = 0; i < g_moleculeManagerPtr->m_models.size(); ++i)
+		for (int i = 0; i < g_assetManagerPtr->m_moleculeModels.size(); ++i)
 		{
-			const auto& m = g_moleculeManagerPtr->m_models[i];
+			const auto& m = g_assetManagerPtr->m_moleculeModels[i];
 			s3d::Color color = s3d::Palette::White;
 			if (m == oxygen) color = s3d::Palette::Red;
 			if (m == carbon) color = s3d::Palette::Skyblue;

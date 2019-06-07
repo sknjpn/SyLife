@@ -17,6 +17,4 @@ void FieldManager::Init()
 	g_partManagerPtr = make_unique<PartManager>();
 
 	g_assetManagerPtr->Init();
-	g_moleculeManagerPtr->Init();
-	g_partManagerPtr->Init();
 }

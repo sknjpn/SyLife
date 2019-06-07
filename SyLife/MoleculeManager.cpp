@@ -41,20 +41,3 @@ void MoleculeManager::AddMoleculesRandom(const shared_ptr<MoleculeModel>& model,
 		m->Init();
 	}
 }
-
-const shared_ptr<MoleculeModel>& MoleculeManager::AddModel()
-{
-	const auto& m = m_models.emplace_back(make_shared<MoleculeModel>());
-
-	return m;
-}
-
-const shared_ptr<MoleculeModel>& MoleculeManager::GetModel(const string& name) const
-{
-	for (auto it = m_models.begin(); it != m_models.end(); ++it)
-	{
-		if ((*it)->m_name == name) return *it;
-	}
-
-	throw new exception;
-}

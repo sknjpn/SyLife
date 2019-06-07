@@ -1,15 +1,16 @@
 #include "MoleculeManager.h"
 #include "FieldManager.h"
+#include "AssetManager.h"
 
 void MoleculeManager::Update()
 {
 	for (const auto& m : GetMolecules())
 	{
-		if (m->m_model == GetModel("Amino Acid") && rand() % 100 == 0)
+		if (m->m_model == g_assetManagerPtr->GetMoleculeModel("Amino Acid") && rand() % 100 == 0)
 		{
-			AddMolecule(GetModel("Nitrogen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
-			AddMolecule(GetModel("Carbon"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
-			AddMolecule(GetModel("Oxygen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
+			AddMolecule(g_assetManagerPtr->GetMoleculeModel("Nitrogen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
+			AddMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
+			AddMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), m->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0));
 
 			m->m_destroyFlag = true;
 		}

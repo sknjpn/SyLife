@@ -223,13 +223,9 @@
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
-    <ClCompile Include="MoleculeManager_ImportModelFromFile.cpp" />
-    <ClCompile Include="MoleculeManager_Init.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartManager.cpp" />
-    <ClCompile Include="PartManager_ImportModelFromFile.cpp" />
-    <ClCompile Include="PartManager_Init.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Recipe.cpp" />
     <ClCompile Include="RecipeManager.cpp" />

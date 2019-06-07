@@ -1,4 +1,5 @@
 #include "Storage.h"
+#include "AssetManager.h"
 #include "MoleculeManager.h"
 
 void Storage::AddMolecule(const shared_ptr<MoleculeModel>& model)
@@ -43,7 +44,7 @@ int Storage::NumMolecule(const shared_ptr<MoleculeModel>& model) const
 
 int Storage::NumMolecule(const string& name) const
 {
-	return NumMolecule(g_moleculeManagerPtr->GetModel(name));
+	return NumMolecule(g_assetManagerPtr->GetMoleculeModel(name));
 }
 
 void Storage::PullMolecule(const shared_ptr<MoleculeModel>& model)
