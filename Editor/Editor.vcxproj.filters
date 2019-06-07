@@ -54,6 +54,15 @@
     <Filter Include="Resource Files\nlp\japanese\jumanpp">
       <UniqueIdentifier>{f6fe2a89-c647-48e2-bb2c-27b03b1aeced}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Part">
+      <UniqueIdentifier>{fffc1da2-7639-4e93-87c8-71400698af2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cell">
+      <UniqueIdentifier>{61325ca8-ca52-4c4d-b392-3eb55d71d865}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Molecule">
+      <UniqueIdentifier>{3645067b-2ead-4cd6-9b79-aa92992e97dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -61,6 +70,24 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Body.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files\Molecule</Filter>
+    </ClCompile>
+    <ClCompile Include="Part.cpp">
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +212,24 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Molecule.h">
+      <Filter>Source Files\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
