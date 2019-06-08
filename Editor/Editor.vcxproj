@@ -201,6 +201,7 @@
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="FileViewer.cpp" />
     <ClCompile Include="MoleculeViewer.cpp" />
+    <ClCompile Include="PartViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Equipment.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="Body.h" />
     <ClInclude Include="FileViewer.h" />
     <ClInclude Include="MoleculeViewer.h" />
+    <ClInclude Include="PartViewer.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Equipment.h" />

@@ -129,6 +129,9 @@
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="PartViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -294,6 +297,9 @@
     <ClInclude Include="FileViewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="MoleculeViewer.h" />
+    <ClInclude Include="MoleculeViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="PartViewer.h" />
   </ItemGroup>
 </Project>
