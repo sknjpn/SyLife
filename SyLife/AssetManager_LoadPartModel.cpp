@@ -21,10 +21,10 @@ void	AssetManager::LoadPartModel(const string& filepath)
 		{
 			const auto& model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<BodyModel>());
 
-			// Name
+			// name
 			model->m_name = pt.get<string>("name");
 
-			// Mass
+			// mass
 			model->m_mass = pt.get<double>("mass");
 
 			s3d::Logger << s3d::Unicode::Widen(model->m_name);
@@ -34,10 +34,10 @@ void	AssetManager::LoadPartModel(const string& filepath)
 		{
 			const auto& model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<EquipmentModel>());
 
-			// Name
+			// name
 			model->m_name = pt.get<string>("name");
 
-			// Mass
+			// mass
 			model->m_mass = pt.get<double>("mass");
 
 			s3d::Logger << s3d::Unicode::Widen(model->m_name);
@@ -47,10 +47,10 @@ void	AssetManager::LoadPartModel(const string& filepath)
 		{
 			const auto& model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<ModuleModel>());
 
-			// Name
+			// name
 			model->m_name = pt.get<string>("name");
 
-			// Mass
+			// mass
 			model->m_mass = pt.get<double>("mass");
 
 			s3d::Logger << s3d::Unicode::Widen(model->m_name);
