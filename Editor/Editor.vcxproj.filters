@@ -125,6 +125,12 @@
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
+    <ClCompile Include="FileViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -285,5 +291,9 @@
     <ClInclude Include="Viewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
+    <ClInclude Include="FileViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculeViewer.h" />
   </ItemGroup>
 </Project>
