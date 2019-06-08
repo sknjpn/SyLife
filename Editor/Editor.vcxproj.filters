@@ -132,7 +132,10 @@
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
     <ClCompile Include="PartViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="CellViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +303,11 @@
     <ClInclude Include="MoleculeViewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="PartViewer.h" />
+    <ClInclude Include="PartViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="CellViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

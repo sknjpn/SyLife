@@ -199,6 +199,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Body.cpp" />
+    <ClCompile Include="CellViewer.cpp" />
     <ClCompile Include="FileViewer.cpp" />
     <ClCompile Include="MoleculeViewer.cpp" />
     <ClCompile Include="PartViewer.cpp" />
@@ -268,6 +269,7 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Body.h" />
+    <ClInclude Include="CellViewer.h" />
     <ClInclude Include="FileViewer.h" />
     <ClInclude Include="MoleculeViewer.h" />
     <ClInclude Include="PartViewer.h" />
