@@ -11,15 +11,19 @@ void Main()
 	{
 		const auto& pv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<PartViewer>());
 
-		//pv->m_drawRect = RectF(120.0, 0.0, )
+		pv->m_drawRect = s3d::RectF(200.0, 0.0, 600.0, 600.0);
 	}
 	
 	{
 		const auto& fv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<FileViewer>());
+
+		fv->m_drawRect = s3d::RectF(0.0, 0.0, 200.0, 600.0);
 	}
 
 	while (s3d::System::Update())
 	{
 		g_systemManagerPtr->Update();
+
+		s3d::Print << s3d::Window::Size();
 	}
 }
