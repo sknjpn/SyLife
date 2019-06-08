@@ -11,14 +11,10 @@ void	AssetManager::LoadCellModel(const string& filepath)
 	ptree pt;
 	read_json(filepath, pt);
 
-	if (auto type_str = pt.get_optional<string>("type"))
-	{
-		const auto& model = g_assetManagerPtr->m_cellModels.emplace_back(make_shared<CellModel>());
+	const auto& model = g_assetManagerPtr->m_cellModels.emplace_back(make_shared<CellModel>());
 
-		// Data.str
-		if (boost::optional<std::string> str = pt.get_optional<std::string>("name")) model->m_name = str.get();
-		else model->m_name = "str is nothing";
+	// name
+	model->m_name = pt.get<string>("name");
 
-		s3d::Logger << s3d::Unicode::Widen(model->m_name);
-	}
+	s3d::Logger << s3d::Unicode::Widen(model->m_name);
 }
