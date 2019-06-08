@@ -8,6 +8,11 @@
 
 void SystemManager::Draw()
 {
+	static s3d::Font font(12);
+	static s3d::Font printFont(16);
+
+	static shared_ptr<Rigidbody> selectedRigidbody = nullptr;
+
 	if (s3d::MouseR.pressed())
 	{
 		Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
@@ -45,12 +50,7 @@ void SystemManager::Draw()
 	// Molecule‚Ì•`‰æ
 	for (const auto& m : g_moleculeManagerPtr->GetMolecules())
 	{
-		s3d::Color color = s3d::Palette::White;
-		if (m->m_model == oxygen) color = s3d::Palette::Red;
-		if (m->m_model == carbon) color = s3d::Palette::Skyblue;
-		if (m->m_model == nitrogen) color = s3d::Palette::Green;
-		if (m->m_model == aminoAcid) color = s3d::Palette::Yellow;
-
+		s3d::Color color(m->m_model->m_color[0], m->m_model->m_color[1], m->m_model->m_color[2]);
 		s3d::Circle(m->m_position.m_x, m->m_position.m_y, m->m_radius).draw(color).drawFrame(1.0, s3d::Palette::Gray);
 	}
 
