@@ -78,6 +78,9 @@
     <Filter Include="Source Files\Asset\Part\Module">
       <UniqueIdentifier>{8423c53b-21db-423a-8d42-da1622de934c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Viewer">
+      <UniqueIdentifier>{dd329a44-fe9b-4745-8718-7847aa795125}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -118,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="Module.cpp">
       <Filter>Source Files\Asset\Part\Module</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +281,9 @@
     </ClInclude>
     <ClInclude Include="Module.h">
       <Filter>Source Files\Asset\Part\Module</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer.h">
+      <Filter>Source Files\Viewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

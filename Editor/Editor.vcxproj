@@ -199,6 +199,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Body.cpp" />
+    <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="FileManager.cpp" />
@@ -264,6 +265,7 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Body.h" />
+    <ClInclude Include="Viewer.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="FileManager.h" />
