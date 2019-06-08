@@ -27,13 +27,12 @@ void	AssetManager::LoadMoleculeModel(const string& filepath)
 	}
 
 	// mass
-	if (boost::optional<double> value = pt.get_optional<double>("mass")) model->m_mass = value.get();
-	else model->m_mass = 10.0;
+	model->m_mass = pt.get<double>("mass");
 
 	// name
-	if (boost::optional<std::string> str = pt.get_optional<std::string>("name")) model->m_name = str.get();
-	else model->m_name = "str is nothing";
+	model->m_name = pt.get<string>("name");
 
+	// radius
 	model->m_radius = sqrt(model->m_mass);
 
 	s3d::Logger << s3d::Unicode::Widen(model->m_name);
