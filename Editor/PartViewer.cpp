@@ -2,7 +2,6 @@
 
 void PartViewer::Update()
 {
-	/*
 	s3d::ClearPrint();
 
 	int scale = 10;
@@ -30,7 +29,7 @@ void PartViewer::Update()
 			{
 				s3d::Polygon p(s.m_verticles);
 
-				p.draw(s3d::ColorF(s.m_color[0], s.m_color[1], s.m_color[2] , 0.5));
+				p.draw(s3d::ColorF(s.m_color , 0.5));
 			}
 
 			// Line
@@ -118,7 +117,7 @@ void PartViewer::Update()
 					}
 				}
 
-				if (f) continue;
+				if (f) return;
 			}
 
 			// ˜A‘±”z’u
@@ -137,7 +136,11 @@ void PartViewer::Update()
 		{
 			s += U"{\r    ";
 			{
-				s += s3d::Format(U"\"color\": [", (*it).m_color.toColor().r, U", ", (*it).m_color.toColor().g, U", ", (*it).m_color.toColor().b, U"]");
+				auto r = (*it).m_color.toColor().r;
+				auto g = (*it).m_color.toColor().g;
+				auto b = (*it).m_color.toColor().b;
+
+				s += s3d::Format(U"\"color\": [", r, U", ", g, U", ", b, U"]");
 			}
 			s += U",";
 			s += U"\r    ";
@@ -166,5 +169,4 @@ void PartViewer::Update()
 		tw.write(s);
 		tw.close();
 	}
-	*/
 }
