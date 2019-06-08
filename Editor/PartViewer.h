@@ -6,5 +6,6 @@ class PartViewer :
 	public Viewer
 {
 public:
+	void	Draw() override;
 };
 
