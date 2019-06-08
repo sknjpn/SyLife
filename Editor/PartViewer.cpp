@@ -3,7 +3,6 @@
 void PartViewer::Update()
 {
 	s3d::ClearPrint();
-
 	int scale = 10;
 
 	const double thickness = 3.0 / scale;
