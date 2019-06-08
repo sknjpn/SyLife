@@ -6,4 +6,4 @@ public:
 	SystemManager();
 };
 
-extern unique_ptr<SystemManager>	g_systemManager;
+extern unique_ptr<SystemManager>	g_systemManagerPtr;

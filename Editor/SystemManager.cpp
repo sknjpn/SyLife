@@ -1,7 +1,7 @@
 #include "SystemManager.h"
 #include "AssetManager.h"
 
-unique_ptr<SystemManager>	g_systemManager;
+unique_ptr<SystemManager>	g_systemManagerPtr;
 
 SystemManager::SystemManager()
 {
