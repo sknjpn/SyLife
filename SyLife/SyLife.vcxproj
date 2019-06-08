@@ -245,6 +245,8 @@
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="SystemManager_Draw.cpp" />
+    <ClCompile Include="SystemManager_Update.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
