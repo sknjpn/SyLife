@@ -1,5 +1,5 @@
 #include "MoleculeViewer.h"
 
-void MoleculeViewer::Draw()
+void MoleculeViewer::Update()
 {
 }

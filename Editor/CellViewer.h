@@ -6,6 +6,6 @@ class CellViewer :
 	public Viewer
 {
 public:
-	void	Draw() override;
+	void	Update() override;
 };
 

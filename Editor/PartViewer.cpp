@@ -1,5 +1,5 @@
 #include "PartViewer.h"
 
-void PartViewer::Draw()
+void PartViewer::Update()
 {
 }

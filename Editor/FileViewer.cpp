@@ -1,6 +1,6 @@
 #include "FileViewer.h"
 
-void FileViewer::Draw()
+void FileViewer::Update()
 {
 
 }

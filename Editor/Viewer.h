@@ -9,6 +9,6 @@ public:
 	Viewer() = default;
 	virtual ~Viewer() = default;
 
-	virtual void	Draw() {}
+	virtual void	Update() {}
 };
 

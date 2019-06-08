@@ -1,5 +1,5 @@
 #include "CellViewer.h"
 
-void CellViewer::Draw()
+void CellViewer::Update()
 {
 }
