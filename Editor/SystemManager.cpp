@@ -14,5 +14,5 @@ SystemManager::SystemManager()
 
 void SystemManager::Update()
 {
-
+	g_viewerManagerPtr->Update();
 }
