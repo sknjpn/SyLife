@@ -7,3 +7,8 @@ SystemManager::SystemManager()
 {
 	g_assetManagerPtr = make_unique<AssetManager>();
 }
+
+void SystemManager::Update()
+{
+
+}
