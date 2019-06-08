@@ -3,7 +3,7 @@
 class Shape
 {
 public:
-	s3d::HSV	m_color;
-	s3d::Array<s3d::Vec2>	m_verticles;
+	char	m_color[3];
+	vector<Vector2D>	m_verticles;
 };
 
