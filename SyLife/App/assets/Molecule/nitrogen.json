@@ -1,4 +1,5 @@
 {
   "name": "Nitrogen",
-  "mass": 24.0
+  "mass": 24.0,
+  "color": [0, 128, 0]
 }

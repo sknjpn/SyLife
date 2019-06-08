@@ -1,4 +1,5 @@
 {
   "name": "Oxygen",
-  "mass": 36.0
+  "mass": 36.0,
+  "color": [128, 0, 0]
 }

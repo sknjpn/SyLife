@@ -13,11 +13,24 @@ void	AssetManager::LoadMoleculeModel(const string& filepath)
 	ptree pt;
 	read_json(filepath, pt);
 
-	// Data.value
+	// color
+	{
+		auto child = pt.get_child("color");
+		int n = 0;
+
+		for (auto it = child.begin(); n != 3; ++it)
+		{
+			model->m_color[n] = (*it).second.get_value<int>();
+
+			++n;
+		}
+	}
+
+	// mass
 	if (boost::optional<double> value = pt.get_optional<double>("mass")) model->m_mass = value.get();
 	else model->m_mass = 10.0;
 
-	// Data.str
+	// name
 	if (boost::optional<std::string> str = pt.get_optional<std::string>("name")) model->m_name = str.get();
 	else model->m_name = "str is nothing";
 
