@@ -104,6 +104,9 @@
     <ClCompile Include="Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -257,6 +260,9 @@
     </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

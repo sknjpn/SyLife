@@ -201,6 +201,7 @@
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
@@ -265,6 +266,7 @@
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Equipment.h" />
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="Part.h" />

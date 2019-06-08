@@ -1,13 +1,4 @@
-﻿struct Shape
-{
-	s3d::HSV		m_color;
-	s3d::Array<s3d::Vec2>	m_verticles;
-
-	Shape(s3d::Array<s3d::Vec2> verticle)
-		: m_verticles(verticle)
-		, m_color(s3d::RandomColor())
-	{}
-};
+﻿#include "Shape.h"
 
 void Main()
 {
