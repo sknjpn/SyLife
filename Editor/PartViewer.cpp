@@ -2,6 +2,7 @@
 
 void PartViewer::Update()
 {
+	/*
 	s3d::ClearPrint();
 
 	int scale = 10;
@@ -165,4 +166,5 @@ void PartViewer::Update()
 		tw.write(s);
 		tw.close();
 	}
+	*/
 }
