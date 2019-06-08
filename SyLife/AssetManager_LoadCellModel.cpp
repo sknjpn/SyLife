@@ -11,7 +11,7 @@ void	AssetManager::LoadCellModel(const string& filepath)
 	ptree pt;
 	read_json(filepath, pt);
 
-	if (boost::optional<std::string> type_str = pt.get_optional<std::string>("type"))
+	if (auto type_str = pt.get_optional<string>("type"))
 	{
 		const auto& model = g_assetManagerPtr->m_cellModels.emplace_back(make_shared<CellModel>());
 

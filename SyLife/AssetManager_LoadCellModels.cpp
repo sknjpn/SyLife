@@ -8,7 +8,7 @@ void	AssetManager::LoadCellModels()
 {
 	namespace fs = boost::filesystem;
 
-	const fs::path path("assets/part");
+	const fs::path path("assets/cell");
 
 	BOOST_FOREACH(const fs::path& p, std::make_pair(fs::recursive_directory_iterator(path), fs::recursive_directory_iterator())) {
 		if (!fs::is_directory(p)) LoadCellModel(p.string());

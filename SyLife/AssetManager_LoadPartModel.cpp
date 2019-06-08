@@ -15,19 +15,17 @@ void	AssetManager::LoadPartModel(const string& filepath)
 	ptree pt;
 	read_json(filepath, pt);
 
-	if (boost::optional<std::string> type_str = pt.get_optional<std::string>("type"))
+	if (auto type_str = pt.get_optional<string>("type"))
 	{
 		if (type_str.get() == "Body")
 		{
 			const auto& model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<BodyModel>());
 
-			// Data.value
-			if (boost::optional<double> value = pt.get_optional<double>("mass")) model->m_mass = value.get();
-			else model->m_mass = 10.0;
+			// Name
+			model->m_name = pt.get<string>("name");
 
-			// Data.str
-			if (boost::optional<std::string> str = pt.get_optional<std::string>("name")) model->m_name = str.get();
-			else model->m_name = "str is nothing";
+			// Mass
+			model->m_mass = pt.get<double>("mass");
 
 			s3d::Logger << s3d::Unicode::Widen(model->m_name);
 		}
@@ -36,12 +34,24 @@ void	AssetManager::LoadPartModel(const string& filepath)
 		{
 			const auto& model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<EquipmentModel>());
 
+			// Name
+			model->m_name = pt.get<string>("name");
+
+			// Mass
+			model->m_mass = pt.get<double>("mass");
+
 			s3d::Logger << s3d::Unicode::Widen(model->m_name);
 		}
 
 		if (type_str.get() == "Module")
 		{
 			const auto& model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<ModuleModel>());
+
+			// Name
+			model->m_name = pt.get<string>("name");
+
+			// Mass
+			model->m_mass = pt.get<double>("mass");
 
 			s3d::Logger << s3d::Unicode::Widen(model->m_name);
 		}
