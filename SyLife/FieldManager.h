@@ -13,6 +13,7 @@ public:
 	FieldManager() : m_size(800, 600) {}
 
 	void	Init();
+	void	Draw();
 	void	Update();
 
 	double	GetDeltaTime() const { return 1.0 / 60.0; }

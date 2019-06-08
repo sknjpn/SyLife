@@ -215,9 +215,13 @@
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
+    <ClCompile Include="CellManager_Draw.cpp" />
+    <ClCompile Include="CellManager_Update.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="FieldManager.cpp" />
+    <ClCompile Include="FieldManager_Draw.cpp" />
     <ClCompile Include="FieldManager_Update.cpp" />
+    <ClCompile Include="MoleculeManager_Draw.cpp" />
     <ClCompile Include="MoleculeManager_Update.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Module.cpp" />

@@ -20,3 +20,8 @@ SystemManager::SystemManager()
 	g_assetManagerPtr->Init();
 	g_fieldManagerPtr->Init();
 }
+
+void SystemManager::Update()
+{
+	g_fieldManagerPtr->Update();
+}

@@ -1,4 +1,5 @@
 ﻿#include "FieldManager.h"
+#include "SystemManager.h"
 #include "CellManager.h"
 #include "MoleculeManager.h"
 #include "AssetManager.h"
@@ -7,12 +8,9 @@
 
 void Main()
 {
-	g_fieldManagerPtr = make_unique<FieldManager>();
-
-	g_fieldManagerPtr->Init();
+	g_systemManagerPtr = make_unique<SystemManager>();
 
 	// MoleculeModelの追加
-
 	const auto& carbon = g_assetManagerPtr->GetMoleculeModel("Carbon");
 	const auto& nitrogen = g_assetManagerPtr->GetMoleculeModel("Nitrogen");
 	const auto& oxygen = g_assetManagerPtr->GetMoleculeModel("Oxygen");
@@ -45,7 +43,7 @@ void Main()
 
 	while (s3d::System::Update())
 	{
-		g_fieldManagerPtr->Update();
+		g_systemManagerPtr->Update();
 
 		if (s3d::MouseR.pressed())
 		{

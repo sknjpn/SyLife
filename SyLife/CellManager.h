@@ -15,6 +15,7 @@ public:
 	const vector<shared_ptr<Cell>>&	GetCells() const { return m_indexer.m_cloud.m_particles; }
 
 	void	Update();
+	void	Draw();
 };
 
 extern unique_ptr<CellManager>	g_cellManagerPtr;

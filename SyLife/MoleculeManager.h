@@ -20,6 +20,7 @@ public:
 	const vector<shared_ptr<Molecule>>&	GetMolecules() const { return m_indexer.m_cloud.m_particles; }
 
 	void	Update();
+	void	Draw();
 };
 
 extern unique_ptr<MoleculeManager> g_moleculeManagerPtr;
