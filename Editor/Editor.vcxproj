@@ -220,6 +220,7 @@
     </ClCompile>
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="ViewerManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -284,6 +285,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="ViewerManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

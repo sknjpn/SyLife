@@ -137,6 +137,9 @@
     <ClCompile Include="CellViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
+    <ClCompile Include="ViewerManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -308,6 +311,9 @@
     </ClInclude>
     <ClInclude Include="CellViewer.h">
       <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewerManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
