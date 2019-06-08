@@ -69,6 +69,15 @@
     <Filter Include="Source Files\Asset\Cell">
       <UniqueIdentifier>{61325ca8-ca52-4c4d-b392-3eb55d71d865}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Asset\Part\Body">
+      <UniqueIdentifier>{85ad7435-7d87-40c6-9592-d369f3ba20be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Asset\Part\Equipment">
+      <UniqueIdentifier>{8029266e-fbe0-4d6a-9b43-d11975998fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Asset\Part\Module">
+      <UniqueIdentifier>{8423c53b-21db-423a-8d42-da1622de934c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -77,17 +86,8 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Body.cpp">
-      <Filter>Source Files\Asset\Part</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files\Asset\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipment.cpp">
-      <Filter>Source Files\Asset\Part</Filter>
-    </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Source Files\Asset\Part</Filter>
     </ClCompile>
     <ClCompile Include="Molecule.cpp">
       <Filter>Source Files\Asset\Molecule</Filter>
@@ -109,6 +109,15 @@
     </ClCompile>
     <ClCompile Include="FileManager.cpp">
       <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Body.cpp">
+      <Filter>Source Files\Asset\Part\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>Source Files\Asset\Part\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files\Asset\Part\Module</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,17 +243,8 @@
     <ClInclude Include="stdafx.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files\Asset\Part</Filter>
-    </ClInclude>
     <ClInclude Include="Cell.h">
       <Filter>Source Files\Asset\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Source Files\Asset\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files\Asset\Part</Filter>
     </ClInclude>
     <ClInclude Include="Molecule.h">
       <Filter>Source Files\Asset\Molecule</Filter>
@@ -266,6 +266,15 @@
     </ClInclude>
     <ClInclude Include="FileManager.h">
       <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files\Asset\Part\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Source Files\Asset\Part\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files\Asset\Part\Module</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
