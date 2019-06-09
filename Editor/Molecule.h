@@ -1,6 +1,9 @@
 #pragma once
 
+#include "Model.h"
+
 class MoleculeModel
+	: public Model
 {
 public:
 	string	m_name;
