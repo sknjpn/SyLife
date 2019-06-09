@@ -2,7 +2,7 @@
 
 #include "ViewerManager.h"
 #include "PartViewer.h"
-#include "FileViewer.h"
+#include "AssetViewer.h"
 
 void Main()
 {
@@ -15,7 +15,7 @@ void Main()
 	}
 	
 	{
-		const auto& fv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<FileViewer>());
+		const auto& fv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<AssetViewer>());
 
 		fv->m_drawRect = s3d::RectF(0.0, 0.0, 200.0, 600.0);
 	}

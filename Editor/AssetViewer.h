@@ -2,7 +2,7 @@
 
 #include "Viewer.h"
 
-class FileViewer
+class AssetViewer
 	: public Viewer
 {
 public:

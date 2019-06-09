@@ -125,9 +125,6 @@
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="FileViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
     <ClCompile Include="MoleculeViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
@@ -142,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -303,9 +303,6 @@
     <ClInclude Include="Viewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="FileViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
     <ClInclude Include="MoleculeViewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
@@ -320,6 +317,9 @@
     </ClInclude>
     <ClInclude Include="Model.h">
       <Filter>Source Files\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetViewer.h">
+      <Filter>Source Files\Viewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
