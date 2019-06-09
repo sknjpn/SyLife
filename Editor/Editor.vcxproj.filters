@@ -158,6 +158,9 @@
     <ClCompile Include="AssetManager_LoadCellModels.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\Asset</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -332,6 +335,9 @@
     </ClInclude>
     <ClInclude Include="ViewerManager.h">
       <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source Files\Asset</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
