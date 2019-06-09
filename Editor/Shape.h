@@ -1,6 +1,9 @@
 #pragma once
 
+#include "Model.h"
+
 class Shape
+	: public Model
 {
 public:
 	s3d::HSV	m_color;
@@ -11,5 +14,8 @@ public:
 		: m_verticles(verticles)
 		, m_color(s3d::RandomHSV())
 	{}
+
+
+	ptree	ToJSON() const override;
 };
 

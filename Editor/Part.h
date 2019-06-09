@@ -11,5 +11,4 @@ public:
 	double	m_mass;
 
 public:
-	ptree	ToJSON() const override;
 };

@@ -6,5 +6,5 @@ class EquipmentModel
 	: public PartModel
 {
 public:
-
+	ptree	ToJSON() const override;
 };
