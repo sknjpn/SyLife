@@ -2,5 +2,14 @@
 
 ptree ModuleModel::ToJSON() const
 {
-	return ptree();
+	ptree pt;
+
+	// name
+	pt.put("name", m_name);
+
+	// type
+	pt.put("type", "Module");
+
+	// mass
+	pt.put<int>("mass", m_mass);
 }

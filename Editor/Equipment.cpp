@@ -2,5 +2,14 @@
 
 ptree EquipmentModel::ToJSON() const
 {
-	return ptree();
+	ptree pt;
+
+	// name
+	pt.put("name", m_name);
+
+	// type
+	pt.put("type", "Equipment");
+
+	// mass
+	pt.put<int>("mass", m_mass);
 }
