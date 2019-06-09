@@ -7,5 +7,20 @@ ptree CellModel::ToJSON() const
 	// name
 	pt.put("name", m_name);
 
+	// body
+	{
+
+	}
+
+	// modules
+	{
+
+	}
+
+	// equipments
+	{
+
+	}
+
 	return pt;
 }
