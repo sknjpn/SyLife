@@ -4,7 +4,6 @@
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
 
-
 ptree BodyModel::ToJSON() const
 {
 	ptree pt;
@@ -35,5 +34,6 @@ void BodyModel::Load(const string& filepath)
 
 void BodyModel::Save() const
 {
+
 }
 
