@@ -12,4 +12,6 @@ ptree ModuleModel::ToJSON() const
 
 	// mass
 	pt.put<int>("mass", m_mass);
+
+	return pt;
 }

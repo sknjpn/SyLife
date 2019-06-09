@@ -2,5 +2,10 @@
 
 ptree CellModel::ToJSON() const
 {
-	return ptree();
+	ptree pt;
+
+	// name
+	pt.put("name", m_name);
+
+	return pt;
 }

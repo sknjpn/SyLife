@@ -30,5 +30,7 @@ ptree MoleculeModel::ToJSON() const
 
 		pt.add_child("color", color);
 	}
+
+	return pt;
 }
 

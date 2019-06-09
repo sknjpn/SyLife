@@ -43,5 +43,5 @@ ptree Shape::ToJSON() const
 		pt.add_child("verticles", verticles);
 	}
 
-	return ptree();
+	return pt;
 }
