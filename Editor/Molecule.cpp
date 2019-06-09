@@ -4,7 +4,6 @@
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
 
-
 ptree MoleculeModel::ToJSON() const
 {
 	ptree pt;
@@ -34,8 +33,32 @@ ptree MoleculeModel::ToJSON() const
 	return pt;
 }
 
-void MoleculeModel::Load(const string & path) const
+void MoleculeModel::Load(const string& filepath)
 {
+	ptree pt;
+	read_json(filepath, pt);
+
+	// color
+	{
+		auto child = pt.get_child("color");
+		int n = 0;
+
+		for (auto it = child.begin(); n != 3; ++it)
+		{
+			m_color[n] = (*it).second.get_value<int>();
+
+			++n;
+		}
+	}
+
+	// mass
+	m_mass = pt.get<double>("mass");
+
+	// name
+	m_name = pt.get<string>("name");
+
+	// radius
+	m_radius = sqrt(m_mass);
 }
 
 void MoleculeModel::Save() const

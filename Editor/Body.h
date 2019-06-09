@@ -7,6 +7,6 @@ class BodyModel
 {
 public:
 	ptree	ToJSON() const override;
-	void	Load(const string& path) const override;
+	void	Load(const string& filepath) override;
 	void	Save() const override;
 };

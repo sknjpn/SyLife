@@ -140,19 +140,10 @@
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager_LoadMoleculeModel.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="AssetManager_LoadMoleculeModels.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager_LoadPartModel.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="AssetManager_LoadPartModels.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_LoadCellModel.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager_LoadCellModels.cpp">

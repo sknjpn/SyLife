@@ -11,7 +11,7 @@ ptree BodyModel::ToJSON() const
 
 	// name
 	pt.put("name", m_name);
-	
+
 	// type
 	pt.put("type", "Body");
 
@@ -21,8 +21,16 @@ ptree BodyModel::ToJSON() const
 	return pt;
 }
 
-void BodyModel::Load(const string & path) const
+void BodyModel::Load(const string& filepath)
 {
+	ptree pt;
+	read_json(filepath, pt);
+
+	// name
+	m_name = pt.get<string>("name");
+
+	// mass
+	m_mass = pt.get<double>("mass");
 }
 
 void BodyModel::Save() const

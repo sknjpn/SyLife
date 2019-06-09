@@ -1,4 +1,8 @@
 #include "Cell.h"
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/foreach.hpp>
+#include <boost/optional.hpp>
 
 ptree CellModel::ToJSON() const
 {
@@ -25,8 +29,13 @@ ptree CellModel::ToJSON() const
 	return pt;
 }
 
-void CellModel::Load(const string & path) const
+void CellModel::Load(const string& filepath)
 {
+	ptree pt;
+	read_json(filepath, pt);
+
+	// name
+	m_name = pt.get<string>("name");
 }
 
 void CellModel::Save() const

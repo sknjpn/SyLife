@@ -10,7 +10,7 @@ public:
 	virtual ~Model() = default;
 
 	virtual ptree	ToJSON() const = 0;
-	virtual void	Load(const string& path) const = 0;
+	virtual void	Load(const string& filepath) = 0;
 	virtual void	Save() const = 0;
 };
 

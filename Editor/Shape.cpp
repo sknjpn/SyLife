@@ -1,4 +1,8 @@
 #include "Shape.h"
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/foreach.hpp>
+#include <boost/optional.hpp>
 
 ptree Shape::ToJSON() const
 {
@@ -46,7 +50,7 @@ ptree Shape::ToJSON() const
 	return pt;
 }
 
-void Shape::Load(const string & path) const
+void Shape::Load(const string& filepath)
 {
 }
 

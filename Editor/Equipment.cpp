@@ -1,4 +1,8 @@
 #include "Equipment.h"
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/foreach.hpp>
+#include <boost/optional.hpp>
 
 ptree EquipmentModel::ToJSON() const
 {
@@ -16,8 +20,16 @@ ptree EquipmentModel::ToJSON() const
 	return pt;
 }
 
-void EquipmentModel::Load(const string & path) const
+void EquipmentModel::Load(const string& filepath)
 {
+	ptree pt;
+	read_json(filepath, pt);
+
+	// name
+	m_name = pt.get<string>("name");
+
+	// mass
+	m_mass = pt.get<double>("mass");
 }
 
 void EquipmentModel::Save() const
