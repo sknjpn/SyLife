@@ -13,5 +13,7 @@ public:
 
 public:
 	void	Update() override;
+
+	void	Save();
 };
 
