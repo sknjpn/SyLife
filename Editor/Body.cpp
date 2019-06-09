@@ -9,24 +9,13 @@ ptree BodyModel::ToJSON() const
 {
 	ptree pt;
 
+	// name
 	pt.put("name", m_name);
+	
+	// type
 	pt.put("type", "Body");
 
-	ptree child;
-	{
-		ptree info;
-		info.put("id", 1);
-		info.put("name", "Alice");
-		child.push_back(std::make_pair("", info));
-	}
-	{
-		ptree info;
-		info.put("id", 2);
-		info.put("name", "Millia");
-		child.push_back(std::make_pair("", info));
-	}
-	pt.add_child("Data.info", child);
-
-	write_json("data_out.json", pt);
+	// mass
+	pt.put<int>("mass", m_mass);
 }
 
