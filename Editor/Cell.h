@@ -8,4 +8,7 @@ class CellModel
 public:
 	string	m_name;
 	string	m_filepath;
+
+public:
+	ptree	ToJson() const override;
 };

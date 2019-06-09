@@ -11,4 +11,7 @@ public:
 	double	m_mass;
 	double	m_radius;
 	char	m_color[3];
+
+public:
+	ptree	ToJson() const override;
 };
