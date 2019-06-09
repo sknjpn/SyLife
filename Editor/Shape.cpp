@@ -45,3 +45,11 @@ ptree Shape::ToJSON() const
 
 	return pt;
 }
+
+void Shape::Load(const string & path) const
+{
+}
+
+void Shape::Save() const
+{
+}

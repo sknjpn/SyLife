@@ -34,3 +34,11 @@ ptree MoleculeModel::ToJSON() const
 	return pt;
 }
 
+void MoleculeModel::Load(const string & path) const
+{
+}
+
+void MoleculeModel::Save() const
+{
+}
+

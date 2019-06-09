@@ -15,3 +15,11 @@ ptree EquipmentModel::ToJSON() const
 
 	return pt;
 }
+
+void EquipmentModel::Load(const string & path) const
+{
+}
+
+void EquipmentModel::Save() const
+{
+}

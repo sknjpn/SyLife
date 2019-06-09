@@ -15,3 +15,11 @@ ptree ModuleModel::ToJSON() const
 
 	return pt;
 }
+
+void ModuleModel::Load(const string & path) const
+{
+}
+
+void ModuleModel::Save() const
+{
+}

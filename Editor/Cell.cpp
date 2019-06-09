@@ -24,3 +24,11 @@ ptree CellModel::ToJSON() const
 
 	return pt;
 }
+
+void CellModel::Load(const string & path) const
+{
+}
+
+void CellModel::Save() const
+{
+}

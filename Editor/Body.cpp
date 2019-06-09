@@ -21,3 +21,11 @@ ptree BodyModel::ToJSON() const
 	return pt;
 }
 
+void BodyModel::Load(const string & path) const
+{
+}
+
+void BodyModel::Save() const
+{
+}
+

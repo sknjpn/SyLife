@@ -15,7 +15,8 @@ public:
 		, m_color(s3d::RandomHSV())
 	{}
 
-
 	ptree	ToJSON() const override;
+	void	Load(const string& path) const override;
+	void	Save() const override;
 };
 
