@@ -10,5 +10,5 @@ public:
 	string	m_filepath;
 	double	m_mass;
 
-	string	ToJson() const override();
+	ptree	ToJson() const override;
 };
