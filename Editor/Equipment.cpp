@@ -31,7 +31,3 @@ void EquipmentModel::Load(const string& filepath)
 	// mass
 	m_mass = pt.get<double>("mass");
 }
-
-void EquipmentModel::Save() const
-{
-}

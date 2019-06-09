@@ -60,8 +60,3 @@ void MoleculeModel::Load(const string& filepath)
 	// radius
 	m_radius = sqrt(m_mass);
 }
-
-void MoleculeModel::Save() const
-{
-}
-

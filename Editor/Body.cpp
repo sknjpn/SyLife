@@ -31,9 +31,3 @@ void BodyModel::Load(const string& filepath)
 	// mass
 	m_mass = pt.get<double>("mass");
 }
-
-void BodyModel::Save() const
-{
-
-}
-

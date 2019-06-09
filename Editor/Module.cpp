@@ -31,7 +31,3 @@ void ModuleModel::Load(const string& filepath)
 	// mass
 	m_mass = pt.get<double>("mass");
 }
-
-void ModuleModel::Save() const
-{
-}

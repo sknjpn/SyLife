@@ -37,7 +37,3 @@ void CellModel::Load(const string& filepath)
 	// name
 	m_name = pt.get<string>("name");
 }
-
-void CellModel::Save() const
-{
-}
