@@ -1,0 +1,8 @@
+{
+  "name": "Organelle",
+  "type": "Module",
+  "mass": 10.0,
+  "material": [
+      { "name": "Amino Acid", "size": 2 }
+  ]
+}

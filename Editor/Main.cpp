@@ -23,7 +23,5 @@ void Main()
 	while (s3d::System::Update())
 	{
 		g_systemManagerPtr->Update();
-
-		s3d::Print << s3d::Window::Size();
 	}
 }

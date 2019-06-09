@@ -12,6 +12,6 @@ void ViewerManager::Update()
 
 		v->Update();
 
-		s3d::RectF(v->m_drawRect.size).drawFrame(2.0, 0.0, s3d::Palette::Red);
+		s3d::RectF(v->m_drawRect.size).drawFrame(1.0, 0.0, s3d::ColorF(s3d::Palette::Red, 0.5));
 	}
 }

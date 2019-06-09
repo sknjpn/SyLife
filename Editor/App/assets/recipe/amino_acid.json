@@ -1,0 +1,12 @@
+{
+  "name": "Amino Acid",
+  "cost": 1.0,
+  "material": [
+    { "name": "Carbon", "size": 1 },
+    { "name": "Nitrogen", "size": 1 },
+    { "name": "Oxygen", "size": 1 }
+  ],
+  "production": [
+    { "name": "Amino Acid", "size": 1 }
+  ]
+}

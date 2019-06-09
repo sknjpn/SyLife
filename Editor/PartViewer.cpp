@@ -18,8 +18,6 @@ void PartViewer::Update()
 	s3d::Point cursor = s3d::Cursor::Pos();
 	s3d::RectF pointer(s3d::Arg::center(cursor), boxSize);
 
-	s3d::Print << cursor;
-
 	// Draw
 	{
 		for (const auto& s : shapes)
