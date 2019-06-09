@@ -206,9 +206,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AssetManager_LoadCellModels.cpp" />
-    <ClCompile Include="AssetManager_LoadMoleculeModels.cpp" />
-    <ClCompile Include="AssetManager_LoadPartModels.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="CellViewer.cpp" />
     <ClCompile Include="FileViewer.cpp" />
