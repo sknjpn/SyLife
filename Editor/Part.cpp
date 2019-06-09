@@ -5,7 +5,7 @@
 #include <boost/optional.hpp>
 
 
-string PartModel::ToJson() const
+string PartModel::ToJSON() const
 {
 	ptree pt;
 

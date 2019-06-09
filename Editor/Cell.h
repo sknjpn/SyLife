@@ -10,5 +10,5 @@ public:
 	string	m_filepath;
 
 public:
-	ptree	ToJson() const override;
+	ptree	ToJSON() const override;
 };

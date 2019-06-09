@@ -13,5 +13,5 @@ public:
 	char	m_color[3];
 
 public:
-	ptree	ToJson() const override;
+	ptree	ToJSON() const override;
 };

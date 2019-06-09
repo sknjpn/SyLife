@@ -9,6 +9,6 @@ class Model
 public:
 	virtual ~Model() = default;
 
-	virtual ptree	ToJson() const = 0;
+	virtual ptree	ToJSON() const = 0;
 };
 
