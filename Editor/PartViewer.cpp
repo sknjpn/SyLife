@@ -2,7 +2,10 @@
 
 void PartViewer::Update()
 {
-	s3d::ClearPrint();
+	m_camera.update();
+
+	auto t = m_camera.createTransformer();
+
 	int scale = 10;
 
 	const double thickness = 3.0 / scale;
