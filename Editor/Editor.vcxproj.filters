@@ -321,5 +321,8 @@
     <ClInclude Include="AssetViewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
+    <ClInclude Include="TinyCamera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
