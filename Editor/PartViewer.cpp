@@ -1,8 +1,13 @@
 #include "PartViewer.h"
+#include "AssetManager.h"
+#include "Body.h"
 
 void PartViewer::Init()
 {
 	m_camera.setCenter(m_drawRect.center());
+
+	// Model
+	m_model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<BodyModel>());
 }
 
 void PartViewer::Update()
@@ -124,6 +129,5 @@ void PartViewer::Update()
 	// Save
 	if (s3d::KeyControl.pressed() && s3d::KeyS.down())
 	{
-
 	}
 }
