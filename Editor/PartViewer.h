@@ -11,9 +11,10 @@ public:
 	s3d::Array<Shape> shapes;
 	s3d::Array<s3d::Vec2> verticles;
 	s3d::Vec2* selectedVerticle = nullptr;
-	RestrictedCamera2D m_camera;
+	CursorCamera2D m_camera;
 
 public:
+	void	Init();
 	void	Update() override;
 
 	void	Save();

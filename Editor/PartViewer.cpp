@@ -1,60 +1,78 @@
 #include "PartViewer.h"
 
+void PartViewer::Init()
+{
+	m_camera.setCenter(m_drawRect.center());
+}
+
 void PartViewer::Update()
 {
 	m_camera.update();
 
-	auto t = m_camera.createTransformer();
+	const auto t = m_camera.createTransformer();
+	const int scale = log10(m_camera.getMagnification());
+	const double thickness = 2.0 / m_camera.getMagnification();
+	const double interval = pow(10.0, -scale + 1);
+	const auto cursor = (s3d::Cursor::Pos() / interval).asPoint() * interval;
+	const auto boxSize = s3d::Vec2::One() * 5.0 / m_camera.getMagnification();
+	const auto pointer = s3d::RectF(s3d::Arg::center(cursor), boxSize);
 
-	int scale = 10;
-
-	const double thickness = 3.0 / scale;
-	const s3d::Vec2 boxSize = s3d::Vec2(5.0, 5.0) / scale;
-	auto t = s3d::Transformer2D(s3d::Mat3x2::Scale(scale).translated(s3d::Window::Size() / 2.0), true);
-
-	s3d::Line(-s3d::Window::Size().x, 0, s3d::Window::Size().x, 0).draw(2.0 / scale, s3d::Palette::Red);
-	s3d::Line(0, -s3d::Window::Size().y, 0, s3d::Window::Size().y).draw(2.0 / scale, s3d::Palette::Red);
-
-	for (int x = -s3d::Window::Size().x / scale; x < s3d::Window::Size().x / scale; x += 1) s3d::Line(x, -s3d::Window::Size().y, x, s3d::Window::Size().y).draw(1.0 / scale, s3d::ColorF(1.0, 0.25));
-	for (int y = -s3d::Window::Size().y / scale; y < s3d::Window::Size().y / scale; y += 1) s3d::Line(-s3d::Window::Size().x, y, s3d::Window::Size().x, y).draw(1.0 / scale, s3d::ColorF(1.0, 0.25));
-
-	s3d::Point cursor = s3d::Cursor::Pos();
-	s3d::RectF pointer(s3d::Arg::center(cursor), boxSize);
-
-	// Draw
+	// 縦線
 	{
-		for (const auto& s : shapes)
+		const auto color = s3d::ColorF(s3d::Palette::White, 0.25);
+
+		for (double x = 0; x >= m_camera.getCameraRect().x; x -= interval)
+			s3d::Line(x, m_camera.getCameraRect().y, x, m_camera.getCameraRect().br().y).draw(thickness, color);
+
+		for (double x = 0; x <= m_camera.getCameraRect().br().x; x += interval)
+			s3d::Line(x, m_camera.getCameraRect().y, x, m_camera.getCameraRect().br().y).draw(thickness, color);
+
+		for (double y = 0; y >= m_camera.getCameraRect().y; y -= interval)
+			s3d::Line(m_camera.getCameraRect().x, y, m_camera.getCameraRect().br().x, y).draw(thickness, color);
+
+		for (double y = 0; y <= m_camera.getCameraRect().br().y; y += interval)
+			s3d::Line(m_camera.getCameraRect().x, y, m_camera.getCameraRect().br().x, y).draw(thickness, color);
+	}
+
+	// XY軸
+	{
+		s3d::Line(m_camera.getCameraRect().x, 0, m_camera.getCameraRect().br().x, 0).draw(thickness, s3d::Palette::Red);
+		s3d::Line(0, m_camera.getCameraRect().y, 0, m_camera.getCameraRect().br().y).draw(thickness, s3d::Palette::Red);
+	}
+
+	// Shapes
+	for (const auto& s : shapes)
+	{
+		// Face
 		{
-			// Face
-			{
-				s3d::Polygon p(s.m_verticles);
+			s3d::Polygon p(s.m_verticles);
 
-				p.draw(s3d::ColorF(s.m_color , 0.5));
-			}
-
-			// Line
-			for (auto it = s.m_verticles.begin(); it != s.m_verticles.end(); ++it)
-			{
-				s3d::Line l = (it == s.m_verticles.end() - 1) ? s3d::Line(s.m_verticles.front(), s.m_verticles.back()) : s3d::Line(*it, *(it + 1));
-
-				l.draw(thickness, s3d::ColorF(s.m_color, 0.5));
-			}
-
-			// Verticle
-			for (auto it = verticles.begin(); it != verticles.end(); ++it)
-			{
-				auto r = s3d::RectF(s3d::Arg::center(*it), boxSize);
-
-				r.draw(r.mouseOver() ? s3d::Palette::Blue : s.m_color);
-			}
+			p.draw(s3d::ColorF(s.m_color, 0.5));
 		}
 
-		if (verticles.empty())
+		// Line
+		for (auto it = s.m_verticles.begin(); it != s.m_verticles.end(); ++it)
 		{
-			// Pointer
-			pointer.draw(s3d::Palette::Red);
+			s3d::Line l = (it == s.m_verticles.end() - 1) ? s3d::Line(s.m_verticles.front(), s.m_verticles.back()) : s3d::Line(*it, *(it + 1));
+
+			l.draw(thickness, s3d::ColorF(s.m_color, 0.5));
 		}
-		else
+
+		// Verticle
+		for (auto it = verticles.begin(); it != verticles.end(); ++it)
+		{
+			auto r = s3d::RectF(s3d::Arg::center(*it), boxSize);
+
+			r.draw(r.mouseOver() ? s3d::Palette::Blue : s.m_color);
+		}
+	}
+
+	// Verticles
+	{
+		// Pointer
+		pointer.draw(s3d::Palette::Red);
+		
+		if(!verticles.empty())
 		{
 			// Line
 			for (auto it = verticles.begin(); it < verticles.end() - 1; ++it)
@@ -68,60 +86,37 @@ void PartViewer::Update()
 			{
 				auto r = s3d::RectF(s3d::Arg::center(*it), boxSize);
 
-				r.draw(r.mouseOver() ? s3d::Palette::Blue : s3d::Palette::White);
+				r.draw(*it == cursor ? s3d::Palette::Blue : s3d::Palette::White);
 			}
-
-			// Pointer
-			//pointer.draw(s3d::Palette::Red);
 		}
 	}
 
 	// Update
 	{
-		if (verticles.empty())
+		// Verticleの配置
+		if (verticles.empty() && s3d::MouseL.down()) verticles.emplace_back(cursor);
+		else if (!verticles.empty())
 		{
-			for (auto it = shapes.rbegin(); it != shapes.rend(); ++it)
+			//Verticleを繋げて固定
+			for (auto it = verticles.begin(); it != verticles.end(); ++it)
 			{
-				if (s3d::Polygon((*it).m_verticles).mouseOver())
+				if (*it == cursor && s3d::MouseL.down())
 				{
-					(*it).m_color.h += s3d::Mouse::Wheel();
+					// Connect
+					if (it != verticles.begin()) verticles.erase(verticles.begin(), it);
 
-					break;
+					shapes.emplace_back(verticles);
+
+					verticles.clear();
+
+					return;
 				}
-			}
-
-			// 新規配置
-			if (s3d::MouseL.down()) verticles.emplace_back(cursor);
-		}
-		else
-		{
-			//Verticle
-			{
-				bool f = false;
-
-				for (auto it = verticles.begin(); it != verticles.end(); ++it)
-				{
-					auto r = s3d::RectF(s3d::Arg::center(*it), boxSize);
-
-					if (r.leftClicked())
-					{
-						// Connect
-						if (it != verticles.begin()) verticles.erase(verticles.begin(), it);
-
-						shapes.emplace_back(verticles);
-
-						verticles.clear();
-
-						f = true;
-						break;
-					}
-				}
-
-				if (f) return;
 			}
 
 			// 連続配置
 			if (s3d::MouseL.down()) verticles.emplace_back(cursor);
+
+			// 最後のVerticleを削除
 			if (s3d::MouseR.down()) verticles.pop_back();
 		}
 	}
