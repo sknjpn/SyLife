@@ -120,48 +120,10 @@ void PartViewer::Update()
 			if (s3d::MouseR.down()) verticles.pop_back();
 		}
 	}
-}
 
-void PartViewer::Save()
-{
-	s3d::String s;
-
-	s += U"[";
-	s += U"\r  ";
-	for (auto it = shapes.begin(); it != shapes.end(); ++it)
+	// Save
+	if (s3d::KeyControl.pressed() && s3d::KeyS.down())
 	{
-		s += U"{\r    ";
-		{
-			auto r = (*it).m_color.toColor().r;
-			auto g = (*it).m_color.toColor().g;
-			auto b = (*it).m_color.toColor().b;
 
-			s += s3d::Format(U"\"color\": [", r, U", ", g, U", ", b, U"]");
-		}
-		s += U",";
-		s += U"\r    ";
-
-		{
-			s += U"\"verticles\": [";
-			for (auto v = (*it).m_verticles.begin(); v != (*it).m_verticles.end(); ++v)
-			{
-				s += s3d::Format(U"[", (*v).x, U", ", (*v).y, U"]");
-
-				if (v != (*it).m_verticles.end() - 1) s += U", ";
-			}
-			s += U"]";
-
-			s += U"\r  ";
-		}
-		s += U"}";
-
-		if (it != shapes.end() - 1) s += U",\r  ";
-		else s += U"\r";
 	}
-	s += U"]";
-
-	s3d::TextWriter tw(U"a.json");
-
-	tw.write(s);
-	tw.close();
 }
