@@ -143,6 +143,9 @@
     <ClCompile Include="AssetViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
+    <ClCompile Include="PartPropertyViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -324,5 +327,6 @@
     <ClInclude Include="TinyCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="PartPropertyViewer.h" />
   </ItemGroup>
 </Project>
