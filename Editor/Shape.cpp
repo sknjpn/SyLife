@@ -34,11 +34,8 @@ ptree Shape::ToJSON() const
 
 			for (const auto& v : m_verticles)
 			{
-				verticle_x.put("", v.x);
-				verticle_y.put("", v.y);
-
-				verticle.push_back(std::make_pair("", verticle_x));
-				verticle.push_back(std::make_pair("", verticle_y));
+				verticle.put("x", v.x);
+				verticle.put("y", v.y);
 				
 				verticles.push_back(std::make_pair("", verticle));
 			}

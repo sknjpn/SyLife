@@ -17,6 +17,18 @@ ptree BodyModel::ToJSON() const
 	// mass
 	pt.put<int>("mass", m_mass);
 
+	// shapes
+	{
+		ptree shapes;
+
+		for (const auto& v : m_shapes)
+		{
+			shapes.push_back(std::make_pair("", v.ToJSON()));
+		}
+
+		pt.add_child("shapes", shapes);
+	}
+
 	return pt;
 }
 
