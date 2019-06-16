@@ -216,6 +216,7 @@
     <ClCompile Include="MoleculeViewer.cpp" />
     <ClCompile Include="PartPropertyViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
+    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Equipment.cpp" />
@@ -292,6 +293,7 @@
     <ClInclude Include="MoleculeViewer.h" />
     <ClInclude Include="PartPropertyViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
+    <ClInclude Include="TextBox.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="Cell.h" />

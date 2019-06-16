@@ -158,6 +158,9 @@
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\Viewer\Part</Filter>
     </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -350,6 +353,9 @@
     </ClInclude>
     <ClInclude Include="PartShapeViewer.h">
       <Filter>Source Files\Viewer\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
