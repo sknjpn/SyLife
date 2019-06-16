@@ -2,25 +2,18 @@
 
 #include "ViewerManager.h"
 #include "PartShapeViewer.h"
+#include "BodyPropertyViewer.h"
 #include "AssetViewer.h"
 
 void Main()
 {
 	g_systemManagerPtr = make_unique<SystemManager>();
+	
+	g_viewerManagerPtr->AddViewer<PartShapeViewer>(s3d::RectF(0, 0, 600, 450));
+	g_viewerManagerPtr->AddViewer<BodyPropertyViewer>(s3d::RectF(0, 450, 600, 150));
+	g_viewerManagerPtr->AddViewer<AssetViewer>(s3d::RectF(600, 0, 200, 600));
 
-	{
-		const auto& pv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<PartShapeViewer>());
-
-		pv->m_drawRect = s3d::RectF(0.0, 0.0, 600.0, 600.0);
-
-		pv->Init();
-	}
-
-	{
-		const auto& fv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<AssetViewer>());
-
-		fv->m_drawRect = s3d::RectF(600.0, 0.0, 200.0, 600.0);
-	}
+	g_systemManagerPtr->Start();
 
 	while (s3d::System::Update())
 	{

@@ -18,3 +18,9 @@ void SystemManager::Update()
 {
 	g_viewerManagerPtr->Update();
 }
+
+void SystemManager::Start()
+{
+	// ViewerManager
+	for (const auto& v : g_viewerManagerPtr->m_viewers) v->Init();
+}
