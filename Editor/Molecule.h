@@ -15,5 +15,5 @@ public:
 	ptree	ToJSON() const override;
 	void	Load(const string& filepath) override;
 
-	string	GetFilepath() const override { return "asset/part/molecule/" + GetFilename(); }
+	string	GetFilepath() const override { return "assets/part/molecule/" + GetFilename(); }
 };

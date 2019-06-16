@@ -29,6 +29,6 @@ string Model::GetFilename() const
 
 string Model::GetFilepath() const
 {
-	return "asset/model/" + GetFilename();
+	return "assets/model/" + GetFilename();
 }
 
