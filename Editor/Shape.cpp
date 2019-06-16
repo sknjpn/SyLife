@@ -30,7 +30,6 @@ ptree Shape::ToJSON() const
 
 		{
 			ptree verticle;
-			ptree verticle_x, verticle_y;
 
 			for (const auto& v : m_verticles)
 			{
