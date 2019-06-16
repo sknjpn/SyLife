@@ -12,6 +12,8 @@ void Main()
 		const auto& pv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<PartViewer>());
 
 		pv->m_drawRect = s3d::RectF(0.0, 0.0, 600.0, 600.0);
+
+		pv->Init();
 	}
 
 	{

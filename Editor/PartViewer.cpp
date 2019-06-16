@@ -129,5 +129,10 @@ void PartViewer::Update()
 	// Save
 	if (s3d::KeyControl.pressed() && s3d::KeyS.down())
 	{
+		m_model->m_name = "peke";
+		m_model->m_mass = 10.0;
+		//for (const auto& s : shapes) m_model->m_shapes.emplace_back(s);
+
+		m_model->Save();
 	}
 }

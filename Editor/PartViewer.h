@@ -16,7 +16,7 @@ public:
 	CursorCamera2D m_camera;
 
 public:
-	void	Init();
+	void	Init() override;
 	void	Update() override;
 
 	void	Save();

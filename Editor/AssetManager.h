@@ -12,6 +12,13 @@ public:
 	vector<shared_ptr<CellModel>>		m_cellModels;
 
 public:
+	AssetManager()
+	{
+		m_moleculeModels.reserve(1024);
+		m_partModels.reserve(1024);
+		m_cellModels.reserve(1024);
+	}
+
 	void	Init();
 
 	const shared_ptr<MoleculeModel>&	GetMoleculeModel(const string& name) const
