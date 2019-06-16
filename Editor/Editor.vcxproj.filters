@@ -81,6 +81,9 @@
     <Filter Include="Source Files\Viewer">
       <UniqueIdentifier>{dd329a44-fe9b-4745-8718-7847aa795125}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Viewer\Part">
+      <UniqueIdentifier>{109b8b8e-75a8-4fee-a64e-6359d4ffa7a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -128,9 +131,6 @@
     <ClCompile Include="MoleculeViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="PartViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
     <ClCompile Include="CellViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
@@ -144,7 +144,19 @@
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
     <ClCompile Include="PartPropertyViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyPropertyViewer.cpp">
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentPropertyViewer.cpp">
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePropertyViewer.cpp">
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="PartShapeViewer.cpp">
+      <Filter>Source Files\Viewer\Part</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -309,9 +321,6 @@
     <ClInclude Include="MoleculeViewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="PartViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
     <ClInclude Include="CellViewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
@@ -327,6 +336,20 @@
     <ClInclude Include="TinyCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="PartPropertyViewer.h" />
+    <ClInclude Include="PartPropertyViewer.h">
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyPropertyViewer.h">
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentPropertyViewer.h">
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePropertyViewer.h">
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="PartShapeViewer.h">
+      <Filter>Source Files\Viewer\Part</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

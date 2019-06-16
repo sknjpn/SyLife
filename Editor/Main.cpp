@@ -1,7 +1,7 @@
 ﻿#include "SystemManager.h"
 
 #include "ViewerManager.h"
-#include "PartViewer.h"
+#include "PartShapeViewer.h"
 #include "AssetViewer.h"
 
 void Main()
@@ -9,7 +9,7 @@ void Main()
 	g_systemManagerPtr = make_unique<SystemManager>();
 
 	{
-		const auto& pv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<PartViewer>());
+		const auto& pv = g_viewerManagerPtr->m_viewers.emplace_back(make_unique<PartShapeViewer>());
 
 		pv->m_drawRect = s3d::RectF(0.0, 0.0, 600.0, 600.0);
 

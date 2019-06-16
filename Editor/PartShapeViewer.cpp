@@ -1,8 +1,8 @@
-#include "PartViewer.h"
+#include "PartShapeViewer.h"
 #include "AssetManager.h"
 #include "Body.h"
 
-void PartViewer::Init()
+void PartShapeViewer::Init()
 {
 	m_camera.setCenter(m_drawRect.center());
 
@@ -10,7 +10,7 @@ void PartViewer::Init()
 	m_model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<BodyModel>());
 }
 
-void PartViewer::Update()
+void PartShapeViewer::Update()
 {
 	m_camera.update();
 
@@ -46,7 +46,7 @@ void PartViewer::Update()
 	}
 
 	// Shapes
-	for (const auto& s : shapes)
+	for (const auto& s : m_shapes)
 	{
 		// Face
 		{
@@ -64,7 +64,7 @@ void PartViewer::Update()
 		}
 
 		// Verticle
-		for (auto it = verticles.begin(); it != verticles.end(); ++it)
+		for (auto it = m_verticles.begin(); it != m_verticles.end(); ++it)
 		{
 			auto r = s3d::RectF(s3d::Arg::center(*it), boxSize);
 
@@ -77,17 +77,17 @@ void PartViewer::Update()
 		// Pointer
 		pointer.draw(s3d::Palette::Red);
 		
-		if(!verticles.empty())
+		if(!m_verticles.empty())
 		{
 			// Line
-			for (auto it = verticles.begin(); it < verticles.end() - 1; ++it)
+			for (auto it = m_verticles.begin(); it < m_verticles.end() - 1; ++it)
 				s3d::Line(*it, *(it + 1)).draw(thickness, s3d::ColorF(s3d::Palette::White, 0.5));
 
 			// Last Line
-			s3d::Line(verticles.back(), cursor).draw(thickness, s3d::ColorF(s3d::Palette::Gray, 0.5));
+			s3d::Line(m_verticles.back(), cursor).draw(thickness, s3d::ColorF(s3d::Palette::Gray, 0.5));
 
 			// Verticle
-			for (auto it = verticles.begin(); it != verticles.end(); ++it)
+			for (auto it = m_verticles.begin(); it != m_verticles.end(); ++it)
 			{
 				auto r = s3d::RectF(s3d::Arg::center(*it), boxSize);
 
@@ -99,30 +99,30 @@ void PartViewer::Update()
 	// Update
 	{
 		// Verticleの配置
-		if (verticles.empty() && s3d::MouseL.down()) verticles.emplace_back(cursor);
-		else if (!verticles.empty())
+		if (m_verticles.empty() && s3d::MouseL.down()) m_verticles.emplace_back(cursor);
+		else if (!m_verticles.empty())
 		{
-			//Verticleを繋げて固定
-			for (auto it = verticles.begin(); it != verticles.end(); ++it)
+			// Verticleを繋げて固定
+			for (auto it = m_verticles.begin(); it != m_verticles.end(); ++it)
 			{
 				if (*it == cursor && s3d::MouseL.down())
 				{
 					// Connect
-					if (it != verticles.begin()) verticles.erase(verticles.begin(), it);
+					if (it != m_verticles.begin()) m_verticles.erase(m_verticles.begin(), it);
 
-					shapes.emplace_back(verticles);
+					m_shapes.emplace_back(m_verticles);
 
-					verticles.clear();
+					m_verticles.clear();
 
 					return;
 				}
 			}
 
 			// 連続配置
-			if (s3d::MouseL.down()) verticles.emplace_back(cursor);
+			if (s3d::MouseL.down()) m_verticles.emplace_back(cursor);
 
 			// 最後のVerticleを削除
-			if (s3d::MouseR.down()) verticles.pop_back();
+			if (s3d::MouseR.down()) m_verticles.pop_back();
 		}
 	}
 
@@ -131,7 +131,7 @@ void PartViewer::Update()
 	{
 		m_model->m_name = "peke";
 		m_model->m_mass = 10.0;
-		for (const auto& s : shapes) m_model->m_shapes.emplace_back(s);
+		for (const auto& s : m_shapes) m_model->m_shapes.emplace_back(s);
 
 		m_model->Save();
 	}
