@@ -133,7 +133,6 @@ void PartViewer::Update()
 		m_model->m_mass = 10.0;
 		for (const auto& s : shapes) m_model->m_shapes.emplace_back(s);
 
-		s3d::Logger << s3d::Unicode::Widen(m_model->m_name);
 		m_model->Save();
 	}
 }
