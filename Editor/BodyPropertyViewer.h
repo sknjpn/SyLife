@@ -13,8 +13,9 @@ public:
 	TextBox	m_textBox;
 
 public:
-	BodyPropertyViewer()
-		: m_textBox(s3d::RectF(10, 10, 120, 20))
+	BodyPropertyViewer(const shared_ptr<BodyModel>& model)
+		: m_model(model)
+		, m_textBox(s3d::RectF(10, 10, 120, 20))
 	{}
 
 	void	Update() override;
