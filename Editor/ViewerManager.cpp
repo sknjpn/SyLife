@@ -4,8 +4,10 @@ unique_ptr<ViewerManager>	g_viewerManagerPtr;
 
 void ViewerManager::Update()
 {
-	for (const auto& v : m_viewers)
+	for(auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
 	{
+		const auto& v = *it;
+
 		s3d::Graphics2D::SetViewport(s3d::Rect(v->m_drawRect));
 		auto t1 = s3d::Transformer2D(s3d::Mat3x2::Translate(v->m_drawRect.pos), true);
 		auto t2 = s3d::Transformer2D(s3d::Mat3x2::Translate(-v->m_drawRect.pos), false);

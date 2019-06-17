@@ -8,6 +8,8 @@ public:
 	vector<shared_ptr<Viewer>>	m_viewers;
 
 public:
+	ViewerManager() { m_viewers.reserve(100); }
+
 	void	Update();
 
 	template <typename T>

@@ -10,5 +10,6 @@ class AssetViewer
 
 public:
 	void	Update() override;
+	void	SetSelectedModel(const shared_ptr<Model>& model);
 };
 
