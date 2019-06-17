@@ -11,5 +11,7 @@ public:
 
 	virtual void	Init() {}
 	virtual void	Update() {}
+
+	bool	IsMouseOver() const;
 };
 
