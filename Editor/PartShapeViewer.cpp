@@ -12,7 +12,7 @@ void PartShapeViewer::Init()
 
 void PartShapeViewer::Update()
 {
-	m_camera.update();
+	if(m_drawRect.mouseOver()) m_camera.update();
 
 	const auto t = m_camera.createTransformer();
 	const int scale = log10(m_camera.getMagnification());
@@ -97,6 +97,7 @@ void PartShapeViewer::Update()
 	}
 
 	// Update
+	if (m_drawRect.mouseOver())
 	{
 		// Verticle‚Ì”z’u
 		if (m_verticles.empty() && s3d::MouseL.down()) m_verticles.emplace_back(cursor);

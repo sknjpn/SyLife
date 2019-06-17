@@ -84,6 +84,9 @@
     <Filter Include="Source Files\Viewer\Part">
       <UniqueIdentifier>{109b8b8e-75a8-4fee-a64e-6359d4ffa7a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Box">
+      <UniqueIdentifier>{b08da44a-7f90-44eb-9fbe-65719b57ef46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -158,8 +161,11 @@
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\Viewer\Part</Filter>
     </ClCompile>
+    <ClCompile Include="NumberBox.cpp">
+      <Filter>Source Files\Box</Filter>
+    </ClCompile>
     <ClCompile Include="TextBox.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Box</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -354,8 +360,11 @@
     <ClInclude Include="PartShapeViewer.h">
       <Filter>Source Files\Viewer\Part</Filter>
     </ClInclude>
+    <ClInclude Include="NumberBox.h">
+      <Filter>Source Files\Box</Filter>
+    </ClInclude>
     <ClInclude Include="TextBox.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Box</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

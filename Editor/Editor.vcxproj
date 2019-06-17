@@ -214,6 +214,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModulePropertyViewer.cpp" />
     <ClCompile Include="MoleculeViewer.cpp" />
+    <ClCompile Include="NumberBox.cpp" />
     <ClCompile Include="PartPropertyViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="TextBox.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModulePropertyViewer.h" />
     <ClInclude Include="MoleculeViewer.h" />
+    <ClInclude Include="NumberBox.h" />
     <ClInclude Include="PartPropertyViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="TextBox.h" />
