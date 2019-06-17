@@ -3,8 +3,8 @@
 
 void AssetViewer::Update()
 {
-	static s3d::Font font14(14);
-	static s3d::Font font12(12);
+	static s3d::Font font14(13);
+	static s3d::Font font12(10);
 
 	s3d::Vec2 pos(0.0, 0.0);
 
@@ -27,7 +27,7 @@ void AssetViewer::Update()
 			f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 			f.draw();
 
-			pos.moveBy(0.0, 14.0);
+			pos.moveBy(0.0, 15.0);
 		}
 		pos.moveBy(-16.0, 0.0);
 	}
@@ -46,9 +46,12 @@ void AssetViewer::Update()
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);
+			auto f = font12(s3d::Unicode::Widen((*it)->m_name));
 
-			font12(s3d::Unicode::Widen((*it)->m_name)).draw();
-			pos.moveBy(0.0, 14.0);
+			f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
+			f.draw();
+
+			pos.moveBy(0.0, 15.0);
 		}
 		pos.moveBy(-16.0, 0.0);
 	}
@@ -67,9 +70,12 @@ void AssetViewer::Update()
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);
+			auto f = font12(s3d::Unicode::Widen((*it)->m_name));
 
-			font12(s3d::Unicode::Widen((*it)->m_name)).draw();
-			pos.moveBy(0.0, 14.0);
+			f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
+			f.draw();
+
+			pos.moveBy(0.0, 15.0);
 		}
 		pos.moveBy(-16.0, 0.0);
 	}
