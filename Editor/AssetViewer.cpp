@@ -105,16 +105,16 @@ void AssetViewer::Update()
 void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)
 {
 	// ©•ªˆÈŠO‚ÌView‚ğE‚·
-	while(g_viewerManagerPtr->m_viewers.size() > 1) g_viewerManagerPtr->m_viewers.pop_back();
+	while (g_viewerManagerPtr->m_viewers.size() > 1) g_viewerManagerPtr->m_viewers.pop_back();
 
 	// ‘ÎÛ‚ÌView‚ğ’Ç‰Á
-	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<CellViewer>(s3d::RectF(0, 0, 600, 600));
-	if (dynamic_pointer_cast<MoleculeModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<MoleculeViewer>(s3d::RectF(0, 0, 600, 600));
-	if (dynamic_pointer_cast<BodyModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<BodyPropertyViewer>(s3d::RectF(0, 450, 600, 150));
-	if (dynamic_pointer_cast<EquipmentModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<EquipmentPropertyViewer>(s3d::RectF(0, 450, 600, 150));
-	if (dynamic_pointer_cast<ModuleModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<ModulePropertyViewer>(s3d::RectF(0, 450, 600, 150));
-	if (dynamic_pointer_cast<PartModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<PartShapeViewer>(s3d::RectF(0, 0, 600, 450));
-
+	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<CellViewer>(dynamic_pointer_cast<CellModel>(model));
+	if (dynamic_pointer_cast<MoleculeModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(model));
+	if (dynamic_pointer_cast<BodyModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<BodyPropertyViewer>(dynamic_pointer_cast<BodyModel>(model));
+	if (dynamic_pointer_cast<EquipmentModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<EquipmentPropertyViewer>(dynamic_pointer_cast<EquipmentModel>(model));
+	if (dynamic_pointer_cast<ModuleModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<ModulePropertyViewer>(dynamic_pointer_cast<ModuleModel>(model));
+	if (dynamic_pointer_cast<PartModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<PartShapeViewer>(dynamic_pointer_cast<PartModel>(model));
+	
 	// ‘ÎÛƒ‚ƒfƒ‹‚Ìİ’è
 	m_selectedModel = model;
 }

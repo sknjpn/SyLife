@@ -16,12 +16,14 @@ public:
 	
 	s3d::Vec2*		m_selectedVerticle = nullptr;
 
-	CursorCamera2D	m_camera;const shared_ptr
+	CursorCamera2D	m_camera;
 
 public:
 	PartShapeViewer(const shared_ptr<PartModel>& model)
 		: m_model(model)
-	{}
+	{
+		m_drawRect = s3d::RectF(0, 0, 600, 450);
+	}
 
 	void	Init() override;
 	void	Update() override;

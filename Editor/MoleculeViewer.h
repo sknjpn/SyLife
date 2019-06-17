@@ -12,7 +12,9 @@ public:
 public:
 	MoleculeViewer(const shared_ptr<MoleculeModel>& model)
 		: m_model(model)
-	{}
+	{
+		m_drawRect = s3d::RectF(0, 0, 600, 600);
+	}
 
 	void	Update() override;
 };

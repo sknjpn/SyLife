@@ -13,7 +13,9 @@ public:
 public:
 	ModulePropertyViewer(const shared_ptr<ModuleModel>& model)
 		: m_model(model)
-	{}
+	{
+		m_drawRect = s3d::RectF(0, 450, 600, 150);
+	}
 
 	void	Update() override;
 };

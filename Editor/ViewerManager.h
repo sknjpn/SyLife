@@ -12,16 +12,10 @@ public:
 
 	void	Update();
 
-	template <typename T>
-	const shared_ptr<T>&	AddViewer(const s3d::RectF& drawRect)
+	template <typename T, typename... Args>
+	shared_ptr<T>	AddViewer(Args&& ...args)
 	{
-		const auto& v = make_shared<T>();
-		
-		m_viewers.emplace_back(v);
-
-		v->m_drawRect = drawRect;
-
-		return v;
+		return dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...)));
 	}
 };
 

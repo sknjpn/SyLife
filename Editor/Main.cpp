@@ -9,7 +9,7 @@ void Main()
 {
 	g_systemManagerPtr = make_unique<SystemManager>();
 
-	g_viewerManagerPtr->AddViewer<AssetViewer>(s3d::RectF(600, 0, 200, 600));
+	g_viewerManagerPtr->AddViewer<AssetViewer>();
 
 	g_systemManagerPtr->Start();
 

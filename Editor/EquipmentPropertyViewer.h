@@ -13,7 +13,9 @@ public:
 public:
 	EquipmentPropertyViewer(const shared_ptr<EquipmentModel>& model)
 		: m_model(model)
-	{}
+	{
+		m_drawRect = s3d::RectF(0, 450, 600, 150);
+	}
 
 public:
 	void	Update() override;
