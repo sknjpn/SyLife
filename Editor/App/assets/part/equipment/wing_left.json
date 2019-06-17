@@ -1,7 +1,6 @@
 {
-  "name": "Wing Left",
-  "type": "Equipment",
-  "mass": 10.0,
-  "shapes": [
-  ]
+    "name": "Wing Left",
+    "type": "Equipment",
+    "mass": "10",
+    "shapes": ""
 }
