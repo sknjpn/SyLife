@@ -5,9 +5,6 @@
 void PartShapeViewer::Init()
 {
 	m_camera.setCenter(m_drawRect.center());
-
-	// Model
-	m_model = g_assetManagerPtr->m_partModels.emplace_back(make_shared<BodyModel>());
 }
 
 void PartShapeViewer::Update()
@@ -46,7 +43,7 @@ void PartShapeViewer::Update()
 	}
 
 	// Shapes
-	for (const auto& s : m_shapes)
+	for (const auto& s : m_model->m_shapes)
 	{
 		// Face
 		{
@@ -111,7 +108,7 @@ void PartShapeViewer::Update()
 					// Connect
 					if (it != m_verticles.begin()) m_verticles.erase(m_verticles.begin(), it);
 
-					m_shapes.emplace_back(m_verticles);
+					m_model->m_shapes.emplace_back(m_verticles);
 
 					m_verticles.clear();
 
@@ -130,9 +127,8 @@ void PartShapeViewer::Update()
 	// Save
 	if (s3d::KeyControl.pressed() && s3d::KeyS.down())
 	{
-		m_model->m_name = "peke";
-		m_model->m_mass = 10.0;
-		for (const auto& s : m_shapes) m_model->m_shapes.emplace_back(s);
+		if (m_model->m_name.empty()) m_model->m_name = "None";
+		if (m_model->m_mass <= 0) m_model->m_mass = 10;
 
 		m_model->Save();
 	}
