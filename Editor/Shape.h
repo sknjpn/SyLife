@@ -14,6 +14,10 @@ public:
 		: m_verticles(verticles)
 		, m_color(s3d::RandomHSV())
 	{}
+	Shape()
+		: m_verticles()
+		, m_color(s3d::RandomHSV())
+	{}
 
 	ptree	ToJSON() const override;
 	void	Load(const string& filepath) override;

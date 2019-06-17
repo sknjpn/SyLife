@@ -42,4 +42,20 @@ void EquipmentModel::Load(const string& filepath)
 
 	// mass
 	m_mass = pt.get<double>("mass");
+
+	// shapes
+	for (auto shape : pt.get_child("shapes"))
+	{
+		auto& s = m_shapes.emplace_back();
+
+		// color
+		{
+			auto it = shape.second.get_child("color").begin();
+			s.m_color = s3d::Color((*it).second.get_value<int>(), (*(it++)).second.get_value<int>(), (*(it++)).second.get_value<int>());
+		}
+
+		// verticles
+		for (auto v : shape.second.get_child("verticles"))
+			s.m_verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
+	}
 }
