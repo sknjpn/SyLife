@@ -48,5 +48,15 @@ ptree Shape::ToJSON() const
 
 void Shape::FromJSON(const ptree& pt)
 {
+	// color
+	{
+		auto it = pt.get_child("color").begin();
+
+		m_color = s3d::Color((*it).second.get_value<int>(), (*(it++)).second.get_value<int>(), (*(it++)).second.get_value<int>());
+	}
+
+	// verticles
+	for (auto v : pt.get_child("verticles"))
+		m_verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
 
 }

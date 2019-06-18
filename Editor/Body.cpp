@@ -22,9 +22,7 @@ ptree BodyModel::ToJSON() const
 		ptree shapes;
 
 		for (const auto& v : m_shapes)
-		{
 			shapes.push_back(std::make_pair("", v.ToJSON()));
-		}
 
 		pt.add_child("shapes", shapes);
 	}
@@ -43,16 +41,6 @@ void BodyModel::FromJSON(const ptree& pt)
 	// shapes
 	for (auto shape : pt.get_child("shapes"))
 	{
-		auto& s = m_shapes.emplace_back();
-
-		// color
-		{
-			auto it = shape.second.get_child("color").begin();
-			s.m_color = s3d::Color((*it).second.get_value<int>(), (*(it++)).second.get_value<int>(), (*(it++)).second.get_value<int>());
-		}
-
-		// verticles
-		for (auto v : shape.second.get_child("verticles"))
-			s.m_verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
+		m_shapes.emplace_back().FromJSON(shape.second);
 	}
 }

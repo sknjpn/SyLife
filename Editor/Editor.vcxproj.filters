@@ -113,9 +113,6 @@
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FileManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
@@ -166,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="TextBox.cpp">
       <Filter>Source Files\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Source Files\Asset\Part</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -309,9 +309,6 @@
     <ClInclude Include="SystemManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="FileManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
@@ -365,6 +362,9 @@
     </ClInclude>
     <ClInclude Include="TextBox.h">
       <Filter>Source Files\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Source Files\Asset\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
