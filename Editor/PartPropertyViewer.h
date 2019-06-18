@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Viewer.h"
-#include "Part.h"
+#include "PartModel.h"
 
 class PartPropertyViewer :
 	public Viewer

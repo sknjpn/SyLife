@@ -2,8 +2,10 @@
 
 #include "Rigidbody.h"
 
+#include "MoleculeModel.h"
 
-class Molecule : public Rigidbody
+class Molecule
+	: public Rigidbody
 {
 public:
 	shared_ptr<MoleculeModel>	m_model;

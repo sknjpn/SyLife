@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Molecule.h"
-#include "Part.h"
-#include "Cell.h"
+#include "MoleculeModel.h"
+#include "PartModel.h"
+#include "CellModel.h"
 
 class AssetManager
 {
@@ -12,15 +12,14 @@ public:
 	vector<shared_ptr<CellModel>>	m_cellModels;
 
 public:
+	AssetManager()
+	{
+		m_moleculeModels.reserve(1024);
+		m_partModels.reserve(1024);
+		m_cellModels.reserve(1024);
+	}
+
 	void	Init();
-
-	void	LoadMoleculeModels();
-	void	LoadPartModels();
-	void	LoadCellModels();
-
-	void	LoadMoleculeModel(const string& filepath);
-	void	LoadPartModel(const string& filepath);
-	void	LoadCellModel(const string& filepath);
 
 	const shared_ptr<MoleculeModel>&	GetMoleculeModel(const string& name) const
 	{

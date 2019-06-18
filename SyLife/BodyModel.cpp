@@ -1,11 +1,17 @@
-#include "Body.h"
+#include "BodyModel.h"
+#include <boost/property_tree/json_parser.hpp>
 
-
-Body::Body()
+void BodyModel::FromJSON(const ptree& pt)
 {
-}
+	// name
+	m_name = pt.get<string>("name");
 
+	// mass
+	m_mass = pt.get<double>("mass");
 
-Body::~Body()
-{
+	// shapes
+	for (auto shape : pt.get_child("shapes"))
+	{
+		m_shapes.emplace_back().FromJSON(shape.second);
+	}
 }

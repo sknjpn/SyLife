@@ -1,13 +1,13 @@
-#include "PartShapeModelViewer.h"
+#include "PartShapeViewer.h"
 #include "AssetManager.h"
 #include "BodyModel.h"
 
-void PartShapeModelViewer::Init()
+void PartShapeViewer::Init()
 {
 	m_camera.setCenter(m_drawRect.center());
 }
 
-void PartShapeModelViewer::Update()
+void PartShapeViewer::Update()
 {
 	if (IsMouseOver()) m_camera.update();
 

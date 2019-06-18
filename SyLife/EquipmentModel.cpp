@@ -1,11 +1,17 @@
-#include "Equipment.h"
+#include "EquipmentModel.h"
+#include <boost/property_tree/json_parser.hpp>
 
-
-Equipment::Equipment()
+void EquipmentModel::FromJSON(const ptree& pt)
 {
-}
+	// name
+	m_name = pt.get<string>("name");
 
+	// mass
+	m_mass = pt.get<double>("mass");
 
-Equipment::~Equipment()
-{
+	// shapes
+	for (auto shape : pt.get_child("shapes"))
+	{
+		m_shapes.emplace_back().FromJSON(shape.second);
+	}
 }

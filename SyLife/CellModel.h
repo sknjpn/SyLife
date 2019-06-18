@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Rigidbody.h"
-#include "Storage.h"
-#include "Molecule.h"
-
-#include "Body.h"
-#include "Equipment.h"
-#include "Module.h"
+#include "Model.h"
 
 class CellModel
+	: public Model
 {
 public:
-	string		m_name;
+	string	m_name;
+
+public:
+	void	FromJSON(const ptree& pt) override;
+
+	string	GetFilepath() const override { return "assets/part/cell/" + GetFilename(); }
 };

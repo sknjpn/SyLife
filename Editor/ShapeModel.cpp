@@ -1,8 +1,5 @@
-#include "ShapeModelModel.h"
-#include <boost/property_tree/ptree.hpp>
+#include "ShapeModel.h"
 #include <boost/property_tree/json_parser.hpp>
-#include <boost/foreach.hpp>
-#include <boost/optional.hpp>
 
 ptree ShapeModel::ToJSON() const
 {

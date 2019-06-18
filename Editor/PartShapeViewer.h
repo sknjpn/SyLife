@@ -1,11 +1,11 @@
 #pragma once
 
 #include "Viewer.h"
-#include "ShapeModelModel.h"
+#include "ShapeModel.h"
 #include "TinyCamera.h"
-#include "Part.h"
+#include "PartModel.h"
 
-class PartShapeModelViewer :
+class PartShapeViewer :
 	public Viewer
 {
 public:
@@ -18,7 +18,7 @@ public:
 	CursorCamera2D	m_camera;
 
 public:
-	PartShapeModelViewer(const shared_ptr<PartModel>& model)
+	PartShapeViewer(const shared_ptr<PartModel>& model)
 		: m_model(model)
 	{
 		m_drawRect = s3d::RectF(0, 0, 600, 450);

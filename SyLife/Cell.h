@@ -8,6 +8,9 @@
 #include "Equipment.h"
 #include "Module.h"
 
+#include "CellModel.h"
+#include "MoleculeModel.h"
+
 class Cell : public Rigidbody
 {
 public:

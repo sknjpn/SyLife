@@ -1,7 +1,7 @@
 #pragma once
 
 #include "MoleculeModel.h"
-#include "Part.h"
+#include "PartModel.h"
 #include "CellModel.h"
 
 class AssetManager

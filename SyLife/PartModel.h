@@ -1,10 +1,12 @@
 #pragma once
 
+#include "Model.h"
 #include "ShapeModel.h"
 
 class PartModel
+	: public Model
 {
 public:
-	string		m_name;
-	double		m_mass;
+	double	m_mass;
+	vector<ShapeModel>	m_shapes;
 };

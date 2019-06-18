@@ -1,10 +1,12 @@
 #pragma once
 
-#include "Part.h"
+#include "PartModel.h"
 
-class EquipmentModel : public PartModel
+class EquipmentModel
+	: public PartModel
 {
 public:
-	ShapeModel		m_shape;
-	double		m_inertia;
+	void	FromJSON(const ptree& pt) override;
+
+	string	GetFilepath() const override { return "assets/part/equipment/" + GetFilename(); }
 };

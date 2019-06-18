@@ -164,24 +164,6 @@
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager_LoadMoleculeModels.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_LoadPartModels.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_LoadCellModels.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_LoadMoleculeModel.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_LoadPartModel.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_LoadCellModel.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="CellManager_Update.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>

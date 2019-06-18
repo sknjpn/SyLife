@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Model.h"
-#include "ShapeModelModel.h"
+#include "ShapeModel.h"
 
 class PartModel
 	: public Model
@@ -9,6 +9,4 @@ class PartModel
 public:
 	double	m_mass;
 	vector<ShapeModel>	m_shapes;
-
-public:
 };

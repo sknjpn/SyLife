@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ShapeModel.h"
+#include "PartModel.h"
 
 class Part
 {
