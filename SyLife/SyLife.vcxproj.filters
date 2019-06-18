@@ -78,6 +78,15 @@
     <Filter Include="Source Files\Model">
       <UniqueIdentifier>{115a69d9-b67a-4490-967f-4329ed7a1e93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Model\Cell">
+      <UniqueIdentifier>{44b18140-91d6-469d-94a0-85bb956c6ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Molecule">
+      <UniqueIdentifier>{e6f05044-9cec-4f4c-a4ca-f9c4edb1c14a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Part">
+      <UniqueIdentifier>{370dea0f-0bb2-462e-be8c-04025f419459}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -200,29 +209,26 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="EquipmentModel.cpp">
-      <Filter>Source Files\Model</Filter>
+    <ClCompile Include="BodyModel.cpp">
+      <Filter>Source Files\Model\Part</Filter>
     </ClCompile>
-    <ClCompile Include="ModelModel.cpp">
-      <Filter>Source Files\Model</Filter>
+    <ClCompile Include="EquipmentModel.cpp">
+      <Filter>Source Files\Model\Part</Filter>
     </ClCompile>
     <ClCompile Include="ModuleModel.cpp">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeModel.cpp">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClCompile>
     <ClCompile Include="PartModel.cpp">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClCompile>
     <ClCompile Include="ShapeModel.cpp">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="BodyModel.cpp">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClCompile>
     <ClCompile Include="CellModel.cpp">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files\Model\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeModel.cpp">
+      <Filter>Source Files\Model\Molecule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -426,29 +432,26 @@
     <ClInclude Include="Model.h">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
-    <ClInclude Include="EquipmentModel.h">
-      <Filter>Source Files\Model</Filter>
+    <ClInclude Include="BodyModel.h">
+      <Filter>Source Files\Model\Part</Filter>
     </ClInclude>
-    <ClInclude Include="ModelModel.h">
-      <Filter>Source Files\Model</Filter>
+    <ClInclude Include="EquipmentModel.h">
+      <Filter>Source Files\Model\Part</Filter>
     </ClInclude>
     <ClInclude Include="ModuleModel.h">
-      <Filter>Source Files\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeModel.h">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClInclude>
     <ClInclude Include="PartModel.h">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClInclude>
     <ClInclude Include="ShapeModel.h">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClInclude>
-    <ClInclude Include="BodyModel.h">
-      <Filter>Source Files\Model</Filter>
+    <ClInclude Include="MoleculeModel.h">
+      <Filter>Source Files\Model\Molecule</Filter>
     </ClInclude>
     <ClInclude Include="CellModel.h">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files\Model\Cell</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

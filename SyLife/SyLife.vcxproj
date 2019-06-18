@@ -226,7 +226,6 @@
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
     <ClCompile Include="FieldManager_Update.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ModelModel.cpp" />
     <ClCompile Include="ModuleModel.cpp" />
     <ClCompile Include="MoleculeManager_Draw.cpp" />
     <ClCompile Include="MoleculeManager_Update.cpp" />
@@ -316,7 +315,6 @@
     <ClInclude Include="EquipmentModel.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="ModelModel.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleModel.h" />
     <ClInclude Include="Molecule.h" />
