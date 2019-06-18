@@ -63,17 +63,8 @@
     <Filter Include="Source Files\Search">
       <UniqueIdentifier>{aeb34d7c-3d7b-496e-92ac-f5bc6a193b99}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Molecule">
-      <UniqueIdentifier>{16a152cb-d7d8-4493-94d1-c382c4bdf3fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Cell">
-      <UniqueIdentifier>{dbe7ebe6-6032-4da0-a064-996325e60ae4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Thridparty">
       <UniqueIdentifier>{8bd23f4d-5074-4b4b-b351-042d95e9e18e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Cell\Part">
-      <UniqueIdentifier>{ab194333-e3f5-4943-af64-dccb954d300b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Model">
       <UniqueIdentifier>{115a69d9-b67a-4490-967f-4329ed7a1e93}</UniqueIdentifier>
@@ -86,6 +77,24 @@
     </Filter>
     <Filter Include="Source Files\Model\Part">
       <UniqueIdentifier>{370dea0f-0bb2-462e-be8c-04025f419459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Field">
+      <UniqueIdentifier>{178c2393-fb92-4e5e-85e4-df1857c0e547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Field\Particle">
+      <UniqueIdentifier>{51cbdef5-8592-445d-b802-01054f8dd7a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Field\Particle\Rigidbody">
+      <UniqueIdentifier>{65826c47-19ec-48d6-8e65-ec3386ab449c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Field\Particle\Rigidbody\Molecule">
+      <UniqueIdentifier>{16a152cb-d7d8-4493-94d1-c382c4bdf3fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell">
+      <UniqueIdentifier>{dbe7ebe6-6032-4da0-a064-996325e60ae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part">
+      <UniqueIdentifier>{ab194333-e3f5-4943-af64-dccb954d300b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,22 +120,13 @@
       <Filter>Source Files\Search</Filter>
     </ClCompile>
     <ClCompile Include="Cell.cpp">
-      <Filter>Source Files\Cell</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
     </ClCompile>
     <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files\Molecule</Filter>
-    </ClCompile>
-    <ClCompile Include="Part.cpp">
-      <Filter>Source Files\Cell</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Molecule</Filter>
     </ClCompile>
     <ClCompile Include="Storage.cpp">
-      <Filter>Source Files\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Source Files\Other</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files\Other</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
     </ClCompile>
     <ClCompile Include="Vector2D.cpp">
       <Filter>Source Files\Other</Filter>
@@ -135,7 +135,7 @@
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Recipe.cpp">
-      <Filter>Source Files\Cell</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
     </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files\Other</Filter>
@@ -144,13 +144,13 @@
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Body.cpp">
-      <Filter>Source Files\Cell\Part</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
     </ClCompile>
     <ClCompile Include="Equipment.cpp">
-      <Filter>Source Files\Cell\Part</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
     </ClCompile>
     <ClCompile Include="Module.cpp">
-      <Filter>Source Files\Cell\Part</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeManager_Update.cpp">
       <Filter>Source Files\Manager</Filter>
@@ -208,6 +208,15 @@
     </ClCompile>
     <ClCompile Include="MoleculeModel.cpp">
       <Filter>Source Files\Model\Molecule</Filter>
+    </ClCompile>
+    <ClCompile Include="Part.cpp">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files\Field\Particle\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\Field\Particle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -352,10 +361,10 @@
       <Filter>Source Files\Search</Filter>
     </ClInclude>
     <ClInclude Include="Cell.h">
-      <Filter>Source Files\Cell</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
     </ClInclude>
     <ClInclude Include="Molecule.h">
-      <Filter>Source Files\Molecule</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Molecule</Filter>
     </ClInclude>
     <ClInclude Include="nanoflann.hpp">
       <Filter>Source Files\Thridparty</Filter>
@@ -363,26 +372,17 @@
     <ClInclude Include="sol.hpp">
       <Filter>Source Files\Thridparty</Filter>
     </ClInclude>
-    <ClInclude Include="Part.h">
-      <Filter>Source Files\Cell</Filter>
-    </ClInclude>
     <ClInclude Include="Storage.h">
-      <Filter>Source Files\Cell</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
     </ClInclude>
     <ClInclude Include="Vector2D.h">
-      <Filter>Source Files\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Source Files\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
       <Filter>Source Files\Other</Filter>
     </ClInclude>
     <ClInclude Include="RecipeManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Recipe.h">
-      <Filter>Source Files\Cell</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
     </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>Source Files\Other</Filter>
@@ -391,13 +391,13 @@
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Body.h">
-      <Filter>Source Files\Cell\Part</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
     </ClInclude>
     <ClInclude Include="Equipment.h">
-      <Filter>Source Files\Cell\Part</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
     </ClInclude>
     <ClInclude Include="Module.h">
-      <Filter>Source Files\Cell\Part</Filter>
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
     </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Source Files\Manager</Filter>
@@ -428,6 +428,15 @@
     </ClInclude>
     <ClInclude Include="CellModel.h">
       <Filter>Source Files\Model\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Source Files\Field\Particle\Rigidbody</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\Field\Particle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

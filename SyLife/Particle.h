@@ -3,13 +3,12 @@
 class Particle
 {
 public:
-	bool	m_destroyFlag = false;
-	double	m_mass = 0.0;
+	bool		m_destroyFlag = false;
+	double		m_mass = 0.0;
 	Vector2D	m_position;
 	Vector2D	m_velocity;
 
 public:
-	Particle();
-	virtual ~Particle();
+	virtual ~Particle() = default;
 };
 
