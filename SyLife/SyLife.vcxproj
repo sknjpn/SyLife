@@ -213,25 +213,32 @@
     <ClCompile Include="AssetManager_LoadCellModel.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Body.cpp" />
+    <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="CellManager_Draw.cpp" />
     <ClCompile Include="CellManager_Update.cpp" />
+    <ClCompile Include="CellModel.cpp" />
     <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="EquipmentModel.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldManager_Draw.cpp" />
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
     <ClCompile Include="FieldManager_Update.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelModel.cpp" />
+    <ClCompile Include="ModuleModel.cpp" />
     <ClCompile Include="MoleculeManager_Draw.cpp" />
     <ClCompile Include="MoleculeManager_Update.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
+    <ClCompile Include="MoleculeModel.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartManager.cpp" />
+    <ClCompile Include="PartModel.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Recipe.cpp" />
     <ClCompile Include="RecipeManager.cpp" />
@@ -239,6 +246,7 @@
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="Indexer.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeModel.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -300,18 +308,25 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Body.h" />
+    <ClInclude Include="BodyModel.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
+    <ClInclude Include="CellModel.h" />
     <ClInclude Include="Equipment.h" />
+    <ClInclude Include="EquipmentModel.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelModel.h" />
     <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleModel.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="MoleculeManager.h" />
+    <ClInclude Include="MoleculeModel.h" />
     <ClInclude Include="nanoflann.hpp" />
     <ClInclude Include="Part.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartManager.h" />
+    <ClInclude Include="PartModel.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Recipe.h" />
     <ClInclude Include="RecipeManager.h" />
@@ -319,6 +334,7 @@
     <ClInclude Include="Cloud.h" />
     <ClInclude Include="Indexer.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="sol.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
