@@ -8,12 +8,6 @@
 #include "Equipment.h"
 #include "Module.h"
 
-class CellModel
-{
-public:
-	string		m_name;
-};
-
 class Cell : public Rigidbody
 {
 public:

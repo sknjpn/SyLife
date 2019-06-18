@@ -1,13 +1,13 @@
-#include "PartShapeViewer.h"
+#include "PartShapeModelViewer.h"
 #include "AssetManager.h"
 #include "BodyModel.h"
 
-void PartShapeViewer::Init()
+void PartShapeModelViewer::Init()
 {
 	m_camera.setCenter(m_drawRect.center());
 }
 
-void PartShapeViewer::Update()
+void PartShapeModelViewer::Update()
 {
 	if (IsMouseOver()) m_camera.update();
 
@@ -42,7 +42,7 @@ void PartShapeViewer::Update()
 		s3d::Line(0, m_camera.getCameraRect().y, 0, m_camera.getCameraRect().br().y).draw(thickness, s3d::Palette::Red);
 	}
 
-	// Shapes
+	// ShapeModels
 	for (const auto& s : m_model->m_shapes)
 	{
 		// Face

@@ -2,7 +2,7 @@
 
 #include "Model.h"
 
-class Shape
+class ShapeModel
 	: public Model
 {
 public:
@@ -10,11 +10,11 @@ public:
 	s3d::Array<s3d::Vec2>	m_verticles;
 
 public:
-	Shape(const s3d::Array<s3d::Vec2>& verticles)
+	ShapeModel(const s3d::Array<s3d::Vec2>& verticles)
 		: m_verticles(verticles)
 		, m_color(s3d::RandomHSV())
 	{}
-	Shape()
+	ShapeModel()
 		: m_verticles()
 		, m_color(s3d::RandomHSV())
 	{}

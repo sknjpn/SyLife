@@ -203,9 +203,6 @@
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
-      <Filter>Source Files\Cell\Part</Filter>
-    </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
@@ -425,9 +422,6 @@
     </ClInclude>
     <ClInclude Include="SystemManager.h">
       <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>Source Files\Cell\Part</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
       <Filter>Source Files\Model</Filter>

@@ -1,7 +1,7 @@
 ﻿#include "SystemManager.h"
 
 #include "ViewerManager.h"
-#include "PartShapeViewer.h"
+#include "PartShapeModelViewer.h"
 #include "BodyPropertyViewer.h"
 #include "AssetViewer.h"
 

@@ -1,13 +1,6 @@
 #pragma once
 
-#include "Shape.h"
-
-class PartModel
-{
-public:
-	string		m_name;
-	double		m_mass;
-};
+#include "ShapeModel.h"
 
 class Part
 {

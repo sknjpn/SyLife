@@ -2,13 +2,6 @@
 
 #include "Part.h"
 
-class EquipmentModel : public PartModel
-{
-public:
-	Shape		m_shape;
-	double		m_inertia;
-};
-
 class Equipment : public Part
 {
 public:

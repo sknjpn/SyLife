@@ -1,10 +1,10 @@
-#include "ShapeModel.h"
+#include "ShapeModelModel.h"
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
 
-ptree Shape::ToJSON() const
+ptree ShapeModel::ToJSON() const
 {
 	ptree pt;
 
@@ -46,7 +46,7 @@ ptree Shape::ToJSON() const
 	return pt;
 }
 
-void Shape::FromJSON(const ptree& pt)
+void ShapeModel::FromJSON(const ptree& pt)
 {
 	// color
 	{

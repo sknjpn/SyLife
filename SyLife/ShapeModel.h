@@ -1,6 +1,6 @@
 #pragma once
 
-class Shape
+class ShapeModel
 {
 public:
 	s3d::HSV	m_color;

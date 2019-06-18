@@ -268,8 +268,8 @@ struct Vector2D
 		return Vector2D(m_x + (other.m_x - m_x) * f, m_y + (other.m_y - m_y) * f);
 	}
 
-	template <class Shape2DType>
-	bool intersects(const Shape2DType& shape) const
+	template <class ShapeModel2DType>
+	bool intersects(const ShapeModel2DType& shape) const
 	{
 		return Geometry2D::Intersect(*this, shape);
 	}
