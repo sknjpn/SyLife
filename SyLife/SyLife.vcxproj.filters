@@ -194,6 +194,9 @@
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -393,5 +396,6 @@
     <ClInclude Include="SystemManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Model.h" />
   </ItemGroup>
 </Project>
