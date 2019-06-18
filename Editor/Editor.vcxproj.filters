@@ -57,27 +57,6 @@
     <Filter Include="Source Files\Manager">
       <UniqueIdentifier>{83605cb4-b3a8-4b2f-b9d8-2a23a7292612}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Asset">
-      <UniqueIdentifier>{8d220b08-eee5-4c87-b970-1f0e2356a845}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Asset\Part">
-      <UniqueIdentifier>{fffc1da2-7639-4e93-87c8-71400698af2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Asset\Molecule">
-      <UniqueIdentifier>{3645067b-2ead-4cd6-9b79-aa92992e97dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Asset\Cell">
-      <UniqueIdentifier>{61325ca8-ca52-4c4d-b392-3eb55d71d865}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Asset\Part\Body">
-      <UniqueIdentifier>{85ad7435-7d87-40c6-9592-d369f3ba20be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Asset\Part\Equipment">
-      <UniqueIdentifier>{8029266e-fbe0-4d6a-9b43-d11975998fc8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Asset\Part\Module">
-      <UniqueIdentifier>{8423c53b-21db-423a-8d42-da1622de934c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Viewer">
       <UniqueIdentifier>{dd329a44-fe9b-4745-8718-7847aa795125}</UniqueIdentifier>
     </Filter>
@@ -86,6 +65,27 @@
     </Filter>
     <Filter Include="Source Files\Box">
       <UniqueIdentifier>{b08da44a-7f90-44eb-9fbe-65719b57ef46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model">
+      <UniqueIdentifier>{8d220b08-eee5-4c87-b970-1f0e2356a845}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Part">
+      <UniqueIdentifier>{fffc1da2-7639-4e93-87c8-71400698af2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Part\Body">
+      <UniqueIdentifier>{85ad7435-7d87-40c6-9592-d369f3ba20be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Part\Equipment">
+      <UniqueIdentifier>{8029266e-fbe0-4d6a-9b43-d11975998fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Part\Module">
+      <UniqueIdentifier>{8423c53b-21db-423a-8d42-da1622de934c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Molecule">
+      <UniqueIdentifier>{3645067b-2ead-4cd6-9b79-aa92992e97dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Cell">
+      <UniqueIdentifier>{61325ca8-ca52-4c4d-b392-3eb55d71d865}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,7 +120,7 @@
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
-      <Filter>Source Files\Asset</Filter>
+      <Filter>Source Files\Model</Filter>
     </ClCompile>
     <ClCompile Include="AssetViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
@@ -147,25 +147,25 @@
       <Filter>Source Files\Box</Filter>
     </ClCompile>
     <ClCompile Include="CellModel.cpp">
-      <Filter>Source Files\Asset\Cell</Filter>
+      <Filter>Source Files\Model\Cell</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeModel.cpp">
-      <Filter>Source Files\Asset\Molecule</Filter>
+      <Filter>Source Files\Model\Molecule</Filter>
     </ClCompile>
     <ClCompile Include="BodyModel.cpp">
-      <Filter>Source Files\Asset\Part\Body</Filter>
+      <Filter>Source Files\Model\Part\Body</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentModel.cpp">
-      <Filter>Source Files\Asset\Part\Equipment</Filter>
+      <Filter>Source Files\Model\Part\Equipment</Filter>
     </ClCompile>
     <ClCompile Include="ModuleModel.cpp">
-      <Filter>Source Files\Asset\Part\Module</Filter>
+      <Filter>Source Files\Model\Part\Module</Filter>
     </ClCompile>
     <ClCompile Include="PartModel.cpp">
-      <Filter>Source Files\Asset\Part</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClCompile>
     <ClCompile Include="ShapeModel.cpp">
-      <Filter>Source Files\Asset\Part</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,7 +316,7 @@
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>Source Files\Asset</Filter>
+      <Filter>Source Files\Model</Filter>
     </ClInclude>
     <ClInclude Include="AssetViewer.h">
       <Filter>Source Files\Viewer</Filter>
@@ -346,25 +346,25 @@
       <Filter>Source Files\Box</Filter>
     </ClInclude>
     <ClInclude Include="CellModel.h">
-      <Filter>Source Files\Asset\Cell</Filter>
+      <Filter>Source Files\Model\Cell</Filter>
     </ClInclude>
     <ClInclude Include="MoleculeModel.h">
-      <Filter>Source Files\Asset\Molecule</Filter>
+      <Filter>Source Files\Model\Molecule</Filter>
     </ClInclude>
     <ClInclude Include="BodyModel.h">
-      <Filter>Source Files\Asset\Part\Body</Filter>
+      <Filter>Source Files\Model\Part\Body</Filter>
     </ClInclude>
     <ClInclude Include="EquipmentModel.h">
-      <Filter>Source Files\Asset\Part\Equipment</Filter>
+      <Filter>Source Files\Model\Part\Equipment</Filter>
     </ClInclude>
     <ClInclude Include="ModuleModel.h">
-      <Filter>Source Files\Asset\Part\Module</Filter>
+      <Filter>Source Files\Model\Part\Module</Filter>
     </ClInclude>
     <ClInclude Include="PartModel.h">
-      <Filter>Source Files\Asset\Part</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClInclude>
     <ClInclude Include="ShapeModel.h">
-      <Filter>Source Files\Asset\Part</Filter>
+      <Filter>Source Files\Model\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
