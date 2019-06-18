@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Molecule.h"
+#include "MoleculeModel.h"
 #include "Part.h"
-#include "Cell.h"
+#include "CellModel.h"
 
 class AssetManager
 {

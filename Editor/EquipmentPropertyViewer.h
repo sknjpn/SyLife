@@ -2,7 +2,7 @@
 
 #include "Viewer.h"
 
-#include "Equipment.h"
+#include "EquipmentModel.h"
 
 class EquipmentPropertyViewer :
 	public Viewer

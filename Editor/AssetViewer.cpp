@@ -2,18 +2,18 @@
 #include "AssetManager.h"
 #include "ViewerManager.h"
 
-#include "Body.h"
+#include "BodyModel.h"
 #include "BodyPropertyViewer.h"
-#include "Equipment.h"
+#include "EquipmentModel.h"
 #include "EquipmentPropertyViewer.h"
-#include "Module.h"
+#include "ModuleModel.h"
 #include "ModulePropertyViewer.h"
 #include "PartShapeViewer.h"
 
-#include "Molecule.h"
+#include "MoleculeModel.h"
 #include "MoleculeViewer.h"
 
-#include "Cell.h"
+#include "CellModel.h"
 #include "CellViewer.h"
 
 void AssetViewer::Update()

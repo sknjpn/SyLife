@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Model.h"
-#include "Shape.h"
+#include "ShapeModel.h"
 
 class PartModel
 	: public Model

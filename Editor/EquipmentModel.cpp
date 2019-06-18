@@ -1,4 +1,4 @@
-#include "Equipment.h"
+#include "EquipmentModel.h"
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/foreach.hpp>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Viewer.h"
-#include "Molecule.h"
+#include "MoleculeModel.h"
 
 class MoleculeViewer
 	: public Viewer

@@ -2,7 +2,7 @@
 
 #include "Viewer.h"
 
-#include "Module.h"
+#include "ModuleModel.h"
 
 class ModulePropertyViewer :
 	public Viewer

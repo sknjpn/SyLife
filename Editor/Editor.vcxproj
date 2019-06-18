@@ -206,7 +206,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="Body.cpp" />
+    <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="BodyPropertyViewer.cpp" />
     <ClCompile Include="CellViewer.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
@@ -219,14 +219,14 @@
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Viewer.cpp" />
-    <ClCompile Include="Cell.cpp" />
-    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="CellModel.cpp" />
+    <ClCompile Include="EquipmentModel.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Module.cpp" />
-    <ClCompile Include="Molecule.cpp" />
-    <ClCompile Include="Part.cpp" />
-    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ModuleModel.cpp" />
+    <ClCompile Include="MoleculeModel.cpp" />
+    <ClCompile Include="PartModel.cpp" />
+    <ClCompile Include="ShapeModel.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -284,7 +284,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="Body.h" />
+    <ClInclude Include="BodyModel.h" />
     <ClInclude Include="BodyPropertyViewer.h" />
     <ClInclude Include="CellViewer.h" />
     <ClInclude Include="AssetViewer.h" />
@@ -298,13 +298,13 @@
     <ClInclude Include="TextBox.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="Viewer.h" />
-    <ClInclude Include="Cell.h" />
-    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="CellModel.h" />
+    <ClInclude Include="EquipmentModel.h" />
     <ClInclude Include="FileManager.h" />
-    <ClInclude Include="Module.h" />
-    <ClInclude Include="Molecule.h" />
-    <ClInclude Include="Part.h" />
-    <ClInclude Include="Shape.h" />
+    <ClInclude Include="ModuleModel.h" />
+    <ClInclude Include="MoleculeModel.h" />
+    <ClInclude Include="PartModel.h" />
+    <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Vector2D.h" />

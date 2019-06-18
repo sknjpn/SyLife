@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Viewer.h"
-#include "Cell.h"
+#include "CellModel.h"
 
 class CellViewer :
 	public Viewer

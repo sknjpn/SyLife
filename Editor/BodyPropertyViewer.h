@@ -2,7 +2,7 @@
 
 #include "Viewer.h"
 
-#include "Body.h"
+#include "BodyModel.h"
 #include "TextBox.h"
 
 class BodyPropertyViewer :
