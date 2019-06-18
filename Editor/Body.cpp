@@ -32,11 +32,8 @@ ptree BodyModel::ToJSON() const
 	return pt;
 }
 
-void BodyModel::Load(const string& filepath)
+void BodyModel::FromJSON(const ptree& pt) const
 {
-	ptree pt;
-	read_json(filepath, pt);
-
 	// name
 	m_name = pt.get<string>("name");
 

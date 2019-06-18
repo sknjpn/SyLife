@@ -46,10 +46,7 @@ ptree Shape::ToJSON() const
 	return pt;
 }
 
-void Shape::Load(const string& filepath)
+void Shape::FromJSON(const ptree& pt) const
 {
-}
 
-void Shape::Save() const
-{
 }

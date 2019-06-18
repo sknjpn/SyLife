@@ -9,7 +9,7 @@ void Model::Load(const string& filepath)
 	ptree pt;
 	read_json(filepath, pt);
 
-	m_name = pt.get<string>("name");
+	FromJSON(pt);
 }
 
 void Model::Save() const

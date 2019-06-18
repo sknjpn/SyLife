@@ -7,7 +7,7 @@ class ModuleModel
 {
 public:
 	ptree	ToJSON() const override;
-	void	Load(const string& filepath) override;
+	void	FromJSON(const ptree& pt) const override;
 
 	string	GetFilepath() const override { return "assets/part/module/" + GetFilename(); }
 };

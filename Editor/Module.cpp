@@ -32,11 +32,8 @@ ptree ModuleModel::ToJSON() const
 	return pt;
 }
 
-void ModuleModel::Load(const string& filepath)
+void ModuleModel::FromJSON(const ptree& pt) const
 {
-	ptree pt;
-	read_json(filepath, pt);
-
 	// name
 	m_name = pt.get<string>("name");
 

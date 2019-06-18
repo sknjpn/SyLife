@@ -20,7 +20,6 @@ public:
 	{}
 
 	ptree	ToJSON() const override;
-	void	Load(const string& filepath) override;
-	void	Save() const override;
+	void	FromJSON(const ptree& pt) const override;
 };
 

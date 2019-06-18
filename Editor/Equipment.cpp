@@ -32,11 +32,8 @@ ptree EquipmentModel::ToJSON() const
 	return pt;
 }
 
-void EquipmentModel::Load(const string& filepath)
+void EquipmentModel::FromJSON(const ptree& pt) const
 {
-	ptree pt;
-	read_json(filepath, pt);
-
 	// name
 	m_name = pt.get<string>("name");
 

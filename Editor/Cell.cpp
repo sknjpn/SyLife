@@ -29,11 +29,8 @@ ptree CellModel::ToJSON() const
 	return pt;
 }
 
-void CellModel::Load(const string& filepath)
+void CellModel::FromJSON(const ptree& pt) const
 {
-	ptree pt;
-	read_json(filepath, pt);
-
 	// name
 	m_name = pt.get<string>("name");
 }

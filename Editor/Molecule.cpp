@@ -33,11 +33,8 @@ ptree MoleculeModel::ToJSON() const
 	return pt;
 }
 
-void MoleculeModel::Load(const string& filepath)
+void MoleculeModel::FromJSON(const ptree& pt) const
 {
-	ptree pt;
-	read_json(filepath, pt);
-
 	// color
 	{
 		auto child = pt.get_child("color");
