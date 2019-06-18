@@ -20,6 +20,6 @@ public:
 	{}
 
 	ptree	ToJSON() const override;
-	void	FromJSON(const ptree& pt) const override;
+	void	FromJSON(const ptree& pt) override;
 };
 

@@ -46,7 +46,7 @@ ptree Shape::ToJSON() const
 	return pt;
 }
 
-void Shape::FromJSON(const ptree& pt) const
+void Shape::FromJSON(const ptree& pt)
 {
 
 }

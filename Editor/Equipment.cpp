@@ -32,7 +32,7 @@ ptree EquipmentModel::ToJSON() const
 	return pt;
 }
 
-void EquipmentModel::FromJSON(const ptree& pt) const
+void EquipmentModel::FromJSON(const ptree& pt)
 {
 	// name
 	m_name = pt.get<string>("name");

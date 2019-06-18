@@ -33,7 +33,7 @@ ptree MoleculeModel::ToJSON() const
 	return pt;
 }
 
-void MoleculeModel::FromJSON(const ptree& pt) const
+void MoleculeModel::FromJSON(const ptree& pt)
 {
 	// color
 	{

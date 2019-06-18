@@ -29,7 +29,7 @@ ptree CellModel::ToJSON() const
 	return pt;
 }
 
-void CellModel::FromJSON(const ptree& pt) const
+void CellModel::FromJSON(const ptree& pt)
 {
 	// name
 	m_name = pt.get<string>("name");

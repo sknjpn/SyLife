@@ -32,7 +32,7 @@ ptree ModuleModel::ToJSON() const
 	return pt;
 }
 
-void ModuleModel::FromJSON(const ptree& pt) const
+void ModuleModel::FromJSON(const ptree& pt)
 {
 	// name
 	m_name = pt.get<string>("name");

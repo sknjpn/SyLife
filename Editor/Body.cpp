@@ -32,7 +32,7 @@ ptree BodyModel::ToJSON() const
 	return pt;
 }
 
-void BodyModel::FromJSON(const ptree& pt) const
+void BodyModel::FromJSON(const ptree& pt)
 {
 	// name
 	m_name = pt.get<string>("name");
