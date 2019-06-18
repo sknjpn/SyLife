@@ -75,6 +75,9 @@
     <Filter Include="Source Files\Cell\Part">
       <UniqueIdentifier>{ab194333-e3f5-4943-af64-dccb954d300b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Model">
+      <UniqueIdentifier>{115a69d9-b67a-4490-967f-4329ed7a1e93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -124,9 +127,6 @@
     </ClCompile>
     <ClCompile Include="Recipe.cpp">
       <Filter>Source Files\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="Shape.cpp">
-      <Filter>Source Files\Other</Filter>
     </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files\Other</Filter>
@@ -194,8 +194,11 @@
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Source Files\Cell\Part</Filter>
+    </ClCompile>
     <ClCompile Include="Model.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -372,9 +375,6 @@
     <ClInclude Include="Recipe.h">
       <Filter>Source Files\Cell</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>Source Files\Other</Filter>
-    </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>Source Files\Other</Filter>
     </ClInclude>
@@ -396,6 +396,11 @@
     <ClInclude Include="SystemManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h" />
+    <ClInclude Include="Shape.h">
+      <Filter>Source Files\Cell\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source Files\Model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
