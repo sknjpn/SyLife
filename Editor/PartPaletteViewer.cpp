@@ -2,5 +2,12 @@
 
 void PartPaletteViewer::Update()
 {
+	// Body
+	{
 
+	}
+
+	// Equipment
+
+	// Module
 }

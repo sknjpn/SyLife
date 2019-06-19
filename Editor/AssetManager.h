@@ -1,8 +1,12 @@
 #pragma once
 
+#include "CellModel.h"
 #include "MoleculeModel.h"
 #include "PartModel.h"
-#include "CellModel.h"
+
+#include "BodyModel.h"
+#include "EquipmentModel.h"
+#include "ModuleModel.h"
 
 class AssetManager
 {
@@ -10,6 +14,10 @@ public:
 	vector<shared_ptr<MoleculeModel>>	m_moleculeModels;
 	vector<shared_ptr<PartModel>>		m_partModels;
 	vector<shared_ptr<CellModel>>		m_cellModels;
+
+	vector<shared_ptr<BodyModel>>		m_bodyModels;
+	vector<shared_ptr<EquipmentModel>>	m_equipmentModels;
+	vector<shared_ptr<ModuleModel>>		m_moduleModels;
 
 public:
 	AssetManager()
