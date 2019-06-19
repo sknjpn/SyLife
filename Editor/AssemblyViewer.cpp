@@ -40,4 +40,13 @@ void AssemblyViewer::Update()
 		s3d::Line(m_camera.getCameraRect().x, 0, m_camera.getCameraRect().br().x, 0).draw(thickness, s3d::Palette::Red);
 		s3d::Line(0, m_camera.getCameraRect().y, 0, m_camera.getCameraRect().br().y).draw(thickness, s3d::Palette::Red);
 	}
+
+	// body
+	if (m_model->m_body->m_model != nullptr)
+	{
+		for (const auto& s : m_model->m_body->m_model->m_shapes)
+		{
+			s3d::Polygon(s.m_verticles).draw(s.m_color);
+		}
+	}
 }

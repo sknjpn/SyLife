@@ -24,10 +24,10 @@ void PartPaletteViewer::Update()
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);
 			auto f = font12(s3d::Unicode::Widen((*it)->m_name));
 
-			f.region().draw(m_model->m_body == *it ? s3d::Palette::Darkorange : s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
+			f.region().draw(m_model->m_body->m_model == *it ? s3d::Palette::Darkorange : s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 			f.draw();
 
-			if (f.region().leftClicked()) m_model->m_body = *it;
+			if (f.region().leftClicked()) m_model->m_body->m_model = *it;
 
 			pos.moveBy(0.0, 15.0);
 		}
