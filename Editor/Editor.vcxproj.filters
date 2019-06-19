@@ -90,6 +90,9 @@
     <Filter Include="Source Files\Viewer\Molecule">
       <UniqueIdentifier>{72dbeae5-c3f1-4a59-84be-58eccfc45cec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Model\Cell\Config">
+      <UniqueIdentifier>{e6a17c1d-bbea-4543-9758-ae141f78531a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -172,6 +175,15 @@
     </ClCompile>
     <ClCompile Include="PartPaletteViewer.cpp">
       <Filter>Source Files\Viewer\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyConfig.cpp">
+      <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentConfig.cpp">
+      <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleConfig.cpp">
+      <Filter>Source Files\Model\Cell\Config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -371,6 +383,15 @@
     </ClInclude>
     <ClInclude Include="PartPaletteViewer.h">
       <Filter>Source Files\Viewer\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyConfig.h">
+      <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentConfig.h">
+      <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleConfig.h">
+      <Filter>Source Files\Model\Cell\Config</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

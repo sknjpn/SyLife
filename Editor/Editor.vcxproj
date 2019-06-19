@@ -207,12 +207,15 @@
   <ItemGroup>
     <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="BodyConfig.cpp" />
     <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="BodyPropertyViewer.cpp" />
     <ClCompile Include="CellPropertyViewer.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
+    <ClCompile Include="EquipmentConfig.cpp" />
     <ClCompile Include="EquipmentPropertyViewer.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModuleConfig.cpp" />
     <ClCompile Include="ModulePropertyViewer.cpp" />
     <ClCompile Include="MoleculePropertyViewer.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
@@ -286,12 +289,15 @@
   <ItemGroup>
     <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="BodyConfig.h" />
     <ClInclude Include="BodyModel.h" />
     <ClInclude Include="BodyPropertyViewer.h" />
     <ClInclude Include="CellPropertyViewer.h" />
     <ClInclude Include="AssetViewer.h" />
+    <ClInclude Include="EquipmentConfig.h" />
     <ClInclude Include="EquipmentPropertyViewer.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="ModuleConfig.h" />
     <ClInclude Include="ModulePropertyViewer.h" />
     <ClInclude Include="MoleculePropertyViewer.h" />
     <ClInclude Include="PartPaletteViewer.h" />
