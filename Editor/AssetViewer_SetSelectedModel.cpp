@@ -2,6 +2,7 @@
 
 #include "ViewerManager.h"
 
+#include "PartPaletteViewer.h"
 #include "CellPropertyViewer.h"
 #include "MoleculePropertyViewer.h"
 #include "AssemblyViewer.h"
@@ -19,6 +20,7 @@ void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)
 	while (g_viewerManagerPtr->m_viewers.size() > 1) g_viewerManagerPtr->m_viewers.pop_back();
 
 	// ëŒè€ÇÃViewÇí«â¡
+	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<PartPaletteViewer>();
 	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<AssemblyViewer>(dynamic_pointer_cast<CellModel>(model));
 	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<CellPropertyViewer>(dynamic_pointer_cast<CellModel>(model));
 	if (dynamic_pointer_cast<MoleculeModel>(model) != nullptr) g_viewerManagerPtr->AddViewer<MoleculePropertyViewer>(dynamic_pointer_cast<MoleculeModel>(model));

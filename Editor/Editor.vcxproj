@@ -215,6 +215,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModulePropertyViewer.cpp" />
     <ClCompile Include="MoleculePropertyViewer.cpp" />
+    <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="PartPropertyViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
@@ -293,6 +294,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModulePropertyViewer.h" />
     <ClInclude Include="MoleculePropertyViewer.h" />
+    <ClInclude Include="PartPaletteViewer.h" />
     <ClInclude Include="PartPropertyViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="TinyCamera.h" />
