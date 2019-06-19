@@ -3,13 +3,15 @@
 #include "Viewer.h"
 
 #include "CellModel.h"
+#include "PartModel.h"
 
 class PartPaletteViewer :
 	public Viewer
 {
 public:
 	shared_ptr<CellModel>	m_model;
-	shared_ptr<PartModel>	m_selectedPart;
+
+	static shared_ptr<PartModel>	m_selectedPart;
 
 public:
 	PartPaletteViewer(const shared_ptr<CellModel>& model)
@@ -19,5 +21,8 @@ public:
 	}
 
 	void	Update() override;
+
+
+	static const shared_ptr<PartModel>&	GetSelectedPart() { return m_selectedPart; }
 };
 

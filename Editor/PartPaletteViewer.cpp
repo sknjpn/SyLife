@@ -1,6 +1,8 @@
 #include "PartPaletteViewer.h"
 #include "AssetManager.h"
 
+shared_ptr<PartModel>	PartPaletteViewer::m_selectedPart;
+
 void PartPaletteViewer::Update()
 {
 	static s3d::Font font14(13);
@@ -53,6 +55,8 @@ void PartPaletteViewer::Update()
 			f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 			f.draw();
 
+			if (f.region().leftClicked()) m_selectedPart = *it;
+
 			pos.moveBy(0.0, 15.0);
 		}
 		pos.moveBy(-16.0, 0.0);
@@ -76,6 +80,8 @@ void PartPaletteViewer::Update()
 
 			f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 			f.draw();
+
+			if (f.region().leftClicked()) m_selectedPart = *it;
 
 			pos.moveBy(0.0, 15.0);
 		}

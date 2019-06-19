@@ -1,5 +1,6 @@
 #include "AssemblyViewer.h"
 #include "AssetManager.h"
+#include "PartPaletteViewer.h"
 
 void AssemblyViewer::Init()
 {
@@ -45,6 +46,15 @@ void AssemblyViewer::Update()
 	if (m_model->m_body->m_model != nullptr)
 	{
 		for (const auto& s : m_model->m_body->m_model->m_shapes)
+		{
+			s3d::Polygon(s.m_verticles).draw(s.m_color);
+		}
+	}
+
+	// selectedPart
+	if (PartPaletteViewer::GetSelectedPart() != nullptr)
+	{
+		for (const auto& s : PartPaletteViewer::GetSelectedPart()->m_shapes)
 		{
 			s3d::Polygon(s.m_verticles).draw(s.m_color);
 		}
