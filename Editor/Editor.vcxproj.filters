@@ -87,6 +87,12 @@
     <Filter Include="Source Files\Model\Cell">
       <UniqueIdentifier>{61325ca8-ca52-4c4d-b392-3eb55d71d865}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Viewer\Cell">
+      <UniqueIdentifier>{21ff61e2-c6a2-48a0-904b-53e911507fb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Viewer\Molecule">
+      <UniqueIdentifier>{72dbeae5-c3f1-4a59-84be-58eccfc45cec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -166,6 +172,15 @@
     </ClCompile>
     <ClCompile Include="ShapeModel.cpp">
       <Filter>Source Files\Model\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyViewer.cpp">
+      <Filter>Source Files\Viewer\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculePropertyViewer.cpp">
+      <Filter>Source Files\Viewer\Molecule</Filter>
+    </ClCompile>
+    <ClCompile Include="CellPropertyViewer.cpp">
+      <Filter>Source Files\Viewer\Cell</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +380,15 @@
     </ClInclude>
     <ClInclude Include="ShapeModel.h">
       <Filter>Source Files\Model\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="AssemblyViewer.h">
+      <Filter>Source Files\Viewer\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculePropertyViewer.h">
+      <Filter>Source Files\Viewer\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="CellPropertyViewer.h">
+      <Filter>Source Files\Viewer\Cell</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

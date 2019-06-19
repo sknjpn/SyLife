@@ -2,24 +2,22 @@
 
 #include "Viewer.h"
 
-#include "BodyModel.h"
+#include "MoleculeModel.h"
 #include "TextBox.h"
+#include "NumberBox.h"
 
-class BodyPropertyViewer 
+class MoleculePropertyViewer
 	: public Viewer
 {
-public:
-	shared_ptr<BodyModel>	m_model;
+	shared_ptr<MoleculeModel>	m_model;
 	TextBox	m_textBox;
 
 public:
-	BodyPropertyViewer(const shared_ptr<BodyModel>& model)
+	MoleculePropertyViewer(const shared_ptr<MoleculeModel>& model)
 		: m_model(model)
 		, m_textBox(s3d::RectF(10, 10, 120, 20))
 	{
 		m_drawRect = s3d::RectF(0, 450, 600, 150);
 	}
-
-	void	Update() override;
 };
 

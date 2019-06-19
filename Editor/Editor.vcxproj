@@ -205,14 +205,17 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="BodyPropertyViewer.cpp" />
+    <ClCompile Include="CellPropertyViewer.cpp" />
     <ClCompile Include="CellViewer.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="EquipmentPropertyViewer.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModulePropertyViewer.cpp" />
+    <ClCompile Include="MoleculePropertyViewer.cpp" />
     <ClCompile Include="MoleculeViewer.cpp" />
     <ClCompile Include="NumberBox.cpp" />
     <ClCompile Include="PartPropertyViewer.cpp" />
@@ -283,14 +286,17 @@
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BodyModel.h" />
     <ClInclude Include="BodyPropertyViewer.h" />
+    <ClInclude Include="CellPropertyViewer.h" />
     <ClInclude Include="CellViewer.h" />
     <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="EquipmentPropertyViewer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModulePropertyViewer.h" />
+    <ClInclude Include="MoleculePropertyViewer.h" />
     <ClInclude Include="MoleculeViewer.h" />
     <ClInclude Include="NumberBox.h" />
     <ClInclude Include="PartPropertyViewer.h" />
