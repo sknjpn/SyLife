@@ -48,3 +48,16 @@ void FieldManager::LoadGenerationSetting()
 		}
 	}
 }
+
+int FieldManager::GetNumMoleculeAll() const
+{
+	int result = g_moleculeManagerPtr->GetMolecules().size();
+
+	for (const auto& c : g_cellManagerPtr->GetCells())
+	{
+		for (const auto& m : c->m_molecules.m_molecules)
+			result += m.second;
+	}
+
+	return result;
+}

@@ -17,7 +17,6 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecu
 	m->m_radius = model->m_radius;
 	m->m_mass = model->m_mass;
 
-	m_indexer.AddParticle(m);
 	return m;
 }
 

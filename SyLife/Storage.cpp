@@ -53,11 +53,7 @@ void Storage::PullMolecule(const shared_ptr<MoleculeModel>& model)
 	{
 		if ((*it).first == model)
 		{
-			if (--(*it).second <= 0)
-			{
-				m_molecules.erase(it);
-				
-			}
+			if (--(*it).second <= 0) m_molecules.erase(it);
 
 			return;
 		}
@@ -70,11 +66,7 @@ void Storage::PullMolecule(const shared_ptr<MoleculeModel>& model, int size)
 	{
 		if ((*it).first == model)
 		{
-			if (((*it).second -= size) <= 0)
-			{
-				m_molecules.erase(it);
-
-			}
+			if (((*it).second -= size) <= 0) m_molecules.erase(it);
 
 			return;
 		}

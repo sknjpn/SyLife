@@ -3,5 +3,7 @@
 
 void SystemManager::Update()
 {
-	g_fieldManagerPtr->Update();
+	auto f = s3d::KeyShift.pressed() ? 10 : 5;
+	for (int i = 0; i < f; ++i)
+		g_fieldManagerPtr->Update();
 }

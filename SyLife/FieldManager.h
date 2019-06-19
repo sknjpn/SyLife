@@ -18,6 +18,9 @@ public:
 	void	LoadGenerationSetting();
 
 	double	GetDeltaTime() const { return 1.0 / 60.0; }
+
+	// “Œv
+	int		GetNumMoleculeAll() const;
 };
 
 extern unique_ptr<FieldManager>	g_fieldManagerPtr;
