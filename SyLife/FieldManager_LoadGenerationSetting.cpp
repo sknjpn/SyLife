@@ -1,8 +1,5 @@
 #include "FieldManager.h"
-#include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
-#include <boost/foreach.hpp>
-#include <boost/optional.hpp>
 
 #include "AssetManager.h"
 #include "MoleculeManager.h"
@@ -47,17 +44,4 @@ void FieldManager::LoadGenerationSetting()
 			}
 		}
 	}
-}
-
-int FieldManager::GetNumMoleculeAll() const
-{
-	int result = g_moleculeManagerPtr->GetMolecules().size();
-
-	for (const auto& c : g_cellManagerPtr->GetCells())
-	{
-		for (const auto& m : c->m_molecules.m_molecules)
-			result += m.second;
-	}
-
-	return result;
 }
