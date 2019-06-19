@@ -17,7 +17,7 @@ public:
 		: m_model(model)
 		, m_textBox(s3d::RectF(10, 10, 120, 20))
 	{
-		m_drawRect = s3d::RectF(0, 450, 600, 150);
+		m_drawRect = s3d::RectF(0, 0, 600, 600);
 	}
 };
 
