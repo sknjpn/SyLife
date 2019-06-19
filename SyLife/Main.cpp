@@ -1,10 +1,4 @@
-﻿#include "FieldManager.h"
-#include "SystemManager.h"
-#include "CellManager.h"
-#include "MoleculeManager.h"
-#include "AssetManager.h"
-#include "Cell.h"
-#include "Molecule.h"
+﻿#include "SystemManager.h"
 
 void Main()
 {
