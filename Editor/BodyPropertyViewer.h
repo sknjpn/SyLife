@@ -3,19 +3,20 @@
 #include "Viewer.h"
 
 #include "BodyModel.h"
-#include "TextBox.h"
 
 class BodyPropertyViewer 
 	: public Viewer
 {
 public:
 	shared_ptr<BodyModel>	m_model;
-	TextBox	m_textBox;
+	s3d::TextEditState		m_textEditState_name;
+	s3d::TextEditState		m_textEditState_mass;
 
 public:
 	BodyPropertyViewer(const shared_ptr<BodyModel>& model)
 		: m_model(model)
-		, m_textBox(s3d::RectF(10, 10, 120, 20))
+		, m_textEditState_name(s3d::Unicode::Widen(model->m_name))
+		, m_textEditState_mass(s3d::ToString(model->m_mass))
 	{
 		m_drawRect = s3d::RectF(0, 450, 600, 150);
 	}

@@ -63,9 +63,6 @@
     <Filter Include="Source Files\Viewer\Part">
       <UniqueIdentifier>{109b8b8e-75a8-4fee-a64e-6359d4ffa7a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Box">
-      <UniqueIdentifier>{b08da44a-7f90-44eb-9fbe-65719b57ef46}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Model">
       <UniqueIdentifier>{8d220b08-eee5-4c87-b970-1f0e2356a845}</UniqueIdentifier>
     </Filter>
@@ -139,12 +136,6 @@
     </ClCompile>
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\Viewer\Part</Filter>
-    </ClCompile>
-    <ClCompile Include="NumberBox.cpp">
-      <Filter>Source Files\Box</Filter>
-    </ClCompile>
-    <ClCompile Include="TextBox.cpp">
-      <Filter>Source Files\Box</Filter>
     </ClCompile>
     <ClCompile Include="CellModel.cpp">
       <Filter>Source Files\Model\Cell</Filter>
@@ -344,12 +335,6 @@
     </ClInclude>
     <ClInclude Include="PartShapeViewer.h">
       <Filter>Source Files\Viewer\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="NumberBox.h">
-      <Filter>Source Files\Box</Filter>
-    </ClInclude>
-    <ClInclude Include="TextBox.h">
-      <Filter>Source Files\Box</Filter>
     </ClInclude>
     <ClInclude Include="CellModel.h">
       <Filter>Source Files\Model\Cell</Filter>

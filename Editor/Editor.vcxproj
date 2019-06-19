@@ -215,11 +215,9 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModulePropertyViewer.cpp" />
     <ClCompile Include="MoleculePropertyViewer.cpp" />
-    <ClCompile Include="NumberBox.cpp" />
     <ClCompile Include="PartPropertyViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
-    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="CellModel.cpp" />
     <ClCompile Include="EquipmentModel.cpp" />
@@ -295,10 +293,8 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModulePropertyViewer.h" />
     <ClInclude Include="MoleculePropertyViewer.h" />
-    <ClInclude Include="NumberBox.h" />
     <ClInclude Include="PartPropertyViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
-    <ClInclude Include="TextBox.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="CellModel.h" />

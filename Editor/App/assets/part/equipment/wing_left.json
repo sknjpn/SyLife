@@ -1,13 +1,13 @@
 {
     "name": "Wing Left",
     "type": "Equipment",
-    "mass": "10",
+    "mass": "120",
     "shapes": [
         {
             "color": [
-                "0",
+                "255",
                 "50",
-                "255"
+                "0"
             ],
             "verticles": [
                 {
@@ -38,9 +38,9 @@
         },
         {
             "color": [
-                "0",
+                "13",
                 "255",
-                "13"
+                "0"
             ],
             "verticles": [
                 {
