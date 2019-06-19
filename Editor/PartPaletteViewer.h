@@ -9,6 +9,7 @@ class PartPaletteViewer :
 {
 public:
 	shared_ptr<CellModel>	m_model;
+	shared_ptr<PartModel>	m_selectedPart;
 
 public:
 	PartPaletteViewer(const shared_ptr<CellModel>& model)
