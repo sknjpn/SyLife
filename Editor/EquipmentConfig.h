@@ -12,9 +12,7 @@ public:
 	double		m_rotation;
 
 public:
-	EquipmentConfig(const shared_ptr<EquipmentModel>& model)
-		: m_model(model)
-	{}
+	EquipmentConfig(const ptree& pt) { FromJSON(pt); }
 
 	ptree	ToJSON() const override;
 	void	FromJSON(const ptree& pt) override;

@@ -13,9 +13,6 @@ void AssetManager::Init()
 
 	fs::directory_iterator end;
 
-	for (fs::directory_iterator it(fs::path("assets/cell")); it != end; ++it)
-		if (!fs::is_directory(*it)) m_cellModels.emplace_back(make_shared<CellModel>())->Load((*it).path().string());
-
 	for (fs::directory_iterator it(fs::path("assets/molecule")); it != end; ++it)
 		if (!fs::is_directory(*it)) m_moleculeModels.emplace_back(make_shared<MoleculeModel>())->Load((*it).path().string());
 
@@ -27,4 +24,7 @@ void AssetManager::Init()
 
 	for (fs::directory_iterator it(fs::path("assets/part/module")); it != end; ++it)
 		if (!fs::is_directory(*it)) m_partModels.emplace_back(m_moduleModels.emplace_back(make_shared<ModuleModel>()))->Load((*it).path().string());
+
+	for (fs::directory_iterator it(fs::path("assets/cell")); it != end; ++it)
+		if (!fs::is_directory(*it)) m_cellModels.emplace_back(make_shared<CellModel>())->Load((*it).path().string());
 }

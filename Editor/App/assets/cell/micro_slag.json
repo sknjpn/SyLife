@@ -1,17 +1,15 @@
 {
   "name": "Micro Slag",
   "body": {
-    "name": "Body",
-    "position": [ 0.0, 0.0 ],
-    "rotaiton": 0.0
+    "name": "Body"
   },
   "modules": [
   ],
   "equipments": [
     {
-      "name": "Organelle",
-      "position": [ 0.0, 0.0 ],
-      "rotaiton": 0.0
+      "name": "Wing Left",
+      "position": {"x": 0.0, "y": 0.0} ,
+      "rotation": 0.0
     }
   ]
 }

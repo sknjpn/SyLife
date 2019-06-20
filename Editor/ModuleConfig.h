@@ -12,9 +12,7 @@ public:
 	double		m_rotation;
 
 public:
-	ModuleConfig(const shared_ptr<ModuleModel>& model)
-		: m_model(model)
-	{}
+	ModuleConfig(const ptree& pt) { FromJSON(pt); }
 
 	ptree	ToJSON() const override;
 	void	FromJSON(const ptree& pt) override;
