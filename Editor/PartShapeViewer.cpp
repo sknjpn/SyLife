@@ -123,13 +123,4 @@ void PartShapeViewer::Update()
 			if (s3d::MouseR.down()) m_verticles.pop_back();
 		}
 	}
-
-	// Save
-	if (s3d::KeyControl.pressed() && s3d::KeyS.down())
-	{
-		if (m_model->m_name.empty()) m_model->m_name = "None";
-		if (m_model->m_mass <= 0) m_model->m_mass = 10;
-
-		m_model->Save();
-	}
 }

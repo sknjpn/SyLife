@@ -7,7 +7,7 @@ ptree MoleculeModel::ToJSON() const
 
 	// name
 	pt.put<string>("name", m_name);
-	
+
 	// mass
 	pt.put<int>("mass", m_mass);
 

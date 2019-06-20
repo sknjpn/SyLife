@@ -10,7 +10,6 @@ class CellModel
 	: public Model
 {
 public:
-	string	m_name;
 	shared_ptr<BodyConfig>	m_body;
 	vector<shared_ptr<EquipmentConfig>>	m_equipments;
 	vector<shared_ptr<ModuleConfig>>		m_modules;
@@ -23,5 +22,5 @@ public:
 	ptree	ToJSON() const override;
 	void	FromJSON(const ptree& pt) override;
 
-	string	GetFilepath() const override { return "assets/part/cell/" + GetFilename(); }
+	string	GetFilepath() const override { return "assets/cell/" + GetFilename(); }
 };

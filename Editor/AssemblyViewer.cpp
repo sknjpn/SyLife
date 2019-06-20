@@ -56,7 +56,7 @@ void AssemblyViewer::Update()
 	{
 		for (const auto& s : PartPaletteViewer::GetSelectedPart()->m_shapes)
 		{
-			s3d::Polygon(s.m_verticles).draw(s.m_color);
+			s3d::Polygon(s.m_verticles).drawTransformed(0.0, 1.0, s3d::Cursor::Pos(), s3d::ColorF(1.0, 0.5));
 		}
 	}
 }

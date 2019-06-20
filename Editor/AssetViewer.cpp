@@ -85,4 +85,7 @@ void AssetViewer::Update()
 		}
 		pos.moveBy(-16.0, 0.0);
 	}
+
+	// Save
+	if (s3d::KeyControl.pressed() && s3d::KeyS.down() && m_selectedModel != nullptr) m_selectedModel->Save();
 }
