@@ -1,7 +1,7 @@
 {
     "name": "Body",
     "type": "Body",
-    "mass": "10",
+    "mass": "100",
     "shapes": [
         {
             "color": {

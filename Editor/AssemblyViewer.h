@@ -21,5 +21,10 @@ public:
 
 	void	Init() override;
 	void	Update() override;
+
+	s3d::Vec2	GetDiskCenter() const;
+	double		GetDiskInertia() const;
+	double		GetDiskRadius() const;
+	double		GetDiskMass() const;
 };
 

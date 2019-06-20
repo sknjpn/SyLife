@@ -1,7 +1,7 @@
 {
     "name": "Wing Left",
     "type": "Equipment",
-    "mass": "120",
+    "mass": "20",
     "shapes": [
         {
             "color": {
