@@ -10,11 +10,6 @@ void CellManager::Draw()
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(s3d::Vec2(c->m_position.m_x, c->m_position.m_y)));
 			auto ts = s3d::Transformer2D(s3d::Mat3x2::Scale(0.4));
 
-			// body
-			{
-				c->m_model->m_body->m_model->Draw();
-			}
-
 			// equipments
 			for (const auto& e : c->m_model->m_equipments)
 			{
@@ -29,6 +24,11 @@ void CellManager::Draw()
 				auto tp = s3d::Transformer2D(s3d::Mat3x2::Translate(m->m_position));
 
 				m->m_model->Draw();
+			}
+
+			// body
+			{
+				c->m_model->m_body->m_model->Draw();
 			}
 		}
 
