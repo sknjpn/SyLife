@@ -15,6 +15,9 @@ void CellManager::Draw()
 			{
 				auto tp = s3d::Transformer2D(s3d::Mat3x2::Translate(e->m_position));
 
+				auto ar = e->m_model->m_approximateRect;
+				s3d::RectF(ar.first.m_x, ar.first.m_y, ar.second.m_x - ar.first.m_x, ar.second.m_y - ar.first.m_y).draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
+
 				e->m_model->Draw();
 			}
 
@@ -23,11 +26,17 @@ void CellManager::Draw()
 			{
 				auto tp = s3d::Transformer2D(s3d::Mat3x2::Translate(m->m_position));
 
+				auto ar = m->m_model->m_approximateRect;
+				s3d::RectF(ar.first.m_x, ar.first.m_y, ar.second.m_x - ar.first.m_x, ar.second.m_y - ar.first.m_y).draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
+
 				m->m_model->Draw();
 			}
 
 			// body
 			{
+				auto ar = c->m_model->m_body->m_model->m_approximateRect;
+				s3d::RectF(ar.first.m_x, ar.first.m_y, ar.second.m_x - ar.first.m_x, ar.second.m_y - ar.first.m_y).draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
+
 				c->m_model->m_body->m_model->Draw();
 			}
 		}

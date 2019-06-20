@@ -12,6 +12,6 @@ public:
 public:
 	void	FromJSON(const ptree& pt) override;
 
-	void	Draw(double a) const { m_polygon.draw(s3d::ColorF(m_color, a)); }
+	void	Draw(double a) const { m_polygon.draw(s3d::ColorF(m_color, a)).drawFrame(1.0, s3d::Palette::Black); }
 };
 
