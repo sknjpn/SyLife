@@ -7,6 +7,9 @@ class PartModel
 	: public Model
 {
 public:
-	double	m_mass;
+	double		m_mass;
 	vector<ShapeModel>	m_shapes;
+
+public:
+	s3d::RectF	GetApproximateRect() const;
 };

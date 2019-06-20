@@ -45,24 +45,36 @@ void AssemblyViewer::Update()
 	// body
 	if (m_model->m_body->m_model != nullptr)
 	{
+		m_model->m_body->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
+
 		for (const auto& s : m_model->m_body->m_model->m_shapes)
-		{
-			s3d::Polygon(s.m_verticles).draw(s3d::ColorF(s.m_color, 0.5));
-		}
+			s3d::Polygon(s.m_verticles).draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
 	}
 
 	// modules
 	{
 		for (const auto& m : m_model->m_modules)
+		{
+			auto t = s3d::Transformer2D(s3d::Mat3x2::Rotate(m->m_rotation).translated(m->m_position));
+			
+			m->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
+
 			for (const auto& s : m->m_model->m_shapes)
-				s3d::Polygon(s.m_verticles).drawTransformed(sin(m->m_rotation), cos(m->m_rotation), m->m_position, s3d::ColorF(s.m_color, 0.5));
+				s3d::Polygon(s.m_verticles).draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
+		}
 	}
 
 	// equipment
 	{
 		for (const auto& e : m_model->m_equipments)
+		{
+			auto t = s3d::Transformer2D(s3d::Mat3x2::Rotate(e->m_rotation).translated(e->m_position));
+			e->m_rotation += 0.01;
+			e->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
+
 			for (const auto& s : e->m_model->m_shapes)
-				s3d::Polygon(s.m_verticles).drawTransformed(sin(e->m_rotation), cos(e->m_rotation), e->m_position, s3d::ColorF(s.m_color, 0.5));
+				s3d::Polygon(s.m_verticles).draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
+		}
 	}
 
 	// selectedPart
