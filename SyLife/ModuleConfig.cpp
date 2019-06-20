@@ -2,29 +2,6 @@
 
 #include "AssetManager.h"
 
-ptree ModuleConfig::ToJSON() const
-{
-	ptree pt;
-
-	// model
-	pt.put("name", m_model->m_name);
-
-	// position
-	{
-		ptree position;
-
-		position.put("x", m_position.x);
-		position.put("y", m_position.y);
-
-		pt.push_back(std::make_pair("position", position));
-	}
-
-	// rotation
-	pt.put("rotation", m_rotation);
-
-	return pt;
-}
-
 void ModuleConfig::FromJSON(const ptree & pt)
 {
 	// model

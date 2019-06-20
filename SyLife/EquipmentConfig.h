@@ -19,7 +19,6 @@ public:
 		, m_rotation(rotation)
 	{}
 
-	ptree	ToJSON() const override;
 	void	FromJSON(const ptree& pt) override;
 };
 

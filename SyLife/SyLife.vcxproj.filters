@@ -96,6 +96,9 @@
     <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part">
       <UniqueIdentifier>{ab194333-e3f5-4943-af64-dccb954d300b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Model\Cell\Config">
+      <UniqueIdentifier>{2e16ff39-a614-4b7a-a890-bbb3a6655295}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -217,6 +220,15 @@
     </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files\Field\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyConfig.cpp">
+      <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentConfig.cpp">
+      <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleConfig.cpp">
+      <Filter>Source Files\Model\Cell\Config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +449,15 @@
     </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Source Files\Field\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyConfig.h">
+      <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleConfig.h">
+      <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentConfig.h">
+      <Filter>Source Files\Model\Cell\Config</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

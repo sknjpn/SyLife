@@ -1,5 +1,9 @@
 {
-  "name": "Nitrogen",
-  "mass": 24.0,
-  "color": [0, 128, 0]
+    "name": "Nitrogen",
+    "mass": "24",
+    "color": {
+        "r": "0",
+        "g": "128",
+        "b": "0"
+    }
 }

@@ -14,15 +14,10 @@ ptree MoleculeModel::ToJSON() const
 	// color
 	{
 		ptree color;
-		ptree color_r, color_g, color_b;
 
-		color_r.put("", m_color[0]);
-		color_g.put("", m_color[1]);
-		color_b.put("", m_color[2]);
-
-		color.push_back(std::make_pair("", color_r));
-		color.push_back(std::make_pair("", color_g));
-		color.push_back(std::make_pair("", color_b));
+		color.put("r", m_color.r);
+		color.put("g", m_color.g);
+		color.put("b", m_color.b);
 
 		pt.add_child("color", color);
 	}
@@ -33,17 +28,7 @@ ptree MoleculeModel::ToJSON() const
 void MoleculeModel::FromJSON(const ptree& pt)
 {
 	// color
-	{
-		auto child = pt.get_child("color");
-		int n = 0;
-
-		for (auto it = child.begin(); n != 3; ++it)
-		{
-			m_color[n] = (*it).second.get_value<int>();
-
-			++n;
-		}
-	}
+	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
 
 	// mass
 	m_mass = pt.get<double>("mass");

@@ -207,6 +207,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Body.cpp" />
+    <ClCompile Include="BodyConfig.cpp" />
     <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
@@ -214,12 +215,14 @@
     <ClCompile Include="CellManager_Update.cpp" />
     <ClCompile Include="CellModel.cpp" />
     <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="EquipmentConfig.cpp" />
     <ClCompile Include="EquipmentModel.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldManager_Draw.cpp" />
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
     <ClCompile Include="FieldManager_Update.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModuleConfig.cpp" />
     <ClCompile Include="ModuleModel.cpp" />
     <ClCompile Include="MoleculeManager_Draw.cpp" />
     <ClCompile Include="MoleculeManager_Update.cpp" />
@@ -300,15 +303,18 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Body.h" />
+    <ClInclude Include="BodyConfig.h" />
     <ClInclude Include="BodyModel.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="CellModel.h" />
     <ClInclude Include="Equipment.h" />
+    <ClInclude Include="EquipmentConfig.h" />
     <ClInclude Include="EquipmentModel.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleConfig.h" />
     <ClInclude Include="ModuleModel.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="MoleculeManager.h" />

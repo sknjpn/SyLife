@@ -6,9 +6,9 @@ class MoleculeModel
 	: public Model
 {
 public:
-	double	m_mass;
-	double	m_radius;
-	int		m_color[3];
+	double		m_mass;
+	double		m_radius;
+	s3d::Color	m_color;
 
 public:
 	ptree	ToJSON() const override;

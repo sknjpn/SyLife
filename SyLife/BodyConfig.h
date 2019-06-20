@@ -14,7 +14,6 @@ public:
 		: m_model(model)
 	{}
 
-	ptree	ToJSON() const override;
 	void	FromJSON(const ptree& pt) override;
 };
 
