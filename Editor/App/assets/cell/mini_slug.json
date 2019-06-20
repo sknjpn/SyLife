@@ -1,0 +1,58 @@
+{
+    "name": "Mini Slug",
+    "body": {
+        "name": "Body"
+    },
+    "equipments": [
+        {
+            "name": "Wing Left",
+            "position": {
+                "x": "-27.826919555664063",
+                "y": "-19.721061706542969"
+            },
+            "rotation": "0"
+        },
+        {
+            "name": "Wing Left",
+            "position": {
+                "x": "-23.103965759277344",
+                "y": "35.798652648925781"
+            },
+            "rotation": "0"
+        },
+        {
+            "name": "Wing Right",
+            "position": {
+                "x": "28.45367431640625",
+                "y": "-20.146873474121094"
+            },
+            "rotation": "0"
+        },
+        {
+            "name": "Wing Right",
+            "position": {
+                "x": "27.905197143554688",
+                "y": "31.959251403808594"
+            },
+            "rotation": "0"
+        }
+    ],
+    "modules": [
+        {
+            "name": "Organelle",
+            "position": {
+                "x": "19.511493682861328",
+                "y": "0.8643646240234375"
+            },
+            "rotation": "0"
+        },
+        {
+            "name": "Organelle",
+            "position": {
+                "x": "-29.19935417175293",
+                "y": "3.9735679626464844"
+            },
+            "rotation": "0"
+        }
+    ]
+}
