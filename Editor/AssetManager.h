@@ -25,6 +25,10 @@ public:
 		m_moleculeModels.reserve(1024);
 		m_partModels.reserve(1024);
 		m_cellModels.reserve(1024);
+		
+		m_bodyModels.reserve(1024);
+		m_equipmentModels.reserve(1024);
+		m_moduleModels.reserve(1024);
 	}
 
 	void	Init();
@@ -39,6 +43,27 @@ public:
 	const shared_ptr<PartModel>&	GetPartModel(const string& name) const
 	{
 		for (auto it = m_partModels.begin(); it != m_partModels.end(); ++it)
+			if ((*it)->m_name == name) return *it;
+
+		throw new exception;
+	}
+	const shared_ptr<BodyModel>&	GetBodyModel(const string& name) const
+	{
+		for (auto it = m_bodyModels.begin(); it != m_bodyModels.end(); ++it)
+			if ((*it)->m_name == name) return *it;
+
+		throw new exception;
+	}
+	const shared_ptr<EquipmentModel>&	GetEquipmentModel(const string& name) const
+	{
+		for (auto it = m_equipmentModels.begin(); it != m_equipmentModels.end(); ++it)
+			if ((*it)->m_name == name) return *it;
+
+		throw new exception;
+	}
+	const shared_ptr<ModuleModel>&	GetModuleModel(const string& name) const
+	{
+		for (auto it = m_moduleModels.begin(); it != m_moduleModels.end(); ++it)
 			if ((*it)->m_name == name) return *it;
 
 		throw new exception;

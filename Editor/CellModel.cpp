@@ -24,7 +24,7 @@ ptree CellModel::ToJSON() const
 		ptree modules;
 
 		for (const auto& m : m_modules)
-			modules.push_back(std::make_pair("", m.ToJSON()));
+			modules.push_back(std::make_pair("", m->ToJSON()));
 
 		pt.add_child("modules", modules);
 	}
@@ -34,7 +34,7 @@ ptree CellModel::ToJSON() const
 		ptree equipments;
 
 		for (const auto& e : m_equipments)
-			equipments.push_back(std::make_pair("", e.ToJSON()));
+			equipments.push_back(std::make_pair("", e->ToJSON()));
 
 		pt.add_child("equipments", equipments);
 	}
