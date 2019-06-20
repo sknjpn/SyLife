@@ -6,7 +6,7 @@ class ShapeModel
 	: public Model
 {
 public:
-	s3d::HSV	m_color;
+	s3d::Color	m_color;
 	s3d::Array<s3d::Vec2>	m_verticles;
 
 public:

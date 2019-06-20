@@ -8,15 +8,10 @@ ptree ShapeModel::ToJSON() const
 	// color
 	{
 		ptree color;
-		ptree color_r, color_g, color_b;
 
-		color_r.put("", m_color.toColor().r);
-		color_g.put("", m_color.toColor().g);
-		color_b.put("", m_color.toColor().b);
-
-		color.push_back(std::make_pair("", color_r));
-		color.push_back(std::make_pair("", color_g));
-		color.push_back(std::make_pair("", color_b));
+		color.put("r", m_color.r);
+		color.put("g", m_color.g);
+		color.put("b", m_color.b);
 
 		pt.add_child("color", color);
 	}
@@ -46,14 +41,9 @@ ptree ShapeModel::ToJSON() const
 void ShapeModel::FromJSON(const ptree& pt)
 {
 	// color
-	{
-		auto it = pt.get_child("color").begin();
-
-		m_color = s3d::Color((*it).second.get_value<int>(), (*(it++)).second.get_value<int>(), (*(it++)).second.get_value<int>());
-	}
+	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
 
 	// verticles
 	for (auto v : pt.get_child("verticles"))
 		m_verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
-
 }
