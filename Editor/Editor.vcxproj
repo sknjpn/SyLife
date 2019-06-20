@@ -218,6 +218,7 @@
     <ClCompile Include="ModuleConfig.cpp" />
     <ClCompile Include="ModulePropertyViewer.cpp" />
     <ClCompile Include="MoleculePropertyViewer.cpp" />
+    <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="PartPropertyViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
@@ -300,6 +301,7 @@
     <ClInclude Include="ModuleConfig.h" />
     <ClInclude Include="ModulePropertyViewer.h" />
     <ClInclude Include="MoleculePropertyViewer.h" />
+    <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartPaletteViewer.h" />
     <ClInclude Include="PartPropertyViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />

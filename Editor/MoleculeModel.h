@@ -11,8 +11,11 @@ public:
 	s3d::Color	m_color;
 
 public:
-	ptree	ToJSON() const override;
-	void	FromJSON(const ptree& pt) override;
+	ptree	AddToJSON(ptree pt) const;
+	void	SetFromJSON(const ptree& pt);
 
 	string	GetFilepath() const override { return "assets/molecule/" + GetFilename(); }
+
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	ptree	Save() const override { return AddToJSON(ptree()); }
 };

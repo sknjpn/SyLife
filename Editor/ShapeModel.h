@@ -10,16 +10,18 @@ public:
 	s3d::Array<s3d::Vec2>	m_verticles;
 
 public:
+	ShapeModel()
+		: m_color(s3d::RandomHSV())
+	{}
 	ShapeModel(const s3d::Array<s3d::Vec2>& verticles)
 		: m_verticles(verticles)
 		, m_color(s3d::RandomHSV())
 	{}
-	ShapeModel()
-		: m_verticles()
-		, m_color(s3d::RandomHSV())
-	{}
 
-	ptree	ToJSON() const override;
-	void	FromJSON(const ptree& pt) override;
+	ptree	AddToJSON(ptree pt) const;
+	void	SetFromJSON(const ptree& pt);
+
+	 void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	 ptree	Save() const override { return AddToJSON(ptree()); }
 };
 

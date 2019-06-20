@@ -1,9 +1,9 @@
 {
-    "name": "Carbon",
     "mass": "12",
     "color": {
         "r": "135",
         "g": "206",
         "b": "235"
-    }
+    },
+    "name": "Carbon"
 }

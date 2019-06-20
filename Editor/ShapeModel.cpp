@@ -1,10 +1,7 @@
 #include "ShapeModel.h"
-#include <boost/property_tree/json_parser.hpp>
 
-ptree ShapeModel::ToJSON() const
+ptree ShapeModel::AddToJSON(ptree pt) const
 {
-	ptree pt;
-
 	// color
 	{
 		ptree color;
@@ -27,7 +24,7 @@ ptree ShapeModel::ToJSON() const
 			{
 				verticle.put("x", v.x);
 				verticle.put("y", v.y);
-				
+
 				verticles.push_back(std::make_pair("", verticle));
 			}
 		}
@@ -35,10 +32,10 @@ ptree ShapeModel::ToJSON() const
 		pt.add_child("verticles", verticles);
 	}
 
-	return pt;
+	return Model::AddToJSON(pt);
 }
 
-void ShapeModel::FromJSON(const ptree& pt)
+void ShapeModel::SetFromJSON(const ptree & pt)
 {
 	// color
 	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
@@ -46,4 +43,6 @@ void ShapeModel::FromJSON(const ptree& pt)
 	// verticles
 	for (auto v : pt.get_child("verticles"))
 		m_verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
+
+	Model::SetFromJSON(pt);
 }

@@ -17,3 +17,33 @@ s3d::RectF PartModel::GetApproximateRect() const
 
 	return ar;
 }
+
+ptree PartModel::AddToJSON(ptree pt) const
+{
+	// mass
+	pt.put<int>("mass", m_mass);
+
+	// shapes
+	{
+		ptree shapes;
+
+		for (const auto& v : m_shapes)
+			shapes.push_back(std::make_pair("", v.AddToJSON(ptree())));
+
+		pt.add_child("shapes", shapes);
+	}
+
+	return Model::AddToJSON(pt);
+}
+
+void PartModel::SetFromJSON(const ptree & pt)
+{
+	// mass
+	m_mass = pt.get<double>("mass");
+
+	// shapes
+	for (auto shape : pt.get_child("shapes"))
+		m_shapes.emplace_back().SetFromJSON(shape.second);
+
+	Model::SetFromJSON(pt);
+}

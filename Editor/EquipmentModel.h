@@ -6,8 +6,11 @@ class EquipmentModel
 	: public PartModel
 {
 public:
-	ptree	ToJSON() const override;
-	void	FromJSON(const ptree& pt) override;
+	ptree	AddToJSON(ptree pt) const;
+	void	SetFromJSON(const ptree& pt);
 
 	string	GetFilepath() const override { return "assets/part/equipment/" + GetFilename(); }
+
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	ptree	Save() const override { return AddToJSON(ptree()); }
 };

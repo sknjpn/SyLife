@@ -94,13 +94,19 @@ void AssemblyViewer::Update()
 			{
 				auto model = dynamic_pointer_cast<ModuleModel>(PartPaletteViewer::GetSelectedPart());
 
-				m_model->m_modules.emplace_back(make_shared<ModuleConfig>(model, s3d::Cursor::PosF(), 0.0));
+				auto mc = m_model->m_modules.emplace_back(make_shared<ModuleConfig>());
+				mc->m_model = model;
+				mc->m_position = s3d::Cursor::PosF();
+				mc->m_rotation = 0.0;
 			}
 			if (dynamic_pointer_cast<EquipmentModel>(PartPaletteViewer::GetSelectedPart()))
 			{
 				auto model = dynamic_pointer_cast<EquipmentModel>(PartPaletteViewer::GetSelectedPart());
 
-				m_model->m_equipments.emplace_back(make_shared<EquipmentConfig>(model, s3d::Cursor::PosF(), 0.0));
+				auto ec = m_model->m_equipments.emplace_back(make_shared<EquipmentConfig>());
+				ec->m_model = model;
+				ec->m_position = s3d::Cursor::PosF();
+				ec->m_rotation = 0.0;
 			}
 		}
 

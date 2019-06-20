@@ -12,4 +12,10 @@ public:
 
 public:
 	s3d::RectF	GetApproximateRect() const;
+
+	ptree	AddToJSON(ptree pt) const;
+	void	SetFromJSON(const ptree& pt);
+
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	ptree	Save() const override { return AddToJSON(ptree()); }
 };

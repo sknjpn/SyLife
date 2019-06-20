@@ -93,6 +93,15 @@
     <Filter Include="Source Files\Model\Cell\Config">
       <UniqueIdentifier>{e6a17c1d-bbea-4543-9758-ae141f78531a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Model\Cell\Config\Body">
+      <UniqueIdentifier>{94ed1501-a92d-47b9-bc47-54dd5e68df70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Cell\Config\Equipment">
+      <UniqueIdentifier>{c4de4c06-7ca0-4f8c-82e7-f496ed7fce0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Cell\Config\Module">
+      <UniqueIdentifier>{c85da9ba-5052-48f9-99ff-57712f57d8ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -176,14 +185,17 @@
     <ClCompile Include="PartPaletteViewer.cpp">
       <Filter>Source Files\Viewer\Cell</Filter>
     </ClCompile>
-    <ClCompile Include="BodyConfig.cpp">
+    <ClCompile Include="PartConfig.cpp">
       <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyConfig.cpp">
+      <Filter>Source Files\Model\Cell\Config\Body</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentConfig.cpp">
-      <Filter>Source Files\Model\Cell\Config</Filter>
+      <Filter>Source Files\Model\Cell\Config\Equipment</Filter>
     </ClCompile>
     <ClCompile Include="ModuleConfig.cpp">
-      <Filter>Source Files\Model\Cell\Config</Filter>
+      <Filter>Source Files\Model\Cell\Config\Module</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -384,14 +396,17 @@
     <ClInclude Include="PartPaletteViewer.h">
       <Filter>Source Files\Viewer\Cell</Filter>
     </ClInclude>
-    <ClInclude Include="BodyConfig.h">
+    <ClInclude Include="PartConfig.h">
       <Filter>Source Files\Model\Cell\Config</Filter>
     </ClInclude>
     <ClInclude Include="EquipmentConfig.h">
-      <Filter>Source Files\Model\Cell\Config</Filter>
+      <Filter>Source Files\Model\Cell\Config\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyConfig.h">
+      <Filter>Source Files\Model\Cell\Config\Body</Filter>
     </ClInclude>
     <ClInclude Include="ModuleConfig.h">
-      <Filter>Source Files\Model\Cell\Config</Filter>
+      <Filter>Source Files\Model\Cell\Config\Module</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

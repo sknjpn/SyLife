@@ -87,5 +87,8 @@ void AssetViewer::Update()
 	}
 
 	// Save
-	if (s3d::KeyControl.pressed() && s3d::KeyS.down() && m_selectedModel != nullptr) m_selectedModel->Save();
+	if (s3d::KeyControl.pressed() && s3d::KeyS.down() && m_selectedModel != nullptr)
+	{
+		write_json(m_selectedModel->GetFilepath(), m_selectedModel->Save());
+	}
 }

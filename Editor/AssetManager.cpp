@@ -11,20 +11,22 @@ void AssetManager::Init()
 {
 	namespace fs = boost::filesystem;
 
+	auto makept = [](const fs::directory_iterator& it) { ptree pt; read_json((*it).path().string(), pt); return pt; };
+
 	fs::directory_iterator end;
 
 	for (fs::directory_iterator it(fs::path("assets/molecule")); it != end; ++it)
-		if (!fs::is_directory(*it)) m_moleculeModels.emplace_back(make_shared<MoleculeModel>())->Load((*it).path().string());
+		if (!fs::is_directory(*it)) m_moleculeModels.emplace_back(make_shared<MoleculeModel>())->Load(makept(it));
 
 	for (fs::directory_iterator it(fs::path("assets/part/body")); it != end; ++it)
-		if (!fs::is_directory(*it)) m_partModels.emplace_back(m_bodyModels.emplace_back(make_shared<BodyModel>()))->Load((*it).path().string());
+		if (!fs::is_directory(*it)) m_partModels.emplace_back(m_bodyModels.emplace_back(make_shared<BodyModel>()))->Load(makept(it));
 
 	for (fs::directory_iterator it(fs::path("assets/part/equipment")); it != end; ++it)
-		if (!fs::is_directory(*it)) m_partModels.emplace_back(m_equipmentModels.emplace_back(make_shared<EquipmentModel>()))->Load((*it).path().string());
+		if (!fs::is_directory(*it)) m_partModels.emplace_back(m_equipmentModels.emplace_back(make_shared<EquipmentModel>()))->Load(makept(it));
 
 	for (fs::directory_iterator it(fs::path("assets/part/module")); it != end; ++it)
-		if (!fs::is_directory(*it)) m_partModels.emplace_back(m_moduleModels.emplace_back(make_shared<ModuleModel>()))->Load((*it).path().string());
+		if (!fs::is_directory(*it)) m_partModels.emplace_back(m_moduleModels.emplace_back(make_shared<ModuleModel>()))->Load(makept(it));
 
 	for (fs::directory_iterator it(fs::path("assets/cell")); it != end; ++it)
-		if (!fs::is_directory(*it)) m_cellModels.emplace_back(make_shared<CellModel>())->Load((*it).path().string());
+		if (!fs::is_directory(*it)) m_cellModels.emplace_back(make_shared<CellModel>())->Load(makept(it));
 }

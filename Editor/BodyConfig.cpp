@@ -1,19 +1,18 @@
 #include "BodyConfig.h"
-
 #include "AssetManager.h"
 
-ptree BodyConfig::ToJSON() const
+ptree BodyConfig::AddToJSON(ptree pt) const
 {
-	ptree pt;
+	// type
+	pt.put("type", "Body");
 
-	// model
-	pt.put("name", m_model->m_name);
-
-	return pt;
+	return PartConfig::AddToJSON(pt);
 }
 
-void BodyConfig::FromJSON(const ptree & pt)
+void BodyConfig::SetFromJSON(const ptree & pt)
 {
 	// model
 	m_model = g_assetManagerPtr->GetBodyModel(pt.get<string>("name"));
+
+	PartConfig::SetFromJSON(pt);
 }

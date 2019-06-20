@@ -1,17 +1,14 @@
 #include "Model.h"
 #include <boost/property_tree/json_parser.hpp>
 
-void Model::Load(const string& filepath)
+ptree Model::AddToJSON(ptree pt) const
 {
-	ptree pt;
-	read_json(filepath, pt);
-
-	FromJSON(pt);
+	pt.put("name", m_name); return pt;
 }
 
-void Model::Save() const
+void Model::SetFromJSON(const ptree & pt)
 {
-	write_json(GetFilepath(), ToJSON());
+	if (pt.get_optional<string>("name")) m_name = pt.get<string>("name");
 }
 
 string Model::GetFilename() const

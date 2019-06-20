@@ -1,6 +1,7 @@
 #pragma once
 
 #include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
 
 using namespace boost::property_tree;
 
@@ -12,11 +13,12 @@ public:
 public:
 	virtual ~Model() = default;
 
-	virtual ptree	ToJSON() const = 0;
-	virtual void	FromJSON(const ptree& pt) = 0;
-	virtual void	Load(const string& filepath);
-	virtual void	Save() const;
+	ptree	AddToJSON(ptree pt) const;
+	void	SetFromJSON(const ptree& pt);
 
 	virtual string	GetFilename() const;
 	virtual string	GetFilepath() const;
+
+	virtual void	Load(const ptree& pt) { SetFromJSON(pt); }
+	virtual ptree	Save() const { return AddToJSON(ptree()); }
 };

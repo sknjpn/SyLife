@@ -1,59 +1,31 @@
 #include "CellModel.h"
-#include <boost/property_tree/json_parser.hpp>
 
-ptree CellModel::ToJSON() const
+ptree CellModel::AddToJSON(ptree pt) const
 {
-	ptree pt;
-
-	// name
-	pt.put("name", m_name);
-
-	// body
+	// parts
 	{
-		ptree body;
+		ptree parts;
 
-		// name
-		body.put("name", m_body->m_model->m_name);
+		for (const auto& e : m_parts)
+			parts.push_back(std::make_pair("", e->AddToJSON(ptree())));
 
-		pt.add_child("body", body);
+		pt.add_child("parts", parts);
 	}
 
-	// equipments
-	{
-		ptree equipments;
-
-		for (const auto& e : m_equipments)
-			equipments.push_back(std::make_pair("", e->ToJSON()));
-
-		pt.add_child("equipments", equipments);
-	}
-
-	// modules
-	{
-		ptree modules;
-
-		for (const auto& m : m_modules)
-			modules.push_back(std::make_pair("", m->ToJSON()));
-
-		pt.add_child("modules", modules);
-	}
-
-	return pt;
+	return Model::AddToJSON(pt);
 }
 
-void CellModel::FromJSON(const ptree& pt)
+void CellModel::SetFromJSON(const ptree & pt)
 {
-	// name
-	m_name = pt.get<string>("name");
+	// parts
+	for (auto part : pt.get_child("parts"))
+	{
+		shared_ptr<PartConfig> pc;
 
-	// body
-	m_body->FromJSON(pt.get_child("body"));
+		if (part.second.get<string>("type") == "Body") m_parts.emplace_back(m_body = make_shared<BodyConfig>())->Load(part.second);
+		if (part.second.get<string>("type") == "Equipment") m_parts.emplace_back(m_equipments.emplace_back(make_shared<EquipmentConfig>()))->Load(part.second);
+		if (part.second.get<string>("type") == "Module") m_parts.emplace_back(m_modules.emplace_back(make_shared<ModuleConfig>()))->Load(part.second);
+	}
 
-	// equipments
-	for (auto equipment : pt.get_child("equipments"))
-		m_equipments.emplace_back(make_shared<EquipmentConfig>(equipment.second));
-
-	// modules
-	for (auto module : pt.get_child("modules"))
-		m_modules.emplace_back(make_shared<ModuleConfig>(module.second));
+	Model::SetFromJSON(pt);
 }
