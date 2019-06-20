@@ -33,6 +33,7 @@ void FieldManager::LoadGenerationSetting()
 			for (int i = 0; i < size; i++)
 			{
 				const auto& c = g_cellManagerPtr->AddCell();
+				c->m_model = g_assetManagerPtr->GetCellModel(name);
 				c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"), 5);
 				c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), 5);
 				c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), 5);

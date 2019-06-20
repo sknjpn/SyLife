@@ -11,18 +11,12 @@ void Cell::RecalculatePhysicalProperty()
 
 void Cell::Update()
 {
-	m_body->Update();
 
-	for (const auto& m : m_modules) m->Update();
-	for (const auto& e : m_equipments) e->Update();
 }
 
 void Cell::Draw()
 {
-	m_body->Draw();
 
-	for (const auto& m : m_modules) m->Draw();
-	for (const auto& e : m_equipments) e->Draw();
 }
 
 void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)

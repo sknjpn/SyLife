@@ -9,4 +9,9 @@ class PartModel
 public:
 	double	m_mass;
 	vector<ShapeModel>	m_shapes;
+
+	void	Draw(double a = 0.5)
+	{
+		for (const auto& s : m_shapes) s.Draw(a);
+	}
 };

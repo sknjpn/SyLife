@@ -59,6 +59,7 @@ void CellManager::Update()
 			c->RecalculatePhysicalProperty();
 
 			const auto& nc = g_cellManagerPtr->AddCell();
+			nc->m_model = c->m_model;
 			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
 			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"), 5);
 			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), 5);
