@@ -19,16 +19,6 @@ ptree CellModel::ToJSON() const
 		pt.add_child("body", body);
 	}
 
-	// modules
-	{
-		ptree modules;
-
-		for (const auto& m : m_modules)
-			modules.push_back(std::make_pair("", m->ToJSON()));
-
-		pt.add_child("modules", modules);
-	}
-
 	// equipments
 	{
 		ptree equipments;
@@ -39,6 +29,16 @@ ptree CellModel::ToJSON() const
 		pt.add_child("equipments", equipments);
 	}
 
+	// modules
+	{
+		ptree modules;
+
+		for (const auto& m : m_modules)
+			modules.push_back(std::make_pair("", m->ToJSON()));
+
+		pt.add_child("modules", modules);
+	}
+
 	return pt;
 }
 
@@ -46,4 +46,16 @@ void CellModel::FromJSON(const ptree& pt)
 {
 	// name
 	m_name = pt.get<string>("name");
+
+	// equipments
+	for (auto equipment : pt.get_child("equipments"))
+	{
+		m_equipments.emplace_back()->FromJSON(equipment.second);
+	}
+
+	// modules
+	for (auto module : pt.get_child("modules"))
+	{
+		m_modules.emplace_back()->FromJSON(module.second);
+	}
 }
