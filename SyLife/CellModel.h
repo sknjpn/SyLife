@@ -14,6 +14,11 @@ public:
 	vector<shared_ptr<EquipmentConfig>>	m_equipments;
 	vector<shared_ptr<ModuleConfig>>	m_modules;
 
+	// ‹ßŽ—‰~
+	double	m_mass;
+	double	m_radius;
+	double	m_inertia;
+
 public:
 	CellModel()
 		: m_body(make_shared<BodyConfig>(nullptr))
@@ -22,4 +27,6 @@ public:
 	void	FromJSON(const ptree& pt) override;
 
 	string	GetFilepath() const override { return "assets/cell/" + GetFilename(); }
+
+	void	CalculateDisk();
 };

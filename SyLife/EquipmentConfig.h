@@ -8,7 +8,7 @@ class EquipmentConfig
 {
 public:
 	shared_ptr<EquipmentModel>	m_model;
-	s3d::Vec2	m_position;
+	Vector2D	m_position;
 	double		m_rotation;
 
 public:
