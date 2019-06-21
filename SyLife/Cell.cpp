@@ -3,12 +3,6 @@
 #include "MoleculeManager.h"
 #include <numeric>
 
-void Cell::RecalculatePhysicalProperty()
-{
-	m_mass = accumulate(m_molecules.m_molecules.begin(), m_molecules.m_molecules.end(), 0.0, [](double s, const auto& m) { return s + m.first->m_mass * m.second; });
-	m_radius = sqrt(m_mass);
-}
-
 void Cell::Update()
 {
 
@@ -21,9 +15,6 @@ void Cell::Draw()
 
 void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)
 {
-	m_mass += molecule->m_mass;
-	m_radius = sqrt(m_mass);
-
 	m_storage.AddMolecule(molecule->m_model);
 	m_molecules.AddMolecule(molecule->m_model);
 
@@ -32,9 +23,6 @@ void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)
 
 void Cell::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 {
-	m_mass -= model->m_mass;
-	m_radius = sqrt(m_mass);
-
 	// “f‚«o‚·•ûŒü
 	auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
 

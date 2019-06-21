@@ -17,9 +17,14 @@ public:
 	shared_ptr<CellModel>	m_model;
 
 public:
-	Cell() { m_deathTimer = 10.0; }
+	Cell(const shared_ptr<CellModel>& model)
+		: m_model(model)
+		, m_deathTimer(10.0)
+	{
+		m_mass = m_model->m_mass;
+		m_radius = m_model->m_radius;
+	}
 
-	void	RecalculatePhysicalProperty();
 	void	Update();
 	void	Draw();
 

@@ -18,6 +18,19 @@ s3d::RectF PartModel::GetApproximateRect() const
 	return ar;
 }
 
+double PartModel::GetRectInertia() const
+{
+	double w = GetApproximateRect().w;
+	double h = GetApproximateRect().h;
+
+	return  m_mass * (w * w + h * h) / 12.0;
+}
+
+s3d::Vec2 PartModel::GetCenter() const
+{
+	return GetApproximateRect().center();
+}
+
 ptree PartModel::AddToJSON(ptree pt) const
 {
 	// mass

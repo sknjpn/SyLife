@@ -12,6 +12,8 @@ public:
 
 public:
 	s3d::RectF	GetApproximateRect() const;
+	double		GetRectInertia() const;
+	s3d::Vec2	GetCenter() const;
 
 	ptree	AddToJSON(ptree pt) const;
 	void	SetFromJSON(const ptree& pt);

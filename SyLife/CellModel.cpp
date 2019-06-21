@@ -12,6 +12,8 @@ void CellModel::SetFromJSON(const ptree & pt)
 		if (part.second.get<string>("type") == "Module") m_parts.emplace_back(m_modules.emplace_back(make_shared<ModuleConfig>()))->Load(part.second);
 	}
 
+	CalculateDisk();
+
 	Model::SetFromJSON(pt);
 }
 
@@ -20,16 +22,14 @@ void CellModel::CalculateDisk()
 {
 	// mass
 	{
-		m_mass = 0.0;
-
 		// body
-		double result = m_body->m_model->m_mass;
+		m_mass = m_body->m_model->m_mass;
 
 		// equipment
-		for (const auto& e : m_equipments) result += e->m_model->m_mass;
+		for (const auto& e : m_equipments) m_mass += e->m_model->m_mass;
 
 		// module
-		for (const auto& m : m_modules) result += m->m_model->m_mass;
+		for (const auto& m : m_modules) m_mass += m->m_model->m_mass;
 	}
 
 	// center
@@ -48,6 +48,18 @@ void CellModel::CalculateDisk()
 		center /= m_mass;
 
 		// ˆÊ’u’²®
+		for (const auto& p : m_parts) p->m_position -= center;
+	}
 
+	// inertia
+	{
+		m_inertia = 0.0;
+
+		for (const auto& p : m_parts) m_inertia += p->GetInertia();
+	}
+
+	// radius
+	{
+		m_radius = sqrt(2 * m_inertia / m_mass);
 	}
 }
