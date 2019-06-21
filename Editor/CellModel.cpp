@@ -7,7 +7,7 @@ ptree CellModel::AddToJSON(ptree pt) const
 		ptree parts;
 
 		for (const auto& e : m_parts)
-			parts.push_back(std::make_pair("", e->AddToJSON(ptree())));
+			parts.push_back(std::make_pair("", e->Save()));
 
 		pt.add_child("parts", parts);
 	}

@@ -232,6 +232,7 @@
     <ClCompile Include="MoleculeManager.cpp" />
     <ClCompile Include="MoleculeModel.cpp" />
     <ClCompile Include="Part.cpp" />
+    <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartManager.cpp" />
     <ClCompile Include="PartModel.cpp" />
@@ -321,6 +322,7 @@
     <ClInclude Include="MoleculeModel.h" />
     <ClInclude Include="nanoflann.hpp" />
     <ClInclude Include="Part.h" />
+    <ClInclude Include="PartConfig.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartManager.h" />
     <ClInclude Include="PartModel.h" />

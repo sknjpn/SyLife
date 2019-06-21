@@ -3,12 +3,14 @@
 
 ptree Model::AddToJSON(ptree pt) const
 {
-	pt.put("name", m_name); return pt;
+	pt.put("name", m_name);
+
+	return pt;
 }
 
 void Model::SetFromJSON(const ptree & pt)
 {
-	if (pt.get_optional<string>("name")) m_name = pt.get<string>("name");
+	m_name = pt.get<string>("name");
 }
 
 string Model::GetFilename() const

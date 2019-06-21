@@ -1,12 +1,9 @@
 #include "Model.h"
 #include <boost/property_tree/json_parser.hpp>
 
-void Model::Load(const string& filepath)
+void Model::SetFromJSON(const ptree & pt)
 {
-	ptree pt;
-	read_json(filepath, pt);
-
-	FromJSON(pt);
+	m_name = pt.get<string>("name");
 }
 
 string Model::GetFilename() const

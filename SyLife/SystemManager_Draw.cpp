@@ -21,10 +21,9 @@ void SystemManager::Draw()
 		for (int i = 0; i < g_assetManagerPtr->m_moleculeModels.size(); ++i)
 		{
 			const auto& m = g_assetManagerPtr->m_moleculeModels[i];
-			s3d::Color color(m->m_color[0], m->m_color[1], m->m_color[2]);
 
 			printFont(s3d::Unicode::Widen(m->m_name + " size=" + to_string(g_moleculeManagerPtr->NumMolecule(m)))).draw(0 + 1, i * 16 + 1, s3d::Palette::White);
-			printFont(s3d::Unicode::Widen(m->m_name + " size=" + to_string(g_moleculeManagerPtr->NumMolecule(m)))).draw(0, i * 16, color);
+			printFont(s3d::Unicode::Widen(m->m_name + " size=" + to_string(g_moleculeManagerPtr->NumMolecule(m)))).draw(0, i * 16, m->m_color);
 		}
 	}
 }

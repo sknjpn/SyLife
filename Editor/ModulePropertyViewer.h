@@ -8,7 +8,7 @@ class ModulePropertyViewer :
 	public Viewer
 {
 public:
-	shared_ptr<ModuleModel>		m_model;
+	shared_ptr<ModuleModel>	m_model;
 	s3d::TextEditState		m_textEditState_name;
 	s3d::TextEditState		m_textEditState_mass;
 

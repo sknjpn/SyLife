@@ -102,6 +102,15 @@
     <Filter Include="Source Files\Model\Cell\Config\Module">
       <UniqueIdentifier>{c85da9ba-5052-48f9-99ff-57712f57d8ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Viewer\Part\Body">
+      <UniqueIdentifier>{c07c1037-ba6a-4cc9-a2d3-9a692574f3ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Viewer\Part\Equipment">
+      <UniqueIdentifier>{acd34fd9-0e73-45d0-9473-eab4a7963377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Viewer\Part\Module">
+      <UniqueIdentifier>{927461a2-3df3-4f87-8157-f753617c3b6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -135,15 +144,6 @@
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
     <ClCompile Include="PartPropertyViewer.cpp">
-      <Filter>Source Files\Viewer\Part</Filter>
-    </ClCompile>
-    <ClCompile Include="BodyPropertyViewer.cpp">
-      <Filter>Source Files\Viewer\Part</Filter>
-    </ClCompile>
-    <ClCompile Include="EquipmentPropertyViewer.cpp">
-      <Filter>Source Files\Viewer\Part</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePropertyViewer.cpp">
       <Filter>Source Files\Viewer\Part</Filter>
     </ClCompile>
     <ClCompile Include="PartShapeViewer.cpp">
@@ -196,6 +196,15 @@
     </ClCompile>
     <ClCompile Include="ModuleConfig.cpp">
       <Filter>Source Files\Model\Cell\Config\Module</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePropertyViewer.cpp">
+      <Filter>Source Files\Viewer\Part\Module</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyPropertyViewer.cpp">
+      <Filter>Source Files\Viewer\Part\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentPropertyViewer.cpp">
+      <Filter>Source Files\Viewer\Part\Equipment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -351,15 +360,6 @@
     <ClInclude Include="PartPropertyViewer.h">
       <Filter>Source Files\Viewer\Part</Filter>
     </ClInclude>
-    <ClInclude Include="BodyPropertyViewer.h">
-      <Filter>Source Files\Viewer\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipmentPropertyViewer.h">
-      <Filter>Source Files\Viewer\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePropertyViewer.h">
-      <Filter>Source Files\Viewer\Part</Filter>
-    </ClInclude>
     <ClInclude Include="PartShapeViewer.h">
       <Filter>Source Files\Viewer\Part</Filter>
     </ClInclude>
@@ -407,6 +407,15 @@
     </ClInclude>
     <ClInclude Include="ModuleConfig.h">
       <Filter>Source Files\Model\Cell\Config\Module</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePropertyViewer.h">
+      <Filter>Source Files\Viewer\Part\Module</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyPropertyViewer.h">
+      <Filter>Source Files\Viewer\Part\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentPropertyViewer.h">
+      <Filter>Source Files\Viewer\Part\Equipment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

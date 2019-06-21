@@ -2,18 +2,18 @@
 
 #include "Model.h"
 
-class MoleculeModel
+#include "PartModel.h"
+
+class PartConfig
 	: public Model
 {
 public:
-	double		m_mass;
-	double		m_radius;
-	s3d::Color	m_color;
+	shared_ptr<PartModel>	m_model;
+	Vector2D	m_position;
+	double		m_rotation;
 
 public:
 	void	SetFromJSON(const ptree& pt);
-
-	string	GetFilepath() const override { return "assets/molecule/" + GetFilename(); }
-
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };
+

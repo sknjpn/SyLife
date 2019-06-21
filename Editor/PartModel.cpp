@@ -28,7 +28,7 @@ ptree PartModel::AddToJSON(ptree pt) const
 		ptree shapes;
 
 		for (const auto& v : m_shapes)
-			shapes.push_back(std::make_pair("", v.AddToJSON(ptree())));
+			shapes.push_back(std::make_pair("", v.Save()));
 
 		pt.add_child("shapes", shapes);
 	}

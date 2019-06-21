@@ -13,7 +13,7 @@ void CellManager::Draw()
 			// equipments
 			for (const auto& e : c->m_model->m_equipments)
 			{
-				auto tp = s3d::Transformer2D(s3d::Mat3x2::Translate(e->m_position));
+				auto tp = s3d::Transformer2D(s3d::Mat3x2::Translate(e->m_position.m_x, e->m_position.m_y));
 
 				auto ar = e->m_model->m_approximateRect;
 				s3d::RectF(ar.first.m_x, ar.first.m_y, ar.second.m_x - ar.first.m_x, ar.second.m_y - ar.first.m_y).draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
@@ -24,7 +24,7 @@ void CellManager::Draw()
 			// modules
 			for (const auto& m : c->m_model->m_modules)
 			{
-				auto tp = s3d::Transformer2D(s3d::Mat3x2::Translate(m->m_position));
+				auto tp = s3d::Transformer2D(s3d::Mat3x2::Translate(m->m_position.m_x, m->m_position.m_y));
 
 				auto ar = m->m_model->m_approximateRect;
 				s3d::RectF(ar.first.m_x, ar.first.m_y, ar.second.m_x - ar.first.m_x, ar.second.m_y - ar.first.m_y).draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);

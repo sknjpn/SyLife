@@ -1,9 +1,9 @@
 {
-    "name": "Hexose",
     "mass": "120",
     "color": {
         "r": "255",
         "g": "255",
         "b": "255"
-    }
+    },
+    "name": "Hexose"
 }

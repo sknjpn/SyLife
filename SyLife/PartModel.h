@@ -13,4 +13,7 @@ public:
 
 public:
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
+
+	void	SetFromJSON(const ptree& pt);
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };

@@ -1,19 +1,16 @@
 #pragma once
 
-#include "Model.h"
+#include "PartConfig.h"
 #include "BodyModel.h"
 
 class BodyConfig
-	: public Model
+	: public PartConfig
 {
 public:
 	shared_ptr<BodyModel>	m_model;
 
 public:
-	BodyConfig(const shared_ptr<BodyModel>& model)
-		: m_model(model)
-	{}
-
-	void	FromJSON(const ptree& pt) override;
+	void	SetFromJSON(const ptree& pt);
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };
 
