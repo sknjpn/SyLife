@@ -206,6 +206,9 @@
     <ClCompile Include="ChloroplastViewer.cpp">
       <Filter>Source Files\Parts</Filter>
     </ClCompile>
+    <ClCompile Include="CellModel_AddPartConfig.cpp">
+      <Filter>Source Files\Model\Cell</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">

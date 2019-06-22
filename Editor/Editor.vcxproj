@@ -211,6 +211,7 @@
     <ClCompile Include="BodyConfig.cpp" />
     <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="BodyViewer.cpp" />
+    <ClCompile Include="CellModel_AddPartConfig.cpp" />
     <ClCompile Include="CellViewer.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="ChloroplastConfig.cpp" />

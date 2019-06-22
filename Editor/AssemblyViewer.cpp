@@ -2,6 +2,10 @@
 #include "AssetManager.h"
 #include "PartPaletteViewer.h"
 
+#include "BodyConfig.h"
+#include "EquipmentConfig.h"
+#include "ModuleConfig.h"
+
 void AssemblyViewer::Init()
 {
 	m_camera.setCenter(m_drawRect.center());
@@ -42,42 +46,20 @@ void AssemblyViewer::Update()
 		s3d::Line(0, m_camera.getCameraRect().y, 0, m_camera.getCameraRect().br().y).draw(thickness, s3d::Palette::Red);
 	}
 
-	// body
-	if (m_model->m_body->m_model != nullptr)
-	{
-		m_model->m_body->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
-
-		for (const auto& s : m_model->m_body->m_model->m_shapes)
-			s3d::Polygon(s.m_verticles).draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
-	}
-
 	// disk
 	{
 		s3d::Circle(m_radius).draw(s3d::ColorF(s3d::Palette::Green, 0.5)).drawFrame(2.0, s3d::Palette::Black);
 	}
 
-	// modules
+	// part
 	{
-		for (const auto& m : m_model->m_modules)
+		for (const auto& p : m_model->m_parts)
 		{
-			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(m->m_rotation).translated(m->m_position));
+			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position));
 
-			m->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
+			p->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
 
-			for (const auto& s : m->m_model->m_shapes)
-				s3d::Polygon(s.m_verticles).draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
-		}
-	}
-
-	// equipment
-	{
-		for (const auto& e : m_model->m_equipments)
-		{
-			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(e->m_rotation).translated(e->m_position));
-
-			e->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
-
-			for (const auto& s : e->m_model->m_shapes)
+			for (const auto& s : p->m_model->m_shapes)
 				s3d::Polygon(s.m_verticles).draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
 		}
 	}
@@ -90,24 +72,14 @@ void AssemblyViewer::Update()
 
 		if (s3d::MouseL.up())
 		{
+			shared_ptr<PartConfig>	partConfig;
+
 			if (dynamic_pointer_cast<ModuleModel>(PartPaletteViewer::GetSelectedPart()))
-			{
-				auto model = dynamic_pointer_cast<ModuleModel>(PartPaletteViewer::GetSelectedPart());
+				partConfig = m_model->AddPartConfig<ModuleConfig>();
 
-				auto mc = m_model->m_modules.emplace_back(make_shared<ModuleConfig>());
-				mc->m_model = model;
-				mc->m_position = s3d::Cursor::PosF();
-				mc->m_rotation = 0.0;
-			}
-			if (dynamic_pointer_cast<EquipmentModel>(PartPaletteViewer::GetSelectedPart()))
-			{
-				auto model = dynamic_pointer_cast<EquipmentModel>(PartPaletteViewer::GetSelectedPart());
-
-				auto ec = m_model->m_equipments.emplace_back(make_shared<EquipmentConfig>());
-				ec->m_model = model;
-				ec->m_position = s3d::Cursor::PosF();
-				ec->m_rotation = 0.0;
-			}
+			partConfig->m_model = PartPaletteViewer::GetSelectedPart();
+			partConfig->m_position = s3d::Cursor::PosF();
+			partConfig->m_rotation = 0.0;
 		}
 
 		if (!s3d::MouseL.pressed()) PartPaletteViewer::m_selectedPart = nullptr;

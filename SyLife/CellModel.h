@@ -1,11 +1,6 @@
 #pragma once
 
 #include "Model.h"
-
-#include "BodyConfig.h"
-#include "EquipmentConfig.h"
-#include "ModuleConfig.h"
-
 #include "PartConfig.h"
 
 class CellModel
