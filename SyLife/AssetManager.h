@@ -15,6 +15,8 @@ public:
 
 	void	Init();
 
+	void	AddModels(const string& directory);
+
 	void	AddModel(const string& filepath);
 	
 	template <typename T>
