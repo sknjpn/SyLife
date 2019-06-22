@@ -6,7 +6,5 @@ class ModuleState
 	: public PartState
 {
 public:
-
-public:
 };
 

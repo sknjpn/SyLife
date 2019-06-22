@@ -6,7 +6,5 @@ class BodyState
 	: public PartState
 {
 public:
-
-public:
 };
 
