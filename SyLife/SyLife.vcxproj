@@ -214,9 +214,15 @@
     <ClCompile Include="CellManager_Draw.cpp" />
     <ClCompile Include="CellManager_Update.cpp" />
     <ClCompile Include="CellModel.cpp" />
+    <ClCompile Include="ChloroplastConfig.cpp" />
+    <ClCompile Include="ChloroplastModel.cpp" />
+    <ClCompile Include="ChloroplastState.cpp" />
     <ClCompile Include="EquipmentState.cpp" />
     <ClCompile Include="EquipmentConfig.cpp" />
     <ClCompile Include="EquipmentModel.cpp" />
+    <ClCompile Include="EyeConfig.cpp" />
+    <ClCompile Include="EyeModel.cpp" />
+    <ClCompile Include="EyeState.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldManager_Draw.cpp" />
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
@@ -234,7 +240,6 @@
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="PartManager.cpp" />
     <ClCompile Include="PartModel.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Recipe.cpp" />
@@ -254,6 +259,9 @@
     <ClCompile Include="SystemManager_Draw.cpp" />
     <ClCompile Include="SystemManager_Update.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="WingConfig.cpp" />
+    <ClCompile Include="WingModel.cpp" />
+    <ClCompile Include="WingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -309,9 +317,15 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="CellModel.h" />
+    <ClInclude Include="ChloroplastConfig.h" />
+    <ClInclude Include="ChloroplastModel.h" />
+    <ClInclude Include="ChloroplastState.h" />
     <ClInclude Include="EquipmentState.h" />
     <ClInclude Include="EquipmentConfig.h" />
     <ClInclude Include="EquipmentModel.h" />
+    <ClInclude Include="EyeConfig.h" />
+    <ClInclude Include="EyeModel.h" />
+    <ClInclude Include="EyeState.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModuleState.h" />
@@ -324,7 +338,6 @@
     <ClInclude Include="PartState.h" />
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="PartManager.h" />
     <ClInclude Include="PartModel.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Recipe.h" />
@@ -338,6 +351,9 @@
     <ClInclude Include="Storage.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="WingConfig.h" />
+    <ClInclude Include="WingModel.h" />
+    <ClInclude Include="WingState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -75,9 +75,6 @@
     <Filter Include="Source Files\Model\Molecule">
       <UniqueIdentifier>{e6f05044-9cec-4f4c-a4ca-f9c4edb1c14a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Model\Part">
-      <UniqueIdentifier>{370dea0f-0bb2-462e-be8c-04025f419459}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Field">
       <UniqueIdentifier>{178c2393-fb92-4e5e-85e4-df1857c0e547}</UniqueIdentifier>
     </Filter>
@@ -93,38 +90,8 @@
     <Filter Include="Source Files\Field\Particle\Rigidbody\Cell">
       <UniqueIdentifier>{dbe7ebe6-6032-4da0-a064-996325e60ae4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part">
-      <UniqueIdentifier>{ab194333-e3f5-4943-af64-dccb954d300b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Cell\Config">
-      <UniqueIdentifier>{2e16ff39-a614-4b7a-a890-bbb3a6655295}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Part\Body">
-      <UniqueIdentifier>{a9729de5-cca2-4647-88c9-3592eb892f28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Part\Equipment">
-      <UniqueIdentifier>{01a0e20b-f753-4e89-8280-a944197ffa29}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Part\Module">
-      <UniqueIdentifier>{0a619ec5-97a5-444b-916d-08874e35c174}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Cell\Config\Body">
-      <UniqueIdentifier>{82656486-8c56-4b55-9b37-818d71032678}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Cell\Config\Equipment">
-      <UniqueIdentifier>{2bc0882a-fc60-4d13-9c1d-41970e34a958}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Cell\Config\Module">
-      <UniqueIdentifier>{657aa655-ce21-4be7-b088-9449e7116c6b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part\Body">
-      <UniqueIdentifier>{e1a77919-5512-49a5-95e4-7b452be3a15e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part\Equipment">
-      <UniqueIdentifier>{1f3e03e9-1869-4ede-ac93-4adb601e2039}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part\Module">
-      <UniqueIdentifier>{435ee8ff-6240-477e-aa8a-59fe0c9fdfc2}</UniqueIdentifier>
+    <Filter Include="Source Files\Part">
+      <UniqueIdentifier>{62b00143-5c29-4c26-82d7-a4ca7e4f1af1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +137,6 @@
     <ClCompile Include="Random.cpp">
       <Filter>Source Files\Other</Filter>
     </ClCompile>
-    <ClCompile Include="PartManager.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="MoleculeManager_Update.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
@@ -209,12 +173,6 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="PartModel.cpp">
-      <Filter>Source Files\Model\Part</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeModel.cpp">
-      <Filter>Source Files\Model\Part</Filter>
-    </ClCompile>
     <ClCompile Include="CellModel.cpp">
       <Filter>Source Files\Model\Cell</Filter>
     </ClCompile>
@@ -227,38 +185,71 @@
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files\Field\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="BodyModel.cpp">
-      <Filter>Source Files\Model\Part\Body</Filter>
+    <ClCompile Include="ChloroplastConfig.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="ChloroplastModel.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="ChloroplastState.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="EyeConfig.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="EyeModel.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="EyeState.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="WingModel.cpp">
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentModel.cpp">
-      <Filter>Source Files\Model\Part\Equipment</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
     <ClCompile Include="ModuleModel.cpp">
-      <Filter>Source Files\Model\Part\Module</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
-    <ClCompile Include="BodyConfig.cpp">
-      <Filter>Source Files\Model\Cell\Config\Body</Filter>
+    <ClCompile Include="PartModel.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyModel.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="WingConfig.cpp">
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentConfig.cpp">
-      <Filter>Source Files\Model\Cell\Config\Equipment</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
     <ClCompile Include="ModuleConfig.cpp">
-      <Filter>Source Files\Model\Cell\Config\Module</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
     <ClCompile Include="PartConfig.cpp">
-      <Filter>Source Files\Model\Cell\Config</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
-    <ClCompile Include="PartState.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
+    <ClCompile Include="BodyConfig.cpp">
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
     <ClCompile Include="BodyState.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Body</Filter>
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="WingState.cpp">
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentState.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Equipment</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClCompile>
     <ClCompile Include="ModuleState.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Module</Filter>
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="PartState.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeModel.cpp">
+      <Filter>Source Files\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -429,9 +420,6 @@
     <ClInclude Include="Random.h">
       <Filter>Source Files\Other</Filter>
     </ClInclude>
-    <ClInclude Include="PartManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
@@ -440,12 +428,6 @@
     </ClInclude>
     <ClInclude Include="Model.h">
       <Filter>Source Files\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="PartModel.h">
-      <Filter>Source Files\Model\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeModel.h">
-      <Filter>Source Files\Model\Part</Filter>
     </ClInclude>
     <ClInclude Include="MoleculeModel.h">
       <Filter>Source Files\Model\Molecule</Filter>
@@ -459,38 +441,71 @@
     <ClInclude Include="Particle.h">
       <Filter>Source Files\Field\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="BodyModel.h">
-      <Filter>Source Files\Model\Part\Body</Filter>
+    <ClInclude Include="EyeState.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ChloroplastConfig.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ChloroplastModel.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ChloroplastState.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="EyeConfig.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="EyeModel.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="WingModel.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
     <ClInclude Include="EquipmentModel.h">
-      <Filter>Source Files\Model\Part\Equipment</Filter>
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="PartModel.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
     <ClInclude Include="ModuleModel.h">
-      <Filter>Source Files\Model\Part\Module</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
-    <ClInclude Include="BodyConfig.h">
-      <Filter>Source Files\Model\Cell\Config\Body</Filter>
+    <ClInclude Include="BodyModel.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="WingConfig.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
     <ClInclude Include="EquipmentConfig.h">
-      <Filter>Source Files\Model\Cell\Config\Equipment</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
     <ClInclude Include="ModuleConfig.h">
-      <Filter>Source Files\Model\Cell\Config\Module</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
     <ClInclude Include="PartConfig.h">
-      <Filter>Source Files\Model\Cell\Config</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
-    <ClInclude Include="PartState.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
+    <ClInclude Include="BodyConfig.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
     <ClInclude Include="BodyState.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Body</Filter>
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleState.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Module</Filter>
+    <ClInclude Include="WingState.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
     <ClInclude Include="EquipmentState.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Equipment</Filter>
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleState.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="PartState.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeModel.h">
+      <Filter>Source Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

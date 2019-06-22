@@ -128,9 +128,6 @@
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="FileManager.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
@@ -337,9 +334,6 @@
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="SystemManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="FileManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Viewer.h">

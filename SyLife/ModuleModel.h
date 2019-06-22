@@ -8,7 +8,7 @@ class ModuleModel
 public:
 	void	SetFromJSON(const ptree& pt);
 
-	string	GetFilepath() const override { return "assets/part/module/" + GetFilename(); }
+	string	GetFilepath() const override { return "assets/part/" + GetFilename(); }
 
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };

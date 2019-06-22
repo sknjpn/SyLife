@@ -6,12 +6,12 @@ void CellManager::Draw()
 
 	for (const auto& c : g_cellManagerPtr->GetCells())
 	{
-		auto t = s3d::Transformer2D(s3d::Mat3x2::Rotate(c->m_rotation).translated(s3d::Vec2(c->m_position.m_x, c->m_position.m_y)));
+		auto t1 = s3d::Transformer2D(s3d::Mat3x2::Rotate(c->m_rotation).translated(s3d::Vec2(c->m_position.m_x, c->m_position.m_y)));
 
 		// parts
 		for (const auto& p : c->m_model->m_parts)
 		{
-			auto tp = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position.m_x, p->m_position.m_y));
+			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position.m_x, p->m_position.m_y));
 
 			// —Ìˆæ˜g
 			if (false)

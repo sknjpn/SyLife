@@ -226,7 +226,6 @@
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="CellModel.cpp" />
     <ClCompile Include="EquipmentModel.cpp" />
-    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleModel.cpp" />
     <ClCompile Include="MoleculeModel.cpp" />
@@ -309,7 +308,6 @@
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="CellModel.h" />
     <ClInclude Include="EquipmentModel.h" />
-    <ClInclude Include="FileManager.h" />
     <ClInclude Include="ModuleModel.h" />
     <ClInclude Include="MoleculeModel.h" />
     <ClInclude Include="PartModel.h" />

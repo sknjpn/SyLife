@@ -11,7 +11,7 @@ void FieldManager::Init()
 
 int FieldManager::GetNumMoleculeAll() const
 {
-	int result = g_moleculeManagerPtr->GetMolecules().size();
+	int result = int(g_moleculeManagerPtr->GetMolecules().size());
 
 	for (const auto& c : g_cellManagerPtr->GetCells())
 	{
