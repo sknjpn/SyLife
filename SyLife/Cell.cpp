@@ -1,5 +1,5 @@
 #include "Cell.h"
-#include "Part.h"
+#include "PartState.h"
 #include "MoleculeManager.h"
 #include <numeric>
 

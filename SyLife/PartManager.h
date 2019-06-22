@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Part.h"
+#include "PartState.h"
 
 class PartManager
 {

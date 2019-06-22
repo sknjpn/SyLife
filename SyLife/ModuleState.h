@@ -8,7 +8,5 @@ class ModuleState
 public:
 
 public:
-	Module();
-	~Module();
 };
 
