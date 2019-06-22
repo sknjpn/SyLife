@@ -13,53 +13,44 @@
             "type": "Equipment",
             "name": "Wing Left",
             "position": {
-                "x": "-24.287399291992188",
-                "y": "-15.792404174804688"
+                "x": "-12",
+                "y": "-8"
             },
-            "rotation": "12.629999999999775"
+            "rotation": "0.0"
         },
         {
             "type": "Equipment",
             "name": "Wing Left",
             "position": {
-                "x": "-11.3746337890625",
-                "y": "43.454437255859375"
+                "x": "-6",
+                "y": "22"
             },
-            "rotation": "12.629999999999775"
+            "rotation": "0.0"
         },
         {
             "type": "Equipment",
             "name": "Wing Right",
             "position": {
-                "x": "23.565811157226563",
-                "y": "-18.071128845214844"
+                "x": "12",
+                "y": "-8"
             },
-            "rotation": "12.629999999999775"
+            "rotation": "0.0"
         },
         {
             "type": "Equipment",
             "name": "Wing Right",
             "position": {
-                "x": "19.7679443359375",
-                "y": "38.896987915039063"
+                "x": "6",
+                "y": "22"
             },
-            "rotation": "12.629999999999775"
+            "rotation": "0.0"
         },
         {
             "type": "Module",
             "name": "Organelle",
             "position": {
-                "x": "15.020782470703125",
-                "y": "-2.6191139221191406"
-            },
-            "rotation": "0"
-        },
-        {
-            "type": "Module",
-            "name": "Organelle",
-            "position": {
-                "x": "-21.183258056640625",
-                "y": "12.670646667480469"
+                "x": "0.0",
+                "y": "0.0"
             },
             "rotation": "0"
         }

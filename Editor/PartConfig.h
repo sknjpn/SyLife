@@ -13,6 +13,8 @@ public:
 	double		m_rotation;
 
 public:
+	double		GetInertia() const { return m_model->GetRectInertia() + (m_position + m_model->GetCenter().rotated(m_rotation)).lengthSq() * m_model->m_mass; }
+
 	ptree	AddToJSON(ptree pt) const;
 	void	SetFromJSON(const ptree& pt);
 

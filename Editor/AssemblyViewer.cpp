@@ -53,7 +53,7 @@ void AssemblyViewer::Update()
 
 	// disk
 	{
-		s3d::Circle(GetDiskCenter(), GetDiskRadius()).draw(s3d::ColorF(s3d::Palette::Green, 0.5)).drawFrame(2.0, s3d::Palette::Black);
+		s3d::Circle(m_radius).draw(s3d::ColorF(s3d::Palette::Green, 0.5)).drawFrame(2.0, s3d::Palette::Black);
 	}
 
 	// modules
@@ -74,7 +74,7 @@ void AssemblyViewer::Update()
 		for (const auto& e : m_model->m_equipments)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Rotate(e->m_rotation).translated(e->m_position));
-			e->m_rotation += 0.01;
+
 			e->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
 
 			for (const auto& s : e->m_model->m_shapes)
@@ -112,76 +112,39 @@ void AssemblyViewer::Update()
 
 		if (!s3d::MouseL.pressed()) PartPaletteViewer::m_selectedPart = nullptr;
 	}
+
+	CalculateDisk();
 }
 
-s3d::Vec2 AssemblyViewer::GetDiskCenter() const
+void AssemblyViewer::CalculateDisk()
 {
-	// body
-	s3d::Vec2 center = m_model->m_body->m_model->m_mass * m_model->m_body->m_model->GetApproximateRect().center();
-
-	// equipment
-	for (const auto& e : m_model->m_equipments)
-		center += e->m_model->m_mass * (e->m_position + e->m_model->GetApproximateRect().center().rotated(e->m_rotation));
-
-	// module
-	for (const auto& m : m_model->m_modules)
-		center += m->m_model->m_mass * (m->m_position + m->m_model->GetApproximateRect().center().rotated(m->m_rotation));
-
-	return center / GetDiskMass();
-}
-
-double AssemblyViewer::GetDiskInertia() const
-{
-	auto center = GetDiskCenter();
-	double inertia = 0;
-
-	// body
+	// mass
 	{
-		double w = m_model->m_body->m_model->GetApproximateRect().w;
-		double h = m_model->m_body->m_model->GetApproximateRect().h;
-		double dSq = (m_model->m_body->m_model->GetApproximateRect().center() - center).lengthSq();
+		m_mass = 0.0;
 
-		inertia += m_model->m_body->m_model->m_mass * ((w * w + h * h) / 12.0 + dSq);
+		for (const auto& p : m_model->m_parts) m_mass += p->m_model->m_mass;
 	}
 
-	// equipment
-	for (const auto& e : m_model->m_equipments)
+	// center
 	{
-		double w = e->m_model->GetApproximateRect().w;
-		double h = e->m_model->GetApproximateRect().h;
-		double dSq = ((e->m_position + e->m_model->GetApproximateRect().center().rotated(e->m_rotation)) - center).lengthSq();
+		// body
+		s3d::Vec2 center(0.0, 0.0);
 
-		inertia += e->m_model->m_mass * ((w * w + h * h) / 12.0 + dSq);
+		for (const auto& p : m_model->m_parts) center += p->m_model->m_mass * (p->m_position + p->m_model->GetApproximateRect().center().rotated(p->m_rotation));
+
+		center /= m_mass;
+
+		// ˆÊ’u’²®
+		for (const auto& p : m_model->m_parts) p->m_position -= center;
 	}
 
-	// module
-	for (const auto& m : m_model->m_modules)
+	// inertia
 	{
-		double w = m->m_model->GetApproximateRect().w;
-		double h = m->m_model->GetApproximateRect().h;
-		double dSq = ((m->m_position + m->m_model->GetApproximateRect().center().rotated(m->m_rotation)) - center).lengthSq();
+		m_inertia = 0.0;
 
-		inertia += m->m_model->m_mass * ((w * w + h * h) / 12.0 + dSq);
+		for (const auto& p : m_model->m_parts) m_inertia += p->GetInertia();
 	}
 
-	return inertia;
-}
-
-double AssemblyViewer::GetDiskRadius() const
-{
-	return sqrt(2 * GetDiskInertia() / GetDiskMass());
-}
-
-double AssemblyViewer::GetDiskMass() const
-{
-	// body
-	double result = m_model->m_body->m_model->m_mass;
-
-	// equipment
-	for (const auto& e : m_model->m_equipments) result += e->m_model->m_mass;
-
-	// module
-	for (const auto& m : m_model->m_modules) result += m->m_model->m_mass;
-
-	return result;
+	// radius
+	m_radius = sqrt(2 * m_inertia / m_mass);
 }

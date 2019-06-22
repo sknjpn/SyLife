@@ -12,6 +12,10 @@ class AssemblyViewer :
 
 	CursorCamera2D	m_camera;
 
+	double	m_mass;
+	double	m_inertia;
+	double	m_radius;
+
 public:
 	AssemblyViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
@@ -25,9 +29,6 @@ public:
 	void	Init() override;
 	void	Update() override;
 
-	s3d::Vec2	GetDiskCenter() const;
-	double		GetDiskInertia() const;
-	double		GetDiskRadius() const;
-	double		GetDiskMass() const;
+	void	CalculateDisk();
 };
 
