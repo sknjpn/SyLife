@@ -2,8 +2,8 @@
 
 #include "ModuleState.h"
 
-class ChloroplastState :
-	public ModuleState
+class ChloroplastState
+	: public ModuleState
 {
 public:
 };

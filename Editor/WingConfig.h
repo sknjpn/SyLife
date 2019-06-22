@@ -2,8 +2,8 @@
 
 #include "EquipmentConfig.h"
 
-class WingConfig :
-	public EquipmentConfig
+class WingConfig
+	: public EquipmentConfig
 {
 public:
 

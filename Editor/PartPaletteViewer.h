@@ -5,8 +5,8 @@
 #include "CellModel.h"
 #include "PartModel.h"
 
-class PartPaletteViewer :
-	public Viewer
+class PartPaletteViewer
+	: public Viewer
 {
 public:
 	shared_ptr<CellModel>	m_model;

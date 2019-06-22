@@ -215,10 +215,12 @@
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="ChloroplastConfig.cpp" />
     <ClCompile Include="ChloroplastModel.cpp" />
+    <ClCompile Include="ChloroplastViewer.cpp" />
     <ClCompile Include="EquipmentConfig.cpp" />
     <ClCompile Include="EquipmentViewer.cpp" />
     <ClCompile Include="EyeConfig.cpp" />
     <ClCompile Include="EyeModel.cpp" />
+    <ClCompile Include="EyeViewer.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModuleConfig.cpp" />
     <ClCompile Include="ModuleViewer.cpp" />
@@ -247,6 +249,7 @@
     <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="WingConfig.cpp" />
     <ClCompile Include="WingModel.cpp" />
+    <ClCompile Include="WingViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -303,10 +306,12 @@
     <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="ChloroplastConfig.h" />
     <ClInclude Include="ChloroplastModel.h" />
+    <ClInclude Include="ChloroplastViewer.h" />
     <ClInclude Include="EquipmentConfig.h" />
     <ClInclude Include="EquipmentViewer.h" />
     <ClInclude Include="EyeConfig.h" />
     <ClInclude Include="EyeModel.h" />
+    <ClInclude Include="EyeViewer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModuleConfig.h" />
     <ClInclude Include="ModuleViewer.h" />
@@ -329,6 +334,7 @@
     <ClInclude Include="ViewerManager.h" />
     <ClInclude Include="WingConfig.h" />
     <ClInclude Include="WingModel.h" />
+    <ClInclude Include="WingViewer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

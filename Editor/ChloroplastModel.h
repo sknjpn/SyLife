@@ -2,8 +2,8 @@
 
 #include "ModuleModel.h"
 
-class ChloroplastModel :
-	public ModuleModel
+class ChloroplastModel
+	: public ModuleModel
 {
 public:
 };

@@ -5,8 +5,8 @@
 #include "TinyCamera.h"
 #include "PartModel.h"
 
-class AssemblyViewer :
-	public Viewer
+class AssemblyViewer
+	: public Viewer
 {
 	shared_ptr<CellModel>	m_model;
 

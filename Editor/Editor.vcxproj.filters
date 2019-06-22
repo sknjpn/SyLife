@@ -197,6 +197,15 @@
     <ClCompile Include="PartViewer.cpp">
       <Filter>Source Files\Parts</Filter>
     </ClCompile>
+    <ClCompile Include="WingViewer.cpp">
+      <Filter>Source Files\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="EyeViewer.cpp">
+      <Filter>Source Files\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="ChloroplastViewer.cpp">
+      <Filter>Source Files\Parts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -421,6 +430,15 @@
       <Filter>Source Files\Parts</Filter>
     </ClInclude>
     <ClInclude Include="PartViewer.h">
+      <Filter>Source Files\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="ChloroplastViewer.h">
+      <Filter>Source Files\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="EyeViewer.h">
+      <Filter>Source Files\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="WingViewer.h">
       <Filter>Source Files\Parts</Filter>
     </ClInclude>
   </ItemGroup>

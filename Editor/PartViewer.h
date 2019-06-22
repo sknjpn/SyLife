@@ -3,8 +3,8 @@
 #include "Viewer.h"
 #include "PartModel.h"
 
-class PartViewer :
-	public Viewer
+class PartViewer
+	: public Viewer
 {
 public:
 	shared_ptr<PartModel>	m_model;

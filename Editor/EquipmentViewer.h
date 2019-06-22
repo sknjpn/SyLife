@@ -4,8 +4,8 @@
 
 #include "EquipmentModel.h"
 
-class EquipmentViewer :
-	public Viewer
+class EquipmentViewer
+	: public Viewer
 {
 public:
 	shared_ptr<EquipmentModel>	m_model;

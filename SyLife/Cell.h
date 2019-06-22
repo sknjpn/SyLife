@@ -13,7 +13,8 @@
 
 #include "PartState.h"
 
-class Cell : public Rigidbody
+class Cell 
+	: public Rigidbody
 {
 public:
 	double	m_deathTimer;

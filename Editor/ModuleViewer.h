@@ -4,8 +4,8 @@
 
 #include "ModuleModel.h"
 
-class ModuleViewer :
-	public Viewer
+class ModuleViewer
+	: public Viewer
 {
 public:
 	shared_ptr<ModuleModel>	m_model;

@@ -2,8 +2,8 @@
 
 #include "EquipmentState.h"
 
-class WingState :
-	public EquipmentState
+class WingState
+	: public EquipmentState
 {
 public:
 
