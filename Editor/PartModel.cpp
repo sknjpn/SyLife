@@ -34,7 +34,7 @@ s3d::Vec2 PartModel::GetCenter() const
 ptree PartModel::AddToJSON(ptree pt) const
 {
 	// mass
-	pt.put<int>("mass", m_mass);
+	pt.put<double>("mass", m_mass);
 
 	// shapes
 	{

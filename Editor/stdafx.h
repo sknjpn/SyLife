@@ -8,5 +8,3 @@
 
 using namespace std;
 //using namespace nanoflann;
-
-const double pi = 3.141592;

@@ -11,8 +11,8 @@ void AssemblyViewer::Update()
 {
 	if (IsMouseOver()) m_camera.update();
 
-	const auto t = m_camera.createTransformer();
-	const int scale = log10(m_camera.getMagnification());
+	const auto t1 = m_camera.createTransformer();
+	const int scale = (int)log10(m_camera.getMagnification());
 	const double thickness = 2.0 / m_camera.getMagnification();
 	const double interval = pow(10.0, -scale + 1);
 	const auto cursor = (s3d::Cursor::Pos() / interval).asPoint() * interval;
@@ -60,7 +60,7 @@ void AssemblyViewer::Update()
 	{
 		for (const auto& m : m_model->m_modules)
 		{
-			auto t = s3d::Transformer2D(s3d::Mat3x2::Rotate(m->m_rotation).translated(m->m_position));
+			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(m->m_rotation).translated(m->m_position));
 
 			m->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
 
@@ -73,7 +73,7 @@ void AssemblyViewer::Update()
 	{
 		for (const auto& e : m_model->m_equipments)
 		{
-			auto t = s3d::Transformer2D(s3d::Mat3x2::Rotate(e->m_rotation).translated(e->m_position));
+			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(e->m_rotation).translated(e->m_position));
 
 			e->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
 

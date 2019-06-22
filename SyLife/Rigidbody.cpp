@@ -1,6 +1,9 @@
 ﻿#include "Rigidbody.h"
 #include "FieldManager.h"
 
+#include <boost/math/constants/constants.hpp>
+using namespace boost::math::constants;
+
 void Rigidbody::Init()
 {
 	// 角運動量の計算
@@ -12,7 +15,7 @@ Vector2D Rigidbody::GetVelocity(const Vector2D& position) const
 	auto delta = position - m_position;
 
 
-	return m_velocity + delta.rotated(pi) * m_angularVelocity;
+	return m_velocity + delta.rotated(pi<double>()) * m_angularVelocity;
 }
 
 void Rigidbody::AddForceInWorld(const Vector2D& force, const Vector2D& worldPosition)

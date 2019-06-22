@@ -16,7 +16,7 @@ void Model::SetFromJSON(const ptree & pt)
 string Model::GetFilename() const
 {
 	auto filename = m_name + ".json";
-	auto f = [](unsigned char c) { return c == 0x20 ? 0x5f : tolower(c); };
+	auto f = [](unsigned char c) { return char(c == 0x20 ? 0x5f : tolower(c)); };
 
 	transform(filename.begin(), filename.end(), filename.begin(), f);
 

@@ -3,7 +3,7 @@
 ptree MoleculeModel::AddToJSON(ptree pt) const
 {
 	// mass
-	pt.put<int>("mass", m_mass);
+	pt.put<double>("mass", m_mass);
 
 	// color
 	{

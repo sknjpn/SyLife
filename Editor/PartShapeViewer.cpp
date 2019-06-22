@@ -12,7 +12,7 @@ void PartShapeViewer::Update()
 	if (IsMouseOver()) m_camera.update();
 
 	const auto t = m_camera.createTransformer();
-	const int scale = log10(m_camera.getMagnification());
+	const int scale = (int)log10(m_camera.getMagnification());
 	const double thickness = 2.0 / m_camera.getMagnification();
 	const double interval = pow(10.0, -scale + 1);
 	const auto cursor = (s3d::Cursor::Pos() / interval).asPoint() * interval;
