@@ -78,15 +78,6 @@
     <Filter Include="Source Files\Viewer\Molecule">
       <UniqueIdentifier>{72dbeae5-c3f1-4a59-84be-58eccfc45cec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Viewer\Part\Body">
-      <UniqueIdentifier>{c07c1037-ba6a-4cc9-a2d3-9a692574f3ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Viewer\Part\Equipment">
-      <UniqueIdentifier>{acd34fd9-0e73-45d0-9473-eab4a7963377}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Viewer\Part\Module">
-      <UniqueIdentifier>{927461a2-3df3-4f87-8157-f753617c3b6d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Parts">
       <UniqueIdentifier>{716547f1-8348-475b-a112-c723a21c9e8f}</UniqueIdentifier>
     </Filter>
@@ -188,23 +179,23 @@
     <ClCompile Include="PartConfig.cpp">
       <Filter>Source Files\Parts</Filter>
     </ClCompile>
-    <ClCompile Include="BodyViewer.cpp">
-      <Filter>Source Files\Viewer\Part\Body</Filter>
-    </ClCompile>
-    <ClCompile Include="EquipmentViewer.cpp">
-      <Filter>Source Files\Viewer\Part\Equipment</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleViewer.cpp">
-      <Filter>Source Files\Viewer\Part\Module</Filter>
-    </ClCompile>
-    <ClCompile Include="PartViewer.cpp">
-      <Filter>Source Files\Viewer\Part</Filter>
-    </ClCompile>
     <ClCompile Include="CellViewer.cpp">
       <Filter>Source Files\Viewer\Cell</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeViewer.cpp">
       <Filter>Source Files\Viewer\Molecule</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyViewer.cpp">
+      <Filter>Source Files\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentViewer.cpp">
+      <Filter>Source Files\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleViewer.cpp">
+      <Filter>Source Files\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="PartViewer.cpp">
+      <Filter>Source Files\Parts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -414,23 +405,23 @@
     <ClInclude Include="PartConfig.h">
       <Filter>Source Files\Parts</Filter>
     </ClInclude>
-    <ClInclude Include="BodyViewer.h">
-      <Filter>Source Files\Viewer\Part\Body</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipmentViewer.h">
-      <Filter>Source Files\Viewer\Part\Equipment</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleViewer.h">
-      <Filter>Source Files\Viewer\Part\Module</Filter>
-    </ClInclude>
-    <ClInclude Include="PartViewer.h">
-      <Filter>Source Files\Viewer\Part</Filter>
-    </ClInclude>
     <ClInclude Include="CellViewer.h">
       <Filter>Source Files\Viewer\Cell</Filter>
     </ClInclude>
     <ClInclude Include="MoleculeViewer.h">
       <Filter>Source Files\Viewer\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyViewer.h">
+      <Filter>Source Files\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentViewer.h">
+      <Filter>Source Files\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleViewer.h">
+      <Filter>Source Files\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="PartViewer.h">
+      <Filter>Source Files\Parts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
