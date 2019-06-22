@@ -1,10 +1,6 @@
 #include "AssetManager.h"
 #include <boost/filesystem/operations.hpp>
 
-#include "BodyModel.h"
-#include "ModuleModel.h"
-#include "EquipmentModel.h"
-
 unique_ptr<AssetManager>	g_assetManagerPtr;
 
 void AssetManager::Init()

@@ -2,18 +2,18 @@
 
 #include "Viewer.h"
 
-#include "BodyModel.h"
+#include "ModuleModel.h"
 
-class BodyPropertyViewer 
-	: public Viewer
+class ModuleViewer :
+	public Viewer
 {
 public:
-	shared_ptr<BodyModel>	m_model;
+	shared_ptr<ModuleModel>	m_model;
 	s3d::TextEditState		m_textEditState_name;
 	s3d::TextEditState		m_textEditState_mass;
 
 public:
-	BodyPropertyViewer(const shared_ptr<BodyModel>& model)
+	ModuleViewer(const shared_ptr<ModuleModel>& model)
 		: m_model(model)
 		, m_textEditState_name(s3d::Unicode::Widen(model->m_name))
 		, m_textEditState_mass(s3d::ToString(model->m_mass))

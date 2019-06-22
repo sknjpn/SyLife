@@ -1,6 +1,6 @@
-#include "BodyPropertyViewer.h"
+#include "BodyViewer.h"
 
-void BodyPropertyViewer::Update()
+void BodyViewer::Update()
 {
 	// name
 	{

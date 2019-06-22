@@ -1,6 +1,6 @@
-#include "CellPropertyViewer.h"
+#include "CellViewer.h"
 
-void CellPropertyViewer::Update()
+void CellViewer::Update()
 {
 	// name
 	{

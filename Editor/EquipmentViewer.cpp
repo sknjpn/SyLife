@@ -1,6 +1,6 @@
-#include "MoleculePropertyViewer.h"
+#include "EquipmentViewer.h"
 
-void MoleculePropertyViewer::Update()
+void EquipmentViewer::Update()
 {
 	// name
 	{

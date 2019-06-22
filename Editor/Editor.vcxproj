@@ -207,20 +207,25 @@
   <ItemGroup>
     <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AssetManager_AddModel.cpp" />
     <ClCompile Include="BodyConfig.cpp" />
     <ClCompile Include="BodyModel.cpp" />
-    <ClCompile Include="BodyPropertyViewer.cpp" />
-    <ClCompile Include="CellPropertyViewer.cpp" />
+    <ClCompile Include="BodyViewer.cpp" />
+    <ClCompile Include="CellViewer.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
+    <ClCompile Include="ChloroplastConfig.cpp" />
+    <ClCompile Include="ChloroplastModel.cpp" />
     <ClCompile Include="EquipmentConfig.cpp" />
-    <ClCompile Include="EquipmentPropertyViewer.cpp" />
+    <ClCompile Include="EquipmentViewer.cpp" />
+    <ClCompile Include="EyeConfig.cpp" />
+    <ClCompile Include="EyeModel.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModuleConfig.cpp" />
-    <ClCompile Include="ModulePropertyViewer.cpp" />
-    <ClCompile Include="MoleculePropertyViewer.cpp" />
+    <ClCompile Include="ModuleViewer.cpp" />
+    <ClCompile Include="MoleculeViewer.cpp" />
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
-    <ClCompile Include="PartPropertyViewer.cpp" />
+    <ClCompile Include="PartViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="Viewer.cpp" />
@@ -240,6 +245,8 @@
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
+    <ClCompile Include="WingConfig.cpp" />
+    <ClCompile Include="WingModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -291,18 +298,22 @@
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BodyConfig.h" />
     <ClInclude Include="BodyModel.h" />
-    <ClInclude Include="BodyPropertyViewer.h" />
-    <ClInclude Include="CellPropertyViewer.h" />
+    <ClInclude Include="BodyViewer.h" />
+    <ClInclude Include="CellViewer.h" />
     <ClInclude Include="AssetViewer.h" />
+    <ClInclude Include="ChloroplastConfig.h" />
+    <ClInclude Include="ChloroplastModel.h" />
     <ClInclude Include="EquipmentConfig.h" />
-    <ClInclude Include="EquipmentPropertyViewer.h" />
+    <ClInclude Include="EquipmentViewer.h" />
+    <ClInclude Include="EyeConfig.h" />
+    <ClInclude Include="EyeModel.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModuleConfig.h" />
-    <ClInclude Include="ModulePropertyViewer.h" />
-    <ClInclude Include="MoleculePropertyViewer.h" />
+    <ClInclude Include="ModuleViewer.h" />
+    <ClInclude Include="MoleculeViewer.h" />
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartPaletteViewer.h" />
-    <ClInclude Include="PartPropertyViewer.h" />
+    <ClInclude Include="PartViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="Viewer.h" />
@@ -316,6 +327,8 @@
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="ViewerManager.h" />
+    <ClInclude Include="WingConfig.h" />
+    <ClInclude Include="WingModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

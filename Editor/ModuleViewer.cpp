@@ -1,6 +1,6 @@
-#include "ModulePropertyViewer.h"
+#include "ModuleViewer.h"
 
-void ModulePropertyViewer::Update()
+void ModuleViewer::Update()
 {
 	// name
 	{

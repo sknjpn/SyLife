@@ -2,7 +2,7 @@
 
 #include "ViewerManager.h"
 #include "PartShapeViewer.h"
-#include "BodyPropertyViewer.h"
+#include "BodyViewer.h"
 #include "AssetViewer.h"
 
 void Main()

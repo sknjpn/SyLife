@@ -20,7 +20,7 @@ void PartPaletteViewer::Update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		const auto& models = g_assetManagerPtr->m_bodyModels;
+		const auto& models = g_assetManagerPtr->GetModels<BodyModel>();
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);
@@ -46,7 +46,7 @@ void PartPaletteViewer::Update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		const auto& models = g_assetManagerPtr->m_equipmentModels;
+		const auto& models = g_assetManagerPtr->GetModels<EquipmentModel>();
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);
@@ -72,7 +72,7 @@ void PartPaletteViewer::Update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		const auto& models = g_assetManagerPtr->m_moduleModels;
+		const auto& models = g_assetManagerPtr->GetModels<ModuleModel>();
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);

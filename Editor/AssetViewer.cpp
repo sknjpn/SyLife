@@ -1,5 +1,8 @@
 #include "AssetViewer.h"
 #include "AssetManager.h"
+#include "CellModel.h"
+#include "MoleculeModel.h"
+#include "PartModel.h"
 
 void AssetViewer::Update()
 {
@@ -18,7 +21,7 @@ void AssetViewer::Update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		const auto& models = g_assetManagerPtr->m_cellModels;
+		const auto& models = g_assetManagerPtr->GetModels<CellModel>();
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);
@@ -44,7 +47,7 @@ void AssetViewer::Update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		const auto& models = g_assetManagerPtr->m_moleculeModels;
+		const auto& models = g_assetManagerPtr->GetModels<MoleculeModel>();
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);
@@ -70,7 +73,7 @@ void AssetViewer::Update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		const auto& models = g_assetManagerPtr->m_partModels;
+		const auto& models = g_assetManagerPtr->GetModels<PartModel>();
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos), true);
