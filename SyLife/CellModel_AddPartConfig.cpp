@@ -19,5 +19,4 @@ void CellModel::AddPartConfig(const ptree& pt)
 	if (type == "ChloroplastConfig")	AddPartConfig<ChloroplastConfig>(pt);
 	if (type == "EyeConfig")			AddPartConfig<EyeConfig>(pt);
 	if (type == "WingConfig")			AddPartConfig<WingConfig>(pt);
-
 }

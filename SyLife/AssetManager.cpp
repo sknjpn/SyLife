@@ -15,4 +15,7 @@ void AssetManager::Init()
 
 	for (fs::directory_iterator it(fs::path("assets/models")); it != end; ++it)
 		if (!fs::is_directory(*it)) AddModel((*it).path().string());
+
+	for (fs::directory_iterator it(fs::path("assets/cells")); it != end; ++it)
+		if (!fs::is_directory(*it)) AddModel((*it).path().string());
 }
