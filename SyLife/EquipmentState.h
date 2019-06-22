@@ -1,15 +1,14 @@
 #pragma once
 
-#include "Part.h"
+#include "PartState.h"
 
-class Equipment : public Part
+class Equipment 
+	: public PartState
 {
 public:
 	double		m_rotation;
 	Vector2D	m_position;
 
 public:
-	Equipment();
-	~Equipment();
 };
 

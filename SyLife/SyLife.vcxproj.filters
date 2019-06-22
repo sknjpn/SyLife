@@ -117,6 +117,15 @@
     <Filter Include="Source Files\Model\Cell\Config\Module">
       <UniqueIdentifier>{657aa655-ce21-4be7-b088-9449e7116c6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part\Body">
+      <UniqueIdentifier>{e1a77919-5512-49a5-95e4-7b452be3a15e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part\Equipment">
+      <UniqueIdentifier>{1f3e03e9-1869-4ede-ac93-4adb601e2039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell\Part\Module">
+      <UniqueIdentifier>{435ee8ff-6240-477e-aa8a-59fe0c9fdfc2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -163,15 +172,6 @@
     </ClCompile>
     <ClCompile Include="PartManager.cpp">
       <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Body.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipment.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
-    </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeManager_Update.cpp">
       <Filter>Source Files\Manager</Filter>
@@ -221,9 +221,6 @@
     <ClCompile Include="MoleculeModel.cpp">
       <Filter>Source Files\Model\Molecule</Filter>
     </ClCompile>
-    <ClCompile Include="Part.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
-    </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Source Files\Field\Particle\Rigidbody</Filter>
     </ClCompile>
@@ -250,6 +247,18 @@
     </ClCompile>
     <ClCompile Include="PartConfig.cpp">
       <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="PartState.cpp">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyState.cpp">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentState.cpp">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleState.cpp">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Module</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -423,15 +432,6 @@
     <ClInclude Include="PartManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
-    </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
@@ -452,9 +452,6 @@
     </ClInclude>
     <ClInclude Include="CellModel.h">
       <Filter>Source Files\Model\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="Part.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
       <Filter>Source Files\Field\Particle\Rigidbody</Filter>
@@ -482,6 +479,18 @@
     </ClInclude>
     <ClInclude Include="PartConfig.h">
       <Filter>Source Files\Model\Cell\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="PartState.h">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyState.h">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleState.h">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Module</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentState.h">
+      <Filter>Source Files\Field\Particle\Rigidbody\Cell\Part\Equipment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -206,7 +206,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="Body.cpp" />
+    <ClCompile Include="BodyState.cpp" />
     <ClCompile Include="BodyConfig.cpp" />
     <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="Cell.cpp" />
@@ -214,7 +214,7 @@
     <ClCompile Include="CellManager_Draw.cpp" />
     <ClCompile Include="CellManager_Update.cpp" />
     <ClCompile Include="CellModel.cpp" />
-    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="EquipmentState.cpp" />
     <ClCompile Include="EquipmentConfig.cpp" />
     <ClCompile Include="EquipmentModel.cpp" />
     <ClCompile Include="FieldManager.cpp" />
@@ -227,11 +227,11 @@
     <ClCompile Include="MoleculeManager_Draw.cpp" />
     <ClCompile Include="MoleculeManager_Update.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Module.cpp" />
+    <ClCompile Include="ModuleState.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
     <ClCompile Include="MoleculeModel.cpp" />
-    <ClCompile Include="Part.cpp" />
+    <ClCompile Include="PartState.cpp" />
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartManager.cpp" />
@@ -303,25 +303,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="Body.h" />
+    <ClInclude Include="BodyState.h" />
     <ClInclude Include="BodyConfig.h" />
     <ClInclude Include="BodyModel.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="CellModel.h" />
-    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="EquipmentState.h" />
     <ClInclude Include="EquipmentConfig.h" />
     <ClInclude Include="EquipmentModel.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleState.h" />
     <ClInclude Include="ModuleConfig.h" />
     <ClInclude Include="ModuleModel.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="MoleculeManager.h" />
     <ClInclude Include="MoleculeModel.h" />
     <ClInclude Include="nanoflann.hpp" />
-    <ClInclude Include="Part.h" />
+    <ClInclude Include="PartState.h" />
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartManager.h" />

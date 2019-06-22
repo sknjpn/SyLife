@@ -2,14 +2,14 @@
 
 #include "PartModel.h"
 
-class Part
+class PartState
 {
 public:
 	shared_ptr<PartModel>	m_model;
 
 public:
-	Part() {}
-	virtual ~Part() {}
+	PartState() {}
+	virtual ~PartState() {}
 
 	virtual void	Draw() {}
 	virtual void	Update() {}
