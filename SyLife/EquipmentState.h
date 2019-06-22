@@ -2,7 +2,7 @@
 
 #include "PartState.h"
 
-class Equipment 
+class EquipmentState 
 	: public PartState
 {
 public:
