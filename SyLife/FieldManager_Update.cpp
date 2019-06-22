@@ -24,6 +24,9 @@ void FieldManager::Update()
 		// •Ài‰^“®
 		r->m_position += r->m_velocity;
 
+		// ‰ñ“]‰^“®
+		r->m_rotation += r->m_angularVelocity;
+
 		// •Ç‚Å‚Ì”½ŽË
 		if (r->m_position.m_x < 0 && r->m_velocity.m_x < 0) r->m_velocity.m_x = -r->m_velocity.m_x;
 		if (r->m_position.m_y < 0 && r->m_velocity.m_y < 0) r->m_velocity.m_y = -r->m_velocity.m_y;
@@ -32,6 +35,7 @@ void FieldManager::Update()
 
 		// –€ŽC’ïR
 		r->m_velocity /= (1.0 + r->m_radius * 0.001);
+		r->m_angularVelocity /= (1.0 + r->m_radius * 0.001);
 	}
 
 	g_cellManagerPtr->Update();

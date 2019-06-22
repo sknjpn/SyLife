@@ -23,6 +23,7 @@ public:
 	{
 		m_mass = m_model->m_mass;
 		m_radius = m_model->m_radius;
+		m_inertia = m_model->m_inertia;
 	}
 
 	void	Update();

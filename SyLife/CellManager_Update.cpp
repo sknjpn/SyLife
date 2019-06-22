@@ -63,6 +63,8 @@ void CellManager::Update()
 			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), 5);
 			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), 5);
 			nc->Init();
+			nc->m_angularVelocity = (rand() % 1000 - 500) / 10000.0;
+			nc->m_rotation = rand() / 360.0;
 		}
 
 		// €–Sˆ—
