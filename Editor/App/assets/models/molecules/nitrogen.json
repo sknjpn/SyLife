@@ -1,4 +1,5 @@
 {
+    "type":"MoleculeModel",
     "mass": "24",
     "color": {
         "r": "0",

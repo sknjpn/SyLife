@@ -1,7 +1,8 @@
 {
+    "type": "CellModel",
     "parts": [
         {
-            "type": "Body",
+            "type": "BodyConfig",
             "name": "Body",
             "position": {
                 "x": "0",
@@ -10,7 +11,7 @@
             "rotation": "0"
         },
         {
-            "type": "Equipment",
+            "type": "WingConfig",
             "name": "Wing Left",
             "position": {
                 "x": "-12",
@@ -19,7 +20,7 @@
             "rotation": "0.0"
         },
         {
-            "type": "Equipment",
+            "type": "WingConfig",
             "name": "Wing Right",
             "position": {
                 "x": "12",
@@ -28,7 +29,7 @@
             "rotation": "0.0"
         },
         {
-            "type": "Module",
+            "type": "ModuleConfig",
             "name": "Organelle",
             "position": {
                 "x": "0.0",

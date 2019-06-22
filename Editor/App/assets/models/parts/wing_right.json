@@ -1,5 +1,5 @@
 {
-    "type": "Equipment",
+    "type": "WingModel",
     "mass": "20",
     "shapes": [
         {

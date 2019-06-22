@@ -1,5 +1,5 @@
 {
-    "type": "Body",
+    "type": "BodyModel",
     "mass": "10",
     "shapes": [
         {
