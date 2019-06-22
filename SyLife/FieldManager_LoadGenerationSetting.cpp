@@ -19,7 +19,7 @@ void FieldManager::LoadGenerationSetting()
 			string name = molecules.second.get<string>("name");
 			int size = molecules.second.get<int>("size");
 
-			g_moleculeManagerPtr->AddMoleculesRandom(g_assetManagerPtr->GetMoleculeModel(name), size);
+			g_moleculeManagerPtr->AddMoleculesRandom(g_assetManagerPtr->GetModel<MoleculeModel>(name), size);
 		}
 	}
 
@@ -32,10 +32,10 @@ void FieldManager::LoadGenerationSetting()
 
 			for (int i = 0; i < size; i++)
 			{
-				const auto& c = g_cellManagerPtr->AddCell(g_assetManagerPtr->GetCellModel(name));
-				c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Amino Acid"), 5);
-				c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), 5);
-				c->m_molecules.AddMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), 5);
+				const auto& c = g_cellManagerPtr->AddCell(g_assetManagerPtr->GetModel<CellModel>(name));
+				c->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
+				c->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
+				c->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
 				c->m_position.m_x = s3d::Random(800);
 				c->m_position.m_y = s3d::Random(600);
 

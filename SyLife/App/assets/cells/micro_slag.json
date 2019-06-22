@@ -1,4 +1,5 @@
 {
+    "type": "CellModel",
     "parts": [
         {
             "type": "Body",

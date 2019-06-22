@@ -251,6 +251,12 @@
     <ClCompile Include="ShapeModel.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="AssetManager_AddModel.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CellModel_AddPartConfig.cpp">
+      <Filter>Source Files\Model\Cell</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">

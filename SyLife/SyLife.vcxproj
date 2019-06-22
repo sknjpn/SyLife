@@ -206,6 +206,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AssetManager_AddModel.cpp" />
     <ClCompile Include="BodyState.cpp" />
     <ClCompile Include="BodyConfig.cpp" />
     <ClCompile Include="BodyModel.cpp" />
@@ -214,6 +215,7 @@
     <ClCompile Include="CellManager_Draw.cpp" />
     <ClCompile Include="CellManager_Update.cpp" />
     <ClCompile Include="CellModel.cpp" />
+    <ClCompile Include="CellModel_AddPartConfig.cpp" />
     <ClCompile Include="ChloroplastConfig.cpp" />
     <ClCompile Include="ChloroplastModel.cpp" />
     <ClCompile Include="ChloroplastState.cpp" />

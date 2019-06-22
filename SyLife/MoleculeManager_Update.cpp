@@ -7,11 +7,11 @@ void MoleculeManager::Update()
 	for (const auto& m : GetMolecules())
 	{
 		// Amino Acid‚Ì•ª‰ð
-		if (m->m_model == g_assetManagerPtr->GetMoleculeModel("Amino Acid") && rand() % 1000 == 0)
+		if (m->m_model == g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid") && rand() % 1000 == 0)
 		{
-			AddMolecule(g_assetManagerPtr->GetMoleculeModel("Nitrogen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
-			AddMolecule(g_assetManagerPtr->GetMoleculeModel("Carbon"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
-			AddMolecule(g_assetManagerPtr->GetMoleculeModel("Oxygen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
+			AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
+			AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
+			AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
 
 			m->m_destroyFlag = true;
 
