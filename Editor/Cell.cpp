@@ -1,7 +1,6 @@
 #include "Cell.h"
 
 #include "ViewerManager.h"
-#include "Cell.h"
 
 void CellModel::MakeViewers()
 {
@@ -30,7 +29,6 @@ void CellModel::SetFromJSON(const ptree& pt)
 
 	Model::SetFromJSON(pt);
 }
-#include "Cell.h"
 
 void CellViewer::Update()
 {
