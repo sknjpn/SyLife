@@ -11,8 +11,8 @@ public:
 public:
 	int NumMolecule(const shared_ptr<MoleculeModel>& model);
 
-	const shared_ptr<Molecule>&			AddMolecule(const shared_ptr<MoleculeModel>& model);
-	const shared_ptr<Molecule>&			AddMolecule(const shared_ptr<MoleculeModel>& model, const Vector2D& position);
+	const shared_ptr<Molecule>&		AddMolecule(const shared_ptr<MoleculeModel>& model);
+	const shared_ptr<Molecule>&		AddMolecule(const shared_ptr<MoleculeModel>& model, const Vector2D& position);
 
 	void	AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size);
 

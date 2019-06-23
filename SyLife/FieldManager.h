@@ -10,7 +10,9 @@ public:
 	Vector2D	m_size;
 
 public:
-	FieldManager() : m_size(1920, 1080) {}
+	FieldManager()
+		: m_size(1920, 1080) 
+	{}
 
 	void	Init();
 	void	Draw();
