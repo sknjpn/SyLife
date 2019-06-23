@@ -13,7 +13,6 @@ class ChloroplastModel
 {
 public:
 	void	MakeViewers() override;
-	shared_ptr<PartConfig>	MakeConfig() const override;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
@@ -29,8 +28,6 @@ public:
 		: ModuleViewer(model)
 	{}
 };
-
-inline shared_ptr<PartConfig> ChloroplastModel::MakeConfig() const { return make_shared<ChloroplastConfig>(); }
 
 inline void ChloroplastModel::MakeViewers()
 {

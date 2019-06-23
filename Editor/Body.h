@@ -13,7 +13,6 @@ class BodyModel
 {
 public:
 	void	MakeViewers() override;
-	shared_ptr<PartConfig>	MakeConfig() const override;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
@@ -39,9 +38,6 @@ public:
 
 	void	Update() override;
 };
-
-inline shared_ptr<PartConfig> BodyModel::MakeConfig() const { return make_shared<BodyConfig>(); }
-
 
 inline void BodyModel::MakeViewers()
 {

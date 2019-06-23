@@ -11,7 +11,6 @@ class WingModel
 	: public EquipmentModel
 {
 public:
-	shared_ptr<PartConfig>	MakeConfig() const override;
 	void	MakeViewers() override;
 
 	void	SetFromJSON(const ptree& pt);
@@ -28,8 +27,6 @@ public:
 		: EquipmentViewer(model)
 	{}
 };
-
-inline shared_ptr<PartConfig> WingModel::MakeConfig() const { return make_shared<WingConfig>(); }
 
 inline void WingModel::MakeViewers()
 {

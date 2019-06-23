@@ -19,7 +19,6 @@ public:
 
 public:
 	void	MakeViewers() override;
-	virtual shared_ptr<PartConfig>	MakeConfig() const;
 
 	s3d::RectF	GetApproximateRect() const;
 	double		GetRectInertia() const;
@@ -66,9 +65,6 @@ public:
 
 	void	Update() override;
 };
-
-inline shared_ptr<PartConfig> PartModel::MakeConfig() const { return make_shared<PartConfig>(); }
-
 
 inline void PartModel::MakeViewers()
 {

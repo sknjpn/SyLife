@@ -13,7 +13,6 @@ class EquipmentModel
 {
 public:
 	void	MakeViewers() override;
-	shared_ptr<PartConfig>	MakeConfig() const override;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
@@ -41,9 +40,6 @@ public:
 public:
 	void	Update() override;
 };
-
-inline shared_ptr<PartConfig> EquipmentModel::MakeConfig() const { return make_shared<EquipmentConfig>(); }
-
 
 inline void EquipmentModel::MakeViewers()
 {

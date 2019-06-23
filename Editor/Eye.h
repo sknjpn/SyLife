@@ -13,7 +13,6 @@ class EyeModel
 {
 public:
 	void	MakeViewers() override;
-	shared_ptr<PartConfig>	MakeConfig() const override;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
@@ -29,8 +28,6 @@ public:
 		: EquipmentViewer(model)
 	{}
 };
-
-inline shared_ptr<PartConfig> EyeModel::MakeConfig() const { return make_shared<EyeConfig>(); }
 
 inline void EyeModel::MakeViewers()
 {
