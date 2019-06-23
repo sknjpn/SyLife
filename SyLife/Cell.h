@@ -4,15 +4,62 @@
 #include "Storage.h"
 #include "Molecule.h"
 
-#include "CellModel.h"
-#include "MoleculeModel.h"
+#include "Cell.h"
+#include "Molecule.h"
 
-#include "BodyState.h"
-#include "EquipmentState.h"
-#include "ModuleState.h"
+#include "Body.h"
+#include "Equipment.h"
+#include "Module.h"
 
-#include "PartState.h"
+#include "Part.h"
 
+#include "Model.h"
+#include "Part.h"
+
+class CellModel
+	: public Model
+{
+public:
+	vector<shared_ptr<PartConfig>>	m_parts;
+
+	// ‹ßŽ—‰~
+	double	m_mass;
+	double	m_radius;
+	double	m_inertia;
+
+public:
+	void	AddPartConfig(const ptree& pt);
+
+	template <typename T>
+	void	AddPartConfig(const ptree& pt) { m_parts.emplace_back(make_shared<T>())->Load(pt); }
+
+	template <typename T>
+	shared_ptr<T>			GetPart(const string& name) const
+	{
+		for (auto it = m_parts.begin(); it != m_parts.end(); ++it)
+			if ((*it)->m_name == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
+
+		return nullptr;
+	}
+
+	template <typename T>
+	vector<shared_ptr<T>>	GetParts() const
+	{
+		vector<shared_ptr<T>>	tModels;
+
+		for (auto it = m_parts.begin(); it != m_parts.end(); ++it)
+			if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
+
+		return tModels;
+	}
+
+	void	SetFromJSON(const ptree& pt);
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+
+	string	GetFilepath() const override { return "assets/cell/" + GetFilename(); }
+
+	void	CalculateDisk();
+};
 class Cell 
 	: public Rigidbody
 {

@@ -87,7 +87,7 @@
 #endif // Clang screws up variant
 #endif // C++17 only
 
-// beginning of sol/config.hpp
+// beginning of sol/.hpp
 
 #ifdef _MSC_VER
 	#if defined(_DEBUG) && !defined(NDEBUG)
@@ -252,7 +252,7 @@
 #define SOL_STACK_STRING_OPTIMIZATION_SIZE 1024
 #endif // Optimized conversion routines using a KB or so off the stack
 
-// end of sol/config.hpp
+// end of sol/.hpp
 
 // beginning of sol/config_setup.hpp
 
@@ -396,7 +396,7 @@ namespace sol {
 
 // end of sol/forward.hpp
 
-// beginning of sol/state.hpp
+// beginning of sol/.hpp
 
 // beginning of sol/state_view.hpp
 
@@ -21886,7 +21886,7 @@ namespace sol {
 	};
 } // namespace sol
 
-// end of sol/state.hpp
+// end of sol/.hpp
 
 // beginning of sol/coroutine.hpp
 

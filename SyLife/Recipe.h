@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MoleculeModel.h"
+#include "Molecule.h"
 
 class Recipe
 {

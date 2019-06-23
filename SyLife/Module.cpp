@@ -1,5 +1,11 @@
-#include "ModuleConfig.h"
+#include "Module.h"
+
 #include "AssetManager.h"
+
+void ModuleModel::SetFromJSON(const ptree & pt)
+{
+	PartModel::SetFromJSON(pt);
+}
 
 void ModuleConfig::SetFromJSON(const ptree & pt)
 {

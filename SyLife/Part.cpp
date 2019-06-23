@@ -1,4 +1,5 @@
-#include "PartModel.h"
+#include "Part.h"
+#include "AssetManager.h"
 
 double PartModel::GetRectInertia() const
 {
@@ -40,6 +41,20 @@ void PartModel::SetFromJSON(const ptree & pt)
 			}
 		}
 	}
+
+	Model::SetFromJSON(pt);
+}
+
+void PartConfig::SetFromJSON(const ptree & pt)
+{
+	// model
+	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("name"));
+
+	// position
+	m_position = Vector2D(pt.get<double>("position.x"), pt.get<double>("position.y"));
+
+	// rotation
+	m_rotation = pt.get<double>("rotation");
 
 	Model::SetFromJSON(pt);
 }

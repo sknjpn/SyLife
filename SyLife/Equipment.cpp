@@ -1,5 +1,10 @@
-#include "EquipmentConfig.h"
+#include "Equipment.h"
 #include "AssetManager.h"
+
+void EquipmentModel::SetFromJSON(const ptree & pt)
+{
+	PartModel::SetFromJSON(pt);
+}
 
 void EquipmentConfig::SetFromJSON(const ptree & pt)
 {
