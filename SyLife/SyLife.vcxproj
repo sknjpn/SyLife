@@ -322,6 +322,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Wing.h" />
   </ItemGroup>

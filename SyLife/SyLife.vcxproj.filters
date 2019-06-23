@@ -411,5 +411,8 @@
     <ClInclude Include="ShapeModel.h">
       <Filter>Source Files\Other</Filter>
     </ClInclude>
+    <ClInclude Include="TinyCamera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
