@@ -48,7 +48,7 @@ public:
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	ptree	Save() const override { return AddToJSON(ptree()); }
 
-	string	GetFilepath() const override { return "assets/cells/" + GetFilename(); }
+	string	GetFilepath() const override { return "assets/models/cells/" + GetFilename(); }
 };
 
 class CellViewer

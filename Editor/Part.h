@@ -28,7 +28,7 @@ public:
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	ptree	Save() const override { return AddToJSON(ptree()); }
 
-	string	GetFilepath() const override { return "assets/parts/" + GetFilename(); }
+	string	GetFilepath() const override { return "assets/models/parts/" + GetFilename(); }
 };
 
 class PartConfig
