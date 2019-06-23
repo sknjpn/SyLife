@@ -35,3 +35,12 @@ public:
 };
 
 inline shared_ptr<PartConfig> EyeModel::MakeConfig() const { return make_shared<EyeConfig>(); }
+
+inline void EyeModel::SetFromJSON(const ptree & pt)
+{
+}
+
+inline ptree EyeModel::AddToJSON(ptree pt) const
+{
+	return ptree();
+}

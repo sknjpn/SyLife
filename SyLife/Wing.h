@@ -1,3 +1,4 @@
+#include "..\Editor\Wing.h"
 #pragma once
 
 #include "Equipment.h"

@@ -35,3 +35,12 @@ public:
 };
 
 inline shared_ptr<PartConfig> ChloroplastModel::MakeConfig() const { return make_shared<ChloroplastConfig>(); }
+
+inline void ChloroplastModel::SetFromJSON(const ptree & pt)
+{
+}
+
+inline ptree ChloroplastModel::AddToJSON(ptree pt) const
+{
+	return ptree();
+}

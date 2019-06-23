@@ -205,38 +205,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AssemblyViewer.cpp" />
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AssetManager_AddModel.cpp" />
-    <ClCompile Include="AssetViewer.cpp" />
-    <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
-    <ClCompile Include="Body.cpp" />
-    <ClCompile Include="Cell.cpp" />
-    <ClCompile Include="Cell_AddPartConfig.cpp" />
-    <ClCompile Include="Chloroplast.cpp" />
-    <ClCompile Include="Equipment.cpp" />
-    <ClCompile Include="Eye.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Module.cpp" />
-    <ClCompile Include="Molecule.cpp" />
-    <ClCompile Include="Part.cpp" />
-    <ClCompile Include="PartPaletteViewer.cpp" />
-    <ClCompile Include="PartShapeViewer.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ShapeModel.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="SystemManager.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
-    <ClCompile Include="Viewer.cpp" />
-    <ClCompile Include="ViewerManager.cpp" />
-    <ClCompile Include="Wing.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
     <Image Include="App\engine\texture\box-shadow\16.png" />
     <Image Include="App\engine\texture\box-shadow\256.png" />
@@ -282,6 +250,38 @@
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AssemblyViewer.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AssetManager_AddModel.cpp" />
+    <ClCompile Include="AssetViewer.cpp" />
+    <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
+    <ClCompile Include="Body.cpp" />
+    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="Cell_AddPartConfig.cpp" />
+    <ClCompile Include="Chloroplast.cpp" />
+    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="Eye.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Module.cpp" />
+    <ClCompile Include="Molecule.cpp" />
+    <ClCompile Include="Part.cpp" />
+    <ClCompile Include="PartPaletteViewer.cpp" />
+    <ClCompile Include="PartShapeViewer.cpp" />
+    <ClCompile Include="ShapeModel.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Viewer.cpp" />
+    <ClCompile Include="ViewerManager.cpp" />
+    <ClCompile Include="Wing.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AssetViewer.h" />
@@ -297,9 +297,9 @@
     <ClInclude Include="PartPaletteViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="ShapeModel.h" />
-    <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="ViewerManager.h" />

@@ -35,3 +35,13 @@ public:
 };
 
 inline shared_ptr<PartConfig> WingModel::MakeConfig() const { return make_shared<WingConfig>(); }
+
+
+inline ptree WingModel::AddToJSON(ptree pt) const
+{
+	return ptree();
+}
+
+inline void WingModel::SetFromJSON(const ptree & pt)
+{
+}

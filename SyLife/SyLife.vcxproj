@@ -205,51 +205,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AssetManager_AddModel.cpp" />
-    <ClCompile Include="Body.cpp" />
-    <ClCompile Include="Cell.cpp" />
-    <ClCompile Include="CellManager.cpp" />
-    <ClCompile Include="CellManager_Draw.cpp" />
-    <ClCompile Include="CellManager_Update.cpp" />
-    <ClCompile Include="Cell_AddPartConfig.cpp" />
-    <ClCompile Include="Chloroplast.cpp" />
-    <ClCompile Include="Equipment.cpp" />
-    <ClCompile Include="Eye.cpp" />
-    <ClCompile Include="FieldManager.cpp" />
-    <ClCompile Include="FieldManager_Draw.cpp" />
-    <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
-    <ClCompile Include="FieldManager_Update.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Module.cpp" />
-    <ClCompile Include="MoleculeManager_Draw.cpp" />
-    <ClCompile Include="MoleculeManager_Update.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Molecule.cpp" />
-    <ClCompile Include="MoleculeManager.cpp" />
-    <ClCompile Include="Part.cpp" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="Random.cpp" />
-    <ClCompile Include="Recipe.cpp" />
-    <ClCompile Include="RecipeManager.cpp" />
-    <ClCompile Include="Rigidbody.cpp" />
-    <ClCompile Include="Cloud.cpp" />
-    <ClCompile Include="Indexer.cpp" />
-    <ClCompile Include="ShapeModel.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="Storage.cpp" />
-    <ClCompile Include="SystemManager.cpp" />
-    <ClCompile Include="SystemManager_Draw.cpp" />
-    <ClCompile Include="SystemManager_Update.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
-    <ClCompile Include="Wing.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
     <Image Include="App\engine\texture\box-shadow\16.png" />
     <Image Include="App\engine\texture\box-shadow\256.png" />
@@ -289,11 +244,51 @@
     <None Include="App\engine\soundfont\GMGSx.sf2.zst" />
     <None Include="App\nlp\japanese\jumanpp\LICENSE" />
     <None Include="App\nlp\japanese\jumanpp\README.md" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="App\engine\font\fontawesome\LICENSE.txt" />
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AssetManager_AddModel.cpp" />
+    <ClCompile Include="Body.cpp" />
+    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="CellManager.cpp" />
+    <ClCompile Include="CellManager_Draw.cpp" />
+    <ClCompile Include="CellManager_Update.cpp" />
+    <ClCompile Include="Cell_AddPartConfig.cpp" />
+    <ClCompile Include="Chloroplast.cpp" />
+    <ClCompile Include="Cloud.cpp" />
+    <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="Eye.cpp" />
+    <ClCompile Include="FieldManager.cpp" />
+    <ClCompile Include="FieldManager_Draw.cpp" />
+    <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
+    <ClCompile Include="FieldManager_Update.cpp" />
+    <ClCompile Include="Indexer.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Module.cpp" />
+    <ClCompile Include="Molecule.cpp" />
+    <ClCompile Include="MoleculeManager.cpp" />
+    <ClCompile Include="MoleculeManager_Draw.cpp" />
+    <ClCompile Include="MoleculeManager_Update.cpp" />
+    <ClCompile Include="Part.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Recipe.cpp" />
+    <ClCompile Include="RecipeManager.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="ShapeModel.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Storage.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="SystemManager_Draw.cpp" />
+    <ClCompile Include="SystemManager_Update.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Wing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
@@ -301,9 +296,12 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="Chloroplast.h" />
+    <ClInclude Include="Cloud.h" />
+    <ClInclude Include="Creature.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Eye.h" />
     <ClInclude Include="FieldManager.h" />
+    <ClInclude Include="Indexer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="Molecule.h" />
@@ -315,8 +313,6 @@
     <ClInclude Include="Recipe.h" />
     <ClInclude Include="RecipeManager.h" />
     <ClInclude Include="Rigidbody.h" />
-    <ClInclude Include="Cloud.h" />
-    <ClInclude Include="Indexer.h" />
     <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="sol.hpp" />
     <ClInclude Include="stdafx.h" />
