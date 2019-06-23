@@ -16,13 +16,12 @@ public:
 public:
 	void	MakeViewers() override;
 
-	ptree	AddToJSON(ptree pt) const;
 	void	SetFromJSON(const ptree& pt);
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	ptree	AddToJSON(ptree pt) const;
+	ptree	Save() const override { return AddToJSON(ptree()); }
 
 	string	GetFilepath() const override { return "assets/models/molecules/" + GetFilename(); }
-
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	ptree	Save() const override { return AddToJSON(ptree()); }
 };
 
 class MoleculeViewer

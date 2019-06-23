@@ -23,7 +23,6 @@ public:
 
 	void	SetFromJSON(const ptree& pt);
 	virtual void	Load(const ptree& pt) { SetFromJSON(pt); }
-
 	ptree	AddToJSON(ptree pt) const;
 	virtual ptree	Save() const { return AddToJSON(ptree()); }
 };
