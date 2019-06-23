@@ -55,3 +55,4 @@ public:
 	void	Update() override;
 };
 
+inline shared_ptr<PartConfig> ModuleModel::MakePartConfig() const { return make_shared<ModuleConfig>(); }

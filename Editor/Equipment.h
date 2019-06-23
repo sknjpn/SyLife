@@ -56,3 +56,5 @@ public:
 public:
 	void	Update() override;
 };
+
+inline shared_ptr<PartConfig> EquipmentModel::MakePartConfig() const { return make_shared<EquipmentConfig>(); }

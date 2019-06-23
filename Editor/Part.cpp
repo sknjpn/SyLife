@@ -8,11 +8,6 @@ void PartModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-shared_ptr<PartConfig> PartModel::MakePartConfig() const
-{
-	return make_shared<PartConfig>();
-}
-
 s3d::RectF PartModel::GetApproximateRect() const
 {
 	s3d::RectF ar(m_shapes.front().m_verticles.front(), m_shapes.front().m_verticles.front());

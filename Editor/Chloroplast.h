@@ -28,3 +28,5 @@ public:
 		: ModuleViewer(model)
 	{}
 };
+
+inline shared_ptr<PartConfig> ChloroplastModel::MakePartConfig() const { return make_shared<ChloroplastConfig>(); }

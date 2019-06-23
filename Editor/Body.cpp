@@ -8,11 +8,6 @@ void BodyModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<BodyViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-shared_ptr<PartConfig> BodyModel::MakePartConfig() const
-{
-	return make_shared<BodyConfig>();
-}
-
 ptree BodyModel::AddToJSON(ptree pt) const
 {
 	// type

@@ -9,8 +9,8 @@ class WingModel
 	: public EquipmentModel
 {
 public:
-	void	MakeViewers() override;
 	shared_ptr<PartConfig>	MakePartConfig() const override;
+	void	MakeViewers() override;
 };
 
 class WingConfig
@@ -28,3 +28,5 @@ public:
 		: EquipmentViewer(model)
 	{}
 };
+
+inline shared_ptr<PartConfig> WingModel::MakePartConfig() const { return make_shared<WingConfig>(); }

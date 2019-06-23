@@ -55,4 +55,4 @@ public:
 	void	Update() override;
 };
 
-
+inline shared_ptr<PartConfig> BodyModel::MakePartConfig() const { return make_shared<BodyConfig>(); }

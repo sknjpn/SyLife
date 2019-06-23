@@ -8,11 +8,6 @@ void EquipmentModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<EquipmentViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-shared_ptr<PartConfig> EquipmentModel::MakePartConfig() const
-{
-	return make_shared<EquipmentConfig>();
-}
-
 ptree EquipmentModel::AddToJSON(ptree pt) const
 {
 	// type

@@ -29,3 +29,4 @@ public:
 	{}
 };
 
+inline shared_ptr<PartConfig> EyeModel::MakePartConfig() const { return make_shared<EyeConfig>(); }
