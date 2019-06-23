@@ -33,11 +33,15 @@ inline void WingModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<WingViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline ptree WingModel::AddToJSON(ptree pt) const
-{
-	return ptree();
-}
-
 inline void WingModel::SetFromJSON(const ptree & pt)
 {
+	EquipmentModel::SetFromJSON(pt);
+}
+
+inline ptree WingModel::AddToJSON(ptree pt) const
+{
+	// type
+	pt.put("type", "Module");
+
+	return EquipmentModel::AddToJSON(pt);
 }

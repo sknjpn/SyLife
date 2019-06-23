@@ -44,17 +44,17 @@ inline void ModuleModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<ModuleViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
+inline void ModuleModel::SetFromJSON(const ptree & pt)
+{
+	PartModel::SetFromJSON(pt);
+}
+
 inline ptree ModuleModel::AddToJSON(ptree pt) const
 {
 	// type
 	pt.put("type", "Module");
 
 	return PartModel::AddToJSON(pt);
-}
-
-inline void ModuleModel::SetFromJSON(const ptree & pt)
-{
-	PartModel::SetFromJSON(pt);
 }
 
 inline void ModuleViewer::Update()

@@ -46,17 +46,17 @@ inline void EquipmentModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<EquipmentViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
+inline void EquipmentModel::SetFromJSON(const ptree & pt)
+{
+	PartModel::SetFromJSON(pt);
+}
+
 inline ptree EquipmentModel::AddToJSON(ptree pt) const
 {
 	// type
 	pt.put("type", "Equipment");
 
 	return PartModel::AddToJSON(pt);
-}
-
-inline void EquipmentModel::SetFromJSON(const ptree & pt)
-{
-	PartModel::SetFromJSON(pt);
 }
 
 inline void EquipmentViewer::Update()

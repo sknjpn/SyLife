@@ -44,17 +44,17 @@ inline void BodyModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<BodyViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
+inline void BodyModel::SetFromJSON(const ptree & pt)
+{
+	PartModel::SetFromJSON(pt);
+}
+
 inline ptree BodyModel::AddToJSON(ptree pt) const
 {
 	// type
 	pt.put("type", "Body");
 
 	return PartModel::AddToJSON(pt);
-}
-
-inline void BodyModel::SetFromJSON(const ptree & pt)
-{
-	PartModel::SetFromJSON(pt);
 }
 
 inline void BodyViewer::Update()

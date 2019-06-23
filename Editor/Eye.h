@@ -36,9 +36,13 @@ inline void EyeModel::MakeViewers()
 
 inline void EyeModel::SetFromJSON(const ptree & pt)
 {
+	EquipmentModel::SetFromJSON(pt);
 }
 
 inline ptree EyeModel::AddToJSON(ptree pt) const
 {
-	return ptree();
+	// type
+	pt.put("type", "Module");
+
+	return EquipmentModel::AddToJSON(pt);
 }
