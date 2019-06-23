@@ -218,12 +218,11 @@
     <ClCompile Include="Eye.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Module.cpp" />
-    <ClCompile Include="MoleculeViewer.cpp" />
+    <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MoleculeModel.cpp" />
     <ClCompile Include="ShapeModel.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -293,13 +292,12 @@
     <ClInclude Include="Eye.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Module.h" />
-    <ClInclude Include="MoleculeViewer.h" />
+    <ClInclude Include="Molecule.h" />
     <ClInclude Include="Part.h" />
     <ClInclude Include="PartPaletteViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="TinyCamera.h" />
-    <ClInclude Include="MoleculeModel.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Vector2D.h" />

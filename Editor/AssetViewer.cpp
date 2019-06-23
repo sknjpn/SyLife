@@ -1,7 +1,7 @@
 #include "AssetViewer.h"
 #include "AssetManager.h"
 #include "Cell.h"
-#include "MoleculeModel.h"
+#include "Molecule.h"
 #include "Part.h"
 #include "Body.h"
 #include "Equipment.h"

@@ -4,7 +4,7 @@
 
 #include "PartPaletteViewer.h"
 #include "Cell.h"
-#include "MoleculeViewer.h"
+#include "Molecule.h"
 #include "AssemblyViewer.h"
 #include "Body.h"
 #include "Equipment.h"

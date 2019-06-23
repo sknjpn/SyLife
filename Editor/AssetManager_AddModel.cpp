@@ -2,7 +2,7 @@
 
 #include "Cell.h"
 
-#include "MoleculeModel.h"
+#include "Molecule.h"
 
 #include "Body.h"
 #include "Equipment.h"

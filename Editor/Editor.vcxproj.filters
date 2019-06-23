@@ -98,14 +98,8 @@
     <ClCompile Include="AssetManager_AddModel.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="MoleculeModel.cpp">
-      <Filter>Source Files\Molecule</Filter>
-    </ClCompile>
     <ClCompile Include="ShapeModel.cpp">
       <Filter>Source Files\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeViewer.cpp">
-      <Filter>Source Files\Molecule</Filter>
     </ClCompile>
     <ClCompile Include="AssemblyViewer.cpp">
       <Filter>Source Files\Cell\AddedViewer</Filter>
@@ -154,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="Cell_AddPartConfig.cpp">
       <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files\Molecule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -294,12 +291,6 @@
     <ClInclude Include="TinyCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="MoleculeModel.h">
-      <Filter>Source Files\Molecule</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeViewer.h">
-      <Filter>Source Files\Molecule</Filter>
-    </ClInclude>
     <ClInclude Include="AssemblyViewer.h">
       <Filter>Source Files\Cell\AddedViewer</Filter>
     </ClInclude>
@@ -344,6 +335,9 @@
     </ClInclude>
     <ClInclude Include="Cell.h">
       <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Molecule.h">
+      <Filter>Source Files\Molecule</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
