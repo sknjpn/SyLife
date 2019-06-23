@@ -1,6 +1,10 @@
 #pragma once
 
-#include "Model.h"
+#include <boost/property_tree/ptree.hpp>
+
+using namespace boost::property_tree;
+
+class Model;
 
 class AssetManager
 {
