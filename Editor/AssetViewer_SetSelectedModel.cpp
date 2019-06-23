@@ -3,7 +3,7 @@
 #include "ViewerManager.h"
 
 #include "PartPaletteViewer.h"
-#include "CellViewer.h"
+#include "Cell.h"
 #include "MoleculeViewer.h"
 #include "AssemblyViewer.h"
 #include "Body.h"

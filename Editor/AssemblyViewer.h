@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Viewer.h"
-#include "CellModel.h"
+#include "Cell.h"
 #include "TinyCamera.h"
 #include "Part.h"
 

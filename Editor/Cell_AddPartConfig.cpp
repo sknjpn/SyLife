@@ -1,4 +1,4 @@
-#include "CellModel.h"
+#include "Cell.h"
 
 #include "Body.h"
 #include "Equipment.h"

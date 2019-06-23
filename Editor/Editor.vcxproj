@@ -211,8 +211,8 @@
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="Body.cpp" />
-    <ClCompile Include="CellModel_AddPartConfig.cpp" />
-    <ClCompile Include="CellViewer.cpp" />
+    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="Cell_AddPartConfig.cpp" />
     <ClCompile Include="Chloroplast.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Eye.cpp" />
@@ -222,7 +222,6 @@
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
-    <ClCompile Include="CellModel.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoleculeModel.cpp" />
     <ClCompile Include="ShapeModel.cpp" />
@@ -288,7 +287,7 @@
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="Body.h" />
-    <ClInclude Include="CellViewer.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="Chloroplast.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Eye.h" />
@@ -300,7 +299,6 @@
     <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="TinyCamera.h" />
-    <ClInclude Include="CellModel.h" />
     <ClInclude Include="MoleculeModel.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemManager.h" />

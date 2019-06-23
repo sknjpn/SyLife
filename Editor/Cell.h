@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Model.h"
+#include "Viewer.h"
 #include "Part.h"
 
 class CellViewer;
@@ -49,3 +50,21 @@ public:
 
 	string	GetFilepath() const override { return "assets/cells/" + GetFilename(); }
 };
+
+class CellViewer
+	: public Viewer
+{
+	shared_ptr<CellModel>	m_model;
+	s3d::TextEditState		m_textEditState_name;
+
+public:
+	CellViewer(const shared_ptr<CellModel>& model)
+		: m_model(model)
+		, m_textEditState_name(s3d::Unicode::Widen(model->m_name))\
+	{
+		m_drawRect = s3d::RectF(0, 450, 600, 150);
+	}
+
+	void	Update() override;
+};
+

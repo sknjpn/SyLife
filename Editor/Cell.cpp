@@ -1,7 +1,7 @@
-#include "CellModel.h"
+#include "Cell.h"
 
 #include "ViewerManager.h"
-#include "CellViewer.h"
+#include "Cell.h"
 
 void CellModel::MakeViewers()
 {
@@ -29,4 +29,14 @@ void CellModel::SetFromJSON(const ptree& pt)
 	for (auto part : pt.get_child("parts")) AddPartConfig(part.second);
 
 	Model::SetFromJSON(pt);
+}
+#include "Cell.h"
+
+void CellViewer::Update()
+{
+	// name
+	{
+		s3d::SimpleGUI::TextBox(m_textEditState_name, s3d::Vec2(10, 10), 240);
+		m_model->m_name = s3d::Unicode::Narrow(m_textEditState_name.text);
+	}
 }
