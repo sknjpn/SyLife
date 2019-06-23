@@ -7,7 +7,7 @@ void MoleculeModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(shared_from_this()));
 }
 
-ptree MoleculeModel::AddToJSON(ptree pt) const
+void MoleculeModel::AddToJSON(ptree& pt) const
 {
 	// mass
 	pt.put<double>("mass", m_mass);
@@ -23,10 +23,12 @@ ptree MoleculeModel::AddToJSON(ptree pt) const
 		pt.add_child("color", color);
 	}
 
-	return Model::AddToJSON(pt);
+	Model::AddToJSON(pt);
+
+	pt.put("type", "MoleculeModel");
 }
 
-void MoleculeModel::SetFromJSON(const ptree & pt)
+void MoleculeModel::SetFromJSON(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");

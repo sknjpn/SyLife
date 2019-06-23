@@ -10,14 +10,16 @@ void Model::MakeViewers()
 	g_viewerManagerPtr->AddViewer<Viewer>();
 }
 
-ptree Model::AddToJSON(ptree pt) const
+void Model::AddToJSON(ptree& pt) const
 {
+	// name
 	pt.put("name", m_name);
 
-	return pt;
+	// type
+	pt.put("type", "Model");
 }
 
-void Model::SetFromJSON(const ptree & pt)
+void Model::SetFromJSON(const ptree& pt)
 {
 	m_name = pt.get<string>("name");
 }

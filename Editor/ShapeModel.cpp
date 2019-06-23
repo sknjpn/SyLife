@@ -1,6 +1,6 @@
 #include "ShapeModel.h"
 
-ptree ShapeModel::AddToJSON(ptree pt) const
+void ShapeModel::AddToJSON(ptree& pt) const
 {
 	// color
 	{
@@ -32,10 +32,13 @@ ptree ShapeModel::AddToJSON(ptree pt) const
 		pt.add_child("verticles", verticles);
 	}
 
-	return Model::AddToJSON(pt);
+	Model::AddToJSON(pt);
+
+	// type
+	pt.put("type", "ShapeModel");
 }
 
-void ShapeModel::SetFromJSON(const ptree & pt)
+void ShapeModel::SetFromJSON(const ptree& pt)
 {
 	// color
 	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));

@@ -16,8 +16,8 @@ public:
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	ptree	AddToJSON(ptree pt) const;
-	ptree	Save() const override { return AddToJSON(ptree()); }
+	void	AddToJSON(ptree& pt) const;
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 
@@ -46,17 +46,17 @@ inline void EquipmentModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<EquipmentViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline void EquipmentModel::SetFromJSON(const ptree & pt)
+inline void EquipmentModel::SetFromJSON(const ptree& pt)
 {
 	PartModel::SetFromJSON(pt);
 }
 
-inline ptree EquipmentModel::AddToJSON(ptree pt) const
+inline void EquipmentModel::AddToJSON(ptree& pt) const
 {
+	return PartModel::AddToJSON(pt);
+
 	// type
 	pt.put("type", "EquipmentModel");
-
-	return PartModel::AddToJSON(pt);
 }
 
 inline void EquipmentViewer::Update()

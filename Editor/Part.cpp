@@ -31,7 +31,7 @@ s3d::Vec2 PartModel::GetCenter() const
 	return GetApproximateRect().center();
 }
 
-ptree PartModel::AddToJSON(ptree pt) const
+void PartModel::AddToJSON(ptree& pt) const
 {
 	// mass
 	pt.put<double>("mass", m_mass);
@@ -41,12 +41,17 @@ ptree PartModel::AddToJSON(ptree pt) const
 		ptree shapes;
 
 		for (const auto& v : m_shapes)
-			shapes.push_back(std::make_pair("", v.Save()));
+		{
+			ptree shape; v.Save(shape);
+			shapes.push_back(std::make_pair("", shape));
+		}
 
 		pt.add_child("shapes", shapes);
 	}
 
-	return Model::AddToJSON(pt);
+	Model::AddToJSON(pt);
+
+	pt.put("type", "PartModel");
 }
 
 void PartViewer::Update()

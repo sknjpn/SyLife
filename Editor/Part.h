@@ -26,8 +26,8 @@ public:
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	ptree	AddToJSON(ptree pt) const;
-	ptree	Save() const override { return AddToJSON(ptree()); }
+	void	AddToJSON(ptree& pt) const;
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 
 	string	GetFilepath() const override { return "assets/models/parts/" + GetFilename(); }
 };
@@ -43,11 +43,11 @@ public:
 public:
 	double		GetInertia() const { return m_model->GetRectInertia() + (m_position + m_model->GetCenter().rotated(m_rotation)).lengthSq() * m_model->m_mass; }
 
-	ptree	AddToJSON(ptree pt) const;
+	void AddToJSON(ptree& pt) const;
 	void	SetFromJSON(const ptree& pt);
 
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	ptree	Save() const override { return AddToJSON(ptree()); }
+	void Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 class PartViewer
@@ -71,7 +71,7 @@ inline void PartModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline void PartModel::SetFromJSON(const ptree & pt)
+inline void PartModel::SetFromJSON(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");
@@ -83,7 +83,7 @@ inline void PartModel::SetFromJSON(const ptree & pt)
 	Model::SetFromJSON(pt);
 }
 
-inline ptree PartConfig::AddToJSON(ptree pt) const
+inline void PartConfig::AddToJSON(ptree& pt) const
 {
 	// model
 	pt.put("name", m_model->m_name);
@@ -101,10 +101,12 @@ inline ptree PartConfig::AddToJSON(ptree pt) const
 	// rotation
 	pt.put("rotation", m_rotation);
 
-	return Model::AddToJSON(pt);
+	Model::AddToJSON(pt);
+
+	pt.put("type", "PartConfig");
 }
 
-inline void PartConfig::SetFromJSON(const ptree & pt)
+inline void PartConfig::SetFromJSON(const ptree& pt)
 {
 	// model
 	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("name"));
