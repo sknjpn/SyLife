@@ -2,6 +2,8 @@
 
 #include "Model.h"
 
+class MoleculeViewer;
+
 class MoleculeModel
 	: public Model
 {
@@ -11,6 +13,8 @@ public:
 	s3d::Color	m_color;
 
 public:
+	void	MakeViewers() override;
+
 	ptree	AddToJSON(ptree pt) const;
 	void	SetFromJSON(const ptree& pt);
 

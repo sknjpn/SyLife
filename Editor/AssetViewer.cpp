@@ -2,10 +2,10 @@
 #include "AssetManager.h"
 #include "CellModel.h"
 #include "MoleculeModel.h"
-#include "PartModel.h"
-#include "BodyModel.h"
-#include "EquipmentModel.h"
-#include "ModuleModel.h"
+#include "Part.h"
+#include "Body.h"
+#include "Equipment.h"
+#include "Module.h"
 
 void AssetViewer::Update()
 {

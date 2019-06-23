@@ -3,7 +3,7 @@
 #include "Viewer.h"
 
 #include "CellModel.h"
-#include "PartModel.h"
+#include "Part.h"
 
 #include "AssetManager.h"
 

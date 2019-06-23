@@ -1,12 +1,12 @@
 #include "CellModel.h"
 
-#include "BodyConfig.h"
-#include "EquipmentConfig.h"
-#include "ModuleConfig.h"
+#include "Body.h"
+#include "Equipment.h"
+#include "Module.h"
 
-#include "ChloroplastConfig.h"
-#include "EyeConfig.h"
-#include "WingConfig.h"
+#include "Chloroplast.h"
+#include "Eye.h"
+#include "Wing.h"
 
 void CellModel::AddPartConfig(const ptree& pt)
 {

@@ -1,5 +1,13 @@
 #include "CellModel.h"
 
+#include "ViewerManager.h"
+#include "CellViewer.h"
+
+void CellModel::MakeViewers()
+{
+	g_viewerManagerPtr->AddViewer<CellViewer>(dynamic_pointer_cast<CellModel>(shared_from_this()));
+}
+
 ptree CellModel::AddToJSON(ptree pt) const
 {
 	// parts

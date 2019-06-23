@@ -3,7 +3,7 @@
 #include "Viewer.h"
 #include "ShapeModel.h"
 #include "TinyCamera.h"
-#include "PartModel.h"
+#include "Part.h"
 
 class PartShapeViewer
 	: public Viewer

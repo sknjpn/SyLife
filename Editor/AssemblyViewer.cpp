@@ -2,9 +2,9 @@
 #include "AssetManager.h"
 #include "PartPaletteViewer.h"
 
-#include "BodyConfig.h"
-#include "EquipmentConfig.h"
-#include "ModuleConfig.h"
+#include "Body.h"
+#include "Equipment.h"
+#include "Module.h"
 
 void AssemblyViewer::Init()
 {

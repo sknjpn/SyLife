@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Model.h"
-#include "PartConfig.h"
+#include "Part.h"
+
+class CellViewer;
 
 class CellModel
 	: public Model
@@ -10,6 +12,8 @@ public:
 	vector<shared_ptr<PartConfig>>	m_parts;
 
 public:
+	void	MakeViewers() override;
+
 	void	AddPartConfig(const ptree& pt);
 
 	template <typename T>

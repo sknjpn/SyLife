@@ -6,12 +6,9 @@
 #include "CellViewer.h"
 #include "MoleculeViewer.h"
 #include "AssemblyViewer.h"
-#include "BodyModel.h"
-#include "BodyViewer.h"
-#include "EquipmentModel.h"
-#include "EquipmentViewer.h"
-#include "ModuleModel.h"
-#include "ModuleViewer.h"
+#include "Body.h"
+#include "Equipment.h"
+#include "Module.h"
 #include "PartShapeViewer.h"
 
 void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)

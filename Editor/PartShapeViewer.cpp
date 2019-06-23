@@ -1,6 +1,6 @@
 #include "PartShapeViewer.h"
 #include "AssetManager.h"
-#include "BodyModel.h"
+#include "Body.h"
 
 void PartShapeViewer::Init()
 {

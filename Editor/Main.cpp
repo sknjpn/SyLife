@@ -1,8 +1,6 @@
 ﻿#include "SystemManager.h"
 
 #include "ViewerManager.h"
-#include "PartShapeViewer.h"
-#include "BodyViewer.h"
 #include "AssetViewer.h"
 
 void Main()

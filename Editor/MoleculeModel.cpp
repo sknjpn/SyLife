@@ -1,5 +1,13 @@
 #include "MoleculeModel.h"
 
+#include "ViewerManager.h"
+#include "MoleculeViewer.h"
+
+void MoleculeModel::MakeViewers()
+{
+	g_viewerManagerPtr->AddViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(shared_from_this()));
+}
+
 ptree MoleculeModel::AddToJSON(ptree pt) const
 {
 	// mass

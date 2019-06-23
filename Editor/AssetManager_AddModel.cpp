@@ -4,13 +4,13 @@
 
 #include "MoleculeModel.h"
 
-#include "BodyModel.h"
-#include "EquipmentModel.h"
-#include "ModuleModel.h"
+#include "Body.h"
+#include "Equipment.h"
+#include "Module.h"
 
-#include "EyeModel.h"
-#include "ChloroplastModel.h"
-#include "WingModel.h"
+#include "Eye.h"
+#include "Chloroplast.h"
+#include "Wing.h"
 
 void AssetManager::AddModel(const string& filepath)
 {

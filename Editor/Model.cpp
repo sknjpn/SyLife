@@ -1,5 +1,14 @@
 #include "Model.h"
+
+#include "ViewerManager.h"
+#include "Viewer.h"
+
 #include <boost/property_tree/json_parser.hpp>
+
+void Model::MakeViewers()
+{
+	g_viewerManagerPtr->AddViewer<Viewer>();
+}
 
 ptree Model::AddToJSON(ptree pt) const
 {
