@@ -52,7 +52,7 @@ inline void BodyModel::SetFromJSON(const ptree & pt)
 inline ptree BodyModel::AddToJSON(ptree pt) const
 {
 	// type
-	pt.put("type", "Body");
+	pt.put("type", "BodyModel");
 
 	return PartModel::AddToJSON(pt);
 }

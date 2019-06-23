@@ -52,7 +52,7 @@ inline void ModuleModel::SetFromJSON(const ptree & pt)
 inline ptree ModuleModel::AddToJSON(ptree pt) const
 {
 	// type
-	pt.put("type", "Module");
+	pt.put("type", "ModuleModel");
 
 	return PartModel::AddToJSON(pt);
 }

@@ -54,7 +54,7 @@ inline void EquipmentModel::SetFromJSON(const ptree & pt)
 inline ptree EquipmentModel::AddToJSON(ptree pt) const
 {
 	// type
-	pt.put("type", "Equipment");
+	pt.put("type", "EquipmentModel");
 
 	return PartModel::AddToJSON(pt);
 }

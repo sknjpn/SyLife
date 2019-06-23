@@ -41,7 +41,7 @@ inline void WingModel::SetFromJSON(const ptree & pt)
 inline ptree WingModel::AddToJSON(ptree pt) const
 {
 	// type
-	pt.put("type", "Module");
+	pt.put("type", "WingModel");
 
 	return EquipmentModel::AddToJSON(pt);
 }

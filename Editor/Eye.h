@@ -42,7 +42,7 @@ inline void EyeModel::SetFromJSON(const ptree & pt)
 inline ptree EyeModel::AddToJSON(ptree pt) const
 {
 	// type
-	pt.put("type", "Module");
+	pt.put("type", "EyeModel");
 
 	return EquipmentModel::AddToJSON(pt);
 }

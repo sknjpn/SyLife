@@ -41,5 +41,9 @@ inline void ChloroplastModel::SetFromJSON(const ptree & pt)
 
 inline ptree ChloroplastModel::AddToJSON(ptree pt) const
 {
+	// type
+	pt.put("type", "ChloroplastModel");
+
+
 	return ModuleModel::AddToJSON(pt);
 }
