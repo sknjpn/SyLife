@@ -6,7 +6,6 @@
 #include "AssetManager.h"
 
 class WingViewer;
-class WingConfig;
 
 class WingModel
 	: public EquipmentModel
@@ -19,13 +18,6 @@ public:
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	ptree	AddToJSON(ptree pt) const;
 	ptree	Save() const override { return AddToJSON(ptree()); }
-};
-
-class WingConfig
-	: public EquipmentConfig
-{
-public:
-
 };
 
 class WingViewer

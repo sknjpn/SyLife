@@ -7,7 +7,6 @@
 #include "AssetManager.h"
 
 class ModuleViewer;
-class ModuleConfig;
 
 class ModuleModel
 	: public PartModel
@@ -19,20 +18,6 @@ public:
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	ptree	AddToJSON(ptree pt) const;
-	ptree	Save() const override { return AddToJSON(ptree()); }
-};
-
-class ModuleConfig
-	: public PartConfig
-{
-public:
-	shared_ptr<ModuleModel>	m_model;
-
-public:
-	ptree	AddToJSON(ptree pt) const;
-	void	SetFromJSON(const ptree& pt);
-
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	ptree	Save() const override { return AddToJSON(ptree()); }
 };
 
@@ -74,22 +59,6 @@ inline ptree ModuleModel::AddToJSON(ptree pt) const
 inline void ModuleModel::SetFromJSON(const ptree & pt)
 {
 	PartModel::SetFromJSON(pt);
-}
-
-inline ptree ModuleConfig::AddToJSON(ptree pt) const
-{
-	// type
-	pt.put("type", "Module");
-
-	return PartConfig::AddToJSON(pt);
-}
-
-inline void ModuleConfig::SetFromJSON(const ptree & pt)
-{
-	// model
-	m_model = g_assetManagerPtr->GetModel<ModuleModel>(pt.get<string>("name"));
-
-	PartConfig::SetFromJSON(pt);
 }
 
 inline void ModuleViewer::Update()

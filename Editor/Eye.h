@@ -7,7 +7,6 @@
 #include "AssetManager.h"
 
 class EyeViewer;
-class EyeConfig;
 
 class EyeModel
 	: public EquipmentModel
@@ -20,12 +19,6 @@ public:
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	ptree	AddToJSON(ptree pt) const;
 	ptree	Save() const override { return AddToJSON(ptree()); }
-};
-
-class EyeConfig
-	: public EquipmentConfig
-{
-public:
 };
 
 class EyeViewer

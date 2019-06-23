@@ -7,7 +7,6 @@
 #include "AssetManager.h"
 
 class EquipmentViewer;
-class EquipmentConfig;
 
 class EquipmentModel
 	: public PartModel
@@ -19,20 +18,6 @@ public:
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	ptree	AddToJSON(ptree pt) const;
-	ptree	Save() const override { return AddToJSON(ptree()); }
-};
-
-class EquipmentConfig
-	: public PartConfig
-{
-public:
-	shared_ptr<EquipmentModel>	m_model;
-
-public:
-	ptree	AddToJSON(ptree pt) const;
-	void	SetFromJSON(const ptree& pt);
-
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	ptree	Save() const override { return AddToJSON(ptree()); }
 };
 
@@ -76,23 +61,6 @@ inline ptree EquipmentModel::AddToJSON(ptree pt) const
 inline void EquipmentModel::SetFromJSON(const ptree & pt)
 {
 	PartModel::SetFromJSON(pt);
-}
-
-
-inline ptree EquipmentConfig::AddToJSON(ptree pt) const
-{
-	// type
-	pt.put("type", "Equipment");
-
-	return PartConfig::AddToJSON(pt);
-}
-
-inline void EquipmentConfig::SetFromJSON(const ptree & pt)
-{
-	// model
-	m_model = g_assetManagerPtr->GetModel<EquipmentModel>(pt.get<string>("name"));
-
-	PartConfig::SetFromJSON(pt);
 }
 
 inline void EquipmentViewer::Update()
