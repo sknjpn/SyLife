@@ -15,14 +15,6 @@ public:
 public:
 	void	MakeViewers() override;
 
-	void	AddPartConfig(const ptree& pt);
-
-	template <typename T>
-	void	AddPartConfig(const ptree& pt) { m_parts.emplace_back(make_shared<T>())->Load(pt); }
-
-	template <typename T>
-	const shared_ptr<PartConfig>&	AddPartConfig() { return m_parts.emplace_back(make_shared<T>()); }
-
 	template <typename T>
 	shared_ptr<T>			GetPart(const string& name) const
 	{

@@ -72,10 +72,7 @@ void AssemblyViewer::Update()
 
 		if (s3d::MouseL.up())
 		{
-			shared_ptr<PartConfig>	partConfig;
-
-			if (dynamic_pointer_cast<ModuleModel>(PartPaletteViewer::GetSelectedPart()))
-				partConfig = m_model->AddPartConfig<ModuleConfig>();
+			const auto& partConfig = m_model->m_parts.emplace_back(make_shared<PartConfig>());
 
 			partConfig->m_model = PartPaletteViewer::GetSelectedPart();
 			partConfig->m_position = s3d::Cursor::PosF();
