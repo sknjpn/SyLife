@@ -25,7 +25,7 @@ ptree CellModel::AddToJSON(ptree pt) const
 void CellModel::SetFromJSON(const ptree& pt)
 {
 	// parts
-	for (auto part : pt.get_child("parts")) m_parts.emplace_back(make_shared<PartConfig>())->Load(pt);
+	for (auto part : pt.get_child("parts")) m_parts.emplace_back(make_shared<PartConfig>())->Load(part.second);
 
 	Model::SetFromJSON(pt);
 }
