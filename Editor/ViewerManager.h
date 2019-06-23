@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Viewer.h"
+class Viewer;
 
 class ViewerManager
 {
@@ -13,10 +13,7 @@ public:
 	void	Update();
 
 	template <typename T, typename... Args>
-	shared_ptr<T>	AddViewer(Args&& ...args)
-	{
-		return dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...)));
-	}
+	shared_ptr<T>	AddViewer(Args&& ...args) { return dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); }
 };
 
 extern unique_ptr<ViewerManager>	g_viewerManagerPtr;

@@ -1,4 +1,5 @@
 #include "ViewerManager.h"
+#include "Viewer.h"
 
 unique_ptr<ViewerManager>	g_viewerManagerPtr;
 
