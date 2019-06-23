@@ -39,11 +39,17 @@ public:
 
 inline shared_ptr<PartConfig> ChloroplastModel::MakeConfig() const { return make_shared<ChloroplastConfig>(); }
 
+inline void ChloroplastModel::MakeViewers()
+{
+	g_viewerManagerPtr->AddViewer<ChloroplastViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+}
+
 inline void ChloroplastModel::SetFromJSON(const ptree & pt)
 {
+	ModuleModel::SetFromJSON(pt);
 }
 
 inline ptree ChloroplastModel::AddToJSON(ptree pt) const
 {
-	return ptree();
+	return ModuleModel::AddToJSON(pt);
 }

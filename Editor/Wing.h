@@ -39,6 +39,10 @@ public:
 
 inline shared_ptr<PartConfig> WingModel::MakeConfig() const { return make_shared<WingConfig>(); }
 
+inline void WingModel::MakeViewers()
+{
+	g_viewerManagerPtr->AddViewer<WingViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+}
 
 inline ptree WingModel::AddToJSON(ptree pt) const
 {

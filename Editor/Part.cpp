@@ -1,13 +1,5 @@
 #include "Part.h"
 
-#include "ViewerManager.h"
-#include "AssetManager.h"
-
-void PartModel::MakeViewers()
-{
-	g_viewerManagerPtr->AddViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
-}
-
 s3d::RectF PartModel::GetApproximateRect() const
 {
 	s3d::RectF ar(m_shapes.front().m_verticles.front(), m_shapes.front().m_verticles.front());
@@ -55,53 +47,6 @@ ptree PartModel::AddToJSON(ptree pt) const
 	}
 
 	return Model::AddToJSON(pt);
-}
-
-void PartModel::SetFromJSON(const ptree & pt)
-{
-	// mass
-	m_mass = pt.get<double>("mass");
-
-	// shapes
-	for (auto shape : pt.get_child("shapes"))
-		m_shapes.emplace_back().SetFromJSON(shape.second);
-
-	Model::SetFromJSON(pt);
-}
-
-ptree PartConfig::AddToJSON(ptree pt) const
-{
-	// model
-	pt.put("name", m_model->m_name);
-
-	// position
-	{
-		ptree position;
-
-		position.put("x", m_position.x);
-		position.put("y", m_position.y);
-
-		pt.push_back(std::make_pair("position", position));
-	}
-
-	// rotation
-	pt.put("rotation", m_rotation);
-
-	return Model::AddToJSON(pt);
-}
-
-void PartConfig::SetFromJSON(const ptree & pt)
-{
-	// model
-	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("name"));
-
-	// position
-	m_position = s3d::Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
-
-	// rotation
-	m_rotation = pt.get<double>("rotation");
-
-	Model::SetFromJSON(pt);
 }
 
 void PartViewer::Update()
