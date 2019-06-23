@@ -72,12 +72,6 @@
     <Filter Include="Source Files\Field\Particle">
       <UniqueIdentifier>{51cbdef5-8592-445d-b802-01054f8dd7a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Field\Particle\Rigidbody">
-      <UniqueIdentifier>{65826c47-19ec-48d6-8e65-ec3386ab449c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Field\Particle\Rigidbody\Cell">
-      <UniqueIdentifier>{dbe7ebe6-6032-4da0-a064-996325e60ae4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Part">
       <UniqueIdentifier>{62b00143-5c29-4c26-82d7-a4ca7e4f1af1}</UniqueIdentifier>
     </Filter>
@@ -86,6 +80,12 @@
     </Filter>
     <Filter Include="Source Files\Molecule">
       <UniqueIdentifier>{892e1063-9bd4-4851-82e5-a0f2a5fd79f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rigidbody">
+      <UniqueIdentifier>{65826c47-19ec-48d6-8e65-ec3386ab449c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cell\Added">
+      <UniqueIdentifier>{4be43220-d8de-4ea2-9012-cd7ed71a0829}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -110,17 +110,11 @@
     <ClCompile Include="Indexer.cpp">
       <Filter>Source Files\Search</Filter>
     </ClCompile>
-    <ClCompile Include="Storage.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
-    </ClCompile>
     <ClCompile Include="Vector2D.cpp">
       <Filter>Source Files\Other</Filter>
     </ClCompile>
     <ClCompile Include="RecipeManager.cpp">
       <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Recipe.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
     </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files\Other</Filter>
@@ -159,7 +153,7 @@
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files\Field\Particle\Rigidbody</Filter>
+      <Filter>Source Files\Rigidbody</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files\Field\Particle</Filter>
@@ -197,11 +191,17 @@
     <ClCompile Include="Cell_AddPartConfig.cpp">
       <Filter>Source Files\Cell</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Recipe.cpp">
+      <Filter>Source Files\Cell\Added</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Source Files\Cell\Added</Filter>
     </ClCompile>
     <ClCompile Include="ShapeModel.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -351,17 +351,11 @@
     <ClInclude Include="sol.hpp">
       <Filter>Source Files\Thridparty</Filter>
     </ClInclude>
-    <ClInclude Include="Storage.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>Source Files\Other</Filter>
     </ClInclude>
     <ClInclude Include="RecipeManager.h">
       <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Recipe.h">
-      <Filter>Source Files\Field\Particle\Rigidbody\Cell</Filter>
     </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>Source Files\Other</Filter>
@@ -373,7 +367,7 @@
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
-      <Filter>Source Files\Field\Particle\Rigidbody</Filter>
+      <Filter>Source Files\Rigidbody</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Source Files\Field\Particle</Filter>
@@ -405,11 +399,17 @@
     <ClInclude Include="Molecule.h">
       <Filter>Source Files\Molecule</Filter>
     </ClInclude>
+    <ClInclude Include="Recipe.h">
+      <Filter>Source Files\Cell\Added</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>Source Files\Cell\Added</Filter>
+    </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Other</Filter>
     </ClInclude>
     <ClInclude Include="ShapeModel.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

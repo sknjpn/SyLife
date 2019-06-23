@@ -18,4 +18,5 @@ class ChloroplastState
 	: public ModuleState
 {
 public:
+	void	MakeNutrition();
 };

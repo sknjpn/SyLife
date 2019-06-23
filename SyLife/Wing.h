@@ -19,7 +19,19 @@ public:
 class WingState
 	: public EquipmentState
 {
-public:
+	int		m_timer = 0;
 
+public:
+	void	Update() override 
+	{
+		if ((m_timer++) == 60)
+		{
+			m_timer = 0;
+
+			Flap();
+		}
+	}
+
+	void	Flap();
 };
 

@@ -17,4 +17,5 @@ public:
 class EyeState
 	: public EquipmentState
 {
+public:
 };
