@@ -38,6 +38,7 @@ void FieldManager::LoadGenerationSetting()
 				c->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
 				c->m_position.m_x = s3d::Random(800);
 				c->m_position.m_y = s3d::Random(600);
+				c->m_velocity = Vector2D::Zero();
 
 				c->Init();
 			}

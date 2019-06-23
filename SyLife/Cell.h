@@ -60,7 +60,8 @@ public:
 
 	void	CalculateDisk();
 };
-class Cell 
+
+class Cell
 	: public Rigidbody
 {
 public:
@@ -84,6 +85,14 @@ public:
 		m_mass = m_model->m_mass;
 		m_radius = m_model->m_radius;
 		m_inertia = m_model->m_inertia;
+		
+		// parts
+		for (const auto& pc : m_model->m_parts)
+		{
+			const auto& ps = m_parts.emplace_back(pc->m_model->MakeState());
+
+			ps->m_config = pc;
+		}
 	}
 
 	void	Update();

@@ -6,6 +6,9 @@ class EquipmentModel
 	: public PartModel
 {
 public:
+	shared_ptr<PartConfig>	MakeConfig() override;
+	shared_ptr<PartState>	MakeState() override;
+
 	string	GetFilepath() const override { return "assets/part/" + GetFilename(); }
 
 	void	SetFromJSON(const ptree& pt);
@@ -27,5 +30,9 @@ class EquipmentState
 	: public PartState
 {
 public:
+	void	Draw(const Cell& cell) const { m_config->m_model->Draw(); }
+	void	Update(Cell& cell) override {}
 };
 
+inline shared_ptr<PartConfig>	EquipmentModel::MakeConfig() { return make_shared<EquipmentConfig>(); }
+inline shared_ptr<PartState>	EquipmentModel::MakeState() { return make_shared<EquipmentState>(); }

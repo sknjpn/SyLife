@@ -20,7 +20,7 @@ public:
 
 	Vector2D	GetVelocity(const Vector2D& position) const;
 
-	const Vector2D&	GetWorldPosition(const Vector2D& localPosition) const { return m_position + localPosition.rotated(m_rotation); }
+	Vector2D	GetWorldPosition(const Vector2D& localPosition) const { return m_position + localPosition.rotated(m_rotation); }
 
 	void	AddForceInWorld(const Vector2D& force, const Vector2D& worldPosition);
 	void	AddForceInLocal(const Vector2D& force, const Vector2D& localPosition) { AddForceInWorld(force.rotated(m_rotation), GetWorldPosition(localPosition)); }

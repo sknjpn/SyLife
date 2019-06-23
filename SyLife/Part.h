@@ -3,6 +3,10 @@
 #include "Model.h"
 #include "ShapeModel.h"
 
+class Cell;
+class PartConfig;
+class PartState;
+
 class PartModel
 	: public Model
 {
@@ -12,6 +16,9 @@ public:
 	pair<Vector2D, Vector2D>	m_approximateRect;
 
 public:
+	virtual shared_ptr<PartConfig>	MakeConfig() = 0;
+	virtual shared_ptr<PartState>	MakeState() = 0;
+
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 
 	double		GetRectInertia() const;
@@ -39,12 +46,11 @@ public:
 class PartState
 {
 public:
-	shared_ptr<PartModel>	m_model;
+	shared_ptr<PartConfig>	m_config;
 
 public:
-	PartState() {}
 	virtual ~PartState() {}
 
-	virtual void	Draw() {}
-	virtual void	Update() {}
+	virtual void	Draw(const Cell& cell) const = 0;
+	virtual void	Update(Cell& cell) = 0;
 };
