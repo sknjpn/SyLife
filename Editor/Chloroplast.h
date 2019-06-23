@@ -11,7 +11,7 @@ class ChloroplastModel
 {
 public:
 	void	MakeViewers() override;
-	shared_ptr<PartConfig>	MakePartConfig() const override;
+	shared_ptr<PartConfig>	MakeConfig() const override;
 };
 
 class ChloroplastConfig
@@ -29,4 +29,4 @@ public:
 	{}
 };
 
-inline shared_ptr<PartConfig> ChloroplastModel::MakePartConfig() const { return make_shared<ChloroplastConfig>(); }
+inline shared_ptr<PartConfig> ChloroplastModel::MakeConfig() const { return make_shared<ChloroplastConfig>(); }

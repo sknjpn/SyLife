@@ -11,7 +11,7 @@ class EyeModel
 {
 public:
 	void	MakeViewers() override;
-	shared_ptr<PartConfig>	MakePartConfig() const override;
+	shared_ptr<PartConfig>	MakeConfig() const override;
 };
 
 class EyeConfig
@@ -29,4 +29,4 @@ public:
 	{}
 };
 
-inline shared_ptr<PartConfig> EyeModel::MakePartConfig() const { return make_shared<EyeConfig>(); }
+inline shared_ptr<PartConfig> EyeModel::MakeConfig() const { return make_shared<EyeConfig>(); }
