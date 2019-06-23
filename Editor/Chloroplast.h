@@ -3,6 +3,9 @@
 #include "Module.h"
 #include "Viewer.h"
 
+#include "ViewerManager.h"
+#include "AssetManager.h"
+
 class ChloroplastViewer;
 class ChloroplastConfig;
 

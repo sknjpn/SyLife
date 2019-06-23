@@ -3,6 +3,9 @@
 #include "Equipment.h"
 #include "Viewer.h"
 
+#include "ViewerManager.h"
+#include "AssetManager.h"
+
 class EyeViewer;
 class EyeConfig;
 

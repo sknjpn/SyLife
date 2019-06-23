@@ -4,6 +4,9 @@
 #include "Viewer.h"
 #include "ShapeModel.h"
 
+#include "ViewerManager.h"
+#include "AssetManager.h"
+
 class PartViewer;
 class PartConfig;
 

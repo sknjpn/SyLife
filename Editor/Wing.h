@@ -2,6 +2,9 @@
 
 #include "Equipment.h"
 
+#include "ViewerManager.h"
+#include "AssetManager.h"
+
 class WingViewer;
 class WingConfig;
 

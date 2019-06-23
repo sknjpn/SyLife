@@ -3,6 +3,9 @@
 #include "Part.h"
 #include "Viewer.h"
 
+#include "ViewerManager.h"
+#include "AssetManager.h"
+
 class ModuleViewer;
 class ModuleConfig;
 
