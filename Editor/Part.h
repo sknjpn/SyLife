@@ -43,11 +43,11 @@ public:
 public:
 	double		GetInertia() const { return m_model->GetRectInertia() + (m_position + m_model->GetCenter().rotated(m_rotation)).lengthSq() * m_model->m_mass; }
 
-	void AddToJSON(ptree& pt) const;
+	void	AddToJSON(ptree& pt) const;
 	void	SetFromJSON(const ptree& pt);
 
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 class PartViewer
@@ -86,7 +86,7 @@ inline void PartModel::SetFromJSON(const ptree& pt)
 inline void PartConfig::AddToJSON(ptree& pt) const
 {
 	// model
-	pt.put("name", m_model->m_name);
+	pt.put("model", m_model->m_name);
 
 	// position
 	{
@@ -109,7 +109,7 @@ inline void PartConfig::AddToJSON(ptree& pt) const
 inline void PartConfig::SetFromJSON(const ptree& pt)
 {
 	// model
-	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("name"));
+	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
 
 	// position
 	m_position = s3d::Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));

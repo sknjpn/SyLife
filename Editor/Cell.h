@@ -38,7 +38,7 @@ public:
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	void	AddToJSON(ptree& pt) const;
- void Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 
 	string	GetFilepath() const override { return "assets/models/cells/" + GetFilename(); }
 };

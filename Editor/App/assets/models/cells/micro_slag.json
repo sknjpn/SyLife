@@ -1,42 +1,46 @@
 {
-    "type": "CellModel",
     "parts": [
         {
-            "type": "BodyConfig",
-            "name": "Body",
+            "model": "Body",
             "position": {
-                "x": "0",
-                "y": "0"
+                "x": "-11.153956933115044",
+                "y": "6.6636590695848668"
             },
-            "rotation": "0"
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
         },
         {
-            "type": "WingConfig",
-            "name": "Wing Left",
+            "model": "Wing Left",
             "position": {
-                "x": "-12",
-                "y": "-8"
+                "x": "-23.153956933115044",
+                "y": "-1.3363409304151466"
             },
-            "rotation": "0.0"
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
         },
         {
-            "type": "WingConfig",
-            "name": "Wing Right",
+            "model": "Wing Right",
             "position": {
-                "x": "12",
-                "y": "-8"
+                "x": "0.84604306688496322",
+                "y": "-1.3363409304151466"
             },
-            "rotation": "0.0"
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
         },
         {
-            "type": "ModuleConfig",
-            "name": "Organelle",
+            "model": "Organelle",
             "position": {
-                "x": "0.0",
-                "y": "0.0"
+                "x": "-11.153956933115044",
+                "y": "6.6636590695848668"
             },
-            "rotation": "0"
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
         }
     ],
-    "name": "Micro Slag"
+    "name": "Micro Slag",
+    "type": "CellModel"
 }

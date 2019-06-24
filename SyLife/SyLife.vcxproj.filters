@@ -54,6 +54,21 @@
     <Filter Include="Resource Files\nlp\japanese\jumanpp">
       <UniqueIdentifier>{f6fe2a89-c647-48e2-bb2c-27b03b1aeced}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Cell">
+      <UniqueIdentifier>{0a62a11f-83c4-47b2-8919-d310af26cd38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{850fe034-2aae-4ca0-8f7a-27a62987b61f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Molecule">
+      <UniqueIdentifier>{ab767d56-64ed-42b5-a742-708d6f9bb1b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Part">
+      <UniqueIdentifier>{f243f746-fa97-4cfc-a032-833b7391959c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ThirdParty">
+      <UniqueIdentifier>{b83d9d00-96a5-4216-8173-d43ae1c4821d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -190,70 +205,13 @@
     <ClCompile Include="Storage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SystemManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SystemManager_Draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SystemManager_Update.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Vector2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Wing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_AddModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Body.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell_AddPartConfig.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellManager_Draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellManager_Update.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Chloroplast.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cloud.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Creature.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Eye.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager_Draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager_LoadGenerationSetting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager_Update.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Indexer.cpp">
@@ -265,24 +223,6 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeManager_Draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeManager_Update.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Part.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -292,54 +232,93 @@
     <ClCompile Include="Recipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager_AddModel.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CellManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CellManager_Draw.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CellManager_Update.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldManager_Draw.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldManager_LoadGenerationSetting.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeManager_Update.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeManager_Draw.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldManager_Update.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemManager_Draw.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemManager_Update.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell_AddPartConfig.cpp">
+      <Filter>Source Files\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files\Molecule</Filter>
+    </ClCompile>
+    <ClCompile Include="Body.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Chloroplast.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Eye.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Part.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Wing.cpp">
+      <Filter>Source Files\Part</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AssetManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Chloroplast.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Cloud.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Creature.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Eye.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Indexer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Molecule.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Part.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
@@ -366,23 +345,59 @@
     <ClInclude Include="Storage.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="SystemManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="TinyCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Wing.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="nanoflann.hpp">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="CellManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculeManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="sol.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="nanoflann.hpp">
+      <Filter>Source Files\ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Source Files\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Molecule.h">
+      <Filter>Source Files\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Chloroplast.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Eye.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Wing.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
