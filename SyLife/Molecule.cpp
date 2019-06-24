@@ -1,6 +1,6 @@
 #include "Molecule.h"
 
-void MoleculeModel::SetFromJSON(const ptree & pt)
+void MoleculeModel::SetFromJSON(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");

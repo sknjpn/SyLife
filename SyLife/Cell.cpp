@@ -3,7 +3,7 @@
 #include "MoleculeManager.h"
 #include <numeric>
 
-void CellModel::SetFromJSON(const ptree & pt)
+void CellModel::SetFromJSON(const ptree& pt)
 {
 	// parts
 	for (auto part : pt.get_child("parts")) m_parts.emplace_back(make_shared<PartConfig>())->Load(part.second);

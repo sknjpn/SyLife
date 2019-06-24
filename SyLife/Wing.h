@@ -59,7 +59,7 @@ public:
 
 inline shared_ptr<PartState>	WingModel::MakeState() { return make_shared<WingState>(); }
 
-inline void WingModel::SetFromJSON(const ptree & pt)
+inline void WingModel::SetFromJSON(const ptree& pt)
 {
 	m_isRight = pt.get<bool>("isRight");
 

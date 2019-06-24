@@ -1,7 +1,7 @@
 #include "Model.h"
 #include <boost/property_tree/json_parser.hpp>
 
-void Model::SetFromJSON(const ptree & pt)
+void Model::SetFromJSON(const ptree& pt)
 {
 	m_name = pt.get<string>("name");
 }

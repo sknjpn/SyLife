@@ -9,7 +9,7 @@ double PartModel::GetRectInertia() const
 	return  m_mass * (w * w + h * h) / 12.0;
 }
 
-void PartModel::SetFromJSON(const ptree & pt)
+void PartModel::SetFromJSON(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");
@@ -45,7 +45,7 @@ void PartModel::SetFromJSON(const ptree & pt)
 	Model::SetFromJSON(pt);
 }
 
-void PartConfig::SetFromJSON(const ptree & pt)
+void PartConfig::SetFromJSON(const ptree& pt)
 {
 	// model
 	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));

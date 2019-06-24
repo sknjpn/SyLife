@@ -1,6 +1,6 @@
 #include "ShapeModel.h"
 
-void ShapeModel::SetFromJSON(const ptree & pt)
+void ShapeModel::SetFromJSON(const ptree& pt)
 {
 	// color
 	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
