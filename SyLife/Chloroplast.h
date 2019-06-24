@@ -22,6 +22,6 @@ public:
 
 inline shared_ptr<PartState>	ChloroplastModel::MakeState() { return make_shared<ChloroplastState>(); }
 
-void ChloroplastState::MakeNutrition()
+inline void ChloroplastState::MakeNutrition()
 {
 }

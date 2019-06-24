@@ -25,7 +25,7 @@ public:
 
 inline shared_ptr<PartState>	BodyModel::MakeState() { return make_shared<BodyState>(); }
 
-void BodyModel::SetFromJSON(const ptree & pt)
+inline void BodyModel::SetFromJSON(const ptree & pt)
 {
 	PartModel::SetFromJSON(pt);
 }

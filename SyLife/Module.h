@@ -26,7 +26,7 @@ public:
 
 inline shared_ptr<PartState>	ModuleModel::MakeState() { return make_shared<ModuleState>(); }
 
-void ModuleModel::SetFromJSON(const ptree & pt)
+inline void ModuleModel::SetFromJSON(const ptree & pt)
 {
 	PartModel::SetFromJSON(pt);
 }

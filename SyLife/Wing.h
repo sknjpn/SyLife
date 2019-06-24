@@ -66,7 +66,7 @@ inline void WingModel::SetFromJSON(const ptree & pt)
 	EquipmentModel::SetFromJSON(pt);
 }
 
-void WingState::Flap(Cell& cell)
+inline void WingState::Flap(Cell& cell)
 {
 	cell.AddImpulseInLocal(Vector2D::Up()*100.0, m_config->m_position);
 }

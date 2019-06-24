@@ -25,7 +25,7 @@ public:
 
 inline shared_ptr<PartState>	EquipmentModel::MakeState() { return make_shared<EquipmentState>(); }
 
-void EquipmentModel::SetFromJSON(const ptree & pt)
+inline void EquipmentModel::SetFromJSON(const ptree & pt)
 {
 	PartModel::SetFromJSON(pt);
 }
