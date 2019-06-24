@@ -1,10 +1,10 @@
 {
   "molecules": [
     { "name": "Carbon", "size": 2000 },
-    { "name": "Nitrogen", "size": 800 },
-    { "name": "Oxygen", "size": 1600 }
+    { "name": "Nitrogen", "size": 1000 },
+    { "name": "Oxygen", "size": 2000 }
   ],
   "cells": [
-    { "name": "Micro Slag", "size": 1 }
+    { "name": "Micro Slag", "size": 10 }
   ]
 }
