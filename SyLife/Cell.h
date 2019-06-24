@@ -28,11 +28,6 @@ public:
 	double	m_inertia;
 
 public:
-	void	AddPartConfig(const ptree& pt);
-
-	template <typename T>
-	void	AddPartConfig(const ptree& pt) { m_parts.emplace_back(make_shared<T>())->Load(pt); }
-
 	template <typename T>
 	shared_ptr<T>			GetPart(const string& name) const
 	{
