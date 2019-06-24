@@ -26,7 +26,7 @@ void CellManager::Draw()
 		}
 
 		// ×–E‰~
-		//if (false)
+		if (false)
 		{
 			double a = min(0.5, c->m_deathTimer * 0.25);
 
