@@ -1,7 +1,8 @@
-#include "..\Editor\Wing.h"
 #pragma once
 
 #include "Equipment.h"
+#include "Wing.h"
+#include "Cell.h"
 
 class WingModel
 	: public EquipmentModel
@@ -10,19 +11,11 @@ public:
 	bool	m_isRight = false;
 
 public:
-	shared_ptr<PartConfig>	MakeConfig() override;
 	shared_ptr<PartState>	MakeState() override;
 
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-};
-
-class WingConfig
-	: public EquipmentConfig
-{
-public:
-
 };
 
 class WingState
@@ -64,7 +57,6 @@ public:
 	void	Flap(Cell& cell);
 };
 
-inline shared_ptr<PartConfig>	WingModel::MakeConfig() { return make_shared<WingConfig>(); }
 inline shared_ptr<PartState>	WingModel::MakeState() { return make_shared<WingState>(); }
 
 inline void WingModel::SetFromJSON(const ptree & pt)
@@ -72,4 +64,9 @@ inline void WingModel::SetFromJSON(const ptree & pt)
 	m_isRight = pt.get<bool>("isRight");
 
 	EquipmentModel::SetFromJSON(pt);
+}
+
+void WingState::Flap(Cell& cell)
+{
+	cell.AddImpulseInLocal(Vector2D::Up()*100.0, m_config->m_position);
 }

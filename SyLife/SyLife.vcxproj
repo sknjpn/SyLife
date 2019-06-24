@@ -252,17 +252,13 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_AddModel.cpp" />
-    <ClCompile Include="Body.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="CellManager_Draw.cpp" />
     <ClCompile Include="CellManager_Update.cpp" />
     <ClCompile Include="Cell_AddPartConfig.cpp" />
-    <ClCompile Include="Chloroplast.cpp" />
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="Creature.cpp" />
-    <ClCompile Include="Equipment.cpp" />
-    <ClCompile Include="Eye.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldManager_Draw.cpp" />
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
@@ -270,7 +266,6 @@
     <ClCompile Include="Indexer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
     <ClCompile Include="MoleculeManager_Draw.cpp" />
@@ -288,7 +283,6 @@
     <ClCompile Include="SystemManager_Draw.cpp" />
     <ClCompile Include="SystemManager_Update.cpp" />
     <ClCompile Include="Vector2D.cpp" />
-    <ClCompile Include="Wing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
