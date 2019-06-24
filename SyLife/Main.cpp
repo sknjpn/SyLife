@@ -18,5 +18,7 @@ void Main()
 
 		g_systemManagerPtr->Update();
 		g_systemManagerPtr->Draw();
+
+		if (s3d::KeyEscape.down()) break;
 	}
 }
