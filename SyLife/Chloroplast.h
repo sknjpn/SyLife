@@ -18,9 +18,17 @@ public:
 	void	Update(Cell& cell) override {}
 
 	void	MakeNutrition();
+
+	void	SetFromJSON(const ptree& pt);
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };
 
 inline shared_ptr<PartState>	ChloroplastModel::MakeState() { return make_shared<ChloroplastState>(); }
+
+inline void ChloroplastModel::SetFromJSON(const ptree& pt)
+{
+	ModuleModel::SetFromJSON(pt);
+}
 
 inline void ChloroplastState::MakeNutrition()
 {

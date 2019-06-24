@@ -8,6 +8,9 @@ class EyeModel
 public:
 	
 	shared_ptr<PartState>	MakeState() override;
+
+	void	SetFromJSON(const ptree& pt);
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };
 
 class EyeState
@@ -19,3 +22,8 @@ public:
 };
 
 inline shared_ptr<PartState>	EyeModel::MakeState() { return make_shared<EyeState>(); }
+
+inline void EyeModel::SetFromJSON(const ptree& pt)
+{
+	EquipmentModel::SetFromJSON(pt);
+}
