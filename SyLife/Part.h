@@ -16,7 +16,6 @@ public:
 	pair<Vector2D, Vector2D>	m_approximateRect;
 
 public:
-	virtual shared_ptr<PartConfig>	MakeConfig() = 0;
 	virtual shared_ptr<PartState>	MakeState() = 0;
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
