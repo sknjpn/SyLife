@@ -62,7 +62,7 @@ void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 	m_storage.AddMolecule(molecule->m_model);
 	m_molecules.AddMolecule(molecule->m_model);
 
-	molecule->m_destroyFlag = true;
+	molecule->m_isDestroyed = true;
 }
 
 void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model)

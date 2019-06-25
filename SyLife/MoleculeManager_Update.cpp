@@ -14,7 +14,7 @@ void MoleculeManager::Update()
 			AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
 			AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
 
-			m->m_destroyFlag = true;
+			m->m_isDestroyed = true;
 
 			continue;
 		}
@@ -32,6 +32,6 @@ void MoleculeManager::Update()
 		m->m_velocity /= (1.0 + m->m_radius * 0.001);
 	}
 
-	GetMolecules().erase(remove_if(GetMolecules().begin(), GetMolecules().end(), [](const auto& m) { return m->m_destroyFlag; }), GetMolecules().end());
+	GetMolecules().erase(remove_if(GetMolecules().begin(), GetMolecules().end(), [](const auto& m) { return m->m_isDestroyed; }), GetMolecules().end());
 	m_indexer.Update();
 }

@@ -214,9 +214,6 @@
     <ClCompile Include="Cloud.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Creature.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Indexer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -289,9 +286,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Creature.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Indexer.h">

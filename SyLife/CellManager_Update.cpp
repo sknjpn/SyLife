@@ -9,7 +9,7 @@ void CellManager::Update()
 {
 	for (const auto& c : GetCells())
 	{
-		if (c->m_destroyFlag) continue;
+		if (c->m_isDestroyed) continue;
 
 		// parts
 		for (const auto& p : c->m_partStates) p->Update(*c);
@@ -19,7 +19,7 @@ void CellManager::Update()
 		{
 			auto length = (m->m_position - c->m_position).length();
 
-			if (!m->m_destroyFlag && length - m->m_radius - c->m_radius < 0.0) c->TakeMolecule(m);
+			if (!m->m_isDestroyed && length - m->m_radius - c->m_radius < 0.0) c->TakeMolecule(m);
 		}
 
 		// —]è‚ÌMoleculeState‚Ì“ŠŠü
@@ -87,10 +87,10 @@ void CellManager::Update()
 				}
 			}
 
-			c->m_destroyFlag = true;
+			c->m_isDestroyed = true;
 		}
 	}
 
-	GetCells().erase(remove_if(GetCells().begin(), GetCells().end(), [](const auto& c) { return c->m_destroyFlag; }), GetCells().end());
+	GetCells().erase(remove_if(GetCells().begin(), GetCells().end(), [](const auto& c) { return c->m_isDestroyed; }), GetCells().end());
 	m_indexer.Update();
 }
