@@ -13,7 +13,7 @@ void CellModel::AddToJSON(ptree& pt) const
 	{
 		ptree parts;
 
-		for (const auto& e : m_parts)
+		for (const auto& e : m_partConfigs)
 		{
 			ptree part; e->Save(part);
 			parts.push_back(std::make_pair("", part));
@@ -30,7 +30,7 @@ void CellModel::AddToJSON(ptree& pt) const
 void CellModel::SetFromJSON(const ptree& pt)
 {
 	// parts
-	for (auto part : pt.get_child("parts")) m_parts.emplace_back(make_shared<PartConfig>())->Load(part.second);
+	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->Load(part.second);
 
 	Model::SetFromJSON(pt);
 }

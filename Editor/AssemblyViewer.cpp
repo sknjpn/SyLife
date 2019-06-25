@@ -53,7 +53,7 @@ void AssemblyViewer::Update()
 
 	// part
 	{
-		for (const auto& p : m_model->m_parts)
+		for (const auto& p : m_model->m_partConfigs)
 		{
 			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position));
 
@@ -72,7 +72,7 @@ void AssemblyViewer::Update()
 
 		if (s3d::MouseL.up())
 		{
-			const auto& partConfig = m_model->m_parts.emplace_back(make_shared<PartConfig>());
+			const auto& partConfig = m_model->m_partConfigs.emplace_back(make_shared<PartConfig>());
 
 			partConfig->m_model = PartPaletteViewer::GetSelectedPart();
 			partConfig->m_position = s3d::Cursor::PosF();
@@ -91,7 +91,7 @@ void AssemblyViewer::CalculateDisk()
 	{
 		m_mass = 0.0;
 
-		for (const auto& p : m_model->m_parts) m_mass += p->m_model->m_mass;
+		for (const auto& p : m_model->m_partConfigs) m_mass += p->m_model->m_mass;
 	}
 
 	// center
@@ -99,19 +99,19 @@ void AssemblyViewer::CalculateDisk()
 		// body
 		s3d::Vec2 center(0.0, 0.0);
 
-		for (const auto& p : m_model->m_parts) center += p->m_model->m_mass * (p->m_position + p->m_model->GetApproximateRect().center().rotated(p->m_rotation));
+		for (const auto& p : m_model->m_partConfigs) center += p->m_model->m_mass * (p->m_position + p->m_model->GetApproximateRect().center().rotated(p->m_rotation));
 
 		center /= m_mass;
 
 		// ˆÊ’u’²®
-		for (const auto& p : m_model->m_parts) p->m_position -= center;
+		for (const auto& p : m_model->m_partConfigs) p->m_position -= center;
 	}
 
 	// inertia
 	{
 		m_inertia = 0.0;
 
-		for (const auto& p : m_model->m_parts) m_inertia += p->GetInertia();
+		for (const auto& p : m_model->m_partConfigs) m_inertia += p->GetInertia();
 	}
 
 	// radius

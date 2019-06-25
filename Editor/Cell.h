@@ -10,7 +10,7 @@ class CellModel
 	: public Model
 {
 public:
-	vector<shared_ptr<PartConfig>>	m_parts;
+	vector<shared_ptr<PartConfig>>	m_partConfigs;
 
 public:
 	void	MakeViewers() override;
@@ -18,7 +18,7 @@ public:
 	template <typename T>
 	shared_ptr<T>			GetPart(const string& name) const
 	{
-		for (auto it = m_parts.begin(); it != m_parts.end(); ++it)
+		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
 			if ((*it)->m_name == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
 
 		return nullptr;
@@ -29,7 +29,7 @@ public:
 	{
 		vector<shared_ptr<T>>	tModels;
 
-		for (auto it = m_parts.begin(); it != m_parts.end(); ++it)
+		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
 			if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
 
 		return tModels;
