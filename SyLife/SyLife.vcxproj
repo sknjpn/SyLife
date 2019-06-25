@@ -270,8 +270,7 @@
     <ClCompile Include="MoleculeManager_Update.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="Recipe.cpp" />
-    <ClCompile Include="RecipeManager.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="ShapeModel.cpp" />
     <ClCompile Include="stdafx.cpp" />
@@ -299,8 +298,7 @@
     <ClInclude Include="nanoflann.hpp" />
     <ClInclude Include="Part.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="Recipe.h" />
-    <ClInclude Include="RecipeManager.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="sol.hpp" />

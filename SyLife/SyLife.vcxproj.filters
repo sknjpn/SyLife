@@ -193,9 +193,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RecipeManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -224,9 +221,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Recipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager.cpp">
@@ -283,6 +277,9 @@
     <ClCompile Include="Part.cpp">
       <Filter>Source Files\Part</Filter>
     </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -295,12 +292,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Recipe.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RecipeManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
@@ -368,6 +359,9 @@
     </ClInclude>
     <ClInclude Include="Wing.h">
       <Filter>Source Files\Part\List</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
