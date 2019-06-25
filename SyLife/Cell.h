@@ -1,20 +1,13 @@
 #pragma once
 
-#include "Rigidbody.h"
+#include "Model.h"
 #include "Storage.h"
 #include "Molecule.h"
-
-#include "Cell.h"
-#include "Molecule.h"
+#include "Part.h"
 
 #include "Body.h"
 #include "Equipment.h"
 #include "Module.h"
-
-#include "Part.h"
-
-#include "Model.h"
-#include "Part.h"
 
 class CellModel
 	: public Model
