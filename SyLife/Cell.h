@@ -13,7 +13,7 @@ class CellModel
 	: public Model
 {
 public:
-	vector<shared_ptr<PartConfig>>	m_parts;
+	vector<shared_ptr<PartConfig>>	m_partConfigs;
 
 	// ‹ßŽ—‰~
 	double	m_mass;
@@ -24,7 +24,7 @@ public:
 	template <typename T>
 	shared_ptr<T>			GetPart(const string& name) const
 	{
-		for (auto it = m_parts.begin(); it != m_parts.end(); ++it)
+		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
 			if ((*it)->m_name == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
 
 		return nullptr;
@@ -35,7 +35,7 @@ public:
 	{
 		vector<shared_ptr<T>>	tModels;
 
-		for (auto it = m_parts.begin(); it != m_parts.end(); ++it)
+		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
 			if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
 
 		return tModels;
@@ -63,7 +63,7 @@ public:
 	vector<shared_ptr<EquipmentState>>	m_equipments;
 	vector<shared_ptr<ModuleState>>	m_modules;
 
-	vector<shared_ptr<PartState>>		m_parts;
+	vector<shared_ptr<PartState>>		m_partStates;
 
 public:
 	Cell(const shared_ptr<CellModel>& model)
@@ -75,9 +75,9 @@ public:
 		m_inertia = m_model->m_inertia;
 		
 		// parts
-		for (const auto& pc : m_model->m_parts)
+		for (const auto& pc : m_model->m_partConfigs)
 		{
-			const auto& ps = m_parts.emplace_back(pc->m_model->MakeState());
+			const auto& ps = m_partStates.emplace_back(pc->m_model->MakeState());
 
 			ps->m_config = pc;
 		}

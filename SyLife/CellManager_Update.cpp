@@ -12,7 +12,7 @@ void CellManager::Update()
 		if (c->m_destroyFlag) continue;
 
 		// parts
-		for (const auto& p : c->m_parts) p->Update(*c);
+		for (const auto& p : c->m_partStates) p->Update(*c);
 
 		// ÚG‚µ‚½Molecule‚Ìæ‚è‚İ
 		for (const auto& m : g_moleculeManagerPtr->m_indexer.GetNearParticles(c->m_position, c->m_radius * 2.0))
