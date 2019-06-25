@@ -57,7 +57,7 @@ void CellState::Draw()
 
 }
 
-void CellState::TakeMolecule(const shared_ptr<Molecule>& molecule)
+void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 {
 	m_storage.AddMolecule(molecule->m_model);
 	m_molecules.AddMolecule(molecule->m_model);
@@ -70,7 +70,7 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 	// 吐き出す方向
 	auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
 
-	// 吐き出されたMolecule
+	// 吐き出されたMoleculeState
 	const auto& t = g_moleculeManagerPtr->AddMolecule(model);
 	t->m_position = m_position + v * (m_radius + model->m_radius);
 	t->m_velocity = v * 2.0;
@@ -78,7 +78,7 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 	// Storageから出す
 	m_storage.PullMolecule(model);
 
-	// Moleculeのカウントを減らす
+	// MoleculeStateのカウントを減らす
 	m_molecules.PullMolecule(model);
 }
 

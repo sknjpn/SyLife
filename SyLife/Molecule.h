@@ -23,7 +23,7 @@ public:
 
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };
-class Molecule
+class MoleculeState
 	: public Rigidbody
 {
 public:

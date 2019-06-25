@@ -14,7 +14,7 @@ void CellManager::Update()
 		// parts
 		for (const auto& p : c->m_partStates) p->Update(*c);
 
-		// ÚG‚µ‚½Molecule‚ÌŽæ‚èž‚Ý
+		// ÚG‚µ‚½MoleculeState‚ÌŽæ‚èž‚Ý
 		for (const auto& m : g_moleculeManagerPtr->m_indexer.GetNearParticles(c->m_position, c->m_radius * 2.0))
 		{
 			auto length = (m->m_position - c->m_position).length();
@@ -22,7 +22,7 @@ void CellManager::Update()
 			if (!m->m_destroyFlag && length - m->m_radius - c->m_radius < 0.0) c->TakeMolecule(m);
 		}
 
-		// —]è‚ÌMolecule‚Ì“ŠŠü
+		// —]è‚ÌMoleculeState‚Ì“ŠŠü
 		for (auto it = c->m_storage.m_molecules.begin(); it != c->m_storage.m_molecules.end(); ++it)
 		{
 			if ((*it).second > 10)
@@ -74,7 +74,7 @@ void CellManager::Update()
 		c->m_deathTimer -= g_fieldManagerPtr->GetDeltaTime();
 		if (c->m_deathTimer <= 0.0)
 		{
-			// Molecule‚Ì“f‚«o‚µ
+			// MoleculeState‚Ì“f‚«o‚µ
 			for (const auto& m : c->m_molecules.m_molecules)
 			{
 				for (int i = 0; i < m.second; i++)

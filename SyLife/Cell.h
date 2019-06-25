@@ -87,7 +87,7 @@ public:
 	void	Draw();
 
 	// Field‚©‚çStorage‚Éó‚¯æ‚é
-	void	TakeMolecule(const shared_ptr<Molecule>& molecule);
+	void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
 
 	// Storage‚©‚çField‚É“f‚«o‚·
 	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model);

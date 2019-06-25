@@ -9,9 +9,9 @@ int MoleculeManager::NumMolecule(const shared_ptr<MoleculeModel>& model)
 	return static_cast<int>(count_if(GetMolecules().begin(), GetMolecules().end(), [&model](const auto& m) { return m->m_model == model; }));
 }
 
-const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<MoleculeModel>& model)
+const shared_ptr<MoleculeState>& MoleculeManager::AddMolecule(const shared_ptr<MoleculeModel>& model)
 {
-	const auto& m = GetMolecules().emplace_back(make_shared<Molecule>());
+	const auto& m = GetMolecules().emplace_back(make_shared<MoleculeState>());
 
 	m->m_model = model;
 	m->m_radius = model->m_radius;
@@ -20,7 +20,7 @@ const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<Molecu
 	return m;
 }
 
-const shared_ptr<Molecule>& MoleculeManager::AddMolecule(const shared_ptr<MoleculeModel>& model, const Vector2D & position)
+const shared_ptr<MoleculeState>& MoleculeManager::AddMolecule(const shared_ptr<MoleculeModel>& model, const Vector2D & position)
 {
 	const auto& m = AddMolecule(model);
 
