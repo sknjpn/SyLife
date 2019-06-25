@@ -1,0 +1,86 @@
+{
+    "parts": [
+        {
+            "model": "Body",
+            "position": {
+                "x": "-0.28115721393756049",
+                "y": "-7.5529529661197827"
+            },
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
+        },
+        {
+            "model": "Wing Left",
+            "position": {
+                "x": "-12.281157213937561",
+                "y": "-15.552952966119799"
+            },
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
+        },
+        {
+            "model": "Wing Right",
+            "position": {
+                "x": "11.718842786062449",
+                "y": "-15.552952966119799"
+            },
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
+        },
+        {
+            "model": "Organelle",
+            "position": {
+                "x": "-0.28115721393756049",
+                "y": "-7.5529529661197827"
+            },
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
+        },
+        {
+            "model": "Wing Left",
+            "position": {
+                "x": "-13.052326749256569",
+                "y": "-3.4534544716536404"
+            },
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
+        },
+        {
+            "model": "Wing Right",
+            "position": {
+                "x": "12.855534848141179",
+                "y": "-5.026646394907317"
+            },
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
+        },
+        {
+            "model": "Wing Left",
+            "position": {
+                "x": "-10.931370942488961",
+                "y": "12.242091398061431"
+            },
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
+        },
+        {
+            "model": "Wing Right",
+            "position": {
+                "x": "12.236841948136039",
+                "y": "9.8851567143979278"
+            },
+            "rotation": "0",
+            "name": "",
+            "type": "PartConfig"
+        }
+    ],
+    "name": "Micro Slag 3",
+    "type": "CellModel"
+}

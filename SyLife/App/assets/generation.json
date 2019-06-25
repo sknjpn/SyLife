@@ -5,6 +5,8 @@
     { "name": "Oxygen", "size": 2000 }
   ],
   "cells": [
-    { "name": "Micro Slag", "size": 10 }
+    { "name": "Micro Slag", "size": 10 },
+    { "name": "Micro Slag 2", "size": 10 },
+    { "name": "Micro Slag 3", "size": 10 }
   ]
 }

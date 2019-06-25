@@ -1,7 +1,7 @@
 {
     "type": "WingModel",
-    "isRight": "false",
     "mass": "20",
+    "isRight": "false",
     "shapes": [
         {
             "color": {
