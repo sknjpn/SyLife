@@ -9,8 +9,6 @@ public:
 	
 	shared_ptr<PartState>	MakeState() override;
 
-	string	GetFilepath() const override { return "assets/part/" + GetFilename(); }
-
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };

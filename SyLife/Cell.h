@@ -44,8 +44,6 @@ public:
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 
-	string	GetFilepath() const override { return "assets/cell/" + GetFilename(); }
-
 	void	CalculateDisk();
 };
 

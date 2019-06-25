@@ -19,8 +19,6 @@ public:
 public:
 	void	SetFromJSON(const ptree& pt);
 
-	string	GetFilepath() const override { return "assets/molecule/" + GetFilename(); }
-
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };
 class MoleculeState

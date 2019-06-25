@@ -15,7 +15,4 @@ public:
 
 	void	SetFromJSON(const ptree& pt);
 	virtual void	Load(const ptree& pt) { SetFromJSON(pt); }
-
-	virtual string	GetFilename() const;
-	virtual string	GetFilepath() const;
 };
