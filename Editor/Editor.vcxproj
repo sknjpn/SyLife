@@ -258,7 +258,6 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
