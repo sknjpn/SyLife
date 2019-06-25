@@ -1,6 +1,7 @@
 #include "MoleculeManager.h"
 #include "FieldManager.h"
 #include "AssetManager.h"
+#include "Molecule.h"
 
 void MoleculeManager::Update()
 {

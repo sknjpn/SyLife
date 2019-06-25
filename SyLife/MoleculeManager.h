@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Indexer.h"
-#include "Molecule.h"
+
+class Molecule;
+class MoleculeModel;
 
 class MoleculeManager
 {

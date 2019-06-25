@@ -1,4 +1,5 @@
 #include "MoleculeManager.h"
+#include "Molecule.h"
 
 void	MoleculeManager::Draw()
 {

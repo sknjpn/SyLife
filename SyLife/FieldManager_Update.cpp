@@ -1,6 +1,7 @@
 #include "FieldManager.h"
 #include "CellManager.h"
 #include "MoleculeManager.h"
+#include "Rigidbody.h"
 
 void FieldManager::Update()
 {
