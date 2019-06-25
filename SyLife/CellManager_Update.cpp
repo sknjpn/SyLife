@@ -38,11 +38,11 @@ void CellManager::Update()
 			c->m_storage.NumMolecule("Oxygen") > 0 &&
 			c->m_storage.NumMolecule("Nitrogen") > 0)
 		{
-			c->m_storage.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"));
+			c->m_storage.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"));
 			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"));
 			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"));
 			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"));
-			c->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"));
+			c->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"));
 			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"));
 			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"));
 			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"));
@@ -62,9 +62,9 @@ void CellManager::Update()
 
 			const auto& nc = g_cellManagerPtr->AddCellState(c->m_model);
 			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
-			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
-			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
-			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
+			nc->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
+			nc->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
+			nc->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
 			nc->Init();
 			nc->m_angularVelocity = (rand() % 1000 - 500) / 10000.0;
 			nc->m_rotation = rand() / 360.0;
@@ -80,7 +80,7 @@ void CellManager::Update()
 				for (int i = 0; i < m.second; i++)
 				{
 					auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
-					auto& t = g_moleculeManagerPtr->AddMolecule(m.first);
+					auto& t = g_moleculeManagerPtr->AddMoleculeState(m.first);
 
 					t->m_position = c->m_position + v * (rand() % 100) / 100.0 * (c->m_radius + t->m_radius);
 					t->m_velocity = v * 2.0;

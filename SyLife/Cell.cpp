@@ -59,8 +59,8 @@ void CellState::Draw()
 
 void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 {
-	m_storage.AddMolecule(molecule->m_model);
-	m_molecules.AddMolecule(molecule->m_model);
+	m_storage.AddMoleculeState(molecule->m_model);
+	m_molecules.AddMoleculeState(molecule->m_model);
 
 	molecule->m_isDestroyed = true;
 }
@@ -71,7 +71,7 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 	auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
 
 	// “f‚«o‚³‚ê‚½MoleculeState
-	const auto& t = g_moleculeManagerPtr->AddMolecule(model);
+	const auto& t = g_moleculeManagerPtr->AddMoleculeState(model);
 	t->m_position = m_position + v * (m_radius + model->m_radius);
 	t->m_velocity = v * 2.0;
 

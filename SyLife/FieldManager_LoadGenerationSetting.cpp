@@ -35,9 +35,9 @@ void FieldManager::LoadGenerationSetting()
 			for (int i = 0; i < size; i++)
 			{
 				const auto& c = g_cellManagerPtr->AddCellState(g_assetManagerPtr->GetModel<CellModel>(name));
-				c->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
-				c->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
-				c->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
+				c->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
+				c->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
+				c->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
 				c->m_position.m_x = s3d::Random(m_size.m_x);
 				c->m_position.m_y = s3d::Random(m_size.m_y);
 				c->m_velocity = Vector2D::Zero();

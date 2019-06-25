@@ -2,7 +2,7 @@
 #include "AssetManager.h"
 #include "MoleculeManager.h"
 
-void Storage::AddMolecule(const shared_ptr<MoleculeModel>& model)
+void Storage::AddMoleculeState(const shared_ptr<MoleculeModel>& model)
 {
 	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
 	{
@@ -17,7 +17,7 @@ void Storage::AddMolecule(const shared_ptr<MoleculeModel>& model)
 	m_molecules.emplace_back(model, 1);
 }
 
-void Storage::AddMolecule(const shared_ptr<MoleculeModel>& model, int size)
+void Storage::AddMoleculeState(const shared_ptr<MoleculeModel>& model, int size)
 {
 	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
 	{

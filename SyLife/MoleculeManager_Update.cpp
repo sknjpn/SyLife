@@ -5,14 +5,14 @@
 
 void MoleculeManager::Update()
 {
-	for (const auto& m : GetMolecules())
+	for (const auto& m : GetMoleculeStates())
 	{
 		// Amino Acid‚Ì•ª‰ð
 		if (m->m_model == g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid") && rand() % 100 == 0)
 		{
-			AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
-			AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
-			AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
+			AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
+			AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
+			AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
 
 			m->m_isDestroyed = true;
 
@@ -32,6 +32,6 @@ void MoleculeManager::Update()
 		m->m_velocity /= (1.0 + m->m_radius * 0.001);
 	}
 
-	GetMolecules().erase(remove_if(GetMolecules().begin(), GetMolecules().end(), [](const auto& m) { return m->m_isDestroyed; }), GetMolecules().end());
+	GetMoleculeStates().erase(remove_if(GetMoleculeStates().begin(), GetMoleculeStates().end(), [](const auto& m) { return m->m_isDestroyed; }), GetMoleculeStates().end());
 	m_indexer.Update();
 }
