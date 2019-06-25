@@ -1,4 +1,5 @@
 #include "CellManager.h"
+#include "Cell.h"
 
 void CellManager::Draw()
 {
