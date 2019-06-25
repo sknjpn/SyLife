@@ -5,6 +5,8 @@
 #include "MoleculeManager.h"
 #include "CellManager.h"
 
+#include "Cell.h"
+
 using namespace boost::property_tree;
 
 void FieldManager::LoadGenerationSetting()
