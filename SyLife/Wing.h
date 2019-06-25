@@ -27,13 +27,13 @@ class WingState
 	int		m_counter = 0;
 
 public:
-	void	Draw(const Cell& cell) const
+	void	Draw(const CellState& cell) const
 	{
 		auto t = s3d::Transformer2D(s3d::Mat3x2::Rotate(dynamic_pointer_cast<WingModel>(m_config->m_model)->m_isRight ? m_p : -m_p));
 
 		m_config->m_model->Draw();
 	}
-	void	Update(Cell& cell) override
+	void	Update(CellState& cell) override
 	{
 		if ((m_timer++) == 60)
 		{
@@ -54,7 +54,7 @@ public:
 		m_v *= 0.95;
 	}
 
-	void	Flap(Cell& cell);
+	void	Flap(CellState& cell);
 };
 
 inline shared_ptr<PartState>	WingModel::MakeState() { return make_shared<WingState>(); }
@@ -66,7 +66,7 @@ inline void WingModel::SetFromJSON(const ptree& pt)
 	EquipmentModel::SetFromJSON(pt);
 }
 
-inline void WingState::Flap(Cell& cell)
+inline void WingState::Flap(CellState& cell)
 {
 	cell.AddImpulseInLocal(Vector2D::Up()*100.0, m_config->m_position);
 }

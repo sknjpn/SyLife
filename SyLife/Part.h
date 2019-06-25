@@ -3,7 +3,7 @@
 #include "Model.h"
 #include "ShapeModel.h"
 
-class Cell;
+class CellState;
 class PartConfig;
 class PartState;
 
@@ -50,6 +50,6 @@ public:
 public:
 	virtual ~PartState() {}
 
-	virtual void	Draw(const Cell& cell) const = 0;
-	virtual void	Update(Cell& cell) = 0;
+	virtual void	Draw(const CellState& cell) const = 0;
+	virtual void	Update(CellState& cell) = 0;
 };

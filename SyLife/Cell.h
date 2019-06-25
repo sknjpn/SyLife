@@ -49,7 +49,7 @@ public:
 	void	CalculateDisk();
 };
 
-class Cell
+class CellState
 	: public Rigidbody
 {
 public:
@@ -66,7 +66,7 @@ public:
 	vector<shared_ptr<PartState>>		m_partStates;
 
 public:
-	Cell(const shared_ptr<CellModel>& model)
+	CellState(const shared_ptr<CellModel>& model)
 		: m_model(model)
 		, m_deathTimer(10.0)
 	{

@@ -47,17 +47,17 @@ void CellModel::CalculateDisk()
 	m_radius = sqrt(2 * m_inertia / m_mass);
 }
 
-void Cell::Update()
+void CellState::Update()
 {
 
 }
 
-void Cell::Draw()
+void CellState::Draw()
 {
 
 }
 
-void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)
+void CellState::TakeMolecule(const shared_ptr<Molecule>& molecule)
 {
 	m_storage.AddMolecule(molecule->m_model);
 	m_molecules.AddMolecule(molecule->m_model);
@@ -65,7 +65,7 @@ void Cell::TakeMolecule(const shared_ptr<Molecule>& molecule)
 	molecule->m_destroyFlag = true;
 }
 
-void Cell::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
+void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 {
 	// ìfÇ´èoÇ∑ï˚å¸
 	auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
@@ -82,7 +82,7 @@ void Cell::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 	m_molecules.PullMolecule(model);
 }
 
-void Cell::ExpireMolecule(const shared_ptr<MoleculeModel>& model, int size)
+void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, int size)
 {
 	for (int i = 0; i < size; ++i) ExpireMolecule(model);
 }

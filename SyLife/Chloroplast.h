@@ -17,8 +17,8 @@ class ChloroplastState
 	: public ModuleState
 {
 public:
-	void	Draw(const Cell& cell) const { m_config->m_model->Draw(); }
-	void	Update(Cell& cell) override {}
+	void	Draw(const CellState& cell) const { m_config->m_model->Draw(); }
+	void	Update(CellState& cell) override {}
 
 	void	MakeNutrition();
 };

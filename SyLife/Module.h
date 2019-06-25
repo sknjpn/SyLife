@@ -20,8 +20,8 @@ class ModuleState
 	: public PartState
 {
 public:
-	void	Draw(const Cell& cell) const { m_config->m_model->Draw(); }
-	void	Update(Cell& cell) override {}
+	void	Draw(const CellState& cell) const { m_config->m_model->Draw(); }
+	void	Update(CellState& cell) override {}
 };
 
 inline shared_ptr<PartState>	ModuleModel::MakeState() { return make_shared<ModuleState>(); }

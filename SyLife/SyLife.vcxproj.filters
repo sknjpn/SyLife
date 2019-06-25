@@ -229,9 +229,6 @@
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Random.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Recipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -304,9 +301,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Random.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Recipe.h">
