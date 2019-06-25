@@ -7,7 +7,7 @@
 
 void CellManager::Update()
 {
-	for (const auto& c : GetCells())
+	for (const auto& c : GetCellStates())
 	{
 		if (c->m_isDestroyed) continue;
 
@@ -91,6 +91,6 @@ void CellManager::Update()
 		}
 	}
 
-	GetCells().erase(remove_if(GetCells().begin(), GetCells().end(), [](const auto& c) { return c->m_isDestroyed; }), GetCells().end());
+	GetCellStates().erase(remove_if(GetCellStates().begin(), GetCellStates().end(), [](const auto& c) { return c->m_isDestroyed; }), GetCellStates().end());
 	m_indexer.Update();
 }

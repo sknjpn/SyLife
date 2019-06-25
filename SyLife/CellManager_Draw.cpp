@@ -5,7 +5,7 @@ void CellManager::Draw()
 {
 	static s3d::Font font(12);
 
-	for (const auto& c : g_cellManagerPtr->GetCells())
+	for (const auto& c : g_cellManagerPtr->GetCellStates())
 	{
 		auto t1 = s3d::Transformer2D(s3d::Mat3x2::Rotate(c->m_rotation).translated(s3d::Vec2(c->m_position.m_x, c->m_position.m_y)));
 
