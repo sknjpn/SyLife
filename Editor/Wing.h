@@ -10,6 +10,8 @@ class WingViewer;
 class WingModel
 	: public EquipmentModel
 {
+	bool	m_isRight;
+
 public:
 	void	MakeViewers() override;
 
@@ -35,11 +37,15 @@ inline void WingModel::MakeViewers()
 
 inline void WingModel::SetFromJSON(const ptree& pt)
 {
+	m_isRight= pt.get<bool>("isRight");
+
 	EquipmentModel::SetFromJSON(pt);
 }
 
 inline void WingModel::AddToJSON(ptree& pt) const
 {
+	pt.put("isRight", m_isRight);
+
 	EquipmentModel::AddToJSON(pt);
 
 	pt.put("type", "WingModel");
