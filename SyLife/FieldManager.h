@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Indexer.h"
-#include "Rigidbody.h"
+
+class Rigidbody;
 
 class FieldManager
 {
