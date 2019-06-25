@@ -13,5 +13,14 @@
 
 void AddModelViewer::Update()
 {
-
+	DrawModels<Model>("Model");
+	DrawModels<MoleculeModel>("MoleculeModel");
+	DrawModels<CellModel>("CellModel");
+	DrawModels<PartModel>("PartModel");
+	DrawModels<BodyModel>("BodyModel");
+	DrawModels<EquipmentModel>("EquipmentModel");
+	DrawModels<ModuleModel>("ModuleModel");
+	DrawModels<EyeModel>("EyeModel");
+	DrawModels<ChloroplastModel>("ChloroplastModel");
+	DrawModels<WingModel>("WingModel");
 }
