@@ -69,6 +69,9 @@
     <Filter Include="Source Files\Part\List">
       <UniqueIdentifier>{a94c774c-4805-4066-a89e-8f5668df189b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Viewer">
+      <UniqueIdentifier>{a22e2147-8cef-4b23-bded-a3e2d3dd7da5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -190,12 +193,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PartPaletteViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartShapeViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ShapeModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -206,15 +203,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Viewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssemblyViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
@@ -241,21 +229,27 @@
     <ClCompile Include="Part.cpp">
       <Filter>Source Files\Part</Filter>
     </ClCompile>
+    <ClCompile Include="AssemblyViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="PartPaletteViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="PartShapeViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AddModelViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AssemblyViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartPaletteViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartShapeViewer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ShapeModel.h">
@@ -288,9 +282,6 @@
     <ClInclude Include="ViewerManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Part.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
     <ClInclude Include="Chloroplast.h">
       <Filter>Source Files\Part\List</Filter>
     </ClInclude>
@@ -308,6 +299,24 @@
     </ClInclude>
     <ClInclude Include="Body.h">
       <Filter>Source Files\Part\List</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="AssemblyViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="PartPaletteViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="PartShapeViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AddModelViewer.h">
+      <Filter>Source Files\Viewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
