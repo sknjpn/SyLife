@@ -1,4 +1,6 @@
 #include "FieldManager.h"
+#include "MoleculeManager.h"
+#include "CellManager.h"
 
 void FieldManager::Draw()
 {
@@ -23,4 +25,7 @@ void FieldManager::Draw()
 		else selectedRigidbody = nullptr;
 	}
 
+	g_moleculeManagerPtr->Draw();
+
+	g_cellManagerPtr->Draw();
 }

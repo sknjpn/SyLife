@@ -6,12 +6,7 @@
 
 void SystemManager::Draw()
 {
-
 	g_fieldManagerPtr->Draw();
-
-	g_moleculeManagerPtr->Draw();
-
-	g_cellManagerPtr->Draw();
 
 	// UI‚Ì•`‰æ
 	/*{
