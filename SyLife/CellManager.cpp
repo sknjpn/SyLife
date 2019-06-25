@@ -4,7 +4,7 @@
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 
-const shared_ptr<CellState>& CellManager::AddCell(const shared_ptr<CellModel>& model)
+const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellModel>& model)
 {
 	const auto& c = GetCells().emplace_back(make_shared<CellState>(model));
 

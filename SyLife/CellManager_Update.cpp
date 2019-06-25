@@ -60,7 +60,7 @@ void CellManager::Update()
 			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
 			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
 
-			const auto& nc = g_cellManagerPtr->AddCell(c->m_model);
+			const auto& nc = g_cellManagerPtr->AddCellState(c->m_model);
 			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
 			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
 			nc->m_molecules.AddMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
