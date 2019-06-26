@@ -5,6 +5,14 @@
 class TitleViewer
 	: public Viewer
 {
+	class Bubble
+	{
+	public:
+		s3d::Vec3	m_position;
+	};
+
+	s3d::Array<Bubble>	m_bubbles;
+
 public:
 	TitleViewer()
 	{
