@@ -20,6 +20,7 @@ public:
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 
+	s3d::RectF	GetApproximateRect() const;
 	double		GetRectInertia() const;
 	Vector2D	GetCenter() const { return (m_approximateRect.first + m_approximateRect.second) / 2.0; }
 

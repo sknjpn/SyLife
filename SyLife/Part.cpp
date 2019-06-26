@@ -1,6 +1,15 @@
 #include "Part.h"
 #include "AssetManager.h"
 
+s3d::RectF PartModel::GetApproximateRect() const
+{
+	return s3d::RectF(
+		m_approximateRect.first.m_x,
+		m_approximateRect.first.m_y,
+		m_approximateRect.second.m_x - m_approximateRect.first.m_x,
+		m_approximateRect.second.m_y - m_approximateRect.first.m_y);
+}
+
 double PartModel::GetRectInertia() const
 {
 	double w = m_approximateRect.second.m_x - m_approximateRect.first.m_x;

@@ -55,12 +55,12 @@ void AssemblyViewer::Update()
 	{
 		for (const auto& p : m_model->m_partConfigs)
 		{
-			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position));
+			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position.m_x, p->m_position.m_y));
 
 			p->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
 
 			for (const auto& s : p->m_model->m_shapes)
-				s3d::Polygon(s.m_verticles).draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
+				s.m_polygon.draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
 		}
 	}
 
@@ -68,14 +68,14 @@ void AssemblyViewer::Update()
 	if (PartPaletteViewer::GetSelectedPart() != nullptr)
 	{
 		for (const auto& s : PartPaletteViewer::GetSelectedPart()->m_shapes)
-			s3d::Polygon(s.m_verticles).drawTransformed(0.0, 1.0, s3d::Cursor::Pos(), s3d::ColorF(s.m_color, 0.5));
+			s.m_polygon.drawTransformed(0.0, 1.0, s3d::Cursor::Pos(), s3d::ColorF(s.m_color, 0.5));
 
 		if (s3d::MouseL.up())
 		{
 			const auto& partConfig = m_model->m_partConfigs.emplace_back(make_shared<PartConfig>());
 
 			partConfig->m_model = PartPaletteViewer::GetSelectedPart();
-			partConfig->m_position = s3d::Cursor::PosF();
+			partConfig->m_position = Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 			partConfig->m_rotation = 0.0;
 		}
 
@@ -99,12 +99,12 @@ void AssemblyViewer::CalculateDisk()
 		// body
 		s3d::Vec2 center(0.0, 0.0);
 
-		for (const auto& p : m_model->m_partConfigs) center += p->m_model->m_mass * (p->m_position + p->m_model->GetApproximateRect().center().rotated(p->m_rotation));
+		for (const auto& p : m_model->m_partConfigs) center += p->m_model->m_mass * (s3d::Vec2(p->m_position.m_x, p->m_position.m_y) + p->m_model->GetApproximateRect().center().rotated(p->m_rotation));
 
 		center /= m_mass;
 
 		// ˆÊ’u’²®
-		for (const auto& p : m_model->m_partConfigs) p->m_position -= center;
+		for (const auto& p : m_model->m_partConfigs) p->m_position -= Vector2D(center.x, center.y);
 	}
 
 	// inertia
