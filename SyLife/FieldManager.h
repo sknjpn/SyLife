@@ -16,7 +16,6 @@ public:
 	{}
 
 	void	Init();
-	void	Draw();
 	void	Update();
 	void	LoadGenerationSetting();
 

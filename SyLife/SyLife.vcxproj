@@ -259,7 +259,6 @@
     <ClCompile Include="CellManager_Update.cpp" />
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="FieldManager.cpp" />
-    <ClCompile Include="FieldManager_Draw.cpp" />
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
     <ClCompile Include="FieldManager_Update.cpp" />
     <ClCompile Include="FieldViewer.cpp" />

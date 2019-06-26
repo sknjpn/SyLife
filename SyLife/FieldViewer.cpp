@@ -2,7 +2,7 @@
 #include "FieldManager.h"
 #include "Curtain.h"
 #include "CellManager.h"
-
+#include "MoleculeManager.h"
 #include "ViewerManager.h"
 #include "ReleaseViewer.h"
 #include "AssemblyViewer.h"
@@ -27,7 +27,30 @@ void FieldViewer::Update(bool isMouseOver)
 	for (int i = 0; i < f; ++i)
 		g_fieldManagerPtr->Update();
 
-	g_fieldManagerPtr->Draw();
+	// Rigidbody Capture
+	{
+		static shared_ptr<Rigidbody> selectedRigidbody = nullptr;
+
+		if (s3d::MouseL.down())
+		{
+			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
+
+			for (auto target : g_fieldManagerPtr->m_indexer.GetNearParticles(cursorPos, 100))
+			{
+				if (target->m_radius > (target->m_position - cursorPos).length()) selectedRigidbody = target;
+			}
+		}
+
+		if (s3d::MouseL.pressed())
+		{
+			if (selectedRigidbody != nullptr) selectedRigidbody->m_position = Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
+		}
+		else selectedRigidbody = nullptr;
+	}
+
+	g_moleculeManagerPtr->Draw();
+
+	g_cellManagerPtr->Draw();
 
 	if (m_releaseViewer->m_isDragged && isMouseOver)
 	{
