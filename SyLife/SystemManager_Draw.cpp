@@ -6,8 +6,6 @@
 
 void SystemManager::Draw()
 {
-	g_fieldManagerPtr->Draw();
-
 	// UI‚Ì•`‰æ
 	/*{
 		static s3d::Font printFont(16);
