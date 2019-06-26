@@ -19,9 +19,3 @@ SystemManager::SystemManager()
 	g_assetManagerPtr->Init();
 	g_fieldManagerPtr->Init();
 }
-
-void SystemManager::Start()
-{
-	// ViewerManager
-	for (const auto& v : g_viewerManagerPtr->m_viewers) v->Init();
-}

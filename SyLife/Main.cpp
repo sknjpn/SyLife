@@ -12,8 +12,6 @@ void Main()
 
 	g_viewerManagerPtr->AddViewer<TitleViewer>();
 
-	g_systemManagerPtr->Start();
-
 	while (s3d::System::Update())
 	{
 		g_systemManagerPtr->Update();

@@ -2,8 +2,18 @@
 #include "FieldManager.h"
 #include "Curtain.h"
 
+#include "ViewerManager.h"
+#include "ReleaseViewer.h"
+#include "AssemblyViewer.h"
+#include "PartPaletteViewer.h"
+
 void FieldViewer::Init()
 {
+	auto cm = make_shared<CellModel>();
+
+	g_viewerManagerPtr->AddViewer<PartPaletteViewer>(cm);
+	g_viewerManagerPtr->AddViewer<AssemblyViewer>(cm);
+	g_viewerManagerPtr->AddViewer<ReleaseViewer>(cm);
 }
 
 void FieldViewer::Update(bool isMouseOver)
