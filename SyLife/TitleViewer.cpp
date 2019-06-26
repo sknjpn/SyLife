@@ -1,6 +1,7 @@
 #include "TitleViewer.h"
 #include "FieldViewer.h"
 #include "ViewerManager.h"
+#include "Curtain.h"
 
 void TitleViewer::UpdateBubbles()
 {
@@ -90,10 +91,28 @@ void TitleViewer::Update()
 		messageFont(U"始めるにはスペースキーを押してください...").drawAt(p, s3d::ColorF(1.0, a * (0.5 + 0.5 * abs(sin(t)))));
 	}
 
+
+	static Curtain curtain(s3d::Color(11, 22, 33), 1.0);
+	curtain.OpenUpdate();
+	m_audio.setVolume(s3d::Min(curtain.m_st.sF() / curtain.m_duration, 1.0));
+
 	// scene遷移
-	if (s3d::KeySpace.down())
 	{
-		g_viewerManagerPtr->AddViewer<FieldViewer>();
-		g_viewerManagerPtr->m_viewers.erase(g_viewerManagerPtr->m_viewers.begin());
+		static bool f = false;
+
+		if (s3d::KeySpace.down()) f = true;
+
+		if (f)
+		{
+			static Curtain closeCurtain(s3d::Color(11, 22, 33), 1.0);
+			closeCurtain.CloseUpdate();
+			m_audio.setVolume(s3d::Max(1.0 - closeCurtain.m_st.sF() / closeCurtain.m_duration, 0.0));
+
+			if (closeCurtain.m_st.sF() > 1.0)
+			{
+				g_viewerManagerPtr->AddViewer<FieldViewer>();
+				g_viewerManagerPtr->m_viewers.erase(g_viewerManagerPtr->m_viewers.begin());
+			}
+		}
 	}
 }
