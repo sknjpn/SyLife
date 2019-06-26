@@ -283,6 +283,9 @@
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Viewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -367,5 +370,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ViewerManager.h" />
+    <ClInclude Include="Viewer.h" />
   </ItemGroup>
 </Project>
