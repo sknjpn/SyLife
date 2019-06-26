@@ -23,10 +23,6 @@ public:
 		m_audio.setLoop(true);
 		m_audio.play();
 	}
-	~TitleViewer()
-	{
-
-	}
 
 	void	UpdateBubbles();
 	void	DrawBubbles();

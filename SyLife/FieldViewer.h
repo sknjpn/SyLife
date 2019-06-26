@@ -17,10 +17,6 @@ public:
 		m_audio.setLoop(true);
 		m_audio.play();
 	}
-	~FieldViewer()
-	{
-
-	}
 
 	void	Init() override;
 	void	Update() override;
