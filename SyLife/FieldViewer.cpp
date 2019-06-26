@@ -56,9 +56,9 @@ void FieldViewer::Update(bool isMouseOver)
 			c->Init();
 
 			m_newModel = make_shared<CellModel>();
-			m_partPaletteViewer->m_model = make_shared<CellModel>();
-			m_assemblyViewer->m_model = make_shared<CellModel>();
-			m_releaseViewer->m_model = make_shared<CellModel>();
+			m_partPaletteViewer->m_model = m_newModel;
+			m_assemblyViewer->m_model = m_newModel;
+			m_releaseViewer->m_model = m_newModel;
 		}
 	}
 
