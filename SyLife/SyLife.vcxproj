@@ -290,6 +290,7 @@
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="Chloroplast.h" />
     <ClInclude Include="Cloud.h" />
+    <ClInclude Include="Curtain.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Eye.h" />
     <ClInclude Include="FieldManager.h" />
