@@ -18,6 +18,11 @@ public:
 	static shared_ptr<PartModel>	m_selectedPart;
 
 public:
+	PartPaletteViewer()
+		: m_model(make_shared<CellModel>())
+	{
+		m_drawRect = s3d::RectF(s3d::Window::Width() - 200, 50, 150, 600);
+	}
 	PartPaletteViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
 	{

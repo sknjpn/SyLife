@@ -1,5 +1,7 @@
 #include "TitleViewer.h"
 #include "FieldViewer.h"
+#include "AssemblyViewer.h"
+#include "PartPaletteViewer.h"
 #include "ViewerManager.h"
 #include "Curtain.h"
 
@@ -111,6 +113,8 @@ void TitleViewer::Update()
 			if (closeCurtain.m_st.sF() > 1.0)
 			{
 				g_viewerManagerPtr->AddViewer<FieldViewer>();
+				auto ppv = g_viewerManagerPtr->AddViewer<PartPaletteViewer>();
+				g_viewerManagerPtr->AddViewer<AssemblyViewer>(ppv->m_model);
 				g_viewerManagerPtr->m_viewers.erase(g_viewerManagerPtr->m_viewers.begin());
 			}
 		}
