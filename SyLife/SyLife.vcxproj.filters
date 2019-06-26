@@ -265,9 +265,6 @@
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="SystemManager_Draw.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="SystemManager_Update.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>

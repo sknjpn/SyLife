@@ -31,7 +31,6 @@ void Main()
 		auto t = cursorCamera2D.createTransformer();
 
 		g_systemManagerPtr->Update();
-		g_systemManagerPtr->Draw();
 
 		if (s3d::KeyEscape.down()) break;
 	}

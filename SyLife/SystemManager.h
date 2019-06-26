@@ -6,7 +6,6 @@ public:
 	SystemManager();
 
 	void	Update();
-	void	Draw();
 	void	Start();
 };
 
