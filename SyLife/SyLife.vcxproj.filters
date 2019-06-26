@@ -292,6 +292,9 @@
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="AssemblyViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -390,5 +393,6 @@
     <ClInclude Include="Curtain.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="AssemblyViewer.h" />
   </ItemGroup>
 </Project>

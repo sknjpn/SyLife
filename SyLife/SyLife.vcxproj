@@ -250,6 +250,7 @@
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_AddModel.cpp" />
     <ClCompile Include="Cell.cpp" />
@@ -284,6 +285,7 @@
     <ClCompile Include="ViewerManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cell.h" />
