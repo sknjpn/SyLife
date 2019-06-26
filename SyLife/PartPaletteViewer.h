@@ -21,7 +21,7 @@ public:
 	PartPaletteViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = s3d::RectF(450, 0, 150, 450);
+		m_drawRect = s3d::RectF(s3d::Window::Width() - 200, 50, 150, 600);
 	}
 
 	template <typename T>
