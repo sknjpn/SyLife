@@ -5,6 +5,8 @@
 #include "Molecule.h"
 #include "MoleculeManager.h"
 
+#include <boost/math/constants/constants.hpp>
+#include "Random.h"
 void CellManager::Update()
 {
 	for (const auto& c : GetCellStates())
@@ -79,7 +81,9 @@ void CellManager::Update()
 			{
 				for (int i = 0; i < m.second; i++)
 				{
-					auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
+					auto pi = boost::math::constants::pi<double>();
+					auto r = Random(pi * 2.0);
+					auto v = Vector2D(1.0, 0.0).rotated(r);
 					auto& t = g_moleculeManagerPtr->AddMoleculeState(m.first);
 
 					t->m_position = c->m_position + v * (rand() % 100) / 100.0 * (c->m_radius + t->m_radius);

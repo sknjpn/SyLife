@@ -11,6 +11,11 @@ double Random(double min, double max)
 	return boost::random::uniform_real_distribution<double>(min, max)(g_rndGen);
 }
 
+double Random(double max)
+{
+	return Random(0.0, max);
+}
+
 bool RandomBool(double a)
 {
 	return Random(0.0, 1.0) <= a;
@@ -19,4 +24,9 @@ bool RandomBool(double a)
 int Random(int min, int max)
 {
 	return boost::random::uniform_real_distribution<int>(min, max)(g_rndGen);
+}
+
+int Random(int max)
+{
+	return Random(0, max);
 }
