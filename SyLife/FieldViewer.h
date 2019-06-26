@@ -1,11 +1,14 @@
 #pragma once
 
 #include "Viewer.h"
+#include "TinyCamera.h"
 
 class FieldViewer
 	: public Viewer
 {
-	s3d::Audio m_audio;
+	s3d::Audio	m_audio;
+	RestrictedCamera2D	m_cursorCamera2D;
+
 public:
 	FieldViewer()
 		: m_audio(U"assets/music/genomics_analysis.mp3")
