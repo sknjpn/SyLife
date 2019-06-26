@@ -283,17 +283,17 @@
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ViewerManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Viewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
     <ClCompile Include="TitleViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewerManager.cpp">
+      <Filter>Source Files\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -378,9 +378,17 @@
     <ClInclude Include="Random.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="ViewerManager.h" />
-    <ClInclude Include="Viewer.h" />
-    <ClInclude Include="FieldViewer.h" />
-    <ClInclude Include="TitleViewer.h" />
+    <ClInclude Include="FieldViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewerManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
