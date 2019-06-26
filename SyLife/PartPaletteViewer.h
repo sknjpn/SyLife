@@ -21,12 +21,12 @@ public:
 	PartPaletteViewer()
 		: m_model(make_shared<CellModel>())
 	{
-		m_drawRect = s3d::RectF(s3d::Window::Width() - 200, 50, 150, 750);
+		m_drawRect = s3d::RectF(s3d::Window::Width() - 200, 50, 150, 500);
 	}
 	PartPaletteViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = s3d::RectF(s3d::Window::Width() - 200, 50, 150, 750);
+		m_drawRect = s3d::RectF(s3d::Window::Width() - 200, 50, 150, 500);
 	}
 
 	template <typename T>

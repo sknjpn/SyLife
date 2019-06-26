@@ -4,7 +4,7 @@ void ReleaseViewer::Update(bool isMouseOver)
 {
 	s3d::Rect(m_drawRect.size.asPoint()).draw(s3d::Color(11, 22, 33, 192));
 
-	s3d::Circle circle(75, 75, 50);
+	s3d::Circle circle(50, 50, 45);
 
 	circle
 		.draw(circle.mouseOver() ? s3d::Palette::Orange : s3d::Palette::Skyblue)
@@ -17,7 +17,7 @@ void ReleaseViewer::Update(bool isMouseOver)
 
 	// part
 	{
-		auto t1 = s3d::Transformer2D(s3d::Mat3x2::Scale(50.0 / m_model->m_radius / 2.0).translated(circle.center));
+		auto t1 = s3d::Transformer2D(s3d::Mat3x2::Scale(45.0 / m_model->m_radius / 2.0).translated(circle.center));
 
 		for (const auto& p : m_model->m_partConfigs)
 		{
