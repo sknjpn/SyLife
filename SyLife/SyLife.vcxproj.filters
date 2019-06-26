@@ -295,6 +295,9 @@
     <ClCompile Include="AssemblyViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PartPaletteViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -394,5 +397,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="AssemblyViewer.h" />
+    <ClInclude Include="PartPaletteViewer.h" />
   </ItemGroup>
 </Project>

@@ -272,6 +272,7 @@
     <ClCompile Include="MoleculeManager_Update.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="ShapeModel.cpp" />
@@ -305,6 +306,7 @@
     <ClInclude Include="nanoflann.hpp" />
     <ClInclude Include="Part.h" />
     <ClInclude Include="Particle.h" />
+    <ClInclude Include="PartPaletteViewer.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="ShapeModel.h" />
