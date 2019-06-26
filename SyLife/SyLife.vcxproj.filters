@@ -72,6 +72,9 @@
     <Filter Include="Source Files\Part\List">
       <UniqueIdentifier>{5f9c440d-dd9e-4499-a9b2-79786d942e31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Viewer">
+      <UniqueIdentifier>{8a8171a1-a281-415a-81b4-387bb59fde30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -286,6 +289,9 @@
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FieldViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -371,5 +377,6 @@
     </ClInclude>
     <ClInclude Include="ViewerManager.h" />
     <ClInclude Include="Viewer.h" />
+    <ClInclude Include="FieldViewer.h" />
   </ItemGroup>
 </Project>

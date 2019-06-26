@@ -261,6 +261,7 @@
     <ClCompile Include="FieldManager_Draw.cpp" />
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
     <ClCompile Include="FieldManager_Update.cpp" />
+    <ClCompile Include="FieldViewer.cpp" />
     <ClCompile Include="Indexer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
@@ -292,6 +293,7 @@
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Eye.h" />
     <ClInclude Include="FieldManager.h" />
+    <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="Indexer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Module.h" />
