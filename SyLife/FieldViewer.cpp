@@ -41,7 +41,7 @@ void FieldViewer::Update(bool isMouseOver)
 			}
 		}
 
-		if (s3d::MouseL.pressed())
+		if (s3d::MouseL.pressed() && isMouseOver)
 		{
 			if (selectedRigidbody != nullptr) selectedRigidbody->m_position = Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 		}
