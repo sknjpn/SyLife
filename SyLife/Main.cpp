@@ -1,8 +1,21 @@
 ﻿#include "SystemManager.h"
-#include "TinyCamera.h"
-#include "FieldManager.h"
+#include "ViewerManager.h"
+#include "TitleViewer.h"
+
 void Main()
 {
+	g_systemManagerPtr = make_unique<SystemManager>();
+
+	g_viewerManagerPtr->AddViewer<TitleViewer>();
+
+	g_systemManagerPtr->Start();
+
+	while (s3d::System::Update())
+	{
+		g_systemManagerPtr->Update();
+	}
+
+	/*
 	s3d::Graphics::SetFullScreen(true, s3d::Size(1920, 1080));
 	s3d::Window::SetBaseSize(s3d::Size(1920, 1080));
 
@@ -21,4 +34,5 @@ void Main()
 
 		if (s3d::KeyEscape.down()) break;
 	}
+	*/
 }
