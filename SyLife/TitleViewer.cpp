@@ -1,4 +1,6 @@
 #include "TitleViewer.h"
+#include "FieldViewer.h"
+#include "ViewerManager.h"
 
 void TitleViewer::UpdateBubbles()
 {
@@ -86,5 +88,12 @@ void TitleViewer::Update()
 		const auto p = s3d::Vec2(s3d::Window::Center()).movedBy(0.0, s3d::Window::Height() * 0.3);
 
 		messageFont(U"始めるにはスペースキーを押してください...").drawAt(p, s3d::ColorF(1.0, a * (0.5 + 0.5 * abs(sin(t)))));
+	}
+
+	// scene遷移
+	if (s3d::KeySpace.down())
+	{
+		g_viewerManagerPtr->AddViewer<FieldViewer>();
+		g_viewerManagerPtr->m_viewers.erase(g_viewerManagerPtr->m_viewers.begin());
 	}
 }
