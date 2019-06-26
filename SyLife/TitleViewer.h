@@ -13,11 +13,19 @@ class TitleViewer
 	};
 
 	s3d::Array<Bubble>	m_bubbles;
+	s3d::Audio m_audio;
 
 public:
 	TitleViewer()
+		: m_audio(U"assets/music/ê_îÈÇÃê¢äE.mp3")
 	{
 		m_drawRect = s3d::RectF(s3d::Window::Size());
+		m_audio.setLoop(true);
+		m_audio.play();
+	}
+	~TitleViewer()
+	{
+
 	}
 
 	void	UpdateBubbles();
