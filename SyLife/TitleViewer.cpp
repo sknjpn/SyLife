@@ -22,7 +22,6 @@ void TitleViewer::UpdateBubbles()
 
 void TitleViewer::DrawBubbles()
 {
-
 	for (auto& b : m_bubbles)
 	{
 		static double t = 0.0;
@@ -53,7 +52,39 @@ void TitleViewer::Init()
 
 void TitleViewer::Update()
 {
-	for (int i = 0; i < 5; ++i)
-	UpdateBubbles();
-	DrawBubbles();
+	// bubbles
+	{
+		for (int i = 0; i < 5; ++i) UpdateBubbles();
+
+		DrawBubbles();
+	}
+
+	// title
+	{
+		static s3d::Font titleFont(128, s3d::Typeface::Bold);
+		static auto t = 1.0;
+		t += 1.0 / 60.0;
+
+		const auto a = s3d::Min(0.25, t * 0.01);
+		const auto p = s3d::Vec2(s3d::Window::Center()).movedBy(0.0, -s3d::Window::Height() * 0.25);
+		const auto x = sin(t / 10.0 * 13) * 2.0;
+		const auto y = sin(t / 10.0 * 11) * 2.0;
+
+		titleFont(U"SyLife").drawAt(p.movedBy(x * 3.0, y * 3.0), s3d::ColorF(1.0, a));
+		titleFont(U"SyLife").drawAt(p.movedBy(x * 2.0, y * 2.0), s3d::ColorF(1.0, a));
+		titleFont(U"SyLife").drawAt(p.movedBy(x * 1.0, y * 1.0), s3d::ColorF(1.0, a));
+		titleFont(U"SyLife").drawAt(p.movedBy(x * 0.0, y * 0.0), s3d::ColorF(1.0, a));
+	}
+
+	// message
+	{
+		static s3d::Font messageFont(24, s3d::Typeface::Bold);
+		static auto t = -5.0;
+		t += 1.0 / 60.0;
+
+		const auto a = s3d::Clamp(t * 0.1, 0.0, 0.4);
+		const auto p = s3d::Vec2(s3d::Window::Center()).movedBy(0.0, s3d::Window::Height() * 0.25);
+
+		messageFont(U"始めるにはスペースキーを押してください...").drawAt(p, s3d::ColorF(1.0, a * (0.5 + 0.5 * abs(sin(t)))));
+	}
 }
