@@ -17,7 +17,7 @@ public:
 
 	[[nodiscard]] s3d::RectF getCameraRect() const { return s3d::RectF(s3d::Window::BaseSize() / m_magnification).setCenter(m_center); }
 	[[nodiscard]] s3d::Mat3x2 getMat3x2() const { return s3d::Mat3x2::Translate(-m_center).scaled(m_magnification).translated(s3d::Window::BaseSize() * 0.5); }
-	[[nodiscard]] s3d::Transformer2D createTransformer() const { return s3d::Transformer2D(getMat3x2(), true, s3d::Transformer2D::Target::PushCamera); }
+	[[nodiscard]] s3d::Transformer2D createTransformer() const { return s3d::Transformer2D(getMat3x2(), true); }
 
 	void		setCenter(const s3d::Vec2& center) { m_center = center; }
 	void		setMagnification(double magnification) { m_magnification = magnification; }
