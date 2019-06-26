@@ -3,6 +3,7 @@
 #include "AssetManager.h"
 #include "MoleculeManager.h"
 #include "CellManager.h"
+#include "ViewerManager.h"
 
 unique_ptr<SystemManager>	g_systemManagerPtr;
 
@@ -12,6 +13,7 @@ SystemManager::SystemManager()
 	g_cellManagerPtr = make_unique<CellManager>();
 	g_fieldManagerPtr = make_unique<FieldManager>();
 	g_moleculeManagerPtr = make_unique<MoleculeManager>();
+	g_viewerManagerPtr = make_unique<ViewerManager>();
 
 	g_assetManagerPtr->Init();
 	g_fieldManagerPtr->Init();
