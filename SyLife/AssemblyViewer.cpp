@@ -69,16 +69,19 @@ void AssemblyViewer::Update(bool isMouseOver)
 	// selectedPart
 	if (PartPaletteViewer::GetSelectedPart() != nullptr)
 	{
-		for (const auto& s : PartPaletteViewer::GetSelectedPart()->m_shapes)
-			s.m_polygon.drawTransformed(0.0, 1.0, s3d::Cursor::Pos(), s3d::ColorF(s.m_color, 0.5));
-
-		if (s3d::MouseL.up())
+		if (isMouseOver)
 		{
-			const auto& partConfig = m_model->m_partConfigs.emplace_back(make_shared<PartConfig>());
+			for (const auto& s : PartPaletteViewer::GetSelectedPart()->m_shapes)
+				s.m_polygon.drawTransformed(0.0, 1.0, s3d::Cursor::Pos(), s3d::ColorF(s.m_color, 0.5));
 
-			partConfig->m_model = PartPaletteViewer::GetSelectedPart();
-			partConfig->m_position = Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
-			partConfig->m_rotation = 0.0;
+			if (s3d::MouseL.up())
+			{
+				const auto& partConfig = m_model->m_partConfigs.emplace_back(make_shared<PartConfig>());
+
+				partConfig->m_model = PartPaletteViewer::GetSelectedPart();
+				partConfig->m_position = Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
+				partConfig->m_rotation = 0.0;
+			}
 		}
 
 		if (!s3d::MouseL.pressed()) PartPaletteViewer::m_selectedPart = nullptr;
@@ -118,4 +121,8 @@ void AssemblyViewer::CalculateDisk()
 
 	// radius
 	m_radius = sqrt(2 * m_inertia / m_mass);
+
+	m_model->m_inertia = m_inertia;
+	m_model->m_radius = m_radius;
+	m_model->m_mass = m_mass;
 }

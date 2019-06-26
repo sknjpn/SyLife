@@ -7,6 +7,7 @@ class ReleaseViewer
 	: public Viewer
 {
 	shared_ptr<CellModel>	m_model;
+	bool	m_isDragged;
 
 public:
 	ReleaseViewer(const shared_ptr<CellModel>& model)

@@ -3,11 +3,20 @@
 #include "Viewer.h"
 #include "TinyCamera.h"
 
+class CellModel;
+class PartPaletteViewer;
+class AssemblyViewer;
+class ReleaseViewer;
+
 class FieldViewer
 	: public Viewer
 {
 	s3d::Audio	m_audio;
 	RestrictedCamera2D	m_cursorCamera2D;
+	shared_ptr<CellModel>	m_newModel;
+	shared_ptr<PartPaletteViewer>	m_partPaletteViewer;
+	shared_ptr<AssemblyViewer>		m_assemblyViewer;
+	shared_ptr<ReleaseViewer>		m_releaseViewer;
 
 public:
 	FieldViewer()

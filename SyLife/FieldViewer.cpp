@@ -9,11 +9,11 @@
 
 void FieldViewer::Init()
 {
-	auto cm = make_shared<CellModel>();
+	m_newModel = make_shared<CellModel>();
 
-	g_viewerManagerPtr->AddViewer<PartPaletteViewer>(cm);
-	g_viewerManagerPtr->AddViewer<AssemblyViewer>(cm);
-	g_viewerManagerPtr->AddViewer<ReleaseViewer>(cm);
+	m_partPaletteViewer = g_viewerManagerPtr->AddViewer<PartPaletteViewer>(m_newModel);
+	m_assemblyViewer = g_viewerManagerPtr->AddViewer<AssemblyViewer>(m_newModel);
+	m_releaseViewer = g_viewerManagerPtr->AddViewer<ReleaseViewer>(m_newModel);
 }
 
 void FieldViewer::Update(bool isMouseOver)
