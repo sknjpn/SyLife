@@ -11,7 +11,7 @@ class FieldViewer
 
 public:
 	FieldViewer()
-		: m_audio(U"assets/music/genomics_analysis.mp3")
+		: m_audio(U"assets/music/AQUA.mp3")
 	{
 		m_drawRect = s3d::RectF(s3d::Window::Size());
 		m_audio.setLoop(true);
