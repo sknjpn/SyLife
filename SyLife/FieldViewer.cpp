@@ -52,6 +52,17 @@ void FieldViewer::Update(bool isMouseOver)
 
 	g_cellManagerPtr->Draw();
 
+	if (s3d::MouseR.pressed())
+	{
+		s3d::Circle circle(s3d::Cursor::PosF(), 128.0);
+		circle.draw(s3d::ColorF(s3d::Palette::Red, 0.5));
+
+		for (const auto& c : g_cellManagerPtr->GetCellStates())
+		{
+			if (s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).intersects(circle)) c->m_deathTimer = 0.0;
+		}
+	}
+
 	if (m_releaseViewer->m_isDragged && isMouseOver)
 	{
 		// part
