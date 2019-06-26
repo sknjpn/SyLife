@@ -8,6 +8,7 @@
 class AssemblyViewer
 	: public Viewer
 {
+public:
 	shared_ptr<CellModel>	m_model;
 
 	CursorCamera2D	m_camera;
