@@ -292,11 +292,11 @@
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="AssemblyViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PartPaletteViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -396,7 +396,11 @@
     <ClInclude Include="Curtain.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="AssemblyViewer.h" />
-    <ClInclude Include="PartPaletteViewer.h" />
+    <ClInclude Include="PartPaletteViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AssemblyViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
