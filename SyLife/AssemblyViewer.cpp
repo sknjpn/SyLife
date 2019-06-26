@@ -15,7 +15,7 @@ void AssemblyViewer::Update(bool isMouseOver)
 {
 	s3d::Rect(m_drawRect.size.asPoint()).draw(s3d::Color(11, 22, 33, 192));
 
-	if (IsMouseOver()) m_camera.update();
+	if (isMouseOver) m_camera.update();
 
 	const auto t1 = m_camera.createTransformer();
 	const int scale = (int)log10(m_camera.getMagnification());

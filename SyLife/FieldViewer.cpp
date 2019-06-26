@@ -8,7 +8,7 @@ void FieldViewer::Init()
 
 void FieldViewer::Update(bool isMouseOver)
 {
-	m_cursorCamera2D.update();
+	if (isMouseOver) m_cursorCamera2D.update();
 	auto t = m_cursorCamera2D.createTransformer();
 
 	auto f = s3d::KeySpace.pressed() ? 5 : 1;
