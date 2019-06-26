@@ -59,7 +59,7 @@ public:
 		m_drawPos.moveBy(-16.0, 0.0);
 	}
 
-	void	Update() override;
+	void	Update(bool	isMouseOver) override;
 
 	static const shared_ptr<PartModel>&	GetSelectedPart() { return m_selectedPart; }
 };

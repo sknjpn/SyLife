@@ -28,6 +28,6 @@ public:
 	void	DrawBubbles();
 
 	void	Init() override;
-	void	Update() override;
+	void	Update(bool	isMouseOver) override;
 };
 

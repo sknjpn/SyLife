@@ -11,7 +11,7 @@ void AssemblyViewer::Init()
 	m_camera.setCenter(m_drawRect.center());
 }
 
-void AssemblyViewer::Update()
+void AssemblyViewer::Update(bool	isMouseOver)
 {
 	s3d::Rect(m_drawRect.size.asPoint()).draw(s3d::Color(11, 22, 33, 192));
 

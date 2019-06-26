@@ -10,8 +10,6 @@ public:
 	virtual ~Viewer() = default;
 
 	virtual void	Init() {}
-	virtual void	Update() {}
-
-	bool	IsMouseOver() const;
+	virtual void	Update(bool	isMouseOver) {}
 };
 
