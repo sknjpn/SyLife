@@ -20,19 +20,4 @@ void Main()
 
 		if (s3d::KeyEscape.down()) break;
 	}
-
-	/*
-	RestrictedCamera2D cursorCamera2D;
-	g_systemManagerPtr = make_unique<SystemManager>();
-
-	while (s3d::System::Update())
-	{
-		cursorCamera2D.update();
-		auto t = cursorCamera2D.createTransformer();
-
-		g_systemManagerPtr->Update();
-
-		if (s3d::KeyEscape.down()) break;
-	}
-	*/
 }
