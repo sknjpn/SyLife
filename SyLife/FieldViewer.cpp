@@ -6,7 +6,7 @@ void FieldViewer::Init()
 {
 }
 
-void FieldViewer::Update(bool	isMouseOver)
+void FieldViewer::Update(bool isMouseOver)
 {
 	m_cursorCamera2D.update();
 	auto t = m_cursorCamera2D.createTransformer();
