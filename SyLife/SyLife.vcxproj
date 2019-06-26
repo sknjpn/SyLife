@@ -279,6 +279,7 @@
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="SystemManager_Draw.cpp" />
     <ClCompile Include="SystemManager_Update.cpp" />
+    <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
@@ -310,6 +311,7 @@
     <ClInclude Include="Storage.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TinyCamera.h" />
+    <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="ViewerManager.h" />

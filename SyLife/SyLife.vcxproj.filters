@@ -292,6 +292,9 @@
     <ClCompile Include="FieldViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TitleViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -378,5 +381,6 @@
     <ClInclude Include="ViewerManager.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="FieldViewer.h" />
+    <ClInclude Include="TitleViewer.h" />
   </ItemGroup>
 </Project>
