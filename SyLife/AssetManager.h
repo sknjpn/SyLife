@@ -7,23 +7,19 @@ class Model;
 
 class AssetManager
 {
-public:
 	vector<shared_ptr<Model>>	m_models;
 
 public:
-	AssetManager()
-	{
-		m_models.reserve(1024);
-	}
+	AssetManager() { m_models.reserve(1024); }
 
 	void	Init();
 
 	void	AddModels(const string& directory);
 
 	void	AddModel(const string& filepath);
-	
+
 	template <typename T>
-	void	AddModel(const string& filepath) { ptree pt; read_json(filepath, pt); AddModel<T>(pt);}
+	void	AddModel(const string& filepath) { ptree pt; read_json(filepath, pt); AddModel<T>(pt); }
 
 	template <typename T>
 	void	AddModel(ptree pt) { return m_models.emplace_back(make_shared<T>())->Load(pt); }
@@ -47,6 +43,8 @@ public:
 
 		return tModels;
 	}
+
+	const vector<shared_ptr<Model>>&	GetModels() const { return m_models; }
 };
 
 extern unique_ptr<AssetManager>	g_assetManagerPtr;
