@@ -110,8 +110,8 @@ void TitleViewer::Update(bool isMouseOver)
 
 			if (closeCurtain.m_st.sF() > 1.0)
 			{
+				g_viewerManagerPtr->ClearViewers();
 				g_viewerManagerPtr->AddViewer<FieldViewer>();
-				g_viewerManagerPtr->m_viewers.erase(g_viewerManagerPtr->m_viewers.begin());
 			}
 		}
 	}
