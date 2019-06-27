@@ -4,6 +4,16 @@
 
 unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
+Indexer<MoleculeState>& MoleculeManager::GetIndexer()
+{
+	return m_indexer;
+}
+
+const Indexer<MoleculeState>& MoleculeManager::GetIndexer() const
+{
+	return m_indexer;
+}
+
 int MoleculeManager::NumMolecule(const shared_ptr<MoleculeModel>& model)
 {
 	return static_cast<int>(count_if(GetMoleculeStates().begin(), GetMoleculeStates().end(), [&model](const auto& m) { return m->m_model == model; }));

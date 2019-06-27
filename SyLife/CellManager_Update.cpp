@@ -17,7 +17,7 @@ void CellManager::Update()
 		for (const auto& p : c->m_partStates) p->Update(*c);
 
 		// ÚG‚µ‚½MoleculeState‚ÌŽæ‚èž‚Ý
-		for (const auto& m : g_moleculeManagerPtr->m_indexer.GetNearParticles(c->m_position, c->m_radius * 2.0))
+		for (const auto& m : g_moleculeManagerPtr->GetIndexer().GetNearParticles(c->m_position, c->m_radius * 2.0))
 		{
 			auto length = (m->m_position - c->m_position).length();
 

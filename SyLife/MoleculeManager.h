@@ -7,7 +7,6 @@ class MoleculeModel;
 
 class MoleculeManager
 {
-public:
 	Indexer<MoleculeState>	m_indexer;
 
 public:
@@ -20,6 +19,9 @@ public:
 
 	vector<shared_ptr<MoleculeState>>&	GetMoleculeStates() { return m_indexer.m_cloud.m_particles; }
 	const vector<shared_ptr<MoleculeState>>&	GetMoleculeStates() const { return m_indexer.m_cloud.m_particles; }
+
+	Indexer<MoleculeState>&	GetIndexer();
+	const Indexer<MoleculeState>&	GetIndexer() const;
 
 	void	Update();
 	void	Draw();
