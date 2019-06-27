@@ -83,41 +83,6 @@ struct Vector2D
 		return{ m_x / v.m_x, m_y / v.m_y };
 	}
 
-	constexpr Vector2D& operator +=(const Vector2D& v) noexcept
-	{
-		m_x += v.m_x; m_y += v.m_y;
-		return *this;
-	}
-
-	constexpr Vector2D& operator -=(const Vector2D& v) noexcept
-	{
-		m_x -= v.m_x; m_y -= v.m_y;
-		return *this;
-	}
-
-	constexpr Vector2D& operator *=(double s) noexcept
-	{
-		m_x *= s; m_y *= s;
-		return *this;
-	}
-
-	constexpr Vector2D& operator *=(const Vector2D& v) noexcept
-	{
-		m_x *= v.m_x; m_y *= v.m_y;
-		return *this;
-	}
-
-	constexpr Vector2D& operator /=(double s) noexcept
-	{
-		return *this *= (static_cast<double>(1.0) / s);
-	}
-
-	constexpr Vector2D& operator /=(const Vector2D& v) noexcept
-	{
-		m_x /= v.m_x; m_y /= v.m_y;
-		return *this;
-	}
-
 	constexpr bool operator ==(const Vector2D& v) const noexcept
 	{
 		return v.m_x == m_x && v.m_y == m_y;
@@ -128,17 +93,6 @@ struct Vector2D
 		return v.m_x != m_x || v.m_y != m_y;
 	}
 
-	constexpr Vector2D& set(double _x, double _y) noexcept
-	{
-		m_x = _x; m_y = _y;
-		return *this;
-	}
-
-	constexpr Vector2D& set(const Vector2D& v) noexcept
-	{
-		return *this = v;
-	}
-
 	[[nodiscard]] constexpr Vector2D movedBy(double _x, double _y) const noexcept
 	{
 		return{ m_x + _x, m_y + _y };
@@ -147,17 +101,6 @@ struct Vector2D
 	[[nodiscard]] constexpr Vector2D movedBy(const Vector2D& v) const noexcept
 	{
 		return{ m_x + v.m_x, m_y + v.m_y };
-	}
-
-	constexpr Vector2D& moveBy(double _x, double _y) noexcept
-	{
-		m_x += _x; m_y += _y;
-		return *this;
-	}
-
-	constexpr Vector2D& moveBy(const Vector2D& v) noexcept
-	{
-		return *this += v;
 	}
 
 	constexpr bool isZero() const noexcept
@@ -197,18 +140,6 @@ struct Vector2D
 		return static_cast<double>(1.0) / length();
 	}
 
-	Vector2D& setLength(double _length) noexcept
-	{
-		const double len = length();
-
-		if (len == 0.0)
-		{
-			return *this;
-		}
-
-		return *this *= (_length / len);
-	}
-
 	double distanceFrom(double _x, double _y) const noexcept
 	{
 		return distanceFrom({ _x, _y });
@@ -232,11 +163,6 @@ struct Vector2D
 	[[nodiscard]] Vector2D normalized() const noexcept
 	{
 		return *this * lengthInv();
-	}
-
-	Vector2D& normalize() noexcept
-	{
-		return *this *= lengthInv();
 	}
 
 	[[nodiscard]] Vector2D rotated(double angle) const noexcept
@@ -266,12 +192,6 @@ struct Vector2D
 	[[nodiscard]] constexpr Vector2D lerp(const Vector2D& other, double f) const noexcept
 	{
 		return Vector2D(m_x + (other.m_x - m_x) * f, m_y + (other.m_y - m_y) * f);
-	}
-
-	template <class ShapeModel2DType>
-	bool intersects(const ShapeModel2DType& shape) const
-	{
-		return Geometry2D::Intersect(*this, shape);
 	}
 
 	/// <summary>
