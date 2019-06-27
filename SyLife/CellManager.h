@@ -7,7 +7,6 @@ class CellModel;
 
 class CellManager
 {
-public:
 	Indexer<CellState>	m_indexer;
 
 public:
