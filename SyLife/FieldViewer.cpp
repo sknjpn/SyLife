@@ -35,7 +35,7 @@ void FieldViewer::Update(bool isMouseOver)
 		{
 			Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
-			for (auto target : g_fieldManagerPtr->m_indexer.GetNearParticles(cursorPos, 100))
+			for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(cursorPos, 100))
 			{
 				if (target->m_radius > (target->m_position - cursorPos).length()) selectedRigidbody = target;
 			}

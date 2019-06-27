@@ -9,7 +9,7 @@ const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellMode
 	const auto& c = GetCellStates().emplace_back(make_shared<CellState>(model));
 
 	m_indexer.AddParticle(c);
-	g_fieldManagerPtr->m_indexer.AddParticle(c);
+	g_fieldManagerPtr->GetIndexer().AddParticle(c);
 
 	return c;
 }

@@ -25,8 +25,8 @@ void MoleculeManager::Update()
 		// •Ç‚Å‚Ì”½ŽË
 		if (m->m_position.m_x < 0 && m->m_velocity.m_x < 0) m->m_velocity.m_x = -m->m_velocity.m_x;
 		if (m->m_position.m_y < 0 && m->m_velocity.m_y < 0) m->m_velocity.m_y = -m->m_velocity.m_y;
-		if (m->m_position.m_x > g_fieldManagerPtr->m_size.m_x && m->m_velocity.m_x > 0) m->m_velocity.m_x = -m->m_velocity.m_x;
-		if (m->m_position.m_y > g_fieldManagerPtr->m_size.m_y && m->m_velocity.m_y > 0) m->m_velocity.m_y = -m->m_velocity.m_y;
+		if (m->m_position.m_x > g_fieldManagerPtr->GetSize().m_x && m->m_velocity.m_x > 0) m->m_velocity.m_x = -m->m_velocity.m_x;
+		if (m->m_position.m_y > g_fieldManagerPtr->GetSize().m_y && m->m_velocity.m_y > 0) m->m_velocity.m_y = -m->m_velocity.m_y;
 
 		// –€ŽC’ïR
 		m->m_velocity /= (1.0 + m->m_radius * 0.001);

@@ -34,8 +34,8 @@ void MoleculeManager::AddMoleculesRandom(const shared_ptr<MoleculeModel>& model,
 	for (int i = 0; i < size; i++)
 	{
 		const auto& m = g_moleculeManagerPtr->AddMoleculeState(model);
-		m->m_position.m_x = rand() % int(g_fieldManagerPtr->m_size.m_x);
-		m->m_position.m_y = rand() % int(g_fieldManagerPtr->m_size.m_y);
+		m->m_position.m_x = rand() % int(g_fieldManagerPtr->GetSize().m_x);
+		m->m_position.m_y = rand() % int(g_fieldManagerPtr->GetSize().m_y);
 
 		m->Init();
 	}
