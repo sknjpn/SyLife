@@ -49,6 +49,9 @@ void CellModel::CalculateDisk()
 
 void CellModel::CalculateMaterial()
 {
+	m_material.Clear();
+
+
 }
 
 void CellState::Update()
