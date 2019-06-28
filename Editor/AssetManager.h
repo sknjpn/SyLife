@@ -30,7 +30,7 @@ public:
 	void	AddModel(ptree pt) { return m_models.emplace_back(make_shared<T>())->Load(pt); }
 
 	template <typename T>
-	shared_ptr<T>			GetModel(const string& name) const;
+	const shared_ptr<T>&	GetModel(const string& name) const;
 
 	template <typename T>
 	vector<shared_ptr<T>>	GetModels() const;
@@ -39,7 +39,7 @@ public:
 extern unique_ptr<AssetManager>	g_assetManagerPtr;
 
 template <typename T>
-inline shared_ptr<T> AssetManager::GetModel(const string& name) const
+inline const shared_ptr<T>& AssetManager::GetModel(const string& name) const
 {
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)
 		if ((*it)->m_name == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
