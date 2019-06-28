@@ -28,7 +28,7 @@ void AssetViewer::Update()
 		f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();
 
-		if (f.region().leftClicked()) g_viewerManagerPtr->AddViewer<AddNewModelViewer>();
+		if (f.region().leftClicked() && !g_viewerManagerPtr->HasViewer<AddNewModelViewer>()) g_viewerManagerPtr->AddViewer<AddNewModelViewer>();
 
 		m_drawPos.moveBy(0.0, 16.0);
 	}
