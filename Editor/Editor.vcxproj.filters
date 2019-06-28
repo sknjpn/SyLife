@@ -247,9 +247,6 @@
     <ClCompile Include="AddModelViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="AddNewModelViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model.h">
@@ -319,9 +316,6 @@
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
     <ClInclude Include="AddModelViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="AddNewModelViewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
   </ItemGroup>

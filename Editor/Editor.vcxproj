@@ -251,7 +251,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddModelViewer.cpp" />
-    <ClCompile Include="AddNewModelViewer.cpp" />
     <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_AddModel.cpp" />
@@ -277,7 +276,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddModelViewer.h" />
-    <ClInclude Include="AddNewModelViewer.h" />
     <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AssetViewer.h" />
