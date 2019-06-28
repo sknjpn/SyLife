@@ -75,6 +75,9 @@
     <Filter Include="Source Files\Viewer">
       <UniqueIdentifier>{8a8171a1-a281-415a-81b4-387bb59fde30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Egg">
+      <UniqueIdentifier>{a04df2ec-7b1a-4b38-a2d2-91e8c832eb37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -298,6 +301,9 @@
     <ClCompile Include="ReleaseViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>
+    <ClCompile Include="Egg.cpp">
+      <Filter>Source Files\Egg</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -404,6 +410,9 @@
     </ClInclude>
     <ClInclude Include="ReleaseViewer.h">
       <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Egg.h">
+      <Filter>Source Files\Egg</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
