@@ -1,58 +1,26 @@
-#include <cstdio>
-#include <unistd.h>
+#include <iostream>
+#include <boost/asio.hpp>
 
-#include "Vector2D.h"
-#include <vector>
-#include <random>
-
-#include <string>
-using namespace std;
-
-class Particle
-{
-public:
-	Vector2D	m_position;
-	Vector2D	m_velocity;
-
-public:
-	Particle()
-		: m_position((rand() % 100) / 100.0, (rand() % 100) / 100.0)
-		, m_velocity((rand() % 100) / 100.0, (rand() % 100) / 100.0)
-	{}
-
-	string	GetString() const { return to_string(m_position.m_x) + ", " + to_string(m_position.m_y); }
-};
-
+namespace asio = boost::asio;
+using asio::ip::tcp;
 
 int main()
 {
-	vector<Particle> particles;
-	for (int i = 0; i < 5; i++)
-		particles.emplace_back();
+	asio::io_service io_service;
+	tcp::socket socket(io_service);
 
-	printf("hello from Server!\n");
+	// 接続
+	socket.connect(tcp::endpoint(asio::ip::address::from_string("127.0.0.1"), 31400));
 
-	for (;;)
-	{
-		for (auto& p : particles)
-		{
-			p.m_position = p.m_position + p.m_velocity;
-		}
+	// メッセージ送信
+	const std::string msg = "ping";
+	boost::system::error_code error;
+	asio::write(socket, asio::buffer(msg), error);
 
-
-		string t;
-		for (const auto& p : particles)
-		{
-			t += "{";
-			t += p.GetString();
-			t += "}";
-		}
-		t += "\n";
-
-		printf(t.c_str());
-
-		sleep(1.0f);
+	if (error) {
+		std::cout << "send failed: " << error.message() << std::endl;
 	}
-
-	return 0;
+	else {
+		std::cout << "send correct!" << std::endl;
+	}
 }
