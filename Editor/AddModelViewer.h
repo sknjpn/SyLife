@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Viewer.h"
+#include "AssetManager.h"
 
 class AddModelViewer
 	: public Viewer
@@ -15,7 +16,17 @@ public:
 	template <typename T>
 	void	AddModel()
 	{
+		for (int i = 1;; ++i)
+		{
+			string name = "model_" + to_string(i);
 
+			if (!g_assetManagerPtr->HasModel(name))
+			{
+				g_assetManagerPtr->AddModel<T>(name);
+
+				return;
+			}
+		}
 	}
 
 	template <typename T>
