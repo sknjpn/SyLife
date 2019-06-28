@@ -29,6 +29,8 @@ public:
 	template <typename T>
 	void	AddModel(ptree pt) { return m_models.emplace_back(make_shared<T>())->Load(pt); }
 
+	bool	HasModel(const string& name) const { return GetModel<Model>(name) != nullptr; }
+
 	template <typename T>
 	const shared_ptr<T>&	GetModel(const string& name) const;
 
