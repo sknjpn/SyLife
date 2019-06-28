@@ -17,6 +17,8 @@ void AssetViewer::Update()
 	DrawModels<EquipmentModel>("EquipmentModel");
 	DrawModels<ModuleModel>("ModuleModel");
 
+	// AddNewModel
+
 	// Save
 	if (s3d::KeyControl.pressed() && s3d::KeyS.down() && m_selectedModel != nullptr)
 	{
