@@ -13,6 +13,7 @@ class CellModel
 	: public Model
 {
 public:
+	Storage	m_material;
 	vector<shared_ptr<PartConfig>>	m_partConfigs;
 
 	// ‹ßŽ—‰~
