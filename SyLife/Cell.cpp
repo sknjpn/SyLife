@@ -47,6 +47,10 @@ void CellModel::CalculateDisk()
 	m_radius = sqrt(2 * m_inertia / m_mass);
 }
 
+void CellModel::CalculateMaterial()
+{
+}
+
 void CellState::Update()
 {
 

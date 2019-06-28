@@ -46,6 +46,7 @@ public:
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 
 	void	CalculateDisk();
+	void	CalculateMaterial();
 };
 
 class CellState
