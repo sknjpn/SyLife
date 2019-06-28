@@ -304,6 +304,9 @@
     <ClCompile Include="Egg.cpp">
       <Filter>Source Files\Egg</Filter>
     </ClCompile>
+    <ClCompile Include="EggManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -413,6 +416,9 @@
     </ClInclude>
     <ClInclude Include="Egg.h">
       <Filter>Source Files\Egg</Filter>
+    </ClInclude>
+    <ClInclude Include="EggManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
