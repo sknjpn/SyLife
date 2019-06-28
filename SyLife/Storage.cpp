@@ -72,3 +72,11 @@ void Storage::PullMolecule(const shared_ptr<MoleculeModel>& model, int size)
 		}
 	}
 }
+
+void Storage::AddStorage(const Storage& storage)
+{
+	for (const auto& m : storage.m_molecules)
+	{
+		AddMoleculeState(m.first, m.second);
+	}
+}

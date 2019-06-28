@@ -14,7 +14,7 @@ public:
 	int		NumMolecule(const string& name) const;
 	void	PullMolecule(const shared_ptr<MoleculeModel>& model);
 	void	PullMolecule(const shared_ptr<MoleculeModel>& model, int size);
-
 	void	Clear() { m_molecules.clear(); }
+	void	AddStorage(const Storage& storage);
 };
 
