@@ -91,4 +91,3 @@ public:
 	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model);
 	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, int size);
 };
-
