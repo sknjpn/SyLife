@@ -50,7 +50,7 @@ inline const shared_ptr<T>& AssetManager::GetModel(const string& name) const
 }
 
 template <typename T>
-inline vector<shared_ptr<T>> AssetManager::GetModels() const;
+inline vector<shared_ptr<T>> AssetManager::GetModels() const
 {
 	vector<shared_ptr<T>>	tModels;
 
