@@ -1,5 +1,6 @@
 #include "AssetViewer.h"
 #include "AssetManager.h"
+#include "AddNewModelViewer.h"
 #include "Cell.h"
 #include "Molecule.h"
 #include "Part.h"
@@ -18,6 +19,19 @@ void AssetViewer::Update()
 	DrawModels<ModuleModel>("ModuleModel");
 
 	// AddNewModel
+	{
+		static s3d::Font font(15, s3d::Typeface::Bold);
+
+		auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(m_drawPos), true);
+		auto f = font(U"V‚µ‚¢Model‚Ì’Ç‰Á");
+
+		f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
+		f.draw();
+
+		if (f.region().leftClicked()) g_viewerManagerPtr->AddViewer<AddNewModelViewer>();
+
+		m_drawPos.moveBy(0.0, 16.0);
+	}
 
 	// Save
 	if (s3d::KeyControl.pressed() && s3d::KeyS.down() && m_selectedModel != nullptr)
