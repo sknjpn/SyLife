@@ -32,9 +32,9 @@ public:
 	bool	HasModel(const string& name) const { return GetModel(name) != nullptr; }
 
 	template <typename T>
-	const shared_ptr<T>&	GetModel(const string& name) const;
+	shared_ptr<T>		GetModel(const string& name) const;
 
-	const shared_ptr<Model>&	GetModel(const string& name) const;
+	shared_ptr<Model>	GetModel(const string& name) const;
 
 	template <typename T>
 	vector<shared_ptr<T>>	GetModels() const;
@@ -43,7 +43,7 @@ public:
 extern unique_ptr<AssetManager>	g_assetManagerPtr;
 
 template <typename T>
-inline const shared_ptr<T>& AssetManager::GetModel(const string& name) const
+inline shared_ptr<T> AssetManager::GetModel(const string& name) const
 {
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)
 		if ((*it)->m_name == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
