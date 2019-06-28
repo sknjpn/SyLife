@@ -51,7 +51,8 @@ void CellModel::CalculateMaterial()
 {
 	m_material.Clear();
 
-
+	for (const auto& pc : m_partConfigs) 
+		m_material.AddStorage(pc->m_model->m_material);
 }
 
 void CellState::Update()
