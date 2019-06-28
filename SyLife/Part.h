@@ -6,6 +6,7 @@
 class CellState;
 class PartConfig;
 class PartState;
+class MoleculeModel;
 
 class PartModel
 	: public Model
@@ -14,6 +15,7 @@ public:
 	double	m_mass;
 	vector<ShapeModel>	m_shapes;
 	pair<Vector2D, Vector2D>	m_approximateRect;
+	vector<pair<MoleculeModel, int>>	m_material;
 
 public:
 	virtual shared_ptr<PartState>	MakeState() = 0;
