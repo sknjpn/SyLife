@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Model.h"
+#include "Storage.h"
 #include "ShapeModel.h"
 
 class CellState;
@@ -13,9 +14,9 @@ class PartModel
 {
 public:
 	double	m_mass;
+	Storage	m_material;
 	vector<ShapeModel>	m_shapes;
 	pair<Vector2D, Vector2D>	m_approximateRect;
-	vector<pair<MoleculeModel, int>>	m_material;
 
 public:
 	virtual shared_ptr<PartState>	MakeState() = 0;
