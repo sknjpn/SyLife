@@ -9,7 +9,13 @@ class AddModelViewer
 public:
 	AddModelViewer()
 	{
-		m_drawRect = s3d::RectF(600, 0, 200, 600);
+		m_drawRect = s3d::RectF(100, 150, 400, 300);
+	}
+
+	template <typename T>
+	void	AddModel()
+	{
+
 	}
 
 	template <typename T>
@@ -22,7 +28,7 @@ public:
 		f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();
 
-		//if (f.region().leftClicked()) m_selectedPart = *it;
+		if (f.region().leftClicked()) AddModel<T>();
 
 		m_drawPos.moveBy(0.0, 15.0);
 	}
