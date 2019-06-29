@@ -69,9 +69,6 @@
     <Filter Include="Source Files\ThirdParty">
       <UniqueIdentifier>{b83d9d00-96a5-4216-8173-d43ae1c4821d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Part\List">
-      <UniqueIdentifier>{5f9c440d-dd9e-4499-a9b2-79786d942e31}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Viewer">
       <UniqueIdentifier>{8a8171a1-a281-415a-81b4-387bb59fde30}</UniqueIdentifier>
     </Filter>
@@ -268,9 +265,6 @@
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files\Cell</Filter>
     </ClCompile>
-    <ClCompile Include="Part.cpp">
-      <Filter>Source Files\Part</Filter>
-    </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -369,24 +363,6 @@
     <ClInclude Include="Part.h">
       <Filter>Source Files\Part</Filter>
     </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Chloroplast.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Eye.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Wing.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -419,6 +395,24 @@
     </ClInclude>
     <ClInclude Include="EggManager.h">
       <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Chloroplast.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Eye.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Wing.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

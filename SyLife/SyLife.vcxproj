@@ -271,7 +271,6 @@
     <ClCompile Include="MoleculeManager.cpp" />
     <ClCompile Include="MoleculeManager_Draw.cpp" />
     <ClCompile Include="MoleculeManager_Update.cpp" />
-    <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="Random.cpp" />
