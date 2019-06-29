@@ -12,7 +12,7 @@ void CellModel::SetFromJSON(const ptree& pt)
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->m_model->GetMass(); });
 
 	// center
-	Vector2D center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vector2D::Zero(), [](Vector2D acc, const auto& p) { return acc + p->m_model->m_mass * (p->m_position + ((p->m_model->m_approximateRect.first + p->m_model->m_approximateRect.second) / 2.0).rotated(p->m_rotation)); }) / m_mass;
+	Vector2D center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vector2D::Zero(), [](Vector2D acc, const auto& p) { return acc + p->m_model->GetMass() * (p->m_position + ((p->m_model->m_approximateRect.first + p->m_model->m_approximateRect.second) / 2.0).rotated(p->m_rotation)); }) / m_mass;
 
 	// center‚ðŒ´“_‚ÉÝ’è
 	for (const auto& p : m_partConfigs) p->m_position -= center;
