@@ -35,7 +35,6 @@ class CellState
 public:
 	double	m_deathTimer;
 	Storage	m_storage;
-	Storage	m_molecules;
 
 	shared_ptr<CellModel>	m_model;
 
