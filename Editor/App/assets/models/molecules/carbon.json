@@ -2,9 +2,9 @@
     "type":"MoleculeModel",
     "mass": "12",
     "color": {
-        "r": "135",
-        "g": "206",
-        "b": "235"
+        "r": "128",
+        "g": "192",
+        "b": "255"
     },
     "name": "Carbon"
 }
