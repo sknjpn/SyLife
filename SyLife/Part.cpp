@@ -24,10 +24,7 @@ s3d::RectF PartModel::GetApproximateRect() const
 
 double PartModel::GetRectInertia() const
 {
-	double w = m_approximateRect.second.m_x - m_approximateRect.first.m_x;
-	double h = m_approximateRect.second.m_y - m_approximateRect.first.m_y;
-
-	return  m_mass * (w * w + h * h) / 12.0;
+	return  m_mass * (pow(GetApproximateRect().w, 2) + pow(GetApproximateRect().h, 2)) / 12.0;
 }
 
 void PartModel::SetFromJSON(const ptree& pt)
