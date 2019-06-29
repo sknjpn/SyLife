@@ -9,10 +9,10 @@ class MoleculeModel;
 class Storage
 	: public Model
 {
-public:
 	vector<pair<shared_ptr<MoleculeModel>, unsigned int>>	m_molecules;
 
 public:
+	// operator
 	Storage	operator +(const Storage& s) const { return Storage(*this) += s; }
 	Storage	operator -(const Storage& s) const { return Storage(*this) -= s; }
 	bool operator >=(const Storage& s) const
@@ -44,6 +44,7 @@ public:
 		return *this;
 	}
 
+	// molecule
 	void	Add(const shared_ptr<MoleculeModel>& model, unsigned int size = 1)
 	{
 		auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
@@ -69,6 +70,8 @@ public:
 		if (it == m_molecules.end()) return 0;
 		else return (*it).second;
 	}
+
+	const vector<pair<shared_ptr<MoleculeModel>, unsigned int>>&	GetMolecules() const { return m_molecules; }
 
 	bool	IsEmpty() const { return m_molecules.empty(); }
 

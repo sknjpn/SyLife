@@ -51,7 +51,7 @@ void CellManager::Update()
 		if (c->m_deathTimer <= 0.0)
 		{
 			// MoleculeState‚Ì“f‚«o‚µ
-			for (const auto& m : c->m_molecules.m_molecules)
+			for (const auto& m : (c->m_storage + c->m_model->m_material).m_molecules)
 			{
 				for (unsigned int i = 0; i < m.second; i++)
 				{
