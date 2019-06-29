@@ -1,6 +1,7 @@
 #include "FieldViewer.h"
 #include "FieldManager.h"
 #include "Curtain.h"
+#include "EggManager.h"
 #include "CellManager.h"
 #include "MoleculeManager.h"
 #include "ViewerManager.h"
@@ -47,6 +48,8 @@ void FieldViewer::Update(bool isMouseOver)
 		}
 		else selectedRigidbody = nullptr;
 	}
+
+	g_eggManagerPtr->Draw();
 
 	g_moleculeManagerPtr->Draw();
 
