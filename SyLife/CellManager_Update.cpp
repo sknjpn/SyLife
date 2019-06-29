@@ -35,22 +35,12 @@ void CellManager::Update()
 		}
 
 		// •ª—ôˆ—
-		if (c->m_storage.NumMolecule("Amino Acid") >= 5 &&
-			c->m_storage.NumMolecule("Carbon") >= 5 &&
-			c->m_storage.NumMolecule("Oxygen") >= 5)
+		if (c->m_storage >= c->m_model->m_material)
 		{
-			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
-			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
-			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
-			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
-			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
-			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
+			c->m_storage -= c->m_model->m_material;
 
 			const auto& nc = g_cellManagerPtr->AddCellState(c->m_model);
 			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
-			nc->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
-			nc->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
-			nc->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
 			nc->Init();
 			nc->m_angularVelocity = (rand() % 1000 - 500) / 10000.0;
 			nc->m_rotation = rand() / 360.0;
