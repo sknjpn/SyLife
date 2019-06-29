@@ -14,15 +14,6 @@ void CellManager::Draw()
 		{
 			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_config->m_rotation).translated(p->m_config->m_position.m_x, p->m_config->m_position.m_y));
 
-			// —Ìˆæ˜g
-			if (false)
-			{
-				auto ar = p->m_config->m_model->m_approximateRect;
-				s3d::RectF(ar.first.m_x, ar.first.m_y, ar.second.m_x - ar.first.m_x, ar.second.m_y - ar.first.m_y)
-					.draw(s3d::ColorF(s3d::Palette::Orange, 0.2))
-					.drawFrame(1.0, s3d::Palette::Black);
-			}
-
 			p->Draw(*c);
 		}
 
