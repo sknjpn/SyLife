@@ -232,9 +232,6 @@
     <ClCompile Include="AssetManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager_AddModel.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="CellManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
@@ -308,6 +305,9 @@
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="EggManager_Update.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager_MakeModel.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
   </ItemGroup>

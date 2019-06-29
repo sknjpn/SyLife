@@ -1,21 +1,39 @@
 #include "AssetManager.h"
+#include "Model.h"
 #include <boost/filesystem/operations.hpp>
 
 unique_ptr<AssetManager>	g_assetManagerPtr;
 
 void AssetManager::Init()
 {
-	AddModels("assets/models/molecules");
-	AddModels("assets/models/parts");
-	AddModels("assets/models/cells");
+	AddModelsFromDirectory("assets/models/molecules");
+	AddModelsFromDirectory("assets/models/parts");
+	AddModelsFromDirectory("assets/models/cells");
 }
 
-void AssetManager::AddModels(const string& directory) 
+void AssetManager::AddModelsFromDirectory(const string& directory)
 {
 	namespace fs = boost::filesystem;
 
 	fs::directory_iterator end;
 
 	for (fs::directory_iterator it(fs::path(directory.c_str())); it != end; ++it)
-		if (!fs::is_directory(*it)) AddModel((*it).path().string());
+		if (!fs::is_directory(*it)) AddModelFromFile((*it).path().string());
+}
+
+void AssetManager::AddModelFromFile(const string& filepath)
+{
+	ptree pt;
+
+	read_json(filepath, pt);
+
+	MakeModel(pt.get<string>("type"))->Load(pt);
+}
+
+shared_ptr<Model> AssetManager::GetModel(const string& name) const
+{
+	for (auto it = m_models.begin(); it != m_models.end(); ++it)
+		if ((*it)->GetName() == name && dynamic_pointer_cast<Model>(*it) != nullptr) return dynamic_pointer_cast<Model>(*it);
+
+	return nullptr;
 }

@@ -252,7 +252,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AssetManager_AddModel.cpp" />
+    <ClCompile Include="AssetManager_MakeModel.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="CellManager_Draw.cpp" />
