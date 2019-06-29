@@ -24,7 +24,7 @@ void CellModel::SetFromJSON(const ptree& pt)
 	m_radius = sqrt(2 * m_inertia / m_mass);
 
 	// material
-	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { acc.AddStorage(p->m_model->GetMaterial()); return acc; });
+	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += (p->m_model->GetMaterial()); });
 
 	Model::SetFromJSON(pt);
 }
