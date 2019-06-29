@@ -9,19 +9,24 @@ class MoleculeViewer;
 class MoleculeModel
 	: public Model
 {
-public:
 	double		m_mass;
 	double		m_radius;
 	s3d::Color	m_color;
 
 public:
+	// Get
+	double	GetMass() const { return m_mass; }
+	double	GetRadius() const { return m_radius; }
+	const s3d::Color&	GetColor() const { return m_color; }
+
+	// Viewer
 	void	MakeViewers() override;
 
+	// JSON
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	void	AddToJSON(ptree& pt) const;
 	void	Save(ptree& pt) const override { AddToJSON(pt); }
-
 	string	GetFilepath() const override { return "assets/models/molecules/" + GetFilename(); }
 };
 
