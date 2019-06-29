@@ -10,10 +10,12 @@ class Viewer;
 class Model
 	: public enable_shared_from_this<Model>
 {
-public:
 	string	m_name;
 
 public:
+	const string&	GetName() const { return m_name; }
+	void	SetName(const string& name);
+
 	virtual ~Model() = default;
 
 	virtual void	MakeViewers();

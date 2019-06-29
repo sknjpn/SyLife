@@ -4,6 +4,29 @@
 #include "Viewer.h"
 
 #include <boost/property_tree/json_parser.hpp>
+#include <boost/filesystem.hpp>
+
+void Model::SetName(const string& name)
+{
+	// ファイルの削除
+	{
+		const boost::filesystem::path path(GetFilepath());
+		
+		boost::filesystem::remove(path);
+	}
+
+	// nameのセット
+	m_name = name;
+
+	// 新規ファイルの作成
+	{
+		ptree pt;
+		
+		Save(pt);
+		
+		write_json(GetFilepath(), pt);
+	}
+}
 
 void Model::MakeViewers()
 {
