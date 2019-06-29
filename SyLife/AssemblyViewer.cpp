@@ -13,6 +13,7 @@ void AssemblyViewer::Init()
 
 void AssemblyViewer::Update(bool isMouseOver)
 {
+	/*
 	s3d::Rect(m_drawRect.size.asPoint()).draw(s3d::Color(11, 22, 33, 192));
 
 	if (isMouseOver) m_camera.update();
@@ -88,10 +89,12 @@ void AssemblyViewer::Update(bool isMouseOver)
 	}
 
 	CalculateDisk();
+	*/
 }
 
 void AssemblyViewer::CalculateDisk()
 {
+	/*
 	// mass
 	{
 		m_mass = 0.0;
@@ -125,4 +128,5 @@ void AssemblyViewer::CalculateDisk()
 	m_model->m_inertia = m_inertia;
 	m_model->m_radius = m_radius;
 	m_model->m_mass = m_mass;
+	*/
 }
