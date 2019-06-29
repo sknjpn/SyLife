@@ -25,10 +25,7 @@ public:
 
 	void	AddModelsFromDirectory(const string& directory);
 
-	template <typename T>
-	shared_ptr<T>	AddModel() { m_models.emplace_back(make_shared<T>()); }
-
-	shared_ptr<T>	AddModel(const string& filepath);
+	void	AddModelFromFile(const string& filepath);
 
 	template <typename T>
 	shared_ptr<T>	AddModel(const string& filepath) { ptree pt; read_json(filepath, pt); AddModel<T>(pt); }
