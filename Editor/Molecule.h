@@ -9,6 +9,8 @@ class MoleculeViewer;
 class MoleculeModel
 	: public Model
 {
+	friend class MoleculeViewer;
+
 	double		m_mass;
 	double		m_radius;
 	s3d::Color	m_color;
@@ -41,7 +43,7 @@ public:
 	MoleculeViewer(const shared_ptr<MoleculeModel>& model)
 		: m_model(model)
 		, m_textEditState_name(s3d::Unicode::Widen(model->GetName()))
-		, m_textEditState_mass(s3d::ToString(model->m_mass))
+		, m_textEditState_mass(s3d::ToString(model->GetMass()))
 	{
 		m_drawRect = s3d::RectF(0, 0, 600, 600);
 	}
