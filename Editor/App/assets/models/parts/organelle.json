@@ -1,7 +1,16 @@
 {
     "type": "ModuleModel",
     "mass": "10",
-    "material": [],
+    "material": [
+        {
+            "molecule": "Amino Acid",
+            "size": 1
+        },
+        {
+            "molecule": "Nitrogen",
+            "size": 2
+        }
+    ],
     "shapes": [
         {
             "color": {

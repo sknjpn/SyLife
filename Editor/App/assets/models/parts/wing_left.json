@@ -2,7 +2,16 @@
     "type": "WingModel",
     "mass": "20",
     "isRight": "false",
-    "material": [],
+    "material": [
+        {
+            "molecule": "Amino Acid",
+            "size": 1
+        },
+        {
+            "molecule": "Oxygen",
+            "size": 3
+        }
+    ],
     "shapes": [
         {
             "color": {
