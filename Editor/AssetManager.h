@@ -23,7 +23,7 @@ public:
 
 	void	Init();
 
-	void	AddModels(const string& directory);
+	void	AddModelsFromDirectory(const string& directory);
 
 	template <typename T>
 	shared_ptr<T>	AddModel() { m_models.emplace_back(make_shared<T>()); }
