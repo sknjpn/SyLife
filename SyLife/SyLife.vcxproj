@@ -290,6 +290,7 @@
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
+    <ClCompile Include="WaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssemblyViewer.h" />
@@ -329,6 +330,7 @@
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="ViewerManager.h" />
+    <ClInclude Include="WaveManager.h" />
     <ClInclude Include="Wing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

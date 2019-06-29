@@ -3,6 +3,7 @@
 #include "AssetManager.h"
 #include "Molecule.h"
 #include "Cell.h"
+#include "WaveManager.h"
 
 void MoleculeManager::Update()
 {
@@ -44,7 +45,11 @@ void MoleculeManager::Update()
 		if (m->m_position.m_y > g_fieldManagerPtr->GetSize().m_y && m->m_velocity.m_y > 0) m->m_velocity.m_y = -m->m_velocity.m_y;
 
 		// –€ŽC’ïR
-		m->m_velocity /= (1.0 + m->m_radius * 0.01);
+		{
+			auto waveVelocity = g_waveManagerPtr->GetWaveVelocity(m->m_position);
+
+			m->m_velocity = waveVelocity + (m->m_velocity - waveVelocity) / (1.0 + m->m_radius * 0.01);
+		}
 	}
 
 	GetMoleculeStates().erase(remove_if(GetMoleculeStates().begin(), GetMoleculeStates().end(), [](const auto& m) { return m->m_isDestroyed; }), GetMoleculeStates().end());

@@ -1,6 +1,7 @@
 #include "EggManager.h"
 #include "FieldManager.h"
 #include "AssetManager.h"
+#include "WaveManager.h"
 #include "CellManager.h"
 #include "Cell.h"
 #include "Egg.h"
@@ -25,8 +26,12 @@ void EggManager::Update()
 		if (e->m_position.m_y > g_fieldManagerPtr->GetSize().m_y && e->m_velocity.m_y > 0) e->m_velocity.m_y = -e->m_velocity.m_y;
 
 		// –€ŽC’ïR
-		e->m_velocity /= (1.0 + e->m_radius * 0.001);
-		e->m_angularVelocity /= (1.0 + e->m_radius * 0.001);
+		{
+			auto waveVelocity = g_waveManagerPtr->GetWaveVelocity(e->m_position);
+
+			e->m_velocity = waveVelocity + (e->m_velocity - waveVelocity) / (1.0 + e->m_radius * 0.01);
+			e->m_angularVelocity /= (1.0 + e->m_radius * 0.01);
+		}
 	}
 
 	GetEggStates().erase(remove_if(GetEggStates().begin(), GetEggStates().end(), [](const auto& e) { return e->m_isDestroyed; }), GetEggStates().end());

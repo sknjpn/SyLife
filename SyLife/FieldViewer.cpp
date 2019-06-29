@@ -8,6 +8,7 @@
 #include "ReleaseViewer.h"
 #include "AssemblyViewer.h"
 #include "PartPaletteViewer.h"
+#include "WaveManager.h"
 
 void FieldViewer::Init()
 {
@@ -55,6 +56,8 @@ void FieldViewer::Update(bool isMouseOver)
 	g_moleculeManagerPtr->Draw();
 
 	g_cellManagerPtr->Draw();
+
+	g_waveManagerPtr->Draw();
 
 	if (s3d::MouseR.pressed())
 	{

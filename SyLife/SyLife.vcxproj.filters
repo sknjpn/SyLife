@@ -301,6 +301,9 @@
     <ClCompile Include="EggManager_Draw.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="WaveManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -416,6 +419,9 @@
     </ClInclude>
     <ClInclude Include="Synthesizer.h">
       <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveManager.h">
+      <Filter>Source Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
