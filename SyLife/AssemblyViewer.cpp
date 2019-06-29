@@ -59,9 +59,7 @@ void AssemblyViewer::Update(bool isMouseOver)
 		{
 			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position.m_x, p->m_position.m_y));
 
-			p->m_model->GetApproximateRect().draw(s3d::ColorF(s3d::Palette::Orange, 0.2)).drawFrame(1.0, s3d::Palette::Black);
-
-			for (const auto& s : p->m_model->m_shapes)
+			for (const auto& s : p->m_model->GetShapes())
 				s.m_polygon.draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
 		}
 	}
@@ -71,7 +69,7 @@ void AssemblyViewer::Update(bool isMouseOver)
 	{
 		if (isMouseOver)
 		{
-			for (const auto& s : PartPaletteViewer::GetSelectedPart()->m_shapes)
+			for (const auto& s : PartPaletteViewer::GetSelectedPart()->GetShapes())
 				s.m_polygon.drawTransformed(0.0, 1.0, s3d::Cursor::Pos(), s3d::ColorF(s.m_color, 0.5));
 
 			if (s3d::MouseL.up())
@@ -96,7 +94,7 @@ void AssemblyViewer::CalculateDisk()
 	{
 		m_mass = 0.0;
 
-		for (const auto& p : m_model->m_partConfigs) m_mass += p->m_model->m_mass;
+		for (const auto& p : m_model->m_partConfigs) m_mass += p->m_model->GetMass();
 	}
 
 	// center
@@ -104,7 +102,7 @@ void AssemblyViewer::CalculateDisk()
 		// body
 		s3d::Vec2 center(0.0, 0.0);
 
-		for (const auto& p : m_model->m_partConfigs) center += p->m_model->m_mass * (s3d::Vec2(p->m_position.m_x, p->m_position.m_y) + p->m_model->GetApproximateRect().center().rotated(p->m_rotation));
+		for (const auto& p : m_model->m_partConfigs) center += p->m_model->GetMass() * (s3d::Vec2(p->m_position.m_x, p->m_position.m_y) + p->m_model->GetCenter().rotated(p->m_rotation));
 
 		center /= m_mass;
 
