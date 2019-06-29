@@ -2,9 +2,24 @@
 #include "FieldManager.h"
 #include "AssetManager.h"
 #include "Molecule.h"
+#include "Cell.h"
 
 void MoleculeManager::Update()
 {
+	/*
+	s3d::ClearPrint();
+	s3d::Print << NumMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid")) << U"Amino Acid";
+	s3d::Print << NumMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon")) << U"Carbon";
+	s3d::Print << NumMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen")) << U"Oxygen";
+	s3d::Print << NumMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen")) << U"Nitrogen";
+
+	s3d::Print << U"";
+
+	for (const auto& m : g_assetManagerPtr->GetModels<CellModel>().back()->m_material.GetMolecules())
+		s3d::Print << s3d::Unicode::Widen(m.first->GetName()) << m.second;
+		*/
+
+
 	for (const auto& m : GetMoleculeStates())
 	{
 		// Amino Acid‚Ì•ª‰ð

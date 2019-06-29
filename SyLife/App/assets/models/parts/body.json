@@ -6,11 +6,11 @@
         "molecules": [
             {
                 "molecule": "Amino Acid",
-                "size": 2
+                "size": 1
             },
             {
                 "molecule": "Carbon",
-                "size": 5
+                "size": 2
             }
         ]
     },

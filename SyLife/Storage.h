@@ -49,7 +49,7 @@ public:
 	{
 		auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
 
-		if (it == m_molecules.end()) m_molecules.emplace_back(model, 1);
+		if (it == m_molecules.end()) m_molecules.emplace_back(model, size);
 		else (*it).second += size;
 	}
 	void	Pull(const shared_ptr<MoleculeModel>& model, unsigned int size = 1)

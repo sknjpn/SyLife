@@ -28,17 +28,13 @@ void CellManager::Update()
 		}
 
 		// —]è‚ÌMoleculeState‚Ì“ŠŠü
+		for (const auto& m : c->m_storage.GetMolecules())
 		{
-			auto s = c->m_storage + c->m_model->m_material;
-
-			for (const auto& m : s.GetMolecules())
+			if (c->m_model->m_material.Num(m.first) > c->m_storage.Num(m.first) + 1)
 			{
-				if (m.second > 10)
-				{
-					c->ExpireMolecule(m.first);
+				c->ExpireMolecule(m.first);
 
-					break;
-				}
+				break;
 			}
 		}
 
@@ -58,7 +54,8 @@ void CellManager::Update()
 		{
 
 			// MoleculeState‚Ì“f‚«o‚µ
-			auto s = (c->m_storage + c->m_model->m_material);
+			auto s = c->m_storage;
+			s += c->m_model->m_material;
 			for (const auto& m : s.GetMolecules())
 			{
 				for (unsigned int i = 0; i < m.second; i++)

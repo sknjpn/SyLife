@@ -11,7 +11,7 @@
 
 void FieldViewer::Init()
 {
-	m_newModel = make_shared<CellModel>();
+	m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
 
 	m_partPaletteViewer = g_viewerManagerPtr->AddViewer<PartPaletteViewer>(m_newModel);
 	m_assemblyViewer = g_viewerManagerPtr->AddViewer<AssemblyViewer>(m_newModel);
@@ -24,6 +24,7 @@ void FieldViewer::Update(bool isMouseOver)
 	auto t = m_cursorCamera2D.createTransformer();
 
 	auto f = s3d::KeySpace.pressed() ? 5 : 1;
+	f = s3d::KeyS.pressed() ? 100 : f;
 
 	for (int i = 0; i < f; ++i)
 		g_fieldManagerPtr->Update();
