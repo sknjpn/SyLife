@@ -21,18 +21,18 @@ public:
 	PartPaletteViewer()
 		: m_model(make_shared<CellModel>())
 	{
-		m_drawRect = s3d::RectF(s3d::Window::Width() - 200, 50, 150, 500);
+		m_drawRect = s3d::RectF(s3d::Window::Width() - 100, 20, 80, 400);
 	}
 	PartPaletteViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = s3d::RectF(s3d::Window::Width() - 200, 50, 150, 500);
+		m_drawRect = s3d::RectF(s3d::Window::Width() - 100, 20, 80, 400);
 	}
 
 	template <typename T>
 	void	DrawModels(const string& name)
 	{
-		static s3d::Font font13(13);
+		static s3d::Font font13(12, s3d::Typeface::Bold);
 		static s3d::Font font10(10, s3d::Typeface::Bold);
 
 		{

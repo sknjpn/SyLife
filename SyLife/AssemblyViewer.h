@@ -21,7 +21,7 @@ public:
 	AssemblyViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = s3d::RectF(s3d::Window::Width() - 600, 50, 400, 400);
+		m_drawRect = s3d::RectF(s3d::Window::Width() - 400, 20, 300, 300);
 
 		m_camera.setTargetCenter(s3d::Window::BaseSize() / 2 - m_drawRect.size / 2);
 		m_camera.setCenter(s3d::Window::BaseSize() / 2 - m_drawRect.size / 2);
