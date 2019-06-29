@@ -49,7 +49,7 @@ inline shared_ptr<T> AssetManager::GetModel(const string& name) const
 template <typename T>
 inline vector<shared_ptr<T>> AssetManager::GetModels() const
 {
-	vector<shared_ptr<T>>	tModels;
+	vector<shared_ptr<T>> tModels;
 
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)
 		if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
