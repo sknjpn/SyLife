@@ -3,6 +3,7 @@
 #include "Model.h"
 #include "Storage.h"
 #include "ShapeModel.h"
+#include "AssetManager.h"
 
 class CellState;
 class PartConfig;

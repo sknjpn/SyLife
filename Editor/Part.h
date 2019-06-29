@@ -111,7 +111,10 @@ inline void PartModel::SetFromJSON(const ptree& pt)
 
 	// shapes
 	for (auto shape : pt.get_child("shapes"))
-		m_shapes.emplace_back().SetFromJSON(shape.second);
+		m_shapes.emplace_back().Load(shape.second);
+
+	// material
+	m_material.Load(pt.get_child("material"));
 
 	Model::SetFromJSON(pt);
 }
@@ -132,6 +135,15 @@ inline void PartModel::AddToJSON(ptree& pt) const
 		}
 
 		pt.add_child("shapes", shapes);
+	}
+
+	// material
+	{
+		ptree material;
+
+		m_material.Save(material);
+
+		pt.add_child("material", material);
 	}
 
 	Model::AddToJSON(pt);

@@ -27,7 +27,7 @@ public:
 	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
-void	Storage::SetFromJSON(const ptree& pt)
+inline void Storage::SetFromJSON(const ptree& pt)
 {
 	// molecules
 	for (auto m : pt.get_child("molecules"))
@@ -40,7 +40,7 @@ void	Storage::SetFromJSON(const ptree& pt)
 	Model::SetFromJSON(pt);
 }
 
-void	Storage::AddToJSON(ptree& pt) const
+inline void Storage::AddToJSON(ptree& pt) const
 {
 	// molecules
 	{
