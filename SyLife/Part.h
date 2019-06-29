@@ -30,7 +30,7 @@ public:
 
 	s3d::RectF	GetApproximateRect() const;
 	double		GetRectInertia() const;
-	Vector2D	GetCenter() const { return (m_approximateRect.first + m_approximateRect.second) / 2.0; }
+	Vector2D	GetCenter() const { return Vector2D(GetApproximateRect().center().x, GetApproximateRect().center().y); }
 
 	// JSON
 	void	SetFromJSON(const ptree& pt);
