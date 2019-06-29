@@ -11,6 +11,19 @@ void CellModel::SetFromJSON(const ptree& pt)
 	// mass
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->m_model->m_mass; });
 
+	// center
+	Vector2D center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vector2D::Zero(), [](Vector2D acc, const auto& p) { return acc + p->m_model->m_mass * (p->m_position + ((p->m_model->m_approximateRect.first + p->m_model->m_approximateRect.second) / 2.0).rotated(p->m_rotation)); }) / m_mass;
+
+	// center‚ğŒ´“_‚Éİ’è
+	for (const auto& p : m_partConfigs) p->m_position -= center;
+
+	// inertia
+	{
+		m_inertia = 0.0;
+
+		for (const auto& p : m_partConfigs) m_inertia += p->GetInertia();
+	}
+
 	CalculateDisk();
 
 	Model::SetFromJSON(pt);
@@ -19,25 +32,6 @@ void CellModel::SetFromJSON(const ptree& pt)
 
 void CellModel::CalculateDisk()
 {
-	// center
-	{
-		// body
-		Vector2D center(0.0, 0.0);
-
-		for (const auto& p : m_partConfigs) center += p->m_model->m_mass * (p->m_position + ((p->m_model->m_approximateRect.first + p->m_model->m_approximateRect.second) / 2.0).rotated(p->m_rotation));
-
-		center /= m_mass;
-
-		// ˆÊ’u’²®
-		for (const auto& p : m_partConfigs) p->m_position -= center;
-	}
-
-	// inertia
-	{
-		m_inertia = 0.0;
-
-		for (const auto& p : m_partConfigs) m_inertia += p->GetInertia();
-	}
 
 	// radius
 	m_radius = sqrt(2 * m_inertia / m_mass);
