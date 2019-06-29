@@ -66,8 +66,8 @@ void CellManager::Update()
 
 					// “f‚«o‚³‚ê‚½MoleculeState
 					const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
-					ms->m_position = c->m_position + v * (c->m_radius + m.first->GetRadius());
-					ms->m_velocity = v * 2.0;
+					ms->m_position = c->m_position + v * (c->m_radius + m.first->GetRadius()) * Random(1.0);
+					ms->m_velocity = v * 0.1;
 				}
 			}
 

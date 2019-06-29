@@ -5,10 +5,10 @@
         "molecules": [
             {
                 "molecule": "Oxygen",
-                "size": 1
+                "size": 2
             },
             {
-                "molecule": "Amino Acid",
+                "molecule": "Carbon",
                 "size": 1
             }
         ]

@@ -7,7 +7,7 @@
 
 void MoleculeManager::Update()
 {
-	/*
+	
 	s3d::ClearPrint();
 	s3d::Print << NumMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid")) << U"Amino Acid";
 	s3d::Print << NumMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon")) << U"Carbon";
@@ -18,13 +18,12 @@ void MoleculeManager::Update()
 
 	for (const auto& m : g_assetManagerPtr->GetModels<CellModel>().back()->m_material.GetMolecules())
 		s3d::Print << s3d::Unicode::Widen(m.first->GetName()) << m.second;
-		*/
 
 
 	for (const auto& m : GetMoleculeStates())
 	{
 		// Amino Acid‚Ì•ª‰ð
-		if (m->m_model == g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid") && rand() % 100 == 0)
+		if (m->m_model == g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid") && rand() % 10 == 0)
 		{
 			AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));
 			AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), m->m_position + Vector2D(20.0, 0.0).rotated(rand() / 360.0));

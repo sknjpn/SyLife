@@ -9,6 +9,8 @@
 #include "AssemblyViewer.h"
 #include "PartPaletteViewer.h"
 #include "WaveManager.h"
+#include "Egg.h"
+#include "Random.h"
 
 void FieldViewer::Init()
 {
@@ -65,8 +67,30 @@ void FieldViewer::Update(bool isMouseOver)
 		circle.draw(s3d::ColorF(s3d::Palette::Red, 0.5));
 
 		for (const auto& c : g_cellManagerPtr->GetCellStates())
-		{
 			if (s3d::Circle(c->m_position.m_x, c->m_position.m_y, c->m_radius).intersects(circle)) c->m_deathTimer = 0.0;
+
+		for (const auto& e : g_eggManagerPtr->GetEggStates())
+		{
+			if (s3d::Circle(e->m_position.m_x, e->m_position.m_y, e->m_radius).intersects(circle))
+			{
+				e->m_isDestroyed = true;
+
+					// MoleculeState‚Ì“f‚«o‚µ
+					auto s = e->GetCellModel()->m_material;
+					for (const auto& m : s.GetMolecules())
+					{
+						for (unsigned int i = 0; i < m.second; i++)
+						{
+							// “f‚«o‚·•ûŒü
+							auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
+
+							// “f‚«o‚³‚ê‚½MoleculeState
+							const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
+							ms->m_position = e->m_position + v * (e->m_radius + m.first->GetRadius()) * Random(1.0);
+							ms->m_velocity = v * 0.1;
+						}
+					}
+			}
 		}
 	}
 

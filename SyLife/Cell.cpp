@@ -70,7 +70,7 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 	// “f‚«o‚³‚ê‚½MoleculeState
 	const auto& t = g_moleculeManagerPtr->AddMoleculeState(model);
 	t->m_position = m_position + v * (m_radius + model->GetRadius());
-	t->m_velocity = v * 2.0;
+	t->m_velocity = v * 0.5;
 
 	// Storage‚©‚ço‚·
 	m_storage.Pull(model);

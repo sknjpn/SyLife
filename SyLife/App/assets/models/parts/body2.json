@@ -1,16 +1,16 @@
 {
     "type": "BodyModel",
-    "mass": "150",
+    "mass": "120",
     "material": {
         "name":"",
         "molecules": [
             {
                 "molecule": "Amino Acid",
-                "size": 2
+                "size": 1
             },
             {
                 "molecule": "Carbon",
-                "size": 4
+                "size": 2
             },
             {
                 "molecule": "Oxygen",
