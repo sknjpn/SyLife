@@ -6,12 +6,8 @@
         "name":"",
         "molecules": [
             {
-                "molecule": "Amino Acid",
-                "size": 1
-            },
-            {
                 "molecule": "Oxygen",
-                "size": 3
+                "size": 2
             }
         ]
     },

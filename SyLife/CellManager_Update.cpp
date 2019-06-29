@@ -25,13 +25,17 @@ void CellManager::Update()
 		}
 
 		// —]è‚ÌMoleculeState‚Ì“ŠŠü
-		for (const auto& m : (c->m_storage + c->m_model->m_material).GetMolecules())
 		{
-			if (m.second > 10)
-			{
-				c->ExpireMolecule(m.first);
+			auto s = c->m_storage + c->m_model->m_material;
 
-				break;
+			for (const auto& m : s.GetMolecules())
+			{
+				if (m.second > 10)
+				{
+					c->ExpireMolecule(m.first);
+
+					break;
+				}
 			}
 		}
 
@@ -51,8 +55,10 @@ void CellManager::Update()
 		c->m_deathTimer -= g_fieldManagerPtr->GetDeltaTime();
 		if (c->m_deathTimer <= 0.0)
 		{
+
 			// MoleculeState‚Ì“f‚«o‚µ
-			for (const auto& m : (c->m_storage + c->m_model->m_material).GetMolecules())
+			auto s = (c->m_storage + c->m_model->m_material);
+			for (const auto& m : s.GetMolecules())
 			{
 				for (unsigned int i = 0; i < m.second; i++)
 				{

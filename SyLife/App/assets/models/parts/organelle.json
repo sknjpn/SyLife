@@ -23,11 +23,11 @@
             },
             {
                 "molecule": "Nitrogen",
-                "size": 2
+                "size": 1
             },
             {
                 "molecule": "Oxygen",
-                "size": 2
+                "size": 1
             }
         ]
     },
