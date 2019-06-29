@@ -1,16 +1,19 @@
 {
     "type": "BodyModel",
     "mass": "100",
-    "material": [
-        {
-            "molecule": "Amino Acid",
-            "size": 2
-        },
-        {
-            "molecule": "Carbon",
-            "size": 5
-        }
-    ],
+    "material": {
+        "name":"",
+        "molecules": [
+            {
+                "molecule": "Amino Acid",
+                "size": 2
+            },
+            {
+                "molecule": "Carbon",
+                "size": 5
+            }
+        ]
+    },
     "shapes": [
         {
             "color": {

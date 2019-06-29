@@ -42,10 +42,10 @@ inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<
 inline void SynthesizerModel::SetFromJSON(const ptree& pt)
 {
 	// import
-	m_import.Load(pt.get_child("import"));
+	//m_import.Load(pt.get_child("import"));
 
 	// export
-	m_export = g_assetManagerPtr->GetModel<MoleculeModel>(pt.get<string>("export"));
+	//m_export = g_assetManagerPtr->GetModel<MoleculeModel>(pt.get<string>("export"));
 
 	ModuleModel::SetFromJSON(pt);
 }

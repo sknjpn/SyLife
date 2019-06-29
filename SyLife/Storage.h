@@ -87,7 +87,9 @@ inline void Storage::SetFromJSON(const ptree& pt)
 	// molecules
 	for (auto m : pt.get_child("molecules"))
 	{
-		const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(m.second.get<string>("model"));
+		auto name = m.second.get<string>("molecule");
+
+		const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(name);
 
 		m_molecules.emplace_back(model, m.second.get<int>("size"));
 	}

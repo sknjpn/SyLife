@@ -1,6 +1,19 @@
 {
     "type": "SynthesizerModel",
     "mass": "10",
+    "material": {
+        "name":"",
+        "molecules": [
+            {
+                "molecule": "Amino Acid",
+                "size": 1
+            },
+            {
+                "molecule": "Nitrogen",
+                "size": 2
+            }
+        ]
+    },
     "import": [
         {
             "molecule": "Carbon",
@@ -16,16 +29,6 @@
         }
     ],
     "export": "Amino Acid",
-    "material": [
-        {
-            "molecule": "Amino Acid",
-            "size": 1
-        },
-        {
-            "molecule": "Nitrogen",
-            "size": 2
-        }
-    ],
     "shapes": [
         {
             "color": {
