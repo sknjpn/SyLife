@@ -8,6 +8,9 @@ void CellModel::SetFromJSON(const ptree& pt)
 	// parts
 	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->Load(part.second);
 
+	// mass
+	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->m_model->m_mass; });
+
 	CalculateDisk();
 
 	Model::SetFromJSON(pt);
@@ -16,13 +19,6 @@ void CellModel::SetFromJSON(const ptree& pt)
 
 void CellModel::CalculateDisk()
 {
-	// mass
-	{
-		m_mass = 0.0;
-
-		for (const auto& p : m_partConfigs) m_mass += p->m_model->m_mass;
-	}
-
 	// center
 	{
 		// body
@@ -51,7 +47,7 @@ void CellModel::CalculateMaterial()
 {
 	m_material.Clear();
 
-	for (const auto& pc : m_partConfigs) 
+	for (const auto& pc : m_partConfigs)
 		m_material.AddStorage(pc->m_model->m_material);
 }
 
