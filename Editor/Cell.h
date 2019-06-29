@@ -14,7 +14,7 @@ public:
 	Storage	m_material;
 	vector<shared_ptr<PartConfig>>	m_partConfigs;
 
-	// ‹ßŽ—‰~
+	// Rigidbody
 	double	m_mass;
 	double	m_radius;
 	double	m_inertia;
