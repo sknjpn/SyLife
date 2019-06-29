@@ -90,7 +90,7 @@ void FieldViewer::Update(bool isMouseOver)
 			c->m_velocity = Vector2D::Zero();
 			c->Init();
 
-			m_newModel = make_shared<CellModel>();
+			m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
 			m_partPaletteViewer->m_model = m_newModel;
 			m_assemblyViewer->m_model = m_newModel;
 			m_releaseViewer->m_model = m_newModel;
