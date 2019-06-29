@@ -8,7 +8,6 @@ class Model;
 
 class AssetManager
 {
-public:
 	vector<shared_ptr<Model>>	m_models;
 
 public:
