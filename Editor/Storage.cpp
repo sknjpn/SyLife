@@ -1,6 +1,5 @@
 #include "Storage.h"
 #include "AssetManager.h"
-#include "MoleculeManager.h"
 
 void Storage::AddMoleculeState(const shared_ptr<MoleculeModel>& model)
 {
