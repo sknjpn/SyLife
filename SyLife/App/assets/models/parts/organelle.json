@@ -1,5 +1,5 @@
 {
-    "type": "ModuleModel",
+    "type": "SynthesizerModel",
     "mass": "10",
     "material": [
         {

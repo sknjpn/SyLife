@@ -117,6 +117,9 @@ inline void PartModel::SetFromJSON(const ptree& pt)
 	for (auto shape : pt.get_child("shapes"))
 		m_shapes.emplace_back().SetFromJSON(shape.second);
 
+	// material
+	m_material.Load(pt.get_child("material"));
+
 	Model::SetFromJSON(pt);
 }
 

@@ -29,7 +29,7 @@ public:
 	{
 		auto model = dynamic_pointer_cast<SynthesizerModel>(m_config->m_model);
 		
-		if (cell.m_storage.HasMolecule(model->GetMaterial()))
+		if (cell.m_storage > model->GetMaterial())
 		{
 			cell.m_storage.PullMolecule(model->GetMaterial());
 			cell.m_storage.AddStorage(model->GetProduct());
