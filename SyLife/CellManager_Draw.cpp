@@ -26,16 +26,5 @@ void CellManager::Draw()
 				.draw(s3d::ColorF(s3d::Palette::Lightpink, a))
 				.drawFrame(1.0, s3d::Palette::Gray);
 		}
-
-		// “à•”•ªŽq
-		if (false)
-		{
-			string text;
-
-			for (const auto& m : c->m_storage.m_molecules) 
-				text += m.first->GetName() + to_string(m.second) + "\n";
-
-			font(s3d::Unicode::Widen(text)).drawAt(s3d::Vec2::Zero());
-		}
 	}
 }
