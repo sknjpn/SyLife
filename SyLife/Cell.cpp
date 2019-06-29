@@ -23,17 +23,10 @@ void CellModel::SetFromJSON(const ptree& pt)
 	// radius
 	m_radius = sqrt(2 * m_inertia / m_mass);
 
-	CalculateDisk();
+	// material
+	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) {acc.AddStorage(pc->m_model->m_material) return acc; });
 
 	Model::SetFromJSON(pt);
-}
-
-void CellModel::CalculateMaterial()
-{
-	m_material.Clear();
-
-	for (const auto& pc : m_partConfigs)
-		m_material.AddStorage(pc->m_model->m_material);
 }
 
 void CellState::Update()

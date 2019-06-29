@@ -27,9 +27,6 @@ public:
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-
-	void	CalculateDisk();
-	void	CalculateMaterial();
 };
 
 class CellState
