@@ -21,6 +21,15 @@ void AssetManager::AddModelsFromDirectory(const string& directory)
 		if (!fs::is_directory(*it)) AddModelFromFile((*it).path().string());
 }
 
+void AssetManager::AddModelFromFile(const string& filepath)
+{
+	ptree pt;
+
+	read_json(filepath, pt);
+
+	MakeModel(pt.get<string>("type"))->Load(pt);
+}
+
 shared_ptr<Model> AssetManager::GetModel(const string& name) const
 {
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)

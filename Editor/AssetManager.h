@@ -27,12 +27,6 @@ public:
 
 	void	AddModelFromFile(const string& filepath);
 
-	template <typename T>
-	shared_ptr<T>	AddModel(const string& filepath) { ptree pt; read_json(filepath, pt); AddModel<T>(pt); }
-
-	template <typename T>
-	shared_ptr<T>	AddModel(ptree pt) { return AddModel<T>()->Load(pt); }
-
 	bool	HasModel(const string& name) const { return GetModel(name) != nullptr; }
 
 	template <typename T>
