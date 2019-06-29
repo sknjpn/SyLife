@@ -24,6 +24,18 @@ public:
 	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
+inline void ShapeModel::SetFromJSON(const ptree& pt)
+{
+	// color
+	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
+
+	// verticles
+	for (auto v : pt.get_child("verticles"))
+		m_verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
+
+	Model::SetFromJSON(pt);
+}
+
 inline void ShapeModel::AddToJSON(ptree& pt) const
 {
 	// color
@@ -60,16 +72,4 @@ inline void ShapeModel::AddToJSON(ptree& pt) const
 
 	// type
 	pt.put("type", "ShapeModel");
-}
-
-inline void ShapeModel::SetFromJSON(const ptree& pt)
-{
-	// color
-	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
-
-	// verticles
-	for (auto v : pt.get_child("verticles"))
-		m_verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
-
-	Model::SetFromJSON(pt);
 }

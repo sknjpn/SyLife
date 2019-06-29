@@ -193,9 +193,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ShapeModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
