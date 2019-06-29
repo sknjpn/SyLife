@@ -1,44 +1,20 @@
 #include "Storage.h"
 #include "AssetManager.h"
 
-void Storage::AddMoleculeState(const shared_ptr<MoleculeModel>& model)
+void Storage::AddMoleculeState(const shared_ptr<MoleculeModel>& model, unsigned int size)
 {
-	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
-	{
-		if ((*it).first == model)
-		{
-			++(*it).second;
+	auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
 
-			return;
-		}
-	}
-
-	m_molecules.emplace_back(model, 1);
-}
-
-void Storage::AddMoleculeState(const shared_ptr<MoleculeModel>& model, int size)
-{
-	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
-	{
-		if ((*it).first == model)
-		{
-			(*it).second += size;
-
-			return;
-		}
-	}
-
-	m_molecules.emplace_back(model, size);
+	if (it == m_molecules.end()) m_molecules.emplace_back(model, 1);
+	else (*it).second += size;
 }
 
 int Storage::NumMolecule(const shared_ptr<MoleculeModel>& model) const
 {
-	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
-	{
-		if ((*it).first == model) return (*it).second;
-	}
+	auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
 
-	return 0;
+	if (it == m_molecules.end()) return 0;
+	else return (*it).second;
 }
 
 int Storage::NumMolecule(const string& name) const
@@ -46,36 +22,20 @@ int Storage::NumMolecule(const string& name) const
 	return NumMolecule(g_assetManagerPtr->GetModel<MoleculeModel>(name));
 }
 
-void Storage::PullMolecule(const shared_ptr<MoleculeModel>& model)
+void Storage::PullMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size)
 {
-	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
+	auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
+
+	if (it == m_molecules.end()) throw new exception;
+	else
 	{
-		if ((*it).first == model)
-		{
-			if (--(*it).second <= 0) m_molecules.erase(it);
-
-			return;
-		}
-	}
-}
-
-void Storage::PullMolecule(const shared_ptr<MoleculeModel>& model, int size)
-{
-	for (auto it = m_molecules.begin(); it != m_molecules.end(); ++it)
-	{
-		if ((*it).first == model)
-		{
-			if (((*it).second -= size) <= 0) m_molecules.erase(it);
-
-			return;
-		}
+		if (((*it).second -= size) < 0) throw new exception;
+		else if ((*it).second == 0) m_molecules.erase(it);
 	}
 }
 
 void Storage::AddStorage(const Storage& storage)
 {
 	for (const auto& m : storage.m_molecules)
-	{
 		AddMoleculeState(m.first, m.second);
-	}
 }

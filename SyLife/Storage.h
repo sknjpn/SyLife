@@ -15,4 +15,3 @@ public:
 	void	Clear() { m_molecules.clear(); }
 	void	AddStorage(const Storage& storage);
 };
-
