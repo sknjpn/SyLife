@@ -47,7 +47,7 @@ public:
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(m_drawPos), true);
-			auto f = font10(s3d::Unicode::Widen((*it)->m_name));
+			auto f = font10(s3d::Unicode::Widen((*it)->GetName()));
 
 			f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 			f.draw();

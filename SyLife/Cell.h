@@ -26,7 +26,7 @@ public:
 	shared_ptr<T>			GetPart(const string& name) const
 	{
 		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
-			if ((*it)->m_name == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
+			if ((*it)->GetName() == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
 
 		return nullptr;
 	}

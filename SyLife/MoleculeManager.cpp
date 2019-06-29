@@ -24,8 +24,8 @@ const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_
 	const auto& m = GetMoleculeStates().emplace_back(make_shared<MoleculeState>());
 
 	m->m_model = model;
-	m->m_radius = model->m_radius;
-	m->m_mass = model->m_mass;
+	m->m_radius = model->GetRadius();
+	m->m_mass = model->GetMass();
 
 	return m;
 }

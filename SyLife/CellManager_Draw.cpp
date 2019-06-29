@@ -42,7 +42,7 @@ void CellManager::Draw()
 			string text;
 
 			for (const auto& m : c->m_storage.m_molecules) 
-				text += m.first->m_name + to_string(m.second) + "\n";
+				text += m.first->GetName() + to_string(m.second) + "\n";
 
 			font(s3d::Unicode::Widen(text)).drawAt(s3d::Vec2::Zero());
 		}
