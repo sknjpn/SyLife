@@ -8,6 +8,7 @@ void CellManager::Draw()
 	for (const auto& c : g_cellManagerPtr->GetCellStates())
 	{
 		auto t1 = s3d::Transformer2D(s3d::Mat3x2::Rotate(c->m_rotation).translated(s3d::Vec2(c->m_position.m_x, c->m_position.m_y)));
+		auto t2 = s3d::Transformer2D(s3d::Mat3x2::Scale(min(1.0, c->m_startTimer + 0.5)));
 
 		// parts
 		for (const auto& p : c->m_partStates)

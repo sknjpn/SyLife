@@ -25,6 +25,8 @@ public:
 	template <typename T>
 	vector<shared_ptr<T>>	GetParts() const;
 
+	void	Draw(double a = 0.5);
+
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	void	UpdateProperties();
@@ -34,6 +36,7 @@ class CellState
 	: public Rigidbody
 {
 public:
+	double	m_startTimer;
 	double	m_deathTimer;
 	Storage	m_storage;
 
@@ -48,7 +51,8 @@ public:
 public:
 	CellState(const shared_ptr<CellModel>& model)
 		: m_model(model)
-		, m_deathTimer(10.0)
+		, m_startTimer(0.0)
+		, m_deathTimer(25.0)
 	{
 		m_mass = m_model->m_mass;
 		m_radius = m_model->m_radius;

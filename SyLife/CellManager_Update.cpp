@@ -16,6 +16,9 @@ void CellManager::Update()
 	{
 		if (c->m_isDestroyed) continue;
 
+		c->m_deathTimer -= g_fieldManagerPtr->GetDeltaTime();
+		c->m_startTimer += g_fieldManagerPtr->GetDeltaTime();
+
 		// parts
 		for (const auto& p : c->m_partStates) p->Update(*c);
 
@@ -45,11 +48,11 @@ void CellManager::Update()
 
 			const auto& e = g_eggManagerPtr->AddEggState(c->m_model);
 			e->m_position = c->m_position;
+			e->m_rotation = Random(boost::math::constants::pi<double>() * 2.0);
 			e->m_velocity = Vector2D(1.0, 0.0).rotated(rand() / 360.0);
 		}
 
 		// Ž€–Sˆ—
-		c->m_deathTimer -= g_fieldManagerPtr->GetDeltaTime();
 		if (c->m_deathTimer <= 0.0)
 		{
 

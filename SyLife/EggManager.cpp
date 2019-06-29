@@ -19,7 +19,7 @@ const shared_ptr<EggState>& EggManager::AddEggState(const shared_ptr<CellModel>&
 {
 	const auto& m = GetEggStates().emplace_back(make_shared<EggState>());
 
-	m->m_cellModel = cellModel;
+	m->SetCellModel(cellModel);
 	m->m_mass = 1.0;
 
 	return m;

@@ -3,6 +3,17 @@
 #include "MoleculeManager.h"
 #include <numeric>
 
+void CellModel::Draw(double a)
+{
+	// parts
+	for (const auto& pc : m_partConfigs)
+	{
+		auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(pc->m_rotation).translated(pc->m_position.m_x, pc->m_position.m_y));
+
+		pc->m_model->Draw(a);
+	}
+}
+
 void CellModel::SetFromJSON(const ptree& pt)
 {
 	// parts
