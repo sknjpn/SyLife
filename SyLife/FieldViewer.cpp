@@ -81,9 +81,6 @@ void FieldViewer::Update(bool isMouseOver)
 		if (s3d::MouseL.up())
 		{
 			const auto& c = g_cellManagerPtr->AddCellState(m_releaseViewer->m_model);
-			c->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"), 5);
-			c->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), 5);
-			c->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), 5);
 			c->m_position.m_x = s3d::Cursor::PosF().x;
 			c->m_position.m_y = s3d::Cursor::PosF().y;
 			c->m_velocity = Vector2D::Zero();
