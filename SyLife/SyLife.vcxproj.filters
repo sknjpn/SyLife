@@ -423,5 +423,8 @@
     <ClInclude Include="WaveManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Needle.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -313,6 +313,7 @@
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="MoleculeManager.h" />
     <ClInclude Include="nanoflann.hpp" />
+    <ClInclude Include="Needle.h" />
     <ClInclude Include="Part.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartPaletteViewer.h" />

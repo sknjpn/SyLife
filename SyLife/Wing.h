@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Equipment.h"
-#include "Wing.h"
 #include "Cell.h"
 
 class WingModel

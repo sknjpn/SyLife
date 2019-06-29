@@ -10,6 +10,7 @@
 #include "Chloroplast.h"
 #include "Synthesizer.h"
 #include "Wing.h"
+#include "Needle.h"
 
 shared_ptr<Model> AssetManager::MakeModel(const string& type)
 {
@@ -25,6 +26,7 @@ shared_ptr<Model> AssetManager::MakeModel(const string& type)
 	if (type == "ChloroplastModel")	return MakeModel<ChloroplastModel>();
 	if (type == "SynthesizerModel")	return MakeModel<SynthesizerModel>();
 	if (type == "WingModel")		return MakeModel<WingModel>();
+	if (type == "NeedleModel")		return MakeModel<NeedleModel>();
 
 	return nullptr;
 }
