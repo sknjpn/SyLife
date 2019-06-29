@@ -214,9 +214,6 @@
     <ClCompile Include="AssetManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager_AddModel.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files\Cell</Filter>
     </ClCompile>
@@ -246,6 +243,9 @@
     </ClCompile>
     <ClCompile Include="AddModelViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager_MakeModel.cpp">
+      <Filter>Source Files\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

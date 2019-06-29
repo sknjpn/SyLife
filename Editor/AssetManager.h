@@ -17,20 +17,24 @@ public:
 		m_models.reserve(1024);
 	}
 
+	template <typename T>
+	shared_ptr<Model>	MakeModel() { return m_models.emplace_back(make_shared<T>); }
+	shared_ptr<Model>	MakeModel(const string& type);
+
 	void	Init();
 
 	void	AddModels(const string& directory);
 
 	template <typename T>
-	void	AddModel() { m_models.emplace_back(make_shared<T>()); }
+	shared_ptr<T>	AddModel() { m_models.emplace_back(make_shared<T>()); }
 
-	void	AddModel(const string& filepath);
-
-	template <typename T>
-	void	AddModel(const string& filepath) { ptree pt; read_json(filepath, pt); AddModel<T>(pt); }
+	shared_ptr<T>	AddModel(const string& filepath);
 
 	template <typename T>
-	void	AddModel(ptree pt) { return AddModel<T>()->Load(pt); }
+	shared_ptr<T>	AddModel(const string& filepath) { ptree pt; read_json(filepath, pt); AddModel<T>(pt); }
+
+	template <typename T>
+	shared_ptr<T>	AddModel(ptree pt) { return AddModel<T>()->Load(pt); }
 
 	bool	HasModel(const string& name) const { return GetModel(name) != nullptr; }
 
