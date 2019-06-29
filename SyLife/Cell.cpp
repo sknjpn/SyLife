@@ -41,8 +41,7 @@ void CellState::Draw()
 
 void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 {
-	m_storage.AddMoleculeState(molecule->m_model);
-	m_molecules.AddMoleculeState(molecule->m_model);
+	m_storage.Add(molecule->m_model);
 
 	molecule->m_isDestroyed = true;
 }
@@ -58,10 +57,7 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model)
 	t->m_velocity = v * 2.0;
 
 	// Storageから出す
-	m_storage.PullMolecule(model);
-
-	// MoleculeStateのカウントを減らす
-	m_molecules.PullMolecule(model);
+	m_storage.Pull(model);
 }
 
 void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, int size)
