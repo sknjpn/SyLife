@@ -63,7 +63,7 @@ public:
 			else if ((*it).second == 0) m_molecules.erase(it);
 		}
 	}
-	int		Num(const shared_ptr<MoleculeModel>& model) const
+	unsigned int	Num(const shared_ptr<MoleculeModel>& model) const
 	{
 		auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
 
