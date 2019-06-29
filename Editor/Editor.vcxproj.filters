@@ -247,6 +247,9 @@
     <ClCompile Include="AssetManager_MakeModel.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model.h">
@@ -317,6 +320,9 @@
     </ClInclude>
     <ClInclude Include="AddModelViewer.h">
       <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

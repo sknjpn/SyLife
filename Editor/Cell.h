@@ -23,24 +23,7 @@ public:
 	void	MakeViewers() override;
 
 	template <typename T>
-	shared_ptr<T>			GetPart(const string& name) const
-	{
-		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
-			if ((*it)->m_name == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
-
-		return nullptr;
-	}
-
-	template <typename T>
-	vector<shared_ptr<T>>	GetParts() const
-	{
-		vector<shared_ptr<T>>	tModels;
-
-		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
-			if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
-
-		return tModels;
-	}
+	vector<shared_ptr<T>>	GetParts() const;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
@@ -67,3 +50,13 @@ public:
 	void	Update() override;
 };
 
+template <typename T>
+inline vector<shared_ptr<T>> CellModel::GetParts() const
+{
+	vector<shared_ptr<T>> tModels;
+
+	for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
+		if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
+
+	return tModels;
+}
