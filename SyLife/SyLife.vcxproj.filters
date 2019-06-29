@@ -268,9 +268,6 @@
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files\Cell</Filter>
     </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files\Molecule</Filter>
-    </ClCompile>
     <ClCompile Include="Part.cpp">
       <Filter>Source Files\Part</Filter>
     </ClCompile>

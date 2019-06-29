@@ -12,7 +12,8 @@ class MoleculeModel;
 class PartModel
 	: public Model
 {
-public:
+	friend class PartViewer;
+
 	double	m_mass;
 	Storage	m_material;
 	vector<ShapeModel>	m_shapes;

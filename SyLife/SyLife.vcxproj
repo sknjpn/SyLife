@@ -268,7 +268,6 @@
     <ClCompile Include="Indexer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
     <ClCompile Include="MoleculeManager_Draw.cpp" />
     <ClCompile Include="MoleculeManager_Update.cpp" />
