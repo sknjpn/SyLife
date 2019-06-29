@@ -260,6 +260,7 @@
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="EggManager.cpp" />
+    <ClCompile Include="EggManager_Draw.cpp" />
     <ClCompile Include="EggManager_Update.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldManager_LoadGenerationSetting.cpp" />
