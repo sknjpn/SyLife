@@ -2,6 +2,7 @@
 
 #include "Model.h"
 #include "Viewer.h"
+#include "Storage.h"
 #include "ShapeModel.h"
 
 #include "ViewerManager.h"
@@ -14,7 +15,8 @@ class PartModel
 	: public Model
 {
 public:
-	double		m_mass;
+	double	m_mass;
+	Storage	m_material;
 	vector<ShapeModel>	m_shapes;
 
 public:
