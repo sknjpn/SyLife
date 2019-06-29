@@ -24,7 +24,7 @@ public:
 			{
 				auto m  = g_assetManagerPtr->MakeModel<T>();
 
-				m->m_name = name;
+				m->SetName(name);
 
 				return;
 			}

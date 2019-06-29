@@ -35,7 +35,7 @@ class MoleculeViewer
 public:
 	MoleculeViewer(const shared_ptr<MoleculeModel>& model)
 		: m_model(model)
-		, m_textEditState_name(s3d::Unicode::Widen(model->m_name))
+		, m_textEditState_name(s3d::Unicode::Widen(model->GetName()))
 		, m_textEditState_mass(s3d::ToString(model->m_mass))
 	{
 		m_drawRect = s3d::RectF(0, 0, 600, 600);
@@ -89,7 +89,7 @@ inline void MoleculeViewer::Update()
 	// name
 	{
 		s3d::SimpleGUI::TextBox(m_textEditState_name, s3d::Vec2(10, 10), 240);
-		m_model->m_name = s3d::Unicode::Narrow(m_textEditState_name.text);
+		m_model->SetName(s3d::Unicode::Narrow(m_textEditState_name.text));
 	}
 
 	// mass

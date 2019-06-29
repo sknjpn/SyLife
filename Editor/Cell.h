@@ -52,7 +52,7 @@ class CellViewer
 public:
 	CellViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
-		, m_textEditState_name(s3d::Unicode::Widen(model->m_name))\
+		, m_textEditState_name(s3d::Unicode::Widen(model->GetName()))
 	{
 		m_drawRect = s3d::RectF(0, 450, 600, 150);
 	}

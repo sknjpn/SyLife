@@ -33,7 +33,7 @@ void AssetManager::AddModelFromFile(const string& filepath)
 shared_ptr<Model> AssetManager::GetModel(const string& name) const
 {
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)
-		if ((*it)->m_name == name && dynamic_pointer_cast<Model>(*it) != nullptr) return dynamic_pointer_cast<Model>(*it);
+		if ((*it)->GetName() == name && dynamic_pointer_cast<Model>(*it) != nullptr) return dynamic_pointer_cast<Model>(*it);
 
 	return nullptr;
 }

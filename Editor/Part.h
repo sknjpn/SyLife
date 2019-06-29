@@ -86,7 +86,7 @@ inline void PartModel::SetFromJSON(const ptree& pt)
 inline void PartConfig::AddToJSON(ptree& pt) const
 {
 	// model
-	pt.put("model", m_model->m_name);
+	pt.put("model", m_model->GetName());
 
 	// position
 	{
