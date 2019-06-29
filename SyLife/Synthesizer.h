@@ -27,7 +27,13 @@ public:
 	void	Draw(const CellState& cell) const { m_config->m_model->Draw(); }
 	void	Update(CellState& cell) override 
 	{
-
+		auto model = dynamic_pointer_cast<SynthesizerModel>(m_config->m_model);
+		
+		if (cell.m_storage.HasMolecule(model->GetMaterial()))
+		{
+			cell.m_storage.PullMolecule(model->GetMaterial());
+			cell.m_storage.AddStorage(model->GetProduct());
+		}
 	}
 };
 

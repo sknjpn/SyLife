@@ -25,8 +25,6 @@ public:
 	// JSON
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 inline void Storage::SetFromJSON(const ptree& pt)
@@ -40,31 +38,4 @@ inline void Storage::SetFromJSON(const ptree& pt)
 	}
 
 	Model::SetFromJSON(pt);
-}
-
-inline void Storage::AddToJSON(ptree& pt) const
-{
-	// molecules
-	{
-		ptree molecules;
-
-		{
-			ptree molecule;
-
-			for (const auto& m : m_molecules)
-			{
-				molecule.put("model", m.first->GetName());
-				molecule.put("size", m.second);
-
-				molecules.push_back(std::make_pair("", molecule));
-			}
-		}
-
-		pt.add_child("molecules", molecules);
-	}
-
-	Model::AddToJSON(pt);
-
-	// type
-	pt.put("type", "Storage");
 }
