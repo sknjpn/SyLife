@@ -6,12 +6,12 @@ unique_ptr<AssetManager>	g_assetManagerPtr;
 
 void AssetManager::Init()
 {
-	AddModels("assets/models/molecules");
-	AddModels("assets/models/parts");
-	AddModels("assets/models/cells");
+	AddModelsFromDirectory("assets/models/molecules");
+	AddModelsFromDirectory("assets/models/parts");
+	AddModelsFromDirectory("assets/models/cells");
 }
 
-void AssetManager::AddModels(const string& directory)
+void AssetManager::AddModelsFromDirectory(const string& directory)
 {
 	namespace fs = boost::filesystem;
 
