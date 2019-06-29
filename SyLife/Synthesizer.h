@@ -41,5 +41,11 @@ inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<
 
 inline void SynthesizerModel::SetFromJSON(const ptree& pt)
 {
+	// material
+	m_material.Load(pt.get_child("material"));
+
+	// product
+	m_material.Load(pt.get_child("product"));
+	
 	ModuleModel::SetFromJSON(pt);
 }
