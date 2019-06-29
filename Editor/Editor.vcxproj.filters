@@ -66,9 +66,6 @@
     <Filter Include="Source Files\Part">
       <UniqueIdentifier>{3fa107c4-8e39-4eb4-97f4-249b133c2f8f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Part\List">
-      <UniqueIdentifier>{a94c774c-4805-4066-a89e-8f5668df189b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Viewer">
       <UniqueIdentifier>{a22e2147-8cef-4b23-bded-a3e2d3dd7da5}</UniqueIdentifier>
     </Filter>
@@ -279,24 +276,6 @@
     <ClInclude Include="ViewerManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Chloroplast.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Eye.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Wing.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files\Part\List</Filter>
-    </ClInclude>
     <ClInclude Include="Part.h">
       <Filter>Source Files\Part</Filter>
     </ClInclude>
@@ -317,6 +296,24 @@
     </ClInclude>
     <ClInclude Include="Storage.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Chloroplast.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Eye.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Wing.h">
+      <Filter>Source Files\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
