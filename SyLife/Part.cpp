@@ -1,40 +1,46 @@
 #include "Part.h"
 #include "AssetManager.h"
 
-s3d::RectF PartModel::GetApproximateRect() const
+Vector2D PartModel::GetApproximateRectTopLeft() const
 {
-	double tlx = m_shapes.front().m_polygon.vertices().front().x;
-	double tly = m_shapes.front().m_polygon.vertices().front().y;
-	double brx = m_shapes.front().m_polygon.vertices().front().x;
-	double bry = m_shapes.front().m_polygon.vertices().front().y;
+	double x = m_shapes.front().m_polygon.vertices().front().x;
+	double y = m_shapes.front().m_polygon.vertices().front().y;
 
 	for (const auto& s : m_shapes)
 	{
 		for (const auto& v : s.m_polygon.vertices())
 		{
-			if (tlx > v.x) tlx = v.x;
-			if (tly > v.y) tly = v.y;
-			if (brx < v.x) brx = v.x;
-			if (bry < v.y) bry = v.y;
+			if (x > v.x) x = v.x;
+			if (y > v.y) y = v.y;
 		}
 	}
 
-	return s3d::RectF(tlx, tly, brx - tlx, bry - tly);
-}
-
-Vector2D PartModel::GetApproximateRectTopLeft() const
-{
-	return Vector2D();
+	return Vector2D(x, y);
 }
 
 Vector2D PartModel::GetApproximateRectBottomDown() const
 {
-	return Vector2D();
+	double x = m_shapes.front().m_polygon.vertices().front().x;
+	double y = m_shapes.front().m_polygon.vertices().front().y;
+
+	for (const auto& s : m_shapes)
+	{
+		for (const auto& v : s.m_polygon.vertices())
+		{
+			if (x < v.x) x = v.x;
+			if (y < v.y) y = v.y;
+		}
+	}
+
+	return Vector2D(x, y);
 }
 
 double PartModel::GetRectInertia() const
 {
-	return  m_mass * (pow(GetApproximateRect().w, 2) + pow(GetApproximateRect().h, 2)) / 12.0;
+	auto w = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).m_x;
+	auto h = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).m_y;
+
+	return  m_mass * (w * w + h * h) / 12.0;
 }
 
 void PartModel::SetFromJSON(const ptree& pt)
