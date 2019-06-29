@@ -18,7 +18,7 @@ void AssetManager::AddModelsFromDirectory(const string& directory)
 	fs::directory_iterator end;
 
 	for (fs::directory_iterator it(fs::path(directory.c_str())); it != end; ++it)
-		if (!fs::is_directory(*it)) AddModel((*it).path().string());
+		if (!fs::is_directory(*it)) AddModelFromFile((*it).path().string());
 }
 
 shared_ptr<Model> AssetManager::GetModel(const string& name) const
