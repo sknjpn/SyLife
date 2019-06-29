@@ -85,42 +85,5 @@ void AssemblyViewer::Update(bool isMouseOver)
 		if (!s3d::MouseL.pressed()) PartPaletteViewer::m_selectedPart = nullptr;
 	}
 
-	CalculateDisk();
-}
-
-void AssemblyViewer::CalculateDisk()
-{
-	// mass
-	{
-		m_mass = 0.0;
-
-		for (const auto& p : m_model->m_partConfigs) m_mass += p->m_model->GetMass();
-	}
-
-	// center
-	{
-		// body
-		s3d::Vec2 center(0.0, 0.0);
-
-		for (const auto& p : m_model->m_partConfigs) center += p->m_model->GetMass() * (s3d::Vec2(p->m_position.m_x, p->m_position.m_y) + p->m_model->GetCenter().rotated(p->m_rotation));
-
-		center /= m_mass;
-
-		// ˆÊ’u’²®
-		for (const auto& p : m_model->m_partConfigs) p->m_position -= Vector2D(center.x, center.y);
-	}
-
-	// inertia
-	{
-		m_inertia = 0.0;
-
-		for (const auto& p : m_model->m_partConfigs) m_inertia += p->GetInertia();
-	}
-
-	// radius
-	m_radius = sqrt(2 * m_inertia / m_mass);
-
-	m_model->m_inertia = m_inertia;
-	m_model->m_radius = m_radius;
-	m_model->m_mass = m_mass;
+	m_model->UpdateProperties();
 }

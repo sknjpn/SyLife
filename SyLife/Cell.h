@@ -27,6 +27,7 @@ public:
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	UpdateProperties();
 };
 
 class CellState

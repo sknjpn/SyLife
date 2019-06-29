@@ -29,7 +29,5 @@ public:
 
 	void	Init() override;
 	void	Update(bool isMouseOver) override;
-
-	void	CalculateDisk();
 };
 

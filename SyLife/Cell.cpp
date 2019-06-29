@@ -8,6 +8,13 @@ void CellModel::SetFromJSON(const ptree& pt)
 	// parts
 	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->Load(part.second);
 
+	UpdateProperties();
+
+	Model::SetFromJSON(pt);
+}
+
+void CellModel::UpdateProperties()
+{
 	// mass
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->m_model->GetMass(); });
 
@@ -25,8 +32,6 @@ void CellModel::SetFromJSON(const ptree& pt)
 
 	// material
 	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += (p->m_model->GetMaterial()); });
-
-	Model::SetFromJSON(pt);
 }
 
 void CellState::Update()
