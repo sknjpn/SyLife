@@ -18,7 +18,8 @@ public:
 	}
 
 	template <typename T>
-	shared_ptr<Model>	MakeModel() { return m_models.emplace_back(make_shared<T>); }
+	shared_ptr<Model>	MakeModel() { return m_models.emplace_back(make_shared<T>()); }
+
 	shared_ptr<Model>	MakeModel(const string& type);
 
 	void	Init();
