@@ -11,14 +11,18 @@
 class MoleculeModel
 	: public Model
 {
-public:
 	double		m_mass;
 	double		m_radius;
 	s3d::Color	m_color;
 
 public:
-	void	SetFromJSON(const ptree& pt);
+	// Get
+	double	GetMass() const { return m_mass; }
+	double	GetRadius() const { return m_radius; }
+	const s3d::Color&	GetColor() const { return m_color; }
 
+	// JSON
+	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };
 class MoleculeState

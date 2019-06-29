@@ -7,12 +7,15 @@ using namespace boost::property_tree;
 
 class Model
 {
-public:
 	string	m_name;
 
 public:
 	virtual ~Model() = default;
 
+	// Get
+	const string&	GetName() const { return m_name; }
+
+	// JSON
 	void	SetFromJSON(const ptree& pt);
 	virtual void	Load(const ptree& pt) { SetFromJSON(pt); }
 };
