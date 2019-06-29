@@ -36,8 +36,8 @@ void FieldManager::Update()
 		if (r->m_position.m_y > m_size.m_y && r->m_velocity.m_y > 0) r->m_velocity.m_y = -r->m_velocity.m_y;
 
 		// –€ŽC’ïR
-		r->m_velocity /= (1.0 + r->m_radius * 0.001);
-		r->m_angularVelocity /= (1.0 + r->m_radius * 0.001);
+		r->m_velocity /= (1.0 + r->m_radius * 0.01);
+		r->m_angularVelocity /= (1.0 + r->m_radius * 0.01);
 	}
 
 	g_eggManagerPtr->Update();
