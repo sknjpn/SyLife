@@ -2,6 +2,7 @@
 
 #include "Module.h"
 #include "Storage.h"
+#include "Cell.h"
 
 class SynthesizerModel
 	: public ModuleModel

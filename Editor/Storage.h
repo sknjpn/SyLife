@@ -16,7 +16,9 @@ public:
 	void	AddMoleculeState(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);
 	int		NumMolecule(const shared_ptr<MoleculeModel>& model) const;
 	int		NumMolecule(const string& name) const;
+	bool	HasMolecule(const Storage& storage);
 	void	PullMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);
+	void	PullMolecule(const Storage& storage);
 	void	Clear() { m_molecules.clear(); }
 	void	AddStorage(const Storage& storage);
 
