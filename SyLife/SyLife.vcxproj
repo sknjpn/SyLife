@@ -322,6 +322,7 @@
     <ClInclude Include="sol.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
+    <ClInclude Include="Synthesizer.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
