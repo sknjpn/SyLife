@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Model.h"
+#include "Storage.h"
 #include "Viewer.h"
 #include "Part.h"
 
@@ -10,7 +11,13 @@ class CellModel
 	: public Model
 {
 public:
+	Storage	m_material;
 	vector<shared_ptr<PartConfig>>	m_partConfigs;
+
+	// ‹ßŽ—‰~
+	double	m_mass;
+	double	m_radius;
+	double	m_inertia;
 
 public:
 	void	MakeViewers() override;
