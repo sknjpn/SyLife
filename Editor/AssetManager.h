@@ -11,10 +11,7 @@ class AssetManager
 	vector<shared_ptr<Model>>	m_models;
 
 public:
-	AssetManager()
-	{
-		m_models.reserve(1024);
-	}
+	AssetManager() { m_models.reserve(1024); }
 
 	template <typename T>
 	shared_ptr<Model>	MakeModel() { return m_models.emplace_back(make_shared<T>()); }
