@@ -83,6 +83,43 @@ inline void PartModel::SetFromJSON(const ptree& pt)
 	Model::SetFromJSON(pt);
 }
 
+void PartModel::AddToJSON(ptree& pt) const
+{
+	// mass
+	pt.put<double>("mass", m_mass);
+
+	// shapes
+	{
+		ptree shapes;
+
+		for (const auto& v : m_shapes)
+		{
+			ptree shape; v.Save(shape);
+			shapes.push_back(std::make_pair("", shape));
+		}
+
+		pt.add_child("shapes", shapes);
+	}
+
+	Model::AddToJSON(pt);
+
+	pt.put("type", "PartModel");
+}
+
+inline void PartConfig::SetFromJSON(const ptree& pt)
+{
+	// model
+	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
+
+	// position
+	m_position = s3d::Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
+
+	// rotation
+	m_rotation = pt.get<double>("rotation");
+
+	Model::SetFromJSON(pt);
+}
+
 inline void PartConfig::AddToJSON(ptree& pt) const
 {
 	// model
@@ -104,18 +141,4 @@ inline void PartConfig::AddToJSON(ptree& pt) const
 	Model::AddToJSON(pt);
 
 	pt.put("type", "PartConfig");
-}
-
-inline void PartConfig::SetFromJSON(const ptree& pt)
-{
-	// model
-	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
-
-	// position
-	m_position = s3d::Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
-
-	// rotation
-	m_rotation = pt.get<double>("rotation");
-
-	Model::SetFromJSON(pt);
 }
