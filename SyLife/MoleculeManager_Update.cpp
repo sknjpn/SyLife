@@ -44,7 +44,7 @@ void MoleculeManager::Update()
 		if (m->m_position.m_y > g_fieldManagerPtr->GetSize().m_y && m->m_velocity.m_y > 0) m->m_velocity.m_y = -m->m_velocity.m_y;
 
 		// –€ŽC’ïR
-		m->m_velocity /= (1.0 + m->m_radius * 0.001);
+		m->m_velocity /= (1.0 + m->m_radius * 0.01);
 	}
 
 	GetMoleculeStates().erase(remove_if(GetMoleculeStates().begin(), GetMoleculeStates().end(), [](const auto& m) { return m->m_isDestroyed; }), GetMoleculeStates().end());

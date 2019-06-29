@@ -55,21 +55,19 @@ void CellManager::Update()
 		// Ž€–Sˆ—
 		if (c->m_deathTimer <= 0.0)
 		{
-
 			// MoleculeState‚Ì“f‚«o‚µ
-			auto s = c->m_storage;
-			s += c->m_model->m_material;
+			auto s = c->m_storage + c->m_model->m_material;
 			for (const auto& m : s.GetMolecules())
 			{
 				for (unsigned int i = 0; i < m.second; i++)
 				{
-					auto pi = boost::math::constants::pi<double>();
-					auto r = Random(pi * 2.0);
-					auto v = Vector2D(1.0, 0.0).rotated(r);
-					auto& t = g_moleculeManagerPtr->AddMoleculeState(m.first);
+					// “f‚«o‚·•ûŒü
+					auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
 
-					t->m_position = c->m_position + v * (rand() % 100) / 100.0 * (c->m_radius + t->m_radius);
-					t->m_velocity = v * 2.0;
+					// “f‚«o‚³‚ê‚½MoleculeState
+					const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
+					ms->m_position = c->m_position + v * (c->m_radius + m.first->GetRadius());
+					ms->m_velocity = v * 2.0;
 				}
 			}
 
