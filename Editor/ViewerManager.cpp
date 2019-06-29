@@ -13,6 +13,8 @@ void ViewerManager::Update()
 		auto t1 = s3d::Transformer2D(s3d::Mat3x2::Translate(v->m_drawRect.pos), true);
 		auto t2 = s3d::Transformer2D(s3d::Mat3x2::Translate(-v->m_drawRect.pos), false);
 
+		s3d::RectF(v->m_drawRect.size).draw(v->m_backgroundColor);
+
 		v->Update();
 
 		s3d::RectF(v->m_drawRect.size).drawFrame(1.0, 0.0, s3d::ColorF(s3d::Palette::Red, 0.5));
