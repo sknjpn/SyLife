@@ -6,6 +6,8 @@ void Main()
 {
 	s3d::Window::SetTitle(U"SyLife");
 	//s3d::Graphics::SetFullScreen(true, s3d::Size(1920, 1080));
+
+	s3d::Window::Resize(s3d::Size(1024, 768));
 	//s3d::Window::SetBaseSize(s3d::Size(1920, 1080));
 
 	g_systemManagerPtr = make_unique<SystemManager>();
