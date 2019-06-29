@@ -18,23 +18,14 @@ void CellModel::SetFromJSON(const ptree& pt)
 	for (const auto& p : m_partConfigs) p->m_position -= center;
 
 	// inertia
-	{
-		m_inertia = 0.0;
+	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double acc, const auto& p) { return acc + p->GetInertia(); });
 
-		for (const auto& p : m_partConfigs) m_inertia += p->GetInertia();
-	}
+	// radius
+	m_radius = sqrt(2 * m_inertia / m_mass);
 
 	CalculateDisk();
 
 	Model::SetFromJSON(pt);
-}
-
-
-void CellModel::CalculateDisk()
-{
-
-	// radius
-	m_radius = sqrt(2 * m_inertia / m_mass);
 }
 
 void CellModel::CalculateMaterial()
