@@ -25,6 +25,7 @@ public:
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 };
+
 class MoleculeState
 	: public Rigidbody
 {
@@ -32,6 +33,7 @@ public:
 	shared_ptr<MoleculeModel>	m_model;
 	
 public:
+
 };
 
 inline void MoleculeModel::SetFromJSON(const ptree& pt)
