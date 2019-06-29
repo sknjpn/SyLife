@@ -34,22 +34,6 @@ void CellManager::Update()
 			}
 		}
 
-		// Amino Acid‚Ì‡¬
-		if (c->m_storage.NumMolecule("Amino Acid") < 5 &&
-			c->m_storage.NumMolecule("Carbon") > 0 &&
-			c->m_storage.NumMolecule("Oxygen") > 0 &&
-			c->m_storage.NumMolecule("Nitrogen") > 0)
-		{
-			c->m_storage.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"));
-			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"));
-			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"));
-			c->m_storage.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"));
-			c->m_molecules.AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Amino Acid"));
-			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"));
-			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"));
-			c->m_molecules.PullMolecule(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"));
-		}
-
 		// •ª—ôˆ—
 		if (c->m_storage.NumMolecule("Amino Acid") >= 5 &&
 			c->m_storage.NumMolecule("Carbon") >= 5 &&
