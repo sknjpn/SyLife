@@ -79,7 +79,7 @@ void CellManager::Update()
 			// MoleculeState‚Ì“f‚«o‚µ
 			for (const auto& m : c->m_molecules.m_molecules)
 			{
-				for (int i = 0; i < m.second; i++)
+				for (unsigned int i = 0; i < m.second; i++)
 				{
 					auto pi = boost::math::constants::pi<double>();
 					auto r = Random(pi * 2.0);

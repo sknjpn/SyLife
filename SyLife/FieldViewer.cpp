@@ -73,7 +73,7 @@ void FieldViewer::Update(bool isMouseOver)
 			{
 				auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position.m_x, p->m_position.m_y));
 
-				for (const auto& s : p->m_model->m_shapes)
+				for (const auto& s : p->m_model->GetShapes())
 					s.m_polygon.draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
 			}
 		}
