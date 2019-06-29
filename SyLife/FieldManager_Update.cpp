@@ -1,5 +1,6 @@
 #include "FieldManager.h"
 #include "CellManager.h"
+#include "EggManager.h"
 #include "MoleculeManager.h"
 #include "Rigidbody.h"
 
@@ -39,6 +40,7 @@ void FieldManager::Update()
 		r->m_angularVelocity /= (1.0 + r->m_radius * 0.001);
 	}
 
+	g_eggManagerPtr->Update();
 	g_cellManagerPtr->Update();
 	g_moleculeManagerPtr->Update();
 
