@@ -29,7 +29,7 @@ public:
 	{
 		auto model = dynamic_pointer_cast<SynthesizerModel>(m_config->m_model);
 
-		if (cell.m_storage > model->GetImport() && cell.m_model->m_material.Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
+		if (cell.m_storage >= model->GetImport() && cell.m_model->m_material.Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
 		{
 			cell.m_storage -= model->GetImport();
 			cell.m_storage.Add(model->GetExport());
