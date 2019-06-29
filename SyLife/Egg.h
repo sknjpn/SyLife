@@ -10,7 +10,7 @@ class EggState
 	double	m_timer;
 
 public:
-	EggState() { m_timer = 5.0; }
+	EggState() { m_timer = 10.0; }
 
 	void	SetCellModel(const shared_ptr<CellModel>& cellModel)
 	{

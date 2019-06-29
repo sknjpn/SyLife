@@ -11,7 +11,7 @@ void EggState::Update()
 	m_timer -= g_fieldManagerPtr->GetDeltaTime();
 
 	// ›z‰»
-	if (m_timer < 0)
+	if (m_timer < 0 && RandomBool(0.1))
 	{
 		m_isDestroyed = true;
 
@@ -29,5 +29,5 @@ void EggState::Draw()
 		.draw(s3d::ColorF(s3d::Palette::Papayawhip, 0.5))
 		.drawFrame(1.0, s3d::ColorF(1.0, 0.5));
 
-	m_cellModel->Draw(min(2.0, 5.0 - m_timer) * 0.25);
+	m_cellModel->Draw(min(2.0, 10.0 - m_timer) * 0.25);
 }

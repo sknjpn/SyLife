@@ -3,6 +3,7 @@
 #include "Module.h"
 #include "Storage.h"
 #include "Cell.h"
+#include "FieldManager.h"
 
 class SynthesizerModel
 	: public ModuleModel
@@ -23,14 +24,23 @@ public:
 class SynthesizerState
 	: public ModuleState
 {
+	double	m_timer = 0.0;
+
 public:
-	void	Draw(const CellState& cell) const { m_config->m_model->Draw(); }
+	void	Draw(const CellState& cell) const 
+	{
+		m_config->m_model->Draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25); 
+	}
+
 	void	Update(CellState& cell) override
 	{
-		auto model = dynamic_pointer_cast<SynthesizerModel>(m_config->m_model);
+		m_timer += g_fieldManagerPtr->GetDeltaTime();
 
-		if (cell.m_storage >= model->GetImport() && cell.m_model->m_material.Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
+		auto model = dynamic_pointer_cast<SynthesizerModel>(m_config->m_model);
+		if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->m_material.Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
 		{
+			m_timer = 0.0;
+
 			cell.m_storage -= model->GetImport();
 			cell.m_storage.Add(model->GetExport());
 		}
