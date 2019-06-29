@@ -220,9 +220,6 @@
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Part.cpp">
-      <Filter>Source Files\Part</Filter>
-    </ClCompile>
     <ClCompile Include="AssemblyViewer.cpp">
       <Filter>Source Files\Viewer</Filter>
     </ClCompile>

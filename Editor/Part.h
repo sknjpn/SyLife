@@ -71,6 +71,37 @@ inline void PartModel::MakeViewers()
 	g_viewerManagerPtr->AddViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
+inline s3d::RectF PartModel::GetApproximateRect() const
+{
+	s3d::RectF ar(m_shapes.front().m_verticles.front(), m_shapes.front().m_verticles.front());
+
+	for (const auto& s : m_shapes)
+	{
+		for (const auto& v : s.m_verticles)
+		{
+			if (ar.x > v.x) { ar.w += ar.x - v.x; ar.x = v.x; }
+			if (ar.y > v.y) { ar.h += ar.y - v.y; ar.y = v.y; }
+			if (ar.br().x < v.x) ar.w = v.x - ar.x;
+			if (ar.br().y < v.y) ar.h = v.y - ar.y;
+		}
+	}
+
+	return ar;
+}
+
+inline double PartModel::GetRectInertia() const
+{
+	double w = GetApproximateRect().w;
+	double h = GetApproximateRect().h;
+
+	return  m_mass * (w * w + h * h) / 12.0;
+}
+
+inline s3d::Vec2 PartModel::GetCenter() const
+{
+	return GetApproximateRect().center();
+}
+
 inline void PartModel::SetFromJSON(const ptree& pt)
 {
 	// mass
@@ -83,7 +114,7 @@ inline void PartModel::SetFromJSON(const ptree& pt)
 	Model::SetFromJSON(pt);
 }
 
-void PartModel::AddToJSON(ptree& pt) const
+inline void PartModel::AddToJSON(ptree& pt) const
 {
 	// mass
 	pt.put<double>("mass", m_mass);
@@ -141,4 +172,9 @@ inline void PartConfig::AddToJSON(ptree& pt) const
 	Model::AddToJSON(pt);
 
 	pt.put("type", "PartConfig");
+}
+
+inline void PartViewer::Update()
+{
+
 }
