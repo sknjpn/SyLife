@@ -28,9 +28,10 @@ public:
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 
-	s3d::RectF	GetApproximateRect() const;
+	Vector2D	GetApproximateRectTopLeft() const;
+	Vector2D	GetApproximateRectBottomDown() const;
 	double		GetRectInertia() const;
-	Vector2D	GetCenter() const { return Vector2D(GetApproximateRect().center().x, GetApproximateRect().center().y); }
+	Vector2D	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
 
 	// JSON
 	void	SetFromJSON(const ptree& pt);

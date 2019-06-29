@@ -22,6 +22,16 @@ s3d::RectF PartModel::GetApproximateRect() const
 	return s3d::RectF(tlx, tly, brx - tlx, bry - tly);
 }
 
+Vector2D PartModel::GetApproximateRectTopLeft() const
+{
+	return Vector2D();
+}
+
+Vector2D PartModel::GetApproximateRectBottomDown() const
+{
+	return Vector2D();
+}
+
 double PartModel::GetRectInertia() const
 {
 	return  m_mass * (pow(GetApproximateRect().w, 2) + pow(GetApproximateRect().h, 2)) / 12.0;
