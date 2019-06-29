@@ -1,6 +1,7 @@
 {
     "type": "BodyModel",
     "mass": "100",
+    "material": [],
     "shapes": [
         {
             "color": {

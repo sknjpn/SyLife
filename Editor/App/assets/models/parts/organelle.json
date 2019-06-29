@@ -1,6 +1,7 @@
 {
     "type": "ModuleModel",
     "mass": "10",
+    "material": [],
     "shapes": [
         {
             "color": {
