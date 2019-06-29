@@ -22,7 +22,9 @@ public:
 
 			if (!g_assetManagerPtr->HasModel(name))
 			{
-				auto m  = g_assetManagerPtr->AddModel<T>(name);
+				auto m  = g_assetManagerPtr->MakeModel<T>();
+
+				m->m_name = name;
 
 				return;
 			}
