@@ -2,7 +2,7 @@
     "type": "SynthesizerModel",
     "mass": "10",
     "material": {
-        "name":"",
+        "name": "",
         "molecules": [
             {
                 "molecule": "Amino Acid",
@@ -14,20 +14,23 @@
             }
         ]
     },
-    "import": [
-        {
-            "molecule": "Carbon",
-            "size": 1
-        },
-        {
-            "molecule": "Nitrogen",
-            "size": 2
-        },
-        {
-            "molecule": "Oxygen",
-            "size": 2
-        }
-    ],
+    "import": {
+        "name": "",
+        "molecules": [
+            {
+                "molecule": "Carbon",
+                "size": 1
+            },
+            {
+                "molecule": "Nitrogen",
+                "size": 2
+            },
+            {
+                "molecule": "Oxygen",
+                "size": 2
+            }
+        ]
+    },
     "export": "Amino Acid",
     "shapes": [
         {
