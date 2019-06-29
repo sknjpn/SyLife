@@ -1,5 +1,7 @@
 #include "CellManager.h"
 #include "Cell.h"
+#include "EggManager.h"
+#include "Egg.h"
 #include "FieldManager.h"
 #include "AssetManager.h"
 #include "Molecule.h"
@@ -7,6 +9,7 @@
 
 #include <boost/math/constants/constants.hpp>
 #include "Random.h"
+
 void CellManager::Update()
 {
 	for (const auto& c : GetCellStates())
@@ -44,11 +47,9 @@ void CellManager::Update()
 		{
 			c->m_storage -= c->m_model->m_material;
 
-			const auto& nc = g_cellManagerPtr->AddCellState(c->m_model);
-			nc->m_position = c->m_position + Vector2D(1.0, 0.0).rotated(rand() / 360.0);
-			nc->Init();
-			nc->m_angularVelocity = (rand() % 1000 - 500) / 10000.0;
-			nc->m_rotation = rand() / 360.0;
+			const auto& e = g_eggManagerPtr->AddEggState(c->m_model);
+			e->m_position = c->m_position;
+			e->m_velocity = Vector2D(1.0, 0.0).rotated(rand() / 360.0);
 		}
 
 		// €–Sˆ—
