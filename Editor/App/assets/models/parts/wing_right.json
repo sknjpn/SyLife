@@ -1,6 +1,16 @@
 {
-    "isRight": "true",
+    "type": "WingModel",
     "mass": "20",
+    "isRight": "true",
+    "material": {
+        "name":"",
+        "molecules": [
+            {
+                "molecule": "Oxygen",
+                "size": 1
+            }
+        ]
+    },
     "shapes": [
         {
             "color": {
@@ -34,8 +44,7 @@
                     "y": "5"
                 }
             ],
-            "name": "",
-            "type": "ShapeModel"
+            "name": ""
         },
         {
             "color": {
@@ -61,15 +70,8 @@
                     "y": "0"
                 }
             ],
-            "name": "",
-            "type": "ShapeModel"
+            "name": ""
         }
     ],
-    "material": {
-        "molecules": "",
-        "name": "",
-        "type": "Storage"
-    },
-    "name": "Wing Right",
-    "type": "WingModel"
+    "name": "Wing Right"
 }

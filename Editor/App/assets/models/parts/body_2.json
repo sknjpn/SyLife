@@ -1,16 +1,23 @@
 {
     "type": "BodyModel",
-    "mass": "100",
-    "material": [
-        {
-            "molecule": "Amino Acid",
-            "size": 2
-        },
-        {
-            "molecule": "Carbon",
-            "size": 5
-        }
-    ],
+    "mass": "120",
+    "material": {
+        "name":"",
+        "molecules": [
+            {
+                "molecule": "Amino Acid",
+                "size": 1
+            },
+            {
+                "molecule": "Carbon",
+                "size": 2
+            },
+            {
+                "molecule": "Oxygen",
+                "size": 1
+            }
+        ]
+    },
     "shapes": [
         {
             "color": {
@@ -65,7 +72,41 @@
                 }
             ],
             "name": ""
+        },
+        {
+            "color": {
+                "r": "255",
+                "g": "0",
+                "b": "86"
+            },
+            "verticles": [
+                {
+                    "x": "0",
+                    "y": "-40"
+                },
+                {
+                    "x": "-30",
+                    "y": "-15"
+                },
+                {
+                    "x": "-20",
+                    "y": "30"
+                },
+                {
+                    "x": "0",
+                    "y": "50"
+                },
+                {
+                    "x": "20",
+                    "y": "30"
+                },
+                {
+                    "x": "30",
+                    "y": "-15"
+                }
+            ],
+            "name": ""
         }
     ],
-    "name": "Body"
+    "name": "Body 2"
 }
