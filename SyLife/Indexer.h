@@ -11,7 +11,6 @@ public:
 
 public:
 	Indexer() : m_adaptor(2, m_cloud, KDTreeSingleIndexAdaptorParams(10000)) { m_cloud.m_particles.reserve(10000); }
-	~Indexer() = default;
 
 	void	ForEachNearParticles(Vector2D position, double radius, function<void(const shared_ptr<T>&, double)> func) const
 	{
