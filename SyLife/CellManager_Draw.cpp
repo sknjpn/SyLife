@@ -13,7 +13,7 @@ void CellManager::Draw()
 		// parts
 		for (const auto& p : c->m_partStates)
 		{
-			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_config->m_rotation).translated(p->m_config->m_position.m_x, p->m_config->m_position.m_y));
+			auto t3 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_config->m_rotation).translated(p->m_config->m_position.m_x, p->m_config->m_position.m_y));
 
 			p->Draw(*c);
 		}

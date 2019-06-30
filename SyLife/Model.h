@@ -16,6 +16,6 @@ public:
 	const string&	GetName() const { return m_name; }
 
 	// JSON
-	void	SetFromJSON(const ptree& pt);
+	void	SetFromJSON(const ptree& pt) { m_name = pt.get<string>("name"); }
 	virtual void	Load(const ptree& pt) { SetFromJSON(pt); }
 };
