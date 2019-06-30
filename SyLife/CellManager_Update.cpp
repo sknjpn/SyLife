@@ -31,14 +31,23 @@ void CellManager::Update()
 		}
 
 		// —]è‚ÌMoleculeState‚Ì“ŠŠü
-		for (const auto& m : c->m_storage.GetMolecules())
+		for (;;)
 		{
-			if (c->m_model->m_material.Num(m.first) > c->m_storage.Num(m.first) + 1)
-			{
-				c->ExpireMolecule(m.first);
+			bool flag = true;
 
-				break;
+			for (const auto& m : c->m_storage.GetMolecules())
+			{
+				if (2 * c->m_model->m_material.Num(m.first) < c->m_storage.Num(m.first))
+				{
+					c->ExpireMolecule(m.first);
+
+					flag = false;
+
+					break;
+				}
 			}
+			
+			if (flag) break;
 		}
 
 		// •ª—ôˆ—

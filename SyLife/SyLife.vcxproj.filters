@@ -304,6 +304,9 @@
     <ClCompile Include="WaveManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="CellStateViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -425,6 +428,9 @@
     </ClInclude>
     <ClInclude Include="Needle.h">
       <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="CellStateViewer.h">
+      <Filter>Source Files\Viewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -257,6 +257,7 @@
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="CellManager_Draw.cpp" />
     <ClCompile Include="CellManager_Update.cpp" />
+    <ClCompile Include="CellStateViewer.cpp" />
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="EggManager.cpp" />
@@ -298,6 +299,7 @@
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
+    <ClInclude Include="CellStateViewer.h" />
     <ClInclude Include="Chloroplast.h" />
     <ClInclude Include="Cloud.h" />
     <ClInclude Include="Curtain.h" />

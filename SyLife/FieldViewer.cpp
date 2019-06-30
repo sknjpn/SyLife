@@ -9,6 +9,7 @@
 #include "AssemblyViewer.h"
 #include "PartPaletteViewer.h"
 #include "WaveManager.h"
+#include "CellStateViewer.h"
 #include "Egg.h"
 #include "Random.h"
 
@@ -19,6 +20,7 @@ void FieldViewer::Init()
 	m_partPaletteViewer = g_viewerManagerPtr->AddViewer<PartPaletteViewer>(m_newModel);
 	m_assemblyViewer = g_viewerManagerPtr->AddViewer<AssemblyViewer>(m_newModel);
 	m_releaseViewer = g_viewerManagerPtr->AddViewer<ReleaseViewer>(m_newModel);
+	g_viewerManagerPtr->AddViewer<CellStateViewer>();
 }
 
 void FieldViewer::Update(bool isMouseOver)
@@ -42,7 +44,11 @@ void FieldViewer::Update(bool isMouseOver)
 
 			for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(cursorPos, 100))
 			{
-				if (target->m_radius > (target->m_position - cursorPos).length()) selectedRigidbody = target;
+				if (target->m_radius > (target->m_position - cursorPos).length())
+				{
+					selectedRigidbody = target;
+					g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(target);
+				}
 			}
 		}
 
@@ -75,21 +81,21 @@ void FieldViewer::Update(bool isMouseOver)
 			{
 				e->m_isDestroyed = true;
 
-					// MoleculeState‚Ì“f‚«o‚µ
-					auto s = e->GetCellModel()->m_material;
-					for (const auto& m : s.GetMolecules())
+				// MoleculeState‚Ì“f‚«o‚µ
+				auto s = e->GetCellModel()->m_material;
+				for (const auto& m : s.GetMolecules())
+				{
+					for (unsigned int i = 0; i < m.second; i++)
 					{
-						for (unsigned int i = 0; i < m.second; i++)
-						{
-							// “f‚«o‚·•ûŒü
-							auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
+						// “f‚«o‚·•ûŒü
+						auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
 
-							// “f‚«o‚³‚ê‚½MoleculeState
-							const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
-							ms->m_position = e->m_position + v * (e->m_radius + m.first->GetRadius()) * Random(1.0);
-							ms->m_velocity = v * 0.1;
-						}
+						// “f‚«o‚³‚ê‚½MoleculeState
+						const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
+						ms->m_position = e->m_position + v * (e->m_radius + m.first->GetRadius()) * Random(1.0);
+						ms->m_velocity = v * 0.1;
 					}
+				}
 			}
 		}
 	}
@@ -121,6 +127,17 @@ void FieldViewer::Update(bool isMouseOver)
 			m_partPaletteViewer->m_model = m_newModel;
 			m_assemblyViewer->m_model = m_newModel;
 			m_releaseViewer->m_model = m_newModel;
+		}
+	}
+
+	{
+		const auto& cs = g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState;
+
+		if (cs != nullptr)
+		{
+			s3d::Circle(cs->m_position.m_x, cs->m_position.m_y, cs->m_radius * 1.5)
+				.draw(s3d::ColorF(1.0, 0.25))
+				.drawFrame(4.0, s3d::Palette::Black);
 		}
 	}
 
