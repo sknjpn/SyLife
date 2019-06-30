@@ -62,8 +62,17 @@ inline void SynthesizerModel::SetFromJSON(const ptree& pt)
 
 inline void SynthesizerModel::AddToJSON(ptree& pt) const
 {
-	pt.put("import")
-	pt.put("isRight", m_isRight);
+	// import
+	{
+		ptree pt;
+
+		m_import.Save(pt);
+
+		pt.put("import", pt);
+	}
+
+	// export
+	pt.put("export", m_export->GetName());
 
 	ModuleModel::AddToJSON(pt);
 
