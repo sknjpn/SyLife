@@ -58,10 +58,13 @@ public:
 		if (isMouseOver) m_cursorCamera2D.update();
 		auto t = m_cursorCamera2D.createTransformer();
 
-		auto f = s3d::KeySpace.pressed() ? 5 : 1;
-		f = s3d::KeyS.pressed() ? 100 : f;
+		static int speed = 1;
+		if (s3d::KeyF1.down()) speed = 1;
+		if (s3d::KeyF2.down() && speed != 1) speed /= 2;
+		if (s3d::KeyF3.down() && speed != 128) speed *= 2;
+		if (s3d::KeyF4.down()) speed = 128;
 
-		for (int i = 0; i < f; ++i)
+		for (int i = 0; i < speed; ++i)
 		{
 			g_moleculeManagerPtr->Update();
 			g_fieldManagerPtr->Update();
