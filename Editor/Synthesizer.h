@@ -68,7 +68,7 @@ inline void SynthesizerModel::AddToJSON(ptree& pt) const
 		
 		m_import.Save(pt2);
 
-		pt.put("import", pt2);
+		pt.push_back(std::make_pair("import", pt2));
 	}
 
 	// export
