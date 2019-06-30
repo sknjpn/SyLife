@@ -21,7 +21,7 @@ public:
 		auto x = perlinNoiseX.noise(s3d::Vec3(position.m_x / interval, position.m_y / interval, m_timer * 0.15));
 		auto y = perlinNoiseY.noise(s3d::Vec3(position.m_x / interval, position.m_y / interval, m_timer * 0.15));
 
-		return Vector2D(x, y) * 2.0;
+		return (Vector2D(x, y) - position * 0.0001) * 100.0;
 	}
 
 	void	Update();

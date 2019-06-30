@@ -54,14 +54,8 @@
     <Filter Include="Resource Files\nlp\japanese\jumanpp">
       <UniqueIdentifier>{f6fe2a89-c647-48e2-bb2c-27b03b1aeced}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Cell">
-      <UniqueIdentifier>{0a62a11f-83c4-47b2-8919-d310af26cd38}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Manager">
       <UniqueIdentifier>{850fe034-2aae-4ca0-8f7a-27a62987b61f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Molecule">
-      <UniqueIdentifier>{ab767d56-64ed-42b5-a742-708d6f9bb1b6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Part">
       <UniqueIdentifier>{f243f746-fa97-4cfc-a032-833b7391959c}</UniqueIdentifier>
@@ -72,8 +66,8 @@
     <Filter Include="Source Files\Viewer">
       <UniqueIdentifier>{8a8171a1-a281-415a-81b4-387bb59fde30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Egg">
-      <UniqueIdentifier>{a04df2ec-7b1a-4b38-a2d2-91e8c832eb37}</UniqueIdentifier>
+    <Filter Include="Source Files\State">
+      <UniqueIdentifier>{c1570a17-8b57-46d1-b1ff-784e997090b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -208,38 +202,14 @@
     <ClCompile Include="CellManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="CellManager_Draw.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="CellManager_Update.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="FieldManager.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager_LoadGenerationSetting.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeManager_Update.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="MoleculeManager_Draw.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager_Update.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="SystemManager_Update.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files\Cell</Filter>
     </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
@@ -247,23 +217,29 @@
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Egg.cpp">
-      <Filter>Source Files\Egg</Filter>
-    </ClCompile>
     <ClCompile Include="EggManager.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="EggManager_Update.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager_MakeModel.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="EggManager_Draw.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="WaveManager.cpp">
       <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Egg.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,12 +250,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ShapeModel.h">
@@ -318,12 +288,6 @@
     <ClInclude Include="nanoflann.hpp">
       <Filter>Source Files\ThirdParty</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Source Files\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="Molecule.h">
-      <Filter>Source Files\Molecule</Filter>
-    </ClInclude>
     <ClInclude Include="Part.h">
       <Filter>Source Files\Part</Filter>
     </ClInclude>
@@ -353,9 +317,6 @@
     </ClInclude>
     <ClInclude Include="ReleaseViewer.h">
       <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="Egg.h">
-      <Filter>Source Files\Egg</Filter>
     </ClInclude>
     <ClInclude Include="EggManager.h">
       <Filter>Source Files\Manager</Filter>
@@ -389,6 +350,21 @@
     </ClInclude>
     <ClInclude Include="CellStateViewer.h">
       <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Source Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Egg.h">
+      <Filter>Source Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Source Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Molecule.h">
+      <Filter>Source Files\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

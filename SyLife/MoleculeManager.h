@@ -17,9 +17,9 @@ public:
 
 	void	AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size);
 
+	// Get
 	vector<shared_ptr<MoleculeState>>&	GetMoleculeStates() { return m_indexer.m_cloud.m_particles; }
 	const vector<shared_ptr<MoleculeState>>&	GetMoleculeStates() const { return m_indexer.m_cloud.m_particles; }
-
 	Indexer<MoleculeState>&	GetIndexer();
 	const Indexer<MoleculeState>&	GetIndexer() const;
 

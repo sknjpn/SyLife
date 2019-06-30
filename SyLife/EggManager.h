@@ -10,14 +10,13 @@ class EggManager
 	Indexer<EggState>	m_indexer;
 
 public:
-	const shared_ptr<EggState>&	AddEggState(const shared_ptr<CellModel>& cellModel);
-
+	// Get
 	vector<shared_ptr<EggState>>&	GetEggStates() { return m_indexer.m_cloud.m_particles; }
 	const vector<shared_ptr<EggState>>&	GetEggStates() const { return m_indexer.m_cloud.m_particles; }
+	Indexer<EggState>&	GetIndexer() { m_indexer; }
+	const Indexer<EggState>&	GetIndexer() const { m_indexer; }
 
-	Indexer<EggState>&	GetIndexer();
-	const Indexer<EggState>&	GetIndexer() const;
-
+	const shared_ptr<EggState>&	AddEggState(const shared_ptr<CellModel>& cellModel);
 
 	void	Update();
 	void	Draw();

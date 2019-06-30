@@ -84,9 +84,10 @@ public:
 		{
 			for (const auto& p : m_model->m_partConfigs)
 			{
-				auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->m_rotation).translated(p->m_position.m_x, p->m_position.m_y));
+				auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->GetRotation())
+					.translated(p->GetPosition().m_x, p->GetPosition().m_y));
 
-				for (const auto& s : p->m_model->GetShapes())
+				for (const auto& s : p->GetModel()->GetShapes())
 					s.m_polygon.draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
 			}
 		}
@@ -103,9 +104,9 @@ public:
 				{
 					const auto& partConfig = m_model->m_partConfigs.emplace_back(make_shared<PartConfig>());
 
-					partConfig->m_model = g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart;
-					partConfig->m_position = Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
-					partConfig->m_rotation = 0.0;
+					partConfig->SetModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
+					partConfig->SetPosition(Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y));
+					partConfig->SetRotation(0.0);
 				}
 			}
 

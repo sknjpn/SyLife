@@ -24,7 +24,7 @@ public:
 	{
 		auto t = s3d::Transformer2D(s3d::Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
 
-		m_config->m_model->Draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
+		GetPartConfig()->GetModel()->Draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
 	}
 	void	Update(CellState& cell) override
 	{
@@ -33,14 +33,14 @@ public:
 		{
 			m_heat = 5.0;
 
-			auto p = cell.GetWorldPosition(m_config->m_position + Vector2D::Up() * 50.0);
+			auto p = cell.GetWorldPosition(GetPartConfig()->GetPosition() + Vector2D::Up() * 50.0);
 			for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(p, 100.0))
 			{
-				if (target->m_radius > (target->m_position - p).length() && !target->m_isDestroyed && dynamic_pointer_cast<CellState>(target)->m_model != cell.m_model)
+				if (target->GetRadius() > (target->GetPosition() - p).length() && !target->IsDestroyed() && dynamic_pointer_cast<CellState>(target)->m_model != cell.m_model)
 				{
 					auto cs = dynamic_pointer_cast<CellState>(target);
 
-					cs->m_isDestroyed = true;
+					cs->Destroy();
 					cell.m_storage += cs->m_storage;
 					cell.m_storage += cs->m_model->m_material;
 				}

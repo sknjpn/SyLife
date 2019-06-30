@@ -16,7 +16,7 @@ class BodyState
 	: public PartState
 {
 public:
-	void	Draw(const CellState& cell) const { m_config->m_model->Draw(); }
+	void	Draw(const CellState& cell) const { GetPartConfig()->GetModel()->Draw(); }
 	void	Update(CellState& cell) override {}
 };
 

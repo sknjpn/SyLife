@@ -29,14 +29,14 @@ class SynthesizerState
 public:
 	void	Draw(const CellState& cell) const 
 	{
-		m_config->m_model->Draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25); 
+		GetPartConfig()->GetModel()->Draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
 	}
 
 	void	Update(CellState& cell) override
 	{
 		m_timer += g_fieldManagerPtr->GetDeltaTime();
 
-		auto model = dynamic_pointer_cast<SynthesizerModel>(m_config->m_model);
+		auto model = dynamic_pointer_cast<SynthesizerModel>(GetPartConfig()->GetModel());
 		if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->m_material.Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
 		{
 			m_timer = 0.0;

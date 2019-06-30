@@ -43,7 +43,7 @@ public:
 	
 	void	Update() 
 	{
-		m_cloud.m_particles.erase(remove_if(m_cloud.m_particles.begin(), m_cloud.m_particles.end(), [](const auto& r) { return r->m_isDestroyed; }), m_cloud.m_particles.end());
+		m_cloud.m_particles.erase(remove_if(m_cloud.m_particles.begin(), m_cloud.m_particles.end(), [](const auto& r) { return r->IsDestroyed(); }), m_cloud.m_particles.end());
 		m_adaptor.buildIndex();
 	}
 };

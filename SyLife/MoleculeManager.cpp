@@ -2,6 +2,8 @@
 #include "Molecule.h"
 #include "FieldManager.h"
 
+#include "Random.h"
+
 unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
 Indexer<MoleculeState>& MoleculeManager::GetIndexer()
@@ -14,18 +16,36 @@ const Indexer<MoleculeState>& MoleculeManager::GetIndexer() const
 	return m_indexer;
 }
 
+void MoleculeManager::Update()
+{
+	for (const auto& e : GetMoleculeStates())
+	{
+		if (!e->IsDestroyed())
+		{
+			e->UpdateParticle();
+			e->UpdateMolecule();
+		}
+	}
+
+	m_indexer.Update();
+}
+
+void MoleculeManager::Draw()
+{
+	for (const auto& e : GetMoleculeStates())
+		if (!e->IsDestroyed()) e->Draw();
+}
+
 int MoleculeManager::NumMolecule(const shared_ptr<MoleculeModel>& model)
 {
-	return static_cast<int>(count_if(GetMoleculeStates().begin(), GetMoleculeStates().end(), [&model](const auto& m) { return m->m_model == model; }));
+	return static_cast<int>(count_if(GetMoleculeStates().begin(), GetMoleculeStates().end(), [&model](const auto& m) { return m->GetModel() == model; }));
 }
 
 const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_ptr<MoleculeModel>& model)
 {
 	const auto& m = GetMoleculeStates().emplace_back(make_shared<MoleculeState>());
 
-	m->m_model = model;
-	m->m_radius = model->GetRadius();
-	m->m_mass = model->GetMass();
+	m->SetModel(model);
 
 	return m;
 }
@@ -33,8 +53,7 @@ const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_
 const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_ptr<MoleculeModel>& model, const Vector2D & position)
 {
 	const auto& m = AddMoleculeState(model);
-
-	m->m_position = position;
+	m->SetPosition(position);
 
 	return m;
 }
@@ -43,9 +62,10 @@ void MoleculeManager::AddMoleculesRandom(const shared_ptr<MoleculeModel>& model,
 {
 	for (int i = 0; i < size; i++)
 	{
+		auto p = s3d::RandomVec2(s3d::Random(1000));
+
 		const auto& m = g_moleculeManagerPtr->AddMoleculeState(model);
-		m->m_position.m_x = rand() % int(g_fieldManagerPtr->GetSize().m_x);
-		m->m_position.m_y = rand() % int(g_fieldManagerPtr->GetSize().m_y);
+		m->SetPosition(Vector2D(p.x, p.y));
 
 		m->Init();
 	}

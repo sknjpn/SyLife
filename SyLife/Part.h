@@ -42,13 +42,22 @@ public:
 class PartConfig
 	: public Model
 {
-public:
-	shared_ptr<PartModel>	m_model;
+	shared_ptr<PartModel>	m_partModel;
 	Vector2D	m_position;
 	double		m_rotation;
 
 public:
-	double		GetInertia() const { return m_model->GetRectInertia() + (m_position + m_model->GetCenter().rotated(m_rotation)).lengthSq() * m_model->GetMass(); }
+	// Get
+	const shared_ptr<PartModel>&	GetModel() const { return m_partModel; }
+	const Vector2D&	GetPosition() const { return m_position; }
+	double	GetRotation() const { return m_rotation; }
+
+	// Set
+	void	SetModel(const shared_ptr<PartModel>& partModel) { m_partModel = partModel; }
+	void	SetPosition(const Vector2D& position) { m_position = position; }
+	void	SetRotation(double rotation) { m_rotation = rotation; }
+
+	double	GetInertia() const { return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->GetMass(); }
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
@@ -56,11 +65,16 @@ public:
 
 class PartState
 {
-public:
-	shared_ptr<PartConfig>	m_config;
+	shared_ptr<PartConfig>	m_partConfig;
 
 public:
 	virtual ~PartState() {}
+
+	// Get
+	const shared_ptr<PartConfig>&	GetPartConfig() const { return m_partConfig; }
+
+	// Set
+	void	SetPartConfig(const shared_ptr<PartConfig>& partConfig) { m_partConfig = partConfig; }
 
 	virtual void	Draw(const CellState& cell) const = 0;
 	virtual void	Update(CellState& cell) = 0;
@@ -126,7 +140,7 @@ inline void PartModel::SetFromJSON(const ptree& pt)
 inline void PartConfig::SetFromJSON(const ptree& pt)
 {
 	// model
-	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
+	m_partModel = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
 
 	// position
 	m_position = Vector2D(pt.get<double>("position.x"), pt.get<double>("position.y"));

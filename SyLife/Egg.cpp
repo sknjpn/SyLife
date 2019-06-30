@@ -1,31 +1,29 @@
 #include "Egg.h"
 #include "FieldManager.h"
-#include "CellManager.h"
-#include "Cell.h"
 #include "Random.h"
 
-#include <boost/math/constants/constants.hpp>
-
-void EggState::Update()
+void EggState::UpdateEgg()
 {
 	m_timer -= g_fieldManagerPtr->GetDeltaTime();
 
 	// ›z‰»
 	if (m_timer < 0 && RandomBool(0.1))
 	{
-		m_isDestroyed = true;
+		Destroy();
 
 		const auto& c = g_cellManagerPtr->AddCellState(GetCellModel());
-		c->m_position = m_position;
-		c->m_rotation = m_rotation;
+		c->SetPosition(GetPosition());
+		c->SetRotation(GetRotation());
 	}
 }
 
 void EggState::Draw()
 {
-	auto t = s3d::Transformer2D(s3d::Mat3x2::Scale(0.5).rotated(m_rotation).translated(m_position.m_x, m_position.m_y));
+	auto t = s3d::Transformer2D(s3d::Mat3x2::Scale(0.5)
+		.rotated(GetRotation())
+		.translated(GetPosition().m_x, GetPosition().m_y));
 
-	s3d::Circle(m_radius * 2.0)
+	s3d::Circle(GetRadius() * 2.0)
 		.draw(s3d::ColorF(s3d::Palette::Papayawhip, 0.5))
 		.drawFrame(1.0, s3d::ColorF(1.0, 0.5));
 

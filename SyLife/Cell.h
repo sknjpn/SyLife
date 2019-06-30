@@ -1,13 +1,15 @@
 #pragma once
 
 #include "Model.h"
-#include "Storage.h"
-#include "Molecule.h"
-#include "Part.h"
+#include "Rigidbody.h"
 
-#include "Body.h"
-#include "Equipment.h"
-#include "Module.h"
+#include "Storage.h"
+
+class PartConfig;
+class PartState;
+class BodyState;
+class EquipmentState;
+class ModuleState;
 
 class CellModel
 	: public Model
@@ -23,12 +25,22 @@ public:
 
 public:
 	template <typename T>
-	vector<shared_ptr<T>>	GetParts() const;
+	vector<shared_ptr<T>>	GetParts() const
+	{
+		vector<shared_ptr<T>> tModels;
+
+		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
+			if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
+
+		return tModels;
+	}
 
 	void	Draw(double a = 0.5);
 
+	// JSON
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+
 	void	UpdateProperties();
 };
 
@@ -42,49 +54,18 @@ public:
 
 	shared_ptr<CellModel>	m_model;
 
+	vector<shared_ptr<PartState>>		m_partStates;
+
 	shared_ptr<BodyState>	m_body;
 	vector<shared_ptr<EquipmentState>>	m_equipments;
 	vector<shared_ptr<ModuleState>>		m_modules;
 
-	vector<shared_ptr<PartState>>		m_partStates;
-
 public:
-	CellState(const shared_ptr<CellModel>& model)
-		: m_model(model)
-		, m_startTimer(0.0)
-		, m_deathTimer(25.0)
-	{
-		m_mass = m_model->m_mass;
-		m_radius = m_model->m_radius;
-		m_inertia = m_model->m_inertia;
-		
-		// parts
-		for (const auto& pc : m_model->m_partConfigs)
-		{
-			const auto& ps = m_partStates.emplace_back(pc->m_model->MakeState());
+	CellState(const shared_ptr<CellModel>& model);
 
-			ps->m_config = pc;
-		}
-	}
-
-	void	Update();
+	void	UpdateCell();
 	void	Draw();
 
-	// FieldÇ©ÇÁStorageÇ…éÛÇØéÊÇÈ
 	void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
-
-	// StorageÇ©ÇÁFieldÇ…ìfÇ´èoÇ∑
-	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model);
-	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, int size);
+	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);
 };
-
-template <typename T>
-inline vector<shared_ptr<T>> CellModel::GetParts() const
-{
-	vector<shared_ptr<T>> tModels;
-
-	for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
-		if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
-
-	return tModels;
-}
