@@ -10,6 +10,11 @@ void WaveManager::Update()
 
 void WaveManager::Draw() const
 {
+	static bool showWave = false;
+	if (s3d::KeyP.down()) showWave = !showWave;
+
+	if (!showWave) return;
+
 	double interval = 200;
 	double length = 200.0;
 	double size = 4000;
