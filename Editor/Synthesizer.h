@@ -64,11 +64,11 @@ inline void SynthesizerModel::AddToJSON(ptree& pt) const
 {
 	// import
 	{
-		ptree pt;
+		ptree pt2;
+		
+		m_import.Save(pt2);
 
-		m_import.Save(pt);
-
-		pt.put("import", pt);
+		pt.put("import", pt2);
 	}
 
 	// export
