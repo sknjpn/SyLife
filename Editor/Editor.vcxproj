@@ -267,7 +267,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Storage.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Viewer.cpp" />
