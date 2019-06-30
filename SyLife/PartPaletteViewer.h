@@ -7,15 +7,18 @@
 
 #include "AssetManager.h"
 
+#include "Body.h"
+#include "Equipment.h"
+#include "Module.h"
+
 class PartPaletteViewer
 	: public Viewer
 {
 public:
+	shared_ptr<PartModel>	m_selectedPart;
 	shared_ptr<CellModel>	m_model;
 
 	s3d::Vec2	m_drawPos;
-
-	static shared_ptr<PartModel>	m_selectedPart;
 
 public:
 	PartPaletteViewer()
@@ -59,8 +62,15 @@ public:
 		m_drawPos.moveBy(-16.0, 0.0);
 	}
 
-	void	Update(bool isMouseOver) override;
+	void	Update(bool isMouseOver) override
+	{
+		s3d::Rect(m_drawRect.size.asPoint()).draw(s3d::Color(11, 22, 33, 192));
 
-	static const shared_ptr<PartModel>&	GetSelectedPart() { return m_selectedPart; }
+		m_drawPos = s3d::Vec2::Zero();
+
+		DrawModels<BodyModel>("BodyModel");
+		DrawModels<EquipmentModel>("EquipmentModel");
+		DrawModels<ModuleModel>("ModuleModel");
+	}
 };
 

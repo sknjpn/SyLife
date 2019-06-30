@@ -265,26 +265,8 @@
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Viewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="PartPaletteViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
-    <ClCompile Include="AssemblyViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
-    <ClCompile Include="ReleaseViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
     <ClCompile Include="Egg.cpp">
       <Filter>Source Files\Egg</Filter>
@@ -303,9 +285,6 @@
     </ClCompile>
     <ClCompile Include="WaveManager.cpp">
       <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="CellStateViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
