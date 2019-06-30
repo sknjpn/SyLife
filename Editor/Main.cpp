@@ -7,7 +7,7 @@ void Main()
 {
 	g_systemManagerPtr = make_unique<SystemManager>();
 
-	g_viewerManagerPtr->AddViewer<AssetViewer>();
+	g_viewerManagerPtr->MakeViewer<AssetViewer>();
 
 	g_systemManagerPtr->Start();
 

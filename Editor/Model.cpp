@@ -30,7 +30,7 @@ void Model::SetName(const string& name)
 
 void Model::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<Viewer>();
+	g_viewerManagerPtr->MakeViewer<Viewer>();
 }
 
 void Model::AddToJSON(ptree& pt) const

@@ -31,7 +31,7 @@ public:
 
 inline void ChloroplastModel::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<ChloroplastViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+	g_viewerManagerPtr->MakeViewer<ChloroplastViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
 inline void ChloroplastModel::SetFromJSON(const ptree& pt)

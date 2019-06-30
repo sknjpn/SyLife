@@ -70,7 +70,7 @@ public:
 
 inline void PartModel::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+	g_viewerManagerPtr->MakeViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
 inline s3d::RectF PartModel::GetApproximateRect() const

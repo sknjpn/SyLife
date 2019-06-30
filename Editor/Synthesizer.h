@@ -46,7 +46,7 @@ public:
 
 inline void SynthesizerModel::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<WingViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+	g_viewerManagerPtr->MakeViewer<WingViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
 inline void SynthesizerModel::SetFromJSON(const ptree& pt)

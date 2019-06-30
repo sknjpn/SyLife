@@ -36,7 +36,7 @@ public:
 
 inline void NeedleModel::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<NeedleModel>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+	g_viewerManagerPtr->MakeViewer<NeedleModel>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
 inline void NeedleModel::SetFromJSON(const ptree& pt)

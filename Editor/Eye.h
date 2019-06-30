@@ -31,7 +31,7 @@ public:
 
 inline void EyeModel::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<EyeViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+	g_viewerManagerPtr->MakeViewer<EyeViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
 inline void EyeModel::SetFromJSON(const ptree& pt)

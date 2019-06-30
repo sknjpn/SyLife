@@ -13,7 +13,7 @@ public:
 	void	Update();
 
 	template <typename T, typename... Args>
-	shared_ptr<T>	AddViewer(Args&& ...args) { return dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); }
+	shared_ptr<T>	MakeViewer(Args&& ...args) { return dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); }
 
 	template <typename T>
 	shared_ptr<T>	GetViewer() const;

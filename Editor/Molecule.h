@@ -53,7 +53,7 @@ public:
 
 inline void MoleculeModel::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(shared_from_this()));
+	g_viewerManagerPtr->MakeViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(shared_from_this()));
 }
 
 inline void MoleculeModel::AddToJSON(ptree& pt) const

@@ -43,7 +43,7 @@ public:
 
 inline void EquipmentModel::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<EquipmentViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+	g_viewerManagerPtr->MakeViewer<EquipmentViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
 inline void EquipmentModel::SetFromJSON(const ptree& pt)

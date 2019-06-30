@@ -4,7 +4,7 @@
 
 void CellModel::MakeViewers()
 {
-	g_viewerManagerPtr->AddViewer<CellViewer>(dynamic_pointer_cast<CellModel>(shared_from_this()));
+	g_viewerManagerPtr->MakeViewer<CellViewer>(dynamic_pointer_cast<CellModel>(shared_from_this()));
 }
 
 void CellModel::AddToJSON(ptree& pt) const
