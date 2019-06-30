@@ -315,5 +315,11 @@
     <ClInclude Include="Wing.h">
       <Filter>Source Files\Part</Filter>
     </ClInclude>
+    <ClInclude Include="Synthesizer.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Needle.h">
+      <Filter>Source Files\Part</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
