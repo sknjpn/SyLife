@@ -3,7 +3,8 @@
 #include "Module.h"
 #include "Storage.h"
 #include "Cell.h"
-#include "FieldManager.h"
+
+class SynthesizerViewer;
 
 class SynthesizerModel
 	: public ModuleModel
@@ -15,39 +16,38 @@ public:
 	const Storage&	GetImport() const { return m_import; }
 	const shared_ptr<MoleculeModel>&	GetExport() const { return m_export; }
 
-	shared_ptr<PartState>	MakeState() override;
+	void	MakeViewers() override;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const;
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
-class SynthesizerState
-	: public ModuleState
+class SynthesizerViewer
+	: public PartViewer
 {
-	double	m_timer = 0.0;
+public:
+	s3d::TextEditState		m_textEditState_name;
+	s3d::TextEditState		m_textEditState_mass;
 
 public:
-	void	Draw(const CellState& cell) const 
+	SynthesizerViewer(const shared_ptr<PartModel>& model)
+		: PartViewer(model)
+		, m_textEditState_name(s3d::Unicode::Widen(model->GetName()))
+		, m_textEditState_mass(s3d::ToString(model->m_mass))
 	{
-		m_config->m_model->Draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25); 
+		m_drawRect = s3d::RectF(0, 450, 600, 150);
 	}
 
-	void	Update(CellState& cell) override
-	{
-		m_timer += g_fieldManagerPtr->GetDeltaTime();
-
-		auto model = dynamic_pointer_cast<SynthesizerModel>(m_config->m_model);
-		if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->m_material.Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
-		{
-			m_timer = 0.0;
-
-			cell.m_storage -= model->GetImport();
-			cell.m_storage.Add(model->GetExport());
-		}
-	}
+public:
+	void	Update() override;
 };
 
-inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<SynthesizerState>(); }
+inline void SynthesizerModel::MakeViewers()
+{
+	g_viewerManagerPtr->AddViewer<WingViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+}
 
 inline void SynthesizerModel::SetFromJSON(const ptree& pt)
 {
@@ -58,4 +58,14 @@ inline void SynthesizerModel::SetFromJSON(const ptree& pt)
 	m_export = g_assetManagerPtr->GetModel<MoleculeModel>(pt.get<string>("export"));
 
 	ModuleModel::SetFromJSON(pt);
+}
+
+inline void SynthesizerModel::AddToJSON(ptree& pt) const
+{
+	pt.put("import")
+	pt.put("isRight", m_isRight);
+
+	ModuleModel::AddToJSON(pt);
+
+	pt.put("type", "SynthesizerModel");
 }

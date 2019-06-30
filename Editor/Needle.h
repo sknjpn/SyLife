@@ -1,57 +1,52 @@
 #pragma once
 
 #include "Equipment.h"
-#include "FieldManager.h"
 #include "Cell.h"
+
+class NeedleViewer;
 
 class NeedleModel
 	: public EquipmentModel
 {
 public:
-	shared_ptr<PartState>	MakeState() override;
+	void	MakeViewers() override;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const;
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
-class NeedleState
-	: public EquipmentState
+class NeedleViewer
+	: public PartViewer
 {
-	double	m_heat = 0.0;
+public:
+	s3d::TextEditState		m_textEditState_name;
+	s3d::TextEditState		m_textEditState_mass;
 
 public:
-	void	Draw(const CellState& cell) const
+	NeedleViewer(const shared_ptr<PartModel>& model)
+		: PartViewer(model)
+		, m_textEditState_name(s3d::Unicode::Widen(model->GetName()))
+		, m_textEditState_mass(s3d::ToString(model->m_mass))
 	{
-		auto t = s3d::Transformer2D(s3d::Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
-
-		m_config->m_model->Draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
-	}
-	void	Update(CellState& cell) override
-	{
-		m_heat -= g_fieldManagerPtr->GetDeltaTime();
-		if (m_heat < 0)
-		{
-			m_heat = 5.0;
-
-			auto p = cell.GetWorldPosition(m_config->m_position + Vector2D::Up() * 50.0);
-			for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(p, 100.0))
-			{
-				if (target->m_radius > (target->m_position - p).length() && !target->m_isDestroyed && dynamic_pointer_cast<CellState>(target)->m_model != cell.m_model)
-				{
-					auto cs = dynamic_pointer_cast<CellState>(target);
-
-					cs->m_isDestroyed = true;
-					cell.m_storage += cs->m_storage;
-					cell.m_storage += cs->m_model->m_material;
-				}
-			}
-		}
+		m_drawRect = s3d::RectF(0, 450, 600, 150);
 	}
 };
 
-inline shared_ptr<PartState>	NeedleModel::MakeState() { return make_shared<NeedleState>(); }
+inline void NeedleModel::MakeViewers()
+{
+	g_viewerManagerPtr->AddViewer<NeedleModel>(dynamic_pointer_cast<PartModel>(shared_from_this()));
+}
 
 inline void NeedleModel::SetFromJSON(const ptree& pt)
 {
 	EquipmentModel::SetFromJSON(pt);
+}
+
+inline void NeedleModel::AddToJSON(ptree& pt) const
+{
+	EquipmentModel::AddToJSON(pt);
+
+	pt.put("type", "NeedleModel");
 }
