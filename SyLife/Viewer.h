@@ -4,6 +4,7 @@ class Viewer
 {
 public:
 	s3d::RectF	m_drawRect;
+	s3d::Color	m_backgroundColor;
 
 public:
 	Viewer() = default;
