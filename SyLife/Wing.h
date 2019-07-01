@@ -67,5 +67,5 @@ inline void WingModel::SetFromJSON(const ptree& pt)
 
 inline void WingState::Flap(CellState& cell)
 {
-	cell.AddImpulseInLocal(Vector2D::Up()*10000.0, GetPartConfig()->GetPosition());
+	cell.AddImpulseInLocal(s3d::Vec2::Up()*10000.0, GetPartConfig()->GetPosition());
 }

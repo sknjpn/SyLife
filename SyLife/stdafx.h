@@ -12,7 +12,5 @@ using namespace boost::math::constants;
 #include "sol.hpp"
 #include "nanoflann.hpp"
 
-#include "Vector2D.h"
-
 using namespace std;
 using namespace nanoflann;

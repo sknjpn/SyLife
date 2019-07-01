@@ -23,9 +23,9 @@ void WaveManager::Draw() const
 	{
 		for (double y = -size; y < size; y += interval)
 		{
-			auto v = GetWaveVelocity(Vector2D(x, y)) * 0.01;
+			auto v = GetWaveVelocity(s3d::Vec2(x, y)) * 0.01;
 
-			s3d::Line(x, y, x + v.m_x * length, y + v.m_y * length).drawArrow(20.0, s3d::Vec2(20.0, 20.0), s3d::ColorF(1.0, 0.2));
+			s3d::Line(x, y, x + v.x * length, y + v.y * length).drawArrow(20.0, s3d::Vec2(20.0, 20.0), s3d::ColorF(1.0, 0.2));
 		}
 	}
 }

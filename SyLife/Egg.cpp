@@ -21,7 +21,7 @@ void EggState::Draw()
 {
 	auto t = s3d::Transformer2D(s3d::Mat3x2::Scale(0.5)
 		.rotated(GetRotation())
-		.translated(GetPosition().m_x, GetPosition().m_y));
+		.translated(GetPosition().x, GetPosition().y));
 
 	s3d::Circle(GetRadius() * 2.0)
 		.draw(s3d::ColorF(s3d::Palette::Papayawhip, 0.5))

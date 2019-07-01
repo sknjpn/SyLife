@@ -79,7 +79,7 @@ public:
 
 			if (s3d::MouseL.down())
 			{
-				Vector2D cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
+				s3d::Vec2 cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
 
 				for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(cursorPos, 100))
 				{
@@ -93,7 +93,7 @@ public:
 
 			if (s3d::MouseL.pressed() && isMouseOver)
 			{
-				if (selectedRigidbody != nullptr) selectedRigidbody->SetPosition(Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y));
+				if (selectedRigidbody != nullptr) selectedRigidbody->SetPosition(s3d::Vec2(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y));
 			}
 			else selectedRigidbody = nullptr;
 		}
@@ -109,11 +109,11 @@ public:
 			circle.draw(s3d::ColorF(s3d::Palette::Red, 0.5));
 
 			for (const auto& c : g_cellManagerPtr->GetCellStates())
-				if (s3d::Circle(c->GetPosition().m_x, c->GetPosition().m_y, c->GetRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+				if (s3d::Circle(c->GetPosition().x, c->GetPosition().y, c->GetRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
 			for (const auto& e : g_eggManagerPtr->GetEggStates())
 			{
-				if (s3d::Circle(e->GetPosition().m_x, e->GetPosition().m_y, e->GetRadius()).intersects(circle))
+				if (s3d::Circle(e->GetPosition().x, e->GetPosition().y, e->GetRadius()).intersects(circle))
 				{
 					e->Destroy();
 
@@ -124,7 +124,7 @@ public:
 						for (unsigned int i = 0; i < m.second; i++)
 						{
 							// “f‚«o‚·•ûŒü
-							auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
+							auto v = s3d::Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 							// “f‚«o‚³‚ê‚½MoleculeState
 							const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
@@ -149,7 +149,7 @@ public:
 				for (const auto& p : rv->m_model->m_partConfigs)
 				{
 					auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->GetRotation())
-						.translated(p->GetPosition().m_x, p->GetPosition().m_y));
+						.translated(p->GetPosition().x, p->GetPosition().y));
 
 					for (const auto& s : p->GetModel()->GetShapes())
 						s.m_polygon.draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
@@ -159,8 +159,8 @@ public:
 			if (s3d::MouseL.up())
 			{
 				const auto& c = g_cellManagerPtr->AddCellState(rv->m_model);
-				c->SetPosition(Vector2D(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y));
-				c->SetVelocity(Vector2D::Zero());
+				c->SetPosition(s3d::Vec2(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y));
+				c->SetVelocity(s3d::Vec2::Zero());
 				c->Init();
 
 				m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
@@ -175,7 +175,7 @@ public:
 
 			if (cs != nullptr)
 			{
-				s3d::Circle(cs->GetPosition().m_x, cs->GetPosition().m_y, cs->GetRadius() * 1.5)
+				s3d::Circle(cs->GetPosition().x, cs->GetPosition().y, cs->GetRadius() * 1.5)
 					.draw(s3d::ColorF(1.0, 0.25))
 					.drawFrame(4.0, s3d::Palette::Black);
 			}

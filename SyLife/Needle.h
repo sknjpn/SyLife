@@ -33,7 +33,7 @@ public:
 		{
 			m_heat = 5.0;
 
-			auto p = cell.GetWorldPosition(GetPartConfig()->GetPosition() + Vector2D::Up() * 50.0);
+			auto p = cell.GetWorldPosition(GetPartConfig()->GetPosition() + s3d::Vec2::Up() * 50.0);
 			for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(p, 100.0))
 			{
 				if (target->GetRadius() > (target->GetPosition() - p).length() && !target->IsDestroyed() && dynamic_pointer_cast<CellState>(target)->m_model != cell.m_model)

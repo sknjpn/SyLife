@@ -31,13 +31,13 @@ public:
 		m_inertia = GetMass() * m_radius * m_radius * 0.5;
 	}
 
-	Vector2D	GetVelocityAt(const Vector2D& position) const { return GetVelocity() + (position - GetPosition()).rotated(m_rotation) * m_angularVelocity; }
-	Vector2D	GetWorldPosition(const Vector2D& localPosition) const { return GetPosition() + localPosition.rotated(m_rotation); }
+	s3d::Vec2	GetVelocityAt(const s3d::Vec2& position) const { return GetVelocity() + (position - GetPosition()).rotated(m_rotation) * m_angularVelocity; }
+	s3d::Vec2	GetWorldPosition(const s3d::Vec2& localPosition) const { return GetPosition() + localPosition.rotated(m_rotation); }
 
-	void	AddForceInWorld(const Vector2D& force, const Vector2D& worldPosition) { AddImpulseInWorld(force * g_fieldManagerPtr->GetDeltaTime(), worldPosition); }
-	void	AddForceInLocal(const Vector2D& force, const Vector2D& localPosition) { AddForceInWorld(force.rotated(m_rotation), GetWorldPosition(localPosition)); }
-	void	AddImpulseInLocal(const Vector2D& impulse, const Vector2D& localPosition) { AddImpulseInWorld(impulse.rotated(m_rotation), GetWorldPosition(localPosition)); }
-	void	AddImpulseInWorld(const Vector2D& impulse, const Vector2D& worldPosition);
+	void	AddForceInWorld(const s3d::Vec2& force, const s3d::Vec2& worldPosition) { AddImpulseInWorld(force * g_fieldManagerPtr->GetDeltaTime(), worldPosition); }
+	void	AddForceInLocal(const s3d::Vec2& force, const s3d::Vec2& localPosition) { AddForceInWorld(force.rotated(m_rotation), GetWorldPosition(localPosition)); }
+	void	AddImpulseInLocal(const s3d::Vec2& impulse, const s3d::Vec2& localPosition) { AddImpulseInWorld(impulse.rotated(m_rotation), GetWorldPosition(localPosition)); }
+	void	AddImpulseInWorld(const s3d::Vec2& impulse, const s3d::Vec2& worldPosition);
 
 	void	UpdateRigidbody();
 };

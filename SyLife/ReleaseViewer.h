@@ -38,7 +38,7 @@ public:
 			for (const auto& p : m_model->m_partConfigs)
 			{
 				auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->GetRotation())
-					.translated(p->GetPosition().m_x, p->GetPosition().m_y));
+					.translated(p->GetPosition().x, p->GetPosition().y));
 
 				for (const auto& s : p->GetModel()->GetShapes())
 					s.m_polygon.draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);

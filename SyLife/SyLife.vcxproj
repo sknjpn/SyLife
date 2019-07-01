@@ -310,7 +310,6 @@
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
-    <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="ViewerManager.h" />
     <ClInclude Include="WaveManager.h" />

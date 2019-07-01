@@ -50,7 +50,7 @@ const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_
 	return m;
 }
 
-const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_ptr<MoleculeModel>& model, const Vector2D & position)
+const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_ptr<MoleculeModel>& model, const s3d::Vec2 & position)
 {
 	const auto& m = AddMoleculeState(model);
 	m->SetPosition(position);
@@ -65,7 +65,7 @@ void MoleculeManager::AddMoleculesRandom(const shared_ptr<MoleculeModel>& model,
 		auto p = s3d::RandomVec2(s3d::Random(1000));
 
 		const auto& m = g_moleculeManagerPtr->AddMoleculeState(model);
-		m->SetPosition(Vector2D(p.x, p.y));
+		m->SetPosition(s3d::Vec2(p.x, p.y));
 
 		m->Init();
 	}

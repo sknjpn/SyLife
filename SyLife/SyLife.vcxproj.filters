@@ -264,9 +264,6 @@
     <ClInclude Include="TinyCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
