@@ -6,10 +6,15 @@ class ShapeModel
 	: public Model
 {
 public:
-	Color		m_color;
+	Color	m_color;
 	Polygon	m_polygon;
 
 public:
+	// Get
+	const Color&	GetColor() const { return m_color; }
+	const Polygon&	GetPolygon() const { return m_polygon; }
+	Polygon&	GetPolygon() { return m_polygon; }
+
 	void	Draw(double a) const { m_polygon.draw(ColorF(m_color, a)).drawFrame(1.0, Palette::Black); }
 
 	void	SetFromJSON(const ptree& pt)

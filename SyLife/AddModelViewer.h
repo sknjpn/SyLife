@@ -46,6 +46,6 @@ public:
 		m_drawPos.moveBy(0.0, 15.0);
 	}
 
-	void	Update() override;
+	void	Update(bool isMouseOver) override;
 };
 

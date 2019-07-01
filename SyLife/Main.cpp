@@ -13,7 +13,7 @@ void Main()
 
 	g_systemManagerPtr = make_unique<SystemManager>();
 
-	g_viewerManagerPtr->AddViewer<TitleViewer>();
+	g_viewerManagerPtr->MakeViewer<TitleViewer>();
 
 	while (System::Update())
 	{

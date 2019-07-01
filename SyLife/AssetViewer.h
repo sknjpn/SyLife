@@ -15,7 +15,7 @@ public:
 		m_drawRect = RectF(600, 0, 200, 600);
 	}
 
-	void	Update() override;
+	void	Update(bool isMouseOver) override;
 	void	SetSelectedModel(const shared_ptr<Model>& model);
 
 	template <typename T>

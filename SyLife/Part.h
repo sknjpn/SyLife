@@ -25,7 +25,7 @@ public:
 	const Storage&	GetMaterial() const { return m_material; }
 	const vector<ShapeModel>&	GetShapes() const { return m_shapes; }
 
-	virtual shared_ptr<PartState>	MakeState() = 0;
+	virtual shared_ptr<PartState>	MakeState() {};
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 

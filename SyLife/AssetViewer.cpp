@@ -7,8 +7,9 @@
 #include "Body.h"
 #include "Equipment.h"
 #include "Module.h"
+#include "ViewerManager.h"
 
-void AssetViewer::Update()
+void AssetViewer::Update(bool isMouseOver)
 {
 	m_drawPos = Vec2::Zero();
 

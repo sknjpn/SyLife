@@ -7,9 +7,9 @@ void PartShapeViewer::Init()
 	m_camera.setCenter(m_drawRect.center());
 }
 
-void PartShapeViewer::Update()
+void PartShapeViewer::Update(bool isMouseOver)
 {
-	if (IsMouseOver()) m_camera.update();
+	if (isMouseOver) m_camera.update();
 
 	const auto t = m_camera.createTransformer();
 	const int scale = (int)log10(m_camera.getMagnification());
@@ -43,22 +43,18 @@ void PartShapeViewer::Update()
 	}
 
 	// ShapeModels
-	for (const auto& s : m_model->m_shapes)
+	for (const auto& s : m_model->GetShapes())
 	{
 		// Face
-		{
-			Polygon p(s.m_verticles);
-
-			p.draw(ColorF(s.m_color, 0.5));
-		}
+		s.GetPolygon().draw(ColorF(s.m_color, 0.5));
 
 		// Line
-		for (auto it = s.m_verticles.begin(); it != s.m_verticles.end(); ++it)
+		/*for (auto it = s.m_verticles.begin(); it != s.m_verticles.end(); ++it)
 		{
 			Line l = (it == s.m_verticles.end() - 1) ? Line(s.m_verticles.front(), s.m_verticles.back()) : Line(*it, *(it + 1));
 
 			l.draw(thickness, ColorF(s.m_color, 0.5));
-		}
+		}*/
 
 		// Verticle
 		for (auto it = m_verticles.begin(); it != m_verticles.end(); ++it)
@@ -94,7 +90,7 @@ void PartShapeViewer::Update()
 	}
 
 	// Update
-	if (IsMouseOver())
+	if (isMouseOver)
 	{
 		// Verticle‚Ì”z’u
 		if (m_verticles.empty() && MouseL.down()) m_verticles.emplace_back(cursor);
@@ -108,7 +104,7 @@ void PartShapeViewer::Update()
 					// Connect
 					if (it != m_verticles.begin()) m_verticles.erase(m_verticles.begin(), it);
 
-					m_model->m_shapes.emplace_back(m_verticles);
+					//m_model->GetShapes().emplace_back(m_verticles);
 
 					m_verticles.clear();
 

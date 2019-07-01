@@ -254,6 +254,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_MakeModel.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
+    <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="Egg.cpp" />

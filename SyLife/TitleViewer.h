@@ -136,7 +136,7 @@ public:
 				if (closeCurtain.m_st.sF() > 1.0)
 				{
 					g_viewerManagerPtr->ClearViewers();
-					g_viewerManagerPtr->AddViewer<FieldViewer>();
+					g_viewerManagerPtr->MakeViewer<FieldViewer>();
 				}
 			}
 		}

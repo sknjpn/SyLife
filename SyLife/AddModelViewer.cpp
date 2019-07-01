@@ -11,7 +11,7 @@
 #include "Chloroplast.h"
 #include "Wing.h"
 
-void AddModelViewer::Update()
+void AddModelViewer::Update(bool isMouseOver)
 {
 	m_drawPos = Vec2::Zero();
 
