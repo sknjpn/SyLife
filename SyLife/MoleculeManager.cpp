@@ -2,8 +2,6 @@
 #include "Molecule.h"
 #include "FieldManager.h"
 
-#include "Random.h"
-
 unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
 Indexer<MoleculeState>& MoleculeManager::GetIndexer()

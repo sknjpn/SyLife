@@ -1,6 +1,5 @@
 #include "Egg.h"
 #include "FieldManager.h"
-#include "Random.h"
 
 void EggState::UpdateEgg()
 {

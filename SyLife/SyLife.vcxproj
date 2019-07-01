@@ -261,7 +261,6 @@
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -299,7 +298,6 @@
     <ClInclude Include="Part.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartPaletteViewer.h" />
-    <ClInclude Include="Random.h" />
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="ShapeModel.h" />

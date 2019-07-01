@@ -4,8 +4,6 @@
 #include "EggManager.h"
 #include "MoleculeManager.h"
 
-#include "Random.h"
-
 #include <numeric>
 
 void CellModel::Draw(double a)

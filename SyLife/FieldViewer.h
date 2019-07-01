@@ -15,7 +15,6 @@
 #include "WaveManager.h"
 #include "CellStateViewer.h"
 #include "Egg.h"
-#include "Random.h"
 
 class CellModel;
 class PartPaletteViewer;
