@@ -193,9 +193,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -250,9 +247,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="TinyCamera.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2D.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Viewer.h">
