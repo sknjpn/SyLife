@@ -28,7 +28,7 @@ class WingState
 public:
 	void	Draw(const CellState& cell) const
 	{
-		auto t = s3d::Transformer2D(s3d::Mat3x2::Rotate(dynamic_pointer_cast<WingModel>(GetPartConfig()->GetModel())->m_isRight ? m_p : -m_p));
+		auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingModel>(GetPartConfig()->GetModel())->m_isRight ? m_p : -m_p));
 
 		GetPartConfig()->GetModel()->Draw();
 	}
@@ -67,5 +67,5 @@ inline void WingModel::SetFromJSON(const ptree& pt)
 
 inline void WingState::Flap(CellState& cell)
 {
-	cell.AddImpulseInLocal(s3d::Vec2::Up()*10000.0, GetPartConfig()->GetPosition());
+	cell.AddImpulseInLocal(Vec2::Up()*10000.0, GetPartConfig()->GetPosition());
 }

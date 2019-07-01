@@ -11,7 +11,7 @@ void WaveManager::Update()
 void WaveManager::Draw() const
 {
 	static bool showWave = false;
-	if (s3d::KeyP.down()) showWave = !showWave;
+	if (KeyP.down()) showWave = !showWave;
 
 	if (!showWave) return;
 
@@ -23,9 +23,9 @@ void WaveManager::Draw() const
 	{
 		for (double y = -size; y < size; y += interval)
 		{
-			auto v = GetWaveVelocity(s3d::Vec2(x, y)) * 0.01;
+			auto v = GetWaveVelocity(Vec2(x, y)) * 0.01;
 
-			s3d::Line(x, y, x + v.x * length, y + v.y * length).drawArrow(20.0, s3d::Vec2(20.0, 20.0), s3d::ColorF(1.0, 0.2));
+			Line(x, y, x + v.x * length, y + v.y * length).drawArrow(20.0, Vec2(20.0, 20.0), ColorF(1.0, 0.2));
 		}
 	}
 }

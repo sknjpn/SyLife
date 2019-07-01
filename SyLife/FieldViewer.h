@@ -24,7 +24,7 @@ class ReleaseViewer;
 class FieldViewer
 	: public Viewer
 {
-	s3d::Audio	m_audio;
+	Audio	m_audio;
 	RestrictedCamera2D	m_cursorCamera2D;
 	shared_ptr<CellModel>	m_newModel;
 
@@ -32,12 +32,12 @@ public:
 	FieldViewer()
 		: m_audio(U"assets/music/AQUA.mp3")
 	{
-		m_cursorCamera2D.setRestrictedRect(s3d::RectF(-4000, -4000, 8000, 8000));
-		m_cursorCamera2D.setCenter(s3d::Vec2::Zero());
-		m_cursorCamera2D.setTargetCenter(s3d::Vec2::Zero());
+		m_cursorCamera2D.setRestrictedRect(RectF(-4000, -4000, 8000, 8000));
+		m_cursorCamera2D.setCenter(Vec2::Zero());
+		m_cursorCamera2D.setTargetCenter(Vec2::Zero());
 		m_cursorCamera2D.setMinMagnification(0.01);
 
-		m_drawRect = s3d::RectF(s3d::Window::Size());
+		m_drawRect = RectF(Window::Size());
 		m_audio.setLoop(true);
 		m_audio.play();
 	}
@@ -58,10 +58,10 @@ public:
 		auto t = m_cursorCamera2D.createTransformer();
 
 		static int speed = 1;
-		if (s3d::KeyF1.down()) speed = 1;
-		if (s3d::KeyF2.down() && speed != 1) speed /= 2;
-		if (s3d::KeyF3.down() && speed != 128) speed *= 2;
-		if (s3d::KeyF4.down()) speed = 128;
+		if (KeyF1.down()) speed = 1;
+		if (KeyF2.down() && speed != 1) speed /= 2;
+		if (KeyF3.down() && speed != 128) speed *= 2;
+		if (KeyF4.down()) speed = 128;
 
 		for (int i = 0; i < speed; ++i)
 		{
@@ -76,9 +76,9 @@ public:
 		{
 			static shared_ptr<Rigidbody> selectedRigidbody = nullptr;
 
-			if (s3d::MouseL.down())
+			if (MouseL.down())
 			{
-				s3d::Vec2 cursorPos(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y);
+				Vec2 cursorPos(Cursor::PosF().x, Cursor::PosF().y);
 
 				for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(cursorPos, 100))
 				{
@@ -90,9 +90,9 @@ public:
 				}
 			}
 
-			if (s3d::MouseL.pressed() && isMouseOver)
+			if (MouseL.pressed() && isMouseOver)
 			{
-				if (selectedRigidbody != nullptr) selectedRigidbody->SetPosition(s3d::Vec2(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y));
+				if (selectedRigidbody != nullptr) selectedRigidbody->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 			}
 			else selectedRigidbody = nullptr;
 		}
@@ -102,17 +102,17 @@ public:
 		g_cellManagerPtr->Draw();
 		g_waveManagerPtr->Draw();
 
-		if (s3d::MouseR.pressed())
+		if (MouseR.pressed())
 		{
-			s3d::Circle circle(s3d::Cursor::PosF(), 128.0);
-			circle.draw(s3d::ColorF(s3d::Palette::Red, 0.5));
+			Circle circle(Cursor::PosF(), 128.0);
+			circle.draw(ColorF(Palette::Red, 0.5));
 
 			for (const auto& c : g_cellManagerPtr->GetCellStates())
-				if (s3d::Circle(c->GetPosition().x, c->GetPosition().y, c->GetRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+				if (Circle(c->GetPosition().x, c->GetPosition().y, c->GetRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
 			for (const auto& e : g_eggManagerPtr->GetEggStates())
 			{
-				if (s3d::Circle(e->GetPosition().x, e->GetPosition().y, e->GetRadius()).intersects(circle))
+				if (Circle(e->GetPosition().x, e->GetPosition().y, e->GetRadius()).intersects(circle))
 				{
 					e->Destroy();
 
@@ -123,7 +123,7 @@ public:
 						for (unsigned int i = 0; i < m.second; i++)
 						{
 							// “f‚«o‚·•ûŒü
-							auto v = s3d::Vec2(1.0, 0.0).rotated(rand() / 3600.0);
+							auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 							// “f‚«o‚³‚ê‚½MoleculeState
 							const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
@@ -143,23 +143,23 @@ public:
 		{
 			// part
 			{
-				auto t1 = s3d::Transformer2D(s3d::Mat3x2::Translate(s3d::Cursor::PosF()));
+				auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
 				for (const auto& p : rv->m_model->m_partConfigs)
 				{
-					auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->GetRotation())
+					auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 						.translated(p->GetPosition().x, p->GetPosition().y));
 
 					for (const auto& s : p->GetModel()->GetShapes())
-						s.m_polygon.draw(s3d::ColorF(s.m_color, 0.5)).drawFrame(1.0, s3d::Palette::Black);
+						s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 				}
 			}
 
-			if (s3d::MouseL.up())
+			if (MouseL.up())
 			{
 				const auto& c = g_cellManagerPtr->AddCellState(rv->m_model);
-				c->SetPosition(s3d::Vec2(s3d::Cursor::PosF().x, s3d::Cursor::PosF().y));
-				c->SetVelocity(s3d::Vec2::Zero());
+				c->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
+				c->SetVelocity(Vec2::Zero());
 				c->Init();
 
 				m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
@@ -174,14 +174,14 @@ public:
 
 			if (cs != nullptr)
 			{
-				s3d::Circle(cs->GetPosition().x, cs->GetPosition().y, cs->GetRadius() * 1.5)
-					.draw(s3d::ColorF(1.0, 0.25))
-					.drawFrame(4.0, s3d::Palette::Black);
+				Circle(cs->GetPosition().x, cs->GetPosition().y, cs->GetRadius() * 1.5)
+					.draw(ColorF(1.0, 0.25))
+					.drawFrame(4.0, Palette::Black);
 			}
 		}
 
-		static Curtain curtain(s3d::Color(11, 22, 33), 0.5);
+		static Curtain curtain(Color(11, 22, 33), 0.5);
 		curtain.OpenUpdate();
-		m_audio.setVolume(s3d::Min(curtain.m_st.sF() / curtain.m_duration, 1.0));
+		m_audio.setVolume(Min(curtain.m_st.sF() / curtain.m_duration, 1.0));
 	}
 };

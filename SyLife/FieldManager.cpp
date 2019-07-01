@@ -32,8 +32,8 @@ void FieldManager::Init()
 			for (int i = 0; i < size; i++)
 			{
 				const auto& c = g_cellManagerPtr->AddCellState(g_assetManagerPtr->GetModel<CellModel>(name));
-				c->SetPosition(s3d::Vec2(s3d::Random(m_size.x), s3d::Random(m_size.y)));
-				c->SetVelocity(s3d::Vec2::Zero());
+				c->SetPosition(Vec2(Random(m_size.x), Random(m_size.y)));
+				c->SetVelocity(Vec2::Zero());
 
 				c->Init();
 			}

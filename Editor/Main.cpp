@@ -11,7 +11,7 @@ void Main()
 
 	g_systemManagerPtr->Start();
 
-	while (s3d::System::Update())
+	while (System::Update())
 	{
 		g_systemManagerPtr->Update();
 	}

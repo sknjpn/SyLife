@@ -21,16 +21,16 @@ class NeedleViewer
 	: public PartViewer
 {
 public:
-	s3d::TextEditState		m_textEditState_name;
-	s3d::TextEditState		m_textEditState_mass;
+	TextEditState		m_textEditState_name;
+	TextEditState		m_textEditState_mass;
 
 public:
 	NeedleViewer(const shared_ptr<PartModel>& model)
 		: PartViewer(model)
-		, m_textEditState_name(s3d::Unicode::Widen(model->GetName()))
-		, m_textEditState_mass(s3d::ToString(model->m_mass))
+		, m_textEditState_name(Unicode::Widen(model->GetName()))
+		, m_textEditState_mass(ToString(model->m_mass))
 	{
-		m_drawRect = s3d::RectF(0, 450, 600, 150);
+		m_drawRect = RectF(0, 450, 600, 150);
 	}
 };
 

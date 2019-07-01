@@ -13,7 +13,7 @@ public:
 	int NumMolecule(const shared_ptr<MoleculeModel>& model);
 
 	const shared_ptr<MoleculeState>&	AddMoleculeState(const shared_ptr<MoleculeModel>& model);
-	const shared_ptr<MoleculeState>&	AddMoleculeState(const shared_ptr<MoleculeModel>& model, const s3d::Vec2& position);
+	const shared_ptr<MoleculeState>&	AddMoleculeState(const shared_ptr<MoleculeModel>& model, const Vec2& position);
 
 	void	AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size);
 

@@ -8,13 +8,13 @@ class MoleculeModel
 {
 	double		m_mass;
 	double		m_radius;
-	s3d::Color	m_color;
+	Color	m_color;
 
 public:
 	// Get
 	double	GetMass() const { return m_mass; }
 	double	GetRadius() const { return m_radius; }
-	const s3d::Color&	GetColor() const { return m_color; }
+	const Color&	GetColor() const { return m_color; }
 
 	// JSON
 	void	SetFromJSON(const ptree& pt);
@@ -48,7 +48,7 @@ inline void MoleculeModel::SetFromJSON(const ptree& pt)
 	m_mass = pt.get<double>("mass");
 
 	// color
-	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
+	m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
 
 	// radius
 	m_radius = sqrt(m_mass);

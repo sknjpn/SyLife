@@ -18,13 +18,13 @@ void EggState::UpdateEgg()
 
 void EggState::Draw()
 {
-	auto t = s3d::Transformer2D(s3d::Mat3x2::Scale(0.5)
+	auto t = Transformer2D(Mat3x2::Scale(0.5)
 		.rotated(GetRotation())
 		.translated(GetPosition().x, GetPosition().y));
 
-	s3d::Circle(GetRadius() * 2.0)
-		.draw(s3d::ColorF(s3d::Palette::Papayawhip, 0.5))
-		.drawFrame(1.0, s3d::ColorF(1.0, 0.5));
+	Circle(GetRadius() * 2.0)
+		.draw(ColorF(Palette::Papayawhip, 0.5))
+		.drawFrame(1.0, ColorF(1.0, 0.5));
 
 	m_cellModel->Draw(min(2.0, 10.0 - m_timer) * 0.25);
 }

@@ -15,13 +15,13 @@ public:
 	CellStateViewer()
 		: m_cellState(nullptr)
 	{
-		m_drawRect = s3d::RectF(s3d::Window::Width() - 300, 450, 200, 400);
+		m_drawRect = RectF(Window::Width() - 300, 450, 200, 400);
 
 	}
 
 	void	Update(bool isMouseOver) override
 	{
-		s3d::Rect(m_drawRect.size.asPoint()).draw(s3d::Color(11, 22, 33, 192));
+		Rect(m_drawRect.size.asPoint()).draw(Color(11, 22, 33, 192));
 
 		if (!m_cellState) return;
 		if (m_cellState->IsDestroyed())
@@ -34,18 +34,18 @@ public:
 		const auto& model = m_cellState->m_model;
 
 		{
-			auto t1 = s3d::Transformer2D(s3d::Mat3x2::Translate(100, 50));
-			auto t2 = s3d::Transformer2D(s3d::Mat3x2::Scale(50.0 / m_cellState->m_model->m_radius));
+			auto t1 = Transformer2D(Mat3x2::Translate(100, 50));
+			auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_model->m_radius));
 
 			m_cellState->m_model->Draw(1.0);
 		}
 
-		s3d::Vec2 pos(0, 100);
-		static s3d::Font font(13, s3d::Typeface::Bold);
+		Vec2 pos(0, 100);
+		static Font font(13, Typeface::Bold);
 
 		{
 			{
-				auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos));
+				auto t = Transformer2D(Mat3x2::Translate(pos));
 				font(U"Material").draw();
 				pos.moveBy(0, 16);
 			}
@@ -53,8 +53,8 @@ public:
 			pos.moveBy(16.0, 0.0);
 			for (const auto& m : model->m_material.GetMolecules())
 			{
-				auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos));
-				font(s3d::Unicode::Widen(m.first->GetName()) + U":" + s3d::ToString(m.second) + U"U").draw();
+				auto t = Transformer2D(Mat3x2::Translate(pos));
+				font(Unicode::Widen(m.first->GetName()) + U":" + ToString(m.second) + U"U").draw();
 				pos.moveBy(0, 15);
 			}
 			pos.moveBy(0, 32);
@@ -63,7 +63,7 @@ public:
 		{
 			pos.moveBy(-16.0, 0.0);
 			{
-				auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos));
+				auto t = Transformer2D(Mat3x2::Translate(pos));
 				font(U"Storage").draw();
 				pos.moveBy(0, 16);
 			}
@@ -71,8 +71,8 @@ public:
 			pos.moveBy(16.0, 0.0);
 			for (const auto& m : m_cellState->m_storage.GetMolecules())
 			{
-				auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(pos));
-				font(s3d::Unicode::Widen(m.first->GetName()) + U":" + s3d::ToString(m.second) + U"U").draw();
+				auto t = Transformer2D(Mat3x2::Translate(pos));
+				font(Unicode::Widen(m.first->GetName()) + U":" + ToString(m.second) + U"U").draw();
 				pos.moveBy(0, 15);
 			}
 			pos.moveBy(-16.0, 0.0);

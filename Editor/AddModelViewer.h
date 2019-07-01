@@ -6,11 +6,11 @@
 class AddModelViewer
 	: public Viewer
 {
-	s3d::Vec2	m_drawPos;
+	Vec2	m_drawPos;
 public:
 	AddModelViewer()
 	{
-		m_drawRect = s3d::RectF(100, 150, 400, 300);
+		m_drawRect = RectF(100, 150, 400, 300);
 	}
 
 	template <typename T>
@@ -34,11 +34,11 @@ public:
 	template <typename T>
 	void	DrawModels(const string& name)
 	{
-		static s3d::Font font10(10, s3d::Typeface::Bold);
-		auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(m_drawPos), true);
-		auto f = font10(s3d::Unicode::Widen(name));
+		static Font font10(10, Typeface::Bold);
+		auto t = Transformer2D(Mat3x2::Translate(m_drawPos), true);
+		auto f = font10(Unicode::Widen(name));
 
-		f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
+		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();
 
 		if (f.region().leftClicked()) AddModel<T>();

@@ -10,7 +10,7 @@
 
 void AssetViewer::Update()
 {
-	m_drawPos = s3d::Vec2::Zero();
+	m_drawPos = Vec2::Zero();
 
 	DrawModels<CellModel>("CellModel");
 	DrawModels<MoleculeModel>("MoleculeModel");
@@ -20,12 +20,12 @@ void AssetViewer::Update()
 
 	// AddNewModel
 	{
-		static s3d::Font font(15, s3d::Typeface::Bold);
+		static Font font(15, Typeface::Bold);
 
-		auto t = s3d::Transformer2D(s3d::Mat3x2::Translate(m_drawPos), true);
+		auto t = Transformer2D(Mat3x2::Translate(m_drawPos), true);
 		auto f = font(U"V‚µ‚¢Model‚Ì’Ç‰Á");
 
-		f.region().draw(s3d::ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
+		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();
 
 		if (f.region().leftClicked() && !g_viewerManagerPtr->HasViewer<AddModelViewer>()) g_viewerManagerPtr->MakeViewer<AddModelViewer>();
@@ -34,7 +34,7 @@ void AssetViewer::Update()
 	}
 
 	// Save
-	if (s3d::KeyControl.pressed() && s3d::KeyS.down() && m_selectedModel != nullptr)
+	if (KeyControl.pressed() && KeyS.down() && m_selectedModel != nullptr)
 	{
 		ptree pt;
 		m_selectedModel->Save(pt);

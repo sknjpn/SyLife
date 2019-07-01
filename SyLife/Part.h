@@ -29,10 +29,10 @@ public:
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 
-	s3d::Vec2	GetApproximateRectTopLeft() const;
-	s3d::Vec2	GetApproximateRectBottomDown() const;
+	Vec2	GetApproximateRectTopLeft() const;
+	Vec2	GetApproximateRectBottomDown() const;
 	double		GetRectInertia() const;
-	s3d::Vec2	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
+	Vec2	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
 
 	// JSON
 	void	SetFromJSON(const ptree& pt);
@@ -43,18 +43,18 @@ class PartConfig
 	: public Model
 {
 	shared_ptr<PartModel>	m_partModel;
-	s3d::Vec2	m_position;
+	Vec2	m_position;
 	double		m_rotation;
 
 public:
 	// Get
 	const shared_ptr<PartModel>&	GetModel() const { return m_partModel; }
-	const s3d::Vec2&	GetPosition() const { return m_position; }
+	const Vec2&	GetPosition() const { return m_position; }
 	double	GetRotation() const { return m_rotation; }
 
 	// Set
 	void	SetModel(const shared_ptr<PartModel>& partModel) { m_partModel = partModel; }
-	void	SetPosition(const s3d::Vec2& position) { m_position = position; }
+	void	SetPosition(const Vec2& position) { m_position = position; }
 	void	SetRotation(double rotation) { m_rotation = rotation; }
 
 	double	GetInertia() const { return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->GetMass(); }
@@ -80,7 +80,7 @@ public:
 	virtual void	Update(CellState& cell) = 0;
 };
 
-inline s3d::Vec2 PartModel::GetApproximateRectTopLeft() const
+inline Vec2 PartModel::GetApproximateRectTopLeft() const
 {
 	double x = m_shapes.front().m_polygon.vertices().front().x;
 	double y = m_shapes.front().m_polygon.vertices().front().y;
@@ -94,10 +94,10 @@ inline s3d::Vec2 PartModel::GetApproximateRectTopLeft() const
 		}
 	}
 
-	return s3d::Vec2(x, y);
+	return Vec2(x, y);
 }
 
-inline s3d::Vec2 PartModel::GetApproximateRectBottomDown() const
+inline Vec2 PartModel::GetApproximateRectBottomDown() const
 {
 	double x = m_shapes.front().m_polygon.vertices().front().x;
 	double y = m_shapes.front().m_polygon.vertices().front().y;
@@ -111,7 +111,7 @@ inline s3d::Vec2 PartModel::GetApproximateRectBottomDown() const
 		}
 	}
 
-	return s3d::Vec2(x, y);
+	return Vec2(x, y);
 }
 
 inline double PartModel::GetRectInertia() const
@@ -143,7 +143,7 @@ inline void PartConfig::SetFromJSON(const ptree& pt)
 	m_partModel = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
 
 	// position
-	m_position = s3d::Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
+	m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
 
 	// rotation
 	m_rotation = pt.get<double>("rotation");

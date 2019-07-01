@@ -6,16 +6,16 @@ class ShapeModel
 	: public Model
 {
 public:
-	s3d::Color	m_color;
-	s3d::Array<s3d::Vec2>	m_verticles;
+	Color	m_color;
+	Array<Vec2>	m_verticles;
 
 public:
 	ShapeModel()
-		: m_color(s3d::RandomHSV())
+		: m_color(RandomHSV())
 	{}
-	ShapeModel(const s3d::Array<s3d::Vec2>& verticles)
+	ShapeModel(const Array<Vec2>& verticles)
 		: m_verticles(verticles)
-		, m_color(s3d::RandomHSV())
+		, m_color(RandomHSV())
 	{}
 
 	void	SetFromJSON(const ptree& pt);
@@ -27,7 +27,7 @@ public:
 inline void ShapeModel::SetFromJSON(const ptree& pt)
 {
 	// color
-	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
+	m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
 
 	// verticles
 	for (auto v : pt.get_child("verticles"))

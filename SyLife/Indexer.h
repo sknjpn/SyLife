@@ -12,12 +12,12 @@ public:
 public:
 	Indexer() : m_adaptor(2, m_cloud, KDTreeSingleIndexAdaptorParams(10000)) { m_cloud.m_particles.reserve(10000); }
 
-	void	ForEachNearParticles(s3d::Vec2 position, double radius, function<void(const shared_ptr<T>&, double)> func) const
+	void	ForEachNearParticles(Vec2 position, double radius, function<void(const shared_ptr<T>&, double)> func) const
 	{
 		for (const auto& l : GetNearParticleIDs(position, radius)) func(m_cloud.m_particles[l.first], l.second);
 	}
 
-	vector<pair<size_t, double>>	GetNearParticleIDs(s3d::Vec2 position, double radius) const
+	vector<pair<size_t, double>>	GetNearParticleIDs(Vec2 position, double radius) const
 	{
 		const double query_pt[2] = { position.x, position.y };
 		const double search_radius = radius * radius;
@@ -29,7 +29,7 @@ public:
 		return ret_matches;
 	}
 
-	vector<shared_ptr<T>>	GetNearParticles(s3d::Vec2 position, double radius) const
+	vector<shared_ptr<T>>	GetNearParticles(Vec2 position, double radius) const
 	{
 		vector<shared_ptr<T>>	result;
 
