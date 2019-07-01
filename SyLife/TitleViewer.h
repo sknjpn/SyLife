@@ -95,8 +95,8 @@ public:
 
 			const auto a = Min(0.25, t * 0.01);
 			const auto p = Vec2(Window::Center()).movedBy(0.0, -Window::Height() * 0.3);
-			const auto x = sin(t / 10.0 * 13) * 2.0;
-			const auto y = sin(t / 10.0 * 11) * 2.0;
+			const auto x = sin(t / 10.0 * 13) * 5.0;
+			const auto y = sin(t / 10.0 * 11) * 5.0;
 
 			titleFont(U"SyLife").drawAt(p.movedBy(x * 3.0, y * 3.0), ColorF(1.0, a));
 			titleFont(U"SyLife").drawAt(p.movedBy(x * 2.0, y * 2.0), ColorF(1.0, a));

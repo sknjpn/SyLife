@@ -30,7 +30,7 @@ class FieldViewer
 
 public:
 	FieldViewer()
-		: m_audio(U"assets/music/AQUA.mp3")
+		: m_audio(U"assets/music/ÉVÉAÉì.mp3")
 	{
 		m_cursorCamera2D.setRestrictedRect(RectF(-4000, -4000, 8000, 8000));
 		m_cursorCamera2D.setCenter(Vec2::Zero());
