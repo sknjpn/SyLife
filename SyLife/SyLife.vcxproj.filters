@@ -238,6 +238,15 @@
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
+    <ClCompile Include="PartShapeViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AddModelViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -356,6 +365,15 @@
     </ClInclude>
     <ClInclude Include="Molecule.h">
       <Filter>Source Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PartShapeViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AddModelViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetViewer.h">
+      <Filter>Source Files\Viewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
