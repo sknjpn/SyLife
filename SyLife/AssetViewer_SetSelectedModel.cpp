@@ -14,7 +14,11 @@
 void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)
 {
 	// ©•ªˆÈŠO‚ÌView‚ğE‚·
-	while (g_viewerManagerPtr->m_viewers.size() > 1) g_viewerManagerPtr->m_viewers.pop_back();
+	g_viewerManagerPtr->DeleteViewer<PartPaletteViewer>();
+	g_viewerManagerPtr->DeleteViewer<PartViewer>();
+	g_viewerManagerPtr->DeleteViewer<CellViewer>();
+	g_viewerManagerPtr->DeleteViewer<MoleculeViewer>();
+	g_viewerManagerPtr->DeleteViewer<PartShapeViewer>();
 
 	// ‘ÎÛ‚ÌView‚ğ’Ç‰Á
 	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<PartPaletteViewer>(dynamic_pointer_cast<CellModel>(model));

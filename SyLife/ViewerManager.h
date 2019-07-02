@@ -22,7 +22,7 @@ public:
 	bool	HasViewer() const { return GetViewer<T>() != nullptr; }
 
 	template <typename T>
-	bool	DeleteViewer() const { m_viewers.erase(remove_if(m_viewers.begin(), m_viewers.end(), [](const auto& v) { return dynamic_pointer_cast<T>(v) != nullptr; }), m_viewers.end()); }
+	void	DeleteViewer() { m_viewers.erase(remove_if(m_viewers.begin(), m_viewers.end(), [](const auto& v) { return dynamic_pointer_cast<T>(v) != nullptr; }), m_viewers.end()); }
 
 	void	ClearViewers() { m_viewers.clear(); }
 };

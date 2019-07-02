@@ -4,7 +4,7 @@ class Viewer
 {
 public:
 	RectF	m_drawRect;
-	Color	m_backgroundColor = Color(11, 22, 33);
+	Color	m_backgroundColor = Color(11, 22, 33, 128);
 
 public:
 	Viewer() = default;
