@@ -2,5 +2,5 @@
 
 bool Viewer::IsMouseOver() const
 {
-	return m_drawRect.contains(s3d::Cursor::PosRaw());
+	return m_drawRect.contains(Cursor::PosRaw());
 }

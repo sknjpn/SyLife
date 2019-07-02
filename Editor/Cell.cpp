@@ -39,7 +39,7 @@ void CellViewer::Update()
 {
 	// name
 	{
-		s3d::SimpleGUI::TextBox(m_textEditState_name, s3d::Vec2(10, 10), 240);
-		m_model->SetName(s3d::Unicode::Narrow(m_textEditState_name.text));
+		SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
+		m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
 	}
 }

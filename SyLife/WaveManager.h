@@ -4,24 +4,24 @@
 
 class WaveManager
 {
-	s3d::PerlinNoise perlinNoiseX;
-	s3d::PerlinNoise perlinNoiseY;
+	PerlinNoise perlinNoiseX;
+	PerlinNoise perlinNoiseY;
 	double	m_timer;
 
 public:
 	WaveManager()
 		: m_timer(0.0)
-		, perlinNoiseX(s3d::Random<int>(0, 99999))
-		, perlinNoiseY(s3d::Random<int>(0, 99999))
+		, perlinNoiseX(Random<int>(0, 99999))
+		, perlinNoiseY(Random<int>(0, 99999))
 	{}
 
-	Vector2D	GetWaveVelocity(const Vector2D& position) const
+	Vec2	GetWaveVelocity(const Vec2& position) const
 	{
 		auto interval = 200.0;
-		auto x = perlinNoiseX.noise(s3d::Vec3(position.m_x / interval, position.m_y / interval, m_timer * 0.15));
-		auto y = perlinNoiseY.noise(s3d::Vec3(position.m_x / interval, position.m_y / interval, m_timer * 0.15));
+		auto x = perlinNoiseX.noise(Vec3(position.x / interval, position.y / interval, m_timer * 0.15));
+		auto y = perlinNoiseY.noise(Vec3(position.x / interval, position.y / interval, m_timer * 0.15));
 
-		return (Vector2D(x, y) - position * 0.0001) * 100.0;
+		return (Vec2(x, y) - position * 0.0001) * 100.0;
 	}
 
 	void	Update();

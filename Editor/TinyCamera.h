@@ -4,25 +4,25 @@
 class BasicCamera2D
 {
 protected:
-	s3d::Vec2	m_center = s3d::Window::BaseSize() * 0.5;
+	Vec2	m_center = Window::BaseSize() * 0.5;
 	double	m_magnification = 1.0;
 
 public:
 	BasicCamera2D() = default;
 
-	BasicCamera2D(const s3d::Vec2& center, double magnification)
+	BasicCamera2D(const Vec2& center, double magnification)
 		: m_center(center)
 		, m_magnification(magnification)
 	{}
 
-	[[nodiscard]] s3d::RectF getCameraRect() const { return s3d::RectF(s3d::Window::BaseSize() / m_magnification).setCenter(m_center); }
-	[[nodiscard]] s3d::Mat3x2 getMat3x2() const { return s3d::Mat3x2::Translate(-m_center).scaled(m_magnification).translated(s3d::Window::BaseSize() * 0.5); }
-	[[nodiscard]] s3d::Transformer2D createTransformer() const { return s3d::Transformer2D(getMat3x2(), true, s3d::Transformer2D::Target::PushCamera); }
+	[[nodiscard]] RectF getCameraRect() const { return RectF(Window::BaseSize() / m_magnification).setCenter(m_center); }
+	[[nodiscard]] Mat3x2 getMat3x2() const { return Mat3x2::Translate(-m_center).scaled(m_magnification).translated(Window::BaseSize() * 0.5); }
+	[[nodiscard]] Transformer2D createTransformer() const { return Transformer2D(getMat3x2(), true, Transformer2D::Target::PushCamera); }
 
-	void		setCenter(const s3d::Vec2& center) { m_center = center; }
+	void		setCenter(const Vec2& center) { m_center = center; }
 	void		setMagnification(double magnification) { m_magnification = magnification; }
 
-	const s3d::Vec2&	getCenter() const noexcept { return m_center; }
+	const Vec2&	getCenter() const noexcept { return m_center; }
 	double		getMagnification() const noexcept { return m_magnification; }
 };
 
@@ -35,20 +35,20 @@ class CursorCamera2D
 
 	std::array<std::function<bool()>, 4> m_controls =
 	{
-		[]() { return s3d::KeyW.pressed() || s3d::Cursor::Pos().y <= 0; },
-		[]() { return s3d::KeyA.pressed() || s3d::Cursor::Pos().x <= 0; },
-		[]() { return s3d::KeyS.pressed() || s3d::Cursor::Pos().y >= s3d::Window::Size().y - 1; },
-		[]() { return s3d::KeyD.pressed() || s3d::Cursor::Pos().x >= s3d::Window::Size().x - 1; },
+		[]() { return KeyW.pressed() || Cursor::Pos().y <= 0; },
+		[]() { return KeyA.pressed() || Cursor::Pos().x <= 0; },
+		[]() { return KeyS.pressed() || Cursor::Pos().y >= Window::Size().y - 1; },
+		[]() { return KeyD.pressed() || Cursor::Pos().x >= Window::Size().x - 1; },
 	};
 
 protected:
-	s3d::Vec2		m_targetCenter = s3d::Window::BaseSize() * 0.5;
+	Vec2		m_targetCenter = Window::BaseSize() * 0.5;
 	double		m_targetMagnification = 1.0;
 
 	void magnify()
 	{
-		const auto delta = 1.0 + m_magnifyingSensitivity * s3d::Mouse::Wheel();
-		const auto cursorPos = (s3d::Cursor::PosF() - s3d::Window::BaseSize() * 0.5) / m_targetMagnification + m_targetCenter;
+		const auto delta = 1.0 + m_magnifyingSensitivity * Mouse::Wheel();
+		const auto cursorPos = (Cursor::PosF() - Window::BaseSize() * 0.5) / m_targetMagnification + m_targetCenter;
 
 		m_targetMagnification /= delta;
 		m_targetCenter = (m_targetCenter - cursorPos) * delta + cursorPos;
@@ -56,28 +56,28 @@ protected:
 
 	void move()
 	{
-		if (m_controls[0]()) { m_targetCenter.y -= m_movingSensitivity * s3d::Window::BaseSize().y / m_targetMagnification; }
-		if (m_controls[1]()) { m_targetCenter.x -= m_movingSensitivity * s3d::Window::BaseSize().x / m_targetMagnification; }
-		if (m_controls[2]()) { m_targetCenter.y += m_movingSensitivity * s3d::Window::BaseSize().y / m_targetMagnification; }
-		if (m_controls[3]()) { m_targetCenter.x += m_movingSensitivity * s3d::Window::BaseSize().x / m_targetMagnification; }
+		if (m_controls[0]()) { m_targetCenter.y -= m_movingSensitivity * Window::BaseSize().y / m_targetMagnification; }
+		if (m_controls[1]()) { m_targetCenter.x -= m_movingSensitivity * Window::BaseSize().x / m_targetMagnification; }
+		if (m_controls[2]()) { m_targetCenter.y += m_movingSensitivity * Window::BaseSize().y / m_targetMagnification; }
+		if (m_controls[3]()) { m_targetCenter.x += m_movingSensitivity * Window::BaseSize().x / m_targetMagnification; }
 	}
 
 	void follow()
 	{
-		m_center = s3d::Math::Lerp(m_center, m_targetCenter, m_followingSpeed);
-		m_magnification = 1.0 / s3d::Math::Lerp(1.0 / m_magnification, 1.0 / m_targetMagnification, m_followingSpeed);
+		m_center = Math::Lerp(m_center, m_targetCenter, m_followingSpeed);
+		m_magnification = 1.0 / Math::Lerp(1.0 / m_magnification, 1.0 / m_targetMagnification, m_followingSpeed);
 	}
 
 public:
 	CursorCamera2D() = default;
 
-	CursorCamera2D(const s3d::Vec2& targetCenter, double targetMagnification)
+	CursorCamera2D(const Vec2& targetCenter, double targetMagnification)
 		: BasicCamera2D(targetCenter, targetMagnification)
 		, m_targetCenter(targetCenter)
 		, m_targetMagnification(targetMagnification)
 	{}
 
-	CursorCamera2D(const s3d::Vec2& targetCenter, double targetMagnification, double followingSpeed, double magnifyingSensitivity, double movingSensitivity)
+	CursorCamera2D(const Vec2& targetCenter, double targetMagnification, double followingSpeed, double magnifyingSensitivity, double movingSensitivity)
 		: BasicCamera2D(targetCenter, targetMagnification)
 		, m_targetCenter(targetCenter)
 		, m_targetMagnification(targetMagnification)
@@ -100,22 +100,22 @@ public:
 	void	setMovingSensitivity(double movingSensitivity) noexcept { m_movingSensitivity = movingSensitivity; }
 	void	setControls(const std::array<std::function<bool()>, 4>& controls) noexcept { m_controls = controls; }
 
-	void	setTargetCenter(const s3d::Vec2& targetCenter) noexcept { m_targetCenter = targetCenter; }
+	void	setTargetCenter(const Vec2& targetCenter) noexcept { m_targetCenter = targetCenter; }
 	void	setTargetMagnification(double targetMagnification) noexcept { m_targetMagnification = targetMagnification; }
 
-	s3d::RectF	getTargetCameraRect() const { return s3d::RectF(s3d::Window::BaseSize() / m_targetMagnification).setCenter(m_targetCenter); }
+	RectF	getTargetCameraRect() const { return RectF(Window::BaseSize() / m_targetMagnification).setCenter(m_targetCenter); }
 };
 
 class RestrictedCamera2D
 	: public CursorCamera2D
 {
-	s3d::RectF	m_restrictedRect = s3d::Window::BaseClientRect();
+	RectF	m_restrictedRect = Window::BaseClientRect();
 	double	m_minMagnification = 1.0;
 	double	m_maxMagnification = 8.0;
 
 	void	restrictMagnification()
 	{
-		auto min = s3d::Max({ m_minMagnification, s3d::Window::BaseSize().y / m_restrictedRect.h, s3d::Window::BaseSize().x / m_restrictedRect.w });
+		auto min = Max({ m_minMagnification, Window::BaseSize().y / m_restrictedRect.h, Window::BaseSize().x / m_restrictedRect.w });
 		auto max = m_maxMagnification;
 
 		if (m_magnification < min) { m_magnification = min; }
@@ -139,7 +139,7 @@ class RestrictedCamera2D
 
 	void	restrictTargetMagnification()
 	{
-		auto min = s3d::Max({ m_minMagnification, s3d::Window::BaseSize().y / m_restrictedRect.h, s3d::Window::BaseSize().x / m_restrictedRect.w });
+		auto min = Max({ m_minMagnification, Window::BaseSize().y / m_restrictedRect.h, Window::BaseSize().x / m_restrictedRect.w });
 		auto max = m_maxMagnification;
 
 		if (m_targetMagnification < min) { m_targetMagnification = min; }
@@ -164,7 +164,7 @@ class RestrictedCamera2D
 public:
 	RestrictedCamera2D() = default;
 
-	RestrictedCamera2D(const s3d::Vec2& targetCenter, double targetMagnification)
+	RestrictedCamera2D(const Vec2& targetCenter, double targetMagnification)
 		: CursorCamera2D(targetCenter, targetMagnification)
 	{
 		restrictMagnification();
@@ -173,7 +173,7 @@ public:
 		restrictTargetRect();
 	}
 
-	RestrictedCamera2D(const s3d::RectF restrictedRect, double minMagnification, double maxMagnification)
+	RestrictedCamera2D(const RectF restrictedRect, double minMagnification, double maxMagnification)
 		: m_restrictedRect(restrictedRect)
 		, m_minMagnification(minMagnification)
 		, m_maxMagnification(maxMagnification)
@@ -184,7 +184,7 @@ public:
 		restrictTargetRect();
 	}
 
-	RestrictedCamera2D(const s3d::Vec2& targetCenter, double targetMagnification, const s3d::RectF restrictedRect, double minMagnification, double maxMagnification)
+	RestrictedCamera2D(const Vec2& targetCenter, double targetMagnification, const RectF restrictedRect, double minMagnification, double maxMagnification)
 		: CursorCamera2D(targetCenter, targetMagnification)
 		, m_restrictedRect(restrictedRect)
 		, m_minMagnification(minMagnification)
@@ -209,7 +209,7 @@ public:
 		follow();
 	}
 
-	void	setRestrictedRect(s3d::RectF restrictedRect)
+	void	setRestrictedRect(RectF restrictedRect)
 	{
 		m_restrictedRect = restrictedRect;
 
@@ -239,7 +239,7 @@ public:
 		restrictTargetRect();
 	}
 
-	[[nodiscard]] const s3d::RectF&	getRestrictedRect() const noexcept { return m_restrictedRect; }
+	[[nodiscard]] const RectF&	getRestrictedRect() const noexcept { return m_restrictedRect; }
 	[[nodiscard]] double		getMinMagnification() const noexcept { return m_minMagnification; }
 	[[nodiscard]] double		getMaxMagnification() const noexcept { return m_maxMagnification; }
 };

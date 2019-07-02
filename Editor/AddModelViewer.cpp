@@ -13,7 +13,7 @@
 
 void AddModelViewer::Update()
 {
-	m_drawPos = s3d::Vec2::Zero();
+	m_drawPos = Vec2::Zero();
 
 	DrawModels<Model>("Model");
 	DrawModels<MoleculeModel>("MoleculeModel");

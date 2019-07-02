@@ -22,9 +22,9 @@ public:
 public:
 	void	MakeViewers() override;
 
-	s3d::RectF	GetApproximateRect() const;
+	RectF	GetApproximateRect() const;
 	double		GetRectInertia() const;
-	s3d::Vec2	GetCenter() const;
+	Vec2	GetCenter() const;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
@@ -39,7 +39,7 @@ class PartConfig
 {
 public:
 	shared_ptr<PartModel>	m_model;
-	s3d::Vec2	m_position;
+	Vec2	m_position;
 	double		m_rotation;
 
 public:
@@ -62,7 +62,7 @@ public:
 	PartViewer(const shared_ptr<PartModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = s3d::RectF(0, 450, 600, 150);
+		m_drawRect = RectF(0, 450, 600, 150);
 	}
 
 	void	Update() override;
@@ -73,9 +73,9 @@ inline void PartModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline s3d::RectF PartModel::GetApproximateRect() const
+inline RectF PartModel::GetApproximateRect() const
 {
-	s3d::RectF ar(m_shapes.front().m_verticles.front(), m_shapes.front().m_verticles.front());
+	RectF ar(m_shapes.front().m_verticles.front(), m_shapes.front().m_verticles.front());
 
 	for (const auto& s : m_shapes)
 	{
@@ -99,7 +99,7 @@ inline double PartModel::GetRectInertia() const
 	return  m_mass * (w * w + h * h) / 12.0;
 }
 
-inline s3d::Vec2 PartModel::GetCenter() const
+inline Vec2 PartModel::GetCenter() const
 {
 	return GetApproximateRect().center();
 }
@@ -157,7 +157,7 @@ inline void PartConfig::SetFromJSON(const ptree& pt)
 	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
 
 	// position
-	m_position = s3d::Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
+	m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
 
 	// rotation
 	m_rotation = pt.get<double>("rotation");

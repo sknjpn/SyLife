@@ -19,13 +19,13 @@ void ViewerManager::Update()
 
 	for (auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
 	{
-		auto vp = s3d::ViewportBlock2D(s3d::Rect((*it)->m_drawRect));
-		auto t = s3d::Transformer2D(s3d::Mat3x2::Identity(), s3d::Mat3x2::Translate((*it)->m_drawRect.pos));
+		auto vp = ViewportBlock2D(Rect((*it)->m_drawRect));
+		auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_drawRect.pos));
 
-		s3d::RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);
+		RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);
 
 		(*it)->Update(mouseOverViewer == *it);
 
-		s3d::RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, s3d::ColorF(s3d::Palette::Red, 0.5));
+		RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
 	}
 }

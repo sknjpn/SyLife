@@ -24,16 +24,16 @@ class BodyViewer
 	: public PartViewer
 {
 public:
-	s3d::TextEditState		m_textEditState_name;
-	s3d::TextEditState		m_textEditState_mass;
+	TextEditState		m_textEditState_name;
+	TextEditState		m_textEditState_mass;
 
 public:
 	BodyViewer(const shared_ptr<PartModel>& model)
 		: PartViewer(model)
-		, m_textEditState_name(s3d::Unicode::Widen(model->GetName()))
-		, m_textEditState_mass(s3d::ToString(model->m_mass))
+		, m_textEditState_name(Unicode::Widen(model->GetName()))
+		, m_textEditState_mass(ToString(model->m_mass))
 	{
-		m_drawRect = s3d::RectF(0, 450, 600, 150);
+		m_drawRect = RectF(0, 450, 600, 150);
 	}
 
 	void	Update() override;
@@ -61,13 +61,13 @@ inline void BodyViewer::Update()
 {
 	// name
 	{
-		s3d::SimpleGUI::TextBox(m_textEditState_name, s3d::Vec2(10, 10), 240);
-		m_model->SetName(s3d::Unicode::Narrow(m_textEditState_name.text));
+		SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
+		m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
 	}
 
 	// mass
 	{
-		s3d::SimpleGUI::TextBox(m_textEditState_mass, s3d::Vec2(10, 50), 240);
-		m_model->m_mass = s3d::Parse<double>(m_textEditState_mass.text);
+		SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
+		m_model->m_mass = Parse<double>(m_textEditState_mass.text);
 	}
 }

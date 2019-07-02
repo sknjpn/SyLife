@@ -211,9 +211,6 @@
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Random.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
@@ -264,9 +261,6 @@
     <ClInclude Include="TinyCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Source Files\Manager</Filter>
     </ClInclude>
@@ -290,9 +284,6 @@
     </ClInclude>
     <ClInclude Include="Part.h">
       <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Random.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="FieldViewer.h">
       <Filter>Source Files\Viewer</Filter>

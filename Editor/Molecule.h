@@ -13,13 +13,13 @@ class MoleculeModel
 
 	double		m_mass;
 	double		m_radius;
-	s3d::Color	m_color;
+	Color	m_color;
 
 public:
 	// Get
 	double	GetMass() const { return m_mass; }
 	double	GetRadius() const { return m_radius; }
-	const s3d::Color&	GetColor() const { return m_color; }
+	const Color&	GetColor() const { return m_color; }
 
 	// Viewer
 	void	MakeViewers() override;
@@ -36,16 +36,16 @@ class MoleculeViewer
 	: public Viewer
 {
 	shared_ptr<MoleculeModel>	m_model;
-	s3d::TextEditState		m_textEditState_name;
-	s3d::TextEditState		m_textEditState_mass;
+	TextEditState		m_textEditState_name;
+	TextEditState		m_textEditState_mass;
 
 public:
 	MoleculeViewer(const shared_ptr<MoleculeModel>& model)
 		: m_model(model)
-		, m_textEditState_name(s3d::Unicode::Widen(model->GetName()))
-		, m_textEditState_mass(s3d::ToString(model->GetMass()))
+		, m_textEditState_name(Unicode::Widen(model->GetName()))
+		, m_textEditState_mass(ToString(model->GetMass()))
 	{
-		m_drawRect = s3d::RectF(0, 0, 600, 600);
+		m_drawRect = RectF(0, 0, 600, 600);
 	}
 
 	void	Update() override;
@@ -83,7 +83,7 @@ inline void MoleculeModel::SetFromJSON(const ptree& pt)
 	m_mass = pt.get<double>("mass");
 
 	// color
-	m_color = s3d::Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
+	m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
 
 	// radius
 	m_radius = sqrt(m_mass);
@@ -95,13 +95,13 @@ inline void MoleculeViewer::Update()
 {
 	// name
 	{
-		s3d::SimpleGUI::TextBox(m_textEditState_name, s3d::Vec2(10, 10), 240);
-		m_model->SetName(s3d::Unicode::Narrow(m_textEditState_name.text));
+		SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
+		m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
 	}
 
 	// mass
 	{
-		s3d::SimpleGUI::TextBox(m_textEditState_mass, s3d::Vec2(10, 50), 240);
-		m_model->m_mass = s3d::Parse<double>(m_textEditState_mass.text);
+		SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
+		m_model->m_mass = Parse<double>(m_textEditState_mass.text);
 	}
 }

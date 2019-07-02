@@ -4,8 +4,6 @@
 #include "EggManager.h"
 #include "MoleculeManager.h"
 
-#include "Random.h"
-
 #include <numeric>
 
 void CellModel::Draw(double a)
@@ -13,8 +11,8 @@ void CellModel::Draw(double a)
 	// parts
 	for (const auto& pc : m_partConfigs)
 	{
-		auto t2 = s3d::Transformer2D(s3d::Mat3x2::Rotate(pc->GetRotation())
-			.translated(pc->GetPosition().m_x, pc->GetPosition().m_y));
+		auto t2 = Transformer2D(Mat3x2::Rotate(pc->GetRotation())
+			.translated(pc->GetPosition().x, pc->GetPosition().y));
 
 		pc->GetModel()->Draw(a);
 	}
@@ -36,7 +34,7 @@ void CellModel::UpdateProperties()
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->GetModel()->GetMass(); });
 
 	// center
-	Vector2D center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vector2D::Zero(), [](Vector2D acc, const auto& p) { return acc + p->GetModel()->GetMass() * (p->GetPosition() + p->GetModel()->GetCenter().rotated(p->GetRotation())); }) / m_mass;
+	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->GetModel()->GetMass() * (p->GetPosition() + p->GetModel()->GetCenter().rotated(p->GetRotation())); }) / m_mass;
 
 	// centerÇå¥ì_Ç…ê›íË
 	for (const auto& p : m_partConfigs) p->SetPosition(p->GetPosition() - center);
@@ -109,7 +107,7 @@ void CellState::UpdateCell()
 		const auto& e = g_eggManagerPtr->AddEggState(m_model);
 		e->SetPosition(GetPosition());
 		e->SetRotation(Random(boost::math::constants::pi<double>() * 2.0));
-		e->SetVelocity(Vector2D(1.0, 0.0).rotated(rand() / 360.0));
+		e->SetVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
 	}
 
 	// éÄñSèàóù
@@ -122,7 +120,7 @@ void CellState::UpdateCell()
 			for (unsigned int i = 0; i < m.second; i++)
 			{
 				// ìfÇ´èoÇ∑ï˚å¸
-				auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
+				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 				// ìfÇ´èoÇ≥ÇÍÇΩMoleculeState
 				const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
@@ -137,14 +135,14 @@ void CellState::UpdateCell()
 
 void CellState::Draw()
 {
-	auto t1 = s3d::Transformer2D(s3d::Mat3x2::Rotate(GetRotation()).translated(s3d::Vec2(GetPosition().m_x, GetPosition().m_y)));
-	auto t2 = s3d::Transformer2D(s3d::Mat3x2::Scale(min(1.0, m_startTimer + 0.5)));
+	auto t1 = Transformer2D(Mat3x2::Rotate(GetRotation()).translated(Vec2(GetPosition().x, GetPosition().y)));
+	auto t2 = Transformer2D(Mat3x2::Scale(min(1.0, m_startTimer + 0.5)));
 
 	// parts
 	for (const auto& p : m_partStates)
 	{
-		auto t3 = s3d::Transformer2D(s3d::Mat3x2::Rotate(p->GetPartConfig()->GetRotation())
-			.translated(p->GetPartConfig()->GetPosition().m_x, p->GetPartConfig()->GetPosition().m_y));
+		auto t3 = Transformer2D(Mat3x2::Rotate(p->GetPartConfig()->GetRotation())
+			.translated(p->GetPartConfig()->GetPosition().x, p->GetPartConfig()->GetPosition().y));
 
 		p->Draw(*this);
 	}
@@ -154,9 +152,9 @@ void CellState::Draw()
 	{
 		double a = min(0.5, m_deathTimer * 0.25);
 
-		s3d::Circle(GetRadius())
-			.draw(s3d::ColorF(s3d::Palette::Lightpink, a))
-			.drawFrame(1.0, s3d::Palette::Gray);
+		Circle(GetRadius())
+			.draw(ColorF(Palette::Lightpink, a))
+			.drawFrame(1.0, Palette::Gray);
 	}
 }
 
@@ -172,7 +170,7 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned 
 	for (unsigned int i = 0; i < size; ++i) 
 	{
 		// ìfÇ´èoÇ∑ï˚å¸
-		auto v = Vector2D(1.0, 0.0).rotated(rand() / 3600.0);
+		auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 		// ìfÇ´èoÇ≥ÇÍÇΩMoleculeState
 		const auto& t = g_moleculeManagerPtr->AddMoleculeState(model);

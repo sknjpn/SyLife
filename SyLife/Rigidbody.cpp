@@ -1,7 +1,7 @@
 #include "Rigidbody.h"
 #include "FieldManager.h"
 
-void Rigidbody::AddImpulseInWorld(const Vector2D& impulse, const Vector2D& worldPosition)
+void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
 {
 	// ‰^“®—Ê
 	auto momentum = GetVelocity() * GetMass() + impulse;
