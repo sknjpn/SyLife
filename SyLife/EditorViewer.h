@@ -11,7 +11,10 @@ public:
 	EditorViewer()
 	{
 		m_drawRect = RectF(Window::Size());
+	}
 
+	void	Init()
+	{
 		g_viewerManagerPtr->MakeViewer<AssetViewer>();
 	}
 };

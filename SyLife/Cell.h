@@ -93,5 +93,12 @@ public:
 		m_drawRect = RectF(0, 450, 600, 150);
 	}
 
-	void Update(bool isMouseOver) override;
+	void Update(bool isMouseOver) override
+	{
+		// name
+		{
+			SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
+			m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
+		}
+	}
 };
