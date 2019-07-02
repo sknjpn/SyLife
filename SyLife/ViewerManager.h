@@ -13,7 +13,7 @@ public:
 	void	Update();
 
 	template <typename T, typename... Args>
-	shared_ptr<T>	AddViewer(Args&& ...args) { auto v = dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); v->Init(); return v; }
+	shared_ptr<T>	MakeViewer(Args&& ...args) { auto v = dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); v->Init(); return v; }
 
 	template <typename T>
 	shared_ptr<T>	GetViewer() const;
@@ -22,7 +22,7 @@ public:
 	bool	HasViewer() const { return GetViewer<T>() != nullptr; }
 
 	template <typename T>
-	bool	DeleteViewer() const { m_viewers.erase(remove_if(m_viewers.begin(), m_viewers.end(), [](const auto& v) { return dynamic_pointer_cast<T>(v) != nullptr; }), m_viewers.end()); }
+	void	DeleteViewer() { m_viewers.erase(remove_if(m_viewers.begin(), m_viewers.end(), [](const auto& v) { return dynamic_pointer_cast<T>(v) != nullptr; }), m_viewers.end()); }
 
 	void	ClearViewers() { m_viewers.clear(); }
 };

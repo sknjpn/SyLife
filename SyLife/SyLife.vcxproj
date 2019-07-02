@@ -250,8 +250,11 @@
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddModelViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_MakeModel.cpp" />
+    <ClCompile Include="AssetViewer.cpp" />
+    <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="Egg.cpp" />
@@ -261,6 +264,7 @@
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
     <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -273,8 +277,10 @@
     <ClCompile Include="WaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddModelViewer.h" />
     <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
@@ -282,6 +288,7 @@
     <ClInclude Include="Chloroplast.h" />
     <ClInclude Include="Cloud.h" />
     <ClInclude Include="Curtain.h" />
+    <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="Egg.h" />
     <ClInclude Include="EggManager.h" />
     <ClInclude Include="Equipment.h" />
@@ -298,6 +305,7 @@
     <ClInclude Include="Part.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartPaletteViewer.h" />
+    <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="ShapeModel.h" />

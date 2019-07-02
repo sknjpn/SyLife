@@ -69,6 +69,9 @@
     <Filter Include="Source Files\State">
       <UniqueIdentifier>{c1570a17-8b57-46d1-b1ff-784e997090b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Viewer\Scenes">
+      <UniqueIdentifier>{87bd679d-59ab-4752-bf38-636702421ae6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -238,6 +241,18 @@
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
+    <ClCompile Include="PartShapeViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AddModelViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -284,12 +299,6 @@
     </ClInclude>
     <ClInclude Include="Part.h">
       <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleViewer.h">
-      <Filter>Source Files\Viewer</Filter>
     </ClInclude>
     <ClInclude Include="Viewer.h">
       <Filter>Source Files\Viewer</Filter>
@@ -356,6 +365,24 @@
     </ClInclude>
     <ClInclude Include="Molecule.h">
       <Filter>Source Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PartShapeViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AddModelViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetViewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleViewer.h">
+      <Filter>Source Files\Viewer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorViewer.h">
+      <Filter>Source Files\Viewer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldViewer.h">
+      <Filter>Source Files\Viewer\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

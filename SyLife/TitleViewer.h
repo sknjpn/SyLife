@@ -3,6 +3,7 @@
 #include "Viewer.h"
 
 #include "FieldViewer.h"
+#include "EditorViewer.h"
 #include "ViewerManager.h"
 #include "Curtain.h"
 
@@ -106,40 +107,86 @@ public:
 
 		// message
 		{
-			static Font messageFont(24, Typeface::Bold);
+			static Font messageFont(48, Typeface::Bold);
 			static auto t = -5.0;
 			t += 1.0 / 60.0;
 
 			const auto a = Clamp(t * 0.1, 0.0, 0.4);
-			const auto p = Vec2(Window::Center()).movedBy(0.0, Window::Height() * 0.3);
 
-			messageFont(U"始めるにはスペースキーを押してください...").drawAt(p, ColorF(1.0, a * (0.5 + 0.5 * abs(sin(t)))));
+			{
+				auto f1 = messageFont(U"SyLife");
+				auto r1 = f1.region().setCenter(0, 0);
+				
+				{
+					auto t2 = Transformer2D(Mat3x2::Translate(Vec2(Window::Center()).movedBy(0.0, Window::Height() * 0.3)).translated(0, -48), true);
+					r1.draw(r1.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
+					f1.drawAt(Vec2::Zero(), ColorF(1.0, a * (0.5 + 0.5 * abs(sin(t)))));
+				}
+
+				// scene遷移
+				{
+					auto t2 = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate(Vec2(Window::Center()).movedBy(0.0, Window::Height() * 0.3)).translated(0, -48));
+
+					static bool f = false;
+
+					if (r1.leftClicked()) f = true;
+
+					if (f)
+					{
+						static Curtain closeCurtain(Color(11, 22, 33), 1.0);
+						closeCurtain.CloseUpdate();
+						m_audio.setVolume(Max(1.0 - closeCurtain.m_st.sF() / closeCurtain.m_duration, 0.0));
+
+						if (closeCurtain.m_st.sF() > 1.0)
+						{
+							g_viewerManagerPtr->ClearViewers();
+							g_viewerManagerPtr->MakeViewer<FieldViewer>();
+
+							return;
+						}
+					}
+				}
+			}
+
+			{
+				auto f2 = messageFont(U"Editor");
+				auto r2 = f2.region().setCenter(0, 0);
+
+				{
+					auto t2 = Transformer2D(Mat3x2::Translate(Vec2(Window::Center()).movedBy(0.0, Window::Height() * 0.3)).translated(0, 48), true);
+					r2.draw(r2.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
+					f2.drawAt(Vec2::Zero(), ColorF(1.0, a * (0.5 + 0.5 * abs(sin(t)))));
+				}
+
+				// scene遷移
+				{
+					auto t2 = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate(Vec2(Window::Center()).movedBy(0.0, Window::Height() * 0.3)).translated(0, 48));
+
+					static bool f = false;
+
+					if (r2.leftClicked()) f = true;
+
+					if (f)
+					{
+						static Curtain closeCurtain(Color(11, 22, 33), 1.0);
+						closeCurtain.CloseUpdate();
+						m_audio.setVolume(Max(1.0 - closeCurtain.m_st.sF() / closeCurtain.m_duration, 0.0));
+
+						if (closeCurtain.m_st.sF() > 1.0)
+						{
+							g_viewerManagerPtr->ClearViewers();
+							g_viewerManagerPtr->MakeViewer<EditorViewer>();
+
+							return;
+						}
+					}
+				}
+			}
 		}
-
 
 		static Curtain curtain(Color(11, 22, 33), 1.0);
 		curtain.OpenUpdate();
 		m_audio.setVolume(Min(curtain.m_st.sF() / curtain.m_duration, 1.0));
-
-		// scene遷移
-		{
-			static bool f = false;
-
-			if (KeySpace.down()) f = true;
-
-			if (f)
-			{
-				static Curtain closeCurtain(Color(11, 22, 33), 1.0);
-				closeCurtain.CloseUpdate();
-				m_audio.setVolume(Max(1.0 - closeCurtain.m_st.sF() / closeCurtain.m_duration, 0.0));
-
-				if (closeCurtain.m_st.sF() > 1.0)
-				{
-					g_viewerManagerPtr->ClearViewers();
-					g_viewerManagerPtr->AddViewer<FieldViewer>();
-				}
-			}
-		}
 	}
 };
 

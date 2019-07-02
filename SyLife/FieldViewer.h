@@ -46,10 +46,10 @@ public:
 	{
 		m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
 
-		g_viewerManagerPtr->AddViewer<PartPaletteViewer>(m_newModel);
-		g_viewerManagerPtr->AddViewer<AssemblyViewer>(m_newModel);
-		g_viewerManagerPtr->AddViewer<ReleaseViewer>(m_newModel);
-		g_viewerManagerPtr->AddViewer<CellStateViewer>();
+		g_viewerManagerPtr->MakeViewer<PartPaletteViewer>(m_newModel);
+		g_viewerManagerPtr->MakeViewer<AssemblyViewer>(m_newModel);
+		g_viewerManagerPtr->MakeViewer<ReleaseViewer>(m_newModel);
+		g_viewerManagerPtr->MakeViewer<CellStateViewer>();
 	}
 
 	void	Update(bool isMouseOver) override

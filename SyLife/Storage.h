@@ -78,21 +78,27 @@ public:
 	void	Clear() { m_molecules.clear(); }
 
 	// JSON
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-};
-
-inline void Storage::SetFromJSON(const ptree& pt)
-{
-	// molecules
-	for (auto m : pt.get_child("molecules"))
+	void	SetFromJSON(const ptree& pt)
 	{
-		auto name = m.second.get<string>("molecule");
+		// molecules
+		for (auto m : pt.get_child("molecules"))
+		{
+			auto name = m.second.get<string>("molecule");
 
-		const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(name);
+			const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(name);
 
-		m_molecules.emplace_back(model, m.second.get<int>("size"));
+			m_molecules.emplace_back(model, m.second.get<int>("size"));
+		}
+
+		Model::SetFromJSON(pt);
 	}
+	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const 
+	{
+		Model::AddToJSON(pt);
 
-	Model::SetFromJSON(pt);
-}
+		// type
+		pt.put("type", "Storage");
+	}
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
+};

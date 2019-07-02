@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Model.h"
+#include "Viewer.h"
 #include "Rigidbody.h"
 
 #include "Storage.h"
@@ -40,6 +41,14 @@ public:
 	// JSON
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const
+	{
+		Model::AddToJSON(pt);
+
+		// type
+		pt.put("type", "Storage");
+	}
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 
 	void	UpdateProperties();
 };
@@ -68,4 +77,28 @@ public:
 
 	void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
 	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);
+};
+
+class CellViewer
+	: public Viewer
+{
+	shared_ptr<CellModel>	m_model;
+	TextEditState		m_textEditState_name;
+
+public:
+	CellViewer(const shared_ptr<CellModel>& model)
+		: m_model(model)
+		, m_textEditState_name(Unicode::Widen(model->GetName()))
+	{
+		m_drawRect = RectF(0, 450, 600, 150);
+	}
+
+	void Update(bool isMouseOver) override
+	{
+		// name
+		{
+			SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
+			m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
+		}
+	}
 };

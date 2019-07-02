@@ -4,6 +4,7 @@
 #include "Storage.h"
 #include "ShapeModel.h"
 #include "AssetManager.h"
+#include "ViewerManager.h"
 
 class CellState;
 class PartConfig;
@@ -25,18 +26,51 @@ public:
 	const Storage&	GetMaterial() const { return m_material; }
 	const vector<ShapeModel>&	GetShapes() const { return m_shapes; }
 
-	virtual shared_ptr<PartState>	MakeState() = 0;
+	shared_ptr<Viewer> MakeViewer() override;
+	virtual shared_ptr<PartState>	MakeState();
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 
 	Vec2	GetApproximateRectTopLeft() const;
 	Vec2	GetApproximateRectBottomDown() const;
-	double		GetRectInertia() const;
+	double	GetRectInertia() const;
 	Vec2	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
 
 	// JSON
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const
+	{
+		// mass
+		pt.put<double>("mass", m_mass);
+
+		// shapes
+		{
+			ptree shapes;
+
+			for (const auto& v : m_shapes)
+			{
+				ptree shape; v.Save(shape);
+				shapes.push_back(std::make_pair("", shape));
+			}
+
+			pt.add_child("shapes", shapes);
+		}
+
+		// material
+		{
+			ptree material;
+
+			m_material.Save(material);
+
+			pt.add_child("material", material);
+		}
+
+		Model::AddToJSON(pt);
+
+		pt.put("type", "PartModel");
+	}
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 class PartConfig
@@ -76,9 +110,27 @@ public:
 	// Set
 	void	SetPartConfig(const shared_ptr<PartConfig>& partConfig) { m_partConfig = partConfig; }
 
-	virtual void	Draw(const CellState& cell) const = 0;
-	virtual void	Update(CellState& cell) = 0;
+	virtual void	Draw(const CellState& cell) const {}
+	virtual void	Update(CellState& cell) {}
 };
+
+class PartViewer
+	: public Viewer
+{
+public:
+	shared_ptr<PartModel>	m_model;
+
+public:
+	PartViewer(const shared_ptr<PartModel>& model)
+		: m_model(model)
+	{
+		m_drawRect = RectF(0, 450, 600, 150);
+	}
+
+	void Update(bool isMouseOver) override {}
+};
+inline shared_ptr<PartState> PartModel::MakeState() { return make_shared<PartState>(); }
+inline shared_ptr<Viewer> PartModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
 
 inline Vec2 PartModel::GetApproximateRectTopLeft() const
 {
