@@ -69,6 +69,9 @@
     <Filter Include="Source Files\State">
       <UniqueIdentifier>{c1570a17-8b57-46d1-b1ff-784e997090b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Viewer\Scenes">
+      <UniqueIdentifier>{87bd679d-59ab-4752-bf38-636702421ae6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -297,12 +300,6 @@
     <ClInclude Include="Part.h">
       <Filter>Source Files\Part</Filter>
     </ClInclude>
-    <ClInclude Include="FieldViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
     <ClInclude Include="Viewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
@@ -377,6 +374,15 @@
     </ClInclude>
     <ClInclude Include="AssetViewer.h">
       <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleViewer.h">
+      <Filter>Source Files\Viewer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorViewer.h">
+      <Filter>Source Files\Viewer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldViewer.h">
+      <Filter>Source Files\Viewer\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

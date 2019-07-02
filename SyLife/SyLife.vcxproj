@@ -288,6 +288,7 @@
     <ClInclude Include="Chloroplast.h" />
     <ClInclude Include="Cloud.h" />
     <ClInclude Include="Curtain.h" />
+    <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="Egg.h" />
     <ClInclude Include="EggManager.h" />
     <ClInclude Include="Equipment.h" />
