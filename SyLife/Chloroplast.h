@@ -6,11 +6,19 @@ class ChloroplastModel
 	: public ModuleModel
 {
 public:
-	
+	shared_ptr<Viewer>		MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const
+	{
+		ModuleModel::AddToJSON(pt);
+
+		// type
+		pt.put("type", "ChloroplastModel");
+	}
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 class ChloroplastState
@@ -22,6 +30,17 @@ public:
 
 	void	MakeNutrition();
 };
+
+class ChloroplastViewer
+	: public ModuleViewer
+{
+public:
+	ChloroplastViewer(const shared_ptr<PartModel>& model)
+		: ModuleViewer(model)
+	{}
+};
+
+inline shared_ptr<Viewer> ChloroplastModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<ChloroplastViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
 
 inline shared_ptr<PartState>	ChloroplastModel::MakeState() { return make_shared<ChloroplastState>(); }
 

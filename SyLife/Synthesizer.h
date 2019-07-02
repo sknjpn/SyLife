@@ -4,6 +4,7 @@
 #include "Storage.h"
 #include "Cell.h"
 #include "FieldManager.h"
+#include "ViewerManager.h"
 
 class SynthesizerModel
 	: public ModuleModel
@@ -15,10 +16,30 @@ public:
 	const Storage&	GetImport() const { return m_import; }
 	const shared_ptr<MoleculeModel>&	GetExport() const { return m_export; }
 
+	shared_ptr<Viewer>	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const
+	{
+		// import
+		{
+			ptree pt2;
+
+			m_import.Save(pt2);
+
+			pt.push_back(std::make_pair("import", pt2));
+		}
+
+		// export
+		pt.put("export", m_export->GetName());
+
+		ModuleModel::AddToJSON(pt);
+
+		pt.put("type", "SynthesizerModel");
+	}
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 class SynthesizerState
@@ -27,7 +48,7 @@ class SynthesizerState
 	double	m_timer = 0.0;
 
 public:
-	void	Draw(const CellState& cell) const 
+	void	Draw(const CellState& cell) const
 	{
 		GetPartConfig()->GetModel()->Draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
 	}
@@ -46,6 +67,25 @@ public:
 		}
 	}
 };
+
+class SynthesizerViewer
+	: public PartViewer
+{
+public:
+	TextEditState		m_textEditState_name;
+	TextEditState		m_textEditState_mass;
+
+public:
+	SynthesizerViewer(const shared_ptr<PartModel>& model)
+		: PartViewer(model)
+		, m_textEditState_name(Unicode::Widen(model->GetName()))
+		, m_textEditState_mass(ToString(model->GetMass()))
+	{
+		m_drawRect = RectF(0, 450, 600, 150);
+	}
+};
+
+inline shared_ptr<Viewer> SynthesizerModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<SynthesizerViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
 
 inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<SynthesizerState>(); }
 

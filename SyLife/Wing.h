@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Equipment.h"
+#include "ViewerManager.h"
 #include "Cell.h"
 
 class WingModel
@@ -10,11 +11,21 @@ public:
 	bool	m_isRight = false;
 
 public:
+	shared_ptr<Viewer> MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const
+	{
+		pt.put("isRight", m_isRight);
+
+		EquipmentModel::AddToJSON(pt);
+
+		pt.put("type", "WingModel");
+	}
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 class WingState
@@ -56,6 +67,17 @@ public:
 	void	Flap(CellState& cell);
 };
 
+class WingViewer
+	: public EquipmentViewer
+{
+public:
+	WingViewer(const shared_ptr<PartModel>& model)
+		: EquipmentViewer(model)
+	{}
+};
+
+
+inline shared_ptr<Viewer> WingModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<WingViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
 inline shared_ptr<PartState>	WingModel::MakeState() { return make_shared<WingState>(); }
 
 inline void WingModel::SetFromJSON(const ptree& pt)

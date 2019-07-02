@@ -1,19 +1,45 @@
 #pragma once
 
+#include "ViewerManager.h"
+#include "Viewer.h"
+#include <boost/filesystem.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
 using namespace boost::property_tree;
 
 class Model
+	: public enable_shared_from_this<Model>
 {
 	string	m_name;
 
 public:
 	virtual ~Model() = default;
 
+	virtual shared_ptr<Viewer>	MakeViewer() { return g_viewerManagerPtr->MakeViewer<Viewer>(); }
+
 	// Set
-	void	SetName(const string& name) { m_name = name; }
+	void	SetName(const string& name)
+	{
+		// ファイルの削除
+		{
+			const boost::filesystem::path path(GetFilepath());
+
+			boost::filesystem::remove(path);
+		}
+
+		// nameのセット
+		m_name = name;
+
+		// 新規ファイルの作成
+		{
+			ptree pt;
+
+			Save(pt);
+
+			write_json(GetFilepath(), pt);
+		}
+	}
 
 	// Get
 	const string&	GetName() const { return m_name; }
