@@ -40,8 +40,7 @@ public:
 	{}
 };
 
-inline shared_ptr<Viewer> ChloroplastModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<ChloroplastViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
-
+inline shared_ptr<Viewer>		ChloroplastModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<ChloroplastViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
 inline shared_ptr<PartState>	ChloroplastModel::MakeState() { return make_shared<ChloroplastState>(); }
 
 inline void ChloroplastModel::SetFromJSON(const ptree& pt)

@@ -38,8 +38,7 @@ public:
 	{}
 };
 
-inline shared_ptr<Viewer> EyeModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<EyeViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
-
+inline shared_ptr<Viewer>		EyeModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<EyeViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
 inline shared_ptr<PartState>	EyeModel::MakeState() { return make_shared<EyeState>(); }
 
 inline void EyeModel::SetFromJSON(const ptree& pt)

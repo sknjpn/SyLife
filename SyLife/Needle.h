@@ -61,21 +61,14 @@ class NeedleViewer
 	: public PartViewer
 {
 public:
-	TextEditState		m_textEditState_name;
-	TextEditState		m_textEditState_mass;
-
-public:
 	NeedleViewer(const shared_ptr<PartModel>& model)
 		: PartViewer(model)
-		, m_textEditState_name(Unicode::Widen(model->GetName()))
-		, m_textEditState_mass(ToString(model->GetMass()))
 	{
 		m_drawRect = RectF(0, 450, 600, 150);
 	}
 };
 
-inline shared_ptr<Viewer> NeedleModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<NeedleViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
-
+inline shared_ptr<Viewer>		NeedleModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<NeedleViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
 inline shared_ptr<PartState>	NeedleModel::MakeState() { return make_shared<NeedleState>(); }
 
 inline void NeedleModel::SetFromJSON(const ptree& pt)

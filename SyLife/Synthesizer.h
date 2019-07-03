@@ -70,21 +70,14 @@ class SynthesizerViewer
 	: public PartViewer
 {
 public:
-	TextEditState		m_textEditState_name;
-	TextEditState		m_textEditState_mass;
-
-public:
 	SynthesizerViewer(const shared_ptr<PartModel>& model)
 		: PartViewer(model)
-		, m_textEditState_name(Unicode::Widen(model->GetName()))
-		, m_textEditState_mass(ToString(model->GetMass()))
 	{
 		m_drawRect = RectF(0, 450, 600, 150);
 	}
 };
 
-inline shared_ptr<Viewer> SynthesizerModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<SynthesizerViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
-
+inline shared_ptr<Viewer>		SynthesizerModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<SynthesizerViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
 inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<SynthesizerState>(); }
 
 inline void SynthesizerModel::SetFromJSON(const ptree& pt)
