@@ -11,10 +11,10 @@ class NeedleModel
 public:
 	void	MakeViewers() override;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class NeedleViewer
@@ -39,14 +39,14 @@ inline void NeedleModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<NeedleViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline void NeedleModel::SetFromJSON(const ptree& pt)
+inline void NeedleModel::Load_this(const ptree& pt)
 {
-	EquipmentModel::SetFromJSON(pt);
+	EquipmentModel::Load_this(pt);
 }
 
-inline void NeedleModel::AddToJSON(ptree& pt) const
+inline void NeedleModel::Save_this(ptree& pt) const
 {
-	EquipmentModel::AddToJSON(pt);
+	EquipmentModel::Save_this(pt);
 
 	pt.put("type", "NeedleModel");
 }

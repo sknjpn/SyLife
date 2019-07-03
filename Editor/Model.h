@@ -23,8 +23,8 @@ public:
 	virtual string	GetFilename() const;
 	virtual string	GetFilepath() const;
 
-	void	SetFromJSON(const ptree& pt);
-	virtual void	Load(const ptree& pt) { SetFromJSON(pt); }
+	void	Load_this(const ptree& pt);
+	virtual void	Load(const ptree& pt) { Load_this(pt); }
 	void	AddToJSON(ptree& pt) const;
 	virtual void	Save(ptree& pt) const { AddToJSON(pt); }
 };

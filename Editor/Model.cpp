@@ -33,7 +33,7 @@ void Model::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<Viewer>();
 }
 
-void Model::AddToJSON(ptree& pt) const
+void Model::Save_this(ptree& pt) const
 {
 	// name
 	pt.put("name", m_name);
@@ -42,7 +42,7 @@ void Model::AddToJSON(ptree& pt) const
 	pt.put("type", "Model");
 }
 
-void Model::SetFromJSON(const ptree& pt)
+void Model::Load_this(const ptree& pt)
 {
 	m_name = pt.get<string>("name");
 }

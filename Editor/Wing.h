@@ -15,10 +15,10 @@ class WingModel
 public:
 	void	MakeViewers() override;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class WingViewer
@@ -35,18 +35,18 @@ inline void WingModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<WingViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline void WingModel::SetFromJSON(const ptree& pt)
+inline void WingModel::Load_this(const ptree& pt)
 {
 	m_isRight= pt.get<bool>("isRight");
 
-	EquipmentModel::SetFromJSON(pt);
+	EquipmentModel::Load_this(pt);
 }
 
-inline void WingModel::AddToJSON(ptree& pt) const
+inline void WingModel::Save_this(ptree& pt) const
 {
 	pt.put("isRight", m_isRight);
 
-	EquipmentModel::AddToJSON(pt);
+	EquipmentModel::Save_this(pt);
 
 	pt.put("type", "WingModel");
 }

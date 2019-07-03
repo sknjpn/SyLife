@@ -14,10 +14,10 @@ class EyeModel
 public:
 	void	MakeViewers() override;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class EyeViewer
@@ -34,14 +34,14 @@ inline void EyeModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<EyeViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline void EyeModel::SetFromJSON(const ptree& pt)
+inline void EyeModel::Load_this(const ptree& pt)
 {
-	EquipmentModel::SetFromJSON(pt);
+	EquipmentModel::Load_this(pt);
 }
 
-inline void EyeModel::AddToJSON(ptree& pt) const
+inline void EyeModel::Save_this(ptree& pt) const
 {
-	EquipmentModel::AddToJSON(pt);
+	EquipmentModel::Save_this(pt);
 
 	// type
 	pt.put("type", "EyeModel");

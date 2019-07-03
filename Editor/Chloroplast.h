@@ -14,10 +14,10 @@ class ChloroplastModel
 public:
 	void	MakeViewers() override;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class ChloroplastViewer
@@ -34,14 +34,14 @@ inline void ChloroplastModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<ChloroplastViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline void ChloroplastModel::SetFromJSON(const ptree& pt)
+inline void ChloroplastModel::Load_this(const ptree& pt)
 {
-	ModuleModel::SetFromJSON(pt);
+	ModuleModel::Load_this(pt);
 }
 
-inline void ChloroplastModel::AddToJSON(ptree& pt) const
+inline void ChloroplastModel::Save_this(ptree& pt) const
 {
-	ModuleModel::AddToJSON(pt);
+	ModuleModel::Save_this(pt);
 
 	// type
 	pt.put("type", "ChloroplastModel");

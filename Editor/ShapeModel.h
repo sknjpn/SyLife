@@ -18,13 +18,13 @@ public:
 		, m_color(RandomHSV())
 	{}
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
-inline void ShapeModel::SetFromJSON(const ptree& pt)
+inline void ShapeModel::Load_this(const ptree& pt)
 {
 	// color
 	m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
@@ -33,10 +33,10 @@ inline void ShapeModel::SetFromJSON(const ptree& pt)
 	for (auto v : pt.get_child("verticles"))
 		m_verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
 
-	Model::SetFromJSON(pt);
+	Model::Load_this(pt);
 }
 
-inline void ShapeModel::AddToJSON(ptree& pt) const
+inline void ShapeModel::Save_this(ptree& pt) const
 {
 	// color
 	{
@@ -68,7 +68,7 @@ inline void ShapeModel::AddToJSON(ptree& pt) const
 		pt.add_child("verticles", verticles);
 	}
 
-	Model::AddToJSON(pt);
+	Model::Save_this(pt);
 
 	// type
 	pt.put("type", "ShapeModel");

@@ -18,10 +18,10 @@ public:
 
 	void	MakeViewers() override;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class SynthesizerViewer
@@ -46,7 +46,7 @@ inline void SynthesizerModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<SynthesizerViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline void SynthesizerModel::SetFromJSON(const ptree& pt)
+inline void SynthesizerModel::Load_this(const ptree& pt)
 {
 	// import
 	m_import.Load(pt.get_child("import"));
@@ -54,10 +54,10 @@ inline void SynthesizerModel::SetFromJSON(const ptree& pt)
 	// export
 	m_export = g_assetManagerPtr->GetModel<MoleculeModel>(pt.get<string>("export"));
 
-	ModuleModel::SetFromJSON(pt);
+	ModuleModel::Load_this(pt);
 }
 
-inline void SynthesizerModel::AddToJSON(ptree& pt) const
+inline void SynthesizerModel::Save_this(ptree& pt) const
 {
 	// import
 	{
@@ -71,7 +71,7 @@ inline void SynthesizerModel::AddToJSON(ptree& pt) const
 	// export
 	pt.put("export", m_export->GetName());
 
-	ModuleModel::AddToJSON(pt);
+	ModuleModel::Save_this(pt);
 
 	pt.put("type", "SynthesizerModel");
 }

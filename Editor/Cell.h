@@ -25,10 +25,10 @@ public:
 	template <typename T>
 	vector<shared_ptr<T>>	GetParts() const;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 
 	string	GetFilepath() const override { return "assets/models/cells/" + GetFilename(); }
 };

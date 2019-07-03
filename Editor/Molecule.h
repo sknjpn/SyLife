@@ -25,10 +25,10 @@ public:
 	void	MakeViewers() override;
 
 	// JSON
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/molecules/" + GetFilename(); }
 };
 
@@ -56,7 +56,7 @@ inline void MoleculeModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(shared_from_this()));
 }
 
-inline void MoleculeModel::AddToJSON(ptree& pt) const
+inline void MoleculeModel::Save_this(ptree& pt) const
 {
 	// mass
 	pt.put<double>("mass", m_mass);
@@ -72,12 +72,12 @@ inline void MoleculeModel::AddToJSON(ptree& pt) const
 		pt.add_child("color", color);
 	}
 
-	Model::AddToJSON(pt);
+	Model::Save_this(pt);
 
 	pt.put("type", "MoleculeModel");
 }
 
-inline void MoleculeModel::SetFromJSON(const ptree& pt)
+inline void MoleculeModel::Load_this(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");
@@ -88,7 +88,7 @@ inline void MoleculeModel::SetFromJSON(const ptree& pt)
 	// radius
 	m_radius = sqrt(m_mass);
 
-	Model::SetFromJSON(pt);
+	Model::Load_this(pt);
 }
 
 inline void MoleculeViewer::Update()

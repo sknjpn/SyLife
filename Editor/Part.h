@@ -26,10 +26,10 @@ public:
 	double	GetRectInertia() const;
 	Vec2	GetCenter() const;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 
 	string	GetFilepath() const override { return "assets/models/parts/" + GetFilename(); }
 };
@@ -45,11 +45,11 @@ public:
 public:
 	double		GetInertia() const { return m_model->GetRectInertia() + (m_position + m_model->GetCenter().rotated(m_rotation)).lengthSq() * m_model->m_mass; }
 
-	void	AddToJSON(ptree& pt) const;
-	void	SetFromJSON(const ptree& pt);
+	void	Save_this(ptree& pt) const;
+	void	Load_this(const ptree& pt);
 
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class PartViewer
@@ -104,7 +104,7 @@ inline Vec2 PartModel::GetCenter() const
 	return GetApproximateRect().center();
 }
 
-inline void PartModel::SetFromJSON(const ptree& pt)
+inline void PartModel::Load_this(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");
@@ -116,10 +116,10 @@ inline void PartModel::SetFromJSON(const ptree& pt)
 	// material
 	m_material.Load(pt.get_child("material"));
 
-	Model::SetFromJSON(pt);
+	Model::Load_this(pt);
 }
 
-inline void PartModel::AddToJSON(ptree& pt) const
+inline void PartModel::Save_this(ptree& pt) const
 {
 	// mass
 	pt.put<double>("mass", m_mass);
@@ -146,12 +146,12 @@ inline void PartModel::AddToJSON(ptree& pt) const
 		pt.add_child("material", material);
 	}
 
-	Model::AddToJSON(pt);
+	Model::Save_this(pt);
 
 	pt.put("type", "PartModel");
 }
 
-inline void PartConfig::SetFromJSON(const ptree& pt)
+inline void PartConfig::Load_this(const ptree& pt)
 {
 	// model
 	m_model = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
@@ -162,10 +162,10 @@ inline void PartConfig::SetFromJSON(const ptree& pt)
 	// rotation
 	m_rotation = pt.get<double>("rotation");
 
-	Model::SetFromJSON(pt);
+	Model::Load_this(pt);
 }
 
-inline void PartConfig::AddToJSON(ptree& pt) const
+inline void PartConfig::Save_this(ptree& pt) const
 {
 	// model
 	pt.put("model", m_model->GetName());
@@ -183,7 +183,7 @@ inline void PartConfig::AddToJSON(ptree& pt) const
 	// rotation
 	pt.put("rotation", m_rotation);
 
-	Model::AddToJSON(pt);
+	Model::Save_this(pt);
 
 	pt.put("type", "PartConfig");
 }

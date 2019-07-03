@@ -7,7 +7,7 @@ void CellModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<CellViewer>(dynamic_pointer_cast<CellModel>(shared_from_this()));
 }
 
-void CellModel::AddToJSON(ptree& pt) const
+void CellModel::Save_this(ptree& pt) const
 {
 	// parts
 	{
@@ -22,17 +22,17 @@ void CellModel::AddToJSON(ptree& pt) const
 		pt.add_child("parts", parts);
 	}
 
-	Model::AddToJSON(pt);
+	Model::Save_this(pt);
 
 	pt.put("type", "CellModel");
 }
 
-void CellModel::SetFromJSON(const ptree& pt)
+void CellModel::Load_this(const ptree& pt)
 {
 	// parts
 	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->Load(part.second);
 
-	Model::SetFromJSON(pt);
+	Model::Load_this(pt);
 }
 
 void CellViewer::Update()

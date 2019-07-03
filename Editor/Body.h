@@ -14,10 +14,10 @@ class BodyModel
 public:
 	void	MakeViewers() override;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const;
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const;
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class BodyViewer
@@ -44,14 +44,14 @@ inline void BodyModel::MakeViewers()
 	g_viewerManagerPtr->MakeViewer<BodyViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));
 }
 
-inline void BodyModel::SetFromJSON(const ptree& pt)
+inline void BodyModel::Load_this(const ptree& pt)
 {
-	PartModel::SetFromJSON(pt);
+	PartModel::Load_this(pt);
 }
 
-inline void BodyModel::AddToJSON(ptree& pt) const
+inline void BodyModel::Save_this(ptree& pt) const
 {
-	PartModel::AddToJSON(pt);
+	PartModel::Save_this(pt);
 
 	// type
 	pt.put("type", "BodyModel");

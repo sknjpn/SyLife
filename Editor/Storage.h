@@ -78,11 +78,11 @@ public:
 	void	Clear() { m_molecules.clear(); }
 
 	// JSON
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
 };
 
-inline void Storage::SetFromJSON(const ptree& pt)
+inline void Storage::Load_this(const ptree& pt)
 {
 	// molecules
 	for (auto m : pt.get_child("molecules"))
@@ -94,5 +94,5 @@ inline void Storage::SetFromJSON(const ptree& pt)
 		m_molecules.emplace_back(model, m.second.get<int>("size"));
 	}
 
-	Model::SetFromJSON(pt);
+	Model::Load_this(pt);
 }
