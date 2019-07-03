@@ -31,13 +31,62 @@ public:
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 
-	Vec2	GetApproximateRectTopLeft() const;
-	Vec2	GetApproximateRectBottomDown() const;
-	double	GetRectInertia() const;
+	Vec2	GetApproximateRectTopLeft() const
+	{
+		double x = m_shapes.front().m_polygon.vertices().front().x;
+		double y = m_shapes.front().m_polygon.vertices().front().y;
+
+		for (const auto& s : m_shapes)
+		{
+			for (const auto& v : s.m_polygon.vertices())
+			{
+				if (x > v.x) x = v.x;
+				if (y > v.y) y = v.y;
+			}
+		}
+
+		return Vec2(x, y);
+	}
+	Vec2	GetApproximateRectBottomDown() const
+	{
+		double x = m_shapes.front().m_polygon.vertices().front().x;
+		double y = m_shapes.front().m_polygon.vertices().front().y;
+
+		for (const auto& s : m_shapes)
+		{
+			for (const auto& v : s.m_polygon.vertices())
+			{
+				if (x < v.x) x = v.x;
+				if (y < v.y) y = v.y;
+			}
+		}
+
+		return Vec2(x, y);
+	}
+	double	GetRectInertia() const
+	{
+		auto w = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).x;
+		auto h = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).y;
+
+		return  m_mass * (w * w + h * h) / 12.0;
+	}
 	Vec2	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
 
 	// JSON
-	void	SetFromJSON(const ptree& pt);
+	void	SetFromJSON(const ptree& pt)
+	{
+		// mass
+		m_mass = pt.get<double>("mass");
+
+		// shapes
+		for (auto shape : pt.get_child("shapes"))
+			m_shapes.emplace_back().SetFromJSON(shape.second);
+
+		// material
+		m_material.Load(pt.get_child("material"));
+
+		Model::SetFromJSON(pt);
+	}
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	void	AddToJSON(ptree& pt) const
 	{
@@ -93,8 +142,43 @@ public:
 
 	double	GetInertia() const { return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->GetMass(); }
 
-	void	SetFromJSON(const ptree& pt);
+	void	SetFromJSON(const ptree& pt)
+	{
+		// model
+		m_partModel = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
+
+		// position
+		m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
+
+		// rotation
+		m_rotation = pt.get<double>("rotation");
+
+		Model::SetFromJSON(pt);
+	}
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
+	void	AddToJSON(ptree& pt) const
+	{
+		// model
+		pt.put("model", GetModel()->GetName());
+
+		// position
+		{
+			ptree position;
+
+			position.put("x", m_position.x);
+			position.put("y", m_position.y);
+
+			pt.push_back(std::make_pair("position", position));
+		}
+
+		// rotation
+		pt.put("rotation", m_rotation);
+
+		Model::AddToJSON(pt);
+
+		pt.put("type", "PartConfig");
+	}
+	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };
 
 class PartState
@@ -134,80 +218,10 @@ public:
 		}*/
 	}
 };
+
 inline shared_ptr<PartState> PartModel::MakeState() { return make_shared<PartState>(); }
 inline void PartModel::MakeViewer()
 {
 	g_viewerManagerPtr->MakeViewer<PartViewer>()->SetModel(shared_from_this());
 	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
-}
-
-inline Vec2 PartModel::GetApproximateRectTopLeft() const
-{
-	double x = m_shapes.front().m_polygon.vertices().front().x;
-	double y = m_shapes.front().m_polygon.vertices().front().y;
-
-	for (const auto& s : m_shapes)
-	{
-		for (const auto& v : s.m_polygon.vertices())
-		{
-			if (x > v.x) x = v.x;
-			if (y > v.y) y = v.y;
-		}
-	}
-
-	return Vec2(x, y);
-}
-
-inline Vec2 PartModel::GetApproximateRectBottomDown() const
-{
-	double x = m_shapes.front().m_polygon.vertices().front().x;
-	double y = m_shapes.front().m_polygon.vertices().front().y;
-
-	for (const auto& s : m_shapes)
-	{
-		for (const auto& v : s.m_polygon.vertices())
-		{
-			if (x < v.x) x = v.x;
-			if (y < v.y) y = v.y;
-		}
-	}
-
-	return Vec2(x, y);
-}
-
-inline double PartModel::GetRectInertia() const
-{
-	auto w = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).x;
-	auto h = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).y;
-
-	return  m_mass * (w * w + h * h) / 12.0;
-}
-
-inline void PartModel::SetFromJSON(const ptree& pt)
-{
-	// mass
-	m_mass = pt.get<double>("mass");
-
-	// shapes
-	for (auto shape : pt.get_child("shapes"))
-		m_shapes.emplace_back().SetFromJSON(shape.second);
-
-	// material
-	m_material.Load(pt.get_child("material"));
-
-	Model::SetFromJSON(pt);
-}
-
-inline void PartConfig::SetFromJSON(const ptree& pt)
-{
-	// model
-	m_partModel = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
-
-	// position
-	m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
-
-	// rotation
-	m_rotation = pt.get<double>("rotation");
-
-	Model::SetFromJSON(pt);
 }
