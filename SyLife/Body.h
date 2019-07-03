@@ -6,7 +6,7 @@ class BodyModel
 	: public PartModel
 {
 public:
-	void		MakeViewer() override;
+	void	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	Load_this(const ptree& pt);
