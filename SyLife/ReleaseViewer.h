@@ -18,7 +18,7 @@ public:
 		SetDrawRect(Window::Width() - 400, 320, 300, 100);
 	}
 
-	void	Update(bool	isMouseOver) override
+	void	Update() override
 	{
 		Circle circle(50, 50, 45);
 

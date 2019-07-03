@@ -19,7 +19,7 @@ public:
 
 	void	Update() override
 	{
-		Rect(m_drawRect.size.asPoint()).draw(Color(11, 22, 33, 192));
+		Rect(GetDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 		if (!m_cellState) return;
 		if (m_cellState->IsDestroyed())

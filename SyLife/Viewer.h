@@ -14,6 +14,9 @@ public:
 
 	// Set
 	void	SetDrawRect(double x, double y, double w, double h) { m_drawRect = RectF(x, y, w, h); }
+	void	SetDrawRect(double w, double h) { m_drawRect = RectF(w, h); }
+	void	SetDrawRect(const Vec2& pos, const Vec2& size) { m_drawRect = RectF(pos, size); }
+	void	SetDrawRect(const Vec2& size) { m_drawRect = RectF(size); }
 
 	// Get
 	const RectF&	GetDrawRect() const { return m_drawRect; }

@@ -41,7 +41,7 @@ public:
 	{
 		Rect(GetDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
-		if (isMouseOver) m_camera.update();
+		if (IsMouseOver()) m_camera.update();
 
 		const auto t1 = m_camera.createTransformer();
 		const int scale = (int)log10(m_camera.getMagnification());
@@ -94,7 +94,7 @@ public:
 		// selectedPart
 		if (g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart != nullptr)
 		{
-			if (isMouseOver)
+			if (IsMouseOver())
 			{
 				for (const auto& s : g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart->GetShapes())
 					s.m_polygon.drawTransformed(0.0, 1.0, Cursor::Pos(), ColorF(s.m_color, 0.5));
