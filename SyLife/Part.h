@@ -120,6 +120,7 @@ public:
 		pt.put("type", "PartModel");
 	}
 	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	string	GetFilepath() const override { return "assets/models/parts/" + GetFilename(); }
 };
 
 class PartConfig

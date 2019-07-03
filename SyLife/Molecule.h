@@ -45,6 +45,7 @@ public:
 		pt.put("type", "MoleculeModel");
 	}
 	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	string	GetFilepath() const override { return "assets/models/molecules/" + GetFilename(); }
 };
 
 class MoleculeState

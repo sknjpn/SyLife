@@ -40,6 +40,7 @@ public:
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	void	AddToJSON(ptree& pt) const;
 	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	string	GetFilepath() const override { return "assets/models/cells/" + GetFilename(); }
 
 	void	UpdateProperties();
 };
