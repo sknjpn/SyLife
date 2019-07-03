@@ -58,7 +58,7 @@ public:
 };
 
 class NeedleViewer
-	: public PartViewer
+	: public EquipmentViewer
 {
 public:
 	// Reload

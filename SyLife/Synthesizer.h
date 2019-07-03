@@ -67,7 +67,7 @@ public:
 };
 
 class SynthesizerViewer
-	: public PartViewer
+	: public ModuleViewer
 {
 public:
 	// Reload
