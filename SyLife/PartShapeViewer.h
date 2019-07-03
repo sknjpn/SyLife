@@ -1,9 +1,7 @@
 #pragma once
 
 #include "ModelViewer.h"
-#include "ShapeModel.h"
 #include "TinyCamera.h"
-#include "Part.h"
 
 class PartShapeViewer
 	: public ModelViewer
