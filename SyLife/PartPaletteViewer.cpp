@@ -6,8 +6,6 @@
 
 void	PartPaletteViewer::Update()
 {
-	m_drawPos = Vec2::Zero();
-
 	DrawModels<BodyModel>("BodyModel");
 	DrawModels<EquipmentModel>("EquipmentModel");
 	DrawModels<ModuleModel>("ModuleModel");

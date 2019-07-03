@@ -4,7 +4,6 @@
 class AddModelViewer
 	: public Viewer
 {
-	Vec2	m_drawPos;
 public:
 	AddModelViewer()
 	{
@@ -33,7 +32,6 @@ public:
 	void	DrawModels(const string& name)
 	{
 		static Font font10(10, Typeface::Bold);
-		auto t = Transformer2D(Mat3x2::Translate(m_drawPos), true);
 		auto f = font10(Unicode::Widen(name));
 
 		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
@@ -41,7 +39,7 @@ public:
 
 		if (f.region().leftClicked()) AddModel<T>();
 
-		m_drawPos.moveBy(0.0, 15.0);
+		MoveDrawPos(0, 15);
 	}
 
 	void	Update() override;

@@ -12,8 +12,6 @@
 
 void AddModelViewer::Update()
 {
-	m_drawPos = Vec2::Zero();
-
 	DrawModels<MoleculeModel>("MoleculeModel");
 	DrawModels<CellModel>("CellModel");
 	DrawModels<PartModel>("PartModel");
