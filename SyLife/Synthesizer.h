@@ -17,9 +17,9 @@ public:
 	void	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const
 	{
 		// import
 		{
@@ -33,11 +33,11 @@ public:
 		// export
 		pt.put("export", m_export->GetName());
 
-		ModuleModel::AddToJSON(pt);
+		ModuleModel::Save_this(pt);
 
 		pt.put("type", "SynthesizerModel");
 	}
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class SynthesizerState
@@ -84,7 +84,7 @@ inline void		SynthesizerModel::MakeViewer()
 
 inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<SynthesizerState>(); }
 
-inline void SynthesizerModel::SetFromJSON(const ptree& pt)
+inline void SynthesizerModel::Load_this(const ptree& pt)
 {
 	// import
 	m_import.Load(pt.get_child("import"));
@@ -92,5 +92,5 @@ inline void SynthesizerModel::SetFromJSON(const ptree& pt)
 	// export
 	m_export = g_assetManagerPtr->GetModel<MoleculeModel>(pt.get<string>("export"));
 
-	ModuleModel::SetFromJSON(pt);
+	ModuleModel::Load_this(pt);
 }

@@ -14,17 +14,17 @@ public:
 	shared_ptr<PartState>	MakeState() override;
 
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const
 	{
 		pt.put("isRight", m_isRight);
 
-		EquipmentModel::AddToJSON(pt);
+		EquipmentModel::Save_this(pt);
 
 		pt.put("type", "WingModel");
 	}
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class WingState
@@ -81,11 +81,11 @@ inline void		WingModel::MakeViewer()
 }
 inline shared_ptr<PartState>	WingModel::MakeState() { return make_shared<WingState>(); }
 
-inline void WingModel::SetFromJSON(const ptree& pt)
+inline void WingModel::Load_this(const ptree& pt)
 {
 	m_isRight = pt.get<bool>("isRight");
 
-	EquipmentModel::SetFromJSON(pt);
+	EquipmentModel::Load_this(pt);
 }
 
 inline void WingState::Flap(CellState& cell)

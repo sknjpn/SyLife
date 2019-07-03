@@ -73,22 +73,22 @@ public:
 	Vec2	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
 
 	// JSON
-	void	SetFromJSON(const ptree& pt)
+	void	Load_this(const ptree& pt)
 	{
 		// mass
 		m_mass = pt.get<double>("mass");
 
 		// shapes
 		for (auto shape : pt.get_child("shapes"))
-			m_shapes.emplace_back().SetFromJSON(shape.second);
+			m_shapes.emplace_back().Load_this(shape.second);
 
 		// material
 		m_material.Load(pt.get_child("material"));
 
-		Model::SetFromJSON(pt);
+		Model::Load_this(pt);
 	}
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const
 	{
 		// mass
 		pt.put<double>("mass", m_mass);
@@ -115,11 +115,11 @@ public:
 			pt.add_child("material", material);
 		}
 
-		Model::AddToJSON(pt);
+		Model::Save_this(pt);
 
 		pt.put("type", "PartModel");
 	}
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/parts/" + GetFilename(); }
 };
 
@@ -143,7 +143,7 @@ public:
 
 	double	GetInertia() const { return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->GetMass(); }
 
-	void	SetFromJSON(const ptree& pt)
+	void	Load_this(const ptree& pt)
 	{
 		// model
 		m_partModel = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
@@ -154,10 +154,10 @@ public:
 		// rotation
 		m_rotation = pt.get<double>("rotation");
 
-		Model::SetFromJSON(pt);
+		Model::Load_this(pt);
 	}
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const
 	{
 		// model
 		pt.put("model", GetModel()->GetName());
@@ -175,11 +175,11 @@ public:
 		// rotation
 		pt.put("rotation", m_rotation);
 
-		Model::AddToJSON(pt);
+		Model::Save_this(pt);
 
 		pt.put("type", "PartConfig");
 	}
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class PartState

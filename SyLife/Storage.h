@@ -77,7 +77,7 @@ public:
 	void	Clear() { m_molecules.clear(); }
 
 	// JSON
-	void	SetFromJSON(const ptree& pt)
+	void	Load_this(const ptree& pt)
 	{
 		// molecules
 		for (auto m : pt.get_child("molecules"))
@@ -89,15 +89,15 @@ public:
 			m_molecules.emplace_back(model, m.second.get<int>("size"));
 		}
 
-		Model::SetFromJSON(pt);
+		Model::Load_this(pt);
 	}
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const 
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const 
 	{
-		Model::AddToJSON(pt);
+		Model::Save_this(pt);
 
 		// type
 		pt.put("type", "Storage");
 	}
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };

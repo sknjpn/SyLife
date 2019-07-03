@@ -22,9 +22,9 @@ public:
 	const Color&	GetColor() const { return m_color; }
 
 	// JSON
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const
 	{
 		// mass
 		pt.put<double>("mass", m_mass);
@@ -40,11 +40,11 @@ public:
 			pt.add_child("color", color);
 		}
 
-		Model::AddToJSON(pt);
+		Model::Save_this(pt);
 
 		pt.put("type", "MoleculeModel");
 	}
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/molecules/" + GetFilename(); }
 };
 
@@ -102,7 +102,7 @@ inline void MoleculeModel::MakeViewer()
 	g_viewerManagerPtr->MakeViewer<MoleculeViewer>()->SetModel(shared_from_this());
 }
 
-inline void MoleculeModel::SetFromJSON(const ptree& pt)
+inline void MoleculeModel::Load_this(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");
@@ -113,5 +113,5 @@ inline void MoleculeModel::SetFromJSON(const ptree& pt)
 	// radius
 	m_radius = sqrt(m_mass);
 
-	Model::SetFromJSON(pt);
+	Model::Load_this(pt);
 }

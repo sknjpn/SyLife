@@ -9,16 +9,16 @@ public:
 	void MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
-	void	SetFromJSON(const ptree& pt);
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const
+	void	Load_this(const ptree& pt);
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const
 	{
-		return PartModel::AddToJSON(pt);
+		return PartModel::Save_this(pt);
 
 		// type
 		pt.put("type", "EquipmentModel");
 	}
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class EquipmentState
@@ -50,7 +50,7 @@ inline void		EquipmentModel::MakeViewer()
 }
 inline shared_ptr<PartState>	EquipmentModel::MakeState() { return make_shared<EquipmentState>(); }
 
-inline void EquipmentModel::SetFromJSON(const ptree& pt)
+inline void EquipmentModel::Load_this(const ptree& pt)
 {
-	PartModel::SetFromJSON(pt);
+	PartModel::Load_this(pt);
 }

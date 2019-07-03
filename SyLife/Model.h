@@ -57,17 +57,17 @@ public:
 	}
 
 	// JSON
-	void	SetFromJSON(const ptree& pt)
+	void	Load_this(const ptree& pt)
 	{
 		m_name = pt.get<string>("name");
 	}
-	virtual void	Load(const ptree& pt) { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const {
+	virtual void	Load(const ptree& pt) { Load_this(pt); }
+	void	Save_this(ptree& pt) const {
 		// name
 		pt.put("name", m_name);
 
 		// type
 		pt.put("type", "Model");
 	}
-	virtual void	Save(ptree& pt) const { AddToJSON(pt); }
+	virtual void	Save(ptree& pt) const { Save_this(pt); }
 };

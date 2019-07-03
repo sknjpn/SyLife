@@ -17,7 +17,7 @@ public:
 
 	void	Draw(double a) const { m_polygon.draw(ColorF(m_color, a)).drawFrame(1.0, Palette::Black); }
 
-	void	SetFromJSON(const ptree& pt)
+	void	Load_this(const ptree& pt)
 	{
 		// color
 		m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
@@ -32,10 +32,10 @@ public:
 			m_polygon = Polygon(verticles);
 		}
 
-		Model::SetFromJSON(pt);
+		Model::Load_this(pt);
 	}
-	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const
 	{
 		// color
 		{
@@ -67,11 +67,11 @@ public:
 			pt.add_child("verticles", verticles);
 		}
 
-		Model::AddToJSON(pt);
+		Model::Save_this(pt);
 
 		// type
 		pt.put("type", "ShapeModel");
 	}
-	void	Save(ptree& pt) const override { AddToJSON(pt); }
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
