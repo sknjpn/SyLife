@@ -9,8 +9,6 @@
 
 void AssetViewer::Update()
 {
-	m_drawPos = Vec2::Zero();
-
 	DrawModels<CellModel>("CellModel");
 	DrawModels<MoleculeModel>("MoleculeModel");
 	DrawModels<BodyModel>("BodyModel");
@@ -21,7 +19,6 @@ void AssetViewer::Update()
 	{
 		static Font font(15, Typeface::Bold);
 
-		auto t = Transformer2D(Mat3x2::Translate(m_drawPos), true);
 		auto f = font(U"V‚µ‚¢Model‚Ì’Ç‰Á");
 
 		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
@@ -29,7 +26,7 @@ void AssetViewer::Update()
 
 		if (f.region().leftClicked() && !g_viewerManagerPtr->HasViewer<AddModelViewer>()) g_viewerManagerPtr->MakeViewer<AddModelViewer>();
 
-		m_drawPos.moveBy(0.0, 16.0);
+		MoveDrawPos(0, 16);
 	}
 
 	// Save

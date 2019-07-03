@@ -8,7 +8,7 @@ void ViewerManager::Update()
 	for (auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
 	{
 		(*it)->m_isMouseOver = false;
-		(*it)->SetDrawPos(0, 0);
+		(*it)->m_drawPos = Vec2::Zero();
 	}
 
 	// mouseOver “K—p
@@ -31,6 +31,7 @@ void ViewerManager::Update()
 		RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);
 
 		(*it)->Update();
+		(*it)->m_transformer.reset();
 
 		RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
 	}
