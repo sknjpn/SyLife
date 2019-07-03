@@ -74,17 +74,24 @@ class MoleculeViewer
 	TextEditState		m_textEditState_mass;
 
 public:
-	MoleculeViewer()
-		: m_textEditState_mass(ToString(GetModel<MoleculeModel>()->m_mass))
+	MoleculeViewer() { SetDrawRect(0, 0, 600, 600); }
+
+	void ReloadProperties_this() 
 	{
-		SetDrawRect(0, 0, 600, 600);
+		ModelViewer::ReloadProperties_this();
+
+		m_textEditState_mass.text = ToString(GetModel<MoleculeModel>()->m_mass); 
 	}
+	void ReloadProperties() override { ReloadProperties_this(); }
 
 	void Update_this()
 	{
+		ModelViewer::Update_this();
+
 		// mass
-		SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
+		SimpleGUI::TextBox(m_textEditState_mass, Vec2(4, 8));
 		GetModel<MoleculeModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
+		MoveDrawPos(0, 48);
 	}
 	void Update() override { Update_this(); }
 };

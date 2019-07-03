@@ -8,6 +8,8 @@ class ModelViewer
 {
 	shared_ptr<Model>	m_model;
 
+	TextEditState		m_textEditState_name;
+
 public:
 	// Get
 	template <typename T>
@@ -15,4 +17,22 @@ public:
 
 	// Set
 	void	SetModel(const shared_ptr<Model> model) { m_model = model; }
+
+	// Reload
+	void ReloadProperties_this() 
+	{
+		// name
+		m_textEditState_name.text = Unicode::Widen(GetModel<Model>()->GetName());
+	}
+	virtual void ReloadProperties() { ReloadProperties_this(); }
+
+	// Update
+	void	Update_this()
+	{
+		// name
+		SimpleGUI::TextBox(m_textEditState_name, Vec2(8, 4), 240);
+		GetModel<Model>()->SetName(Unicode::Narrow(m_textEditState_name.text));
+		MoveDrawPos(0, 48);
+	}
+	void	Update() override { Update_this(); }
 };
