@@ -4,9 +4,12 @@ unique_ptr<ViewerManager>	g_viewerManagerPtr;
 
 void ViewerManager::Update()
 {
-	// mouseOver リセット
+	// Viewerのリセット
 	for (auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
+	{
 		(*it)->m_isMouseOver = false;
+		(*it)->SetDrawPos(0, 0);
+	}
 
 	// mouseOver 適用
 	for (auto it = m_viewers.rbegin(); it < m_viewers.rend(); ++it)
