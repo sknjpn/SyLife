@@ -75,7 +75,7 @@ class MoleculeViewer
 
 public:
 	MoleculeViewer()
-//		: m_textEditState_mass(ToString(model->GetMass()))
+		: m_textEditState_mass(ToString(GetModel<MoleculeModel>()->m_mass))
 	{
 		SetDrawRect(0, 0, 600, 600);
 	}
@@ -83,16 +83,14 @@ public:
 	void Update() override
 	{
 		// mass
-		/*{
-			SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
-			m_model->m_mass = Parse<double>(m_textEditState_mass.text);
-		}*/
+		SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
+		GetModel<MoleculeModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
 	}
 };
 
 inline void MoleculeModel::MakeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<MoleculeViewer>()->SetModel(shared_from_this()); 
+	g_viewerManagerPtr->MakeViewer<MoleculeViewer>()->SetModel(shared_from_this());
 }
 
 inline void MoleculeModel::SetFromJSON(const ptree& pt)
