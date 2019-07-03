@@ -387,5 +387,8 @@
     <ClInclude Include="FieldViewer.h">
       <Filter>Source Files\Viewer\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="ModelViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

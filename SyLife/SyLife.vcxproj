@@ -297,6 +297,7 @@
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="Indexer.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelViewer.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="MoleculeManager.h" />
