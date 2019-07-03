@@ -64,7 +64,7 @@ public:
 	NeedleViewer(const shared_ptr<PartModel>& model)
 		: PartViewer(model)
 	{
-		m_drawRect = RectF(0, 450, 600, 150);
+		SetDrawRect(0, 450, 600, 150);
 	}
 };
 

@@ -6,7 +6,7 @@ void PartShapeViewer::Init()
 	m_camera.setCenter(m_drawRect.center());
 }
 
-void PartShapeViewer::Update(bool isMouseOver)
+void PartShapeViewer::Update()
 {
 	if (isMouseOver) m_camera.update();
 

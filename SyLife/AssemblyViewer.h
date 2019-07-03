@@ -26,20 +26,20 @@ public:
 	AssemblyViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = RectF(Window::Width() - 400, 20, 300, 300);
+		SetDrawRect(Window::Width() - 400, 20, 300, 300);
 
-		m_camera.setTargetCenter(Window::BaseSize() / 2 - m_drawRect.size / 2);
-		m_camera.setCenter(Window::BaseSize() / 2 - m_drawRect.size / 2);
+		m_camera.setTargetCenter(Window::BaseSize() / 2 - GetDrawRect().size / 2);
+		m_camera.setCenter(Window::BaseSize() / 2 - GetDrawRect().size / 2);
 	}
 
 	void	Init() override
 	{
-		m_camera.setCenter(m_drawRect.center());
+		m_camera.setCenter(GetDrawRect().center());
 	}
 
-	void	Update(bool isMouseOver) override
+	void	Update() override
 	{
-		Rect(m_drawRect.size.asPoint()).draw(Color(11, 22, 33, 192));
+		Rect(GetDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 		if (isMouseOver) m_camera.update();
 

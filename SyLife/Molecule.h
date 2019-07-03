@@ -79,10 +79,10 @@ public:
 		, m_textEditState_name(Unicode::Widen(model->GetName()))
 		, m_textEditState_mass(ToString(model->GetMass()))
 	{
-		m_drawRect = RectF(0, 0, 600, 600);
+		SetDrawRect(0, 0, 600, 600);
 	}
 
-	void Update(bool isMouseOver) override {}
+	void Update() override {}
 };
 
 inline shared_ptr<Viewer> MoleculeModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(shared_from_this())); }

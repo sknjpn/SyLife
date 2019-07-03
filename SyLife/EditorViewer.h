@@ -9,7 +9,7 @@ class EditorViewer
 public:
 	EditorViewer()
 	{
-		m_drawRect = RectF(Window::Size());
+		SetDrawRect(Window::Size());
 	}
 
 	void	Init()

@@ -36,10 +36,10 @@ public:
 	ModuleViewer(const shared_ptr<PartModel>& model)
 		: PartViewer(model)
 	{
-		m_drawRect = RectF(0, 450, 600, 150);
+		SetDrawRect(0, 450, 600, 150);
 	}
 
-	void Update(bool isMouseOver) override {}
+	void Update() override {}
 };
 
 inline shared_ptr<Viewer>		ModuleModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<ModuleViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }

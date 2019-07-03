@@ -22,12 +22,12 @@ public:
 	PartPaletteViewer()
 		: m_model(make_shared<CellModel>())
 	{
-		m_drawRect = RectF(Window::Width() - 100, 20, 80, 400);
+		SetDrawRect(Window::Width() - 100, 20, 80, 400);
 	}
 	PartPaletteViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = RectF(Window::Width() - 100, 20, 80, 400);
+		SetDrawRect(Window::Width() - 100, 20, 80, 400);
 	}
 
 	template <typename T>
@@ -60,7 +60,7 @@ public:
 		m_drawPos.moveBy(-16.0, 0.0);
 	}
 
-	void	Update(bool isMouseOver) override
+	void	Update() override
 	{
 		m_drawPos = Vec2::Zero();
 

@@ -125,10 +125,10 @@ public:
 	PartViewer(const shared_ptr<PartModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = RectF(0, 450, 600, 150);
+		SetDrawRect(0, 450, 600, 150);
 	}
 
-	void Update(bool isMouseOver) override 
+	void Update() override 
 	{
 		// name
 		{

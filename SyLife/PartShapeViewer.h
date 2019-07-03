@@ -21,13 +21,13 @@ public:
 	PartShapeViewer(const shared_ptr<PartModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = RectF(0, 0, 600, 450);
+		SetDrawRect(0, 0, 600, 450);
 
-		m_camera.setTargetCenter(Window::BaseSize() / 2 - m_drawRect.size / 2);
-		m_camera.setCenter(Window::BaseSize() / 2 - m_drawRect.size / 2);
+		m_camera.setTargetCenter(Window::BaseSize() / 2 - GetDrawRect().size / 2);
+		m_camera.setCenter(Window::BaseSize() / 2 - GetDrawRect().size / 2);
 	}
 
 	void	Init() override;
-	void	Update(bool isMouseOver) override;
+	void	Update() override;
 };
 

@@ -31,7 +31,7 @@ public:
 		m_cursorCamera2D.setTargetCenter(Vec2::Zero());
 		m_cursorCamera2D.setMinMagnification(0.01);
 
-		m_drawRect = RectF(Window::Size());
+		SetDrawRect(Window::Size());
 		m_audio.setLoop(true);
 		m_audio.play();
 	}
@@ -46,7 +46,7 @@ public:
 		g_viewerManagerPtr->MakeViewer<CellStateViewer>();
 	}
 
-	void	Update(bool isMouseOver) override
+	void	Update() override
 	{
 		if (isMouseOver) m_cursorCamera2D.update();
 		auto t = m_cursorCamera2D.createTransformer();

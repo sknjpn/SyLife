@@ -12,10 +12,10 @@ class AssetViewer
 public:
 	AssetViewer()
 	{
-		m_drawRect = RectF(600, 0, 200, 600);
+		SetDrawRect(600, 0, 200, 600);
 	}
 
-	void	Update(bool isMouseOver) override;
+	void	Update() override;
 	void	SetSelectedModel(const shared_ptr<Model>& model);
 
 	template <typename T>

@@ -23,7 +23,7 @@ public:
 	TitleViewer()
 		: m_audio(U"assets/music/ê_îÈÇÃê¢äE.mp3")
 	{
-		m_drawRect = RectF(Window::Size());
+		SetDrawRect(Window::Size());
 		m_audio.setLoop(true);
 		m_audio.play();
 	}
@@ -78,7 +78,7 @@ public:
 		for (int i = 0; i < 2000; ++i) UpdateBubbles();
 	}
 
-	void	Update(bool isMouseOver) override
+	void	Update() override
 	{
 		// bubbles
 		{

@@ -8,7 +8,7 @@ class AddModelViewer
 public:
 	AddModelViewer()
 	{
-		m_drawRect = RectF(100, 150, 400, 300);
+		SetDrawRect(100, 150, 400, 300);
 	}
 
 	template <typename T>
@@ -44,6 +44,6 @@ public:
 		m_drawPos.moveBy(0.0, 15.0);
 	}
 
-	void	Update(bool isMouseOver) override;
+	void	Update() override;
 };
 

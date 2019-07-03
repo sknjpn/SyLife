@@ -13,11 +13,11 @@ public:
 	CellStateViewer()
 		: m_cellState(nullptr)
 	{
-		m_drawRect = RectF(Window::Width() - 300, 450, 200, 400);
+		SetDrawRect(Window::Width() - 300, 450, 200, 400);
 
 	}
 
-	void	Update(bool isMouseOver) override
+	void	Update() override
 	{
 		Rect(m_drawRect.size.asPoint()).draw(Color(11, 22, 33, 192));
 

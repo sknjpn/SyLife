@@ -4,18 +4,22 @@ unique_ptr<ViewerManager>	g_viewerManagerPtr;
 
 void ViewerManager::Update()
 {
-	shared_ptr<Viewer> mouseOverViewer = nullptr;
+	// mouseOver リセット
+	for (auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
+		(*it)->m_isMouseOver = false;
 
+	// mouseOver 適用
 	for (auto it = m_viewers.rbegin(); it < m_viewers.rend(); ++it)
 	{
 		if ((*it)->m_drawRect.mouseOver())
 		{
-			mouseOverViewer = *it;
+			(*it)->m_isMouseOver = true;
 
 			break;
 		}
 	}
 
+	// Viewer 更新
 	for (auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
 	{
 		auto vp = ViewportBlock2D(Rect((*it)->m_drawRect));
@@ -23,7 +27,7 @@ void ViewerManager::Update()
 
 		RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);
 
-		(*it)->Update(mouseOverViewer == *it);
+		(*it)->Update();
 
 		RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
 	}

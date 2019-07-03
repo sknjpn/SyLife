@@ -15,7 +15,7 @@ public:
 	ReleaseViewer(const shared_ptr<CellModel>& model)
 		: m_model(model)
 	{
-		m_drawRect = RectF(Window::Width() - 400, 320, 300, 100);
+		SetDrawRect(Window::Width() - 400, 320, 300, 100);
 	}
 
 	void	Update(bool	isMouseOver) override

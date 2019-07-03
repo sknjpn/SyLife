@@ -84,10 +84,10 @@ public:
 		: m_model(model)
 		, m_textEditState_name(Unicode::Widen(model->GetName()))
 	{
-		m_drawRect = RectF(0, 450, 600, 150);
+		SetDrawRect(0, 450, 600, 150);
 	}
 
-	void Update(bool isMouseOver) override
+	void Update() override
 	{
 		// name
 		{
