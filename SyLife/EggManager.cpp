@@ -1,4 +1,3 @@
-#include "EggManager.h"
 #include "Egg.h"
 
 unique_ptr<EggManager> g_eggManagerPtr;

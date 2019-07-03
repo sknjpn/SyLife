@@ -1,7 +1,5 @@
 #include "AssetViewer.h"
 
-#include "ViewerManager.h"
-
 #include "PartPaletteViewer.h"
 #include "Cell.h"
 #include "Molecule.h"

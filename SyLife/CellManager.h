@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Indexer.h"
-#include "FieldManager.h"
 
 class CellState;
 class CellModel;

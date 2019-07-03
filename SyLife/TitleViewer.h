@@ -4,7 +4,6 @@
 
 #include "FieldViewer.h"
 #include "EditorViewer.h"
-#include "ViewerManager.h"
 #include "Curtain.h"
 
 class TitleViewer

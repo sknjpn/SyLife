@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Part.h"
-#include "ViewerManager.h"
 
 class ModuleModel
 	: public PartModel

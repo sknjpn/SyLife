@@ -2,7 +2,6 @@
 
 #include "Model.h"
 #include "Molecule.h"
-#include "AssetManager.h"
 
 class MoleculeModel;
 

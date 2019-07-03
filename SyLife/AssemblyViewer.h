@@ -5,7 +5,6 @@
 #include "TinyCamera.h"
 #include "Part.h"
 #include "AssemblyViewer.h"
-#include "AssetManager.h"
 #include "PartPaletteViewer.h"
 
 #include "Body.h"

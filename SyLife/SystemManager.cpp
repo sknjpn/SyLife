@@ -1,13 +1,3 @@
-#include "SystemManager.h"
-#include "FieldManager.h"
-#include "AssetManager.h"
-#include "MoleculeManager.h"
-#include "CellManager.h"
-#include "EggManager.h"
-#include "WaveManager.h"
-#include "ViewerManager.h"
-#include "Viewer.h"
-
 unique_ptr<SystemManager>	g_systemManagerPtr;
 
 SystemManager::SystemManager()
@@ -22,4 +12,9 @@ SystemManager::SystemManager()
 
 	g_assetManagerPtr->Init();
 	g_fieldManagerPtr->Init();
+}
+
+void	SystemManager::Update()
+{
+	g_viewerManagerPtr->Update();
 }

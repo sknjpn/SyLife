@@ -3,8 +3,6 @@
 #include "Module.h"
 #include "Storage.h"
 #include "Cell.h"
-#include "FieldManager.h"
-#include "ViewerManager.h"
 
 class SynthesizerModel
 	: public ModuleModel

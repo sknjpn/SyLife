@@ -1,6 +1,4 @@
 #include "Molecule.h"
-#include "MoleculeManager.h"
-#include "AssetManager.h"
 
 void MoleculeState::UpdateMolecule()
 {

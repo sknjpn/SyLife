@@ -1,6 +1,3 @@
-#include "WaveManager.h"
-#include "FieldManager.h"
-
 unique_ptr<WaveManager>	g_waveManagerPtr;
 
 void WaveManager::Update()

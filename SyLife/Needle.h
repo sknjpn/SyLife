@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Equipment.h"
-#include "FieldManager.h"
-#include "ViewerManager.h"
 #include "Cell.h"
 
 class NeedleModel

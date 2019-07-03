@@ -1,7 +1,5 @@
 #pragma once
 
-#include "FieldManager.h"
-
 class Particle
 {
 	bool		m_isDestroyed = false;

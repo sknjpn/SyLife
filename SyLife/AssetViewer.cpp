@@ -1,5 +1,4 @@
 #include "AssetViewer.h"
-#include "AssetManager.h"
 #include "AddModelViewer.h"
 #include "Cell.h"
 #include "Molecule.h"
@@ -7,7 +6,6 @@
 #include "Body.h"
 #include "Equipment.h"
 #include "Module.h"
-#include "ViewerManager.h"
 
 void AssetViewer::Update(bool isMouseOver)
 {

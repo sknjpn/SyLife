@@ -1,5 +1,4 @@
 #include "Egg.h"
-#include "FieldManager.h"
 
 void EggState::UpdateEgg()
 {

@@ -2,9 +2,7 @@
 
 #include "Viewer.h"
 #include "Cell.h"
-#include "CellStateViewer.h"
-#include "AssetManager.h"
-#include "Cell.h"
+
 class CellStateViewer
 	: public Viewer
 {

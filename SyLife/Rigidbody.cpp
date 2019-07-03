@@ -1,5 +1,4 @@
 #include "Rigidbody.h"
-#include "FieldManager.h"
 
 void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
 {

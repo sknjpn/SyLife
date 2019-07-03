@@ -1,6 +1,4 @@
-﻿#include "SystemManager.h"
-#include "ViewerManager.h"
-#include "TitleViewer.h"
+﻿#include "TitleViewer.h"
 
 void Main()
 {

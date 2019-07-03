@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Viewer.h"
-#include "ViewerManager.h"
 #include "AssetViewer.h"
 
 class EditorViewer

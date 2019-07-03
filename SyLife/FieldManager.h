@@ -2,10 +2,6 @@
 
 #include "Indexer.h"
 
-#include <boost/property_tree/json_parser.hpp>
-
-using namespace boost::property_tree;
-
 class Rigidbody;
 
 class FieldManager

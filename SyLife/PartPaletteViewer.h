@@ -5,8 +5,6 @@
 #include "Cell.h"
 #include "Part.h"
 
-#include "AssetManager.h"
-
 #include "Body.h"
 #include "Equipment.h"
 #include "Module.h"

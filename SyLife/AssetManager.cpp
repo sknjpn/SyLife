@@ -1,6 +1,4 @@
-#include "AssetManager.h"
 #include "Model.h"
-#include <boost/filesystem/operations.hpp>
 
 unique_ptr<AssetManager>	g_assetManagerPtr;
 
@@ -13,12 +11,10 @@ void AssetManager::Init()
 
 void AssetManager::AddModelsFromDirectory(const string& directory)
 {
-	namespace fs = boost::filesystem;
+	directory_iterator end;
 
-	fs::directory_iterator end;
-
-	for (fs::directory_iterator it(fs::path(directory.c_str())); it != end; ++it)
-		if (!fs::is_directory(*it)) AddModelFromFile((*it).path().string());
+	for (directory_iterator it(boost::filesystem::path(directory.c_str())); it != end; ++it)
+		if (!is_directory(*it)) AddModelFromFile((*it).path().string());
 }
 
 void AssetManager::AddModelFromFile(const string& filepath)

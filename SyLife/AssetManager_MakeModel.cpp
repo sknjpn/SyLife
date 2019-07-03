@@ -1,5 +1,3 @@
-#include "AssetManager.h"
-
 #include "Model.h"
 #include "Cell.h"
 #include "Molecule.h"

@@ -1,10 +1,6 @@
 #include "Cell.h"
 #include "Part.h"
 #include "Egg.h"
-#include "EggManager.h"
-#include "MoleculeManager.h"
-
-#include <numeric>
 
 void CellModel::Draw(double a)
 {

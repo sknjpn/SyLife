@@ -1,6 +1,4 @@
 #include "Particle.h"
-#include "WaveManager.h"
-#include "FieldManager.h"
 
 void Particle::UpdateParticle()
 {
