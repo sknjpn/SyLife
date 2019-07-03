@@ -12,7 +12,6 @@ class PartState;
 class CellModel
 	: public Model
 {
-public:
 	Storage	m_material;
 	vector<shared_ptr<PartConfig>>	m_partConfigs;
 
@@ -22,8 +21,20 @@ public:
 	double	m_inertia;
 
 public:
+	// Get
+	const Storage&	GetMaterial() const { return m_material; }
+	Storage&		GetMaterial() { return m_material; }
+	double	GetMass() const { return m_mass; }
+	double	GetRadius() const { return m_radius; }
+	double	GetInertia() const { return m_inertia; }
+	const vector<shared_ptr<PartConfig>>&	GetPartConfigs() const { return m_partConfigs; }
+	vector<shared_ptr<PartConfig>>&			GetPartConfigs() { return m_partConfigs; }
+
+	// Add
+	shared_ptr<PartConfig>&	AddPartConfig();
+
 	template <typename T>
-	vector<shared_ptr<T>>	GetParts() const
+	vector<shared_ptr<T>>	GetPartConfigs() const
 	{
 		vector<shared_ptr<T>> tModels;
 
@@ -33,6 +44,9 @@ public:
 		return tModels;
 	}
 
+	void	UpdateProperties();
+
+	// Draw
 	void	Draw(double a = 0.5);
 
 	// JSON
@@ -41,8 +55,6 @@ public:
 	void	Save_this(ptree& pt) const;
 	void	Save(ptree& pt) const override { Save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/cells/" + GetFilename(); }
-
-	void	UpdateProperties();
 };
 
 class CellState

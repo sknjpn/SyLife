@@ -56,7 +56,7 @@ public:
 		m_timer += g_fieldManagerPtr->GetDeltaTime();
 
 		auto model = dynamic_pointer_cast<SynthesizerModel>(GetPartConfig()->GetModel());
-		if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->m_material.Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
+		if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->GetMaterial().Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
 		{
 			m_timer = 0.0;
 

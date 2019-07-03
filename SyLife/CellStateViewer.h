@@ -33,7 +33,7 @@ public:
 
 		{
 			auto t1 = Transformer2D(Mat3x2::Translate(100, 50));
-			auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_model->m_radius));
+			auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_model->GetRadius()));
 
 			m_cellState->m_model->Draw(1.0);
 		}
@@ -49,7 +49,7 @@ public:
 			}
 
 			pos.moveBy(16.0, 0.0);
-			for (const auto& m : model->m_material.GetMolecules())
+			for (const auto& m : model->GetMaterial().GetMolecules())
 			{
 				auto t = Transformer2D(Mat3x2::Translate(pos));
 				font(Unicode::Widen(m.first->GetName()) + U":" + ToString(m.second) + U"U").draw();

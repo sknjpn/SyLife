@@ -44,6 +44,11 @@ void CellModel::Save_this(ptree& pt) const
 	pt.put("type", "CellModel");
 }
 
+shared_ptr<PartConfig>& CellModel::AddPartConfig()
+{
+	return m_partConfigs.emplace_back(make_shared<PartConfig>());
+}
+
 void CellModel::UpdateProperties()
 {
 	// mass
@@ -70,17 +75,13 @@ CellState::CellState(const shared_ptr<CellModel>& model)
 	, m_startTimer(0.0)
 	, m_deathTimer(25.0)
 {
-	SetMass(m_model->m_mass);
-	SetRadius(m_model->m_radius);
-	SetInertia(m_model->m_inertia);
+	SetMass(m_model->GetMass());
+	SetRadius(m_model->GetRadius());
+	SetInertia(m_model->GetInertia());
 
 	// parts
-	for (const auto& pc : m_model->m_partConfigs)
-	{
-		const auto& ps = m_partStates.emplace_back(pc->GetModel()->MakeState());
-
-		ps->SetPartConfig(pc);
-	}
+	for (const auto& pc : m_model->GetPartConfigs())
+		m_partStates.emplace_back(pc->GetModel()->MakeState())->SetPartConfig(pc);
 }
 
 void CellState::UpdateCell()
@@ -102,7 +103,7 @@ void CellState::UpdateCell()
 
 		for (const auto& m : m_storage.GetMolecules())
 		{
-			if (2 * m_model->m_material.Num(m.first) < m_storage.Num(m.first))
+			if (2 * m_model->GetMaterial().Num(m.first) < m_storage.Num(m.first))
 			{
 				ExpireMolecule(m.first);
 
@@ -116,9 +117,9 @@ void CellState::UpdateCell()
 	}
 
 	// •ª—ôˆ—
-	if (m_storage >= m_model->m_material)
+	if (m_storage >= m_model->GetMaterial())
 	{
-		m_storage -= m_model->m_material;
+		m_storage -= m_model->GetMaterial();
 
 		const auto& e = g_eggManagerPtr->AddEggState(m_model);
 		e->SetPosition(GetPosition());
@@ -130,7 +131,7 @@ void CellState::UpdateCell()
 	if (m_deathTimer <= 0.0)
 	{
 		// MoleculeState‚Ì“f‚«o‚µ
-		auto s = m_storage + m_model->m_material;
+		auto s = m_storage + m_model->GetMaterial();
 		for (const auto& m : s.GetMolecules())
 		{
 			for (unsigned int i = 0; i < m.second; i++)
@@ -181,9 +182,9 @@ void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 	molecule->Destroy();
 }
 
-void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size) 
+void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size)
 {
-	for (unsigned int i = 0; i < size; ++i) 
+	for (unsigned int i = 0; i < size; ++i)
 	{
 		// “f‚«o‚·•ûŒü
 		auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);

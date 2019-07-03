@@ -22,7 +22,19 @@ public:
 	const Color&	GetColor() const { return m_color; }
 
 	// JSON
-	void	Load_this(const ptree& pt);
+	void	Load_this(const ptree& pt)
+	{
+		// mass
+		m_mass = pt.get<double>("mass");
+
+		// color
+		m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
+
+		// radius
+		m_radius = sqrt(m_mass);
+
+		Model::Load_this(pt);
+	}
 	void	Load(const ptree& pt) override { Load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
@@ -100,18 +112,4 @@ public:
 inline void MoleculeModel::MakeViewer()
 {
 	g_viewerManagerPtr->MakeViewer<MoleculeViewer>()->SetModel(shared_from_this());
-}
-
-inline void MoleculeModel::Load_this(const ptree& pt)
-{
-	// mass
-	m_mass = pt.get<double>("mass");
-
-	// color
-	m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
-
-	// radius
-	m_radius = sqrt(m_mass);
-
-	Model::Load_this(pt);
 }

@@ -80,7 +80,7 @@ public:
 
 		// part
 		{
-			for (const auto& p : GetModel<CellModel>()->m_partConfigs)
+			for (const auto& p : GetModel<CellModel>()->GetPartConfigs())
 			{
 				auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 					.translated(p->GetPosition().x, p->GetPosition().y));
@@ -100,7 +100,7 @@ public:
 
 				if (MouseL.up())
 				{
-					const auto& partConfig = GetModel<CellModel>()->m_partConfigs.emplace_back(make_shared<PartConfig>());
+					const auto& partConfig = GetModel<CellModel>()->AddPartConfig();
 
 					partConfig->SetModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
 					partConfig->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));

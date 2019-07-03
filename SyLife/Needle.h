@@ -50,7 +50,7 @@ public:
 
 					cs->Destroy();
 					cell.m_storage += cs->m_storage;
-					cell.m_storage += cs->m_model->m_material;
+					cell.m_storage += cs->m_model->GetMaterial();
 				}
 			}
 		}

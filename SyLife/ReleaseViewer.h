@@ -32,9 +32,9 @@ public:
 
 		// part
 		{
-			auto t1 = Transformer2D(Mat3x2::Scale(45.0 / GetModel<CellModel>()->m_radius / 2.0).translated(circle.center));
+			auto t1 = Transformer2D(Mat3x2::Scale(45.0 / GetModel<CellModel>()->GetRadius() / 2.0).translated(circle.center));
 
-			for (const auto& p : GetModel<CellModel>()->m_partConfigs)
+			for (const auto& p : GetModel<CellModel>()->GetPartConfigs())
 			{
 				auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 					.translated(p->GetPosition().x, p->GetPosition().y));

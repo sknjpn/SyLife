@@ -115,7 +115,7 @@ public:
 						e->Destroy();
 
 						// MoleculeState‚Ì“f‚«o‚µ
-						auto s = e->GetCellModel()->m_material;
+						auto s = e->GetCellModel()->GetMaterial();
 						for (const auto& m : s.GetMolecules())
 						{
 							for (unsigned int i = 0; i < m.second; i++)
@@ -143,7 +143,7 @@ public:
 				{
 					auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-					for (const auto& p : rv->GetModel<CellModel>()->m_partConfigs)
+					for (const auto& p : rv->GetModel<CellModel>()->GetPartConfigs())
 					{
 						auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 							.translated(p->GetPosition()));

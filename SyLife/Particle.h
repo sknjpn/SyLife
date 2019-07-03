@@ -2,8 +2,8 @@
 
 class Particle
 {
-	bool		m_isDestroyed = false;
-	double		m_mass = 0.0;
+	bool	m_isDestroyed = false;
+	double	m_mass = 0.0;
 	Vec2	m_position = Vec2(0.0, 0.0);
 	Vec2	m_velocity = Vec2(0.0, 0.0);
 
