@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Model.h"
+#include "ModelViewer.h"
 #include "Storage.h"
 #include "ShapeModel.h"
 
@@ -114,7 +114,7 @@ public:
 };
 
 class PartViewer
-	: public Viewer
+	: public ModelViewer
 {
 public:
 	TextEditState		m_textEditState_name;

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Viewer.h"
+#include "ModelViewer.h"
 #include "ShapeModel.h"
 #include "TinyCamera.h"
 #include "Part.h"
 
 class PartShapeViewer
-	: public Viewer
+	: public ModelViewer
 {
 public:
 	shared_ptr<PartModel>	m_model;

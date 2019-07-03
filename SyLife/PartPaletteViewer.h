@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Viewer.h"
+#include "ModelViewer.h"
 
 #include "Cell.h"
 #include "Part.h"
@@ -10,7 +10,7 @@
 #include "Module.h"
 
 class PartPaletteViewer
-	: public Viewer
+	: public ModelViewer
 {
 public:
 	shared_ptr<PartModel>	m_selectedPart;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Model.h"
-#include "Viewer.h"
+#include "ModelViewer.h"
 #include "Rigidbody.h"
 
 #include "Storage.h"
@@ -67,7 +67,7 @@ public:
 };
 
 class CellViewer
-	: public Viewer
+	: public ModelViewer
 {
 	shared_ptr<CellModel>	m_model;
 	TextEditState		m_textEditState_name;

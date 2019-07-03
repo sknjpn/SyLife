@@ -1,14 +1,16 @@
 #pragma once
 
 #include "Model.h"
-#include "Viewer.h"
+#include "ModelViewer.h"
 #include "Rigidbody.h"
 
 class MoleculeModel
 	: public Model
 {
-	double		m_mass;
-	double		m_radius;
+	friend class MoleculeViewer;
+
+	double	m_mass;
+	double	m_radius;
 	Color	m_color;
 
 public:
@@ -67,7 +69,7 @@ public:
 };
 
 class MoleculeViewer
-	: public Viewer
+	: public ModelViewer
 {
 	shared_ptr<MoleculeModel>	m_model;
 	TextEditState		m_textEditState_name;
@@ -82,7 +84,20 @@ public:
 		SetDrawRect(0, 0, 600, 600);
 	}
 
-	void Update() override {}
+	void Update() override
+	{
+		// name
+		{
+			SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
+			m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
+		}
+
+		// mass
+		{
+			SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
+			m_model->m_mass = Parse<double>(m_textEditState_mass.text);
+		}
+	}
 };
 
 inline shared_ptr<Viewer> MoleculeModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(shared_from_this())); }
