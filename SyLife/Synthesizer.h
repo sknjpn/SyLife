@@ -14,7 +14,7 @@ public:
 	const Storage&	GetImport() const { return m_import; }
 	const shared_ptr<MoleculeModel>&	GetExport() const { return m_export; }
 
-	shared_ptr<Viewer>	MakeViewer() override;
+	void	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	SetFromJSON(const ptree& pt);
@@ -70,14 +70,18 @@ class SynthesizerViewer
 	: public PartViewer
 {
 public:
-	SynthesizerViewer(const shared_ptr<PartModel>& model)
-		: PartViewer(model)
+	SynthesizerViewer()
 	{
 		SetDrawRect(0, 450, 600, 150);
 	}
 };
 
-inline shared_ptr<Viewer>		SynthesizerModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<SynthesizerViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
+inline void		SynthesizerModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<SynthesizerViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+}
+
 inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<SynthesizerState>(); }
 
 inline void SynthesizerModel::SetFromJSON(const ptree& pt)

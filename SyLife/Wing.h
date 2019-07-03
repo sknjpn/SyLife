@@ -10,7 +10,7 @@ public:
 	bool	m_isRight = false;
 
 public:
-	shared_ptr<Viewer> MakeViewer() override;
+	void MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 
@@ -70,12 +70,15 @@ class WingViewer
 	: public EquipmentViewer
 {
 public:
-	WingViewer(const shared_ptr<PartModel>& model)
-		: EquipmentViewer(model)
+	WingViewer()
 	{}
 };
 
-inline shared_ptr<Viewer>		WingModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<WingViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
+inline void		WingModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<WingViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+}
 inline shared_ptr<PartState>	WingModel::MakeState() { return make_shared<WingState>(); }
 
 inline void WingModel::SetFromJSON(const ptree& pt)

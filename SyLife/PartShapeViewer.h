@@ -9,8 +9,6 @@ class PartShapeViewer
 	: public ModelViewer
 {
 public:
-	shared_ptr<PartModel>	m_model;
-
 	Array<Vec2>	m_verticles;
 
 	Vec2*		m_selectedVerticle = nullptr;
@@ -18,8 +16,7 @@ public:
 	CursorCamera2D	m_camera;
 
 public:
-	PartShapeViewer(const shared_ptr<PartModel>& model)
-		: m_model(model)
+	PartShapeViewer()
 	{
 		SetDrawRect(0, 0, 600, 450);
 

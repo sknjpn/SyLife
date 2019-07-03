@@ -5,6 +5,7 @@
 #include "TinyCamera.h"
 #include "Part.h"
 #include "AssemblyViewer.h"
+#include "ModelViewer.h"
 #include "PartPaletteViewer.h"
 
 #include "Body.h"
@@ -12,11 +13,9 @@
 #include "Module.h"
 
 class AssemblyViewer
-	: public Viewer
+	: public ModelViewer
 {
 public:
-	shared_ptr<CellModel>	m_model;
-
 	CursorCamera2D	m_camera;
 
 	double	m_mass;
@@ -24,8 +23,7 @@ public:
 	double	m_radius;
 
 public:
-	AssemblyViewer(const shared_ptr<CellModel>& model)
-		: m_model(model)
+	AssemblyViewer()
 	{
 		SetDrawRect(Window::Width() - 400, 20, 300, 300);
 
@@ -82,7 +80,7 @@ public:
 
 		// part
 		{
-			for (const auto& p : m_model->m_partConfigs)
+			for (const auto& p : GetModel<CellModel>()->m_partConfigs)
 			{
 				auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 					.translated(p->GetPosition().x, p->GetPosition().y));
@@ -102,7 +100,7 @@ public:
 
 				if (MouseL.up())
 				{
-					const auto& partConfig = m_model->m_partConfigs.emplace_back(make_shared<PartConfig>());
+					const auto& partConfig = GetModel<CellModel>()->m_partConfigs.emplace_back(make_shared<PartConfig>());
 
 					partConfig->SetModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
 					partConfig->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
@@ -113,7 +111,7 @@ public:
 			if (!MouseL.pressed()) g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart = nullptr;
 		}
 
-		m_model->UpdateProperties();
+		GetModel<CellModel>()->UpdateProperties();
 	}
 };
 

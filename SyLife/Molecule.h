@@ -14,7 +14,7 @@ class MoleculeModel
 	Color	m_color;
 
 public:
-	shared_ptr<Viewer>	MakeViewer() override;
+	void	MakeViewer() override;
 
 	// Get
 	double	GetMass() const { return m_mass; }
@@ -71,36 +71,29 @@ public:
 class MoleculeViewer
 	: public ModelViewer
 {
-	shared_ptr<MoleculeModel>	m_model;
-	TextEditState		m_textEditState_name;
 	TextEditState		m_textEditState_mass;
 
 public:
-	MoleculeViewer(const shared_ptr<MoleculeModel>& model)
-		: m_model(model)
-		, m_textEditState_name(Unicode::Widen(model->GetName()))
-		, m_textEditState_mass(ToString(model->GetMass()))
+	MoleculeViewer()
+//		: m_textEditState_mass(ToString(model->GetMass()))
 	{
 		SetDrawRect(0, 0, 600, 600);
 	}
 
 	void Update() override
 	{
-		// name
-		{
-			SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
-			m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
-		}
-
 		// mass
-		{
+		/*{
 			SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
 			m_model->m_mass = Parse<double>(m_textEditState_mass.text);
-		}
+		}*/
 	}
 };
 
-inline shared_ptr<Viewer> MoleculeModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(shared_from_this())); }
+inline void MoleculeModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<MoleculeViewer>()->SetModel(shared_from_this()); 
+}
 
 inline void MoleculeModel::SetFromJSON(const ptree& pt)
 {

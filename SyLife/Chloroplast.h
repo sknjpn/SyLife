@@ -6,7 +6,7 @@ class ChloroplastModel
 	: public ModuleModel
 {
 public:
-	shared_ptr<Viewer>		MakeViewer() override;
+	void		MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	SetFromJSON(const ptree& pt);
@@ -35,12 +35,15 @@ class ChloroplastViewer
 	: public ModuleViewer
 {
 public:
-	ChloroplastViewer(const shared_ptr<PartModel>& model)
-		: ModuleViewer(model)
+	ChloroplastViewer()
 	{}
 };
 
-inline shared_ptr<Viewer>		ChloroplastModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<ChloroplastViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
+inline void		ChloroplastModel::MakeViewer() 
+{
+	g_viewerManagerPtr->MakeViewer<ChloroplastViewer>()->SetModel(shared_from_this()); 
+	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+}
 inline shared_ptr<PartState>	ChloroplastModel::MakeState() { return make_shared<ChloroplastState>(); }
 
 inline void ChloroplastModel::SetFromJSON(const ptree& pt)

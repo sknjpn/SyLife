@@ -2,30 +2,18 @@
 
 #include "ModelViewer.h"
 
-#include "Cell.h"
-#include "Part.h"
-
-#include "Body.h"
-#include "Equipment.h"
-#include "Module.h"
+class PartModel;
 
 class PartPaletteViewer
 	: public ModelViewer
 {
 public:
 	shared_ptr<PartModel>	m_selectedPart;
-	shared_ptr<CellModel>	m_model;
 
 	Vec2	m_drawPos;
 
 public:
 	PartPaletteViewer()
-		: m_model(make_shared<CellModel>())
-	{
-		SetDrawRect(Window::Width() - 100, 20, 80, 400);
-	}
-	PartPaletteViewer(const shared_ptr<CellModel>& model)
-		: m_model(model)
 	{
 		SetDrawRect(Window::Width() - 100, 20, 80, 400);
 	}
@@ -60,13 +48,6 @@ public:
 		m_drawPos.moveBy(-16.0, 0.0);
 	}
 
-	void	Update() override
-	{
-		m_drawPos = Vec2::Zero();
-
-		DrawModels<BodyModel>("BodyModel");
-		DrawModels<EquipmentModel>("EquipmentModel");
-		DrawModels<ModuleModel>("ModuleModel");
-	}
+	void	Update() override;
 };
 

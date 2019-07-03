@@ -7,7 +7,7 @@ class NeedleModel
 	: public EquipmentModel
 {
 public:
-	shared_ptr<Viewer>	MakeViewer() override;
+	void	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	SetFromJSON(const ptree& pt);
@@ -61,14 +61,17 @@ class NeedleViewer
 	: public PartViewer
 {
 public:
-	NeedleViewer(const shared_ptr<PartModel>& model)
-		: PartViewer(model)
+	NeedleViewer()
 	{
 		SetDrawRect(0, 450, 600, 150);
 	}
 };
 
-inline shared_ptr<Viewer>		NeedleModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<NeedleViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
+inline void		NeedleModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<NeedleViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+}
 inline shared_ptr<PartState>	NeedleModel::MakeState() { return make_shared<NeedleState>(); }
 
 inline void NeedleModel::SetFromJSON(const ptree& pt)

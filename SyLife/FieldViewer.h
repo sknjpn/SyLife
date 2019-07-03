@@ -40,9 +40,9 @@ public:
 	{
 		// •t‘®Viewer‚Ì‰Šú‰»
 		m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
-		g_viewerManagerPtr->MakeViewer<PartPaletteViewer>(m_newModel);
-		g_viewerManagerPtr->MakeViewer<AssemblyViewer>(m_newModel);
-		g_viewerManagerPtr->MakeViewer<ReleaseViewer>(m_newModel);
+		g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(m_newModel);
+		g_viewerManagerPtr->MakeViewer<AssemblyViewer>()->SetModel(m_newModel);
+		g_viewerManagerPtr->MakeViewer<ReleaseViewer>()->SetModel(m_newModel);
 		g_viewerManagerPtr->MakeViewer<CellStateViewer>();
 	}
 
@@ -143,7 +143,7 @@ public:
 				{
 					auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-					for (const auto& p : rv->m_model->m_partConfigs)
+					for (const auto& p : rv->GetModel<CellModel>()->m_partConfigs)
 					{
 						auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 							.translated(p->GetPosition()));
@@ -155,15 +155,15 @@ public:
 
 				if (MouseL.up())
 				{
-					const auto& c = g_cellManagerPtr->AddCellState(rv->m_model);
+					const auto& c = g_cellManagerPtr->AddCellState(rv->GetModel<CellModel>());
 					c->SetPosition(Cursor::PosF());
 					c->SetVelocity(Vec2::Zero());
 					c->Init();
 
 					m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
-					ppv->m_model = m_newModel;
-					av->m_model = m_newModel;
-					rv->m_model = m_newModel;
+					ppv->SetModel(m_newModel);
+					av->SetModel(m_newModel);
+					rv->SetModel(m_newModel);
 				}
 			}
 

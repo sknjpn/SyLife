@@ -6,7 +6,7 @@ class EyeModel
 	: public EquipmentModel
 {
 public:
-	shared_ptr<Viewer> MakeViewer() override;
+	void MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	SetFromJSON(const ptree& pt);
@@ -33,12 +33,16 @@ class EyeViewer
 	: public EquipmentViewer
 {
 public:
-	EyeViewer(const shared_ptr<PartModel>& model)
-		: EquipmentViewer(model)
+	EyeViewer()
 	{}
 };
 
-inline shared_ptr<Viewer>		EyeModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<EyeViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
+inline void		EyeModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<EyeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+}
+
 inline shared_ptr<PartState>	EyeModel::MakeState() { return make_shared<EyeState>(); }
 
 inline void EyeModel::SetFromJSON(const ptree& pt)

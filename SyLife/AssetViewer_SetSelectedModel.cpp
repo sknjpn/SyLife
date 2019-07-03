@@ -11,22 +11,11 @@
 
 void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)
 {
-	// ©•ªˆÈŠO‚ÌView‚ğE‚·
-	g_viewerManagerPtr->DeleteViewer<PartPaletteViewer>();
-	g_viewerManagerPtr->DeleteViewer<PartViewer>();
-	g_viewerManagerPtr->DeleteViewer<CellViewer>();
-	g_viewerManagerPtr->DeleteViewer<MoleculeViewer>();
-	g_viewerManagerPtr->DeleteViewer<PartShapeViewer>();
+	// ModelViewer‚ğÁ‚·
+	g_viewerManagerPtr->DeleteViewer<ModelViewer>();
 
 	// ‘ÎÛ‚ÌView‚ğ’Ç‰Á
-	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<PartPaletteViewer>(dynamic_pointer_cast<CellModel>(model));
-	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<AssemblyViewer>(dynamic_pointer_cast<CellModel>(model));
-	if (dynamic_pointer_cast<CellModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<CellViewer>(dynamic_pointer_cast<CellModel>(model));
-	if (dynamic_pointer_cast<MoleculeModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<MoleculeViewer>(dynamic_pointer_cast<MoleculeModel>(model));
-	if (dynamic_pointer_cast<BodyModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<BodyViewer>(dynamic_pointer_cast<BodyModel>(model));
-	if (dynamic_pointer_cast<EquipmentModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<EquipmentViewer>(dynamic_pointer_cast<EquipmentModel>(model));
-	if (dynamic_pointer_cast<ModuleModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<ModuleViewer>(dynamic_pointer_cast<ModuleModel>(model));
-	if (dynamic_pointer_cast<PartModel>(model) != nullptr) g_viewerManagerPtr->MakeViewer<PartShapeViewer>(dynamic_pointer_cast<PartModel>(model));
+	model->MakeViewer();
 
 	// ‘ÎÛƒ‚ƒfƒ‹‚Ìİ’è
 	m_selectedModel = model;

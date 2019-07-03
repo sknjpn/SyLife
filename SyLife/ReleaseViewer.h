@@ -3,17 +3,16 @@
 #include "Viewer.h"
 #include "Part.h"
 #include "Cell.h"
+#include "ModelViewer.h"
 
 class ReleaseViewer
-	: public Viewer
+	: public ModelViewer
 {
 public:
-	shared_ptr<CellModel>	m_model;
 	bool	m_isDragged;
 
 public:
-	ReleaseViewer(const shared_ptr<CellModel>& model)
-		: m_model(model)
+	ReleaseViewer()
 	{
 		SetDrawRect(Window::Width() - 400, 320, 300, 100);
 	}
@@ -33,9 +32,9 @@ public:
 
 		// part
 		{
-			auto t1 = Transformer2D(Mat3x2::Scale(45.0 / m_model->m_radius / 2.0).translated(circle.center));
+			auto t1 = Transformer2D(Mat3x2::Scale(45.0 / GetModel<CellModel>()->m_radius / 2.0).translated(circle.center));
 
-			for (const auto& p : m_model->m_partConfigs)
+			for (const auto& p : GetModel<CellModel>()->m_partConfigs)
 			{
 				auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 					.translated(p->GetPosition().x, p->GetPosition().y));

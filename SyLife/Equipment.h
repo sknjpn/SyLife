@@ -6,7 +6,7 @@ class EquipmentModel
 	: public PartModel
 {
 public:
-	shared_ptr<Viewer> MakeViewer() override;
+	void MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	SetFromJSON(const ptree& pt);
@@ -34,8 +34,7 @@ class EquipmentViewer
 	: public PartViewer
 {
 public:
-	EquipmentViewer(const shared_ptr<PartModel>& model)
-		: PartViewer(model)
+	EquipmentViewer()
 	{
 		SetDrawRect(0, 450, 600, 150);
 	}
@@ -44,7 +43,11 @@ public:
 	void Update() override {}
 };
 
-inline shared_ptr<Viewer>		EquipmentModel::MakeViewer(){return g_viewerManagerPtr->MakeViewer<EquipmentViewer>(dynamic_pointer_cast<PartModel>(shared_from_this()));}
+inline void		EquipmentModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<EquipmentViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+}
 inline shared_ptr<PartState>	EquipmentModel::MakeState() { return make_shared<EquipmentState>(); }
 
 inline void EquipmentModel::SetFromJSON(const ptree& pt)

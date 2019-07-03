@@ -259,6 +259,9 @@
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\Viewer\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="PartPaletteViewer.cpp">
+      <Filter>Source Files\Viewer\Editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">

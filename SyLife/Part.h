@@ -3,6 +3,7 @@
 #include "ModelViewer.h"
 #include "Storage.h"
 #include "ShapeModel.h"
+#include "PartPaletteViewer.h"
 
 class CellState;
 class PartConfig;
@@ -25,7 +26,7 @@ public:
 	const Storage&	GetMaterial() const { return m_material; }
 	const vector<ShapeModel>&	GetShapes() const { return m_shapes; }
 
-	shared_ptr<Viewer> MakeViewer() override;
+	void MakeViewer() override;
 	virtual shared_ptr<PartState>	MakeState();
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
@@ -116,35 +117,29 @@ public:
 class PartViewer
 	: public ModelViewer
 {
-public:
-	TextEditState		m_textEditState_name;
 	TextEditState		m_textEditState_mass;
-	shared_ptr<PartModel>	m_model;
 
 public:
-	PartViewer(const shared_ptr<PartModel>& model)
-		: m_model(model)
+	PartViewer()
 	{
 		SetDrawRect(0, 450, 600, 150);
 	}
 
-	void Update() override 
+	void Update() override
 	{
-		// name
-		{
-			SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
-			m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
-		}
-
 		// mass
-		{
+		/*{
 			SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
 			m_model->m_mass = Parse<double>(m_textEditState_mass.text);
-		}
+		}*/
 	}
 };
 inline shared_ptr<PartState> PartModel::MakeState() { return make_shared<PartState>(); }
-inline shared_ptr<Viewer> PartModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
+inline void PartModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<PartViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+}
 
 inline Vec2 PartModel::GetApproximateRectTopLeft() const
 {

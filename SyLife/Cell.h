@@ -69,23 +69,9 @@ public:
 class CellViewer
 	: public ModelViewer
 {
-	shared_ptr<CellModel>	m_model;
-	TextEditState		m_textEditState_name;
-
 public:
-	CellViewer(const shared_ptr<CellModel>& model)
-		: m_model(model)
-		, m_textEditState_name(Unicode::Widen(model->GetName()))
+	CellViewer()
 	{
 		SetDrawRect(0, 450, 600, 150);
-	}
-
-	void Update() override
-	{
-		// name
-		{
-			SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
-			m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
-		}
 	}
 };

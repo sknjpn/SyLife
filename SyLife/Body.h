@@ -6,7 +6,7 @@ class BodyModel
 	: public PartModel
 {
 public:
-	shared_ptr<Viewer>		MakeViewer() override;
+	void		MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	SetFromJSON(const ptree& pt);
@@ -33,8 +33,7 @@ class BodyViewer
 	: public PartViewer
 {
 public:
-	BodyViewer(const shared_ptr<PartModel>& model)
-		: PartViewer(model)
+	BodyViewer()
 	{
 		SetDrawRect(0, 450, 600, 150);
 	}
@@ -44,7 +43,11 @@ public:
 	}
 };
 
-inline shared_ptr<Viewer>		BodyModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<BodyViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }
+inline void		BodyModel::MakeViewer() 
+{
+	g_viewerManagerPtr->MakeViewer<BodyViewer>()->SetModel(shared_from_this()); 
+	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this()); 
+}
 inline shared_ptr<PartState>	BodyModel::MakeState() { return make_shared<BodyState>(); }
 
 inline void BodyModel::SetFromJSON(const ptree& pt)

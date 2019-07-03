@@ -42,7 +42,7 @@ void PartShapeViewer::Update()
 	}
 
 	// ShapeModels
-	for (const auto& s : m_model->GetShapes())
+	for (const auto& s : GetModel<PartModel>()->GetShapes())
 	{
 		// Face
 		s.GetPolygon().draw(ColorF(s.m_color, 0.5));

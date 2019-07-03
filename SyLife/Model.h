@@ -10,7 +10,7 @@ class Model
 public:
 	virtual ~Model() = default;
 
-	virtual shared_ptr<Viewer>	MakeViewer() { return nullptr; }
+	virtual void	MakeViewer() {}
 
 	// Set
 	void	SetName(const string& name)
