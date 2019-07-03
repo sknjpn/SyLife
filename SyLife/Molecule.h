@@ -87,8 +87,7 @@ class MoleculeViewer
 	TextEditState		m_textEditState_mass;
 
 public:
-	MoleculeViewer() { SetDrawRect(0, 0, 600, 600); }
-
+	// Reload
 	void ReloadProperties_this() 
 	{
 		ModelViewer::ReloadProperties_this();
@@ -97,6 +96,7 @@ public:
 	}
 	void ReloadProperties() override { ReloadProperties_this(); }
 
+	// Update
 	void Update_this()
 	{
 		ModelViewer::Update_this();

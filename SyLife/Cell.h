@@ -21,6 +21,8 @@ class CellModel
 	double	m_inertia;
 
 public:
+	void	MakeViewer() override;
+
 	// Get
 	const Storage&	GetMaterial() const { return m_material; }
 	Storage&		GetMaterial() { return m_material; }
@@ -83,8 +85,43 @@ class CellViewer
 	: public ModelViewer
 {
 public:
-	CellViewer()
+	// Reload
+	void ReloadProperties_this()
 	{
-		SetDrawRect(0, 450, 600, 150);
+		ModelViewer::ReloadProperties_this();
 	}
+	void ReloadProperties() override { ReloadProperties_this(); }
+
+	// Update
+	void Update_this()
+	{
+		auto model = GetModel<CellModel>();
+		static Font font(24, Typeface::Bold);
+
+		ModelViewer::Update_this();
+
+		MoveDrawPos(4, 0);
+		font(U"Mass:").draw();
+		MoveDrawPos(96, 0);
+		font(ToString(model->GetMass())).draw();
+		MoveDrawPos(-100, 28);
+
+		MoveDrawPos(4, 0);
+		font(U"Radius:").draw();
+		MoveDrawPos(96, 0);
+		font(ToString(model->GetRadius())).draw();
+		MoveDrawPos(-100, 28);
+
+		MoveDrawPos(4, 0);
+		font(U"Inertia:").draw();
+		MoveDrawPos(96, 0);
+		font(ToString(model->GetInertia())).draw();
+		MoveDrawPos(-100, 28);
+	}
+	void Update() override { Update_this(); }
 };
+
+inline void	CellModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<CellViewer>()->SetModel(shared_from_this());
+}

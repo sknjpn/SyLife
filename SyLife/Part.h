@@ -205,19 +205,26 @@ class PartViewer
 	TextEditState		m_textEditState_mass;
 
 public:
-	PartViewer()
+	// Reload
+	void ReloadProperties_this()
 	{
-		SetDrawRect(0, 450, 600, 150);
-	}
+		ModelViewer::ReloadProperties_this();
 
-	void Update() override
-	{
-		// mass
-		/*{
-			SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
-			m_model->m_mass = Parse<double>(m_textEditState_mass.text);
-		}*/
+		m_textEditState_mass.text = ToString(GetModel<PartModel>()->m_mass);
 	}
+	void ReloadProperties() override { ReloadProperties_this(); }
+
+	// Update
+	void Update_this()
+	{
+		ModelViewer::Update_this();
+
+		// mass
+		SimpleGUI::TextBox(m_textEditState_mass, Vec2(8, 8));
+		GetModel<PartModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
+		MoveDrawPos(0, 48);
+	}
+	void Update() override { Update_this(); }
 };
 
 inline shared_ptr<PartState> PartModel::MakeState() { return make_shared<PartState>(); }
