@@ -80,12 +80,13 @@ public:
 		SetDrawRect(0, 0, 600, 600);
 	}
 
-	void Update() override
+	void Update_this()
 	{
 		// mass
 		SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
 		GetModel<MoleculeModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
 	}
+	void Update() override { Update_this(); }
 };
 
 inline void MoleculeModel::MakeViewer()
