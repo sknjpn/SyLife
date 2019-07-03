@@ -23,7 +23,7 @@ public:
 	void	MakeViewers() override;
 
 	RectF	GetApproximateRect() const;
-	double		GetRectInertia() const;
+	double	GetRectInertia() const;
 	Vec2	GetCenter() const;
 
 	void	SetFromJSON(const ptree& pt);

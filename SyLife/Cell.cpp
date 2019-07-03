@@ -28,6 +28,26 @@ void CellModel::SetFromJSON(const ptree& pt)
 	Model::SetFromJSON(pt);
 }
 
+void CellModel::AddToJSON(ptree& pt) const
+{
+	// parts
+	{
+		ptree parts;
+
+		for (const auto& e : m_partConfigs)
+		{
+			ptree part; e->Save(part);
+			parts.push_back(std::make_pair("", part));
+		}
+
+		pt.add_child("parts", parts);
+	}
+
+	Model::AddToJSON(pt);
+
+	pt.put("type", "CellModel");
+}
+
 void CellModel::UpdateProperties()
 {
 	// mass

@@ -14,6 +14,7 @@ class MoleculeModel;
 class PartModel
 	: public Model
 {
+public:
 	friend class PartViewer;
 
 	double	m_mass;
@@ -118,6 +119,8 @@ class PartViewer
 	: public Viewer
 {
 public:
+	TextEditState		m_textEditState_name;
+	TextEditState		m_textEditState_mass;
 	shared_ptr<PartModel>	m_model;
 
 public:
@@ -127,7 +130,20 @@ public:
 		m_drawRect = RectF(0, 450, 600, 150);
 	}
 
-	void Update(bool isMouseOver) override {}
+	void Update(bool isMouseOver) override 
+	{
+		// name
+		{
+			SimpleGUI::TextBox(m_textEditState_name, Vec2(10, 10), 240);
+			m_model->SetName(Unicode::Narrow(m_textEditState_name.text));
+		}
+
+		// mass
+		{
+			SimpleGUI::TextBox(m_textEditState_mass, Vec2(10, 50), 240);
+			m_model->m_mass = Parse<double>(m_textEditState_mass.text);
+		}
+	}
 };
 inline shared_ptr<PartState> PartModel::MakeState() { return make_shared<PartState>(); }
 inline shared_ptr<Viewer> PartModel::MakeViewer() { return g_viewerManagerPtr->MakeViewer<PartViewer>(dynamic_pointer_cast<PartModel>(shared_from_this())); }

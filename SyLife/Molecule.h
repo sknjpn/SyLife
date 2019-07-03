@@ -25,10 +25,23 @@ public:
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
 	void	AddToJSON(ptree& pt) const
 	{
+		// mass
+		pt.put<double>("mass", m_mass);
+
+		// color
+		{
+			ptree color;
+
+			color.put("r", m_color.r);
+			color.put("g", m_color.g);
+			color.put("b", m_color.b);
+
+			pt.add_child("color", color);
+		}
+
 		Model::AddToJSON(pt);
 
-		// type
-		pt.put("type", "Storage");
+		pt.put("type", "MoleculeModel");
 	}
 	void	Save(ptree& pt) const override { AddToJSON(pt); }
 };

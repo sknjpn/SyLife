@@ -41,13 +41,7 @@ public:
 	// JSON
 	void	SetFromJSON(const ptree& pt);
 	void	Load(const ptree& pt) override { SetFromJSON(pt); }
-	void	AddToJSON(ptree& pt) const
-	{
-		Model::AddToJSON(pt);
-
-		// type
-		pt.put("type", "Storage");
-	}
+	void	AddToJSON(ptree& pt) const;
 	void	Save(ptree& pt) const override { AddToJSON(pt); }
 
 	void	UpdateProperties();
