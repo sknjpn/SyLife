@@ -61,10 +61,19 @@ class NeedleViewer
 	: public PartViewer
 {
 public:
-	NeedleViewer()
+	// Reload
+	void ReloadProperties_this()
 	{
-		SetDrawRect(0, 450, 600, 150);
+		EquipmentViewer::ReloadProperties_this();
 	}
+	void ReloadProperties() override { ReloadProperties_this(); }
+
+	// Update
+	void Update_this()
+	{
+		EquipmentViewer::Update_this();
+	}
+	void Update() override { Update_this(); }
 };
 
 inline void		NeedleModel::MakeViewer()

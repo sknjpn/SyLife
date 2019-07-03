@@ -33,12 +33,19 @@ class ModuleViewer
 	: public PartViewer
 {
 public:
-	ModuleViewer()
+	// Reload
+	void ReloadProperties_this()
 	{
-		SetDrawRect(0, 450, 600, 150);
+		PartViewer::ReloadProperties_this();
 	}
+	void ReloadProperties() override { ReloadProperties_this(); }
 
-	void Update() override {}
+	// Update
+	void Update_this()
+	{
+		PartViewer::Update_this();
+	}
+	void Update() override { Update_this(); }
 };
 
 inline void		ModuleModel::MakeViewer()

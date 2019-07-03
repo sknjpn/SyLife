@@ -70,8 +70,19 @@ class WingViewer
 	: public EquipmentViewer
 {
 public:
-	WingViewer()
-	{}
+	// Reload
+	void ReloadProperties_this()
+	{
+		EquipmentViewer::ReloadProperties_this();
+	}
+	void ReloadProperties() override { ReloadProperties_this(); }
+
+	// Update
+	void Update_this()
+	{
+		EquipmentViewer::Update_this();
+	}
+	void Update() override { Update_this(); }
 };
 
 inline void		WingModel::MakeViewer()

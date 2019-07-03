@@ -35,8 +35,19 @@ class ChloroplastViewer
 	: public ModuleViewer
 {
 public:
-	ChloroplastViewer()
-	{}
+	// Reload
+	void ReloadProperties_this()
+	{
+		ModuleViewer::ReloadProperties_this();
+	}
+	void ReloadProperties() override { ReloadProperties_this(); }
+
+	// Update
+	void Update_this()
+	{
+		ModuleViewer::Update_this();
+	}
+	void Update() override { Update_this(); }
 };
 
 inline void		ChloroplastModel::MakeViewer() 

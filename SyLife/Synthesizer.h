@@ -70,10 +70,19 @@ class SynthesizerViewer
 	: public PartViewer
 {
 public:
-	SynthesizerViewer()
+	// Reload
+	void ReloadProperties_this()
 	{
-		SetDrawRect(0, 450, 600, 150);
+		ModuleViewer::ReloadProperties_this();
 	}
+	void ReloadProperties() override { ReloadProperties_this(); }
+
+	// Update
+	void Update_this()
+	{
+		ModuleViewer::Update_this();
+	}
+	void Update() override { Update_this(); }
 };
 
 inline void		SynthesizerModel::MakeViewer()
