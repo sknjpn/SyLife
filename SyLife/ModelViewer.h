@@ -30,7 +30,7 @@ public:
 	void	Update_this()
 	{
 		// name
-		SimpleGUI::TextBox(m_textEditState_name, Vec2(8, 4), 240);
+		SimpleGUI::TextBox(m_textEditState_name, Vec2(8, 8), 240);
 		GetModel<Model>()->SetName(Unicode::Narrow(m_textEditState_name.text));
 		MoveDrawPos(0, 48);
 	}

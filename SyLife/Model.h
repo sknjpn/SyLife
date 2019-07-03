@@ -15,6 +15,9 @@ public:
 	// Set
 	void	SetName(const string& name)
 	{
+		// •Ï‰»‚ª‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
+		if (name == m_name) return;
+
 		// ƒtƒ@ƒCƒ‹‚Ìíœ
 		{
 			const boost::filesystem::path path(GetFilepath());
