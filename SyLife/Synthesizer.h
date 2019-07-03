@@ -79,7 +79,7 @@ public:
 inline void		SynthesizerModel::MakeViewer()
 {
 	g_viewerManagerPtr->MakeViewer<SynthesizerViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<SynthesizerState>(); }

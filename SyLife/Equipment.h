@@ -46,7 +46,7 @@ public:
 inline void		EquipmentModel::MakeViewer()
 {
 	g_viewerManagerPtr->MakeViewer<EquipmentViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 inline shared_ptr<PartState>	EquipmentModel::MakeState() { return make_shared<EquipmentState>(); }
 

@@ -42,7 +42,7 @@ public:
 inline void		ChloroplastModel::MakeViewer() 
 {
 	g_viewerManagerPtr->MakeViewer<ChloroplastViewer>()->SetModel(shared_from_this()); 
-	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 inline shared_ptr<PartState>	ChloroplastModel::MakeState() { return make_shared<ChloroplastState>(); }
 

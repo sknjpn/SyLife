@@ -3,7 +3,7 @@
 #include "ModelViewer.h"
 #include "Storage.h"
 #include "ShapeModel.h"
-#include "PartPaletteViewer.h"
+#include "PartShapeViewer.h"
 
 class CellState;
 class PartConfig;
@@ -138,7 +138,7 @@ inline shared_ptr<PartState> PartModel::MakeState() { return make_shared<PartSta
 inline void PartModel::MakeViewer()
 {
 	g_viewerManagerPtr->MakeViewer<PartViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 inline Vec2 PartModel::GetApproximateRectTopLeft() const
