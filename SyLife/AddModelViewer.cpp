@@ -1,6 +1,5 @@
 #include "AddModelViewer.h"
 
-#include "Model.h"
 #include "Molecule.h"
 #include "Cell.h"
 #include "Part.h"
@@ -15,7 +14,6 @@ void AddModelViewer::Update()
 {
 	m_drawPos = Vec2::Zero();
 
-	DrawModels<Model>("Model");
 	DrawModels<MoleculeModel>("MoleculeModel");
 	DrawModels<CellModel>("CellModel");
 	DrawModels<PartModel>("PartModel");

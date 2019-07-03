@@ -9,7 +9,6 @@ class Viewer
 	Color	m_backgroundColor = Color(11, 22, 33, 128);
 
 public:
-	Viewer() = default;
 	virtual ~Viewer() = default;
 
 	// Set

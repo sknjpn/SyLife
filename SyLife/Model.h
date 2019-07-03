@@ -10,7 +10,7 @@ class Model
 public:
 	virtual ~Model() = default;
 
-	virtual shared_ptr<Viewer>	MakeViewer() { return g_viewerManagerPtr->MakeViewer<Viewer>(); }
+	virtual shared_ptr<Viewer>	MakeViewer() { return nullptr; }
 
 	// Set
 	void	SetName(const string& name)
@@ -52,7 +52,6 @@ public:
 	{
 		return "assets/model/" + GetFilename();
 	}
-
 
 	// JSON
 	void	SetFromJSON(const ptree& pt)

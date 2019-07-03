@@ -38,8 +38,8 @@ public:
 
 	void	Init() override
 	{
+		// •t‘®Viewer‚Ì‰Šú‰»
 		m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
-
 		g_viewerManagerPtr->MakeViewer<PartPaletteViewer>(m_newModel);
 		g_viewerManagerPtr->MakeViewer<AssemblyViewer>(m_newModel);
 		g_viewerManagerPtr->MakeViewer<ReleaseViewer>(m_newModel);
@@ -49,15 +49,18 @@ public:
 	void	Update() override
 	{
 		{
+			// camera
 			if (IsMouseOver()) m_cursorCamera2D.update();
 			auto t = m_cursorCamera2D.createTransformer();
 
+			// speed
 			static int speed = 1;
 			if (KeyF1.down()) speed = 1;
 			if (KeyF2.down() && speed != 1) speed /= 2;
 			if (KeyF3.down() && speed != 128) speed *= 2;
 			if (KeyF4.down()) speed = 128;
 
+			// update
 			for (int i = 0; i < speed; ++i)
 			{
 				g_moleculeManagerPtr->Update();
@@ -73,11 +76,9 @@ public:
 
 				if (MouseL.down())
 				{
-					Vec2 cursorPos(Cursor::PosF().x, Cursor::PosF().y);
-
-					for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(cursorPos, 100))
+					for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(Cursor::PosF(), 100))
 					{
-						if (target->GetRadius() > (target->GetPosition() - cursorPos).length())
+						if (target->GetRadius() > (target->GetPosition() - Cursor::PosF()).length())
 						{
 							selectedRigidbody = target;
 							g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(target);
@@ -92,22 +93,24 @@ public:
 				else selectedRigidbody = nullptr;
 			}
 
+			// draw
 			g_eggManagerPtr->Draw();
 			g_moleculeManagerPtr->Draw();
 			g_cellManagerPtr->Draw();
 			g_waveManagerPtr->Draw();
 
+			// delete
 			if (MouseR.pressed())
 			{
 				Circle circle(Cursor::PosF(), 128.0);
 				circle.draw(ColorF(Palette::Red, 0.5));
 
 				for (const auto& c : g_cellManagerPtr->GetCellStates())
-					if (Circle(c->GetPosition().x, c->GetPosition().y, c->GetRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+					if (Circle(c->GetPosition(), c->GetRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
 				for (const auto& e : g_eggManagerPtr->GetEggStates())
 				{
-					if (Circle(e->GetPosition().x, e->GetPosition().y, e->GetRadius()).intersects(circle))
+					if (Circle(e->GetPosition(), e->GetRadius()).intersects(circle))
 					{
 						e->Destroy();
 
@@ -143,7 +146,7 @@ public:
 					for (const auto& p : rv->m_model->m_partConfigs)
 					{
 						auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
-							.translated(p->GetPosition().x, p->GetPosition().y));
+							.translated(p->GetPosition()));
 
 						for (const auto& s : p->GetModel()->GetShapes())
 							s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
@@ -153,7 +156,7 @@ public:
 				if (MouseL.up())
 				{
 					const auto& c = g_cellManagerPtr->AddCellState(rv->m_model);
-					c->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
+					c->SetPosition(Cursor::PosF());
 					c->SetVelocity(Vec2::Zero());
 					c->Init();
 
@@ -169,7 +172,7 @@ public:
 
 				if (cs != nullptr)
 				{
-					Circle(cs->GetPosition().x, cs->GetPosition().y, cs->GetRadius() * 1.5)
+					Circle(cs->GetPosition(), cs->GetRadius() * 1.5)
 						.draw(ColorF(1.0, 0.25))
 						.drawFrame(4.0, Palette::Black);
 				}

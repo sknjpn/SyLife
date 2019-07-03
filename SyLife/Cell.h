@@ -8,9 +8,6 @@
 
 class PartConfig;
 class PartState;
-class BodyState;
-class EquipmentState;
-class ModuleState;
 
 class CellModel
 	: public Model
@@ -58,10 +55,6 @@ public:
 	shared_ptr<CellModel>	m_model;
 
 	vector<shared_ptr<PartState>>		m_partStates;
-
-	shared_ptr<BodyState>	m_body;
-	vector<shared_ptr<EquipmentState>>	m_equipments;
-	vector<shared_ptr<ModuleState>>		m_modules;
 
 public:
 	CellState(const shared_ptr<CellModel>& model);

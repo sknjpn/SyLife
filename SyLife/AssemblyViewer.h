@@ -10,6 +10,7 @@
 #include "Body.h"
 #include "Equipment.h"
 #include "Module.h"
+
 class AssemblyViewer
 	: public Viewer
 {

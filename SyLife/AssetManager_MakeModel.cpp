@@ -1,4 +1,3 @@
-#include "Model.h"
 #include "Cell.h"
 #include "Molecule.h"
 #include "Body.h"
@@ -12,7 +11,6 @@
 
 shared_ptr<Model> AssetManager::MakeModel(const string& type)
 {
-	if (type == "Model")			return MakeModel<Model>();
 	if (type == "CellModel")		return MakeModel<CellModel>();
 	if (type == "MoleculeModel")	return MakeModel<MoleculeModel>();
 
