@@ -1,10 +1,15 @@
 #pragma once
 
+class TerrainModel;
+
 class TerrainManager
 {
+	shared_ptr<TerrainModel> m_terrainModel;
+
 public:
-	TerrainManager();
-	~TerrainManager();
+
+	void	Update();
+	void	Draw();
 };
 
 
