@@ -265,6 +265,9 @@
     <ClCompile Include="TerrainManager.cpp">
       <Filter>Source Files\Manager\src</Filter>
     </ClCompile>
+    <ClCompile Include="Hotspot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -408,5 +411,6 @@
     <ClInclude Include="Wave.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Hotspot.h" />
   </ItemGroup>
 </Project>

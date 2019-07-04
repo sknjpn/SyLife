@@ -260,6 +260,7 @@
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="EggManager.cpp" />
     <ClCompile Include="FieldManager.cpp" />
+    <ClCompile Include="Hotspot.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
@@ -297,6 +298,7 @@
     <ClInclude Include="Eye.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
+    <ClInclude Include="Hotspot.h" />
     <ClInclude Include="Indexer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelViewer.h" />
