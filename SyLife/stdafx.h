@@ -34,3 +34,4 @@ using namespace nanoflann;
 #include "SystemManager.h"
 #include "ViewerManager.h"
 #include "WaveManager.h"
+#include "TerrainManager.h"

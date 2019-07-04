@@ -262,6 +262,9 @@
     <ClCompile Include="PartPaletteViewer.cpp">
       <Filter>Source Files\Viewer\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="TerrainManager.cpp">
+      <Filter>Source Files\Manager\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cloud.h">
@@ -395,6 +398,12 @@
     </ClInclude>
     <ClInclude Include="PartShapeViewer.h">
       <Filter>Source Files\Viewer\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainManager.h">
+      <Filter>Source Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

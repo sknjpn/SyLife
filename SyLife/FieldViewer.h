@@ -19,17 +19,17 @@ class FieldViewer
 	: public Viewer
 {
 	Audio	m_audio;
-	RestrictedCamera2D	m_cursorCamera2D;
+	CursorCamera2D	m_cursorCamera2D;
 	shared_ptr<CellModel>	m_newModel;
 
 public:
 	FieldViewer()
 		: m_audio(U"assets/music/ƒVƒAƒ“.mp3")
 	{
-		m_cursorCamera2D.setRestrictedRect(RectF(-4000, -4000, 8000, 8000));
+		//m_cursorCamera2D.setRestrictedRect(RectF(-4000, -4000, 8000, 8000));
 		m_cursorCamera2D.setCenter(Vec2::Zero());
 		m_cursorCamera2D.setTargetCenter(Vec2::Zero());
-		m_cursorCamera2D.setMinMagnification(0.01);
+		//m_cursorCamera2D.setMinMagnification(0.01);
 
 		SetDrawRect(Window::Size());
 		m_audio.setLoop(true);
@@ -94,10 +94,10 @@ public:
 			}
 
 			// draw
+			g_waveManagerPtr->Draw();
 			g_eggManagerPtr->Draw();
 			g_moleculeManagerPtr->Draw();
 			g_cellManagerPtr->Draw();
-			g_waveManagerPtr->Draw();
 
 			// delete
 			if (MouseR.pressed())

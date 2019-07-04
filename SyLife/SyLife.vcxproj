@@ -274,6 +274,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="TerrainManager.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="WaveManager.cpp" />
   </ItemGroup>
@@ -316,6 +317,8 @@
     <ClInclude Include="Storage.h" />
     <ClInclude Include="Synthesizer.h" />
     <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="Terrain.h" />
+    <ClInclude Include="TerrainManager.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="Viewer.h" />
