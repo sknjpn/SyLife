@@ -7,6 +7,8 @@ void AssetManager::Init()
 	AddModelsFromDirectory("assets/models/molecules");
 	AddModelsFromDirectory("assets/models/parts");
 	AddModelsFromDirectory("assets/models/cells");
+	AddModelsFromDirectory("assets/models/hotspots");
+	AddModelsFromDirectory("assets/models/terrains");
 }
 
 void AssetManager::AddModelsFromDirectory(const string& directory)
