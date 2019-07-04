@@ -1,0 +1,7 @@
+{
+    "name": "Terrain A",
+    "size": "1024",
+    "noise_seed": "38657",
+    "density": "3.0",
+    "type": "TerrainModel"
+}

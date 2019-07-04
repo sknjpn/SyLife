@@ -411,6 +411,8 @@
     <ClInclude Include="Wave.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Hotspot.h" />
+    <ClInclude Include="Hotspot.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

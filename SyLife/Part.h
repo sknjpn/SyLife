@@ -128,7 +128,7 @@ class PartConfig
 {
 	shared_ptr<PartModel>	m_partModel;
 	Vec2	m_position;
-	double		m_rotation;
+	double	m_rotation;
 
 public:
 	// Get
@@ -160,7 +160,7 @@ public:
 	void	Save_this(ptree& pt) const
 	{
 		// model
-		pt.put("model", GetModel()->GetName());
+		pt.put("model", m_partModel->GetName());
 
 		// position
 		{

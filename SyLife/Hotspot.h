@@ -18,6 +18,8 @@ public:
 	const Storage&	GetIngradient() const { return m_ingradient; }
 
 	void	MakeViewer();
+
+	// JSON
 	void	Load_this(const ptree& pt)
 	{
 		// interval
@@ -49,6 +51,52 @@ public:
 	}
 	void	Save(ptree& pt) const override { Save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/hotspots/" + GetFilename(); }
+};
+
+class HotspotConfig
+	: public Model
+{
+public:
+	shared_ptr<HotspotModel>	m_hotspotModel;
+	Vec2	m_position;
+
+public:
+	// Get
+	const shared_ptr<HotspotModel>&	GetHotspotModel() const { return m_hotspotModel; }
+	const Vec2&	GetPosition() const { return m_position; }
+
+	// JSON
+	void	Load_this(const ptree& pt)
+	{
+		// model
+		m_hotspotModel = g_assetManagerPtr->GetModel<HotspotModel>(pt.get<string>("model"));
+
+		// position
+		m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
+
+		Model::Load_this(pt);
+	}
+	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	Save_this(ptree& pt) const
+	{
+		// model
+		pt.put("model", m_hotspotModel->GetName());
+
+		// position
+		{
+			ptree position;
+
+			position.put("x", m_position.x);
+			position.put("y", m_position.y);
+
+			pt.push_back(std::make_pair("position", position));
+		}
+
+		Model::Save_this(pt);
+
+		pt.put("type", "PartConfig");
+	}
+	void	Save(ptree& pt) const override { Save_this(pt); }
 };
 
 class HotspotState
