@@ -405,5 +405,8 @@
     <ClInclude Include="Terrain.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Wave.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

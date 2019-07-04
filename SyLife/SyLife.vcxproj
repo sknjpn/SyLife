@@ -323,6 +323,7 @@
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="ViewerManager.h" />
+    <ClInclude Include="Wave.h" />
     <ClInclude Include="WaveManager.h" />
     <ClInclude Include="Wing.h" />
   </ItemGroup>
