@@ -1,0 +1,22 @@
+{
+    "interval": "3.0",
+    "ingradient": {
+        "name":"",
+        "molecules": [
+            {
+                "molecule": "Oxygen",
+                "size": 10
+            },
+            {
+                "molecule": "Nitrogen",
+                "size": 10
+            },
+            {
+                "molecule": "Carbon",
+                "size": 10
+            }
+        ]
+    },
+    "name": "Hotspot A",
+    "type": "HotspotModel"
+}
