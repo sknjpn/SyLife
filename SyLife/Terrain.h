@@ -107,7 +107,7 @@ public:
 
 		Model::Load_this(pt);
 
-		UpdateProperties();
+		// UpdateProperties();
 	}
 	void	Load(const ptree& pt) override { Load_this(pt); }
 	void	Save_this(ptree& pt) const
