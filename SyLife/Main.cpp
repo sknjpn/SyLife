@@ -7,22 +7,11 @@ void Main()
 	//Graphics::SetFullScreen(true, Size(1920, 1080));
 	//Window::SetBaseSize(Size(1920, 1080));
 
-	Window::Resize(Size(1920, 1080));
+	Window::Resize(Size(1024, 1024));
 
 	g_systemManagerPtr = make_unique<SystemManager>();
 
-	CursorCamera2D camera;
-	camera.setCenter(Vec2::Zero());
-	camera.setTargetCenter(Vec2::Zero());
-	while (System::Update())
-	{
-		camera.update();
-		auto t = camera.createTransformer();
-
-		g_assetManagerPtr->GetModel<TerrainModel>("Terrain A")->Draw();
-
-		if (KeySpace.down()) g_assetManagerPtr->GetModel<TerrainModel>("Terrain A")->UpdateProperties();
-	}
+	g_terrainManagerPtr->SetTerrainModel(g_assetManagerPtr->GetModel<TerrainModel>("Terrain A"));
 
 	g_viewerManagerPtr->MakeViewer<TitleViewer>();
 

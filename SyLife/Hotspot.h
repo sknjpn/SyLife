@@ -102,6 +102,9 @@ public:
 class HotspotState
 	: public Particle
 {
+public:
+	shared_ptr<HotspotConfig>	m_hotspotConfig;
+
 	double	m_timer = 0.0;
 
 public:
@@ -121,5 +124,3 @@ inline void HotspotModel::MakeViewer()
 {
 	g_viewerManagerPtr->MakeViewer<HotspotViewer>()->SetModel(shared_from_this());
 }
-
-

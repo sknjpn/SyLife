@@ -15,7 +15,12 @@ public:
 	const Polygon&	GetPolygon() const { return m_polygon; }
 	Polygon&	GetPolygon() { return m_polygon; }
 
-	void	Draw(double a) const { m_polygon.draw(ColorF(m_color, a)).drawFrame(1.0, Palette::Black); }
+	void	Draw(double a) const
+	{
+		m_polygon
+			.draw(ColorF(m_color, a));
+			//.drawFrame(1.0, Palette::Black); 
+	}
 
 	void	Load_this(const ptree& pt)
 	{

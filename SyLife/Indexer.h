@@ -24,7 +24,11 @@ public:
 		vector<pair<size_t, double>>   ret_matches;
 		nanoflann::SearchParams params;
 		params.sorted = false;	//ÇÊÇËëÅÇ≠
-		const size_t nMatches = m_adaptor.radiusSearch(&query_pt[0], search_radius, ret_matches, params);
+//		const size_t nMatches = m_adaptor.radiusSearch(&query_pt[0], search_radius, ret_matches, params);
+		size_t index;
+		double distanceSq;
+
+		if(m_adaptor.knnSearch(&query_pt[0], 1, &index, &distanceSq)) ret_matches.emplace_back(index, distanceSq);
 
 		return ret_matches;
 	}

@@ -15,7 +15,7 @@ public:
 	Indexer<Rigidbody>&	GetIndexer() { return m_indexer; }
 	const Indexer<Rigidbody>&	GetIndexer() const { return m_indexer; }
 
-	double	GetDeltaTime() const { return 1.0 / 60.0; }
+	constexpr double	GetDeltaTime() const { return 1.0 / 60.0; }
 
 	void	Init();
 	void	Update();

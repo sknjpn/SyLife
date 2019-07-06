@@ -9,6 +9,7 @@ SystemManager::SystemManager()
 	g_viewerManagerPtr = make_unique<ViewerManager>();
 	g_eggManagerPtr = make_unique<EggManager>();
 	g_waveManagerPtr = make_unique<WaveManager>();
+	g_terrainManagerPtr = make_unique<TerrainManager>();
 
 	g_assetManagerPtr->Init();
 	g_fieldManagerPtr->Init();

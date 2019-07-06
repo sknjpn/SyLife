@@ -33,7 +33,7 @@ public:
 
 		SetDrawRect(Window::Size());
 		m_audio.setLoop(true);
-		m_audio.play();
+		// m_audio.play();
 	}
 
 	void	Init() override
@@ -60,9 +60,11 @@ public:
 			if (KeyF3.down() && speed != 128) speed *= 2;
 			if (KeyF4.down()) speed = 128;
 
+			Logger << U"start";
 			// update
 			for (int i = 0; i < speed; ++i)
 			{
+				g_terrainManagerPtr->Update();
 				g_moleculeManagerPtr->Update();
 				g_fieldManagerPtr->Update();
 				g_waveManagerPtr->Update();
@@ -94,6 +96,7 @@ public:
 			}
 
 			// draw
+			g_terrainManagerPtr->Draw();
 			g_waveManagerPtr->Draw();
 			g_eggManagerPtr->Draw();
 			g_moleculeManagerPtr->Draw();

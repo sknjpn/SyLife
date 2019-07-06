@@ -1,4 +1,5 @@
 #include "WaveManager.h"
+#include "Terrain.h"
 
 unique_ptr<WaveManager>	g_waveManagerPtr;
 
@@ -30,9 +31,9 @@ void WaveManager::Draw() const
 	if (!showWave) return;
 
 	double interval = 200;
-	double size = 4000;
+	double size = g_terrainManagerPtr->GetTerrainModel()->m_size / 2.0;
 
-	for (double x = -size; x < size; x += interval)
-		for (double y = -size; y < size; y += interval)
+	for (double x = -size; x <= size; x += interval)
+		for (double y = -size; y <= size; y += interval)
 			Line(Vec2(x,y), Vec2(x,y) + GetWaveVelocity(Vec2(x, y)) * 2.0).drawArrow(20.0, Vec2(20.0, 20.0), ColorF(1.0, 0.2));
 }
