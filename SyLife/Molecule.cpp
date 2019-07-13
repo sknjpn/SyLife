@@ -13,7 +13,7 @@ void MoleculeState::UpdateMolecule()
 		return;
 	}
 
-	if (RandomBool(0.01)) Destroy();
+	// if (RandomBool(0.01)) Destroy();
 }
 
 void MoleculeState::Draw()

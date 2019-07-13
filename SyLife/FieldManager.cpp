@@ -9,7 +9,7 @@ void FieldManager::Init()
 	read_json("assets/generation.json", pt);
 
 	// molecules
-	/*{
+	{
 		for (auto molecules : pt.get_child("molecules"))
 		{
 			string name = molecules.second.get<string>("name");
@@ -17,7 +17,7 @@ void FieldManager::Init()
 
 			g_moleculeManagerPtr->AddMoleculesRandom(g_assetManagerPtr->GetModel<MoleculeModel>(name), size);
 		}
-	}*/
+	}
 
 	//cells
 	/*

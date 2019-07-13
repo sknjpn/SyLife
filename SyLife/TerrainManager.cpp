@@ -108,6 +108,7 @@ void TerrainManager::SetTerrainModel(const shared_ptr<TerrainModel>& model)
 
 void TerrainManager::Update()
 {
+	/*
 	for (auto& h : m_hotspots)
 	{
 		if (RandomBool(0.03))
@@ -117,6 +118,7 @@ void TerrainManager::Update()
 			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), h->m_hotspotConfig->GetPosition());
 		}
 	}
+	*/
 }
 
 void TerrainManager::Draw()
