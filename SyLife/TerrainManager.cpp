@@ -6,7 +6,7 @@ unique_ptr<TerrainManager>	g_terrainManagerPtr;
 
 double TerrainManager::GetHeight(const Vec2 & position) const
 {
-	auto n = abs(m_noise.octaveNoise(position / m_terrainModel->m_size * m_terrainModel->m_density, 6));
+	auto n = abs(m_noise.octaveNoise(position / m_terrainModel->m_size * m_terrainModel->m_density, 7));
 	auto m = EaseInOut(Easing::Sine, 0.0, 1.0, n);
 	auto l = Min((position / m_terrainModel->m_size).length() * 2.0, 1.0);
 
@@ -38,12 +38,7 @@ void TerrainManager::MakeTexture(int textureSize)
 	}
 
 	for (int i = 20; i >= 0; --i)
-	{
-		for (auto p : step(image.size()))
-			image[p.y][p.x] = image[p.y][p.x].r > i ? Color(255) : image[p.y][p.x];
-
-		m_polygons.emplace_back(image.grayscaleToPolygons());
-	}
+		m_polygons.emplace_back(image.grayscaleToPolygons(i));
 
 	m_polygons.reverse();
 
@@ -113,7 +108,15 @@ void TerrainManager::SetTerrainModel(const shared_ptr<TerrainModel>& model)
 
 void TerrainManager::Update()
 {
-
+	for (auto& h : m_hotspots)
+	{
+		if (RandomBool(0.03))
+		{
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), h->m_hotspotConfig->GetPosition());
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), h->m_hotspotConfig->GetPosition());
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), h->m_hotspotConfig->GetPosition());
+		}
+	}
 }
 
 void TerrainManager::Draw()
@@ -123,7 +126,8 @@ void TerrainManager::Draw()
 	for (int i = 0; i <= 20; ++i)
 		m_polygons[i].draw(Math::Lerp(Color(11, 22, 33), Palette::Cyan, i / 20.0));
 
-	auto e = abs(sin(System::FrameCount() / 10.0)) * 0.8;
+	Stopwatch sw(true);
+	auto e = abs(sin(sw.sF() * 6.0)) * 0.8;
 	for (const auto& hc : m_hotspots)
 	{
 		auto t = Transformer2D(Mat3x2::Translate(hc->m_hotspotConfig->m_position));

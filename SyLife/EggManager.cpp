@@ -8,8 +8,6 @@ const shared_ptr<EggState>& EggManager::AddEggState(const shared_ptr<CellModel>&
 	e->SetCellModel(cellModel);
 	e->SetMass(1.0);
 
-	m_indexer.AddParticle(e);
-
 	return e;
 }
 
@@ -19,12 +17,13 @@ void EggManager::Update()
 	{
 		if (!e->IsDestroyed())
 		{
-			e->UpdateEgg();
 			e->UpdateParticle();
+			e->UpdateEgg();
 		}
 	}
 
-	m_indexer.Update();
+	m_eggStates.remove_if([](const auto& e) { return e->IsDestroyed(); });
+	m_eggStateKDTree.rebuildIndex();
 }
 
 void EggManager::Draw()
@@ -32,3 +31,6 @@ void EggManager::Draw()
 	for (const auto& e : GetEggStates())
 		if (!e->IsDestroyed()) e->Draw();
 }
+
+EggStateAdapter::element_type EggStateAdapter::GetElement(const dataset_type & dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
+EggStateAdapter::element_type EggStateAdapter::DistanceSq(const dataset_type & dataset, size_t index, const element_type * other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }

@@ -93,8 +93,12 @@ void CellState::UpdateCell()
 	for (const auto& p : m_partStates) p->Update(*this);
 
 	// ÚG‚µ‚½MoleculeState‚ÌŽæ‚èž‚Ý
-	for (const auto& m : g_moleculeManagerPtr->GetIndexer().GetNearParticles(GetPosition(), GetRadius() * 2.0))
-		if (!m->IsDestroyed() && (m->GetPosition() - GetPosition()).length() - m->GetRadius() - GetRadius() < 0.0) TakeMolecule(m);
+	for (auto i : g_moleculeManagerPtr->GetMoleculeStateKDTree().knnSearch(1, GetPosition()))
+	{
+		auto& m = g_moleculeManagerPtr->GetMoleculeStates()[i];
+
+		if (!m->IsDestroyed() && (m->GetPosition() - GetPosition()).length() - GetRadius() < 0.0) TakeMolecule(m);
+	}
 
 	// —]è‚ÌMoleculeState‚Ì“ŠŠü
 	for (;;)

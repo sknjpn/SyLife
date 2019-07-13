@@ -35,7 +35,7 @@ public:
 			{
 				auto f = font10(Unicode::Widen((*it)->GetName()));
 
-				f.region().draw(m_selectedModel == *it ? Palette::Darkorange : ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
+				f.region().draw(m_selectedModel == *it ? ColorF(Palette::Darkorange) : ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 				f.draw();
 
 				if (f.region().leftClicked()) SetSelectedModel(*it);

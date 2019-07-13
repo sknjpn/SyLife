@@ -2,26 +2,36 @@
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 
-const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellModel>& model)
+const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellModel>& model) 
 {
-	const auto& c = GetCellStates().emplace_back(make_shared<CellState>(model));
+	auto& m = m_cellStates.emplace_back(make_shared<CellState>(model));
 
-	m_indexer.AddParticle(c);
-	g_fieldManagerPtr->GetIndexer().AddParticle(c);
+	g_fieldManagerPtr->GetRigidbody().emplace_back(m);
 
-	return c;
+	return m;
 }
 
 void	CellManager::Update()
 {
-	for (const auto& c : GetCellStates())
-		if (!c->IsDestroyed()) c->UpdateCell();
+	for (const auto& c : m_cellStates)
+	{
+		if (!c->IsDestroyed())
+		{
+			c->UpdateParticle();
+			c->UpdateRigidbody();
+			c->UpdateCell();
+		}
+	}
 
-	m_indexer.Update();
+	m_cellStates.remove_if([](const auto& c) { return c->IsDestroyed(); });
+	m_cellStateKDTree.rebuildIndex();
 }
 
 void	CellManager::Draw()
 {
-	for (const auto& c : GetCellStates()) 
+	for (const auto& c : m_cellStates)
 		if (!c->IsDestroyed()) c->Draw();
 }
+
+CellStateAdapter::element_type CellStateAdapter::GetElement(const dataset_type & dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
+CellStateAdapter::element_type CellStateAdapter::DistanceSq(const dataset_type & dataset, size_t index, const element_type * other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }

@@ -18,13 +18,13 @@ public:
 	{
 		const auto a = Max(1.0 - m_st.sF() / m_duration, 0.0);
 
-		Window::ClientRect().draw(ColorF(m_color, a));
+		Scene::Rect().draw(ColorF(m_color, a));
 	}
 	void	CloseUpdate()
 	{
 		const auto a = Min(m_st.sF() / m_duration, 1.0);
 
-		Window::ClientRect().draw(ColorF(m_color, a));
+		Scene::Rect().draw(ColorF(m_color, a));
 	}
 };
 

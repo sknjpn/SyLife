@@ -6,7 +6,7 @@ class Viewer
 
 	bool	m_isMouseOver = false;
 	Vec2	m_drawPos = Vec2::Zero();
-	RectF	m_drawRect = RectF(Window::Size());
+	RectF	m_drawRect = RectF(Scene::Size());
 	Color	m_backgroundColor = Color(11, 22, 33, 128);
 	unique_ptr<Transformer2D>	m_transformer;
 

@@ -42,15 +42,17 @@ public:
 			m_heat = 5.0;
 
 			auto p = cell.GetWorldPosition(GetPartConfig()->GetPosition() + Vec2::Up() * 50.0);
-			for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(p, 100.0))
-			{
-				if (target->GetRadius() > (target->GetPosition() - p).length() && !target->IsDestroyed() && dynamic_pointer_cast<CellState>(target)->m_model != cell.m_model)
-				{
-					auto cs = dynamic_pointer_cast<CellState>(target);
 
-					cs->Destroy();
-					cell.m_storage += cs->m_storage;
-					cell.m_storage += cs->m_model->GetMaterial();
+
+			for (auto i : g_cellManagerPtr->GetCellStateKDTree().knnSearch(1, p))
+			{
+				auto& t = g_cellManagerPtr->GetCellStates()[i];
+
+				if (!t->IsDestroyed() && t->GetRadius() > (t->GetPosition() - p).length() && t->m_model != cell.m_model)
+				{
+					t->Destroy();
+					cell.m_storage += t->m_storage;
+					cell.m_storage += t->m_model->GetMaterial();
 				}
 			}
 		}

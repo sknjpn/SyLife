@@ -1,15 +1,32 @@
 #pragma once
 
-#include "Indexer.h"
-
 class MoleculeState;
 class MoleculeModel;
 
+struct MoleculeStateAdapter
+{
+	using dataset_type = Array<shared_ptr<MoleculeState>>;
+	using point_type = Vec2;
+	using element_type = double;
+	static constexpr int32 Dimensions = 2;
+
+	static const element_type* GetPointer(const point_type& point) { return &point.x; }
+	static element_type GetElement(const dataset_type& dataset, size_t index, size_t dim);
+	static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other);
+};
+
 class MoleculeManager
 {
-	Indexer<MoleculeState>	m_indexer;
+	Array<shared_ptr<MoleculeState>>	m_moleculeStates;
+	KDTree<MoleculeStateAdapter>		m_moleculeStateKDTree;
 
 public:
+	MoleculeManager()
+		: m_moleculeStateKDTree(m_moleculeStates)
+	{
+		m_moleculeStates.reserve(0xFFFF);
+	}
+
 	int NumMolecule(const shared_ptr<MoleculeModel>& model);
 
 	const shared_ptr<MoleculeState>&	AddMoleculeState(const shared_ptr<MoleculeModel>& model);
@@ -18,10 +35,9 @@ public:
 	void	AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size);
 
 	// Get
-	vector<shared_ptr<MoleculeState>>&	GetMoleculeStates() { return m_indexer.m_cloud.m_particles; }
-	const vector<shared_ptr<MoleculeState>>&	GetMoleculeStates() const { return m_indexer.m_cloud.m_particles; }
-	Indexer<MoleculeState>&	GetIndexer();
-	const Indexer<MoleculeState>&	GetIndexer() const;
+	Array<shared_ptr<MoleculeState>>&		GetMoleculeStates() { return m_moleculeStates; }
+	const Array<shared_ptr<MoleculeState>>&	GetMoleculeStates() const { return m_moleculeStates; }
+	const KDTree<MoleculeStateAdapter>&		GetMoleculeStateKDTree() const { return m_moleculeStateKDTree; }
 
 	void	Update();
 	void	Draw();

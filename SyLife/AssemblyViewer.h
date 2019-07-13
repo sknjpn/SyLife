@@ -2,7 +2,6 @@
 
 #include "Viewer.h"
 #include "Cell.h"
-#include "TinyCamera.h"
 #include "Part.h"
 #include "AssemblyViewer.h"
 #include "ModelViewer.h"
@@ -16,7 +15,7 @@ class AssemblyViewer
 	: public ModelViewer
 {
 public:
-	CursorCamera2D	m_camera;
+	Camera2D	m_camera;
 
 	double	m_mass;
 	double	m_inertia;
@@ -25,10 +24,10 @@ public:
 public:
 	AssemblyViewer()
 	{
-		SetDrawRect(Window::Width() - 400, 20, 300, 300);
+		SetDrawRect(Scene::Width() - 400, 20, 300, 300);
 
-		m_camera.setTargetCenter(Window::BaseSize() / 2 - GetDrawRect().size / 2);
-		m_camera.setCenter(Window::BaseSize() / 2 - GetDrawRect().size / 2);
+		m_camera.setTargetCenter(Scene::Size() / 2 - GetDrawRect().size / 2);
+		m_camera.setCenter(Scene::Size() / 2 - GetDrawRect().size / 2);
 	}
 
 	void	Init() override
@@ -38,39 +37,39 @@ public:
 
 	void	Update() override
 	{
-		Rect(GetDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
+		//Rect(GetDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 		if (IsMouseOver()) m_camera.update();
 
 		const auto t1 = m_camera.createTransformer();
-		const int scale = (int)log10(m_camera.getMagnification());
-		const double thickness = 2.0 / m_camera.getMagnification();
+		const int scale = (int)log10(m_camera.getScale());
+		const double thickness = 2.0 / m_camera.getScale();
 		const double interval = pow(10.0, -scale + 1);
 		const auto cursor = (Cursor::Pos() / interval).asPoint() * interval;
-		const auto boxSize = Vec2::One() * 5.0 / m_camera.getMagnification();
+		const auto boxSize = Vec2::One() * 5.0 / m_camera.getScale();
 		const auto pointer = RectF(Arg::center(cursor), boxSize);
 
 		// cü
 		{
 			const auto color = ColorF(Palette::White, 0.25);
 
-			for (double x = 0; x >= m_camera.getCameraRect().x; x -= interval)
-				Line(x, m_camera.getCameraRect().y, x, m_camera.getCameraRect().br().y).draw(thickness, color);
+			for (double x = 0; x >= m_camera.getRegion().x; x -= interval)
+				Line(x, m_camera.getRegion().y, x, m_camera.getRegion().br().y).draw(thickness, color);
 
-			for (double x = 0; x <= m_camera.getCameraRect().br().x; x += interval)
-				Line(x, m_camera.getCameraRect().y, x, m_camera.getCameraRect().br().y).draw(thickness, color);
+			for (double x = 0; x <= m_camera.getRegion().br().x; x += interval)
+				Line(x, m_camera.getRegion().y, x, m_camera.getRegion().br().y).draw(thickness, color);
 
-			for (double y = 0; y >= m_camera.getCameraRect().y; y -= interval)
-				Line(m_camera.getCameraRect().x, y, m_camera.getCameraRect().br().x, y).draw(thickness, color);
+			for (double y = 0; y >= m_camera.getRegion().y; y -= interval)
+				Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
 
-			for (double y = 0; y <= m_camera.getCameraRect().br().y; y += interval)
-				Line(m_camera.getCameraRect().x, y, m_camera.getCameraRect().br().x, y).draw(thickness, color);
+			for (double y = 0; y <= m_camera.getRegion().br().y; y += interval)
+				Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
 		}
 
 		// XYŽ²
 		{
-			Line(m_camera.getCameraRect().x, 0, m_camera.getCameraRect().br().x, 0).draw(thickness, Palette::Red);
-			Line(0, m_camera.getCameraRect().y, 0, m_camera.getCameraRect().br().y).draw(thickness, Palette::Red);
+			Line(m_camera.getRegion().x, 0, m_camera.getRegion().br().x, 0).draw(thickness, Palette::Red);
+			Line(0, m_camera.getRegion().y, 0, m_camera.getRegion().br().y).draw(thickness, Palette::Red);
 		}
 
 		// disk

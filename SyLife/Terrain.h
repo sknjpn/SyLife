@@ -18,7 +18,7 @@ public:
 	double	m_size;
 	uint32	m_noiseSeed;
 	double	m_density;
-	vector<HotspotConfig>	m_hotspots;
+	Array<HotspotConfig>	m_hotspots;
 
 public:
 	void	MakeViewer() override;

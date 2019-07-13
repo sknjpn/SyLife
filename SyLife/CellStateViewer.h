@@ -13,7 +13,7 @@ public:
 	CellStateViewer()
 		: m_cellState(nullptr)
 	{
-		SetDrawRect(Window::Width() - 300, 450, 200, 400);
+		SetDrawRect(Scene::Width() - 300, 450, 200, 400);
 
 	}
 

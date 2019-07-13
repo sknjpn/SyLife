@@ -5,9 +5,16 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\example">
+      <UniqueIdentifier>{8b04c3b0-3b5b-4f9a-add9-f54abc0118ed}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files\engine">
       <UniqueIdentifier>{972ca6b5-b566-47a1-b6e5-5cd538d7268c}</UniqueIdentifier>
@@ -54,30 +61,98 @@
     <Filter Include="Resource Files\nlp\japanese\jumanpp">
       <UniqueIdentifier>{f6fe2a89-c647-48e2-bb2c-27b03b1aeced}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Manager">
-      <UniqueIdentifier>{850fe034-2aae-4ca0-8f7a-27a62987b61f}</UniqueIdentifier>
+    <Filter Include="Resource Files\example\countries">
+      <UniqueIdentifier>{d8993270-4526-4d70-a0b8-2d179abe279b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Part">
-      <UniqueIdentifier>{f243f746-fa97-4cfc-a032-833b7391959c}</UniqueIdentifier>
+    <Filter Include="Resource Files\example\font">
+      <UniqueIdentifier>{e011e289-148f-4f61-b178-75bd63133a24}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ThirdParty">
-      <UniqueIdentifier>{b83d9d00-96a5-4216-8173-d43ae1c4821d}</UniqueIdentifier>
+    <Filter Include="Resource Files\example\font\AnnyantRoman">
+      <UniqueIdentifier>{54d1e03d-1d02-4bca-a045-a73de6bc8102}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Viewer">
-      <UniqueIdentifier>{8a8171a1-a281-415a-81b4-387bb59fde30}</UniqueIdentifier>
+    <Filter Include="Resource Files\example\font\NotoSansCJKjp">
+      <UniqueIdentifier>{ec80af61-28a4-433a-aa04-102d099f524d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\State">
-      <UniqueIdentifier>{c1570a17-8b57-46d1-b1ff-784e997090b4}</UniqueIdentifier>
+    <Filter Include="Resource Files\example\font\Pecita">
+      <UniqueIdentifier>{59c8b538-0125-4cbe-8ad8-2d327d00f708}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Viewer\Scenes">
-      <UniqueIdentifier>{87bd679d-59ab-4752-bf38-636702421ae6}</UniqueIdentifier>
+    <Filter Include="Resource Files\example\script">
+      <UniqueIdentifier>{6d671c66-2133-4626-a10a-1a199c017c5d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Manager\src">
-      <UniqueIdentifier>{52d4e635-684d-4107-a6e0-228efdfe18bd}</UniqueIdentifier>
+    <Filter Include="Resource Files\example\svm">
+      <UniqueIdentifier>{efc7c679-c387-43b2-93ed-b6e6ccbcd1a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Viewer\Editor">
-      <UniqueIdentifier>{72827687-b7f8-4bd4-bd24-a4824d720806}</UniqueIdentifier>
-    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Egg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EggManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hotspot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddModelViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager_MakeModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CellManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PartPaletteViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PartShapeViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewerManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaveManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -101,6 +176,15 @@
     <Image Include="App\engine\texture\box-shadow\64.png">
       <Filter>Resource Files\engine\texture\box-shadow</Filter>
     </Image>
+    <Image Include="App\example\particle.png">
+      <Filter>Resource Files\example</Filter>
+    </Image>
+    <Image Include="App\example\siv3d-kun.png">
+      <Filter>Resource Files\example</Filter>
+    </Image>
+    <Image Include="App\example\windmill.png">
+      <Filter>Resource Files\example</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="App\Resource.rc">
@@ -111,172 +195,266 @@
     <None Include="App\engine\emoji\noto7_dictionary.dat">
       <Filter>Resource Files\engine\emoji</Filter>
     </None>
-    <None Include="App\engine\font\mplus\mplus-1p-black.ttf.zst">
-      <Filter>Resource Files\engine\font\mplus</Filter>
-    </None>
-    <None Include="App\engine\font\mplus\mplus-1p-bold.ttf.zst">
-      <Filter>Resource Files\engine\font\mplus</Filter>
-    </None>
-    <None Include="App\engine\font\mplus\mplus-1p-heavy.ttf.zst">
-      <Filter>Resource Files\engine\font\mplus</Filter>
-    </None>
-    <None Include="App\engine\font\mplus\mplus-1p-light.ttf.zst">
-      <Filter>Resource Files\engine\font\mplus</Filter>
-    </None>
-    <None Include="App\engine\font\mplus\mplus-1p-medium.ttf.zst">
-      <Filter>Resource Files\engine\font\mplus</Filter>
-    </None>
-    <None Include="App\engine\font\mplus\mplus-1p-regular.ttf.zst">
-      <Filter>Resource Files\engine\font\mplus</Filter>
-    </None>
-    <None Include="App\engine\font\mplus\mplus-1p-thin.ttf.zst">
-      <Filter>Resource Files\engine\font\mplus</Filter>
-    </None>
-    <None Include="App\engine\font\mplus\LICENSE_E">
-      <Filter>Resource Files\engine\font\mplus</Filter>
-    </None>
-    <None Include="App\engine\font\noto\NotoColorEmoji.ttf.zst">
-      <Filter>Resource Files\engine\font\noto</Filter>
-    </None>
-    <None Include="App\engine\font\noto\NotoEmoji-Regular.ttf.zst">
-      <Filter>Resource Files\engine\font\noto</Filter>
-    </None>
-    <None Include="App\engine\shader\line_round_dot.ps">
-      <Filter>Resource Files\engine\shader</Filter>
-    </None>
-    <None Include="App\engine\shader\shape.ps">
-      <Filter>Resource Files\engine\shader</Filter>
-    </None>
-    <None Include="App\engine\shader\sprite.ps">
-      <Filter>Resource Files\engine\shader</Filter>
-    </None>
-    <None Include="App\engine\shader\sprite.vs">
-      <Filter>Resource Files\engine\shader</Filter>
-    </None>
-    <None Include="App\engine\shader\sprite_sdf.ps">
-      <Filter>Resource Files\engine\shader</Filter>
-    </None>
-    <None Include="App\engine\shader\line_dot.ps">
-      <Filter>Resource Files\engine\shader</Filter>
-    </None>
-    <None Include="App\engine\font\fontawesome\brands.otf.zst">
-      <Filter>Resource Files\engine\font\fontawesome</Filter>
-    </None>
-    <None Include="App\engine\font\fontawesome\solid.otf.zst">
-      <Filter>Resource Files\engine\font\fontawesome</Filter>
-    </None>
-    <None Include="App\engine\objdetect\haarcascade\eye_eyeglasses.xml.zst">
-      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
-    </None>
-    <None Include="App\engine\objdetect\haarcascade\face_anime.xml.zst">
-      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
-    </None>
-    <None Include="App\engine\objdetect\haarcascade\frontal_catface.xml.zst">
-      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
-    </None>
-    <None Include="App\engine\objdetect\haarcascade\frontal_face_alt2.xml.zst">
-      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
-    </None>
-    <None Include="App\engine\objdetect\haarcascade\eye.xml.zst">
-      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
-    </None>
-    <None Include="App\engine\soundfont\GMGSx.sf2.zst">
-      <Filter>Resource Files\engine\soundfont</Filter>
-    </None>
     <None Include="App\nlp\japanese\jumanpp\LICENSE">
       <Filter>Resource Files\nlp\japanese\jumanpp</Filter>
     </None>
     <None Include="App\nlp\japanese\jumanpp\README.md">
       <Filter>Resource Files\nlp\japanese\jumanpp</Filter>
     </None>
+    <None Include="App\engine\font\fontawesome\fontawesome-brands.otf.zstdcmp">
+      <Filter>Resource Files\engine\font\fontawesome</Filter>
+    </None>
+    <None Include="App\engine\font\fontawesome\fontawesome-solid.otf.zstdcmp">
+      <Filter>Resource Files\engine\font\fontawesome</Filter>
+    </None>
+    <None Include="App\engine\font\mplus\mplus-1p-light.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\mplus</Filter>
+    </None>
+    <None Include="App\engine\font\mplus\mplus-1p-medium.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\mplus</Filter>
+    </None>
+    <None Include="App\engine\font\mplus\mplus-1p-regular.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\mplus</Filter>
+    </None>
+    <None Include="App\engine\font\mplus\mplus-1p-thin.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\mplus</Filter>
+    </None>
+    <None Include="App\engine\font\mplus\LICENSE_E">
+      <Filter>Resource Files\engine\font\mplus</Filter>
+    </None>
+    <None Include="App\engine\font\mplus\mplus-1p-black.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\mplus</Filter>
+    </None>
+    <None Include="App\engine\font\mplus\mplus-1p-bold.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\mplus</Filter>
+    </None>
+    <None Include="App\engine\font\mplus\mplus-1p-heavy.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\mplus</Filter>
+    </None>
+    <None Include="App\engine\font\noto\NotoColorEmoji.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\noto</Filter>
+    </None>
+    <None Include="App\engine\font\noto\NotoEmoji-Regular.ttf.zstdcmp">
+      <Filter>Resource Files\engine\font\noto</Filter>
+    </None>
+    <None Include="App\engine\objdetect\haarcascade\eye_eyeglasses.xml.zstdcmp">
+      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
+    </None>
+    <None Include="App\engine\objdetect\haarcascade\face_anime.xml.zstdcmp">
+      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
+    </None>
+    <None Include="App\engine\objdetect\haarcascade\frontal_catface.xml.zstdcmp">
+      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
+    </None>
+    <None Include="App\engine\objdetect\haarcascade\frontal_face_alt2.xml.zstdcmp">
+      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
+    </None>
+    <None Include="App\engine\objdetect\haarcascade\eye.xml.zstdcmp">
+      <Filter>Resource Files\engine\objdetect\haarcascade</Filter>
+    </None>
+    <None Include="App\engine\shader\shape.ps">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\square_dot.ps">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\texture.ps">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\fullscreen_triangle.vs">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\fullscreen_triangle_draw.vs">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\fullscreen_triangle_resolve.vs">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\sprite.vs">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\fullscreen_triangle_draw.ps">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\fullscreen_triangle_resolve.ps">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\round_dot.ps">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\shader\sdf.ps">
+      <Filter>Resource Files\engine\shader</Filter>
+    </None>
+    <None Include="App\engine\soundfont\GMGSx.sf2.zstdcmp">
+      <Filter>Resource Files\engine\soundfont</Filter>
+    </None>
+    <None Include="App\example\countries\countries.csv">
+      <Filter>Resource Files\example\countries</Filter>
+    </None>
+    <None Include="App\example\countries\countries.json">
+      <Filter>Resource Files\example\countries</Filter>
+    </None>
+    <None Include="App\example\font\NotoSansCJKjp\README">
+      <Filter>Resource Files\example\font\NotoSansCJKjp</Filter>
+    </None>
+    <None Include="App\example\font\Pecita\LICENSE">
+      <Filter>Resource Files\example\font\Pecita</Filter>
+    </None>
+    <None Include="App\example\svm\a1a_testing">
+      <Filter>Resource Files\example\svm</Filter>
+    </None>
+    <None Include="App\example\svm\a1a_training">
+      <Filter>Resource Files\example\svm</Filter>
+    </None>
+    <None Include="App\example\test.ini">
+      <Filter>Resource Files\example</Filter>
+    </None>
+    <None Include="App\example\test.toml">
+      <Filter>Resource Files\example</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="App\engine\font\noto\LICENSE_OFL.txt">
-      <Filter>Resource Files\engine\font\noto</Filter>
-    </Text>
     <Text Include="App\engine\font\fontawesome\LICENSE.txt">
       <Filter>Resource Files\engine\font\fontawesome</Filter>
     </Text>
+    <Text Include="App\engine\font\noto\LICENSE_OFL.txt">
+      <Filter>Resource Files\engine\font\noto</Filter>
+    </Text>
+    <Text Include="App\example\countries\LICENSE.txt">
+      <Filter>Resource Files\example\countries</Filter>
+    </Text>
+    <Text Include="App\example\font\AnnyantRoman\readme.txt">
+      <Filter>Resource Files\example\font\AnnyantRoman</Filter>
+    </Text>
+    <Text Include="App\example\font\NotoSansCJKjp\LICENSE_OFL.txt">
+      <Filter>Resource Files\example\font\NotoSansCJKjp</Filter>
+    </Text>
+    <Text Include="App\example\script\paint.txt">
+      <Filter>Resource Files\example\script</Filter>
+    </Text>
+    <Text Include="App\example\script\test.txt">
+      <Filter>Resource Files\example\script</Filter>
+    </Text>
+    <Text Include="App\example\LICENSE.txt">
+      <Filter>Resource Files\example</Filter>
+    </Text>
+    <Text Include="App\example\test.txt">
+      <Filter>Resource Files\example</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Egg.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files\State</Filter>
-    </ClCompile>
-    <ClCompile Include="AddModelViewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_MakeModel.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="CellManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="EggManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="SystemManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="ViewerManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="WaveManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer.cpp">
-      <Filter>Source Files\Viewer\Editor</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
-      <Filter>Source Files\Viewer\Editor</Filter>
-    </ClCompile>
-    <ClCompile Include="PartShapeViewer.cpp">
-      <Filter>Source Files\Viewer\Editor</Filter>
-    </ClCompile>
-    <ClCompile Include="PartPaletteViewer.cpp">
-      <Filter>Source Files\Viewer\Editor</Filter>
-    </ClCompile>
-    <ClCompile Include="TerrainManager.cpp">
-      <Filter>Source Files\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Hotspot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Font Include="App\example\font\AnnyantRoman\AnnyantRoman.ttf">
+      <Filter>Resource Files\example\font\AnnyantRoman</Filter>
+    </Font>
+    <Font Include="App\example\font\NotoSansCJKjp\NotoSansCJKjp-Regular.otf">
+      <Filter>Resource Files\example\font\NotoSansCJKjp</Filter>
+    </Font>
+    <Font Include="App\example\font\Pecita\Pecita.otf">
+      <Filter>Resource Files\example\font\Pecita</Filter>
+    </Font>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cloud.h">
+    <Media Include="App\example\shot.mp3">
+      <Filter>Resource Files\example</Filter>
+    </Media>
+    <Media Include="App\example\test.mp3">
+      <Filter>Resource Files\example</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="App\example\test.xml">
+      <Filter>Resource Files\example</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AddModelViewer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Indexer.h">
+    <ClInclude Include="AssemblyViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellStateViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chloroplast.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Curtain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Egg.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EggManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Eye.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hotspot.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Molecule.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculeManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Needle.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PartPaletteViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PartShapeViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReleaseViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ShapeModel.h">
@@ -288,130 +466,34 @@
     <ClInclude Include="Storage.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="TinyCamera.h">
+    <ClInclude Include="Synthesizer.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="CellManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeManager.h">
-      <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="SystemManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="sol.hpp">
-      <Filter>Source Files\ThirdParty</Filter>
-    </ClInclude>
-    <ClInclude Include="nanoflann.hpp">
-      <Filter>Source Files\ThirdParty</Filter>
-    </ClInclude>
-    <ClInclude Include="Part.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Viewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewerManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Curtain.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssemblyViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="ReleaseViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="EggManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Chloroplast.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Eye.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Wing.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Synthesizer.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="WaveManager.h">
-      <Filter>Source Files\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Needle.h">
-      <Filter>Source Files\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="CellStateViewer.h">
-      <Filter>Source Files\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Source Files\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Egg.h">
-      <Filter>Source Files\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Source Files\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
-      <Filter>Source Files\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Molecule.h">
-      <Filter>Source Files\State</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleViewer.h">
-      <Filter>Source Files\Viewer\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="EditorViewer.h">
-      <Filter>Source Files\Viewer\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldViewer.h">
-      <Filter>Source Files\Viewer\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetViewer.h">
-      <Filter>Source Files\Viewer\Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="AddModelViewer.h">
-      <Filter>Source Files\Viewer\Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="PartPaletteViewer.h">
-      <Filter>Source Files\Viewer\Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="PartShapeViewer.h">
-      <Filter>Source Files\Viewer\Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="TerrainManager.h">
-      <Filter>Source Files\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Terrain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewerManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Wave.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Hotspot.h">
+    <ClInclude Include="WaveManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Wing.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

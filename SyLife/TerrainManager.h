@@ -10,7 +10,7 @@ class TerrainManager
 	// ê∂ê¨Ç≥ÇÍÇÈÇ‡ÇÃ
 	Texture	m_texture;
 	PerlinNoise	m_noise;
-	vector<shared_ptr<HotspotState>>	m_hotspots;
+	Array<shared_ptr<HotspotState>>	m_hotspots;
 	Array<MultiPolygon>	m_polygons;
 
 public:

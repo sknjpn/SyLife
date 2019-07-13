@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Viewer.h"
-#include "TinyCamera.h"
 #include "FieldViewer.h"
 #include "Curtain.h"
 #include "ReleaseViewer.h"
@@ -19,7 +18,7 @@ class FieldViewer
 	: public Viewer
 {
 	Audio	m_audio;
-	CursorCamera2D	m_cursorCamera2D;
+	Camera2D	m_cursorCamera2D;
 	shared_ptr<CellModel>	m_newModel;
 
 public:
@@ -31,9 +30,9 @@ public:
 		m_cursorCamera2D.setTargetCenter(Vec2::Zero());
 		//m_cursorCamera2D.setMinMagnification(0.01);
 
-		SetDrawRect(Window::Size());
+		SetDrawRect(Scene::Size());
 		m_audio.setLoop(true);
-		// m_audio.play();
+		m_audio.play();
 	}
 
 	void	Init() override
@@ -60,7 +59,6 @@ public:
 			if (KeyF3.down() && speed != 128) speed *= 2;
 			if (KeyF4.down()) speed = 128;
 
-			Logger << U"start";
 			// update
 			for (int i = 0; i < speed; ++i)
 			{
@@ -74,16 +72,18 @@ public:
 
 			// Rigidbody Capture
 			{
-				static shared_ptr<Rigidbody> selectedRigidbody = nullptr;
+				static shared_ptr<CellState> selectedRigidbody = nullptr;
 
 				if (MouseL.down())
 				{
-					for (auto target : g_fieldManagerPtr->GetIndexer().GetNearParticles(Cursor::PosF(), 100))
+					for (auto i : g_cellManagerPtr->GetCellStateKDTree().knnSearch(1, Cursor::PosF()))
 					{
-						if (target->GetRadius() > (target->GetPosition() - Cursor::PosF()).length())
+						auto& cell = g_cellManagerPtr->GetCellStates()[i];
+
+						if (cell->GetRadius() > (cell->GetPosition() - Cursor::PosF()).length())
 						{
-							selectedRigidbody = target;
-							g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(target);
+							selectedRigidbody = cell;
+							g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cell);
 						}
 					}
 				}

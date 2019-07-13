@@ -13,7 +13,7 @@ public:
 public:
 	PartPaletteViewer()
 	{
-		SetDrawRect(Window::Width() - 100, 20, 80, 400);
+		SetDrawRect(Scene::Width() - 100, 20, 80, 400);
 	}
 
 	template <typename T>

@@ -14,7 +14,7 @@ public:
 public:
 	ReleaseViewer()
 	{
-		SetDrawRect(Window::Width() - 400, 320, 300, 100);
+		SetDrawRect(Scene::Width() - 400, 320, 300, 100);
 	}
 
 	void	Update() override

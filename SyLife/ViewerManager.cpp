@@ -25,7 +25,7 @@ void ViewerManager::Update()
 	// Viewer XV
 	for (auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
 	{
-		auto vp = ViewportBlock2D(Rect((*it)->m_drawRect));
+		auto vp = ScopedViewport2D(Rect((*it)->m_drawRect));
 		auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_drawRect.pos));
 
 		RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);

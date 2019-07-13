@@ -11,34 +11,34 @@ void PartShapeViewer::Update()
 	if (IsMouseOver()) m_camera.update();
 
 	const auto t = m_camera.createTransformer();
-	const int scale = (int)log10(m_camera.getMagnification());
-	const double thickness = 2.0 / m_camera.getMagnification();
+	const int scale = (int)log10(m_camera.getScale());
+	const double thickness = 2.0 / m_camera.getScale();
 	const double interval = pow(10.0, -scale + 1);
 	const auto cursor = (Cursor::Pos() / interval).asPoint() * interval;
-	const auto boxSize = Vec2::One() * 5.0 / m_camera.getMagnification();
+	const auto boxSize = Vec2::One() * 5.0 / m_camera.getScale();
 	const auto pointer = RectF(Arg::center(cursor), boxSize);
 
 	// cü
 	{
 		const auto color = ColorF(Palette::White, 0.25);
 
-		for (double x = 0; x >= m_camera.getCameraRect().x; x -= interval)
-			Line(x, m_camera.getCameraRect().y, x, m_camera.getCameraRect().br().y).draw(thickness, color);
+		for (double x = 0; x >= m_camera.getRegion().x; x -= interval)
+			Line(x, m_camera.getRegion().y, x, m_camera.getRegion().br().y).draw(thickness, color);
 
-		for (double x = 0; x <= m_camera.getCameraRect().br().x; x += interval)
-			Line(x, m_camera.getCameraRect().y, x, m_camera.getCameraRect().br().y).draw(thickness, color);
+		for (double x = 0; x <= m_camera.getRegion().br().x; x += interval)
+			Line(x, m_camera.getRegion().y, x, m_camera.getRegion().br().y).draw(thickness, color);
 
-		for (double y = 0; y >= m_camera.getCameraRect().y; y -= interval)
-			Line(m_camera.getCameraRect().x, y, m_camera.getCameraRect().br().x, y).draw(thickness, color);
+		for (double y = 0; y >= m_camera.getRegion().y; y -= interval)
+			Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
 
-		for (double y = 0; y <= m_camera.getCameraRect().br().y; y += interval)
-			Line(m_camera.getCameraRect().x, y, m_camera.getCameraRect().br().x, y).draw(thickness, color);
+		for (double y = 0; y <= m_camera.getRegion().br().y; y += interval)
+			Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
 	}
 
 	// XYŽ²
 	{
-		Line(m_camera.getCameraRect().x, 0, m_camera.getCameraRect().br().x, 0).draw(thickness, Palette::Red);
-		Line(0, m_camera.getCameraRect().y, 0, m_camera.getCameraRect().br().y).draw(thickness, Palette::Red);
+		Line(m_camera.getRegion().x, 0, m_camera.getRegion().br().x, 0).draw(thickness, Palette::Red);
+		Line(0, m_camera.getRegion().y, 0, m_camera.getRegion().br().y).draw(thickness, Palette::Red);
 	}
 
 	// ShapeModels

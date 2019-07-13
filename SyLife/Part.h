@@ -18,13 +18,13 @@ public:
 
 	double	m_mass;
 	Storage	m_material;
-	vector<ShapeModel>	m_shapes;
+	Array<ShapeModel>	m_shapes;
 
 public:
 	// Get
 	double	GetMass() const { return m_mass; }
 	const Storage&	GetMaterial() const { return m_material; }
-	const vector<ShapeModel>&	GetShapes() const { return m_shapes; }
+	const Array<ShapeModel>&	GetShapes() const { return m_shapes; }
 
 	void MakeViewer() override;
 	virtual shared_ptr<PartState>	MakeState();

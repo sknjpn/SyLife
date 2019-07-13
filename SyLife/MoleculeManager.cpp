@@ -2,41 +2,6 @@
 
 unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
-Indexer<MoleculeState>& MoleculeManager::GetIndexer()
-{
-	return m_indexer;
-}
-
-const Indexer<MoleculeState>& MoleculeManager::GetIndexer() const
-{
-	return m_indexer;
-}
-
-void MoleculeManager::Update()
-{
-	for (const auto& e : GetMoleculeStates())
-	{
-		if (!e->IsDestroyed())
-		{
-			e->UpdateParticle();
-			e->UpdateMolecule();
-		}
-	}
-
-	m_indexer.Update();
-}
-
-void MoleculeManager::Draw()
-{
-	for (const auto& e : GetMoleculeStates())
-		if (!e->IsDestroyed()) e->Draw();
-}
-
-int MoleculeManager::NumMolecule(const shared_ptr<MoleculeModel>& model)
-{
-	return static_cast<int>(count_if(GetMoleculeStates().begin(), GetMoleculeStates().end(), [&model](const auto& m) { return m->GetModel() == model; }));
-}
-
 const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_ptr<MoleculeModel>& model)
 {
 	const auto& m = GetMoleculeStates().emplace_back(make_shared<MoleculeState>());
@@ -50,8 +15,35 @@ const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_
 {
 	const auto& m = AddMoleculeState(model);
 	m->SetPosition(position);
+	m->SetVelocity(RandomVec2(Random(100.0)));
 
 	return m;
+}
+
+void MoleculeManager::Update()
+{
+	for (const auto& e : GetMoleculeStates())
+	{
+		if (!e->IsDestroyed())
+		{
+			e->UpdateParticle();
+			e->UpdateMolecule();
+		}
+	}
+
+	m_moleculeStates.remove_if([](const auto& m) { return m->IsDestroyed(); });
+	m_moleculeStateKDTree.rebuildIndex();
+}
+
+void MoleculeManager::Draw()
+{
+	for (const auto& e : GetMoleculeStates())
+		if (!e->IsDestroyed()) e->Draw();
+}
+
+int MoleculeManager::NumMolecule(const shared_ptr<MoleculeModel>& model)
+{
+	return static_cast<int>(count_if(GetMoleculeStates().begin(), GetMoleculeStates().end(), [&model](const auto& m) { return m->GetModel() == model; }));
 }
 
 void MoleculeManager::AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size)
@@ -66,3 +58,6 @@ void MoleculeManager::AddMoleculesRandom(const shared_ptr<MoleculeModel>& model,
 		m->Init();
 	}
 }
+
+MoleculeStateAdapter::element_type MoleculeStateAdapter::GetElement(const dataset_type & dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
+MoleculeStateAdapter::element_type MoleculeStateAdapter::DistanceSq(const dataset_type & dataset, size_t index, const element_type * other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }

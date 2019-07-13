@@ -13,7 +13,7 @@ class CellModel
 	: public Model
 {
 	Storage	m_material;
-	vector<shared_ptr<PartConfig>>	m_partConfigs;
+	Array<shared_ptr<PartConfig>>	m_partConfigs;
 
 	// Rigidbody
 	double	m_mass;
@@ -29,16 +29,16 @@ public:
 	double	GetMass() const { return m_mass; }
 	double	GetRadius() const { return m_radius; }
 	double	GetInertia() const { return m_inertia; }
-	const vector<shared_ptr<PartConfig>>&	GetPartConfigs() const { return m_partConfigs; }
-	vector<shared_ptr<PartConfig>>&			GetPartConfigs() { return m_partConfigs; }
+	const Array<shared_ptr<PartConfig>>&	GetPartConfigs() const { return m_partConfigs; }
+	Array<shared_ptr<PartConfig>>&			GetPartConfigs() { return m_partConfigs; }
 
 	// Add
 	shared_ptr<PartConfig>&	AddPartConfig();
 
 	template <typename T>
-	vector<shared_ptr<T>>	GetPartConfigs() const
+	Array<shared_ptr<T>>	GetPartConfigs() const
 	{
-		vector<shared_ptr<T>> tModels;
+		Array<shared_ptr<T>> tModels;
 
 		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
 			if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
@@ -69,7 +69,7 @@ public:
 
 	shared_ptr<CellModel>	m_model;
 
-	vector<shared_ptr<PartState>>		m_partStates;
+	Array<shared_ptr<PartState>>		m_partStates;
 
 public:
 	CellState(const shared_ptr<CellModel>& model);

@@ -8,7 +8,7 @@ class MoleculeModel;
 class Storage
 	: public Model
 {
-	vector<pair<shared_ptr<MoleculeModel>, unsigned int>>	m_molecules;
+	Array<pair<shared_ptr<MoleculeModel>, unsigned int>>	m_molecules;
 
 public:
 	// operator
@@ -70,7 +70,7 @@ public:
 		else return (*it).second;
 	}
 
-	const vector<pair<shared_ptr<MoleculeModel>, unsigned int>>&	GetMolecules() const { return m_molecules; }
+	const Array<pair<shared_ptr<MoleculeModel>, unsigned int>>&	GetMolecules() const { return m_molecules; }
 
 	bool	IsEmpty() const { return m_molecules.empty(); }
 
