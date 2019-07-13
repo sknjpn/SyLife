@@ -20,7 +20,7 @@ void MoleculeState::Draw()
 {
 	static Texture particle(U"particle.png", TextureDesc::Mipped);
 
-	particle.resized(m_model->GetRadius(), m_model->GetRadius()).drawAt(GetPosition(), m_model->GetColor());
+	particle.resized(m_model->GetRadius() * 2.0, m_model->GetRadius() * 2.0).drawAt(GetPosition(), m_model->GetColor());
 	/*
 	Circle(GetPosition().x, GetPosition().y, GetRadius())
 		.draw(ColorF(m_model->GetColor(), 0.5));
