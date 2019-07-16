@@ -82,76 +82,100 @@
     <Filter Include="Resource Files\example\svm">
       <UniqueIdentifier>{efc7c679-c387-43b2-93ed-b6e6ccbcd1a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife">
+      <UniqueIdentifier>{0cf0549a-4642-4cae-be5f-dc6904a911c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Manager">
+      <UniqueIdentifier>{0849a3f4-5d84-4663-90ac-a81a10af8b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Viewer">
+      <UniqueIdentifier>{2f10a1ff-c59b-4f22-92d6-d2c0085bd0af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Manager\src">
+      <UniqueIdentifier>{11aa1fc0-5773-47d7-91e8-8a749a3e178c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Viewer\src">
+      <UniqueIdentifier>{c8a3b6b8-c649-46fc-ba47-f47f0e6adf7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\State">
+      <UniqueIdentifier>{ba627efe-cc42-43c0-9314-98efd643daf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Util">
+      <UniqueIdentifier>{a29dec5b-126f-49b0-8d4d-224168f47943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\State\Part">
+      <UniqueIdentifier>{8b134783-55c7-46e9-9050-488ffc4da34d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Egg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EggManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Hotspot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AddModelViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_MakeModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartPaletteViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartShapeViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SystemManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
-    <ClCompile Include="TerrainManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AssetManager_MakeModel.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
-    <ClCompile Include="ViewerManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CellManager.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
-    <ClCompile Include="WaveManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="EggManager.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="FieldManager.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Manager\src</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemManager.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainManager.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewerManager.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
+    </ClCompile>
+    <ClCompile Include="WaveManager.cpp">
+      <Filter>Source Files\SyLife\Manager\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AddModelViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
+      <Filter>Source Files\SyLife\Viewer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartPaletteViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartShapeViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Egg.cpp">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Hotspot.cpp">
+      <Filter>Source Files\SyLife\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -367,134 +391,134 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddModelViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssemblyViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellStateViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Chloroplast.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Curtain.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EditorViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Egg.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EggManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Eye.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Hotspot.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Molecule.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Needle.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Part.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartPaletteViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartShapeViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ReleaseViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeModel.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Storage.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Synthesizer.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="CellManager.h">
+      <Filter>Source Files\SyLife\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EggManager.h">
+      <Filter>Source Files\SyLife\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldManager.h">
+      <Filter>Source Files\SyLife\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculeManager.h">
+      <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
     <ClInclude Include="SystemManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
     <ClInclude Include="TerrainManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Viewer.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
     <ClInclude Include="ViewerManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Wave.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
     <ClInclude Include="WaveManager.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="AddModelViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AssemblyViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="PartPaletteViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="PartShapeViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="ReleaseViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="CellStateViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldViewer.h">
+      <Filter>Source Files\SyLife\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Chloroplast.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Egg.h">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Eye.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Molecule.h">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Needle.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Source Files\SyLife\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Synthesizer.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
     <ClInclude Include="Wing.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Hotspot.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Curtain.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeModel.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Wave.h">
+      <Filter>Source Files\SyLife\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
