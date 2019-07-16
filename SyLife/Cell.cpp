@@ -86,6 +86,23 @@ CellState::CellState(const shared_ptr<CellModel>& model)
 
 void CellState::UpdateCell()
 {
+	// Õ“Ëˆ—
+	{
+		auto result = g_cellManagerPtr->GetCellStateKDTree().knnSearch(2, GetPosition());
+		if (result.size() == 2)
+		{
+			auto& t = g_cellManagerPtr->GetCellStates()[result[1]];
+
+			if (t->GetPosition() != GetPosition() && (GetRadius() + t->GetRadius() - (t->GetPosition() - GetPosition()).length()) > 0)
+			{
+				auto f = -1000.0 * (t->GetPosition() - GetPosition()).normalized() * (GetRadius() + t->GetRadius() - (t->GetPosition() - GetPosition()).length());
+				AddForceInWorld(f, GetPosition());
+				t->AddForceInWorld(-f, t->GetPosition());
+			}
+		}
+	}
+
+	// Timer
 	m_deathTimer -= g_fieldManagerPtr->GetDeltaTime();
 	m_startTimer += g_fieldManagerPtr->GetDeltaTime();
 

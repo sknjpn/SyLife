@@ -4,11 +4,7 @@ unique_ptr<CellManager>	g_cellManagerPtr;
 
 const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellModel>& model) 
 {
-	auto& m = m_cellStates.emplace_back(make_shared<CellState>(model));
-
-	g_fieldManagerPtr->GetRigidbody().emplace_back(m);
-
-	return m;
+	return m_cellStates.emplace_back(make_shared<CellState>(model));
 }
 
 void	CellManager::Update()

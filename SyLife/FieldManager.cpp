@@ -42,18 +42,5 @@ void FieldManager::Init()
 
 void FieldManager::Update()
 {
-	for (const auto& r : m_rigidbodies)
-	{
-		if (!r->IsDestroyed())
-		{
-			r->UpdateParticle();
-			r->UpdateRigidbody();
-		}
-	}
 
-	m_rigidbodies.remove_if([](const auto& r) { return r->IsDestroyed(); });
-	m_rigidbodyKDTree.rebuildIndex();
 }
-
-RigidbodyAdapter::element_type RigidbodyAdapter::GetElement(const dataset_type & dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
-RigidbodyAdapter::element_type RigidbodyAdapter::DistanceSq(const dataset_type & dataset, size_t index, const element_type * other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }
