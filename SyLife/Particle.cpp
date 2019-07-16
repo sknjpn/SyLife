@@ -3,7 +3,7 @@
 void Particle::UpdateParticle()
 {
 	// •Ài‰^“®
-	m_position += m_velocity * g_SystemManagerPtr->GetDeltaTime();
+	m_position += m_velocity * g_systemManagerPtr->GetDeltaTime();
 
 	if (KeyO.pressed())
 	{

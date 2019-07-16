@@ -22,7 +22,7 @@ public:
 	void	SetPosition(const Vec2& position) { m_position = position; }
 	void	SetVelocity(const Vec2& velocity) { m_velocity = velocity; }
 	
-	void	AddForce(const Vec2& force) { m_velocity += force / m_mass * g_SystemManagerPtr->GetDeltaTime(); }
+	void	AddForce(const Vec2& force) { m_velocity += force / m_mass * g_systemManagerPtr->GetDeltaTime(); }
 	void	AddImpulse(const Vec2& force) { m_velocity += force / m_mass; }
 	
 	void	UpdateParticle();

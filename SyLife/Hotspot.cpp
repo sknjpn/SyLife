@@ -2,7 +2,7 @@
 
 void HotspotState::UpdateHotspot()
 {
-	m_timer -= g_SystemManagerPtr->GetDeltaTime();
+	m_timer -= g_systemManagerPtr->GetDeltaTime();
 
 	if (m_timer < 0.0)
 	{
