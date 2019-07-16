@@ -53,7 +53,7 @@ public:
 
 	void	Update(CellState& cell) override
 	{
-		m_timer += g_fieldManagerPtr->GetDeltaTime();
+		m_timer += g_SystemManagerPtr->GetDeltaTime();
 
 		auto model = dynamic_pointer_cast<SynthesizerModel>(GetPartConfig()->GetModel());
 		if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->GetMaterial().Num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))

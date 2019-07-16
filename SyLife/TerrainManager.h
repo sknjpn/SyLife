@@ -3,6 +3,7 @@
 class TerrainModel;
 class HotspotState;
 
+// 地形の保存と描画を行う。
 class TerrainManager
 {
 	shared_ptr<TerrainModel> m_terrainModel;

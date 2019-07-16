@@ -22,7 +22,7 @@ Vec2 WaveManager::GetWaveVelocity(const Vec2 & position) const
 
 void WaveManager::Update()
 {
-	m_timer += g_fieldManagerPtr->GetDeltaTime();
+	m_timer += g_SystemManagerPtr->GetDeltaTime();
 }
 
 void WaveManager::Draw() const

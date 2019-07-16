@@ -36,7 +36,7 @@ public:
 	}
 	void	Update(CellState& cell) override
 	{
-		m_heat -= g_fieldManagerPtr->GetDeltaTime();
+		m_heat -= g_SystemManagerPtr->GetDeltaTime();
 		if (m_heat < 0)
 		{
 			m_heat = 5.0;

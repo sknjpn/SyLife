@@ -2,7 +2,7 @@
 
 void EggState::UpdateEgg()
 {
-	m_timer -= g_fieldManagerPtr->GetDeltaTime();
+	m_timer -= g_SystemManagerPtr->GetDeltaTime();
 
 	// ›z‰»
 	if (m_timer < 0 && RandomBool(0.1))

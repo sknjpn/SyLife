@@ -21,7 +21,7 @@ void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition
 void Rigidbody::UpdateRigidbody()
 {
 	// ‰ñ“]‰^“®
-	m_rotation += m_angularVelocity * g_fieldManagerPtr->GetDeltaTime();
+	m_rotation += m_angularVelocity * g_SystemManagerPtr->GetDeltaTime();
 
 	// –€C’ïR
 	m_angularVelocity *= 0.95;

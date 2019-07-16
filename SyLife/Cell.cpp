@@ -103,8 +103,8 @@ void CellState::UpdateCell()
 	}
 
 	// Timer
-	m_deathTimer -= g_fieldManagerPtr->GetDeltaTime();
-	m_startTimer += g_fieldManagerPtr->GetDeltaTime();
+	m_deathTimer -= g_SystemManagerPtr->GetDeltaTime();
+	m_startTimer += g_SystemManagerPtr->GetDeltaTime();
 
 	// parts
 	for (const auto& p : m_partStates) p->Update(*this);
