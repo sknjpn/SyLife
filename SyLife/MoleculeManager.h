@@ -40,8 +40,8 @@ public:
 	const Array<shared_ptr<MoleculeState>>&	GetMoleculeStates() const { return m_moleculeStates; }
 	const KDTree<MoleculeStateAdapter>&		GetMoleculeStateKDTree() const { return m_moleculeStateKDTree; }
 
-	void	Update();
-	void	Draw();
+	void	UpdateMoleculeStates();
+	void	DrawMoleculeStates();
 };
 
 extern unique_ptr<MoleculeManager> g_moleculeManagerPtr;

@@ -25,8 +25,8 @@ public:
 	void	SetTerrainModel(const shared_ptr<TerrainModel>& model);
 	const shared_ptr<TerrainModel>&	GetTerrainModel() { return m_terrainModel; }
 
-	void	Update();
-	void	Draw();
+	void	UpdateTerrain();
+	void	DrawTerrain();
 };
 
 extern unique_ptr<TerrainManager>	g_terrainManagerPtr;

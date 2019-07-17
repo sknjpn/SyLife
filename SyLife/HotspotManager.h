@@ -1,5 +1,7 @@
 #pragma once
 
+class HotspotModel;
+class HotspotConfig;
 class HotspotState;
 
 struct HotspotStateAdapter
@@ -34,6 +36,11 @@ public:
 	const Array<shared_ptr<HotspotState>>& GetHotspotStates() const { return m_hotspotStates; }
 	const KDTree<HotspotStateAdapter>& GetHotspotStateKDTree() const { return m_hotspotStateKDTree; }
 
+	shared_ptr<HotspotState>&	MakeHotspotState(const shared_ptr<HotspotModel>& hotspotModel);
+	shared_ptr<HotspotState>&	MakeHotspotState(const shared_ptr<HotspotConfig>& hotspotConfig);
+	void	MakeHotspots();
+
+	void	Init();
 	void	UpdateHotspotStates();
 	void	DrawHotspotStates();
 };

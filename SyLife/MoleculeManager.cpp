@@ -20,7 +20,7 @@ const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_
 	return m;
 }
 
-void MoleculeManager::Update()
+void MoleculeManager::UpdateMoleculeStates()
 {
 	for (const auto& e : GetMoleculeStates())
 	{
@@ -35,7 +35,7 @@ void MoleculeManager::Update()
 	m_moleculeStateKDTree.rebuildIndex();
 }
 
-void MoleculeManager::Draw()
+void MoleculeManager::DrawMoleculeStates()
 {
 	for (const auto& e : GetMoleculeStates())
 		if (!e->IsDestroyed()) e->Draw();

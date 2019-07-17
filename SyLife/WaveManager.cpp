@@ -20,12 +20,12 @@ Vec2 WaveManager::GetWaveVelocity(const Vec2 & position) const
 	return (Vec2(x, y) - position * 0.0001) * 100.0;
 }
 
-void WaveManager::Update()
+void WaveManager::UpdateWave()
 {
 	m_timer += g_systemManagerPtr->GetDeltaTime();
 }
 
-void WaveManager::Draw() const
+void WaveManager::DrawWave() const
 {
 	static bool showWave = false;
 	if (KeyP.down()) showWave = !showWave;

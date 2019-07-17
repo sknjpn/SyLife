@@ -60,7 +60,11 @@ public:
 			// update
 			for (int i = 0; i < speed; ++i)
 			{
-				g_fieldManagerPtr->Update();
+				g_terrainManagerPtr->UpdateTerrain();
+				g_moleculeManagerPtr->UpdateMoleculeStates();
+				g_waveManagerPtr->UpdateWave();
+				g_cellManagerPtr->UpdateCellStates();
+				g_eggManagerPtr->UpdateEggStates();
 			}
 
 			// Rigidbody Capture
@@ -89,7 +93,11 @@ public:
 			}
 
 			// draw
-			g_fieldManagerPtr->Draw();
+			g_terrainManagerPtr->DrawTerrain();
+			g_waveManagerPtr->DrawWave();
+			g_eggManagerPtr->DrawEggStates();
+			g_moleculeManagerPtr->DrawMoleculeStates();
+			g_cellManagerPtr->DrawCellStates();
 
 			// delete
 			if (MouseR.pressed())

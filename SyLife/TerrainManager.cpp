@@ -51,109 +51,22 @@ void TerrainManager::MakeTexture(int textureSize)
 	//m_texture = Texture(image);
 }
 
-
-void TerrainManager::MakeHotspots(int numHotspots)
-{
-	m_hotspots.clear();
-
-	for (int i = 0; i < numHotspots;)
-	{
-		Vec2 p = RandomVec2(1.0, 1.0).movedBy(-0.5, -0.5) * m_terrainModel->m_size;
-
-		auto f = true;
-		for (const auto& hc : m_hotspots) if ((hc->m_hotspotConfig->m_position - p).length() < 100.0) f = false;
-
-		if (GetHeight(p) > 0.1 && f)
-		{
-			auto& h = m_hotspots.emplace_back(make_shared<HotspotState>());
-
-			h->m_hotspotConfig = g_assetManagerPtr->MakeModel<HotspotConfig>();
-			h->m_hotspotConfig->m_position = p;
-
-			++i;
-		}
-	}
-}
-
-Polygon g_hotspot;
-Array<pair<Vec2, Vec2>> lines;
-
 void TerrainManager::SetTerrainModel(const shared_ptr<TerrainModel>& model)
 {
 	m_terrainModel = model;
 	m_noise = PerlinNoise(m_terrainModel->m_noiseSeed);
 
 	MakeTexture(0x1000);
-	MakeHotspots(100);
-
-	lines.push_back({ Vec2::Zero(), Vec2::Right().rotated(Math::TwoPi * 0.0) });
-	lines.push_back({ Vec2::Zero(), Vec2::Right().rotated(Math::TwoPi * 0.2) });
-	lines.push_back({ Vec2::Zero(), Vec2::Right().rotated(Math::TwoPi * 0.4) });
-	lines.push_back({ Vec2::Zero(), Vec2::Right().rotated(Math::TwoPi * 0.6) });
-	lines.push_back({ Vec2::Zero(), Vec2::Right().rotated(Math::TwoPi * 0.8) });
-
-	g_hotspot.append(Circle(3).asPolygon());
-	for (int i = 0; i < Min(int(lines.size()), 50); ++i)
-	{
-		double b = Math::Lerp(3.0, 0.1, i / 50.0);
-		auto f = lines[i].first;
-		auto s = lines[i].second;
-
-		if (RandomBool(1.00)) lines.emplace_back(f + s * 15, s.rotated(Random(-1.0, 1.0)));
-		if (RandomBool(0.50)) lines.emplace_back(f + s * 15, s.rotated(Random(-1.0, 1.0)));
-
-		g_hotspot.append(Triangle(f - s * b - s.rotated(-Math::HalfPi) * b, f - s * b - s.rotated(Math::HalfPi) * b, f + s * 15.0).asPolygon());
-	}
+	// MakeHotspots(100);
 }
 
-void TerrainManager::Update()
+void TerrainManager::UpdateTerrain()
 {
-	/*
-	for (auto& h : m_hotspots)
-	{
-		if (RandomBool(0.03))
-		{
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), h->m_hotspotConfig->GetPosition());
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), h->m_hotspotConfig->GetPosition());
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), h->m_hotspotConfig->GetPosition());
-		}
-	}
-	*/
+
 }
 
-void TerrainManager::Draw()
+void TerrainManager::DrawTerrain()
 {
-	//m_texture.resized(m_terrainModel->m_size, m_terrainModel->m_size).drawAt(Vec2::Zero());
-
 	for (int i = 0; i <= 20; ++i)
 		m_polygons[i].draw(Math::Lerp(Color(11, 22, 33), Palette::Cyan, i / 20.0));
-
-	Stopwatch sw(true);
-	auto e = abs(sin(sw.sF() * 6.0)) * 0.8;
-	for (const auto& hc : m_hotspots)
-	{
-		auto t = Transformer2D(Mat3x2::Translate(hc->m_hotspotConfig->m_position));
-
-		for (int i = 0; i < Min(int(lines.size()), 50); ++i)
-		{
-			double b = Math::Lerp(3.0, 0.1, i / 50.0);
-			auto f = lines[i].first;
-			auto s = lines[i].second;
-			auto a = (1.0 - i / 50.0) * e;
-
-			Triangle(f - s * b - s.rotated(-Math::HalfPi) * b, f - s * b - s.rotated(Math::HalfPi) * b, f + s * 15.0)
-				//.drawFrame(1.0, ColorF(Palette::Black, (1.0 - i / 50.0)))
-				.draw(ColorF(Palette::Red, a));
-		}
-
-		Circle(10)
-			.drawFrame(2.0, ColorF(Palette::Black, 1.0))
-			.draw(ColorF(Palette::Red, e));
-
-		/*
-		g_hotspot
-			.drawFrame(1.0, Palette::Black)
-			.draw(ColorF(Palette::Red, sin(System::FrameCount() / 100.0)));
-			*/
-	}
 }
