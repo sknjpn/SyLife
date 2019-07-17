@@ -18,26 +18,6 @@ void FieldManager::Init()
 			g_moleculeManagerPtr->AddMoleculesRandom(g_assetManagerPtr->GetModel<MoleculeModel>(name), size);
 		}
 	}
-
-	//cells
-	/*
-	{
-		for (auto cells : pt.get_child("cells"))
-		{
-			string name = cells.second.get<string>("name");
-			int size = cells.second.get<int>("size");
-
-			for (int i = 0; i < size; i++)
-			{
-				const auto& c = g_cellManagerPtr->AddCellState(g_assetManagerPtr->GetModel<CellModel>(name));
-				c->SetPosition(Vec2(Random(m_size.x), Random(m_size.y)));
-				c->SetVelocity(Vec2::Zero());
-
-				c->Init();
-			}
-		}
-	}
-	*/
 }
 
 void FieldManager::Update()
