@@ -2,6 +2,7 @@
 
 #include "Viewer.h"
 
+// ある点での波の大きさの共有と更新
 class WaveManager
 {
 	PerlinNoise perlinNoiseX;

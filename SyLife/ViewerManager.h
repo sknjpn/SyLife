@@ -2,6 +2,7 @@
 
 class Viewer;
 
+// 表示を行うViewerの保存と更新
 class ViewerManager
 {
 public:
@@ -15,8 +16,14 @@ public:
 	template <typename T, typename... Args>
 	shared_ptr<T>	MakeViewer(Args&& ...args) { auto v = dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); v->Init(); return v; }
 
-	template <typename T>
-	shared_ptr<T>	GetViewer() const;
+	template<typename T>
+	shared_ptr<T> GetViewer() const
+	{
+		for (const auto& v : m_viewers)
+			if (dynamic_pointer_cast<T>(v) != nullptr) return dynamic_pointer_cast<T>(v);
+
+		return nullptr;
+	}
 
 	template <typename T>
 	bool	HasViewer() const { return GetViewer<T>() != nullptr; }
@@ -28,12 +35,3 @@ public:
 };
 
 extern unique_ptr<ViewerManager>	g_viewerManagerPtr;
-
-template<typename T>
-inline shared_ptr<T> ViewerManager::GetViewer() const
-{
-	for (const auto& v : m_viewers)
-		if (dynamic_pointer_cast<T>(v) != nullptr) return dynamic_pointer_cast<T>(v);
-
-	return nullptr;
-}

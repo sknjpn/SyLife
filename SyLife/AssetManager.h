@@ -2,6 +2,7 @@
 
 class Model;
 
+// ‚·‚×‚Ä‚ÌAsset‚Ì“‡ŠÇ—‚ğs‚¤
 class AssetManager
 {
 	Array<shared_ptr<Model>>	m_models;

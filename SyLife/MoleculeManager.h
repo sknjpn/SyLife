@@ -15,6 +15,7 @@ struct MoleculeStateAdapter
 	static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other);
 };
 
+// MoleculeState‚Ì•Û‘¶‚¨‚æ‚ÑXV‚ğs‚¤
 class MoleculeManager
 {
 	Array<shared_ptr<MoleculeState>>	m_moleculeStates;

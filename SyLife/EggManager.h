@@ -15,6 +15,7 @@ struct EggStateAdapter
 	static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other);
 };
 
+// EggState‚Ì•Û‘¶‚¨‚æ‚ÑXV‚ğs‚¤
 class EggManager
 {
 	Array<shared_ptr<EggState>>	m_eggStates;

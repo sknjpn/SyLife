@@ -15,6 +15,7 @@ struct CellStateAdapter
 	static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other);
 };
 
+// CellState‚Ì•Û‘¶‚¨‚æ‚ÑXV‚ğs‚¤
 class CellManager
 {
 	Array<shared_ptr<CellState>>	m_cellStates;
