@@ -18,17 +18,17 @@ class FieldViewer
 	: public Viewer
 {
 	Audio	m_audio;
-	Camera2D	m_cursorCamera2D;
+	Camera2D	m_camera;
 	shared_ptr<CellModel>	m_newModel;
 
 public:
 	FieldViewer()
 		: m_audio(U"assets/music/ÉVÉAÉì.mp3")
 	{
-		//m_cursorCamera2D.setRestrictedRect(RectF(-4000, -4000, 8000, 8000));
-		m_cursorCamera2D.setCenter(Vec2::Zero());
-		m_cursorCamera2D.setTargetCenter(Vec2::Zero());
-		//m_cursorCamera2D.setMinMagnification(0.01);
+		//m_camera.setRestrictedRect(RectF(-4000, -4000, 8000, 8000));
+		m_camera.setCenter(Vec2::Zero());
+		m_camera.setTargetCenter(Vec2::Zero());
+		//m_camera.setMinMagnification(0.01);
 
 		SetDrawRect(Scene::Size());
 		m_audio.setLoop(true);
@@ -49,8 +49,8 @@ public:
 	{
 		{
 			// camera
-			if (IsMouseOver()) m_cursorCamera2D.update();
-			auto t = m_cursorCamera2D.createTransformer();
+			if (IsMouseOver()) m_camera.update();
+			auto t = m_camera.createTransformer();
 
 			// speed
 			static int speed = 1;
