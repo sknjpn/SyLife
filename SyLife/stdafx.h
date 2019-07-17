@@ -5,7 +5,6 @@
 #include <Siv3D.hpp> // OpenSiv3D v0.3.1
 
 using namespace std;
-using namespace nanoflann;
 
 // manager
 #include "AssetManager.h"
