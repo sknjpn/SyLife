@@ -10,9 +10,6 @@ public:
 	const Camera2D&	GetCamera2D() const { return m_camera; }
 
 	void	Init();
-
-	void	Update();
-	void	Draw();
 };
 
 extern unique_ptr<FieldManager>	g_fieldManagerPtr;
