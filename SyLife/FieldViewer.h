@@ -18,7 +18,6 @@ class FieldViewer
 	: public Viewer
 {
 	Audio	m_audio;
-	Camera2D	m_camera;
 	shared_ptr<CellModel>	m_newModel;
 
 public:
@@ -60,12 +59,7 @@ public:
 			// update
 			for (int i = 0; i < speed; ++i)
 			{
-				g_terrainManagerPtr->Update();
-				g_moleculeManagerPtr->Update();
 				g_fieldManagerPtr->Update();
-				g_waveManagerPtr->Update();
-				g_cellManagerPtr->UpdateCellStates();
-				g_eggManagerPtr->Update();
 			}
 
 			// Rigidbody Capture
@@ -94,11 +88,7 @@ public:
 			}
 
 			// draw
-			g_terrainManagerPtr->Draw();
-			g_waveManagerPtr->Draw();
-			g_eggManagerPtr->Draw();
-			g_moleculeManagerPtr->Draw();
-			g_cellManagerPtr->DrawCellStates();
+			g_fieldManagerPtr->Draw();
 
 			// delete
 			if (MouseR.pressed())
