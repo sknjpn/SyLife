@@ -17,6 +17,7 @@ class ReleaseViewer;
 class FieldViewer
 	: public Viewer
 {
+	Camera2D	m_camera;
 	Audio	m_audio;
 	shared_ptr<CellModel>	m_newModel;
 
