@@ -2,6 +2,9 @@
 #include "Part.h"
 #include "Egg.h"
 
+#include <boost/math/constants/constants.hpp>
+using namespace boost::math::constants;
+
 void CellModel::Draw(double a)
 {
 	// parts
