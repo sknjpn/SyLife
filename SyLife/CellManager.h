@@ -30,10 +30,11 @@ public:
 
 	// Get
 	Array<shared_ptr<CellState>>&		GetCellStates() { return m_cellStates; }
-	const Array<shared_ptr<CellState>>&	GetCellStates() const { return m_cellStates; }
-	const KDTree<CellStateAdapter>& GetCellStateKDTree() const { return m_cellStateKDTree; }
+	const Array<shared_ptr<CellState>>& GetCellStates() const { return m_cellStates; }
+	KDTree<CellStateAdapter>&			GetCellStateKDTree() { return m_cellStateKDTree; }
+	const KDTree<CellStateAdapter>&		GetCellStateKDTree() const { return m_cellStateKDTree; }
 
-	const shared_ptr<CellState>&	AddCellState(const shared_ptr<CellModel>& model);
+	const shared_ptr<CellState>& AddCellState(const shared_ptr<CellModel>& model);
 
 	void	UpdateCellStates();
 	void	DrawCellStates();
