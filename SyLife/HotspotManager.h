@@ -34,6 +34,8 @@ public:
 	const Array<shared_ptr<HotspotState>>& GetHotspotStates() const { return m_hotspotStates; }
 	const KDTree<HotspotStateAdapter>& GetHotspotStateKDTree() const { return m_hotspotStateKDTree; }
 
+	void	UpdateHotspotStates();
+	void	DrawHotspotStates();
 };
 
 extern unique_ptr<HotspotManager> g_hotspotManagerPtr;
