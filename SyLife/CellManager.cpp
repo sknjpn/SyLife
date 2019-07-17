@@ -7,7 +7,7 @@ const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellMode
 	return m_cellStates.emplace_back(make_shared<CellState>(model));
 }
 
-void	CellManager::Update()
+void	CellManager::UpdateCellStates()
 {
 	for (const auto& c : m_cellStates)
 	{
@@ -23,7 +23,7 @@ void	CellManager::Update()
 	m_cellStateKDTree.rebuildIndex();
 }
 
-void	CellManager::Draw()
+void	CellManager::DrawCellStates()
 {
 	for (const auto& c : m_cellStates)
 		if (!c->IsDestroyed()) c->Draw();

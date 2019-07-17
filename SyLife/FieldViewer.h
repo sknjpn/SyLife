@@ -64,7 +64,7 @@ public:
 				g_moleculeManagerPtr->Update();
 				g_fieldManagerPtr->Update();
 				g_waveManagerPtr->Update();
-				g_cellManagerPtr->Update();
+				g_cellManagerPtr->UpdateCellStates();
 				g_eggManagerPtr->Update();
 			}
 
@@ -98,7 +98,7 @@ public:
 			g_waveManagerPtr->Draw();
 			g_eggManagerPtr->Draw();
 			g_moleculeManagerPtr->Draw();
-			g_cellManagerPtr->Draw();
+			g_cellManagerPtr->DrawCellStates();
 
 			// delete
 			if (MouseR.pressed())

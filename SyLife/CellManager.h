@@ -31,12 +31,12 @@ public:
 	// Get
 	Array<shared_ptr<CellState>>&		GetCellStates() { return m_cellStates; }
 	const Array<shared_ptr<CellState>>&	GetCellStates() const { return m_cellStates; }
-	const KDTree<CellStateAdapter>&		GetCellStateKDTree() const { return m_cellStateKDTree; }
+	const KDTree<CellStateAdapter>& GetCellStateKDTree() const { return m_cellStateKDTree; }
 
 	const shared_ptr<CellState>&	AddCellState(const shared_ptr<CellModel>& model);
 
-	void	Update();
-	void	Draw();
+	void	UpdateCellStates();
+	void	DrawCellStates();
 };
 
 extern unique_ptr<CellManager>	g_cellManagerPtr;
