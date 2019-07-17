@@ -11,7 +11,7 @@ const shared_ptr<EggState>& EggManager::AddEggState(const shared_ptr<CellModel>&
 	return e;
 }
 
-void EggManager::Update()
+void EggManager::UpdateEggStates()
 {
 	for (const auto& e : GetEggStates())
 	{
@@ -26,7 +26,7 @@ void EggManager::Update()
 	m_eggStateKDTree.rebuildIndex();
 }
 
-void EggManager::Draw()
+void EggManager::DrawEggStates()
 {
 	for (const auto& e : GetEggStates())
 		if (!e->IsDestroyed()) e->Draw();

@@ -35,8 +35,8 @@ public:
 
 	const shared_ptr<EggState>&	AddEggState(const shared_ptr<CellModel>& cellModel);
 
-	void	Update();
-	void	Draw();
+	void	UpdateEggStates();
+	void	DrawEggStates();
 };
 
 extern unique_ptr<EggManager> g_eggManagerPtr;
