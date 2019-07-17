@@ -25,10 +25,8 @@ public:
 	FieldViewer()
 		: m_audio(U"assets/music/ÉVÉAÉì.mp3")
 	{
-		//m_camera.setRestrictedRect(RectF(-4000, -4000, 8000, 8000));
 		m_camera.setCenter(Vec2::Zero());
 		m_camera.setTargetCenter(Vec2::Zero());
-		//m_camera.setMinMagnification(0.01);
 
 		SetDrawRect(Scene::Size());
 		m_audio.setLoop(true);
