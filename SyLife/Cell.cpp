@@ -10,8 +10,7 @@ void CellModel::Draw(double a)
 	// parts
 	for (const auto& pc : m_partConfigs)
 	{
-		auto t2 = Transformer2D(Mat3x2::Rotate(pc->GetRotation())
-			.translated(pc->GetPosition().x, pc->GetPosition().y));
+		auto t2 = Transformer2D(Mat3x2::Rotate(pc->GetRotation()).translated(pc->GetPosition()));
 
 		pc->GetModel()->Draw(a);
 	}
