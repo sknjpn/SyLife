@@ -70,21 +70,8 @@ public:
 			auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 10.0;
 			auto a = Min((1800.0 - b.m_timer) / 500.0, 1.0) * 0.1;
 
-			/*texture.resized(r* 0.3).drawAt(x + r * 0.15, y - r * 0.55, ColorF(Palette::Lightblue, a));
-			texture.resized(r* 0.3).drawAt(x + r * 0.55, y - r * 0.15, ColorF(Palette::Lightblue, a));
-			texture.resized(r* 0.3).drawAt(x + r * 0.40, y - r * 0.40, ColorF(Palette::Lightblue, a));*/
-			//texture.resized(r* 0.3).drawAt(x, y, ColorF(Palette::Lightblue, a));
 			texture.resized(r* 0.6).drawAt(x, y, ColorF(Palette::Lightblue, a));
 			texture.resized(r* 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
-			/*
-						Circle(x + r * 0.15, y - r * 0.55, r * 0.3).draw(ColorF(Palette::Lightblue, a));
-						Circle(x + r * 0.55, y - r * 0.15, r * 0.3).draw(ColorF(Palette::Lightblue, a));
-						Circle(x + r * 0.40, y - r * 0.40, r * 0.3).draw(ColorF(Palette::Lightblue, a));
-
-						Circle(x, y, r * 0.3).draw(ColorF(Palette::Lightblue, a));
-						Circle(x, y, r * 0.6).draw(ColorF(Palette::Lightblue, a));
-						Circle(x, y, r * 1.0).draw(ColorF(Palette::Lightblue, a));
-						*/
 		}
 	}
 
@@ -103,7 +90,7 @@ public:
 			static auto t = 1.0;
 			t += 1.0 / 60.0;
 
-			const auto a = 0.25;// Min(0.25, t * 0.01);
+			const auto a = 0.25;
 			const auto p = Vec2(Scene::Center()).movedBy(0.0, -Scene::Height() * 0.1);
 			const auto x = sin(t / 10.0 * 13) * 5.0;
 			const auto y = sin(t / 10.0 * 11) * 5.0;
