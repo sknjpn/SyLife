@@ -13,12 +13,24 @@ class TitleViewer
 	{
 	public:
 		Vec3	m_position;
-		double		m_timer = 0.0;
+		double	m_timer = 0.0;
+	};
+
+	enum Option
+	{
+		LaunchNewGame,
+		ContinueGame,
+		LaunchEditor,
+		Exit,
 	};
 
 	Array<Bubble>	m_bubbles;
-	Audio m_audio;
+	Audio	m_audio;
+	double	m_enterTimer = 0.0;
+	Option	m_selectedOption = Option::LaunchNewGame;
 
+	const double	m_openCurtainTime = 1.0;
+	const double	m_closeCurtainTime = 1.0;
 public:
 	TitleViewer()
 		: m_audio(U"assets/music/神秘の世界.mp3")
@@ -34,7 +46,7 @@ public:
 		{
 			auto& b = m_bubbles.emplace_back();
 
-			b.m_position = Vec3(120.0 * Random(-1.0, 1.0), -100.0, 150.0 + 120.0*Random(-1.0, 1.0));
+			b.m_position = Vec3(120.0 * Random(-1.0, 1.0), -100.0, 150.0 + 120.0 * Random(-1.0, 1.0));
 		}
 		static PerlinNoise noise1(Random(0xFFFFFFFF));
 		static PerlinNoise noise2(Random(0xFFFFFFFF));
@@ -54,7 +66,7 @@ public:
 	void	DrawBubbles()
 	{
 		static Texture texture(U"particle.png", TextureDesc::Mipped);
-		
+
 		ScopedRenderStates2D blend(BlendState::Additive);
 
 		static double t = 0.0;
@@ -70,8 +82,8 @@ public:
 			auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 10.0;
 			auto a = Min((1800.0 - b.m_timer) / 500.0, 1.0) * 0.1;
 
-			texture.resized(r* 0.6).drawAt(x, y, ColorF(Palette::Lightblue, a));
-			texture.resized(r* 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
+			texture.resized(r * 0.6).drawAt(x, y, ColorF(Palette::Lightblue, a));
+			texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
 		}
 	}
 
@@ -108,88 +120,163 @@ public:
 			DrawBubbles();
 		}
 
-		// message
+		// オプション選択
 		{
-			static Font messageFont(48, Typeface::Bold);
-			static auto t = -5.0;
-			t += 1.0 / 60.0;
-
-			const auto a = 0.4;// Clamp(t * 0.1, 0.0, 0.4);
-
+			// draw
 			{
-				auto f1 = messageFont(U"SyLife");
-				auto r1 = f1.region().setCenter(0, 0);
+				static const Font messageFont(32, Typeface::Bold);
 
+				// New Game
 				{
-					auto t2 = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, -48), true);
-					r1.draw(r1.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-					f1.drawAt(Vec2::Zero(), ColorF(1.0, a * (0.5 + 0.5 * abs(sin(t)))));
+					auto f = messageFont(U"New Game");
+					auto r = f.region().setCenter(0, 0);
+					auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, -96), true);
+
+					r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
+					f.drawAt(Vec2::Zero(), m_selectedOption == Option::LaunchNewGame ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
+
+					if (r.leftClicked())
+					{
+						SelectOption(Option::LaunchNewGame);
+						LockEnter();
+					}
 				}
 
-				// scene遷移
+				// Continue
 				{
-					auto t2 = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, -48));
+					auto f = messageFont(U"Continue");
+					auto r = f.region().setCenter(0, 0);
+					auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, -32), true);
 
-					static bool f = false;
+					r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
+					f.drawAt(Vec2::Zero(), m_selectedOption == Option::ContinueGame ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
 
-					if (r1.leftClicked()) f = true;
-
-					if (f)
+					if (r.leftClicked())
 					{
-						static Curtain closeCurtain(Color(11, 22, 33), 1.0);
-						closeCurtain.CloseUpdate();
-						m_audio.setVolume(Max(1.0 - closeCurtain.m_st.sF() / closeCurtain.m_duration, 0.0));
+						SelectOption(Option::ContinueGame);
+						LockEnter();
+					}
+				}
 
-						if (closeCurtain.m_st.sF() > 1.0)
-						{
-							g_viewerManagerPtr->ClearViewers();
-							g_viewerManagerPtr->MakeViewer<FieldViewer>();
+				// Editor
+				{
+					auto f = messageFont(U"Editor");
+					auto r = f.region().setCenter(0, 0);
+					auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, 32), true);
 
-							return;
-						}
+					r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
+					f.drawAt(Vec2::Zero(), m_selectedOption == Option::LaunchEditor ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
+
+					if (r.leftClicked())
+					{
+						SelectOption(Option::LaunchEditor);
+						LockEnter();
+					}
+				}
+
+				// Exit
+				{
+					auto f = messageFont(U"Exit");
+					auto r = f.region().setCenter(0, 0);
+					auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, 96), true);
+
+					r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
+					f.drawAt(Vec2::Zero(), m_selectedOption == Option::Exit ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
+
+					if (r.leftClicked())
+					{
+						SelectOption(Option::Exit);
+						LockEnter();
 					}
 				}
 			}
 
+			if (!IsEnterLocked())
 			{
-				auto f2 = messageFont(U"Editor");
-				auto r2 = f2.region().setCenter(0, 0);
-
+				// 下に遷移
+				if (KeyS.down() || KeyDown.down())
 				{
-					auto t2 = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, 48), true);
-					r2.draw(r2.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-					f2.drawAt(Vec2::Zero(), ColorF(1.0, a * (0.5 + 0.5 * abs(sin(t)))));
+					switch (m_selectedOption)
+					{
+					case Option::LaunchNewGame:	m_selectedOption = Option::ContinueGame; break;
+					case Option::ContinueGame:	m_selectedOption = Option::LaunchEditor; break;
+					case Option::LaunchEditor:	m_selectedOption = Option::Exit; break;
+					case Option::Exit:			break;
+					}
 				}
 
-				// scene遷移
+				// 上に遷移
+				if (KeyW.down() || KeyUp.down())
 				{
-					auto t2 = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, 48));
-
-					static bool f = false;
-
-					if (r2.leftClicked()) f = true;
-
-					if (f)
+					switch (m_selectedOption)
 					{
-						static Curtain closeCurtain(Color(11, 22, 33), 1.0);
-						closeCurtain.CloseUpdate();
-						m_audio.setVolume(Max(1.0 - closeCurtain.m_st.sF() / closeCurtain.m_duration, 0.0));
-
-						if (closeCurtain.m_st.sF() > 1.0)
-						{
-							g_viewerManagerPtr->ClearViewers();
-							g_viewerManagerPtr->MakeViewer<EditorViewer>();
-
-							return;
-						}
+					case Option::LaunchNewGame:	break;
+					case Option::ContinueGame:	m_selectedOption = Option::LaunchNewGame; break;
+					case Option::LaunchEditor:	m_selectedOption = Option::ContinueGame; break;
+					case Option::Exit:			m_selectedOption = Option::LaunchEditor; break;
 					}
+				}
+
+				// セレクト
+				if (KeyEnter.down()) LockEnter();
+			}
+			else if ((m_enterTimer -= 1 / 60.0) <= 0.0)
+			{
+				switch (m_selectedOption)
+				{
+				case Option::LaunchNewGame:	Enter_LaunchNewGame(); break;
+				case Option::ContinueGame:	Enter_ContinueGame(); break;
+				case Option::LaunchEditor:	Enter_LaunchEditor(); break;
+				case Option::Exit:		 	Enter_Exit(); break;
 				}
 			}
 		}
 
-		static Curtain curtain(Color(11, 22, 33), 1.0);
-		curtain.OpenUpdate();
-		m_audio.setVolume(Min(curtain.m_st.sF() / curtain.m_duration, 1.0));
+		// CloseCurtain
+		if (IsEnterLocked())
+		{
+			static Curtain closeCurtain(Color(11, 22, 33), m_closeCurtainTime);
+			closeCurtain.CloseUpdate();
+			m_audio.setVolume(Max(m_closeCurtainTime - closeCurtain.m_st.sF() / m_closeCurtainTime, 0.0));
+		}
+
+		// OpenCurtain
+		{
+			static Curtain curtain(Color(11, 22, 33), m_openCurtainTime);
+			curtain.OpenUpdate();
+			m_audio.setVolume(Min(curtain.m_st.sF() / m_openCurtainTime, 1.0));
+		}
+	}
+
+	bool	IsEnterLocked() { return m_enterTimer > 0.0; }
+	void	LockEnter() { m_enterTimer = m_closeCurtainTime; }
+	void	SelectOption(Option option)
+	{
+		m_selectedOption = option;
+	}
+
+	void	Enter_LaunchNewGame()
+	{
+		g_viewerManagerPtr->ClearViewers();
+		g_viewerManagerPtr->MakeViewer<FieldViewer>();
+	}
+
+	void	Enter_ContinueGame()
+	{
+		g_viewerManagerPtr->ClearViewers();
+		g_viewerManagerPtr->MakeViewer<FieldViewer>();
+	}
+
+	void	Enter_LaunchEditor()
+	{
+		g_viewerManagerPtr->ClearViewers();
+		g_viewerManagerPtr->MakeViewer<EditorViewer>();
+	}
+
+	void	Enter_Exit()
+	{
+		// システムの終了
+		System::Exit();
 	}
 };
 
