@@ -28,12 +28,16 @@ class TitleViewer
 	Audio	m_audio;
 	double	m_enterTimer = 0.0;
 	Option	m_selectedOption = Option::LaunchNewGame;
-
+	Curtain m_closeCurtain;
+	Curtain m_openCurtain;
 	const double	m_openCurtainTime = 1.0;
 	const double	m_closeCurtainTime = 1.0;
+
 public:
 	TitleViewer()
 		: m_audio(U"assets/music/ê_îÈÇÃê¢äE.mp3")
+		, m_closeCurtain(Color(11, 22, 33), m_closeCurtainTime)
+		, m_openCurtain(Color(11, 22, 33), m_openCurtainTime)
 	{
 		SetDrawRect(Scene::Size());
 		m_audio.setLoop(true);
@@ -235,16 +239,14 @@ public:
 		// CloseCurtain
 		if (IsEnterLocked())
 		{
-			static Curtain closeCurtain(Color(11, 22, 33), m_closeCurtainTime);
-			closeCurtain.CloseUpdate();
-			m_audio.setVolume(Max(m_closeCurtainTime - closeCurtain.m_st.sF() / m_closeCurtainTime, 0.0));
+			m_closeCurtain.CloseUpdate();
+			m_audio.setVolume(Max(m_closeCurtainTime - m_closeCurtain.m_st.sF() / m_closeCurtainTime, 0.0));
 		}
 
 		// OpenCurtain
 		{
-			static Curtain curtain(Color(11, 22, 33), m_openCurtainTime);
-			curtain.OpenUpdate();
-			m_audio.setVolume(Min(curtain.m_st.sF() / m_openCurtainTime, 1.0));
+			m_openCurtain.OpenUpdate();
+			m_audio.setVolume(Min(m_openCurtain.m_st.sF() / m_openCurtainTime, 1.0));
 		}
 	}
 
