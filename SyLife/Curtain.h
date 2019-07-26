@@ -2,29 +2,40 @@
 
 class Curtain
 {
-public:
 	Stopwatch	m_st;
-	Color		m_color;
-	double			m_duration;
+	Color		m_beginColor;
+	Color		m_endColor;
+	double		m_duration;
 
 public:
-	Curtain(Color color, double duration)
-		: m_color(color)
+	Curtain(Color beginColor, Color endColor, double duration, bool start = false)
+		: m_beginColor(beginColor)
+		, m_endColor(endColor)
 		, m_duration(duration)
-		, m_st(true)
+		, m_st(start)
 	{}
 
-	void	OpenUpdate()
-	{
-		const auto a = Max(1.0 - m_st.sF() / m_duration, 0.0);
+	// Get
+	double	GetSecond() const { return m_st.sF(); }
+	double	GetDuration() const { return m_duration; }
+	
+	void	Start() { m_st.start(); }
 
-		Scene::Rect().draw(ColorF(m_color, a));
-	}
-	void	CloseUpdate()
+	// true : is end
+	bool	Update()
 	{
-		const auto a = Min(m_st.sF() / m_duration, 1.0);
+		const ColorF color = Math::Lerp(m_beginColor, m_endColor, Min(m_st.sF() / m_duration, 1.0));
 
-		Scene::Rect().draw(ColorF(m_color, a));
+		Scene::Rect().draw(color);
+
+		if (m_st.sF() > m_duration)
+		{
+			m_st.reset();
+
+			return true;
+		}
+
+		return false;
 	}
 };
 

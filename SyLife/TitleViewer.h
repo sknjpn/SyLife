@@ -30,8 +30,8 @@ class TitleViewer
 	Option	m_selectedOption = Option::LaunchNewGame;
 	Curtain m_closeCurtain;
 	Curtain m_openCurtain;
-	const double	m_openCurtainTime = 1.0;
-	const double	m_closeCurtainTime = 1.0;
+	const double	m_openCurtainTime = 5.0;
+	const double	m_closeCurtainTime = 5.0;
 
 public:
 	TitleViewer()
@@ -128,7 +128,7 @@ public:
 		{
 			// draw
 			{
-				static const Font messageFont(32, Typeface::Bold);
+				static const Font messageFont(48, Typeface::Bold);
 
 				// New Game
 				{
@@ -224,7 +224,22 @@ public:
 				// ÉZÉåÉNÉg
 				if (KeyEnter.down()) LockEnter();
 			}
-			else if ((m_enterTimer -= 1 / 60.0) <= 0.0)
+		}
+
+		// OpenCurtain
+		{
+			m_openCurtain.OpenUpdate();
+			m_audio.setVolume(Min(m_openCurtain.m_st.sF() / m_openCurtainTime, 1.0));
+		}
+
+		// CloseCurtain
+		if (IsEnterLocked())
+		{
+			m_closeCurtain.CloseUpdate();
+			m_audio.setVolume(Max(m_closeCurtainTime - m_closeCurtain.m_st.sF() / m_closeCurtainTime, 0.0));
+
+			m_enterTimer -= 1 / 60.0;
+			if (m_enterTimer <= 0.0)
 			{
 				switch (m_selectedOption)
 				{
@@ -234,19 +249,6 @@ public:
 				case Option::Exit:		 	Enter_Exit(); break;
 				}
 			}
-		}
-
-		// CloseCurtain
-		if (IsEnterLocked())
-		{
-			m_closeCurtain.CloseUpdate();
-			m_audio.setVolume(Max(m_closeCurtainTime - m_closeCurtain.m_st.sF() / m_closeCurtainTime, 0.0));
-		}
-
-		// OpenCurtain
-		{
-			m_openCurtain.OpenUpdate();
-			m_audio.setVolume(Min(m_openCurtain.m_st.sF() / m_openCurtainTime, 1.0));
 		}
 	}
 
