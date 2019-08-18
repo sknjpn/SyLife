@@ -238,8 +238,8 @@ public:
 		// CloseCurtain
 		if (IsEnterLocked())
 		{
-			if(m_closeCurtain.Update();
-			m_audio.setVolume(Max(m_closeCurtainTime - m_closeCurtain.m_st.sF() / m_closeCurtainTime, 0.0));
+			m_closeCurtain.Update();
+			m_audio.setVolume(m_closeCurtain.GetProgress());
 
 			m_enterTimer -= 1 / 60.0;
 			if (m_enterTimer <= 0.0)
