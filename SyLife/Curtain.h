@@ -16,9 +16,11 @@ public:
 	{}
 
 	// Get
+	bool	IsRunning() const { return m_st.isRunning(); }
 	double	GetSecond() const { return m_st.sF(); }
 	double	GetDuration() const { return m_duration; }
-	
+	double	GetProgress() const { return Min(m_st.sF() / m_duration, 1.0); }
+
 	void	Start() { m_st.start(); }
 
 	// true : is end
