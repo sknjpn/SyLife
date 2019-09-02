@@ -56,7 +56,7 @@ void TerrainManager::SetTerrainModel(const shared_ptr<TerrainModel>& model)
 	m_terrainModel = model;
 	m_noise = PerlinNoise(m_terrainModel->m_noiseSeed);
 
-	MakeTexture(0x1000);
+	// MakeTexture(0x1000);
 	// MakeHotspots(100);
 }
 
