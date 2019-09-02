@@ -23,12 +23,10 @@ class FieldViewer
 	
 	shared_ptr<CellModel>	m_newModel;
 
-	const double	m_openCurtainTime = 5.0;
-
 public:
 	FieldViewer()
 		: m_audio(U"assets/music/ÉVÉAÉì.mp3")
-		, m_openCurtain(Color(11, 22, 33), Color(0, 0), m_openCurtainTime, true)
+		, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 	{
 		m_camera.setCenter(Vec2::Zero());
 		m_camera.setTargetCenter(Vec2::Zero());
