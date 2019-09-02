@@ -257,6 +257,7 @@
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="TerrainManager.h" />
+    <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="ViewerManager.h" />
