@@ -25,21 +25,17 @@ class TitleViewer
 	};
 
 	Audio	m_audio;
-	double	m_enterTimer = 0.0;
 	Option	m_selectedOption = Option::LaunchNewGame;
 	Curtain m_closeCurtain;
 	Curtain m_openCurtain;
 
 	Array<Bubble>	m_bubbles;
 
-	const double	m_openCurtainTime = 5.0;
-	const double	m_closeCurtainTime = 5.0;
-
 public:
 	TitleViewer()
 		: m_audio(U"assets/music/ê_îÈÇÃê¢äE.mp3")
-		, m_closeCurtain(Color(0, 0), Color(11, 22, 33), m_closeCurtainTime)
-		, m_openCurtain(Color(11, 22, 33), Color(0, 0), m_openCurtainTime, true)
+		, m_closeCurtain(Color(0, 0), Color(11, 22, 33), 0.5)
+		, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 	{
 		SetDrawRect(Scene::Size());
 		m_audio.setLoop(true);
@@ -238,11 +234,7 @@ public:
 		// CloseCurtain
 		if (IsEnterLocked())
 		{
-			m_closeCurtain.Update();
-			m_audio.setVolume(m_closeCurtain.GetProgress());
-
-			m_enterTimer -= 1 / 60.0;
-			if (m_enterTimer <= 0.0)
+			if (m_closeCurtain.Update())
 			{
 				switch (m_selectedOption)
 				{
@@ -252,11 +244,13 @@ public:
 				case Option::Exit:		 	Enter_Exit(); break;
 				}
 			}
+
+			m_audio.setVolume(m_closeCurtain.GetProgress());
 		}
 	}
 
-	bool	IsEnterLocked() { return m_enterTimer > 0.0; }
-	void	LockEnter() { m_enterTimer = m_closeCurtainTime; }
+	bool	IsEnterLocked() { return m_closeCurtain.IsRunning(); }
+	void	LockEnter() { m_closeCurtain.Start(); }
 	void	SelectOption(Option option)
 	{
 		m_selectedOption = option;
