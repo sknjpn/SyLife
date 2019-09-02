@@ -236,12 +236,14 @@ public:
 		{
 			if (m_closeCurtain.Update())
 			{
+				// 自身のインスタンスが削除されるので、returnで処理を飛ばす必要がある。
+
 				switch (m_selectedOption)
 				{
-				case Option::LaunchNewGame:	Enter_LaunchNewGame(); break;
-				case Option::ContinueGame:	Enter_ContinueGame(); break;
-				case Option::LaunchEditor:	Enter_LaunchEditor(); break;
-				case Option::Exit:		 	Enter_Exit(); break;
+				case Option::LaunchNewGame:	Enter_LaunchNewGame(); return;
+				case Option::ContinueGame:	Enter_ContinueGame(); return;
+				case Option::LaunchEditor:	Enter_LaunchEditor(); return;
+				case Option::Exit:		 	Enter_Exit(); return;
 				}
 			}
 
