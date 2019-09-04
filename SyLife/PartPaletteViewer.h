@@ -8,6 +8,8 @@ class PartModel;
 class PartPaletteViewer
 	: public ModelViewer
 {
+	double	m_bar = 0.0;
+
 public:
 	shared_ptr<PartModel>	m_selectedPart;
 
@@ -52,6 +54,8 @@ public:
 
 			MoveDrawPos(0, 64);
 		}
+
+		MoveDrawPos(0, 16);
 	}
 
 	void	Update() override;
