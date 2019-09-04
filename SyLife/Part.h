@@ -23,13 +23,21 @@ public:
 public:
 	// Get
 	double	GetMass() const { return m_mass; }
-	const Storage&	GetMaterial() const { return m_material; }
-	const Array<ShapeModel>&	GetShapes() const { return m_shapes; }
+	const Storage& GetMaterial() const { return m_material; }
+	const Array<ShapeModel>& GetShapes() const { return m_shapes; }
 
 	void MakeViewer() override;
 	virtual shared_ptr<PartState>	MakeState();
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
+
+	RectF	GetApproximateRect() const
+	{
+		const Vec2 tl = GetApproximateRectTopLeft();
+		const Vec2 br = GetApproximateRectBottomDown();
+
+		return RectF(tl, br - tl);
+	}
 
 	Vec2	GetApproximateRectTopLeft() const
 	{
@@ -132,8 +140,8 @@ class PartConfig
 
 public:
 	// Get
-	const shared_ptr<PartModel>&	GetModel() const { return m_partModel; }
-	const Vec2&	GetPosition() const { return m_position; }
+	const shared_ptr<PartModel>& GetModel() const { return m_partModel; }
+	const Vec2& GetPosition() const { return m_position; }
 	double	GetRotation() const { return m_rotation; }
 
 	// Set
@@ -190,7 +198,7 @@ public:
 	virtual ~PartState() {}
 
 	// Get
-	const shared_ptr<PartConfig>&	GetPartConfig() const { return m_partConfig; }
+	const shared_ptr<PartConfig>& GetPartConfig() const { return m_partConfig; }
 
 	// Set
 	void	SetPartConfig(const shared_ptr<PartConfig>& partConfig) { m_partConfig = partConfig; }
