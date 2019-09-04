@@ -8,6 +8,7 @@
 #include "PartPaletteViewer.h"
 #include "CellStateViewer.h"
 #include "Egg.h"
+#include "TinyCamera.h"
 
 class CellModel;
 class PartPaletteViewer;
@@ -17,7 +18,7 @@ class ReleaseViewer;
 class FieldViewer
 	: public Viewer
 {
-	Camera2D	m_camera;
+	TinyCamera	m_camera;
 	Audio		m_audio;
 	Curtain		m_openCurtain;
 	
@@ -28,6 +29,9 @@ public:
 		: m_audio(U"assets/music/ÉVÉAÉì.mp3")
 		, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 	{
+		m_camera.setRestrictedRect(RectF(4096, 4096).setCenter(Vec2::Zero()));
+		m_camera.setMaxScale(4);
+		m_camera.setMinScale(0.5);
 		m_camera.setCenter(Vec2::Zero());
 		m_camera.setTargetCenter(Vec2::Zero());
 
