@@ -4,7 +4,7 @@
 
 unique_ptr<TerrainManager>	g_terrainManagerPtr;
 
-double TerrainManager::GetHeight(const Vec2 & position) const
+double TerrainManager::GetHeight(const Vec2& position) const
 {
 	auto n = abs(m_noise.octaveNoise(position / m_terrainModel->m_size * m_terrainModel->m_density, 7));
 	auto m = EaseInOut(Easing::Sine, 0.0, 1.0, n);
@@ -56,7 +56,7 @@ void TerrainManager::SetTerrainModel(const shared_ptr<TerrainModel>& model)
 	m_terrainModel = model;
 	m_noise = PerlinNoise(m_terrainModel->m_noiseSeed);
 
-	MakeTexture(0x1000);
+	// MakeTexture(0x1000);
 	// MakeHotspots(100);
 }
 
@@ -67,6 +67,8 @@ void TerrainManager::UpdateTerrain()
 
 void TerrainManager::DrawTerrain()
 {
+	if (m_polygons.empty()) return;
+
 	for (int i = 0; i <= 20; ++i)
 		m_polygons[i].draw(Math::Lerp(Color(11, 22, 33), Palette::Cyan, i / 20.0));
 }

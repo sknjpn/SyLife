@@ -67,7 +67,7 @@ public:
 
 	void	DrawBubbles()
 	{
-		static Texture texture(U"particle.png", TextureDesc::Mipped);
+		static Texture texture(U"assets/image/particle.png", TextureDesc::Mipped);
 
 		ScopedRenderStates2D blend(BlendState::Additive);
 
@@ -282,4 +282,3 @@ public:
 		System::Exit();
 	}
 };
-

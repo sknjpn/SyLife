@@ -18,7 +18,7 @@ void MoleculeState::UpdateMolecule()
 
 void MoleculeState::Draw()
 {
-	static Texture particle(U"particle.png", TextureDesc::Mipped);
+	static Texture particle(U"assets/image/particle.png", TextureDesc::Mipped);
 
 	particle.resized(m_model->GetRadius() * 2.0, m_model->GetRadius() * 2.0).drawAt(GetPosition(), m_model->GetColor());
 	/*
