@@ -40,9 +40,13 @@ public:
 				if (f.region().leftClicked()) m_selectedPart = *it;
 
 				// ƒp[ƒc•`‰æ
-				for (const ShapeModel& s : (*it)->GetShapes())
 				{
-					s.Draw(0.5);
+					RectF rect = (*it)->GetApproximateRect();
+					auto scale = Min(56 / rect.w, 56 / rect.h);
+					auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(28, 28)));
+
+					for (const ShapeModel& s : (*it)->GetShapes())
+						s.Draw(0.5);
 				}
 			}
 			MoveDrawPos(-4, -4);
