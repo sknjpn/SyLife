@@ -29,15 +29,14 @@ public:
 		const auto& models = g_assetManagerPtr->GetModels<T>();
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
-			Rect(64, 64).stretched(-2).draw(ColorF(1.0, 0.25)).drawFrame(1.0, Palette::White);
+			const auto block = Rect(64, 64).stretched(-2);
+			block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+			if (block.leftClicked()) m_selectedPart = *it;
 
 			MoveDrawPos(4, 4);
 			{
-				auto f = font10(Unicode::Widen((*it)->GetName()));
-				f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
-				f.draw();
+				font10(Unicode::Widen((*it)->GetName())).draw();
 
-				if (f.region().leftClicked()) m_selectedPart = *it;
 
 				// ƒp[ƒc•`‰æ
 				{
