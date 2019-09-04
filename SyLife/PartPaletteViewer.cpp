@@ -27,7 +27,12 @@ void	PartPaletteViewer::Update()
 		if (barPressed)
 		{
 			barDelta += Cursor::DeltaF().y;
+
 			m_bar = Clamp<double>((barPosition + barDelta) / double(400 - 48), 0.0, 1.0);
+		}
+		else if (IsMouseOver())
+		{
+			m_bar = Clamp<double>(m_bar + Mouse::Wheel() * 0.05, 0.0, 1.0);
 		}
 
 		r.draw(ColorF(1.0, r.mouseOver() ? 0.5 : 0.25));
