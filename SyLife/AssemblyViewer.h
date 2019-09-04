@@ -5,6 +5,7 @@
 #include "Part.h"
 #include "AssemblyViewer.h"
 #include "ModelViewer.h"
+#include "TinyCamera.h"
 #include "PartPaletteViewer.h"
 
 #include "Body.h"
@@ -15,31 +16,35 @@ class AssemblyViewer
 	: public ModelViewer
 {
 public:
-	Camera2D	m_camera;
+	TinyCamera	m_camera;
 
 	double	m_mass;
 	double	m_inertia;
 	double	m_radius;
+	double	m_width = 300;
+	double	m_height = 300;
 
 public:
 	AssemblyViewer()
 	{
 		SetDrawRect(Scene::Width() - 400, 20, 300, 300);
-
-		m_camera.setTargetCenter(Scene::Size() / 2 - GetDrawRect().size / 2);
-		m_camera.setCenter(Scene::Size() / 2 - GetDrawRect().size / 2);
+		m_camera.setScreen(Rect(300, 300));
+		m_camera.setRestrictedRect(RectF(m_width, m_height).setCenter(Vec2::Zero()));
+		m_camera.setCenter(Vec2::Zero());
+		m_camera.setTargetCenter(Vec2::Zero());
+		m_camera.setMaxScale(4.0);
 	}
 
 	void	Init() override
 	{
-		m_camera.setCenter(GetDrawRect().center());
+
 	}
 
 	void	Update() override
 	{
 		//Rect(GetDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
-		if (IsMouseOver()) m_camera.update();
+		m_camera.update();
 
 		const auto t1 = m_camera.createTransformer();
 		const int scale = (int)log10(m_camera.getScale());
@@ -53,23 +58,17 @@ public:
 		{
 			const auto color = ColorF(Palette::White, 0.25);
 
-			for (double x = 0; x >= m_camera.getRegion().x; x -= interval)
-				Line(x, m_camera.getRegion().y, x, m_camera.getRegion().br().y).draw(thickness, color);
+			for (double x = -m_width / 2.0; x >= m_width / 2.0; x -= interval)
+				Line(x, -m_height / 2.0, x, m_height / 2.0).draw(thickness, color);
 
-			for (double x = 0; x <= m_camera.getRegion().br().x; x += interval)
-				Line(x, m_camera.getRegion().y, x, m_camera.getRegion().br().y).draw(thickness, color);
-
-			for (double y = 0; y >= m_camera.getRegion().y; y -= interval)
-				Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
-
-			for (double y = 0; y <= m_camera.getRegion().br().y; y += interval)
-				Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
+			for (double y = -m_height / 2.0; y >= m_height / 2.0; y -= interval)
+				Line(-m_width / 2.0, y, m_width / 2.0, y).draw(thickness, color);
 		}
 
 		// XYŽ²
 		{
-			Line(m_camera.getRegion().x, 0, m_camera.getRegion().br().x, 0).draw(thickness, Palette::Red);
-			Line(0, m_camera.getRegion().y, 0, m_camera.getRegion().br().y).draw(thickness, Palette::Red);
+			Line(-m_width / 2.0, 0, m_width / 2.0, 0).draw(thickness, Palette::Red);
+			Line(0, -m_height / 2.0, 0, m_height / 2.0).draw(thickness, Palette::Red);
 		}
 
 		// disk
