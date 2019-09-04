@@ -88,8 +88,15 @@ public:
 		{
 			if (IsMouseOver())
 			{
-				for (const auto& s : g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart->GetShapes())
-					s.m_polygon.drawTransformed(0.0, 1.0, Cursor::Pos(), ColorF(s.m_color, 0.5));
+				{
+					auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
+
+					for (const auto& s : g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart->GetShapes())
+					{
+						s.Draw(0.5);
+						s.GetPolygon().drawFrame(2.0, Palette::White);
+					}
+				}
 
 				if (MouseL.up())
 				{
