@@ -58,10 +58,10 @@ public:
 		{
 			const auto color = ColorF(Palette::White, 0.25);
 
-			for (double x = -m_width / 2.0; x >= m_width / 2.0; x -= interval)
+			for (double x = -m_width / 2.0; x <= m_width / 2.0; x += interval)
 				Line(x, -m_height / 2.0, x, m_height / 2.0).draw(thickness, color);
 
-			for (double y = -m_height / 2.0; y >= m_height / 2.0; y -= interval)
+			for (double y = -m_height / 2.0; y <= m_height / 2.0; y += interval)
 				Line(-m_width / 2.0, y, m_width / 2.0, y).draw(thickness, color);
 		}
 
@@ -69,11 +69,6 @@ public:
 		{
 			Line(-m_width / 2.0, 0, m_width / 2.0, 0).draw(thickness, Palette::Red);
 			Line(0, -m_height / 2.0, 0, m_height / 2.0).draw(thickness, Palette::Red);
-		}
-
-		// disk
-		{
-			Circle(m_radius).draw(ColorF(Palette::Green, 0.5)).drawFrame(2.0, Palette::Black);
 		}
 
 		// part
