@@ -16,5 +16,10 @@ public:
 	{
 		g_viewerManagerPtr->MakeViewer<AssetViewer>();
 	}
+
+	void	update()
+	{
+
+	}
 };
 
