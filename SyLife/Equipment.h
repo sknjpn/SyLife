@@ -13,7 +13,7 @@ public:
 	void	Load(const ptree& pt) override { Load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
-		return PartModel::Save_this(pt);
+		PartModel::Save_this(pt);
 
 		// type
 		pt.put("type", "EquipmentModel");
