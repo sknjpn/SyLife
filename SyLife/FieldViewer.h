@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Viewer.h"
 #include "FieldViewer.h"
@@ -26,7 +26,7 @@ class FieldViewer
 
 public:
 	FieldViewer()
-		: m_audio(U"assets/music/ƒVƒAƒ“.mp3")
+		: m_audio(U"assets/music/ã‚·ã‚¢ãƒ³.mp3")
 		, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 	{
 		m_camera.setRestrictedRect(RectF(4096, 4096).setCenter(Vec2::Zero()));
@@ -42,7 +42,7 @@ public:
 
 	void	Init() override
 	{
-		// •t‘®Viewer‚Ì‰Šú‰»
+		// ä»˜å±žViewerã®åˆæœŸåŒ–
 		m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
 		g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(m_newModel);
 		g_viewerManagerPtr->MakeViewer<AssemblyViewer>()->SetModel(m_newModel);
@@ -121,16 +121,16 @@ public:
 					{
 						e->Destroy();
 
-						// MoleculeState‚Ì“f‚«o‚µ
+						// MoleculeStateã®åãå‡ºã—
 						auto s = e->GetCellModel()->GetMaterial();
 						for (const auto& m : s.GetMolecules())
 						{
 							for (unsigned int i = 0; i < m.second; i++)
 							{
-								// “f‚«o‚·•ûŒü
+								// åãå‡ºã™æ–¹å‘
 								auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
-								// “f‚«o‚³‚ê‚½MoleculeState
+								// åãå‡ºã•ã‚ŒãŸMoleculeState
 								const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
 								ms->SetPosition(e->GetPosition() + v * (e->GetRadius() + m.first->GetRadius()) * Random(1.0));
 								ms->SetVelocity(v * 0.1);

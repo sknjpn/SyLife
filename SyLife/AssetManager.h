@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 class Model;
 
-// ‚·‚×‚Ä‚ÌAsset‚Ì“‡ŠÇ—‚ğs‚¤
+// ã™ã¹ã¦ã®Assetã®çµ±åˆç®¡ç†ã‚’è¡Œã†
 class AssetManager
 {
 	Array<shared_ptr<Model>>	m_models;

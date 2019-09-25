@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 
 class MoleculeState;
 class MoleculeModel;
@@ -15,7 +15,7 @@ struct MoleculeStateAdapter
 	static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other);
 };
 
-// MoleculeStateÇÃï€ë∂Ç®ÇÊÇ—çXêVÇçsÇ§
+// MoleculeState„ÅÆ‰øùÂ≠ò„Åä„Çà„Å≥Êõ¥Êñ∞„ÇíË°å„ÅÜ
 class MoleculeManager
 {
 	Array<shared_ptr<MoleculeState>>	m_moleculeStates;
@@ -30,15 +30,15 @@ public:
 
 	int NumMolecule(const shared_ptr<MoleculeModel>& model);
 
-	const shared_ptr<MoleculeState>&	AddMoleculeState(const shared_ptr<MoleculeModel>& model);
-	const shared_ptr<MoleculeState>&	AddMoleculeState(const shared_ptr<MoleculeModel>& model, const Vec2& position);
+	const shared_ptr<MoleculeState>& AddMoleculeState(const shared_ptr<MoleculeModel>& model);
+	const shared_ptr<MoleculeState>& AddMoleculeState(const shared_ptr<MoleculeModel>& model, const Vec2& position);
 
 	void	AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size);
 
 	// Get
-	Array<shared_ptr<MoleculeState>>&		GetMoleculeStates() { return m_moleculeStates; }
-	const Array<shared_ptr<MoleculeState>>&	GetMoleculeStates() const { return m_moleculeStates; }
-	const KDTree<MoleculeStateAdapter>&		GetMoleculeStateKDTree() const { return m_moleculeStateKDTree; }
+	Array<shared_ptr<MoleculeState>>& GetMoleculeStates() { return m_moleculeStates; }
+	const Array<shared_ptr<MoleculeState>>& GetMoleculeStates() const { return m_moleculeStates; }
+	const KDTree<MoleculeStateAdapter>& GetMoleculeStateKDTree() const { return m_moleculeStateKDTree; }
 
 	void	UpdateMoleculeStates();
 	void	DrawMoleculeStates();

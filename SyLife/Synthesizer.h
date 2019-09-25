@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Module.h"
 #include "Storage.h"
@@ -11,8 +11,8 @@ class SynthesizerModel
 	shared_ptr<MoleculeModel>	m_export;
 
 public:
-	const Storage&	GetImport() const { return m_import; }
-	const shared_ptr<MoleculeModel>&	GetExport() const { return m_export; }
+	const Storage& GetImport() const { return m_import; }
+	const shared_ptr<MoleculeModel>& GetExport() const { return m_export; }
 
 	void	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;

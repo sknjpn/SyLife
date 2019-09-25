@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class EggState;
 class CellModel;
@@ -15,7 +15,7 @@ struct EggStateAdapter
 	static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other);
 };
 
-// EggState‚Ì•Û‘¶‚¨‚æ‚ÑXV‚ğs‚¤
+// EggStateã®ä¿å­˜ãŠã‚ˆã³æ›´æ–°ã‚’è¡Œã†
 class EggManager
 {
 	Array<shared_ptr<EggState>>	m_eggStates;
@@ -29,11 +29,11 @@ public:
 	}
 
 	// Get
-	Array<shared_ptr<EggState>>&		GetEggStates() { return m_eggStates; }
-	const Array<shared_ptr<EggState>>&	GetEggStates() const { return m_eggStates; }
-	const KDTree<EggStateAdapter>&		GetEggStateKDTree() const { return m_eggStateKDTree; }
+	Array<shared_ptr<EggState>>& GetEggStates() { return m_eggStates; }
+	const Array<shared_ptr<EggState>>& GetEggStates() const { return m_eggStates; }
+	const KDTree<EggStateAdapter>& GetEggStateKDTree() const { return m_eggStateKDTree; }
 
-	const shared_ptr<EggState>&	AddEggState(const shared_ptr<CellModel>& cellModel);
+	const shared_ptr<EggState>& AddEggState(const shared_ptr<CellModel>& cellModel);
 
 	void	UpdateEggStates();
 	void	DrawEggStates();

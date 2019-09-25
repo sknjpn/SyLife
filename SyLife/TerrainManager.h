@@ -1,14 +1,14 @@
-#pragma once
+ï»¿#pragma once
 
 class TerrainModel;
 class HotspotState;
 
-// ’nŒ`‚Ì•Û‘¶‚Æ•`‰æ‚ğs‚¤B
+// åœ°å½¢ã®ä¿å­˜ã¨æç”»ã‚’è¡Œã†ã€‚
 class TerrainManager
 {
 	shared_ptr<TerrainModel> m_terrainModel;
 
-	// ¶¬‚³‚ê‚é‚à‚Ì
+	// ç”Ÿæˆã•ã‚Œã‚‹ã‚‚ã®
 	Texture	m_texture;
 	PerlinNoise	m_noise;
 	Array<shared_ptr<HotspotState>>	m_hotspots;
@@ -23,7 +23,7 @@ public:
 	void	MakeHotspots(int numHotspots = 300);
 
 	void	SetTerrainModel(const shared_ptr<TerrainModel>& model);
-	const shared_ptr<TerrainModel>&	GetTerrainModel() { return m_terrainModel; }
+	const shared_ptr<TerrainModel>& GetTerrainModel() { return m_terrainModel; }
 
 	void	UpdateTerrain();
 	void	DrawTerrain();

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Equipment.h"
 #include "Cell.h"
@@ -101,5 +101,5 @@ inline void WingModel::Load_this(const ptree& pt)
 
 inline void WingState::Flap(CellState& cell)
 {
-	cell.AddImpulseInLocal(Vec2::Up()*10000.0, GetPartConfig()->GetPosition());
+	cell.AddImpulseInLocal(Vec2::Up() * 10000.0, GetPartConfig()->GetPosition());
 }

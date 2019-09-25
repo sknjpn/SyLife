@@ -1,16 +1,16 @@
-# pragma once
+ï»¿# pragma once
 
-/* ƒvƒŠƒRƒ“ƒpƒCƒ‹‚ÅSiv3D.hpp‚ğ“Ç‚İ‚Ş
+/* ãƒ—ãƒªã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã§Siv3D.hppã‚’èª­ã¿è¾¼ã‚€
 # include <Siv3D.hpp> // OpenSiv3D v0.2.6
 */
 
-// •\¦—Ìˆæ‚©‚çTransformer‚ğì¬‚Å‚«‚é
+// è¡¨ç¤ºé ˜åŸŸã‹ã‚‰Transformerã‚’ä½œæˆã§ãã‚‹
 class BasicCamera
 {
 protected:
-	Rect	m_screen = Scene::Rect();	// “Š‰eæ‚Ì—Ìˆæ
-	Vec2	m_center = Scene::Center();	// Ø‚èæ‚è—Ìˆæ‚Ì’†S
-	double	m_scale = 1.0;				// Ø‚èæ‚è—Ìˆæ‚ÌŠg‘å—¦
+	Rect	m_screen = Scene::Rect();	// æŠ•å½±å…ˆã®é ˜åŸŸ
+	Vec2	m_center = Scene::Center();	// åˆ‡ã‚Šå–ã‚Šé ˜åŸŸã®ä¸­å¿ƒ
+	double	m_scale = 1.0;				// åˆ‡ã‚Šå–ã‚Šé ˜åŸŸã®æ‹¡å¤§ç‡
 
 public:
 	BasicCamera() = default;
@@ -20,7 +20,7 @@ public:
 		, m_scale(scale)
 	{}
 
-	// •`‰æ‘ÎÛ‚ÌØ‚èæ‚è—Ìˆæ‚ğ•Ô‚·
+	// æç”»å¯¾è±¡ã®åˆ‡ã‚Šå–ã‚Šé ˜åŸŸã‚’è¿”ã™
 	[[nodiscard]] RectF getCameraRect() const { return RectF(m_screen.size / m_scale).setCenter(m_center); }
 
 	[[nodiscard]] Mat3x2 getCursorMat3x2() const { return Mat3x2::Translate(-m_center).scaled(m_scale).translated(m_screen.center()); }
@@ -28,22 +28,22 @@ public:
 	[[nodiscard]] ScopedViewport2D createScopedViewport() const { return ScopedViewport2D(m_screen); }
 	[[nodiscard]] Transformer2D createTransformer() const { return Transformer2D(getGraphics2DMat3x2(), getCursorMat3x2()); }
 
-	// •`‰æ‘ÎÛ‚ÌØ‚èæ‚è—Ìˆæ‚ğİ’è‚·‚é
+	// æç”»å¯¾è±¡ã®åˆ‡ã‚Šå–ã‚Šé ˜åŸŸã‚’è¨­å®šã™ã‚‹
 	void		setCameraRect(const RectF& rect)
 	{
 		setCenter(rect.center());
 		setScale(Max(Scene::Width() / rect.w, Scene::Height() / rect.h));
 	}
 
-	// •`‰æ‘ÎÛ‚ÌØ‚èæ‚è—Ìˆæ‚Ì’†S‚ğİ’è‚·‚é
+	// æç”»å¯¾è±¡ã®åˆ‡ã‚Šå–ã‚Šé ˜åŸŸã®ä¸­å¿ƒã‚’è¨­å®šã™ã‚‹
 	void		setCenter(const Vec2& center) { m_center = center; }
 
-	// “Š‰e‚·‚é—Ìˆæ‚ğİ’è‚·‚é
+	// æŠ•å½±ã™ã‚‹é ˜åŸŸã‚’è¨­å®šã™ã‚‹
 	void		setScreen(const Rect& screen) { m_screen = screen; }
 
 	void		setScale(double scale) { m_scale = scale; }
 
-	// •`‰æ‘ÎÛ‚ÌØ‚èæ‚è—Ìˆæ‚Ì’†S‚ğ•Ô‚·
+	// æç”»å¯¾è±¡ã®åˆ‡ã‚Šå–ã‚Šé ˜åŸŸã®ä¸­å¿ƒã‚’è¿”ã™
 	const Vec2& getCenter() const noexcept { return m_center; }
 	const Rect& getScreen() const noexcept { return m_screen; }
 
@@ -53,25 +53,25 @@ public:
 class TinyCamera
 	: public BasicCamera
 {
-	// ’Ç]–Ú•W‚Ì’l
+	// è¿½å¾“ç›®æ¨™ã®å€¤
 	Vec2		m_targetCenter = Scene::Size() * 0.5;
 	double		m_targetScale = 1.0;
 
-	// ’Ç]‘¬“x (0.0`1.0)
+	// è¿½å¾“é€Ÿåº¦ (0.0ï½1.0)
 	double		m_followingSpeed = 0.25;
 
-	// Šg‘å‚ÌŠ´“x (0.0`)
+	// æ‹¡å¤§ã®æ„Ÿåº¦ (0.0ï½)
 	double		m_scalingSensitivity = 0.1;
 
-	// ˆÚ“®‚Ì‘¬“x (dot per frame)
+	// ç§»å‹•ã®é€Ÿåº¦ (dot per frame)
 	double		m_movingSensitivity = 0.02;
 
-	// ‰æ–ÊŠO‚Å‚àƒRƒ“ƒgƒ[ƒ‹‚ğ—LŒø‚É‚·‚é
+	// ç”»é¢å¤–ã§ã‚‚ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 	bool		m_controlOutOfScreenEnabled = false;
 
 	std::function<double()> m_wheelControl = []() { return Mouse::Wheel(); };
 
-	// ˆÚ“®‚É‘Î‚·‚éƒRƒ“ƒgƒ[ƒ‹ğŒ
+	// ç§»å‹•ã«å¯¾ã™ã‚‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«æ¡ä»¶
 	std::array<std::function<bool()>, 4> m_controls =
 	{
 		[]() { return KeyW.pressed() || Cursor::Pos().y <= 0; },
@@ -80,14 +80,14 @@ class TinyCamera
 		[]() { return KeyD.pressed() || Cursor::Pos().x >= Scene::Width() - 1; },
 	};
 
-	// Å¬Å‘å‚ÌŠg‘å—¦
+	// æœ€å°æœ€å¤§ã®æ‹¡å¤§ç‡
 	Optional<double>	m_minScale = 1.0;
 	Optional<double>	m_maxScale = 8.0;
 
-	// Ø‚èæ‚è—Ìˆæ‚Ì§ŒÀ”ÍˆÍ
+	// åˆ‡ã‚Šå–ã‚Šé ˜åŸŸã®åˆ¶é™ç¯„å›²
 	Optional<RectF>		m_restrictedRect = RectF(Scene::Rect());
 
-	// Šg‘åk¬‚ğs‚¤
+	// æ‹¡å¤§ç¸®å°ã‚’è¡Œã†
 	void magnify()
 	{
 		const auto delta = 1.0 + m_scalingSensitivity * m_wheelControl();
@@ -97,7 +97,7 @@ class TinyCamera
 		m_targetCenter = (m_targetCenter - cursorPos) * delta + cursorPos;
 	}
 
-	// ’†S‚ÌˆÚ“®‚ğs‚¤
+	// ä¸­å¿ƒã®ç§»å‹•ã‚’è¡Œã†
 	void move()
 	{
 		if (m_controls[0]()) { m_targetCenter.y -= m_movingSensitivity * m_screen.h / m_targetScale; }
@@ -174,7 +174,7 @@ public:
 		follow();
 	}
 
-	// Ø‚èæ‚è—Ìˆæ‚Ì§ŒÀ—Ìˆæ‚Ìİ’è
+	// åˆ‡ã‚Šå–ã‚Šé ˜åŸŸã®åˆ¶é™é ˜åŸŸã®è¨­å®š
 	void	setRestrictedRect(Optional<RectF> restrictedRect)
 	{
 		m_restrictedRect = restrictedRect;
@@ -185,7 +185,7 @@ public:
 		restrictTargetRect();
 	}
 
-	// Å‘åŠg‘å—¦‚Ìİ’è
+	// æœ€å¤§æ‹¡å¤§ç‡ã®è¨­å®š
 	void	setMaxScale(Optional<double> maxScale)
 	{
 		m_maxScale = maxScale;
@@ -196,7 +196,7 @@ public:
 		restrictTargetRect();
 	}
 
-	// Å¬Šg‘å—¦‚Ìİ’è
+	// æœ€å°æ‹¡å¤§ç‡ã®è¨­å®š
 	void	setMinScale(Optional<double> minScale)
 	{
 		m_minScale = minScale;

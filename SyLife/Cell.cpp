@@ -1,4 +1,4 @@
-#include "Cell.h"
+ï»¿#include "Cell.h"
 #include "Part.h"
 #include "Egg.h"
 
@@ -59,7 +59,7 @@ void CellModel::UpdateProperties()
 	// center
 	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->GetModel()->GetMass() * (p->GetPosition() + p->GetModel()->GetCenter().rotated(p->GetRotation())); }) / m_mass;
 
-	// center‚ğŒ´“_‚Éİ’è
+	// centerã‚’åŸç‚¹ã«è¨­å®š
 	for (const auto& p : m_partConfigs) p->SetPosition(p->GetPosition() - center);
 
 	// inertia
@@ -88,7 +88,7 @@ CellState::CellState(const shared_ptr<CellModel>& model)
 
 void CellState::UpdateCell()
 {
-	// Õ“Ëˆ—
+	// è¡çªå‡¦ç†
 	{
 		auto result = g_cellManagerPtr->GetCellStateKDTree().knnSearch(2, GetPosition());
 		if (result.size() == 2)
@@ -111,7 +111,7 @@ void CellState::UpdateCell()
 	// parts
 	for (const auto& p : m_partStates) p->Update(*this);
 
-	// ÚG‚µ‚½MoleculeState‚Ìæ‚è‚İ
+	// æ¥è§¦ã—ãŸMoleculeStateã®å–ã‚Šè¾¼ã¿
 	for (auto i : g_moleculeManagerPtr->GetMoleculeStateKDTree().knnSearch(1, GetPosition()))
 	{
 		auto& m = g_moleculeManagerPtr->GetMoleculeStates()[i];
@@ -119,7 +119,7 @@ void CellState::UpdateCell()
 		if (!m->IsDestroyed() && (m->GetPosition() - GetPosition()).length() - GetRadius() < 0.0) TakeMolecule(m);
 	}
 
-	// —]è‚ÌMoleculeState‚Ì“ŠŠü
+	// ä½™å‰°ã®MoleculeStateã®æŠ•æ£„
 	for (;;)
 	{
 		bool flag = true;
@@ -139,7 +139,7 @@ void CellState::UpdateCell()
 		if (flag) break;
 	}
 
-	// •ª—ôˆ—
+	// åˆ†è£‚å‡¦ç†
 	if (m_storage >= m_model->GetMaterial())
 	{
 		m_storage -= m_model->GetMaterial();
@@ -150,19 +150,19 @@ void CellState::UpdateCell()
 		e->SetVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
 	}
 
-	// €–Sˆ—
+	// æ­»äº¡å‡¦ç†
 	if (m_deathTimer <= 0.0)
 	{
-		// MoleculeState‚Ì“f‚«o‚µ
+		// MoleculeStateã®åãå‡ºã—
 		auto s = m_storage + m_model->GetMaterial();
 		for (const auto& m : s.GetMolecules())
 		{
 			for (unsigned int i = 0; i < m.second; i++)
 			{
-				// “f‚«o‚·•ûŒü
+				// åãå‡ºã™æ–¹å‘
 				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
-				// “f‚«o‚³‚ê‚½MoleculeState
+				// åãå‡ºã•ã‚ŒãŸMoleculeState
 				const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
 				ms->SetPosition(GetPosition() + v * (GetRadius() + m.first->GetRadius()) * Random(1.0));
 				ms->SetVelocity(v * 0.1);
@@ -187,7 +187,7 @@ void CellState::Draw()
 		p->Draw(*this);
 	}
 
-	// ×–E‰~
+	// ç´°èƒå††
 	if (false)
 	{
 		double a = min(0.5, m_deathTimer * 0.25);
@@ -209,15 +209,15 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned 
 {
 	for (unsigned int i = 0; i < size; ++i)
 	{
-		// “f‚«o‚·•ûŒü
+		// åãå‡ºã™æ–¹å‘
 		auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
-		// “f‚«o‚³‚ê‚½MoleculeState
+		// åãå‡ºã•ã‚ŒãŸMoleculeState
 		const auto& t = g_moleculeManagerPtr->AddMoleculeState(model);
 		t->SetPosition(GetPosition() + v * (GetRadius() + model->GetRadius()));
 		t->SetVelocity(v * 0.5);
 
-		// Storage‚©‚ço‚·
+		// Storageã‹ã‚‰å‡ºã™
 		m_storage.Pull(model);
 	}
 }

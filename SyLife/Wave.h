@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Model.h"
 #include "ModelViewer.h"
@@ -10,8 +10,8 @@ class WaveModel
 {
 	friend class WaveViewer;
 
-	double	m_force;	// ”g‚Ì‹­‚³
-	double	m_interval;	// Šiq“_ŠÔŠu
+	double	m_force;	// æ³¢ã®å¼·ã•
+	double	m_interval;	// æ ¼å­ç‚¹é–“éš”
 
 public:
 	// get

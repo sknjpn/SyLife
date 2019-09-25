@@ -1,4 +1,4 @@
-#include "WaveManager.h"
+﻿#include "WaveManager.h"
 #include "Terrain.h"
 
 unique_ptr<WaveManager>	g_waveManagerPtr;
@@ -9,7 +9,7 @@ WaveManager::WaveManager()
 	, perlinNoiseY(Random(0xFFFFFFFF))
 {}
 
-Vec2 WaveManager::GetWaveVelocity(const Vec2 & position) const
+Vec2 WaveManager::GetWaveVelocity(const Vec2& position) const
 {
 	//return (-position * 0.0001) * 100.0;
 
@@ -37,5 +37,5 @@ void WaveManager::DrawWave() const
 
 	for (double x = -size; x <= size; x += interval)
 		for (double y = -size; y <= size; y += interval)
-			Line(Vec2(x,y), Vec2(x,y) + GetWaveVelocity(Vec2(x, y)) * 2.0).drawArrow(20.0, Vec2(20.0, 20.0), ColorF(1.0, 0.2));
+			Line(Vec2(x, y), Vec2(x, y) + GetWaveVelocity(Vec2(x, y)) * 2.0).drawArrow(20.0, Vec2(20.0, 20.0), ColorF(1.0, 0.2));
 }

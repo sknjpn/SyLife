@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class CellState;
 class CellModel;
@@ -15,7 +15,7 @@ struct CellStateAdapter
 	static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other);
 };
 
-// CellState‚Ì•Û‘¶‚¨‚æ‚ÑXV‚ğs‚¤
+// CellStateã®ä¿å­˜ãŠã‚ˆã³æ›´æ–°ã‚’è¡Œã†
 class CellManager
 {
 	Array<shared_ptr<CellState>>	m_cellStates;
@@ -29,10 +29,10 @@ public:
 	}
 
 	// Get
-	Array<shared_ptr<CellState>>&		GetCellStates() { return m_cellStates; }
+	Array<shared_ptr<CellState>>& GetCellStates() { return m_cellStates; }
 	const Array<shared_ptr<CellState>>& GetCellStates() const { return m_cellStates; }
-	KDTree<CellStateAdapter>&			GetCellStateKDTree() { return m_cellStateKDTree; }
-	const KDTree<CellStateAdapter>&		GetCellStateKDTree() const { return m_cellStateKDTree; }
+	KDTree<CellStateAdapter>& GetCellStateKDTree() { return m_cellStateKDTree; }
+	const KDTree<CellStateAdapter>& GetCellStateKDTree() const { return m_cellStateKDTree; }
 
 	const shared_ptr<CellState>& AddCellState(const shared_ptr<CellModel>& model);
 

@@ -1,4 +1,4 @@
-unique_ptr<SystemManager>	g_systemManagerPtr;
+﻿unique_ptr<SystemManager>	g_systemManagerPtr;
 
 SystemManager::SystemManager()
 {

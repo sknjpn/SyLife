@@ -1,4 +1,4 @@
-#include "PartShapeViewer.h"
+ï»¿#include "PartShapeViewer.h"
 #include "Body.h"
 
 void PartShapeViewer::Init()
@@ -18,7 +18,7 @@ void PartShapeViewer::Update()
 	const auto boxSize = Vec2::One() * 5.0 / m_camera.getScale();
 	const auto pointer = RectF(Arg::center(cursor), boxSize);
 
-	// cü
+	// ç¸¦ç·š
 	{
 		const auto color = ColorF(Palette::White, 0.25);
 
@@ -35,7 +35,7 @@ void PartShapeViewer::Update()
 			Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
 	}
 
-	// XY²
+	// XYè»¸
 	{
 		Line(m_camera.getRegion().x, 0, m_camera.getRegion().br().x, 0).draw(thickness, Palette::Red);
 		Line(0, m_camera.getRegion().y, 0, m_camera.getRegion().br().y).draw(thickness, Palette::Red);
@@ -91,11 +91,11 @@ void PartShapeViewer::Update()
 	// Update
 	if (IsMouseOver())
 	{
-		// Verticle‚Ì”z’u
+		// Verticleã®é…ç½®
 		if (m_verticles.empty() && MouseL.down()) m_verticles.emplace_back(cursor);
 		else if (!m_verticles.empty())
 		{
-			// Verticle‚ğŒq‚°‚ÄŒÅ’è
+			// Verticleã‚’ç¹‹ã’ã¦å›ºå®š
 			for (auto it = m_verticles.begin(); it != m_verticles.end(); ++it)
 			{
 				if (*it == cursor && MouseL.down())
@@ -111,10 +111,10 @@ void PartShapeViewer::Update()
 				}
 			}
 
-			// ˜A‘±”z’u
+			// é€£ç¶šé…ç½®
 			if (MouseL.down()) m_verticles.emplace_back(cursor);
 
-			// ÅŒã‚ÌVerticle‚ğíœ
+			// æœ€å¾Œã®Verticleã‚’å‰Šé™¤
 			if (MouseR.down()) m_verticles.pop_back();
 		}
 	}

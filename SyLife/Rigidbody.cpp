@@ -1,28 +1,28 @@
-#include "Rigidbody.h"
+ï»¿#include "Rigidbody.h"
 
 void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
 {
-	// ‰^“®—Ê
+	// é‹å‹•é‡
 	const Vec2 momentum = GetVelocity() * GetMass() + impulse;
 
-	// ‘¬“x
+	// é€Ÿåº¦
 	SetVelocity(momentum / GetMass());
 
-	// —Í‚Ìƒ‚[ƒƒ“ƒg
+	// åŠ›ã®ãƒ¢ãƒ¼ãƒ¡ãƒ³ãƒˆ
 	const double momentOfForce = (worldPosition - GetPosition()).cross(impulse);
 
-	// Šp‰^“®—Ê
+	// è§’é‹å‹•é‡
 	const double angularMomentum = momentOfForce + m_inertia * m_angularVelocity;
 
-	// Šp‘¬“x
+	// è§’é€Ÿåº¦
 	m_angularVelocity = angularMomentum / m_inertia;
 }
 
 void Rigidbody::UpdateRigidbody()
 {
-	// ‰ñ“]‰^“®
+	// å›è»¢é‹å‹•
 	m_rotation += m_angularVelocity * g_systemManagerPtr->GetDeltaTime();
 
-	// –€C’ïR
+	// æ‘©æ“¦æŠµæŠ—
 	m_angularVelocity *= 0.95;
 }

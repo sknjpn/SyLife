@@ -1,4 +1,4 @@
-#include "Hotspot.h"
+﻿#include "Hotspot.h"
 #include "HotspotManager.h"
 
 unique_ptr<HotspotManager> g_hotspotManagerPtr;

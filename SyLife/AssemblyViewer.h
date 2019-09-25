@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 
 #include "Viewer.h"
 #include "Cell.h"
@@ -54,7 +54,7 @@ public:
 		const auto boxSize = Vec2::One() * 5.0 / m_camera.getScale();
 		const auto pointer = RectF(Arg::center(cursor), boxSize);
 
-		// ècê¸
+		// Á∏¶Á∑ö
 		{
 			const auto color = ColorF(Palette::White, 0.25);
 
@@ -65,7 +65,7 @@ public:
 				Line(-m_width / 2.0, y, m_width / 2.0, y).draw(thickness, color);
 		}
 
-		// XYé≤
+		// XYËª∏
 		{
 			Line(-m_width / 2.0, 0, m_width / 2.0, 0).draw(thickness, Palette::Red);
 			Line(0, -m_height / 2.0, 0, m_height / 2.0).draw(thickness, Palette::Red);

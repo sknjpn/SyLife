@@ -1,8 +1,8 @@
-#include "Particle.h"
+ï»¿#include "Particle.h"
 
 void Particle::UpdateParticle()
 {
-	// •Ài‰^“®
+	// ä¸¦é€²é‹å‹•
 	m_position += m_velocity * g_systemManagerPtr->GetDeltaTime();
 
 	if (KeyO.pressed())
@@ -11,7 +11,7 @@ void Particle::UpdateParticle()
 	}
 	else
 	{
-		// –€ŽC’ïR
+		// æ‘©æ“¦æŠµæŠ—
 		auto waveVelocity = g_waveManagerPtr->GetWaveVelocity(m_position);
 		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.95;
 	}

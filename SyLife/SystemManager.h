@@ -1,6 +1,6 @@
-#pragma once
+ï»¿#pragma once
 
-// Engine‚Ì‹¤’Ê‚µ‚Ä‚¢‚éŠî”Õ‚Ì‹¤—L
+// Engineã®å…±é€šã—ã¦ã„ã‚‹åŸºç›¤ã®å…±æœ‰
 class SystemManager
 {
 public:

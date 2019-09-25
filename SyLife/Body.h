@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Part.h"
 
@@ -48,9 +48,9 @@ public:
 	void Update() override { Update_this(); }
 };
 
-inline void		BodyModel::MakeViewer() 
+inline void		BodyModel::MakeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<BodyViewer>()->SetModel(shared_from_this()); 
+	g_viewerManagerPtr->MakeViewer<BodyViewer>()->SetModel(shared_from_this());
 	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 inline shared_ptr<PartState>	BodyModel::MakeState() { return make_shared<BodyState>(); }

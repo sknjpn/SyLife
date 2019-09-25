@@ -1,4 +1,4 @@
-#include "Egg.h"
+﻿#include "Egg.h"
 
 unique_ptr<EggManager> g_eggManagerPtr;
 
@@ -32,5 +32,5 @@ void EggManager::DrawEggStates()
 		if (!e->IsDestroyed()) e->Draw();
 }
 
-EggStateAdapter::element_type EggStateAdapter::GetElement(const dataset_type & dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
-EggStateAdapter::element_type EggStateAdapter::DistanceSq(const dataset_type & dataset, size_t index, const element_type * other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }
+EggStateAdapter::element_type EggStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
+EggStateAdapter::element_type EggStateAdapter::DistanceSq(const dataset_type& dataset, size_t index, const element_type* other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }

@@ -1,10 +1,10 @@
-#include "Egg.h"
+ï»¿#include "Egg.h"
 
 void EggState::UpdateEgg()
 {
 	m_timer -= g_systemManagerPtr->GetDeltaTime();
 
-	// ›z‰»
+	// å­µåŒ–
 	if (m_timer < 0 && RandomBool(0.1))
 	{
 		Destroy();

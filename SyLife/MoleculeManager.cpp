@@ -1,4 +1,4 @@
-#include "Molecule.h"
+﻿#include "Molecule.h"
 
 unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
@@ -11,7 +11,7 @@ const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_
 	return m;
 }
 
-const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_ptr<MoleculeModel>& model, const Vec2 & position)
+const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_ptr<MoleculeModel>& model, const Vec2& position)
 {
 	const auto& m = AddMoleculeState(model);
 	m->SetPosition(position);
@@ -59,5 +59,5 @@ void MoleculeManager::AddMoleculesRandom(const shared_ptr<MoleculeModel>& model,
 	}
 }
 
-MoleculeStateAdapter::element_type MoleculeStateAdapter::GetElement(const dataset_type & dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
-MoleculeStateAdapter::element_type MoleculeStateAdapter::DistanceSq(const dataset_type & dataset, size_t index, const element_type * other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }
+MoleculeStateAdapter::element_type MoleculeStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
+MoleculeStateAdapter::element_type MoleculeStateAdapter::DistanceSq(const dataset_type& dataset, size_t index, const element_type* other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }

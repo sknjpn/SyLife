@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Model.h"
 #include "ModelViewer.h"
@@ -24,16 +24,16 @@ public:
 	void	MakeViewer() override;
 
 	// Get
-	const Storage&	GetMaterial() const { return m_material; }
-	Storage&		GetMaterial() { return m_material; }
+	const Storage& GetMaterial() const { return m_material; }
+	Storage& GetMaterial() { return m_material; }
 	double	GetMass() const { return m_mass; }
 	double	GetRadius() const { return m_radius; }
 	double	GetInertia() const { return m_inertia; }
-	const Array<shared_ptr<PartConfig>>&	GetPartConfigs() const { return m_partConfigs; }
-	Array<shared_ptr<PartConfig>>&			GetPartConfigs() { return m_partConfigs; }
+	const Array<shared_ptr<PartConfig>>& GetPartConfigs() const { return m_partConfigs; }
+	Array<shared_ptr<PartConfig>>& GetPartConfigs() { return m_partConfigs; }
 
 	// Add
-	shared_ptr<PartConfig>&	AddPartConfig();
+	shared_ptr<PartConfig>& AddPartConfig();
 
 	template <typename T>
 	Array<shared_ptr<T>>	GetPartConfigs() const
