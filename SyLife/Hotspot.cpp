@@ -1,4 +1,4 @@
-#include "Hotspot.h"
+﻿#include "Hotspot.h"
 
 void HotspotState::UpdateHotspot()
 {

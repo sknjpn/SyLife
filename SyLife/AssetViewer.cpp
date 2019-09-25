@@ -1,4 +1,4 @@
-#include "AssetViewer.h"
+ï»¿#include "AssetViewer.h"
 #include "AddModelViewer.h"
 #include "Cell.h"
 #include "Molecule.h"
@@ -19,7 +19,7 @@ void AssetViewer::Update()
 	{
 		static Font font(15, Typeface::Bold);
 
-		auto f = font(U"V‚µ‚¢Model‚Ì’Ç‰Á");
+		auto f = font(U"æ–°ã—ã„Modelã®è¿½åŠ ");
 
 		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();

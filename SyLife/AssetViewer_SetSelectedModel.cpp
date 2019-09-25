@@ -1,4 +1,4 @@
-#include "AssetViewer.h"
+ï»¿#include "AssetViewer.h"
 
 #include "PartPaletteViewer.h"
 #include "Cell.h"
@@ -11,12 +11,12 @@
 
 void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)
 {
-	// ModelViewer‚ğÁ‚·
+	// ModelViewerã‚’æ¶ˆã™
 	g_viewerManagerPtr->DeleteViewer<ModelViewer>();
 
-	// ‘ÎÛ‚ÌView‚ğ’Ç‰Á
+	// å¯¾è±¡ã®Viewã‚’è¿½åŠ 
 	model->MakeViewer();
 
-	// ‘ÎÛƒ‚ƒfƒ‹‚Ìİ’è
+	// å¯¾è±¡ãƒ¢ãƒ‡ãƒ«ã®è¨­å®š
 	m_selectedModel = model;
 }

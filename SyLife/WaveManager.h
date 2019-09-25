@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Viewer.h"
 
-// ‚ ‚é“_‚Å‚Ì”g‚Ì‘å‚«‚³‚Ì‹¤—L‚ÆXV
+// ã‚ã‚‹ç‚¹ã§ã®æ³¢ã®å¤§ãã•ã®å…±æœ‰ã¨æ›´æ–°
 class WaveManager
 {
 	PerlinNoise perlinNoiseX;

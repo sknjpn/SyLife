@@ -1,8 +1,8 @@
-#include "Molecule.h"
+ï»¿#include "Molecule.h"
 
 void MoleculeState::UpdateMolecule()
 {
-	// Amino Acid‚Ì•ª‰ð
+	// Amino Acidã®åˆ†è§£
 	if (m_model->GetName() == "Amino Acid" && RandomBool(0.1))
 	{
 		g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));

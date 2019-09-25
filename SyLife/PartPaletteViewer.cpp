@@ -1,4 +1,4 @@
-#include "PartPaletteViewer.h"
+﻿#include "PartPaletteViewer.h"
 #include "Part.h"
 #include "Body.h"
 #include "Equipment.h"

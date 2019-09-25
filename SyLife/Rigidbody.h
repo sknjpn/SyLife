@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Particle.h"
 
@@ -27,7 +27,7 @@ public:
 
 	void	Init()
 	{
-		// Šp‰^“®—Ê‚ÌŒvZ
+		// è§’é‹å‹•é‡ã®è¨ˆç®—
 		m_inertia = GetMass() * m_radius * m_radius * 0.5;
 	}
 

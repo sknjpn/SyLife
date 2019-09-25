@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "ModelViewer.h"
 #include "ShapeModel.h"
@@ -40,7 +40,7 @@ public:
 				font10(Unicode::Widen((*it)->GetName())).draw();
 
 
-				// ƒp[ƒc•`‰æ
+				// ãƒ‘ãƒ¼ãƒ„æç”»
 				{
 					RectF rect = (*it)->GetApproximateRect();
 					auto scale = Min(56 / rect.w, 56 / rect.h);

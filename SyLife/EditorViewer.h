@@ -1,11 +1,14 @@
-#pragma once
+﻿#pragma once
 
 #include "Viewer.h"
+//#include "Model.h"
 #include "AssetViewer.h"
 
 class EditorViewer
 	: public Viewer
 {
+	shared_ptr<Model>	m_selectedModel;
+
 public:
 	EditorViewer()
 	{
@@ -15,6 +18,11 @@ public:
 	void	Init()
 	{
 		g_viewerManagerPtr->MakeViewer<AssetViewer>();
+	}
+
+	void	update()
+	{
+		
 	}
 };
 

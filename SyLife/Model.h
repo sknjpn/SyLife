@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Viewer.h"
 
@@ -21,20 +21,20 @@ public:
 	// Set
 	void	SetName(const string& name)
 	{
-		// •Ï‰»‚ª‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
+		// å¤‰åŒ–ãŒãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„
 		if (name == m_name) return;
 
-		// ƒtƒ@ƒCƒ‹‚Ìíœ
+		// ãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤
 		{
 			const boost::filesystem::path path(GetFilepath());
 
 			boost::filesystem::remove(path);
 		}
 
-		// name‚ÌƒZƒbƒg
+		// nameã®ã‚»ãƒƒãƒˆ
 		m_name = name;
 
-		// V‹Kƒtƒ@ƒCƒ‹‚Ìì¬
+		// æ–°è¦ãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ
 		{
 			ptree pt;
 

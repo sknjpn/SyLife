@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Viewer.h"
 
@@ -33,7 +33,7 @@ class TitleViewer
 
 public:
 	TitleViewer()
-		: m_audio(U"assets/music/_”é‚Ì¢ŠE.mp3")
+		: m_audio(U"assets/music/ç¥ç§˜ã®ä¸–ç•Œ.mp3")
 		, m_closeCurtain(Color(0, 0), Color(11, 22, 33), 0.5)
 		, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 	{
@@ -122,7 +122,7 @@ public:
 			DrawBubbles();
 		}
 
-		// ƒIƒvƒVƒ‡ƒ“‘I‘ğ
+		// ã‚ªãƒ—ã‚·ãƒ§ãƒ³é¸æŠ
 		{
 			// draw
 			{
@@ -195,7 +195,7 @@ public:
 
 			if (!IsEnterLocked())
 			{
-				// ‰º‚É‘JˆÚ
+				// ä¸‹ã«é·ç§»
 				if (KeyS.down() || KeyDown.down())
 				{
 					switch (m_selectedOption)
@@ -207,7 +207,7 @@ public:
 					}
 				}
 
-				// ã‚É‘JˆÚ
+				// ä¸Šã«é·ç§»
 				if (KeyW.down() || KeyUp.down())
 				{
 					switch (m_selectedOption)
@@ -219,7 +219,7 @@ public:
 					}
 				}
 
-				// ƒZƒŒƒNƒg
+				// ã‚»ãƒ¬ã‚¯ãƒˆ
 				if (KeyEnter.down()) LockEnter();
 			}
 		}
@@ -236,7 +236,7 @@ public:
 		{
 			if (m_closeCurtain.Update())
 			{
-				// ©g‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ªíœ‚³‚ê‚é‚Ì‚ÅAreturn‚Åˆ—‚ğ”ò‚Î‚·•K—v‚ª‚ ‚éB
+				// è‡ªèº«ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå‰Šé™¤ã•ã‚Œã‚‹ã®ã§ã€returnã§å‡¦ç†ã‚’é£›ã°ã™å¿…è¦ãŒã‚ã‚‹ã€‚
 
 				switch (m_selectedOption)
 				{
@@ -278,7 +278,7 @@ public:
 
 	void	Enter_Exit()
 	{
-		// ƒVƒXƒeƒ€‚ÌI—¹
+		// ã‚·ã‚¹ãƒ†ãƒ ã®çµ‚äº†
 		System::Exit();
 	}
 };

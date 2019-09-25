@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Module.h"
 
@@ -50,9 +50,9 @@ public:
 	void Update() override { Update_this(); }
 };
 
-inline void		ChloroplastModel::MakeViewer() 
+inline void		ChloroplastModel::MakeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<ChloroplastViewer>()->SetModel(shared_from_this()); 
+	g_viewerManagerPtr->MakeViewer<ChloroplastViewer>()->SetModel(shared_from_this());
 	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 inline shared_ptr<PartState>	ChloroplastModel::MakeState() { return make_shared<ChloroplastState>(); }
