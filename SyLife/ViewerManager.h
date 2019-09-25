@@ -1,8 +1,8 @@
-#pragma once
+﻿#pragma once
 
 class Viewer;
 
-// �\�����s��Viewer�̕ۑ��ƍX�V
+// 表示を行うViewerの保存と更新
 class ViewerManager
 {
 public:
@@ -29,9 +29,20 @@ public:
 	bool	HasViewer() const { return GetViewer<T>() != nullptr; }
 
 	template <typename T>
-	void	DeleteViewer() { m_viewers.erase(remove_if(m_viewers.begin(), m_viewers.end(), [](const auto& v) { return dynamic_pointer_cast<T>(v) != nullptr; }), m_viewers.end()); }
+	void	DeleteViewer()
+	{
+		// m_viewers.erase(remove_if(m_viewers.begin(), m_viewers.end(), [](const auto& v) { return dynamic_pointer_cast<T>(v) != nullptr; }), m_viewers.end()); 
 
-	void	ClearViewers() { m_viewers.clear(); }
+		// nullptrにすることで、配列の配置を変えない
+		for (auto& v : m_viewers)
+			if (dynamic_pointer_cast<T>(v) != nullptr) v = nullptr;
+	}
+
+	void	ClearViewers()
+	{
+		// nullptrにすることで、配列の配置を変えない
+		for (auto& v : m_viewers) v = nullptr;
+	}
 };
 
 extern unique_ptr<ViewerManager>	g_viewerManagerPtr;
