@@ -3,12 +3,11 @@
 
 void PartShapeViewer::Init()
 {
-	m_camera.setCenter(GetDrawRect().center());
 }
 
 void PartShapeViewer::Update()
 {
-	if (IsMouseOver()) m_camera.update();
+	m_camera.update();
 
 	const auto t = m_camera.createTransformer();
 	const int scale = (int)log10(m_camera.getScale());
