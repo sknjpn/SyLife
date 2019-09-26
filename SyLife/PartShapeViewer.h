@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "ModelViewer.h"
+#include "TinyCamera.h"
 
 class PartShapeViewer
 	: public ModelViewer
@@ -10,15 +11,17 @@ public:
 
 	Vec2*		m_selectedVerticle = nullptr;
 
-	Camera2D	m_camera;
+	TinyCamera	m_camera;
 
 public:
 	PartShapeViewer()
 	{
 		SetDrawRect(0, 0, 600, 450);
 
+		m_camera.setControlOutOfScreenEnabled(false);
+		m_camera.setRestrictedRect(none);
 		m_camera.setTargetCenter(Scene::Size() / 2 - GetDrawRect().size / 2);
-		m_camera.setCenter(Scene::Size() / 2 - GetDrawRect().size / 2);
+		m_camera.setCenter(Vec2::Zero());
 	}
 
 	void	Init() override;
