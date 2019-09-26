@@ -3,12 +3,11 @@
 
 void PartShapeViewer::Init()
 {
-	m_camera.setCenter(GetDrawRect().center());
 }
 
 void PartShapeViewer::Update()
 {
-	if (IsMouseOver()) m_camera.update();
+	m_camera.update();
 
 	const auto t = m_camera.createTransformer();
 	const int scale = (int)log10(m_camera.getScale());
@@ -22,23 +21,23 @@ void PartShapeViewer::Update()
 	{
 		const auto color = ColorF(Palette::White, 0.25);
 
-		for (double x = 0; x >= m_camera.getRegion().x; x -= interval)
-			Line(x, m_camera.getRegion().y, x, m_camera.getRegion().br().y).draw(thickness, color);
+		for (double x = 0; x >= m_camera.getCameraRect().x; x -= interval)
+			Line(x, m_camera.getCameraRect().y, x, m_camera.getCameraRect().br().y).draw(thickness, color);
 
-		for (double x = 0; x <= m_camera.getRegion().br().x; x += interval)
-			Line(x, m_camera.getRegion().y, x, m_camera.getRegion().br().y).draw(thickness, color);
+		for (double x = 0; x <= m_camera.getCameraRect().br().x; x += interval)
+			Line(x, m_camera.getCameraRect().y, x, m_camera.getCameraRect().br().y).draw(thickness, color);
 
-		for (double y = 0; y >= m_camera.getRegion().y; y -= interval)
-			Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
+		for (double y = 0; y >= m_camera.getCameraRect().y; y -= interval)
+			Line(m_camera.getCameraRect().x, y, m_camera.getCameraRect().br().x, y).draw(thickness, color);
 
-		for (double y = 0; y <= m_camera.getRegion().br().y; y += interval)
-			Line(m_camera.getRegion().x, y, m_camera.getRegion().br().x, y).draw(thickness, color);
+		for (double y = 0; y <= m_camera.getCameraRect().br().y; y += interval)
+			Line(m_camera.getCameraRect().x, y, m_camera.getCameraRect().br().x, y).draw(thickness, color);
 	}
 
 	// XY軸
 	{
-		Line(m_camera.getRegion().x, 0, m_camera.getRegion().br().x, 0).draw(thickness, Palette::Red);
-		Line(0, m_camera.getRegion().y, 0, m_camera.getRegion().br().y).draw(thickness, Palette::Red);
+		Line(m_camera.getCameraRect().x, 0, m_camera.getCameraRect().br().x, 0).draw(thickness, Palette::Red);
+		Line(0, m_camera.getCameraRect().y, 0, m_camera.getCameraRect().br().y).draw(thickness, Palette::Red);
 	}
 
 	// ShapeModels

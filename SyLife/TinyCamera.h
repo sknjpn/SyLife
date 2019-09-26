@@ -218,7 +218,7 @@ public:
 
 	void	setTargetCenter(const Vec2& targetCenter) noexcept { m_targetCenter = targetCenter; }
 	void	setTargetScale(double targetScale) noexcept { m_targetScale = targetScale; }
-	bool	setControlOutOfScreenEnabled(bool enabled) noexcept { m_controlOutOfScreenEnabled = enabled; }
+	void	setControlOutOfScreenEnabled(bool enabled) noexcept { m_controlOutOfScreenEnabled = enabled; }
 
 	RectF	getTargetCameraRect() const { return RectF(m_screen.size / m_targetScale).setCenter(m_targetCenter); }
 };
