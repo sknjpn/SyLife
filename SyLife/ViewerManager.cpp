@@ -42,6 +42,6 @@ void ViewerManager::Update()
 		// Viewerが消されてnullptrになっている可能性がある
 		if (*it != nullptr) (*it)->m_transformer.reset();
 
-		// RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
+		RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
 	}
 }
