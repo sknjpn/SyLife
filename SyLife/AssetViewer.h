@@ -11,7 +11,7 @@ class AssetViewer
 public:
 	AssetViewer()
 	{
-		SetDrawRect(1920 - 400, 0, 400, 1080);
+		SetDrawRect(0, 0, 400, 1080);
 	}
 
 	void	Update() override;
