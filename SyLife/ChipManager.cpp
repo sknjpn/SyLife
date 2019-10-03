@@ -38,6 +38,9 @@ void ChipManager::init()
 
 	// molecules
 	{
+		ptree pt;
+		read_json("assets/generation.json", pt);
+
 		for (auto molecules : pt.get_child("molecules"))
 		{
 			string name = molecules.second.get<string>("name");
