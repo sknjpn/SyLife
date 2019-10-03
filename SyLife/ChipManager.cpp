@@ -13,3 +13,11 @@ Point ChipManager::getPoint(const Vec2& position) const
 {
 	return Point(int(position.x / m_length), int(position.y / m_length));
 }
+
+void ChipManager::drawChips()
+{
+}
+
+void ChipManager::updateChips()
+{
+}

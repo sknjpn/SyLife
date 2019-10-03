@@ -71,6 +71,7 @@ public:
 				g_waveManagerPtr->UpdateWave();
 				g_cellManagerPtr->UpdateCellStates();
 				g_eggManagerPtr->UpdateEggStates();
+				g_chipManagerPtr->updateChips();
 			}
 
 			// Rigidbody Capture
@@ -103,6 +104,7 @@ public:
 			g_waveManagerPtr->DrawWave();
 			g_eggManagerPtr->DrawEggStates();
 			g_cellManagerPtr->DrawCellStates();
+			g_chipManagerPtr->drawChips();
 
 			// delete
 			if (MouseR.pressed())
