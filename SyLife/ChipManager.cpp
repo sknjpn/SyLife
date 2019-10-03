@@ -53,6 +53,9 @@ void ChipManager::drawChips()
 		// const auto& c = m_chips[p];
 
 		RectF(p * m_length, Vec2(m_length, m_length)).drawFrame(2.0, Palette::White);
+
+		auto v = g_waveManagerPtr->GetWaveVelocity(p * m_length);
+		Line(p * m_length, p * m_length + v).drawArrow(5.0, Vec2(25, 25));
 	}
 }
 
