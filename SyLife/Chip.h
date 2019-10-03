@@ -14,6 +14,7 @@ class Chip
 	shared_ptr<Chip>	m_d;
 
 public:
-
+	Storage& getStorage() { return m_storage; }
+	const Storage& getStorage() const { return m_storage; }
 };
 
