@@ -6,6 +6,7 @@ class ChipManager
 {
 	Grid<shared_ptr<Chip>> m_chips;
 	Size	m_size;
+	double	m_length;
 
 public:
 	shared_ptr<Chip>& GetChip(const Vec2& position);
