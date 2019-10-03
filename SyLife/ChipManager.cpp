@@ -22,6 +22,8 @@ void ChipManager::init()
 	{
 		const Size size(128, 128);
 
+		m_chips.resize(size);
+
 		for (auto p : step(size))
 			m_chips[p] = MakeShared<Chip>();
 
