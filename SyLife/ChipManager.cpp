@@ -25,6 +25,13 @@ void ChipManager::drawChips()
 		rect.pos = getPoint(cameraRect.pos);
 		rect.size = getPoint(cameraRect.br()) - rect.pos;
 	}
+
+	for (const auto p : step(rect.pos, rect.size))
+	{
+		// const auto& c = m_chips[p];
+
+		RectF(p * m_length, Vec2(m_length, m_length)).drawFrame(2.0, Palette::White);
+	}
 }
 
 void ChipManager::updateChips()
