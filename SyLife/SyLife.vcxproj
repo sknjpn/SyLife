@@ -120,6 +120,7 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="Chip.cpp" />
+    <ClCompile Include="ChipManager.cpp" />
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="EggManager.cpp" />
     <ClCompile Include="FieldManager.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="CellStateViewer.h" />
     <ClInclude Include="Chip.h" />
+    <ClInclude Include="ChipManager.h" />
     <ClInclude Include="Chloroplast.h" />
     <ClInclude Include="Curtain.h" />
     <ClInclude Include="EditorViewer.h" />
