@@ -16,3 +16,4 @@ using namespace std;
 #include "WaveManager.h"
 #include "TerrainManager.h"
 #include "HotspotManager.h"
+#include "ChipManager.h"
