@@ -112,14 +112,17 @@ void CellState::UpdateCell()
 	for (const auto& p : m_partStates) p->Update(*this);
 
 	// 接触したMoleculeStateの取り込み
+	/*
 	for (auto i : g_moleculeManagerPtr->GetMoleculeStateKDTree().knnSearch(1, GetPosition()))
 	{
 		auto& m = g_moleculeManagerPtr->GetMoleculeStates()[i];
 
 		if (!m->IsDestroyed() && (m->GetPosition() - GetPosition()).length() - GetRadius() < 0.0) TakeMolecule(m);
 	}
+	*/
 
 	// 余剰のMoleculeStateの投棄
+	/*
 	for (;;)
 	{
 		bool flag = true;
@@ -138,6 +141,7 @@ void CellState::UpdateCell()
 
 		if (flag) break;
 	}
+	*/
 
 	// 分裂処理
 	if (m_storage >= m_model->GetMaterial())
