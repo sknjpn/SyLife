@@ -12,3 +12,13 @@ Color Chip::getColor() const
 
 	return ColorF(r, g, b);
 }
+
+void Chip::sendTo(const shared_ptr<Chip> chip, double rate)
+{
+	for (const auto& m : m_storage.GetMolecules())
+	{
+		chip->m_storage.Add(m.first, m.second * rate);
+
+		m_storage.Pull(m.first, m.second * rate);
+	}
+}
