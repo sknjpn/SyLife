@@ -19,6 +19,7 @@ struct MoleculeStateAdapter
 class MoleculeManager
 {
 	Array<shared_ptr<MoleculeState>>	m_moleculeStates;
+	Array<shared_ptr<MoleculeState>>	m_newMoleculeStates;
 	KDTree<MoleculeStateAdapter>		m_moleculeStateKDTree;
 
 public:
@@ -36,7 +37,6 @@ public:
 	void	AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size);
 
 	// Get
-	Array<shared_ptr<MoleculeState>>& GetMoleculeStates() { return m_moleculeStates; }
 	const Array<shared_ptr<MoleculeState>>& GetMoleculeStates() const { return m_moleculeStates; }
 	const KDTree<MoleculeStateAdapter>& GetMoleculeStateKDTree() const { return m_moleculeStateKDTree; }
 

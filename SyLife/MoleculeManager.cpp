@@ -4,7 +4,7 @@ unique_ptr<MoleculeManager> g_moleculeManagerPtr;
 
 const shared_ptr<MoleculeState>& MoleculeManager::AddMoleculeState(const shared_ptr<MoleculeModel>& model)
 {
-	const auto& m = GetMoleculeStates().emplace_back(make_shared<MoleculeState>());
+	const auto& m = m_newMoleculeStates.emplace_back(make_shared<MoleculeState>());
 
 	m->SetModel(model);
 
@@ -31,7 +31,13 @@ void MoleculeManager::UpdateMoleculeStates()
 		}
 	}
 
+	// 存在しないMoleculeの削除
 	m_moleculeStates.remove_if([](const auto& m) { return m->IsDestroyed(); });
+
+	// 新しいMoleculeの追加
+	m_moleculeStates.append(m_newMoleculeStates);
+	m_newMoleculeStates.clear();
+
 	m_moleculeStateKDTree.rebuildIndex();
 }
 
