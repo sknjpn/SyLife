@@ -73,9 +73,11 @@ void ChipManager::drawChips()
 	for (const auto p : step(rect.pos, rect.size))
 	{
 		if (!m_rect.contains(p)) continue;
-		// const auto& c = m_chips[p];
+		const auto& c = m_chips[p];
 
-		RectF(p * m_length, Vec2(m_length, m_length)).drawFrame(2.0, Palette::White);
+		RectF(p * m_length, Vec2(m_length, m_length))
+			.draw(c->getColor())
+			.drawFrame(2.0, Palette::White);
 
 		auto v = g_waveManagerPtr->GetWaveVelocity(p * m_length);
 		Line(p * m_length, p * m_length + v)
