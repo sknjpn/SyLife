@@ -5,7 +5,7 @@ class Chip;
 class ChipManager
 {
 	Grid<shared_ptr<Chip>> m_chips;
-	Size	m_size;
+	Rect	m_rect;
 	double	m_length;
 
 public:
@@ -19,6 +19,11 @@ public:
 	void	init();
 	void	drawChips();
 	void	updateChips();
+
+
+	const Rect& getRect() const { return m_rect; }
+	const Point& getSize() const { return m_rect.size; }
+	
 };
 
 extern unique_ptr<ChipManager>	g_chipManagerPtr;

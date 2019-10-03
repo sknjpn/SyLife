@@ -5,7 +5,7 @@
 unique_ptr<ChipManager> g_chipManagerPtr;
 
 ChipManager::ChipManager()
-	: m_size(32, 32)
+	: m_rect(32, 32)
 	, m_length(100)
 {
 
@@ -55,7 +55,9 @@ void ChipManager::drawChips()
 		RectF(p * m_length, Vec2(m_length, m_length)).drawFrame(2.0, Palette::White);
 
 		auto v = g_waveManagerPtr->GetWaveVelocity(p * m_length);
-		Line(p * m_length, p * m_length + v).drawArrow(5.0, Vec2(25, 25));
+		Line(p * m_length, p * m_length + v)
+			.movedBy(m_length / 2.0, m_length / 2.0)
+			.drawArrow(5.0, Vec2(25, 25));
 	}
 }
 
