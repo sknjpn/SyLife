@@ -13,6 +13,7 @@ SystemManager::SystemManager()
 
 	g_assetManagerPtr->Init();
 	g_fieldManagerPtr->Init();
+	g_chipManagerPtr->init();
 }
 
 void	SystemManager::Update()
