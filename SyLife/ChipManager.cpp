@@ -53,7 +53,7 @@ void ChipManager::init()
 			{
 				const Point point = RandomPoint(m_rect);
 
-				getChip(point)->m_storage.Add(model, 1.0);
+				m_chips[point]->m_storage.Add(model, 1.0);
 			}
 		}
 	}
