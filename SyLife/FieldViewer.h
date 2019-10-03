@@ -120,7 +120,7 @@ public:
 						e->Destroy();
 
 						// MoleculeStateの吐き出し
-						auto s = e->GetCellModel()->GetMaterial();
+						/*auto s = e->GetCellModel()->GetMaterial();
 						for (const auto& m : s.GetMolecules())
 						{
 							for (unsigned int i = 0; i < m.second; i++)
@@ -133,7 +133,7 @@ public:
 								ms->SetPosition(e->GetPosition() + v * (e->GetRadius() + m.first->GetRadius()) * Random(1.0));
 								ms->SetVelocity(v * 0.1);
 							}
-						}
+						}*/
 					}
 				}
 			}
