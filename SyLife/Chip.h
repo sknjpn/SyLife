@@ -1,8 +1,12 @@
 ﻿#pragma once
 
+#include "Storage.h"
+
 class Chip
 {
 	friend class FieldManager;
+
+	Storage		m_storage;
 
 	shared_ptr<Chip>	m_l;
 	shared_ptr<Chip>	m_u;
