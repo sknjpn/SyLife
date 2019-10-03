@@ -16,5 +16,7 @@ class Chip
 public:
 	Storage& getStorage() { return m_storage; }
 	const Storage& getStorage() const { return m_storage; }
+
+	Color getColor() const;
 };
 
