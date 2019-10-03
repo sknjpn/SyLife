@@ -128,9 +128,6 @@
     <ClCompile Include="FieldManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
-    <ClCompile Include="MoleculeManager.cpp">
-      <Filter>Source Files\SyLife\Manager\src</Filter>
-    </ClCompile>
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
@@ -409,9 +406,6 @@
       <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
     <ClInclude Include="FieldManager.h">
-      <Filter>Source Files\SyLife\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
     <ClInclude Include="SystemManager.h">
