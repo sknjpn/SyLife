@@ -204,13 +204,16 @@ void CellState::Draw()
 	}
 }
 
+/*
 void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 {
 	m_storage.Add(molecule->GetModel());
 
 	molecule->Destroy();
 }
+*/
 
+/*
 void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size)
 {
 	for (unsigned int i = 0; i < size; ++i)
@@ -227,3 +230,4 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned 
 		m_storage.Pull(model);
 	}
 }
+*/
