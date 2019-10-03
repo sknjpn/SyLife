@@ -1,4 +1,5 @@
 ﻿#include "ChipManager.h"
+#include "FieldViewer.h"
 
 unique_ptr<ChipManager> g_chipManagerPtr;
 
@@ -16,6 +17,14 @@ Point ChipManager::getPoint(const Vec2& position) const
 
 void ChipManager::drawChips()
 {
+	// 領域の取得
+	Rect rect;
+	{
+		auto cameraRect = g_viewerManagerPtr->GetViewer<FieldViewer>()->getCamera().getCameraRect();
+
+		rect.pos = getPoint(cameraRect.pos);
+		rect.size = getPoint(cameraRect.br()) - rect.pos;
+	}
 }
 
 void ChipManager::updateChips()
