@@ -72,6 +72,15 @@ public:
 		else return (*it).second;
 	}
 
+	double	Num() const
+	{
+		double sum = 0.0;
+		for (const auto& m : m_molecules)
+			sum += m.second;
+
+		return sum;
+	}
+
 	const Array<pair<shared_ptr<MoleculeModel>, double>>&	GetMolecules() const { return m_molecules; }
 
 	bool	IsEmpty() const { return m_molecules.empty(); }
