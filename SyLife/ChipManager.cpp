@@ -43,10 +43,16 @@ void ChipManager::init()
 
 		for (auto molecules : pt.get_child("molecules"))
 		{
-			string name = molecules.second.get<string>("name");
-			int size = molecules.second.get<int>("size");
+			const string name = molecules.second.get<string>("name");
+			const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(name);
+			const int size = molecules.second.get<int>("size");
 
-			g_moleculeManagerPtr->AddMoleculesRandom(g_assetManagerPtr->GetModel<MoleculeModel>(name), size);
+			for (int i = 0; i < size; ++i)
+			{
+				const Point point = RandomPoint(m_rect);
+
+				getChip(point)->m_storage.Add(model, 1.0);
+			}
 		}
 	}
 }
