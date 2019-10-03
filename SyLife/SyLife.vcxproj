@@ -119,6 +119,7 @@
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
+    <ClCompile Include="Chip.cpp" />
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="EggManager.cpp" />
     <ClCompile Include="FieldManager.cpp" />
@@ -229,6 +230,7 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="CellStateViewer.h" />
+    <ClInclude Include="Chip.h" />
     <ClInclude Include="Chloroplast.h" />
     <ClInclude Include="Curtain.h" />
     <ClInclude Include="EditorViewer.h" />

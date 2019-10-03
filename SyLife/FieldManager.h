@@ -1,7 +1,11 @@
 ﻿#pragma once
 
+class Chip;
+
 class FieldManager
 {
+	Grid<shared_ptr<Chip>> m_chips;
+
 public:
 	void	Init();
 };

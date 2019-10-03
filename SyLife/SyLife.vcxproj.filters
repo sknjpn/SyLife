@@ -102,6 +102,9 @@
     <Filter Include="Source Files\SyLife\State\Part">
       <UniqueIdentifier>{8b134783-55c7-46e9-9050-488ffc4da34d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife\Util\src">
+      <UniqueIdentifier>{8189b9d6-b337-4f1e-a78a-6d093775440c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -175,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="HotspotManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Chip.cpp">
+      <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -523,6 +529,9 @@
       <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
     <ClInclude Include="TinyCamera.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Chip.h">
       <Filter>Source Files\SyLife\Util</Filter>
     </ClInclude>
   </ItemGroup>
