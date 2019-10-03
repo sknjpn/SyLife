@@ -39,9 +39,13 @@ void ViewerManager::Update()
 
 		(*it)->Update();
 
-		// Viewerが消されてnullptrになっている可能性がある
-		if (*it != nullptr) (*it)->m_transformer.reset();
+		if (*it != nullptr)
+		{
+			// Viewerが消されてnullptrになっている可能性がある
+			(*it)->m_transformer.reset();
 
-		RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
+			// フレーム描画
+			RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
+		}
 	}
 }
