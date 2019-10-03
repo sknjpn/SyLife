@@ -90,4 +90,8 @@ void ChipManager::drawChips()
 
 void ChipManager::updateChips()
 {
+	for (const auto& c : m_chips)
+	{
+		if(c->m_d) 
+	}
 }

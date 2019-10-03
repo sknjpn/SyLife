@@ -18,5 +18,6 @@ public:
 	const Storage& getStorage() const { return m_storage; }
 
 	Color getColor() const;
+	void sendTo(const shared_ptr<Chip> chip, double rate);
 };
 
