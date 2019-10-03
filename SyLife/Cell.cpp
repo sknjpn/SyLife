@@ -158,6 +158,7 @@ void CellState::UpdateCell()
 	if (m_deathTimer <= 0.0)
 	{
 		// MoleculeStateの吐き出し
+		/*
 		auto s = m_storage + m_model->GetMaterial();
 		for (const auto& m : s.GetMolecules())
 		{
@@ -172,6 +173,7 @@ void CellState::UpdateCell()
 				ms->SetVelocity(v * 0.1);
 			}
 		}
+		*/
 
 		Destroy();
 	}
