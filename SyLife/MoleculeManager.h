@@ -19,6 +19,7 @@ struct MoleculeStateAdapter
 class MoleculeManager
 {
 	Array<shared_ptr<MoleculeState>>	m_moleculeStates;
+	Array<shared_ptr<MoleculeState>>	m_newMoleculeStates;
 	KDTree<MoleculeStateAdapter>		m_moleculeStateKDTree;
 
 public:
