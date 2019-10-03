@@ -4,7 +4,7 @@
 
 class Chip
 {
-	friend class FieldManager;
+	friend class ChipManager;
 
 	Storage		m_storage;
 

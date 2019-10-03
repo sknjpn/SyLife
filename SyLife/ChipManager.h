@@ -16,6 +16,7 @@ public:
 	shared_ptr<Chip>& getChip(const Vec2& position) { return m_chips[getPoint(position)]; }
 	const shared_ptr<Chip>& getChip(const Vec2& position) const { return m_chips[getPoint(position)]; }
 
+	void	init();
 	void	drawChips();
 	void	updateChips();
 };
