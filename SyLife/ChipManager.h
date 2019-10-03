@@ -20,10 +20,8 @@ public:
 	void	drawChips();
 	void	updateChips();
 
-
 	const Rect& getRect() const { return m_rect; }
 	const Point& getSize() const { return m_rect.size; }
-	
 };
 
 extern unique_ptr<ChipManager>	g_chipManagerPtr;
