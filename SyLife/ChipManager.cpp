@@ -35,6 +35,17 @@ void ChipManager::init()
 		}
 	}
 
+
+	// molecules
+	{
+		for (auto molecules : pt.get_child("molecules"))
+		{
+			string name = molecules.second.get<string>("name");
+			int size = molecules.second.get<int>("size");
+
+			g_moleculeManagerPtr->AddMoleculesRandom(g_assetManagerPtr->GetModel<MoleculeModel>(name), size);
+		}
+	}
 }
 
 void ChipManager::drawChips()
