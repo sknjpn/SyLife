@@ -190,4 +190,6 @@ public:
 		if (m_openCurtain.IsRunning() && m_openCurtain.Update()) m_audio.setVolume(m_openCurtain.GetProgress());
 		else m_audio.setVolume(1.0);
 	}
+
+	const TinyCamera& getCamera() const { return m_camera; }
 };
