@@ -9,6 +9,7 @@ class FieldManager
 public:
 	void	Init();
 
+	shared_ptr<Chip>& GetChip(const Vec2& position);
 	const shared_ptr<Chip>& GetChip(const Vec2& position) const;
 };
 
