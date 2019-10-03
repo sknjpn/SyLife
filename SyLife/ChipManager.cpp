@@ -48,8 +48,11 @@ void ChipManager::drawChips()
 		rect.size = getPoint(cameraRect.br()) - rect.pos;
 	}
 
+	rect.stretched(1);
+
 	for (const auto p : step(rect.pos, rect.size))
 	{
+		if (!m_rect.contains(p)) continue;
 		// const auto& c = m_chips[p];
 
 		RectF(p * m_length, Vec2(m_length, m_length)).drawFrame(2.0, Palette::White);
