@@ -1,4 +1,5 @@
 ﻿#include "ChipManager.h"
+#include "Chip.h"
 #include "FieldViewer.h"
 
 unique_ptr<ChipManager> g_chipManagerPtr;
@@ -13,6 +14,27 @@ ChipManager::ChipManager()
 Point ChipManager::getPoint(const Vec2& position) const
 {
 	return Point(int(position.x / m_length), int(position.y / m_length));
+}
+
+void ChipManager::init()
+{
+	// Chips
+	{
+		const Size size(128, 128);
+
+		for (auto p : step(size))
+			m_chips[p] = MakeShared<Chip>();
+
+		// 結びつきの作成
+		for (auto p : step(size.movedBy(-1, -1)))
+		{
+			m_chips[p]->m_r = m_chips[p.movedBy(1, 0)];
+			m_chips[p]->m_d = m_chips[p.movedBy(0, 1)];
+			m_chips[p.movedBy(1, 0)]->m_l = m_chips[p];
+			m_chips[p.movedBy(0, 1)]->m_u = m_chips[p];
+		}
+	}
+
 }
 
 void ChipManager::drawChips()
