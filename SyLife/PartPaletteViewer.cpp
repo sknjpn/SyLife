@@ -40,7 +40,8 @@ void	PartPaletteViewer::Update()
 
 	{
 		const double h = 32 * 3 - 16 + g_assetManagerPtr->GetModels<PartModel>().size() * 64 - 400.0;
-		auto t = Transformer2D(Mat3x2::Translate(0, -h * m_bar), true);
+
+		MoveDrawPos(0, -h * m_bar);
 
 		DrawModels<BodyModel>("Body");
 		DrawModels<EquipmentModel>("Equipment");
