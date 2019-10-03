@@ -531,6 +531,8 @@
     <ClInclude Include="Chip.h">
       <Filter>Source Files\SyLife\Util</Filter>
     </ClInclude>
-    <ClInclude Include="ChipManager.h" />
+    <ClInclude Include="ChipManager.h">
+      <Filter>Source Files\SyLife\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
