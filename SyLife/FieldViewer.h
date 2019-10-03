@@ -68,7 +68,6 @@ public:
 			for (int i = 0; i < speed; ++i)
 			{
 				g_terrainManagerPtr->UpdateTerrain();
-				g_moleculeManagerPtr->UpdateMoleculeStates();
 				g_waveManagerPtr->UpdateWave();
 				g_cellManagerPtr->UpdateCellStates();
 				g_eggManagerPtr->UpdateEggStates();
@@ -103,7 +102,6 @@ public:
 			g_terrainManagerPtr->DrawTerrain();
 			g_waveManagerPtr->DrawWave();
 			g_eggManagerPtr->DrawEggStates();
-			g_moleculeManagerPtr->DrawMoleculeStates();
 			g_cellManagerPtr->DrawCellStates();
 
 			// delete
