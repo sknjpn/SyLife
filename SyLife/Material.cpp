@@ -1,2 +1,1 @@
-﻿#include "stdafx.h"
-#include "Material.h"
+﻿#include "Material.h"
