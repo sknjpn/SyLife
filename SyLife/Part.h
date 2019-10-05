@@ -23,7 +23,7 @@ public:
 public:
 	// Get
 	double	GetMass() const { return m_mass; }
-	const Storage& GetMaterial() const { return m_material; }
+	const Material& GetMaterial() const { return m_material; }
 	const Array<ShapeModel>& GetShapes() const { return m_shapes; }
 
 	void MakeViewer() override;
