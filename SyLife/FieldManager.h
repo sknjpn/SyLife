@@ -2,6 +2,8 @@
 
 class FieldManager
 {
+	Vec2	m_size;
+
 public:
 	void	Init();
 };

@@ -8,7 +8,7 @@ class MoleculeModel;
 class Storage
 	: public Model
 {
-	Array<pair<shared_ptr<MoleculeModel>, unsigned int>>	m_molecules;
+	Array<pair<shared_ptr<MoleculeModel>, double>>	m_molecules;
 
 public:
 	// operator
@@ -44,33 +44,44 @@ public:
 	}
 
 	// molecule
-	void	Add(const shared_ptr<MoleculeModel>& model, unsigned int size = 1)
+	void	Add(const shared_ptr<MoleculeModel>& model, double size)
 	{
 		auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
 
 		if (it == m_molecules.end()) m_molecules.emplace_back(model, size);
 		else (*it).second += size;
 	}
-	void	Pull(const shared_ptr<MoleculeModel>& model, unsigned int size = 1)
+
+	void	Pull(const shared_ptr<MoleculeModel>& model, double size)
 	{
 		auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
 
 		if (it == m_molecules.end()) throw new exception;
 		else
 		{
-			if (((*it).second -= size) < 0) throw new exception;
-			else if ((*it).second == 0) m_molecules.erase(it);
+			if (((*it).second -= size) < 0.0) throw new exception;
+			else if ((*it).second == 0.0) m_molecules.erase(it);
 		}
 	}
-	unsigned int	Num(const shared_ptr<MoleculeModel>& model) const
+
+	double	Num(const shared_ptr<MoleculeModel>& model) const
 	{
 		auto it = find_if(m_molecules.begin(), m_molecules.end(), [&model](const auto& m) { return m.first == model; });
 
-		if (it == m_molecules.end()) return 0;
+		if (it == m_molecules.end()) return 0.0;
 		else return (*it).second;
 	}
 
-	const Array<pair<shared_ptr<MoleculeModel>, unsigned int>>&	GetMolecules() const { return m_molecules; }
+	double	Num() const
+	{
+		double sum = 0.0;
+		for (const auto& m : m_molecules)
+			sum += m.second;
+
+		return sum;
+	}
+
+	const Array<pair<shared_ptr<MoleculeModel>, double>>&	GetMolecules() const { return m_molecules; }
 
 	bool	IsEmpty() const { return m_molecules.empty(); }
 
@@ -86,7 +97,7 @@ public:
 
 			const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(name);
 
-			m_molecules.emplace_back(model, m.second.get<int>("size"));
+			m_molecules.emplace_back(model, m.second.get<double>("size"));
 		}
 
 		Model::Load_this(pt);

@@ -112,14 +112,17 @@ void CellState::UpdateCell()
 	for (const auto& p : m_partStates) p->Update(*this);
 
 	// 接触したMoleculeStateの取り込み
+	/*
 	for (auto i : g_moleculeManagerPtr->GetMoleculeStateKDTree().knnSearch(1, GetPosition()))
 	{
 		auto& m = g_moleculeManagerPtr->GetMoleculeStates()[i];
 
 		if (!m->IsDestroyed() && (m->GetPosition() - GetPosition()).length() - GetRadius() < 0.0) TakeMolecule(m);
 	}
+	*/
 
 	// 余剰のMoleculeStateの投棄
+	/*
 	for (;;)
 	{
 		bool flag = true;
@@ -138,6 +141,7 @@ void CellState::UpdateCell()
 
 		if (flag) break;
 	}
+	*/
 
 	// 分裂処理
 	if (m_storage >= m_model->GetMaterial())
@@ -154,6 +158,7 @@ void CellState::UpdateCell()
 	if (m_deathTimer <= 0.0)
 	{
 		// MoleculeStateの吐き出し
+		/*
 		auto s = m_storage + m_model->GetMaterial();
 		for (const auto& m : s.GetMolecules())
 		{
@@ -168,6 +173,7 @@ void CellState::UpdateCell()
 				ms->SetVelocity(v * 0.1);
 			}
 		}
+		*/
 
 		Destroy();
 	}
@@ -198,13 +204,16 @@ void CellState::Draw()
 	}
 }
 
+/*
 void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 {
 	m_storage.Add(molecule->GetModel());
 
 	molecule->Destroy();
 }
+*/
 
+/*
 void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size)
 {
 	for (unsigned int i = 0; i < size; ++i)
@@ -221,3 +230,4 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned 
 		m_storage.Pull(model);
 	}
 }
+*/

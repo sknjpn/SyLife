@@ -77,8 +77,8 @@ public:
 	void	UpdateCell();
 	void	Draw();
 
-	void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
-	void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);
+	// void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
+	// void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);
 };
 
 class CellViewer

@@ -29,9 +29,9 @@ public:
 		: m_audio(U"assets/music/シアン.mp3")
 		, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 	{
-		m_camera.setRestrictedRect(RectF(4096, 4096).setCenter(Vec2::Zero()));
+		m_camera.setRestrictedRect(RectF(12800, 12800));
 		m_camera.setMaxScale(4);
-		m_camera.setMinScale(0.5);
+		m_camera.setMinScale(0.1);
 		m_camera.setCenter(Vec2::Zero());
 		m_camera.setTargetCenter(Vec2::Zero());
 
@@ -68,10 +68,10 @@ public:
 			for (int i = 0; i < speed; ++i)
 			{
 				g_terrainManagerPtr->UpdateTerrain();
-				g_moleculeManagerPtr->UpdateMoleculeStates();
 				g_waveManagerPtr->UpdateWave();
 				g_cellManagerPtr->UpdateCellStates();
 				g_eggManagerPtr->UpdateEggStates();
+				g_chipManagerPtr->updateChips();
 			}
 
 			// Rigidbody Capture
@@ -103,8 +103,8 @@ public:
 			g_terrainManagerPtr->DrawTerrain();
 			g_waveManagerPtr->DrawWave();
 			g_eggManagerPtr->DrawEggStates();
-			g_moleculeManagerPtr->DrawMoleculeStates();
 			g_cellManagerPtr->DrawCellStates();
+			g_chipManagerPtr->drawChips();
 
 			// delete
 			if (MouseR.pressed())
@@ -122,7 +122,7 @@ public:
 						e->Destroy();
 
 						// MoleculeStateの吐き出し
-						auto s = e->GetCellModel()->GetMaterial();
+						/*auto s = e->GetCellModel()->GetMaterial();
 						for (const auto& m : s.GetMolecules())
 						{
 							for (unsigned int i = 0; i < m.second; i++)
@@ -135,7 +135,7 @@ public:
 								ms->SetPosition(e->GetPosition() + v * (e->GetRadius() + m.first->GetRadius()) * Random(1.0));
 								ms->SetVelocity(v * 0.1);
 							}
-						}
+						}*/
 					}
 				}
 			}
@@ -190,4 +190,6 @@ public:
 		if (m_openCurtain.IsRunning() && m_openCurtain.Update()) m_audio.setVolume(m_openCurtain.GetProgress());
 		else m_audio.setVolume(1.0);
 	}
+
+	const TinyCamera& getCamera() const { return m_camera; }
 };
