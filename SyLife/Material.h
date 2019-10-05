@@ -1,9 +1,11 @@
 ﻿#pragma once
 
+#include "Model.h"
 #include "Storage.h"
 
 // あるものを生産するのに必要な量
 class Material
+	: public Model
 {
 	Storage m_storage;
 	double	m_nutrition;
