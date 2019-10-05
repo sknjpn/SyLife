@@ -127,6 +127,7 @@
     <ClCompile Include="Hotspot.cpp" />
     <ClCompile Include="HotspotManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
@@ -243,6 +244,7 @@
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="Hotspot.h" />
     <ClInclude Include="HotspotManager.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelViewer.h" />
     <ClInclude Include="Module.h" />

@@ -182,6 +182,9 @@
     <ClCompile Include="ChipManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -534,5 +537,6 @@
     <ClInclude Include="ChipManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Material.h" />
   </ItemGroup>
 </Project>

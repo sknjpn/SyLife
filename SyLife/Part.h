@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "ModelViewer.h"
-#include "Storage.h"
+#include "Material.h"
 #include "ShapeModel.h"
 #include "PartShapeViewer.h"
 
@@ -17,7 +17,7 @@ public:
 	friend class PartViewer;
 
 	double	m_mass;
-	Storage	m_material;
+	Material	m_material;
 	Array<ShapeModel>	m_shapes;
 
 public:
