@@ -85,7 +85,7 @@ public:
 
 	bool	isEmpty() const { return m_molecules.empty(); }
 
-	void	reset() { m_molecules.clear(); }
+	void	clear() { m_molecules.clear(); }
 
 	// JSON
 	void	Load_this(const ptree& pt)

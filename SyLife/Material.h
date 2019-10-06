@@ -45,7 +45,7 @@ public:
 		return *this;
 	}
 
-	void	reset() { m_storage.reset(); m_nutrition = 0.0; }
+	void	claer() { m_storage.reset(); m_nutrition = 0.0; }
 	bool	isEmpty() const { return m_storage.isEmpty() && m_nutrition == 0.0; }
 
 	// JSON
