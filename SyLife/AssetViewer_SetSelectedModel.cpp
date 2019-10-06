@@ -2,6 +2,8 @@
 
 #include "ViewerManager.h"
 
+#include "ModelViewer.h"
+
 void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)
 {
 	// ModelViewerを消す
