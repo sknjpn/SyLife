@@ -108,6 +108,9 @@
     <Filter Include="Source Files\SyLife\State\src">
       <UniqueIdentifier>{1a7a72c9-a658-4969-be46-4dbde640e76c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife\State\Part\src">
+      <UniqueIdentifier>{825ab859-7ccb-4b57-9c39-2a673005b51d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -185,50 +188,50 @@
     <ClCompile Include="Hotspot.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Body.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Chloroplast.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Eye.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Needle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Part.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Synthesizer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Wing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Wave.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AssemblyViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Viewer\src</Filter>
     </ClCompile>
     <ClCompile Include="FieldViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Viewer\src</Filter>
     </ClCompile>
     <ClCompile Include="EditorViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Viewer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files\SyLife\Util\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Wave.cpp">
+      <Filter>Source Files\SyLife\Util\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Body.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Chloroplast.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Eye.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Needle.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Part.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Synthesizer.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Wing.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
