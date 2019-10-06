@@ -83,9 +83,9 @@ public:
 
 	const Array<pair<shared_ptr<MoleculeModel>, double>>&	GetMolecules() const { return m_molecules; }
 
-	bool	IsEmpty() const { return m_molecules.empty(); }
+	bool	isEmpty() const { return m_molecules.empty(); }
 
-	void	Clear() { m_molecules.clear(); }
+	void	reset() { m_molecules.clear(); }
 
 	// JSON
 	void	Load_this(const ptree& pt)
