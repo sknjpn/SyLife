@@ -1,4 +1,6 @@
-﻿#include "Cell.h"
+﻿#include "AssetManager.h"
+
+#include "Cell.h"
 #include "Molecule.h"
 #include "Body.h"
 #include "Equipment.h"

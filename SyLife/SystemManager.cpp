@@ -1,4 +1,15 @@
-﻿unique_ptr<SystemManager>	g_systemManagerPtr;
+﻿#include "SystemManager.h"
+
+#include "AssetManager.h"
+#include "CellManager.h"
+#include "FieldManager.h"
+#include "ViewerManager.h"
+#include "EggManager.h"
+#include "WaveManager.h"
+#include "TerrainManager.h"
+#include "ChipManager.h"
+
+unique_ptr<SystemManager>	g_systemManagerPtr;
 
 SystemManager::SystemManager()
 {

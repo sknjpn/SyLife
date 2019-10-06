@@ -1,4 +1,8 @@
 ﻿#include "WaveManager.h"
+
+#include "SystemManager.h"
+#include "TerrainManager.h"
+
 #include "Terrain.h"
 
 unique_ptr<WaveManager>	g_waveManagerPtr;

@@ -1,4 +1,5 @@
 ﻿#include "ChipManager.h"
+
 #include "Chip.h"
 #include "FieldViewer.h"
 
