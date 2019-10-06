@@ -1,5 +1,12 @@
 ﻿#include "Rigidbody.h"
 
+#include "SystemManager.h"
+
+void Rigidbody::AddForceInWorld(const Vec2& force, const Vec2& worldPosition)
+{
+	AddImpulseInWorld(force * g_systemManagerPtr->GetDeltaTime(), worldPosition);
+}
+
 void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
 {
 	// 運動量
