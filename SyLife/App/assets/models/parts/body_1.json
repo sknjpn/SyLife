@@ -5,15 +5,15 @@
         "name":"",
         "molecules": [
             {
-                "molecule": "Amino Acid",
+                "name": "Amino Acid",
                 "size": 1
             },
             {
-                "molecule": "Carbon",
+                "name": "Carbon",
                 "size": 2
             },
             {
-                "molecule": "Oxygen",
+                "name": "Oxygen",
                 "size": 1
             }
         ]

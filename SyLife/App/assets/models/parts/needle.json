@@ -4,11 +4,11 @@
         "name":"",
         "molecules": [
             {
-                "molecule": "Oxygen",
+                "name": "Oxygen",
                 "size": 1
             },
             {
-                "molecule": "Carbon",
+                "name": "Carbon",
                 "size": 1
             }
         ]
