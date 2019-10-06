@@ -1,5 +1,8 @@
 ﻿#include "Egg.h"
 
+#include "SystemManager.h"
+#include "CellManager.h"
+
 void EggState::UpdateEgg()
 {
 	m_timer -= g_systemManagerPtr->GetDeltaTime();
