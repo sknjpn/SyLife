@@ -1,5 +1,13 @@
 ﻿#include "Particle.h"
 
+#include "SystemManager.h"
+#include "WaveManager.h"
+
+void Particle::AddForce(const Vec2& force)
+{
+	m_velocity += force / m_mass * g_systemManagerPtr->GetDeltaTime();
+}
+
 void Particle::UpdateParticle()
 {
 	// 並進運動
