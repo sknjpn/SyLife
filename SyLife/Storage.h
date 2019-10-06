@@ -88,7 +88,7 @@ public:
 	void	clear() { m_molecules.clear(); }
 
 	// JSON
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// molecules
 		for (auto m : pt.get_child("molecules"))
@@ -100,9 +100,9 @@ public:
 			m_molecules.emplace_back(model, m.second.get<double>("size"));
 		}
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const 
 	{
 		// molecules

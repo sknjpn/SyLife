@@ -63,11 +63,11 @@ public:
 	}
 
 	// JSON
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		m_name = pt.get<string>("name");
 	}
-	virtual void	Load(const ptree& pt) { Load_this(pt); }
+	virtual void	load(const ptree& pt) { load_this(pt); }
 	void	Save_this(ptree& pt) const {
 		// name
 		pt.put("name", m_name);

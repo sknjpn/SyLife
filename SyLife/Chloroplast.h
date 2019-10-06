@@ -9,8 +9,8 @@ public:
 	void		MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
-	void	Load_this(const ptree& pt);
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load_this(const ptree& pt);
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		ModuleModel::Save_this(pt);
@@ -57,9 +57,9 @@ inline void		ChloroplastModel::MakeViewer()
 }
 inline shared_ptr<PartState>	ChloroplastModel::MakeState() { return make_shared<ChloroplastState>(); }
 
-inline void ChloroplastModel::Load_this(const ptree& pt)
+inline void ChloroplastModel::load_this(const ptree& pt)
 {
-	ModuleModel::Load_this(pt);
+	ModuleModel::load_this(pt);
 }
 
 inline void ChloroplastState::MakeNutrition()

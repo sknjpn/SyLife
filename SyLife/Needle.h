@@ -10,8 +10,8 @@ public:
 	void	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
-	void	Load_this(const ptree& pt);
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load_this(const ptree& pt);
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		EquipmentModel::Save_this(pt);
@@ -85,7 +85,7 @@ inline void		NeedleModel::MakeViewer()
 }
 inline shared_ptr<PartState>	NeedleModel::MakeState() { return make_shared<NeedleState>(); }
 
-inline void NeedleModel::Load_this(const ptree& pt)
+inline void NeedleModel::load_this(const ptree& pt)
 {
-	EquipmentModel::Load_this(pt);
+	EquipmentModel::load_this(pt);
 }

@@ -22,7 +22,7 @@ public:
 	const Color&	GetColor() const { return m_color; }
 
 	// JSON
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// mass
 		m_mass = pt.get<double>("mass");
@@ -33,9 +33,9 @@ public:
 		// radius
 		m_radius = sqrt(m_mass);
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// mass

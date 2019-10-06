@@ -17,8 +17,8 @@ public:
 	void	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
-	void	Load_this(const ptree& pt);
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load_this(const ptree& pt);
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// import
@@ -93,13 +93,13 @@ inline void		SynthesizerModel::MakeViewer()
 
 inline shared_ptr<PartState>	SynthesizerModel::MakeState() { return make_shared<SynthesizerState>(); }
 
-inline void SynthesizerModel::Load_this(const ptree& pt)
+inline void SynthesizerModel::load_this(const ptree& pt)
 {
 	// import
-	m_import.Load(pt.get_child("import"));
+	m_import.load(pt.get_child("import"));
 
 	// export
 	m_export = g_assetManagerPtr->GetModel<MoleculeModel>(pt.get<string>("export"));
 
-	ModuleModel::Load_this(pt);
+	ModuleModel::load_this(pt);
 }

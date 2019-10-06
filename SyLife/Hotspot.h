@@ -20,17 +20,17 @@ public:
 	void	MakeViewer();
 
 	// JSON
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// interval
 		m_interval = pt.get<double>("interval");
 
 		// ingradient
-		m_ingradient.Load(pt.get_child("ingradient"));
+		m_ingradient.load(pt.get_child("ingradient"));
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// interval
@@ -66,7 +66,7 @@ public:
 	const Vec2&	GetPosition() const { return m_position; }
 
 	// JSON
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// model
 		m_hotspotModel = g_assetManagerPtr->GetModel<HotspotModel>(pt.get<string>("model"));
@@ -74,9 +74,9 @@ public:
 		// position
 		m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// model

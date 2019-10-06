@@ -24,7 +24,7 @@ public:
 	void	MakeViewer() override;
 
 	// JSON
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// size
 		m_size = pt.get<double>("size");
@@ -35,11 +35,11 @@ public:
 		// density
 		m_density = pt.get<double>("density");
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 
 		// UpdateProperties();
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// size

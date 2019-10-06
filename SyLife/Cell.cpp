@@ -16,14 +16,14 @@ void CellModel::Draw(double a)
 	}
 }
 
-void CellModel::Load_this(const ptree& pt)
+void CellModel::load_this(const ptree& pt)
 {
 	// parts
-	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->Load(part.second);
+	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->load(part.second);
 
 	UpdateProperties();
 
-	Model::Load_this(pt);
+	Model::load_this(pt);
 }
 
 void CellModel::Save_this(ptree& pt) const

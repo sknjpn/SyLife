@@ -22,7 +22,7 @@ public:
 			//.drawFrame(1.0, Palette::Black); 
 	}
 
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// color
 		m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
@@ -37,9 +37,9 @@ public:
 			m_polygon = Polygon(verticles);
 		}
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// color

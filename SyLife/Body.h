@@ -9,8 +9,8 @@ public:
 	void	MakeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
-	void	Load_this(const ptree& pt);
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load_this(const ptree& pt);
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		PartModel::Save_this(pt);
@@ -55,7 +55,7 @@ inline void		BodyModel::MakeViewer()
 }
 inline shared_ptr<PartState>	BodyModel::MakeState() { return make_shared<BodyState>(); }
 
-inline void BodyModel::Load_this(const ptree& pt)
+inline void BodyModel::load_this(const ptree& pt)
 {
-	PartModel::Load_this(pt);
+	PartModel::load_this(pt);
 }

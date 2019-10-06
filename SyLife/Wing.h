@@ -14,8 +14,8 @@ public:
 	shared_ptr<PartState>	MakeState() override;
 
 
-	void	Load_this(const ptree& pt);
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load_this(const ptree& pt);
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		pt.put("isRight", m_isRight);
@@ -92,11 +92,11 @@ inline void		WingModel::MakeViewer()
 }
 inline shared_ptr<PartState>	WingModel::MakeState() { return make_shared<WingState>(); }
 
-inline void WingModel::Load_this(const ptree& pt)
+inline void WingModel::load_this(const ptree& pt)
 {
 	m_isRight = pt.get<bool>("isRight");
 
-	EquipmentModel::Load_this(pt);
+	EquipmentModel::load_this(pt);
 }
 
 inline void WingState::Flap(CellState& cell)

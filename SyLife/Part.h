@@ -81,21 +81,21 @@ public:
 	Vec2	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
 
 	// JSON
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// mass
 		m_mass = pt.get<double>("mass");
 
 		// shapes
 		for (auto shape : pt.get_child("shapes"))
-			m_shapes.emplace_back().Load_this(shape.second);
+			m_shapes.emplace_back().load_this(shape.second);
 
 		// material
-		m_material.Load(pt.get_child("material"));
+		m_material.load(pt.get_child("material"));
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// mass
@@ -151,7 +151,7 @@ public:
 
 	double	GetInertia() const { return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->GetMass(); }
 
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// model
 		m_partModel = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
@@ -162,9 +162,9 @@ public:
 		// rotation
 		m_rotation = pt.get<double>("rotation");
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// model

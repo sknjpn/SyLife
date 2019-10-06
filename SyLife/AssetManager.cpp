@@ -25,7 +25,7 @@ void AssetManager::AddModelFromFile(const string& filepath)
 
 	read_json(filepath, pt);
 
-	MakeModel(pt.get<string>("type"))->Load(pt);
+	MakeModel(pt.get<string>("type"))->load(pt);
 }
 
 shared_ptr<Model> AssetManager::GetModel(const string& name) const

@@ -49,17 +49,17 @@ public:
 	bool	isEmpty() const { return m_storage.isEmpty() && m_nutrition == 0.0; }
 
 	// JSON
-	void	Load_this(const ptree& pt)
+	void	load_this(const ptree& pt)
 	{
 		// storage
-		m_storage.Load(pt.get_child("storage"));
+		m_storage.load(pt.get_child("storage"));
 
 		// nutrition
 		m_nutrition = pt.get<double>("nutrition");
 
-		Model::Load_this(pt);
+		Model::load_this(pt);
 	}
-	void	Load(const ptree& pt) override { Load_this(pt); }
+	void	load(const ptree& pt) override { load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
 		// storage
