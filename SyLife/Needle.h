@@ -12,14 +12,14 @@ public:
 
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
-		EquipmentModel::Save_this(pt);
+		EquipmentModel::save_this(pt);
 
 		// type
 		pt.put("type", "NeedleModel");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 };
 
 class NeedleState

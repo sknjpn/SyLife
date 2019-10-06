@@ -96,7 +96,7 @@ public:
 		Model::load_this(pt);
 	}
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		// mass
 		pt.put<double>("mass", m_mass);
@@ -107,7 +107,7 @@ public:
 
 			for (const auto& v : m_shapes)
 			{
-				ptree shape; v.Save(shape);
+				ptree shape; v.save(shape);
 				shapes.push_back(std::make_pair("", shape));
 			}
 
@@ -118,16 +118,16 @@ public:
 		{
 			ptree material;
 
-			m_material.Save(material);
+			m_material.save(material);
 
 			pt.add_child("material", material);
 		}
 
-		Model::Save_this(pt);
+		Model::save_this(pt);
 
 		pt.put("type", "PartModel");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/parts/" + GetFilename(); }
 };
 
@@ -165,7 +165,7 @@ public:
 		Model::load_this(pt);
 	}
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		// model
 		pt.put("model", m_partModel->GetName());
@@ -183,11 +183,11 @@ public:
 		// rotation
 		pt.put("rotation", m_rotation);
 
-		Model::Save_this(pt);
+		Model::save_this(pt);
 
 		pt.put("type", "PartConfig");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 };
 
 class PartState

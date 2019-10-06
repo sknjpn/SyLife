@@ -26,7 +26,7 @@ void CellModel::load_this(const ptree& pt)
 	Model::load_this(pt);
 }
 
-void CellModel::Save_this(ptree& pt) const
+void CellModel::save_this(ptree& pt) const
 {
 	// parts
 	{
@@ -34,14 +34,14 @@ void CellModel::Save_this(ptree& pt) const
 
 		for (const auto& e : m_partConfigs)
 		{
-			ptree part; e->Save(part);
+			ptree part; e->save(part);
 			parts.push_back(std::make_pair("", part));
 		}
 
 		pt.add_child("parts", parts);
 	}
 
-	Model::Save_this(pt);
+	Model::save_this(pt);
 
 	pt.put("type", "CellModel");
 }

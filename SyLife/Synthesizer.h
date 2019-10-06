@@ -19,13 +19,13 @@ public:
 
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		// import
 		{
 			ptree pt2;
 
-			m_import.Save(pt2);
+			m_import.save(pt2);
 
 			pt.push_back(std::make_pair("import", pt2));
 		}
@@ -33,11 +33,11 @@ public:
 		// export
 		pt.put("export", m_export->GetName());
 
-		ModuleModel::Save_this(pt);
+		ModuleModel::save_this(pt);
 
 		pt.put("type", "SynthesizerModel");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 };
 
 class SynthesizerState

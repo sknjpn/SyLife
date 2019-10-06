@@ -54,8 +54,8 @@ public:
 	// JSON
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const;
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save_this(ptree& pt) const;
+	void	save(ptree& pt) const override { save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/cells/" + GetFilename(); }
 };
 

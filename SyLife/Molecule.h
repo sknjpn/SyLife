@@ -36,7 +36,7 @@ public:
 		Model::load_this(pt);
 	}
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		// mass
 		pt.put<double>("mass", m_mass);
@@ -52,11 +52,11 @@ public:
 			pt.add_child("color", color);
 		}
 
-		Model::Save_this(pt);
+		Model::save_this(pt);
 
 		pt.put("type", "MoleculeModel");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/molecules/" + GetFilename(); }
 };
 

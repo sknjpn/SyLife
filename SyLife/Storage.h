@@ -103,7 +103,7 @@ public:
 		Model::load_this(pt);
 	}
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const 
+	void	save_this(ptree& pt) const 
 	{
 		// molecules
 		{
@@ -121,10 +121,10 @@ public:
 			pt.add_child("molecules", molecules);
 		}
 
-		Model::Save_this(pt);
+		Model::save_this(pt);
 
 		// type
 		pt.put("type", "Storage");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 };

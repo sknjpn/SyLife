@@ -38,7 +38,7 @@ public:
 		{
 			ptree pt;
 
-			Save(pt);
+			save(pt);
 
 			write_json(GetFilepath(), pt);
 		}
@@ -68,12 +68,12 @@ public:
 		m_name = pt.get<string>("name");
 	}
 	virtual void	load(const ptree& pt) { load_this(pt); }
-	void	Save_this(ptree& pt) const {
+	void	save_this(ptree& pt) const {
 		// name
 		pt.put("name", m_name);
 
 		// type
 		pt.put("type", "Model");
 	}
-	virtual void	Save(ptree& pt) const { Save_this(pt); }
+	virtual void	save(ptree& pt) const { save_this(pt); }
 };

@@ -60,13 +60,13 @@ public:
 		Model::load_this(pt);
 	}
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		// storage
 		{
 			ptree storage;
 
-			m_storage.Save(storage);
+			m_storage.save(storage);
 
 			pt.add_child("storage", storage);
 		}
@@ -74,11 +74,11 @@ public:
 		// nutrition
 		pt.put<double>("nutrition", m_nutrition);
 
-		Model::Save_this(pt);
+		Model::save_this(pt);
 
 		// type
 		pt.put("type", "Storage");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 };
 

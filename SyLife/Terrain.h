@@ -40,7 +40,7 @@ public:
 		// UpdateProperties();
 	}
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		// size
 		pt.put<double>("size", m_size);
@@ -51,11 +51,11 @@ public:
 		// density
 		pt.put<double>("density", m_density);
 
-		Model::Save_this(pt);
+		Model::save_this(pt);
 
 		pt.put("type", "TerrainModels");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/hotspots/" + GetFilename(); }
 };
 

@@ -16,15 +16,15 @@ public:
 
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		pt.put("isRight", m_isRight);
 
-		EquipmentModel::Save_this(pt);
+		EquipmentModel::save_this(pt);
 
 		pt.put("type", "WingModel");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 };
 
 class WingState

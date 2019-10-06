@@ -31,7 +31,7 @@ public:
 		Model::load_this(pt);
 	}
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		// interval
 		pt.put<double>("interval", m_interval);
@@ -40,16 +40,16 @@ public:
 		{
 			ptree ingradient;
 
-			m_ingradient.Save(ingradient);
+			m_ingradient.save(ingradient);
 
 			pt.add_child("ingradient", ingradient);
 		}
 
-		Model::Save_this(pt);
+		Model::save_this(pt);
 
 		pt.put("type", "HotspotModel");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/hotspots/" + GetFilename(); }
 };
 
@@ -77,7 +77,7 @@ public:
 		Model::load_this(pt);
 	}
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	Save_this(ptree& pt) const
+	void	save_this(ptree& pt) const
 	{
 		// model
 		pt.put("model", m_hotspotModel->GetName());
@@ -92,11 +92,11 @@ public:
 			pt.push_back(std::make_pair("position", position));
 		}
 
-		Model::Save_this(pt);
+		Model::save_this(pt);
 
 		pt.put("type", "PartConfig");
 	}
-	void	Save(ptree& pt) const override { Save_this(pt); }
+	void	save(ptree& pt) const override { save_this(pt); }
 };
 
 class HotspotState

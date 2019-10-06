@@ -29,11 +29,11 @@ void AssetViewer::Update()
 		MoveDrawPos(0, 16);
 	}
 
-	// Save
+	// save
 	if (KeyControl.pressed() && KeyS.down() && m_selectedModel != nullptr)
 	{
 		ptree pt;
-		m_selectedModel->Save(pt);
+		m_selectedModel->save(pt);
 		write_json(m_selectedModel->GetFilepath(), pt);
 	}
 }
