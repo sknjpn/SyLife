@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "Viewer.h"
-//#include "Model.h"
-#include "AssetViewer.h"
+
+class Model;
 
 class EditorViewer
 	: public Viewer
@@ -10,19 +10,10 @@ class EditorViewer
 	shared_ptr<Model>	m_selectedModel;
 
 public:
-	EditorViewer()
-	{
-		SetDrawRect(Scene::Size());
-	}
+	EditorViewer();
 
-	void	Init()
-	{
-		g_viewerManagerPtr->MakeViewer<AssetViewer>();
-	}
+	void	Init();
 
-	void	update()
-	{
-		
-	}
+	void	update();
 };
 

@@ -124,6 +124,7 @@
     <ClCompile Include="Chip.cpp" />
     <ClCompile Include="ChipManager.cpp" />
     <ClCompile Include="Chloroplast.cpp" />
+    <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="EggManager.cpp" />
     <ClCompile Include="Equipment.cpp" />
