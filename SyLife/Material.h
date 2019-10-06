@@ -11,8 +11,42 @@ class Material
 	double	m_nutrition;
 
 public:
+	Material(const Storage& storage, double nutrition)
+		: m_storage(storage)
+		, m_nutrition(nutrition)
+	{}
+
 	const Storage& getStorage() const { return m_storage; }
 	double	getNutrition() const { return m_nutrition; }
+
+	// operator
+	Material	operator +(const Material& s) const { return Material(*this) += s; }
+	Material	operator -(const Material& s) const { return Material(*this) -= s; }
+	bool operator >=(const Material& s) const
+	{
+		return m_storage >= s.m_storage && m_nutrition >= s.m_nutrition;
+	}
+	bool operator <=(const Material& s) const
+	{
+		return m_storage <= s.m_storage && m_nutrition <= s.m_nutrition;
+	}
+	Material& operator +=(const Material& s) noexcept
+	{
+		m_storage += s.m_storage;
+		m_nutrition += s.m_nutrition;
+
+		return *this;
+	}
+	Material& operator -=(const Material& s) noexcept
+	{
+		m_storage -= s.m_storage;
+		m_nutrition -= s.m_nutrition;
+
+		return *this;
+	}
+
+	void	reset() { m_storage.reset(); m_nutrition = 0.0; }
+	bool	isEmpty() const { return m_storage.isEmpty() && m_nutrition == 0.0; }
 
 	// JSON
 	void	Load_this(const ptree& pt)
