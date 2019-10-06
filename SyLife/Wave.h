@@ -33,8 +33,3 @@ public:
 	void	Update_this() { ModelViewer::Update_this(); }
 	void	Update() override { Update_this(); }
 };
-
-inline void WaveModel::MakeViewer()
-{
-	g_viewerManagerPtr->MakeViewer<WaveViewer>()->SetModel(shared_from_this());
-}
