@@ -72,8 +72,3 @@ public:
 	}
 	void	Update() override { Update_this(); }
 };
-
-inline void TerrainModel::MakeViewer()
-{
-	g_viewerManagerPtr->MakeViewer<TerrainViewer>()->SetModel(shared_from_this());
-}

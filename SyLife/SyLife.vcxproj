@@ -146,6 +146,7 @@
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="Synthesizer.cpp" />
     <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TerrainManager.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="WaveManager.cpp" />
