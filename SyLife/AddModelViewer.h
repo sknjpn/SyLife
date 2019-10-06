@@ -1,6 +1,9 @@
 ﻿#pragma once
 
 #include "Viewer.h"
+
+#include "AssetManager.h"
+
 class AddModelViewer
 	: public Viewer
 {
