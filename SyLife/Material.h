@@ -11,6 +11,10 @@ class Material
 	double	m_nutrition;
 
 public:
+	Material()
+		: m_nutrition(0.0)
+	{}
+
 	Material(const Storage& storage, double nutrition)
 		: m_storage(storage)
 		, m_nutrition(nutrition)
