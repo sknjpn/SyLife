@@ -4,15 +4,15 @@
         "name":"",
         "molecules": [
             {
-                "molecule": "Oxygen",
+                "name": "Oxygen",
                 "size": 10
             },
             {
-                "molecule": "Nitrogen",
+                "name": "Nitrogen",
                 "size": 10
             },
             {
-                "molecule": "Carbon",
+                "name": "Carbon",
                 "size": 10
             }
         ]
