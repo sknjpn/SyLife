@@ -56,12 +56,12 @@ public:
 		m_timer += g_systemManagerPtr->GetDeltaTime();
 
 		auto model = dynamic_pointer_cast<SynthesizerModel>(GetPartConfig()->GetModel());
-		if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->GetMaterial().num(model->GetExport()) > cell.m_storage.Num(model->GetExport()))
+		if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->GetMaterial().numMolecule(model->GetExport()) > cell.m_storage.numMolecule(model->GetExport()))
 		{
 			m_timer = 0.0;
 
 			cell.m_storage -= model->GetImport();
-			cell.m_storage.Add(model->GetExport(), 1.0);
+			cell.m_storage.addMolecule(model->GetExport(), 1.0);
 		}
 	}
 };
