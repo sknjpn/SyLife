@@ -66,16 +66,7 @@ public:
 	const Vec2&	GetPosition() const { return m_position; }
 
 	// JSON
-	void	load_this(const ptree& pt)
-	{
-		// model
-		m_hotspotModel = g_assetManagerPtr->GetModel<HotspotModel>(pt.get<string>("model"));
-
-		// position
-		m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
-
-		Model::load_this(pt);
-	}
+	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
 	void	save_this(ptree& pt) const
 	{
