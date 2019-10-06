@@ -144,10 +144,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
+    <ClCompile Include="Synthesizer.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TerrainManager.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="WaveManager.cpp" />
+    <ClCompile Include="Wing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
