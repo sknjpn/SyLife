@@ -120,7 +120,3 @@ public:
 
 };
 
-inline void HotspotModel::MakeViewer()
-{
-	g_viewerManagerPtr->MakeViewer<HotspotViewer>()->SetModel(shared_from_this());
-}
