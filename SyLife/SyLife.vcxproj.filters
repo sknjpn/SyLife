@@ -459,9 +459,6 @@
     <ClInclude Include="FieldViewer.h">
       <Filter>Source Files\SyLife\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClInclude>
     <ClInclude Include="Cell.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
@@ -536,6 +533,9 @@
     </ClInclude>
     <ClInclude Include="ChipManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
