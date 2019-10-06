@@ -35,6 +35,7 @@ public:
 	void	Load(const ptree& pt) override { Load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
+
 		Model::Save_this(pt);
 
 		// type
