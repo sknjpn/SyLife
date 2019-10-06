@@ -4,8 +4,6 @@
 #include "ModelViewer.h"
 #include "Rigidbody.h"
 
-#include "ViewerManager.h"
-
 class MoleculeModel
 	: public Model
 {
@@ -89,8 +87,3 @@ public:
 	}
 	void Update() override { Update_this(); }
 };
-
-inline void MoleculeModel::MakeViewer()
-{
-	g_viewerManagerPtr->MakeViewer<MoleculeViewer>()->SetModel(shared_from_this());
-}
