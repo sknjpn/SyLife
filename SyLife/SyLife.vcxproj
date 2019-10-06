@@ -125,6 +125,7 @@
     <ClCompile Include="Chloroplast.cpp" />
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="EggManager.cpp" />
+    <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="Hotspot.cpp" />
     <ClCompile Include="HotspotManager.cpp" />
