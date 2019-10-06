@@ -129,6 +129,7 @@
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Eye.cpp" />
     <ClCompile Include="FieldManager.cpp" />
+    <ClCompile Include="FieldViewer.cpp" />
     <ClCompile Include="Hotspot.cpp" />
     <ClCompile Include="HotspotManager.cpp" />
     <ClCompile Include="Main.cpp" />
