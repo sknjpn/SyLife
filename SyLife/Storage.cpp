@@ -1,5 +1,7 @@
 ﻿#include "Storage.h"
 
+#include "AssetManager.h"
+
 bool Storage::operator>=(const Storage& s) const
 {
 	for (const auto& m : s)
