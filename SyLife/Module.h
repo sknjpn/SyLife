@@ -34,11 +34,11 @@ class ModuleViewer
 {
 public:
 	// Reload
-	void ReloadProperties_this()
+	void reloadProperties_this()
 	{
-		PartViewer::ReloadProperties_this();
+		PartViewer::reloadProperties_this();
 	}
-	void ReloadProperties() override { ReloadProperties_this(); }
+	void reloadProperties() override { reloadProperties_this(); }
 
 	// Update
 	void Update_this()

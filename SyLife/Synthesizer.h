@@ -71,11 +71,11 @@ class SynthesizerViewer
 {
 public:
 	// Reload
-	void ReloadProperties_this()
+	void reloadProperties_this()
 	{
-		ModuleViewer::ReloadProperties_this();
+		ModuleViewer::reloadProperties_this();
 	}
-	void ReloadProperties() override { ReloadProperties_this(); }
+	void reloadProperties() override { reloadProperties_this(); }
 
 	// Update
 	void Update_this()

@@ -16,15 +16,15 @@ public:
 	shared_ptr<T>	GetModel() const { return dynamic_pointer_cast<T>(m_model); }
 
 	// Set
-	void	SetModel(const shared_ptr<Model> model) { m_model = model; ReloadProperties(); }
+	void	SetModel(const shared_ptr<Model> model) { m_model = model; reloadProperties(); }
 
 	// Reload
-	void ReloadProperties_this() 
+	void reloadProperties_this() 
 	{
 		// name
 		m_textEditState_name.text = Unicode::Widen(GetModel<Model>()->GetName());
 	}
-	virtual void ReloadProperties() { ReloadProperties_this(); }
+	virtual void reloadProperties() { reloadProperties_this(); }
 
 	// Update
 	void	Update_this()

@@ -34,11 +34,11 @@ class EyeViewer
 {
 public:
 	// Reload
-	void ReloadProperties_this()
+	void reloadProperties_this()
 	{
-		EquipmentViewer::ReloadProperties_this();
+		EquipmentViewer::reloadProperties_this();
 	}
-	void ReloadProperties() override { ReloadProperties_this(); }
+	void reloadProperties() override { reloadProperties_this(); }
 
 	// Update
 	void Update_this()

@@ -36,13 +36,13 @@ class MoleculeViewer
 
 public:
 	// Reload
-	void ReloadProperties_this() 
+	void reloadProperties_this() 
 	{
-		ModelViewer::ReloadProperties_this();
+		ModelViewer::reloadProperties_this();
 
 		m_textEditState_mass.text = ToString(GetModel<MoleculeModel>()->m_mass); 
 	}
-	void ReloadProperties() override { ReloadProperties_this(); }
+	void reloadProperties() override { reloadProperties_this(); }
 
 	// Update
 	void Update_this()

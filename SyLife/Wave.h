@@ -26,8 +26,8 @@ class WaveViewer
 {
 public:
 	// reload
-	void	ReloadProperties_this() { ModelViewer::ReloadProperties_this(); }
-	void	ReloadProperties() override { ReloadProperties_this(); }
+	void	reloadProperties_this() { ModelViewer::reloadProperties_this(); }
+	void	reloadProperties() override { reloadProperties_this(); }
 
 	// update
 	void	Update_this() { ModelViewer::Update_this(); }
