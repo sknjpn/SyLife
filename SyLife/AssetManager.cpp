@@ -32,7 +32,7 @@ void AssetManager::AddModelFromFile(const string& filepath)
 	}
 	catch (boost::property_tree::ptree_bad_path& e)
 	{
-		LOG_ERROR(U"JSONアセットの読み込み宙に問題が発生しました");
+		LOG_ERROR(U"JSONアセットの読み込みに問題が発生しました");
 		LOG_ERROR(U" What:" + Unicode::Widen(string(e.what())));
 		LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
 		LOG_ERROR(U" Filepath:" + Unicode::Widen(filepath));
