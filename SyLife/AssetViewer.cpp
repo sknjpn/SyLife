@@ -7,6 +7,8 @@
 #include "Equipment.h"
 #include "Module.h"
 
+#include "ViewerManager.h"
+
 void AssetViewer::Update()
 {
 	DrawModels<CellModel>("CellModel");
