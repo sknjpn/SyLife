@@ -18,17 +18,10 @@ public:
 	void	Load_this(const ptree& pt)
 	{
 		// storage
-
-		for (auto m : pt.get_child("molecules"))
-		{
-			auto name = m.second.get<string>("molecule");
-
-			const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(name);
-
-			m_molecules.emplace_back(model, m.second.get<double>("size"));
-		}
+		m_storage.Load(pt.get_child("storage"));
 
 		// nutrition
+		m_nutrition = pt.get<double>("nutrition");
 
 		Model::Load_this(pt);
 	}
@@ -36,6 +29,21 @@ public:
 	void	Save_this(ptree& pt) const
 	{
 
+		// molecules
+		{
+			ptree molecules;
+
+			for (const auto& m : m_molecules)
+			{
+				ptree part;
+				part.put<string>("molecule", m.first->GetName());
+				part.put<int>("size", m.second);
+
+				molecules.push_back(std::make_pair("", part));
+			}
+
+			pt.add_child("molecules", molecules);
+		}
 		Model::Save_this(pt);
 
 		// type
