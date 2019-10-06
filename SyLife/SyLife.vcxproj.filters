@@ -206,6 +206,9 @@
     <ClCompile Include="Needle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Part.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">

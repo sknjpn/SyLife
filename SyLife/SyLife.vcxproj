@@ -134,6 +134,7 @@
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="Needle.cpp" />
+    <ClCompile Include="Part.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />

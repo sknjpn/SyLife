@@ -31,102 +31,16 @@ public:
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 
-	RectF	GetApproximateRect() const
-	{
-		const Vec2 tl = GetApproximateRectTopLeft();
-		const Vec2 br = GetApproximateRectBottomDown();
-
-		return RectF(tl, br - tl);
-	}
-
-	Vec2	GetApproximateRectTopLeft() const
-	{
-		double x = m_shapes.front().m_polygon.vertices().front().x;
-		double y = m_shapes.front().m_polygon.vertices().front().y;
-
-		for (const auto& s : m_shapes)
-		{
-			for (const auto& v : s.m_polygon.vertices())
-			{
-				if (x > v.x) x = v.x;
-				if (y > v.y) y = v.y;
-			}
-		}
-
-		return Vec2(x, y);
-	}
-	Vec2	GetApproximateRectBottomDown() const
-	{
-		double x = m_shapes.front().m_polygon.vertices().front().x;
-		double y = m_shapes.front().m_polygon.vertices().front().y;
-
-		for (const auto& s : m_shapes)
-		{
-			for (const auto& v : s.m_polygon.vertices())
-			{
-				if (x < v.x) x = v.x;
-				if (y < v.y) y = v.y;
-			}
-		}
-
-		return Vec2(x, y);
-	}
-	double	GetRectInertia() const
-	{
-		auto w = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).x;
-		auto h = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).y;
-
-		return  m_mass * (w * w + h * h) / 12.0;
-	}
+	RectF	GetApproximateRect() const;
+	Vec2	GetApproximateRectTopLeft() const;
+	Vec2	GetApproximateRectBottomDown() const;
+	double	GetRectInertia() const;
 	Vec2	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
 
 	// JSON
-	void	load_this(const ptree& pt)
-	{
-		// mass
-		m_mass = pt.get<double>("mass");
-
-		// shapes
-		for (auto shape : pt.get_child("shapes"))
-			m_shapes.emplace_back().load_this(shape.second);
-
-		// material
-		m_material.load(pt.get_child("material"));
-
-		Model::load_this(pt);
-	}
+	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	save_this(ptree& pt) const
-	{
-		// mass
-		pt.put<double>("mass", m_mass);
-
-		// shapes
-		{
-			ptree shapes;
-
-			for (const auto& v : m_shapes)
-			{
-				ptree shape; v.save(shape);
-				shapes.push_back(std::make_pair("", shape));
-			}
-
-			pt.add_child("shapes", shapes);
-		}
-
-		// material
-		{
-			ptree material;
-
-			m_material.save(material);
-
-			pt.add_child("material", material);
-		}
-
-		Model::save_this(pt);
-
-		pt.put("type", "PartModel");
-	}
+	void	save_this(ptree& pt) const;
 	void	save(ptree& pt) const override { save_this(pt); }
 	string	GetFilepath() const override { return "assets/models/parts/" + GetFilename(); }
 };
@@ -151,42 +65,9 @@ public:
 
 	double	GetInertia() const { return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->GetMass(); }
 
-	void	load_this(const ptree& pt)
-	{
-		// model
-		m_partModel = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
-
-		// position
-		m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
-
-		// rotation
-		m_rotation = pt.get<double>("rotation");
-
-		Model::load_this(pt);
-	}
+	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
-	void	save_this(ptree& pt) const
-	{
-		// model
-		pt.put("model", m_partModel->GetName());
-
-		// position
-		{
-			ptree position;
-
-			position.put("x", m_position.x);
-			position.put("y", m_position.y);
-
-			pt.push_back(std::make_pair("position", position));
-		}
-
-		// rotation
-		pt.put("rotation", m_rotation);
-
-		Model::save_this(pt);
-
-		pt.put("type", "PartConfig");
-	}
+	void	save_this(ptree& pt) const;
 	void	save(ptree& pt) const override { save_this(pt); }
 };
 
@@ -234,10 +115,3 @@ public:
 	}
 	void Update() override { Update_this(); }
 };
-
-inline shared_ptr<PartState> PartModel::MakeState() { return make_shared<PartState>(); }
-inline void PartModel::MakeViewer()
-{
-	g_viewerManagerPtr->MakeViewer<PartViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
-}
