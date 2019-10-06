@@ -1,6 +1,10 @@
 ﻿#include "TitleViewer.h"
 #include "Terrain.h"
 
+#include "AssetManager.h"
+#include "SystemManager.h"
+#include "TerrainManager.h"
+
 void Main()
 {
 	Window::SetTitle(U"SyLife");
