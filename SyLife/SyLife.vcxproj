@@ -127,7 +127,6 @@
     <ClCompile Include="Hotspot.cpp" />
     <ClCompile Include="HotspotManager.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
@@ -137,6 +136,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Storage.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TerrainManager.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
@@ -244,7 +244,6 @@
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="Hotspot.h" />
     <ClInclude Include="HotspotManager.h" />
-    <ClInclude Include="Material.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelViewer.h" />
     <ClInclude Include="Module.h" />
