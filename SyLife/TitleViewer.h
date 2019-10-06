@@ -2,6 +2,8 @@
 
 #include "Viewer.h"
 
+#include "ViewerManager.h"
+
 #include "FieldViewer.h"
 #include "EditorViewer.h"
 #include "Curtain.h"
