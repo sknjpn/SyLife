@@ -183,7 +183,7 @@
       <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
     <ClCompile Include="Storage.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
