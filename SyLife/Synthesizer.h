@@ -61,7 +61,7 @@ public:
 			m_timer = 0.0;
 
 			cell.m_storage -= model->GetImport();
-			cell.m_storage.addMolecule(model->GetExport(), 1.0);
+			cell.m_storage.addMolecule(model->GetExport(), 1);
 		}
 	}
 };
