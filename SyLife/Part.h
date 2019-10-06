@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "ModelViewer.h"
-#include "Material.h"
+#include "Storage.h"
 #include "ShapeModel.h"
 #include "PartShapeViewer.h"
 
@@ -17,13 +17,13 @@ public:
 	friend class PartViewer;
 
 	double	m_mass;
-	Material	m_material;
+	Storage	m_material;
 	Array<ShapeModel>	m_shapes;
 
 public:
 	// Get
 	double	GetMass() const { return m_mass; }
-	const Material& GetMaterial() const { return m_material; }
+	const Storage& GetMaterial() const { return m_material; }
 	const Array<ShapeModel>& GetShapes() const { return m_shapes; }
 
 	void MakeViewer() override;
