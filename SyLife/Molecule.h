@@ -4,6 +4,8 @@
 #include "ModelViewer.h"
 #include "Rigidbody.h"
 
+#include "ViewerManager.h"
+
 class MoleculeModel
 	: public Model
 {
