@@ -200,6 +200,9 @@
     <ClCompile Include="Eye.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
