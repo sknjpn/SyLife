@@ -3,6 +3,7 @@
 #include "Part.h"
 #include "Egg.h"
 
+#include "EggManager.h"
 #include "ViewerManager.h"
 #include "CellManager.h"
 #include "SystemManager.h"
