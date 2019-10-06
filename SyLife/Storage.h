@@ -22,7 +22,7 @@ public:
 	Storage& operator-=(const Storage& s) noexcept;
 
 	// molecule
-	Array<pair<shared_ptr<MoleculeModel>, int>>	getMoleculeList() const { return *this; }
+	const Array<pair<shared_ptr<MoleculeModel>, int>>&	getMoleculeList() const { return *this; }
 	void	addMolecule(const shared_ptr<MoleculeModel>& model, int size);
 	void	pullMolecule(const shared_ptr<MoleculeModel>& model, int size);
 	int		numMolecule(const shared_ptr<MoleculeModel>& model) const;
