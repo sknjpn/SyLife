@@ -69,7 +69,7 @@ void CellModel::UpdateProperties()
 	m_radius = sqrt(2 * m_inertia / m_mass);
 
 	// material
-	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Material(), [](Material acc, const auto& p) { return acc += (p->GetModel()->GetMaterial()); });
+	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->GetModel()->GetMaterial(); });
 }
 
 CellState::CellState(const shared_ptr<CellModel>& model)
