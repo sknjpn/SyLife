@@ -158,9 +158,6 @@
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\src</Filter>
     </ClCompile>
-    <ClCompile Include="Hotspot.cpp">
-      <Filter>Source Files\SyLife\Util</Filter>
-    </ClCompile>
     <ClCompile Include="HotspotManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
@@ -184,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Source Files\SyLife\State\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Hotspot.cpp">
+      <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
