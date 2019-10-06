@@ -1,6 +1,7 @@
 ﻿#include "ChipManager.h"
 
 #include "ViewerManager.h"
+#include "WaveManager.h"
 
 #include "Chip.h"
 #include "FieldViewer.h"
