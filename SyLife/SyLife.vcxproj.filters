@@ -179,9 +179,6 @@
     <ClCompile Include="Egg.cpp">
       <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files\SyLife\State\src</Filter>
-    </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
