@@ -4,7 +4,7 @@
 #include "ModelViewer.h"
 #include "Rigidbody.h"
 
-#include "Material.h"
+#include "Storage.h"
 
 class PartConfig;
 class PartState;
@@ -12,7 +12,7 @@ class PartState;
 class CellModel
 	: public Model
 {
-	Material	m_material;
+	Storage	m_material;
 	Array<shared_ptr<PartConfig>>	m_partConfigs;
 
 	// Rigidbody
@@ -24,8 +24,8 @@ public:
 	void	MakeViewer() override;
 
 	// Get
-	const Material& GetMaterial() const { return m_material; }
-	Material& GetMaterial() { return m_material; }
+	const Storage& GetMaterial() const { return m_material; }
+	Storage& GetMaterial() { return m_material; }
 	double	GetMass() const { return m_mass; }
 	double	GetRadius() const { return m_radius; }
 	double	GetInertia() const { return m_inertia; }
