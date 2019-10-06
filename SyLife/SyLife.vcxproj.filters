@@ -105,6 +105,9 @@
     <Filter Include="Source Files\SyLife\Util\src">
       <UniqueIdentifier>{8189b9d6-b337-4f1e-a78a-6d093775440c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife\State\src">
+      <UniqueIdentifier>{1a7a72c9-a658-4969-be46-4dbde640e76c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -155,21 +158,6 @@
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\src</Filter>
     </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Egg.cpp">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClCompile>
     <ClCompile Include="Hotspot.cpp">
       <Filter>Source Files\SyLife\Util</Filter>
     </ClCompile>
@@ -184,6 +172,21 @@
     </ClCompile>
     <ClCompile Include="Storage.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\SyLife\State\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Egg.cpp">
+      <Filter>Source Files\SyLife\State\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Molecule.cpp">
+      <Filter>Source Files\SyLife\State\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\SyLife\State\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
