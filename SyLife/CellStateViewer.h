@@ -49,7 +49,7 @@ public:
 			}
 
 			pos.moveBy(16.0, 0.0);
-			for (const auto& m : model->GetMaterial().GetMolecules())
+			for (const auto& m : model->GetMaterial().getStorage().GetMolecules())
 			{
 				auto t = Transformer2D(Mat3x2::Translate(pos));
 				font(Unicode::Widen(m.first->GetName()) + U":" + ToString(m.second) + U"U").draw();
