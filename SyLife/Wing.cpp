@@ -24,8 +24,3 @@ void WingModel::load_this(const ptree& pt)
 
 	EquipmentModel::load_this(pt);
 }
-
-void WingState::Flap(CellState& cell)
-{
-
-}
