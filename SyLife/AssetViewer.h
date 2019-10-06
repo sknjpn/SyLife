@@ -3,6 +3,8 @@
 #include "Viewer.h"
 #include "Model.h"
 
+#include "AssetManager.h"
+
 class AssetViewer
 	: public Viewer
 {
