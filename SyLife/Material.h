@@ -28,22 +28,18 @@ public:
 	void	Load(const ptree& pt) override { Load_this(pt); }
 	void	Save_this(ptree& pt) const
 	{
-
-		// molecules
+		// storage
 		{
-			ptree molecules;
+			ptree storage;
 
-			for (const auto& m : m_molecules)
-			{
-				ptree part;
-				part.put<string>("molecule", m.first->GetName());
-				part.put<int>("size", m.second);
+			m_storage.Save(storage);
 
-				molecules.push_back(std::make_pair("", part));
-			}
-
-			pt.add_child("molecules", molecules);
+			pt.add_child("storage", storage);
 		}
+
+		// nutrition
+		pt.put<double>("nutrition", m_nutrition);
+
 		Model::Save_this(pt);
 
 		// type
