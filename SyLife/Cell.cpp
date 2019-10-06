@@ -1,6 +1,11 @@
 ﻿#include "Cell.h"
+
 #include "Part.h"
 #include "Egg.h"
+
+#include "ViewerManager.h"
+#include "CellManager.h"
+#include "SystemManager.h"
 
 #include <boost/math/constants/constants.hpp>
 using namespace boost::math::constants;
@@ -45,6 +50,12 @@ void CellModel::save_this(ptree& pt) const
 
 	pt.put("type", "CellModel");
 }
+
+void CellModel::MakeViewer()
+{
+	g_viewerManagerPtr->MakeViewer<CellViewer>()->SetModel(shared_from_this());
+}
+
 
 shared_ptr<PartConfig>& CellModel::AddPartConfig()
 {

@@ -120,8 +120,3 @@ public:
 	}
 	void Update() override { Update_this(); }
 };
-
-inline void	CellModel::MakeViewer()
-{
-	g_viewerManagerPtr->MakeViewer<CellViewer>()->SetModel(shared_from_this());
-}
