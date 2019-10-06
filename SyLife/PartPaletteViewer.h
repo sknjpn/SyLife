@@ -3,6 +3,8 @@
 #include "ModelViewer.h"
 #include "ShapeModel.h"
 
+#include "AssetManager.h"
+
 class PartModel;
 
 class PartPaletteViewer
