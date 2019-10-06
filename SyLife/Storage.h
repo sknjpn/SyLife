@@ -12,7 +12,6 @@ class Storage
 	double m_nutrition;
 
 public:
-
 	// operator
 	Storage	operator+(const Storage& s) const { return Storage(*this) += s; }
 	Storage	operator-(const Storage& s) const { return Storage(*this) -= s; }
