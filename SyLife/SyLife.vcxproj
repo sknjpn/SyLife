@@ -117,7 +117,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_MakeModel.cpp" />
     <ClCompile Include="AssetModel.cpp" />
-    <ClCompile Include="AssetModelViewer.cpp" />
+    <ClCompile Include="AssetModelEditor.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="Body.cpp" />
@@ -136,7 +136,7 @@
     <ClCompile Include="HotspotManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ModelViewer.cpp" />
+    <ClCompile Include="ModelEditor.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="Needle.cpp" />
