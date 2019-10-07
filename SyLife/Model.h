@@ -14,6 +14,8 @@ class Model
 	string	m_name;
 
 public:
+	Model()
+
 	virtual ~Model() = default;
 
 	virtual void	MakeViewer() {}

@@ -5,11 +5,61 @@ unique_ptr<AssetManager>	g_assetManagerPtr;
 
 void AssetManager::Init()
 {
-	AddModelsFromDirectory("assets/models/molecules");
-	AddModelsFromDirectory("assets/models/parts");
-	AddModelsFromDirectory("assets/models/cells");
-	AddModelsFromDirectory("assets/models/hotspots");
-	AddModelsFromDirectory("assets/models/terrains");
+
+	Array<string> filepaths;
+
+	recursive_directory_iterator end;
+	for (recursive_directory_iterator it(boost::filesystem::path("assets/models")); it != end; ++it)
+		if (!is_directory(*it)) filepaths.emplace_back((*it).path().string());
+
+	for (const auto& filepath : filepaths)
+	{
+		Logger << Unicode::Widen(filepath);
+		ptree pt;
+
+		read_json(filepath, pt);
+
+		auto m = MakeModel(pt.get<string>("type"));
+
+		m->SetName(pt.get<string>("name"));
+	}
+
+	Logger << U"Path";
+	for (const auto& m : filepaths)
+		Logger << Unicode::Widen(m);
+
+	Logger << U"Model";
+	for (const auto& m : m_models)
+		Logger << Unicode::Widen(m->GetName());
+
+	for (const auto& m : m_models)
+	{
+		ptree pt;
+
+		read_json(m->GetFilepath(), pt);
+
+		try
+		{
+			m->load(pt);
+		}
+		catch (boost::property_tree::ptree_bad_path& e)
+		{
+			LOG_ERROR(U"JSONアセットの読み込みに問題が発生しました");
+			LOG_ERROR(U" What:" + Unicode::Widen(string(e.what())));
+			LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
+			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->GetFilepath()));
+
+			System::Exit();
+		}
+		catch (Error& e)
+		{
+			LOG_ERROR(U" What:" + e.what());
+			LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
+			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->GetFilepath()));
+
+			System::Exit();
+		}
+	}
 }
 
 void AssetManager::AddModelsFromDirectory(const string& directory)
@@ -26,28 +76,9 @@ void AssetManager::AddModelFromFile(const string& filepath)
 
 	read_json(filepath, pt);
 
+	auto m = MakeModel(pt.get<string>("type"));
 
-	try
-	{
-		MakeModel(pt.get<string>("type"))->load(pt);
-	}
-	catch (boost::property_tree::ptree_bad_path& e)
-	{
-		LOG_ERROR(U"JSONアセットの読み込みに問題が発生しました");
-		LOG_ERROR(U" What:" + Unicode::Widen(string(e.what())));
-		LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
-		LOG_ERROR(U" Filepath:" + Unicode::Widen(filepath));
-
-		System::Exit();
-	}
-	catch (Error& e)
-	{
-		LOG_ERROR(U" What:" + e.what());
-		LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
-		LOG_ERROR(U" Filepath:" + Unicode::Widen(filepath));
-
-		System::Exit();
-	}
+	m->SetName(pt.get<string>("name"));
 }
 
 shared_ptr<Model> AssetManager::GetModel(const string& name) const
