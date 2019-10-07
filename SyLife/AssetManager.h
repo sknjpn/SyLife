@@ -29,7 +29,7 @@ public:
 		for (auto it = m_models.begin(); it != m_models.end(); ++it)
 			if ((*it)->GetName() == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
 
-		throw new exception;
+		throw Error(U"存在しない名前のモデルを参照しました");
 	}
 
 	shared_ptr<Model>	GetModel(const string& name) const;
