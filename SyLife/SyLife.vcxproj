@@ -132,6 +132,7 @@
     <ClCompile Include="EggManager.cpp" />
     <ClCompile Include="EquipmentModel.cpp" />
     <ClCompile Include="EquipmentEditor.cpp" />
+    <ClCompile Include="EquipmentState.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldViewer.cpp" />
     <ClCompile Include="HotspotManager.cpp" />
@@ -140,9 +141,11 @@
     <ClCompile Include="ModelEditor.cpp" />
     <ClCompile Include="ModuleModel.cpp" />
     <ClCompile Include="ModuleEditor.cpp" />
+    <ClCompile Include="ModuleState.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="NeedleModel.cpp" />
     <ClCompile Include="NeedleEditor.cpp" />
+    <ClCompile Include="NeedleState.cpp" />
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="PartModel.cpp" />
     <ClCompile Include="PartEditor.cpp" />
@@ -158,6 +161,7 @@
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="SynthesizerModel.cpp" />
     <ClCompile Include="SynthesizerEditor.cpp" />
+    <ClCompile Include="SynthesizerState.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TerrainManager.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
@@ -165,6 +169,7 @@
     <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="WingModel.cpp" />
     <ClCompile Include="WingEditor.cpp" />
+    <ClCompile Include="WingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -268,15 +273,18 @@
     <ClInclude Include="EggManager.h" />
     <ClInclude Include="EquipmentModel.h" />
     <ClInclude Include="EquipmentEditor.h" />
+    <ClInclude Include="EquipmentState.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelEditor.h" />
     <ClInclude Include="ModuleModel.h" />
     <ClInclude Include="ModuleEditor.h" />
+    <ClInclude Include="ModuleState.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="NeedleModel.h" />
     <ClInclude Include="NeedleEditor.h" />
+    <ClInclude Include="NeedleState.h" />
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartModel.h" />
     <ClInclude Include="PartEditor.h" />
@@ -291,6 +299,7 @@
     <ClInclude Include="Storage.h" />
     <ClInclude Include="SynthesizerModel.h" />
     <ClInclude Include="SynthesizerEditor.h" />
+    <ClInclude Include="SynthesizerState.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
@@ -300,6 +309,7 @@
     <ClInclude Include="WaveManager.h" />
     <ClInclude Include="WingModel.h" />
     <ClInclude Include="WingEditor.h" />
+    <ClInclude Include="WingState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

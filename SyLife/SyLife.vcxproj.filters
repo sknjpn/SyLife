@@ -266,6 +266,21 @@
     <ClCompile Include="BodyState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EquipmentState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NeedleState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SynthesizerState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WingState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -633,5 +648,10 @@
       <Filter>Source Files\SyLife\Others</Filter>
     </ClInclude>
     <ClInclude Include="BodyState.h" />
+    <ClInclude Include="EquipmentState.h" />
+    <ClInclude Include="ModuleState.h" />
+    <ClInclude Include="NeedleState.h" />
+    <ClInclude Include="SynthesizerState.h" />
+    <ClInclude Include="WingState.h" />
   </ItemGroup>
 </Project>
