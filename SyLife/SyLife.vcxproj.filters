@@ -251,12 +251,6 @@
     <ClCompile Include="SynthesizerModel.cpp">
       <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
-    <ClCompile Include="PartConfig.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\SyLife\Others</Filter>
     </ClCompile>
@@ -264,22 +258,28 @@
       <Filter>Source Files\SyLife\Others</Filter>
     </ClCompile>
     <ClCompile Include="BodyState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
     <ClCompile Include="ModuleState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
     <ClCompile Include="NeedleState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartConfig.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartState.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
     <ClCompile Include="SynthesizerState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
     <ClCompile Include="WingState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -642,16 +642,32 @@
     <ClInclude Include="SynthesizerModel.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
-    <ClInclude Include="PartConfig.h" />
-    <ClInclude Include="PartState.h" />
     <ClInclude Include="stdafx.h">
       <Filter>Source Files\SyLife\Others</Filter>
     </ClInclude>
-    <ClInclude Include="BodyState.h" />
-    <ClInclude Include="EquipmentState.h" />
-    <ClInclude Include="ModuleState.h" />
-    <ClInclude Include="NeedleState.h" />
-    <ClInclude Include="SynthesizerState.h" />
-    <ClInclude Include="WingState.h" />
+    <ClInclude Include="BodyState.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentState.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleState.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="NeedleState.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="PartConfig.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="PartState.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="SynthesizerState.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="WingState.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
