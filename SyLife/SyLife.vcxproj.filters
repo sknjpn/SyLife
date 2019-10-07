@@ -200,13 +200,7 @@
     <ClCompile Include="Body.cpp">
       <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
-    <ClCompile Include="Chloroplast.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
     <ClCompile Include="Equipment.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Eye.cpp">
       <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
     <ClCompile Include="Module.cpp">
@@ -532,16 +526,10 @@
     <ClInclude Include="Cell.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
-    <ClInclude Include="Chloroplast.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
     <ClInclude Include="Egg.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
     <ClInclude Include="Equipment.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Eye.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
     <ClInclude Include="Module.h">
