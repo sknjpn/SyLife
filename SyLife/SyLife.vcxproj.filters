@@ -185,9 +185,6 @@
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
-    <ClCompile Include="Hotspot.cpp">
-      <Filter>Source Files\SyLife\Util\src</Filter>
-    </ClCompile>
     <ClCompile Include="AssemblyViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\src</Filter>
     </ClCompile>
@@ -196,9 +193,6 @@
     </ClCompile>
     <ClCompile Include="EditorViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
     <ClCompile Include="Wave.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
@@ -469,9 +463,6 @@
     <ClInclude Include="SystemManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="TerrainManager.h">
-      <Filter>Source Files\SyLife\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="ViewerManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
@@ -550,9 +541,6 @@
     <ClInclude Include="Wing.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
-    <ClInclude Include="Hotspot.h">
-      <Filter>Source Files\SyLife\Util</Filter>
-    </ClInclude>
     <ClInclude Include="Curtain.h">
       <Filter>Source Files\SyLife\Util</Filter>
     </ClInclude>
@@ -565,17 +553,11 @@
     <ClInclude Include="Storage.h">
       <Filter>Source Files\SyLife\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>Source Files\SyLife\Util</Filter>
-    </ClInclude>
     <ClInclude Include="Viewer.h">
       <Filter>Source Files\SyLife\Util</Filter>
     </ClInclude>
     <ClInclude Include="Wave.h">
       <Filter>Source Files\SyLife\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="HotspotManager.h">
-      <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
     <ClInclude Include="TinyCamera.h">
       <Filter>Source Files\SyLife\Util</Filter>

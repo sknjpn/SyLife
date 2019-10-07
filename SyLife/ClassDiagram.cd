@@ -35,25 +35,11 @@
       <FileName>FieldManager.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HotspotManager" Collapsed="true">
-    <Position X="50.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAACAAJAAAAgAAAAAAQAAAACAAEIBAA=</HashCode>
-      <FileName>HotspotManager.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="SystemManager" Collapsed="true">
     <Position X="52" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>SystemManager.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TerrainManager" Collapsed="true">
-    <Position X="53.75" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AACAAQAEQAAAAAUAAAAAAQBgEAACAACAAAAEAAAAAAA=</HashCode>
-      <FileName>TerrainManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ViewerManager" Collapsed="true">
@@ -413,34 +399,6 @@
       <FileName>Curtain.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HotspotModel" Collapsed="true">
-    <Position X="33.5" Y="9" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAACAQICCACEAAAAAAAAAAAAADAAAAAAIAAAAAAA=</HashCode>
-      <FileName>Hotspot.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HotspotConfig" Collapsed="true">
-    <Position X="2" Y="9" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAACAAKCAACAAAAAAABAAAAAAAIAAAAAAAAAAAAA=</HashCode>
-      <FileName>Hotspot.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HotspotState" Collapsed="true">
-    <Position X="15.75" Y="14.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAgAAABAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>Hotspot.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HotspotViewer" Collapsed="true">
-    <Position X="9.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Hotspot.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Model" Collapsed="true">
     <Position X="17.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
@@ -460,20 +418,6 @@
     <TypeIdentifier>
       <HashCode>EAAAAACAAICAACAAAAAAAQIAAAAAkAAAAAAgAAABAAA=</HashCode>
       <FileName>Storage.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TerrainModel" Collapsed="true">
-    <Position X="31.25" Y="9" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AACAAACAAICAACAIAAAAAAAAAAAABAAQAAAIAAIAAAA=</HashCode>
-      <FileName>Terrain.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TerrainViewer" Collapsed="true">
-    <Position X="20.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Terrain.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicCamera" Collapsed="true">
@@ -530,13 +474,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAgAAAAIAAA=</HashCode>
       <FileName>EggManager.h</FileName>
-    </TypeIdentifier>
-  </Struct>
-  <Struct Name="HotspotStateAdapter" Collapsed="true">
-    <Position X="53.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAgAAAAIAAA=</HashCode>
-      <FileName>HotspotManager.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Font Name="Yu Gothic UI" Size="9" />

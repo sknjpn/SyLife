@@ -132,7 +132,6 @@
     <ClCompile Include="Eye.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldViewer.cpp" />
-    <ClCompile Include="Hotspot.cpp" />
     <ClCompile Include="HotspotManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Module.cpp" />
@@ -150,7 +149,6 @@
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="Synthesizer.cpp" />
     <ClCompile Include="SystemManager.cpp" />
-    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TerrainManager.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="Wave.cpp" />
@@ -259,8 +257,6 @@
     <ClInclude Include="Eye.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
-    <ClInclude Include="Hotspot.h" />
-    <ClInclude Include="HotspotManager.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelViewer.h" />
     <ClInclude Include="Module.h" />
@@ -277,8 +273,6 @@
     <ClInclude Include="Storage.h" />
     <ClInclude Include="Synthesizer.h" />
     <ClInclude Include="SystemManager.h" />
-    <ClInclude Include="Terrain.h" />
-    <ClInclude Include="TerrainManager.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="Viewer.h" />
