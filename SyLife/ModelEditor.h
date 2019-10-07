@@ -3,7 +3,7 @@
 #include "Viewer.h"
 #include "Model.h"
 
-class ModelViewer
+class ModelEditor
 	: public Viewer
 {
 	shared_ptr<Model>	m_model;

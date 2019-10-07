@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Model.h"
-#include "ModelViewer.h"
+#include "ModelEditor.h"
 
 class WaveViewer;
 
@@ -22,14 +22,14 @@ public:
 };
 
 class WaveViewer
-	: public ModelViewer
+	: public ModelEditor
 {
 public:
 	// reload
-	void	reloadProperties_this() { ModelViewer::reloadProperties_this(); }
+	void	reloadProperties_this() { ModelEditor::reloadProperties_this(); }
 	void	reloadProperties() override { reloadProperties_this(); }
 
 	// update
-	void	Update_this() { ModelViewer::Update_this(); }
+	void	Update_this() { ModelEditor::Update_this(); }
 	void	Update() override { Update_this(); }
 };

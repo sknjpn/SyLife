@@ -98,11 +98,11 @@
       <FileName>FieldViewer.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ModelViewer" Collapsed="true">
+  <Class Name="ModelEditor" Collapsed="true">
     <Position X="20.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QgQAAAAACACAAAAAAAAAAAAAAIAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>ModelViewer.h</FileName>
+      <FileName>ModelEditor.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PartPaletteViewer" Collapsed="true">

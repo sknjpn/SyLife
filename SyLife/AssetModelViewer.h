@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "ModelViewer.h"
+#include "ModelEditor.h"
 
 class AssetModelViewer :
-	public ModelViewer
+	public ModelEditor
 {
 	TextEditState		m_textEditState_name;
 

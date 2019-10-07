@@ -2,12 +2,12 @@
 
 #include "ViewerManager.h"
 
-#include "ModelViewer.h"
+#include "ModelEditor.h"
 
 void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)
 {
-	// ModelViewerを消す
-	g_viewerManagerPtr->DeleteViewer<ModelViewer>();
+	// ModelEditorを消す
+	g_viewerManagerPtr->DeleteViewer<ModelEditor>();
 
 	// 対象のViewを追加
 	model->makeViewer();

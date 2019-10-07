@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "ModelViewer.h"
+#include "ModelEditor.h"
 #include "TinyCamera.h"
 
 class PartShapeViewer
-	: public ModelViewer
+	: public ModelEditor
 {
 public:
 	Array<Vec2>	m_verticles;

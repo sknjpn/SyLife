@@ -3,10 +3,10 @@
 #include "Viewer.h"
 #include "Part.h"
 #include "Cell.h"
-#include "ModelViewer.h"
+#include "ModelEditor.h"
 
 class ReleaseViewer
-	: public ModelViewer
+	: public ModelEditor
 {
 public:
 	bool	m_isDragged;

@@ -1,9 +1,9 @@
-﻿#include "ModelViewer.h"
+﻿#include "ModelEditor.h"
 
-void ModelViewer::reloadProperties_this()
+void ModelEditor::reloadProperties_this()
 {
 }
 
-void ModelViewer::Update_this()
+void ModelEditor::Update_this()
 {
 }

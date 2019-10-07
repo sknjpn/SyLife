@@ -262,7 +262,7 @@
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="ModelViewer.h" />
+    <ClInclude Include="ModelEditor.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="Needle.h" />

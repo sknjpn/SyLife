@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "ModelViewer.h"
+#include "ModelEditor.h"
 #include "ShapeModel.h"
 
 #include "AssetManager.h"
@@ -8,7 +8,7 @@
 class PartModel;
 
 class PartPaletteViewer
-	: public ModelViewer
+	: public ModelEditor
 {
 	double	m_bar = 0.0;
 

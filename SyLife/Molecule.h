@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "AssetModel.h"
-#include "ModelViewer.h"
+#include "ModelEditor.h"
 #include "Rigidbody.h"
 #include "Storage.h"
 
@@ -32,7 +32,7 @@ public:
 };
 
 class MoleculeViewer
-	: public ModelViewer
+	: public ModelEditor
 {
 	TextEditState		m_textEditState_mass;
 
@@ -40,7 +40,7 @@ public:
 	// Reload
 	void reloadProperties_this() 
 	{
-		ModelViewer::reloadProperties_this();
+		ModelEditor::reloadProperties_this();
 
 		m_textEditState_mass.text = ToString(getModel<MoleculeModel>()->m_mass); 
 	}
@@ -49,7 +49,7 @@ public:
 	// Update
 	void Update_this()
 	{
-		ModelViewer::Update_this();
+		ModelEditor::Update_this();
 
 		// mass
 		SimpleGUI::TextBox(m_textEditState_mass, Vec2(8,8));

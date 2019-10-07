@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "AssetModel.h"
-#include "ModelViewer.h"
+#include "ModelEditor.h"
 #include "Rigidbody.h"
 
 #include "Storage.h"
@@ -82,13 +82,13 @@ public:
 };
 
 class CellViewer
-	: public ModelViewer
+	: public ModelEditor
 {
 public:
 	// Reload
 	void reloadProperties_this()
 	{
-		ModelViewer::reloadProperties_this();
+		ModelEditor::reloadProperties_this();
 	}
 	void reloadProperties() override { reloadProperties_this(); }
 
@@ -98,7 +98,7 @@ public:
 		auto model = getModel<CellModel>();
 		static Font font(24, Typeface::Bold);
 
-		ModelViewer::Update_this();
+		ModelEditor::Update_this();
 
 		MoveDrawPos(4, 0);
 		font(U"Mass:").draw();
