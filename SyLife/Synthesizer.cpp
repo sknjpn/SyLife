@@ -1,5 +1,6 @@
 ﻿#include "Synthesizer.h"
 
+#include "Molecule.h"
 #include "ViewerManager.h"
 #include "AssetManager.h"
 #include "SystemManager.h"
