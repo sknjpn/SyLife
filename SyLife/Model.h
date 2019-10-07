@@ -14,7 +14,9 @@ class Model
 	string	m_name;
 
 public:
-	Model()
+	Model(const string& name)
+		: m_name(name)
+	{}
 
 	virtual ~Model() = default;
 
