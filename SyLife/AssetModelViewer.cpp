@@ -1,13 +1,13 @@
-﻿#include "AssetModelViewer.h"
+﻿#include "AssetModelEditor.h"
 #include "AssetModel.h"
 
-void AssetModelViewer::reloadProperties_this()
+void AssetModelEditor::reloadProperties_this()
 {
 	// name
 	m_textEditState_name.text = Unicode::Widen(getModel<AssetModel>()->getName());
 }
 
-void AssetModelViewer::Update_this()
+void AssetModelEditor::Update_this()
 {
 	// name
 	SimpleGUI::TextBox(m_textEditState_name, Vec2(8, 8), 240);

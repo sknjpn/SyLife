@@ -2,7 +2,7 @@
 
 #include "ModelEditor.h"
 
-class AssetModelViewer :
+class AssetModelEditor :
 	public ModelEditor
 {
 	TextEditState		m_textEditState_name;

@@ -244,7 +244,7 @@
     <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AssetModel.h" />
-    <ClInclude Include="AssetModelViewer.h" />
+    <ClInclude Include="AssetModelEditor.h" />
     <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cell.h" />
