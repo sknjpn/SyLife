@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Model.h"
-#include "Molecule.h"
 
 class MoleculeModel;
 
