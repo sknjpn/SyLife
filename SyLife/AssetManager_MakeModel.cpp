@@ -13,23 +13,23 @@
 #include "Hotspot.h"
 #include "Terrain.h"
 
-shared_ptr<Model> AssetManager::MakeModel(const string& type)
+shared_ptr<Model> AssetManager::MakeModel(const string& name, const string& type)
 {
-	if (type == "CellModel")		return MakeModel<CellModel>();
-	if (type == "MoleculeModel")	return MakeModel<MoleculeModel>();
+	if (type == "CellModel")		return MakeModel<CellModel>(name);
+	if (type == "MoleculeModel")	return MakeModel<MoleculeModel>(name);
 
-	if (type == "BodyModel")		return MakeModel<BodyModel>();
-	if (type == "EquipmentModel")	return MakeModel<EquipmentModel>();
-	if (type == "ModuleModel")		return MakeModel<ModuleModel>();
+	if (type == "BodyModel")		return MakeModel<BodyModel>(name);
+	if (type == "EquipmentModel")	return MakeModel<EquipmentModel>(name);
+	if (type == "ModuleModel")		return MakeModel<ModuleModel>(name);
 
-	if (type == "EyeModel")			return MakeModel<EyeModel>();
-	if (type == "ChloroplastModel")	return MakeModel<ChloroplastModel>();
-	if (type == "SynthesizerModel")	return MakeModel<SynthesizerModel>();
-	if (type == "WingModel")		return MakeModel<WingModel>();
-	if (type == "NeedleModel")		return MakeModel<NeedleModel>();
+	if (type == "EyeModel")			return MakeModel<EyeModel>(name);
+	if (type == "ChloroplastModel")	return MakeModel<ChloroplastModel>(name);
+	if (type == "SynthesizerModel")	return MakeModel<SynthesizerModel>(name);
+	if (type == "WingModel")		return MakeModel<WingModel>(name);
+	if (type == "NeedleModel")		return MakeModel<NeedleModel>(name);
 
-	if (type == "HotspotModel")		return MakeModel<HotspotModel>();
-	if (type == "TerrainModel")		return MakeModel<TerrainModel>();
+	if (type == "HotspotModel")		return MakeModel<HotspotModel>(name);
+	if (type == "TerrainModel")		return MakeModel<TerrainModel>(name);
 
 	return nullptr;
 }
