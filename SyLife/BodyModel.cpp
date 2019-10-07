@@ -1,4 +1,4 @@
-﻿#include "BodyModel.h.h"
+﻿#include "BodyModel.h"
 
 #include "ViewerManager.h"
 

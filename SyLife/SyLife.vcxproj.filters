@@ -263,6 +263,9 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files\SyLife\Others</Filter>
     </ClCompile>
+    <ClCompile Include="BodyState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -629,5 +632,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>Source Files\SyLife\Others</Filter>
     </ClInclude>
+    <ClInclude Include="BodyState.h" />
   </ItemGroup>
 </Project>

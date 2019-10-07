@@ -122,6 +122,7 @@
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="BodyEditor.cpp" />
+    <ClCompile Include="BodyState.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="Chip.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="BodyModel.h" />
     <ClInclude Include="BodyEditor.h" />
+    <ClInclude Include="BodyState.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="CellStateViewer.h" />

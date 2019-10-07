@@ -193,21 +193,21 @@
     <Position X="17.75" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
-      <FileName>BodyModel.h.h</FileName>
+      <FileName>BodyModel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BodyState" Collapsed="true">
     <Position X="12.25" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BodyModel.h.h</FileName>
+      <FileName>BodyModel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BodyViewer" Collapsed="true">
     <Position X="36.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>BodyModel.h.h</FileName>
+      <FileName>BodyModel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ChloroplastModel" Collapsed="true">

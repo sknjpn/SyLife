@@ -1,6 +1,6 @@
 ﻿#include "PartPaletteViewer.h"
 #include "PartModel.h"
-#include "BodyModel.h.h"
+#include "BodyModel.h"
 #include "EquipmentModel.h"
 #include "ModuleModel.h"
 
