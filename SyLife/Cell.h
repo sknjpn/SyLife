@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "Model.h"
+#include "AssetModel.h"
 #include "ModelViewer.h"
 #include "Rigidbody.h"
 
@@ -10,7 +10,7 @@ class PartConfig;
 class PartState;
 
 class CellModel
-	: public Model
+	: public AssetModel
 {
 	Storage	m_material;
 	Array<shared_ptr<PartConfig>>	m_partConfigs;
