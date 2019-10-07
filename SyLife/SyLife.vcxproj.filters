@@ -197,27 +197,6 @@
     <ClCompile Include="Wave.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
-    <ClCompile Include="Body.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipment.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Needle.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Part.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Synthesizer.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Wing.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
     <ClCompile Include="Molecule.cpp">
       <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
@@ -252,6 +231,27 @@
       <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
     <ClCompile Include="WingEditor.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyModel.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentModel.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleModel.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="NeedleModel.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartModel.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="WingModel.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="SynthesizerModel.cpp">
       <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
   </ItemGroup>

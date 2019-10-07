@@ -120,7 +120,7 @@
     <ClCompile Include="AssetModelEditor.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
-    <ClCompile Include="Body.cpp" />
+    <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="BodyEditor.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellManager.cpp" />
@@ -129,7 +129,7 @@
     <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="EggManager.cpp" />
-    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="EquipmentModel.cpp" />
     <ClCompile Include="EquipmentEditor.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldViewer.cpp" />
@@ -137,12 +137,12 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelEditor.cpp" />
-    <ClCompile Include="Module.cpp" />
+    <ClCompile Include="ModuleModel.cpp" />
     <ClCompile Include="ModuleEditor.cpp" />
     <ClCompile Include="Molecule.cpp" />
-    <ClCompile Include="Needle.cpp" />
+    <ClCompile Include="NeedleModel.cpp" />
     <ClCompile Include="NeedleEditor.cpp" />
-    <ClCompile Include="Part.cpp" />
+    <ClCompile Include="PartModel.cpp" />
     <ClCompile Include="PartEditor.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
@@ -153,14 +153,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
-    <ClCompile Include="Synthesizer.cpp" />
+    <ClCompile Include="SynthesizerModel.cpp" />
     <ClCompile Include="SynthesizerEditor.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TerrainManager.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="Wave.cpp" />
     <ClCompile Include="WaveManager.cpp" />
-    <ClCompile Include="Wing.cpp" />
+    <ClCompile Include="WingModel.cpp" />
     <ClCompile Include="WingEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
