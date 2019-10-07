@@ -25,7 +25,7 @@ void AssetModel::setName(const string& name)
 	}
 }
 
-string AssetModel::GetFilename() const
+string AssetModel::getFilename() const
 {
 	auto filename = m_name + ".json";
 	auto f = [](unsigned char c) { return char(c == 0x20 ? 0x5f : tolower(c)); };

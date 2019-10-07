@@ -23,8 +23,8 @@ public:
 	const string& getName() const { return m_name; }
 
 	// Path
-	virtual string	GetFilename() const;
-	virtual string	GetFilepath() const { return "assets/model/" + GetFilename(); }
+	virtual string	getFilename() const;
+	virtual string	GetFilepath() const { return "assets/model/" + getFilename(); }
 
 	// JSON
 	void	load_this(const ptree& pt);
