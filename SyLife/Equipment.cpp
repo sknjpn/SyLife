@@ -3,7 +3,7 @@
 
 void EquipmentModel::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<EquipmentViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<EquipmentEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 

@@ -245,7 +245,7 @@
       <FileName>Equipment.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EquipmentViewer" Collapsed="true">
+  <Class Name="EquipmentEditor" Collapsed="true">
     <Position X="32" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
