@@ -203,7 +203,7 @@
       <FileName>BodyModel.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BodyViewer" Collapsed="true">
+  <Class Name="BodyEditor" Collapsed="true">
     <Position X="36.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>

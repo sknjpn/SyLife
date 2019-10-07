@@ -4,7 +4,7 @@
 
 void BodyModel::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<BodyViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<BodyEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
