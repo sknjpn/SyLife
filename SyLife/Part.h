@@ -8,7 +8,6 @@
 class CellState;
 class PartConfig;
 class PartState;
-class MoleculeModel;
 
 class PartModel
 	: public Model

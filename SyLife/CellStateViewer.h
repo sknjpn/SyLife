@@ -2,6 +2,7 @@
 
 #include "Viewer.h"
 #include "Cell.h"
+#include "Molecule.h"
 
 class CellStateViewer
 	: public Viewer
