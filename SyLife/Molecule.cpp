@@ -18,6 +18,9 @@ void MoleculeModel::load_this(const ptree& pt)
 	// radius
 	m_radius = sqrt(m_mass);
 
+	// material
+	m_material.load(pt.get_child("material"));
+
 	Model::load_this(pt);
 }
 
@@ -35,6 +38,15 @@ void MoleculeModel::save_this(ptree& pt) const
 		color.put("b", m_color.b);
 
 		pt.add_child("color", color);
+	}
+
+	// material
+	{
+		ptree material;
+
+		m_material.save(material);
+
+		pt.add_child("material", material);
 	}
 
 	Model::save_this(pt);
