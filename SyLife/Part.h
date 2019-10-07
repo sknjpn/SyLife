@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "AssetModel.h"
+
 #include "ModelViewer.h"
 #include "Storage.h"
 #include "ShapeModel.h"
@@ -10,7 +12,7 @@ class PartConfig;
 class PartState;
 
 class PartModel
-	: public Model
+	: public AssetModel
 {
 public:
 	friend class PartViewer;
