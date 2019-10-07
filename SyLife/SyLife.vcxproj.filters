@@ -239,6 +239,27 @@
     <ClCompile Include="AssetModelEditor.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
+    <ClCompile Include="BodyEditor.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentEditor.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEditor.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="NeedleEditor.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartEditor.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="SynthesizerEditor.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="WingEditor.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -585,6 +606,27 @@
     </ClInclude>
     <ClInclude Include="AssetModelEditor.h">
       <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentEditor.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEditor.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="NeedleEditor.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="PartEditor.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="SynthesizerEditor.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="WingEditor.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyEditor.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
