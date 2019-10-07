@@ -1,4 +1,7 @@
 ﻿#include "EquipmentModel.h"
+#include "EquipmentState.h"
+#include "EquipmentEditor.h"
+
 #include "ViewerManager.h"
 
 void EquipmentModel::makeViewer()

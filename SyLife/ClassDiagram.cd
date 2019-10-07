@@ -378,7 +378,7 @@
       <FileName>WingModel.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WingViewer" Collapsed="true">
+  <Class Name="WingEditor" Collapsed="true">
     <Position X="32" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>

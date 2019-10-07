@@ -1,15 +1,12 @@
 ﻿#include "WingModel.h"
+#include "WingState.h"
+#include "WingEditor.h"
 
 #include "ViewerManager.h"
 
-void WingState::Flap(CellState& cell)
-{
-	cell.AddImpulseInLocal(Vec2::Up() * 10000.0, GetPartConfig()->GetPosition());
-}
-
 void WingModel::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<WingViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<WingEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 

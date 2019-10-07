@@ -1,2 +1,1 @@
-﻿
-#include "NeedleEditor.h"
+﻿#include "NeedleEditor.h"

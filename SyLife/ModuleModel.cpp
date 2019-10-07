@@ -1,4 +1,6 @@
 ﻿#include "ModuleModel.h"
+#include "ModuleState.h"
+#include "ModuleEditor.h"
 
 #include "ViewerManager.h"
 

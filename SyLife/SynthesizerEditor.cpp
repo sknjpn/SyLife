@@ -1,2 +1,1 @@
-﻿
-#include "SynthesizerEditor.h"
+﻿#include "SynthesizerEditor.h"

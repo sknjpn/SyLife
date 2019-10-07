@@ -1,2 +1,1 @@
-﻿
-#include "EquipmentState.h"
+﻿#include "EquipmentState.h"

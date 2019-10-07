@@ -1,2 +1,1 @@
-﻿
-#include "WingEditor.h"
+﻿#include "WingEditor.h"

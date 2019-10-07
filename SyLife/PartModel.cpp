@@ -1,4 +1,5 @@
 ﻿#include "PartModel.h"
+#include "PartEditor.h"
 
 #include "AssetManager.h"
 #include "ViewerManager.h"

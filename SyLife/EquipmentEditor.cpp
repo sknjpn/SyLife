@@ -1,2 +1,1 @@
-﻿
-#include "EquipmentEditor.h"
+﻿#include "EquipmentEditor.h"
