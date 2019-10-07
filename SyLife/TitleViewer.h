@@ -96,7 +96,7 @@ public:
 		for (int i = 0; i < 2000; ++i) UpdateBubbles();
 	}
 
-	void	Update() override
+	void	update() override
 	{
 
 		// title
@@ -229,14 +229,14 @@ public:
 
 		// Open Curtain
 		{
-			if (m_openCurtain.IsRunning() && m_openCurtain.Update()) m_audio.setVolume(m_openCurtain.GetProgress());
+			if (m_openCurtain.IsRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.GetProgress());
 			else m_audio.setVolume(1.0);
 		}
 
 		// CloseCurtain
 		if (IsEnterLocked())
 		{
-			if (m_closeCurtain.Update())
+			if (m_closeCurtain.update())
 			{
 				// 自身のインスタンスが削除されるので、returnで処理を飛ばす必要がある。
 

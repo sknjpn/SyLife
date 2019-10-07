@@ -28,7 +28,7 @@ void	CellManager::UpdateCellStates()
 void	CellManager::DrawCellStates()
 {
 	for (const auto& c : m_cellStates)
-		if (!c->IsDestroyed()) c->Draw();
+		if (!c->IsDestroyed()) c->draw();
 }
 
 CellStateAdapter::element_type CellStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->getPosition().elem(dim); }

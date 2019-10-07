@@ -22,7 +22,7 @@ public:
 	void	reloadProperties_this();
 	virtual void reloadProperties() { reloadProperties_this(); }
 
-	// Update
+	// update
 	void	Update_this();
-	void	Update() override { Update_this(); }
+	void	update() override { Update_this(); }
 };

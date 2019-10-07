@@ -10,7 +10,7 @@
 #include "Chloroplast.h"
 #include "WingModel.h"
 
-void AddModelViewer::Update()
+void AddModelViewer::update()
 {
 	DrawModels<MoleculeModel>("MoleculeModel");
 	DrawModels<CellModel>("CellModel");

@@ -3,11 +3,11 @@
 
 #include "PartConfig.h"
 
-void BodyState::Draw(const CellState& cell) const
+void BodyState::draw(const CellState& cell) const
 {
-	getPartConfig()->getModel()->Draw();
+	getPartConfig()->getModel()->draw();
 }
 
-void BodyState::Update(CellState& cell)
+void BodyState::update(CellState& cell)
 {
 }

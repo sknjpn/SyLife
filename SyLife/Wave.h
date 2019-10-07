@@ -31,5 +31,5 @@ public:
 
 	// update
 	void	Update_this() { ModelEditor::Update_this(); }
-	void	Update() override { Update_this(); }
+	void	update() override { Update_this(); }
 };

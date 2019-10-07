@@ -24,7 +24,7 @@ public:
 	void	Start() { m_st.start(); }
 
 	// true : is end
-	bool	Update()
+	bool	update()
 	{
 		const ColorF color = Math::Lerp(m_beginColor, m_endColor, Min(m_st.sF() / m_duration, 1.0));
 

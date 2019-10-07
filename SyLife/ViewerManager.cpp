@@ -4,7 +4,7 @@
 
 unique_ptr<ViewerManager>	g_viewerManagerPtr;
 
-void ViewerManager::Update()
+void ViewerManager::update()
 {
 	// nullptr になったViewerのリセット
 	m_viewers.remove(nullptr);
@@ -38,7 +38,7 @@ void ViewerManager::Update()
 
 		RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);
 
-		(*it)->Update();
+		(*it)->update();
 
 		if (*it != nullptr)
 		{

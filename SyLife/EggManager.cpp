@@ -19,7 +19,7 @@ void EggManager::UpdateEggStates()
 		if (!e->IsDestroyed())
 		{
 			e->UpdateParticle();
-			e->UpdateEgg();
+			e->updateEgg();
 		}
 	}
 
@@ -30,7 +30,7 @@ void EggManager::UpdateEggStates()
 void EggManager::DrawEggStates()
 {
 	for (const auto& e : GetEggStates())
-		if (!e->IsDestroyed()) e->Draw();
+		if (!e->IsDestroyed()) e->draw();
 }
 
 EggStateAdapter::element_type EggStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->getPosition().elem(dim); }

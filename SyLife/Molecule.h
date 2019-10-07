@@ -46,7 +46,7 @@ public:
 	}
 	void reloadProperties() override { reloadProperties_this(); }
 
-	// Update
+	// update
 	void Update_this()
 	{
 		ModelEditor::Update_this();
@@ -56,5 +56,5 @@ public:
 		getModel<MoleculeModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
 		MoveDrawPos(0, 48);
 	}
-	void Update() override { Update_this(); }
+	void update() override { Update_this(); }
 };

@@ -45,8 +45,8 @@ public:
 
 	void	UpdateProperties();
 
-	// Draw
-	void	Draw(double a = 0.5);
+	// draw
+	void	draw(double a = 0.5);
 
 	// JSON
 	void	load_this(const ptree& pt);

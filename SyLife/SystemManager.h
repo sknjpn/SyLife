@@ -8,7 +8,7 @@ public:
 
 	constexpr double	GetDeltaTime() const { return 1.0 / 60.0; }
 
-	void	Update();
+	void	update();
 };
 
 extern unique_ptr<SystemManager>	g_systemManagerPtr;

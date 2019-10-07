@@ -8,14 +8,14 @@
 #include "SystemManager.h"
 #include "CellManager.h"
 
-void NeedleState::Draw(const CellState& cell) const
+void NeedleState::draw(const CellState& cell) const
 {
 	auto t = Transformer2D(Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
 
-	getPartConfig()->getModel()->Draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
+	getPartConfig()->getModel()->draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
 }
 
-void NeedleState::Update(CellState& cell)
+void NeedleState::update(CellState& cell)
 {
 	m_heat -= g_systemManagerPtr->GetDeltaTime();
 	if (m_heat < 0)

@@ -21,7 +21,7 @@ public:
 
 	void	Init() override;
 
-	void	Update() override;
+	void	update() override;
 
 	const TinyCamera& getCamera() const { return m_camera; }
 };

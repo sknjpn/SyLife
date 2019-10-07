@@ -27,7 +27,7 @@ SystemManager::SystemManager()
 	g_chipManagerPtr->init();
 }
 
-void	SystemManager::Update()
+void	SystemManager::update()
 {
-	g_viewerManagerPtr->Update();
+	g_viewerManagerPtr->update();
 }

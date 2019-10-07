@@ -20,7 +20,7 @@ void AssemblyViewer::Init()
 {
 }
 
-void AssemblyViewer::Update()
+void AssemblyViewer::update()
 {
 	//Rect(GetDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
@@ -73,7 +73,7 @@ void AssemblyViewer::Update()
 
 				for (const auto& s : g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart->getShapes())
 				{
-					s.Draw(0.5);
+					s.draw(0.5);
 					s.GetPolygon().drawFrame(2.0, Palette::White);
 				}
 			}

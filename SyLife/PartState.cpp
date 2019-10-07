@@ -1,9 +1,9 @@
 ﻿#include "PartState.h"
 
-void PartState::Draw(const CellState& cell) const
+void PartState::draw(const CellState& cell) const
 {
 }
 
-void PartState::Update(CellState& cell)
+void PartState::update(CellState& cell)
 {
 }

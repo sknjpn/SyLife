@@ -16,7 +16,7 @@ public:
 		SetDrawRect(0, 0, 400, 1080);
 	}
 
-	void	Update() override;
+	void	update() override;
 	void	SetSelectedModel(const shared_ptr<Model>& model);
 
 	template <typename T>

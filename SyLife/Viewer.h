@@ -29,6 +29,6 @@ public:
 	bool	IsMouseOver() const { return m_isMouseOver; }
 
 	virtual void	Init() {}
-	virtual void	Update() {}
+	virtual void	update() {}
 };
 

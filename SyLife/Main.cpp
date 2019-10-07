@@ -31,9 +31,9 @@ void Main()
 
 	g_viewerManagerPtr->makeViewer<TitleViewer>();
 
-	while (System::Update())
+	while (System::update())
 	{
-		g_systemManagerPtr->Update();
+		g_systemManagerPtr->update();
 
 		if (KeyEscape.down()) break;
 	}

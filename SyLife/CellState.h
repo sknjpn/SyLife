@@ -23,7 +23,7 @@ public:
 	CellState(const shared_ptr<CellModel>& model);
 
 	void	UpdateCell();
-	void	Draw();
+	void	draw();
 
 	// void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
 	// void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);

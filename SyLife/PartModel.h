@@ -26,7 +26,7 @@ public:
 	void	makeViewer() override;
 	virtual shared_ptr<PartState>	makeState();
 
-	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
+	void	draw(double a = 0.5) { for (const auto& s : m_shapes) s.draw(a); }
 
 	RectF	getApproximateRect() const;
 	Vec2	getApproximateRectTopLeft() const;

@@ -49,7 +49,7 @@ public:
 					auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(28, 28)));
 
 					for (const ShapeModel& s : (*it)->getShapes())
-						s.Draw(0.5);
+						s.draw(0.5);
 				}
 			}
 			MoveDrawPos(-4, -4);
@@ -60,6 +60,6 @@ public:
 		MoveDrawPos(0, 16);
 	}
 
-	void	Update() override;
+	void	update() override;
 };
 

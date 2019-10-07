@@ -40,7 +40,7 @@ void FieldViewer::Init()
 	g_viewerManagerPtr->makeViewer<CellStateViewer>();
 }
 
-void FieldViewer::Update()
+void FieldViewer::update()
 {
 	{
 		// camera
@@ -112,7 +112,7 @@ void FieldViewer::Update()
 					e->Destroy();
 
 					// MoleculeStateの吐き出し
-					/*auto s = e->GetCellModel()->getMaterial();
+					/*auto s = e->getCellModel()->getMaterial();
 					for (const auto& m : s.GetMolecules())
 					{
 						for (unsigned int i = 0; i < m.second; i++)
@@ -177,6 +177,6 @@ void FieldViewer::Update()
 	}
 
 	// Open Curtain
-	if (m_openCurtain.IsRunning() && m_openCurtain.Update()) m_audio.setVolume(m_openCurtain.GetProgress());
+	if (m_openCurtain.IsRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.GetProgress());
 	else m_audio.setVolume(1.0);
 }

@@ -11,8 +11,8 @@ class WingState
 	int		m_counter = 0;
 
 public:
-	void	Draw(const CellState& cell) const override;
-	void	Update(CellState& cell) override;
+	void	draw(const CellState& cell) const override;
+	void	update(CellState& cell) override;
 
 	void	Flap(CellState& cell);
 };

@@ -11,7 +11,7 @@ public:
 public:
 	ViewerManager() { m_viewers.reserve(1024); }
 
-	void	Update();
+	void	update();
 
 	template <typename T, typename... Args>
 	shared_ptr<T>	makeViewer(Args&& ...args) { auto v = dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); v->Init(); return v; }

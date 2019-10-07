@@ -1,13 +1,13 @@
 ﻿#include "CellModel.h"
 
-void CellModel::Draw(double a)
+void CellModel::draw(double a)
 {
 	// parts
 	for (const auto& pc : m_partConfigs)
 	{
 		auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation()).translated(pc->getPosition()));
 
-		pc->getModel()->Draw(a);
+		pc->getModel()->draw(a);
 	}
 }
 

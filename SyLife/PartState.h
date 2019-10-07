@@ -16,6 +16,6 @@ public:
 	// Set
 	void	SetPartConfig(const shared_ptr<PartConfig>& partConfig) { m_partConfig = partConfig; }
 
-	virtual void	Draw(const CellState& cell) const;
-	virtual void	Update(CellState& cell);
+	virtual void	draw(const CellState& cell) const;
+	virtual void	update(CellState& cell);
 };

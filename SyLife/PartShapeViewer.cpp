@@ -5,7 +5,7 @@ void PartShapeViewer::Init()
 {
 }
 
-void PartShapeViewer::Update()
+void PartShapeViewer::update()
 {
 	m_camera.update();
 
@@ -87,7 +87,7 @@ void PartShapeViewer::Update()
 		}
 	}
 
-	// Update
+	// update
 	if (IsMouseOver())
 	{
 		// Verticleの配置

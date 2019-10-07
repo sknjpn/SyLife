@@ -4,14 +4,14 @@
 
 #include "Cell.h"
 
-void WingState::Draw(const CellState& cell) const
+void WingState::draw(const CellState& cell) const
 {
 	auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingModel>(getPartConfig()->getModel())->m_isRight ? m_p : -m_p));
 
-	getPartConfig()->getModel()->Draw();
+	getPartConfig()->getModel()->draw();
 }
 
-void WingState::Update(CellState& cell)
+void WingState::update(CellState& cell)
 {
 	if ((m_timer++) == 60)
 	{

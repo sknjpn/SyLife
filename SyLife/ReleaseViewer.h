@@ -17,7 +17,7 @@ public:
 		SetDrawRect(Scene::Width() - 400, 320, 300, 100);
 	}
 
-	void	Update() override
+	void	update() override
 	{
 		Circle circle(50, 50, 45);
 

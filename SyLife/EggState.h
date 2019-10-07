@@ -1,7 +1,8 @@
 ﻿#pragma once
 
 #include "Rigidbody.h"
-#include "Cell.h"
+
+class CellModel;
 
 class EggState
 	: public Rigidbody
@@ -12,16 +13,10 @@ class EggState
 public:
 	EggState() { m_timer = 10.0; }
 
-	void	SetCellModel(const shared_ptr<CellModel>& cellModel)
-	{
-		m_cellModel = cellModel;
-		SetRadius(cellModel->getRadius() / 2.0);
-		SetMass(cellModel->getMass() / 4.0);
-		SetInertia(getMass() * getRadius() * getRadius() / 2.0);
-	}
+	void	SetCellModel(const shared_ptr<CellModel>& cellModel);
 
-	const shared_ptr<CellModel>&	GetCellModel() const { return m_cellModel; }
+	const shared_ptr<CellModel>&	getCellModel() const { return m_cellModel; }
 
-	void	UpdateEgg();
-	void	Draw();
+	void	updateEgg();
+	void	draw();
 };

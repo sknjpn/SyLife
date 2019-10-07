@@ -45,6 +45,6 @@ public:
 		MoveDrawPos(0, 15);
 	}
 
-	void	Update() override;
+	void	update() override;
 };
 

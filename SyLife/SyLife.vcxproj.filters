@@ -123,6 +123,9 @@
     <Filter Include="Source Files\SyLife\State\Egg">
       <UniqueIdentifier>{a84304d5-286b-491d-a76b-063986608c07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife\State\Egg\src">
+      <UniqueIdentifier>{571fe371-9a64-4250-a859-589f33a98f6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp">
@@ -178,9 +181,6 @@
     </ClCompile>
     <ClCompile Include="Storage.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Egg.cpp">
-      <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files\SyLife\State\src</Filter>
@@ -295,6 +295,9 @@
     </ClCompile>
     <ClCompile Include="CellState.cpp">
       <Filter>Source Files\SyLife\State\Cell\src</Filter>
+    </ClCompile>
+    <ClCompile Include="EggState.cpp">
+      <Filter>Source Files\SyLife\State\Egg\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

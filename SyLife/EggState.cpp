@@ -2,8 +2,17 @@
 
 #include "SystemManager.h"
 #include "CellManager.h"
+#include "EggState.h"
 
-void EggState::UpdateEgg()
+void EggState::SetCellModel(const shared_ptr<CellModel>& cellModel)
+{
+	m_cellModel = cellModel;
+	SetRadius(cellModel->getRadius() / 2.0);
+	SetMass(cellModel->getMass() / 4.0);
+	SetInertia(getMass() * getRadius() * getRadius() / 2.0);
+}
+
+void EggState::updateEgg()
 {
 	m_timer -= g_systemManagerPtr->GetDeltaTime();
 
@@ -12,13 +21,13 @@ void EggState::UpdateEgg()
 	{
 		Destroy();
 
-		const auto& c = g_cellManagerPtr->AddCellState(GetCellModel());
+		const auto& c = g_cellManagerPtr->AddCellState(getCellModel());
 		c->setPosition(getPosition());
 		c->setRotation(getRotation());
 	}
 }
 
-void EggState::Draw()
+void EggState::draw()
 {
 	auto t = Transformer2D(Mat3x2::Scale(0.5)
 		.rotated(getRotation())
@@ -28,5 +37,5 @@ void EggState::Draw()
 		.draw(ColorF(Palette::Papayawhip, 0.5))
 		.drawFrame(1.0, ColorF(1.0, 0.5));
 
-	m_cellModel->Draw(min(2.0, 10.0 - m_timer) * 0.25);
+	m_cellModel->draw(min(2.0, 10.0 - m_timer) * 0.25);
 }

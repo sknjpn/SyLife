@@ -7,12 +7,12 @@
 
 #include "SystemManager.h"
 
-void SynthesizerState::Draw(const CellState& cell) const
+void SynthesizerState::draw(const CellState& cell) const
 {
-	getPartConfig()->getModel()->Draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
+	getPartConfig()->getModel()->draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
 }
 
-void SynthesizerState::Update(CellState& cell)
+void SynthesizerState::update(CellState& cell)
 {
 	m_timer += g_systemManagerPtr->GetDeltaTime();
 

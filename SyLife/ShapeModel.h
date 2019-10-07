@@ -15,7 +15,7 @@ public:
 	const Polygon&	GetPolygon() const { return m_polygon; }
 	Polygon&	GetPolygon() { return m_polygon; }
 
-	void	Draw(double a) const
+	void	draw(double a) const
 	{
 		m_polygon
 			.draw(ColorF(m_color, a));

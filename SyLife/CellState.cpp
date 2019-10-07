@@ -50,7 +50,7 @@ void CellState::UpdateCell()
 	m_startTimer += g_systemManagerPtr->GetDeltaTime();
 
 	// parts
-	for (const auto& p : m_partStates) p->Update(*this);
+	for (const auto& p : m_partStates) p->update(*this);
 
 	// 接触したMoleculeStateの取り込み
 	/*
@@ -120,7 +120,7 @@ void CellState::UpdateCell()
 	}
 }
 
-void CellState::Draw()
+void CellState::draw()
 {
 	auto t1 = Transformer2D(Mat3x2::Rotate(getRotation()).translated(Vec2(getPosition().x, getPosition().y)));
 	auto t2 = Transformer2D(Mat3x2::Scale(min(1.0, m_startTimer + 0.5)));
@@ -131,7 +131,7 @@ void CellState::Draw()
 		auto t3 = Transformer2D(Mat3x2::Rotate(p->getPartConfig()->getRotation())
 			.translated(p->getPartConfig()->getPosition().x, p->getPartConfig()->getPosition().y));
 
-		p->Draw(*this);
+		p->draw(*this);
 	}
 
 	// 細胞円

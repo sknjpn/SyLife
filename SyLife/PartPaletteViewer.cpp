@@ -4,7 +4,7 @@
 #include "EquipmentModel.h"
 #include "ModuleModel.h"
 
-void	PartPaletteViewer::Update()
+void	PartPaletteViewer::update()
 {
 	Rect(64, 0, 16, 400).stretched(-2).drawFrame(1.0, Palette::White);
 

@@ -9,7 +9,7 @@
 
 #include "ViewerManager.h"
 
-void AssetViewer::Update()
+void AssetViewer::update()
 {
 	DrawModels<CellModel>("CellModel");
 	DrawModels<MoleculeModel>("MoleculeModel");
