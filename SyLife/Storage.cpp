@@ -1,5 +1,7 @@
 ﻿#include "Storage.h"
 
+#include "Molecule.h"
+
 #include "AssetManager.h"
 
 bool Storage::operator>=(const Storage& s) const
