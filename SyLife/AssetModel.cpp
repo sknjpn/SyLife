@@ -1,6 +1,6 @@
 ﻿#include "AssetModel.h"
 
-void AssetModel::SetName(const string& name)
+void AssetModel::setName(const string& name)
 {
 	// 変化がなければ何もしない
 	if (name == m_name) return;

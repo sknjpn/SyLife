@@ -17,7 +17,7 @@ public:
 	virtual void	MakeViewer() {}
 
 	// Set
-	void	SetName(const string& name);
+	void	setName(const string& name);
 
 	// Get
 	const string& getName() const { return m_name; }
