@@ -14,15 +14,15 @@ class PartConfig
 public:
 	// Get
 	const shared_ptr<PartModel>& getModel() const { return m_partModel; }
-	const Vec2& GetPosition() const { return m_position; }
-	double	GetRotation() const { return m_rotation; }
+	const Vec2& getPosition() const { return m_position; }
+	double	getRotation() const { return m_rotation; }
 
 	// Set
 	void	setModel(const shared_ptr<PartModel>& partModel) { m_partModel = partModel; }
-	void	SetPosition(const Vec2& position) { m_position = position; }
-	void	SetRotation(double rotation) { m_rotation = rotation; }
+	void	setPosition(const Vec2& position) { m_position = position; }
+	void	setRotation(double rotation) { m_rotation = rotation; }
 
-	double	GetInertia() const;
+	double	getInertia() const;
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
 	void	save_this(ptree& pt) const;

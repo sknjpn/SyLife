@@ -8,6 +8,6 @@ class NeedleState
 	double	m_heat = 0.0;
 
 public:
-	void	Draw(const CellState& cell) const;
+	void	Draw(const CellState& cell) const override;
 	void	Update(CellState& cell) override;
 };

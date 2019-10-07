@@ -3,9 +3,9 @@
 
 #include "AssetManager.h"
 
-double PartConfig::GetInertia() const
+double PartConfig::getInertia() const
 {
-	return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->getMass();
+	return m_partModel->getRectInertia() + (m_position + m_partModel->getCenter().rotated(m_rotation)).lengthSq() * m_partModel->getMass();
 }
 
 void PartConfig::load_this(const ptree& pt)

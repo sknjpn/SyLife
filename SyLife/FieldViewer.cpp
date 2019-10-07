@@ -74,7 +74,7 @@ void FieldViewer::Update()
 				{
 					auto& cell = g_cellManagerPtr->GetCellStates()[i];
 
-					if (cell->getRadius() > (cell->GetPosition() - Cursor::PosF()).length())
+					if (cell->getRadius() > (cell->getPosition() - Cursor::PosF()).length())
 					{
 						selectedRigidbody = cell;
 						g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cell);
@@ -84,7 +84,7 @@ void FieldViewer::Update()
 
 			if (MouseL.pressed() && IsMouseOver())
 			{
-				if (selectedRigidbody != nullptr) selectedRigidbody->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
+				if (selectedRigidbody != nullptr) selectedRigidbody->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 			}
 			else selectedRigidbody = nullptr;
 		}
@@ -103,16 +103,16 @@ void FieldViewer::Update()
 			circle.draw(ColorF(Palette::Red, 0.5));
 
 			for (const auto& c : g_cellManagerPtr->GetCellStates())
-				if (Circle(c->GetPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+				if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
 			for (const auto& e : g_eggManagerPtr->GetEggStates())
 			{
-				if (Circle(e->GetPosition(), e->getRadius()).intersects(circle))
+				if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
 				{
 					e->Destroy();
 
 					// MoleculeStateの吐き出し
-					/*auto s = e->GetCellModel()->GetMaterial();
+					/*auto s = e->GetCellModel()->getMaterial();
 					for (const auto& m : s.GetMolecules())
 					{
 						for (unsigned int i = 0; i < m.second; i++)
@@ -122,7 +122,7 @@ void FieldViewer::Update()
 
 							// 吐き出されたMoleculeState
 							const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
-							ms->SetPosition(e->GetPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
+							ms->setPosition(e->getPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
 							ms->SetVelocity(v * 0.1);
 						}
 					}*/
@@ -142,10 +142,10 @@ void FieldViewer::Update()
 
 				for (const auto& p : rv->getModel<CellModel>()->GetPartConfigs())
 				{
-					auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
-						.translated(p->GetPosition()));
+					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
+						.translated(p->getPosition()));
 
-					for (const auto& s : p->getModel()->GetShapes())
+					for (const auto& s : p->getModel()->getShapes())
 						s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 				}
 			}
@@ -153,7 +153,7 @@ void FieldViewer::Update()
 			if (MouseL.up())
 			{
 				const auto& c = g_cellManagerPtr->AddCellState(rv->getModel<CellModel>());
-				c->SetPosition(Cursor::PosF());
+				c->setPosition(Cursor::PosF());
 				c->SetVelocity(Vec2::Zero());
 				c->Init();
 
@@ -169,7 +169,7 @@ void FieldViewer::Update()
 
 			if (cs != nullptr)
 			{
-				Circle(cs->GetPosition(), cs->getRadius() * 1.5)
+				Circle(cs->getPosition(), cs->getRadius() * 1.5)
 					.draw(ColorF(1.0, 0.25))
 					.drawFrame(4.0, Palette::Black);
 			}

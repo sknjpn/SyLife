@@ -12,7 +12,7 @@ void NeedleState::Draw(const CellState& cell) const
 {
 	auto t = Transformer2D(Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
 
-	GetPartConfig()->getModel()->Draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
+	getPartConfig()->getModel()->Draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
 }
 
 void NeedleState::Update(CellState& cell)
@@ -22,7 +22,7 @@ void NeedleState::Update(CellState& cell)
 	{
 		m_heat = 5.0;
 
-		auto p = cell.GetWorldPosition(GetPartConfig()->GetPosition() + Vec2::Up() * 50.0);
+		auto p = cell.GetWorldPosition(getPartConfig()->GetPosition() + Vec2::Up() * 50.0);
 
 
 		for (auto i : g_cellManagerPtr->GetCellStateKDTree().knnSearch(1, p))
@@ -33,7 +33,7 @@ void NeedleState::Update(CellState& cell)
 			{
 				t->Destroy();
 				cell.m_storage += t->m_storage;
-				cell.m_storage += t->m_model->GetMaterial();
+				cell.m_storage += t->m_model->getMaterial();
 			}
 		}
 	}

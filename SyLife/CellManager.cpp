@@ -31,5 +31,5 @@ void	CellManager::DrawCellStates()
 		if (!c->IsDestroyed()) c->Draw();
 }
 
-CellStateAdapter::element_type CellStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
-CellStateAdapter::element_type CellStateAdapter::DistanceSq(const dataset_type& dataset, size_t index, const element_type* other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }
+CellStateAdapter::element_type CellStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->getPosition().elem(dim); }
+CellStateAdapter::element_type CellStateAdapter::DistanceSq(const dataset_type& dataset, size_t index, const element_type* other) { return dataset[index]->getPosition().distanceFromSq(Vec2(other[0], other[1])); }

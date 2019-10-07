@@ -11,7 +11,7 @@ void SynthesizerModel::makeViewer()
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
-shared_ptr<PartState> SynthesizerModel::MakeState()
+shared_ptr<PartState> SynthesizerModel::makeState()
 {
 	return make_shared<SynthesizerState>();
 }

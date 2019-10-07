@@ -16,7 +16,7 @@ void CellModel::Draw(double a)
 	// parts
 	for (const auto& pc : m_partConfigs)
 	{
-		auto t2 = Transformer2D(Mat3x2::Rotate(pc->GetRotation()).translated(pc->GetPosition()));
+		auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation()).translated(pc->getPosition()));
 
 		pc->getModel()->Draw(a);
 	}
@@ -69,19 +69,19 @@ void CellModel::UpdateProperties()
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });
 
 	// center
-	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getModel()->getMass() * (p->GetPosition() + p->getModel()->GetCenter().rotated(p->GetRotation())); }) / m_mass;
+	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getModel()->getMass() * (p->getPosition() + p->getModel()->getCenter().rotated(p->getRotation())); }) / m_mass;
 
 	// centerを原点に設定
-	for (const auto& p : m_partConfigs) p->SetPosition(p->GetPosition() - center);
+	for (const auto& p : m_partConfigs) p->setPosition(p->getPosition() - center);
 
 	// inertia
-	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double acc, const auto& p) { return acc + p->GetInertia(); });
+	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double acc, const auto& p) { return acc + p->getInertia(); });
 
 	// radius
 	m_radius = sqrt(2 * m_inertia / m_mass);
 
 	// material
-	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getModel()->GetMaterial(); });
+	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getModel()->getMaterial(); });
 }
 
 CellState::CellState(const shared_ptr<CellModel>& model)
@@ -91,27 +91,27 @@ CellState::CellState(const shared_ptr<CellModel>& model)
 {
 	SetMass(m_model->getMass());
 	SetRadius(m_model->getRadius());
-	SetInertia(m_model->GetInertia());
+	SetInertia(m_model->getInertia());
 
 	// parts
 	for (const auto& pc : m_model->GetPartConfigs())
-		m_partStates.emplace_back(pc->getModel()->MakeState())->SetPartConfig(pc);
+		m_partStates.emplace_back(pc->getModel()->makeState())->SetPartConfig(pc);
 }
 
 void CellState::UpdateCell()
 {
 	// 衝突処理
 	{
-		auto result = g_cellManagerPtr->GetCellStateKDTree().knnSearch(2, GetPosition());
+		auto result = g_cellManagerPtr->GetCellStateKDTree().knnSearch(2, getPosition());
 		if (result.size() == 2)
 		{
 			auto& t = g_cellManagerPtr->GetCellStates()[result[1]];
 
-			if (t->GetPosition() != GetPosition() && (getRadius() + t->getRadius() - (t->GetPosition() - GetPosition()).length()) > 0)
+			if (t->getPosition() != getPosition() && (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length()) > 0)
 			{
-				auto f = -1000.0 * (t->GetPosition() - GetPosition()).normalized() * (getRadius() + t->getRadius() - (t->GetPosition() - GetPosition()).length());
-				AddForceInWorld(f, GetPosition());
-				t->AddForceInWorld(-f, t->GetPosition());
+				auto f = -1000.0 * (t->getPosition() - getPosition()).normalized() * (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length());
+				AddForceInWorld(f, getPosition());
+				t->AddForceInWorld(-f, t->getPosition());
 			}
 		}
 	}
@@ -125,11 +125,11 @@ void CellState::UpdateCell()
 
 	// 接触したMoleculeStateの取り込み
 	/*
-	for (auto i : g_moleculeManagerPtr->GetMoleculeStateKDTree().knnSearch(1, GetPosition()))
+	for (auto i : g_moleculeManagerPtr->GetMoleculeStateKDTree().knnSearch(1, getPosition()))
 	{
 		auto& m = g_moleculeManagerPtr->GetMoleculeStates()[i];
 
-		if (!m->IsDestroyed() && (m->GetPosition() - GetPosition()).length() - getRadius() < 0.0) TakeMolecule(m);
+		if (!m->IsDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) TakeMolecule(m);
 	}
 	*/
 
@@ -141,7 +141,7 @@ void CellState::UpdateCell()
 
 		for (const auto& m : m_storage.GetMolecules())
 		{
-			if (2 * m_model->GetMaterial().Num(m.first) < m_storage.Num(m.first))
+			if (2 * m_model->getMaterial().Num(m.first) < m_storage.Num(m.first))
 			{
 				ExpireMolecule(m.first);
 
@@ -156,13 +156,13 @@ void CellState::UpdateCell()
 	*/
 
 	// 分裂処理
-	if (m_storage >= m_model->GetMaterial())
+	if (m_storage >= m_model->getMaterial())
 	{
-		m_storage -= m_model->GetMaterial();
+		m_storage -= m_model->getMaterial();
 
 		const auto& e = g_eggManagerPtr->AddEggState(m_model);
-		e->SetPosition(GetPosition());
-		e->SetRotation(Random(boost::math::constants::pi<double>() * 2.0));
+		e->setPosition(getPosition());
+		e->setRotation(Random(boost::math::constants::pi<double>() * 2.0));
 		e->SetVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
 	}
 
@@ -171,7 +171,7 @@ void CellState::UpdateCell()
 	{
 		// MoleculeStateの吐き出し
 		/*
-		auto s = m_storage + m_model->GetMaterial();
+		auto s = m_storage + m_model->getMaterial();
 		for (const auto& m : s.GetMolecules())
 		{
 			for (unsigned int i = 0; i < m.second; i++)
@@ -181,7 +181,7 @@ void CellState::UpdateCell()
 
 				// 吐き出されたMoleculeState
 				const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
-				ms->SetPosition(GetPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
+				ms->setPosition(getPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
 				ms->SetVelocity(v * 0.1);
 			}
 		}
@@ -193,14 +193,14 @@ void CellState::UpdateCell()
 
 void CellState::Draw()
 {
-	auto t1 = Transformer2D(Mat3x2::Rotate(GetRotation()).translated(Vec2(GetPosition().x, GetPosition().y)));
+	auto t1 = Transformer2D(Mat3x2::Rotate(getRotation()).translated(Vec2(getPosition().x, getPosition().y)));
 	auto t2 = Transformer2D(Mat3x2::Scale(min(1.0, m_startTimer + 0.5)));
 
 	// parts
 	for (const auto& p : m_partStates)
 	{
-		auto t3 = Transformer2D(Mat3x2::Rotate(p->GetPartConfig()->GetRotation())
-			.translated(p->GetPartConfig()->GetPosition().x, p->GetPartConfig()->GetPosition().y));
+		auto t3 = Transformer2D(Mat3x2::Rotate(p->getPartConfig()->getRotation())
+			.translated(p->getPartConfig()->getPosition().x, p->getPartConfig()->getPosition().y));
 
 		p->Draw(*this);
 	}
@@ -235,7 +235,7 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned 
 
 		// 吐き出されたMoleculeState
 		const auto& t = g_moleculeManagerPtr->AddMoleculeState(model);
-		t->SetPosition(GetPosition() + v * (getRadius() + model->getRadius()));
+		t->setPosition(getPosition() + v * (getRadius() + model->getRadius()));
 		t->SetVelocity(v * 0.5);
 
 		// Storageから出す

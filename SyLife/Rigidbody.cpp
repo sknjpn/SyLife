@@ -16,7 +16,7 @@ void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition
 	SetVelocity(momentum / getMass());
 
 	// 力のモーメント
-	const double momentOfForce = (worldPosition - GetPosition()).cross(impulse);
+	const double momentOfForce = (worldPosition - getPosition()).cross(impulse);
 
 	// 角運動量
 	const double angularMomentum = momentOfForce + m_inertia * m_angularVelocity;

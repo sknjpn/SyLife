@@ -10,20 +10,20 @@ void PartModel::makeViewer()
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
-shared_ptr<PartState> PartModel::MakeState()
+shared_ptr<PartState> PartModel::makeState()
 {
 	return make_shared<PartState>();
 }
 
-RectF PartModel::GetApproximateRect() const
+RectF PartModel::getApproximateRect() const
 {
-	const Vec2 tl = GetApproximateRectTopLeft();
-	const Vec2 br = GetApproximateRectBottomDown();
+	const Vec2 tl = getApproximateRectTopLeft();
+	const Vec2 br = getApproximateRectBottomDown();
 
 	return RectF(tl, br - tl);
 }
 
-Vec2 PartModel::GetApproximateRectTopLeft() const
+Vec2 PartModel::getApproximateRectTopLeft() const
 {
 	double x = m_shapes.front().m_polygon.vertices().front().x;
 	double y = m_shapes.front().m_polygon.vertices().front().y;
@@ -40,7 +40,7 @@ Vec2 PartModel::GetApproximateRectTopLeft() const
 	return Vec2(x, y);
 }
 
-Vec2 PartModel::GetApproximateRectBottomDown() const
+Vec2 PartModel::getApproximateRectBottomDown() const
 {
 	double x = m_shapes.front().m_polygon.vertices().front().x;
 	double y = m_shapes.front().m_polygon.vertices().front().y;
@@ -57,10 +57,10 @@ Vec2 PartModel::GetApproximateRectBottomDown() const
 	return Vec2(x, y);
 }
 
-double PartModel::GetRectInertia() const
+double PartModel::getRectInertia() const
 {
-	auto w = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).x;
-	auto h = (GetApproximateRectBottomDown() - GetApproximateRectTopLeft()).y;
+	auto w = (getApproximateRectBottomDown() - getApproximateRectTopLeft()).x;
+	auto h = (getApproximateRectBottomDown() - getApproximateRectTopLeft()).y;
 
 	return  m_mass * (w * w + h * h) / 12.0;
 }

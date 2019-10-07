@@ -55,10 +55,10 @@ void AssemblyViewer::Update()
 	{
 		for (const auto& p : getModel<CellModel>()->GetPartConfigs())
 		{
-			auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
-				.translated(p->GetPosition().x, p->GetPosition().y));
+			auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
+				.translated(p->getPosition().x, p->getPosition().y));
 
-			for (const auto& s : p->getModel()->GetShapes())
+			for (const auto& s : p->getModel()->getShapes())
 				s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 		}
 	}
@@ -71,7 +71,7 @@ void AssemblyViewer::Update()
 			{
 				auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& s : g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart->GetShapes())
+				for (const auto& s : g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart->getShapes())
 				{
 					s.Draw(0.5);
 					s.GetPolygon().drawFrame(2.0, Palette::White);
@@ -83,8 +83,8 @@ void AssemblyViewer::Update()
 				const auto& partConfig = getModel<CellModel>()->AddPartConfig();
 
 				partConfig->setModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
-				partConfig->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
-				partConfig->SetRotation(0.0);
+				partConfig->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
+				partConfig->setRotation(0.0);
 			}
 		}
 

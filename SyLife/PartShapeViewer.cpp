@@ -41,7 +41,7 @@ void PartShapeViewer::Update()
 	}
 
 	// ShapeModels
-	for (const auto& s : getModel<PartModel>()->GetShapes())
+	for (const auto& s : getModel<PartModel>()->getShapes())
 	{
 		// Face
 		s.GetPolygon().draw(ColorF(s.m_color, 0.5));
@@ -102,7 +102,7 @@ void PartShapeViewer::Update()
 					// Connect
 					if (it != m_verticles.begin()) m_verticles.erase(m_verticles.begin(), it);
 
-					//m_model->GetShapes().emplace_back(m_verticles);
+					//m_model->getShapes().emplace_back(m_verticles);
 
 					m_verticles.clear();
 

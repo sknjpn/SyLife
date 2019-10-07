@@ -11,11 +11,11 @@ public:
 	virtual ~PartState() {}
 
 	// Get
-	const shared_ptr<PartConfig>& GetPartConfig() const { return m_partConfig; }
+	const shared_ptr<PartConfig>& getPartConfig() const { return m_partConfig; }
 
 	// Set
 	void	SetPartConfig(const shared_ptr<PartConfig>& partConfig) { m_partConfig = partConfig; }
 
-	virtual void	Draw(const CellState& cell) const {}
-	virtual void	Update(CellState& cell) {}
+	virtual void	Draw(const CellState& cell) const;
+	virtual void	Update(CellState& cell);
 };

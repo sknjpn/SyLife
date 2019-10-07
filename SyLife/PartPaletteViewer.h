@@ -44,11 +44,11 @@ public:
 
 				// パーツ描画
 				{
-					RectF rect = (*it)->GetApproximateRect();
+					RectF rect = (*it)->getApproximateRect();
 					auto scale = Min(56 / rect.w, 56 / rect.h);
 					auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(28, 28)));
 
-					for (const ShapeModel& s : (*it)->GetShapes())
+					for (const ShapeModel& s : (*it)->getShapes())
 						s.Draw(0.5);
 				}
 			}

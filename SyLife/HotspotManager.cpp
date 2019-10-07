@@ -17,15 +17,15 @@ const shared_ptr<HotspotState>& HotspotManager::AddHotspotState(const shared_ptr
 const shared_ptr<HotspotState>& HotspotManager::AddHotspotState(const shared_ptr<HotspotModel>& model, const Vec2& position)
 {
 	const auto& m = AddHotspotState(model);
-	m->SetPosition(position);
+	m->setPosition(position);
 	m->SetVelocity(RandomVec2(Random(100.0)));
 
 	return m;
 }
 */
 
-HotspotStateAdapter::element_type HotspotStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->GetPosition().elem(dim); }
-HotspotStateAdapter::element_type HotspotStateAdapter::DistanceSq(const dataset_type& dataset, size_t index, const element_type* other) { return dataset[index]->GetPosition().distanceFromSq(Vec2(other[0], other[1])); }
+HotspotStateAdapter::element_type HotspotStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->getPosition().elem(dim); }
+HotspotStateAdapter::element_type HotspotStateAdapter::DistanceSq(const dataset_type& dataset, size_t index, const element_type* other) { return dataset[index]->getPosition().distanceFromSq(Vec2(other[0], other[1])); }
 
 Polygon g_hotspot;
 Array<pair<Vec2, Vec2>> lines;
@@ -88,9 +88,9 @@ void HotspotManager::UpdateHotspotStates()
 	{
 		if (RandomBool(0.03))
 		{
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Carbon"), h->m_hotspotConfig->GetPosition());
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Nitrogen"), h->m_hotspotConfig->GetPosition());
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Oxygen"), h->m_hotspotConfig->GetPosition());
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Carbon"), h->m_hotspotConfig->getPosition());
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Nitrogen"), h->m_hotspotConfig->getPosition());
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Oxygen"), h->m_hotspotConfig->getPosition());
 		}
 	}
 	*/

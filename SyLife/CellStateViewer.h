@@ -50,7 +50,7 @@ public:
 			}
 
 			pos.moveBy(16.0, 0.0);
-			for (const auto& m : model->GetMaterial().getMoleculeList())
+			for (const auto& m : model->getMaterial().getMoleculeList())
 			{
 				auto t = Transformer2D(Mat3x2::Translate(pos));
 				font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();

@@ -24,11 +24,11 @@ public:
 	void	makeViewer() override;
 
 	// Get
-	const Storage& GetMaterial() const { return m_material; }
-	Storage& GetMaterial() { return m_material; }
+	const Storage& getMaterial() const { return m_material; }
+	Storage& getMaterial() { return m_material; }
 	double	getMass() const { return m_mass; }
 	double	getRadius() const { return m_radius; }
-	double	GetInertia() const { return m_inertia; }
+	double	getInertia() const { return m_inertia; }
 	const Array<shared_ptr<PartConfig>>& GetPartConfigs() const { return m_partConfigs; }
 	Array<shared_ptr<PartConfig>>& GetPartConfigs() { return m_partConfigs; }
 
@@ -115,7 +115,7 @@ public:
 		MoveDrawPos(4, 0);
 		font(U"Inertia:").draw();
 		MoveDrawPos(96, 0);
-		font(ToString(model->GetInertia())).draw();
+		font(ToString(model->getInertia())).draw();
 		MoveDrawPos(-100, 28);
 	}
 	void Update() override { Update_this(); }

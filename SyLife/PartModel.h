@@ -2,13 +2,9 @@
 
 #include "AssetModel.h"
 
-#include "ModelEditor.h"
 #include "Storage.h"
 #include "ShapeModel.h"
-#include "PartShapeViewer.h"
 
-class CellState;
-class PartConfig;
 class PartState;
 
 class PartModel
@@ -24,19 +20,19 @@ public:
 public:
 	// Get
 	double	getMass() const { return m_mass; }
-	const Storage& GetMaterial() const { return m_material; }
-	const Array<ShapeModel>& GetShapes() const { return m_shapes; }
+	const Storage& getMaterial() const { return m_material; }
+	const Array<ShapeModel>& getShapes() const { return m_shapes; }
 
-	void makeViewer() override;
-	virtual shared_ptr<PartState>	MakeState();
+	void	makeViewer() override;
+	virtual shared_ptr<PartState>	makeState();
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }
 
-	RectF	GetApproximateRect() const;
-	Vec2	GetApproximateRectTopLeft() const;
-	Vec2	GetApproximateRectBottomDown() const;
-	double	GetRectInertia() const;
-	Vec2	GetCenter() const { return (GetApproximateRectTopLeft() + GetApproximateRectBottomDown()) / 2.0; }
+	RectF	getApproximateRect() const;
+	Vec2	getApproximateRectTopLeft() const;
+	Vec2	getApproximateRectBottomDown() const;
+	double	getRectInertia() const;
+	Vec2	getCenter() const { return (getApproximateRectTopLeft() + getApproximateRectBottomDown()) / 2.0; }
 
 	// JSON
 	void	load_this(const ptree& pt);

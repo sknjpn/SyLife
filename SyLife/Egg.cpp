@@ -13,16 +13,16 @@ void EggState::UpdateEgg()
 		Destroy();
 
 		const auto& c = g_cellManagerPtr->AddCellState(GetCellModel());
-		c->SetPosition(GetPosition());
-		c->SetRotation(GetRotation());
+		c->setPosition(getPosition());
+		c->setRotation(getRotation());
 	}
 }
 
 void EggState::Draw()
 {
 	auto t = Transformer2D(Mat3x2::Scale(0.5)
-		.rotated(GetRotation())
-		.translated(GetPosition().x, GetPosition().y));
+		.rotated(getRotation())
+		.translated(getPosition().x, getPosition().y));
 
 	Circle(getRadius() * 2.0)
 		.draw(ColorF(Palette::Papayawhip, 0.5))
