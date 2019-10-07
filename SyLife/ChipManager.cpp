@@ -51,7 +51,7 @@ void ChipManager::init()
 		for (auto molecules : pt.get_child("molecules"))
 		{
 			const string name = molecules.second.get<string>("name");
-			const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(name);
+			const auto& model = g_assetManagerPtr->getModel<MoleculeModel>(name);
 			const int size = molecules.second.get<int>("size");
 
 			for (int i = 0; i < size; ++i)

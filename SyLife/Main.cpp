@@ -27,7 +27,7 @@ void Main()
 
 	g_systemManagerPtr = make_unique<SystemManager>();
 
-	g_terrainManagerPtr->SetTerrainModel(g_assetManagerPtr->GetModel<TerrainModel>("Terrain A"));
+	g_terrainManagerPtr->SetTerrainModel(g_assetManagerPtr->getModel<TerrainModel>("Terrain A"));
 
 	g_viewerManagerPtr->makeViewer<TitleViewer>();
 

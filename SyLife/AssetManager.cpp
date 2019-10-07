@@ -18,7 +18,7 @@ void AssetManager::Init()
 
 		read_json(filepath, pt);
 
-		MakeModel(pt.get<string>("name"), pt.get<string>("type"));
+		makeModel(pt.get<string>("name"), pt.get<string>("type"));
 	}
 
 	for (const auto& m : m_models)
@@ -51,7 +51,7 @@ void AssetManager::Init()
 	}
 }
 
-shared_ptr<Model> AssetManager::GetModel(const string& name) const
+shared_ptr<Model> AssetManager::getModel(const string& name) const
 {
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)
 		if ((*it)->getName() == name && dynamic_pointer_cast<Model>(*it) != nullptr) return dynamic_pointer_cast<Model>(*it);

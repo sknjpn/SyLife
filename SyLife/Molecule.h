@@ -42,7 +42,7 @@ public:
 	{
 		ModelViewer::reloadProperties_this();
 
-		m_textEditState_mass.text = ToString(GetModel<MoleculeModel>()->m_mass); 
+		m_textEditState_mass.text = ToString(getModel<MoleculeModel>()->m_mass); 
 	}
 	void reloadProperties() override { reloadProperties_this(); }
 
@@ -53,7 +53,7 @@ public:
 
 		// mass
 		SimpleGUI::TextBox(m_textEditState_mass, Vec2(8,8));
-		GetModel<MoleculeModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
+		getModel<MoleculeModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
 		MoveDrawPos(0, 48);
 	}
 	void Update() override { Update_this(); }

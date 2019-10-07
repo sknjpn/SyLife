@@ -49,7 +49,7 @@ void HotspotManager::MakeHotspots()
 		{
 			auto& h = m_hotspots.emplace_back(make_shared<HotspotState>());
 
-			h->m_hotspotConfig = g_assetManagerPtr->MakeModel<HotspotConfig>();
+			h->m_hotspotConfig = g_assetManagerPtr->makeModel<HotspotConfig>();
 			h->m_hotspotConfig->m_position = p;
 
 			++i;
@@ -88,9 +88,9 @@ void HotspotManager::UpdateHotspotStates()
 	{
 		if (RandomBool(0.03))
 		{
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), h->m_hotspotConfig->GetPosition());
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), h->m_hotspotConfig->GetPosition());
-			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), h->m_hotspotConfig->GetPosition());
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Carbon"), h->m_hotspotConfig->GetPosition());
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Nitrogen"), h->m_hotspotConfig->GetPosition());
+			g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->getModel<MoleculeModel>("Oxygen"), h->m_hotspotConfig->GetPosition());
 		}
 	}
 	*/

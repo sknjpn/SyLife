@@ -53,12 +53,12 @@ void AssemblyViewer::Update()
 
 	// part
 	{
-		for (const auto& p : GetModel<CellModel>()->GetPartConfigs())
+		for (const auto& p : getModel<CellModel>()->GetPartConfigs())
 		{
 			auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 				.translated(p->GetPosition().x, p->GetPosition().y));
 
-			for (const auto& s : p->GetModel()->GetShapes())
+			for (const auto& s : p->getModel()->GetShapes())
 				s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 		}
 	}
@@ -80,7 +80,7 @@ void AssemblyViewer::Update()
 
 			if (MouseL.up())
 			{
-				const auto& partConfig = GetModel<CellModel>()->AddPartConfig();
+				const auto& partConfig = getModel<CellModel>()->AddPartConfig();
 
 				partConfig->SetModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
 				partConfig->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
@@ -91,5 +91,5 @@ void AssemblyViewer::Update()
 		if (!MouseL.pressed()) g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart = nullptr;
 	}
 
-	GetModel<CellModel>()->UpdateProperties();
+	getModel<CellModel>()->UpdateProperties();
 }

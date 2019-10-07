@@ -32,14 +32,14 @@ public:
 
 		// part
 		{
-			auto t1 = Transformer2D(Mat3x2::Scale(45.0 / GetModel<CellModel>()->getRadius() / 2.0).translated(circle.center));
+			auto t1 = Transformer2D(Mat3x2::Scale(45.0 / getModel<CellModel>()->getRadius() / 2.0).translated(circle.center));
 
-			for (const auto& p : GetModel<CellModel>()->GetPartConfigs())
+			for (const auto& p : getModel<CellModel>()->GetPartConfigs())
 			{
 				auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 					.translated(p->GetPosition().x, p->GetPosition().y));
 
-				for (const auto& s : p->GetModel()->GetShapes())
+				for (const auto& s : p->getModel()->GetShapes())
 					s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 			}
 		}

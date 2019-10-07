@@ -13,7 +13,7 @@ class ModelViewer
 public:
 	// Get
 	template <typename T>
-	shared_ptr<T>	GetModel() const { return dynamic_pointer_cast<T>(m_model); }
+	shared_ptr<T>	getModel() const { return dynamic_pointer_cast<T>(m_model); }
 
 	// Set
 	void	SetModel(const shared_ptr<Model> model) { m_model = model; reloadProperties(); }
@@ -22,7 +22,7 @@ public:
 	void reloadProperties_this() 
 	{
 		// name
-		m_textEditState_name.text = Unicode::Widen(GetModel<Model>()->getName());
+		m_textEditState_name.text = Unicode::Widen(getModel<Model>()->getName());
 	}
 	virtual void reloadProperties() { reloadProperties_this(); }
 
@@ -31,7 +31,7 @@ public:
 	{
 		// name
 		SimpleGUI::TextBox(m_textEditState_name, Vec2(8, 8), 240);
-		GetModel<Model>()->setName(Unicode::Narrow(m_textEditState_name.text));
+		getModel<Model>()->setName(Unicode::Narrow(m_textEditState_name.text));
 		MoveDrawPos(0, 48);
 	}
 	void	Update() override { Update_this(); }

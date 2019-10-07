@@ -38,9 +38,9 @@ class WingState
 public:
 	void	Draw(const CellState& cell) const
 	{
-		auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingModel>(GetPartConfig()->GetModel())->m_isRight ? m_p : -m_p));
+		auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingModel>(GetPartConfig()->getModel())->m_isRight ? m_p : -m_p));
 
-		GetPartConfig()->GetModel()->Draw();
+		GetPartConfig()->getModel()->Draw();
 	}
 	void	Update(CellState& cell) override
 	{

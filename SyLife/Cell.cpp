@@ -18,7 +18,7 @@ void CellModel::Draw(double a)
 	{
 		auto t2 = Transformer2D(Mat3x2::Rotate(pc->GetRotation()).translated(pc->GetPosition()));
 
-		pc->GetModel()->Draw(a);
+		pc->getModel()->Draw(a);
 	}
 }
 
@@ -66,10 +66,10 @@ shared_ptr<PartConfig>& CellModel::AddPartConfig()
 void CellModel::UpdateProperties()
 {
 	// mass
-	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->GetModel()->getMass(); });
+	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });
 
 	// center
-	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->GetModel()->getMass() * (p->GetPosition() + p->GetModel()->GetCenter().rotated(p->GetRotation())); }) / m_mass;
+	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getModel()->getMass() * (p->GetPosition() + p->getModel()->GetCenter().rotated(p->GetRotation())); }) / m_mass;
 
 	// centerを原点に設定
 	for (const auto& p : m_partConfigs) p->SetPosition(p->GetPosition() - center);
@@ -81,7 +81,7 @@ void CellModel::UpdateProperties()
 	m_radius = sqrt(2 * m_inertia / m_mass);
 
 	// material
-	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->GetModel()->GetMaterial(); });
+	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getModel()->GetMaterial(); });
 }
 
 CellState::CellState(const shared_ptr<CellModel>& model)
@@ -95,7 +95,7 @@ CellState::CellState(const shared_ptr<CellModel>& model)
 
 	// parts
 	for (const auto& pc : m_model->GetPartConfigs())
-		m_partStates.emplace_back(pc->GetModel()->MakeState())->SetPartConfig(pc);
+		m_partStates.emplace_back(pc->getModel()->MakeState())->SetPartConfig(pc);
 }
 
 void CellState::UpdateCell()
@@ -219,7 +219,7 @@ void CellState::Draw()
 /*
 void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 {
-	m_storage.Add(molecule->GetModel());
+	m_storage.Add(molecule->getModel());
 
 	molecule->Destroy();
 }

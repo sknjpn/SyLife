@@ -33,7 +33,7 @@ FieldViewer::FieldViewer()
 void FieldViewer::Init()
 {
 	// 付属Viewerの初期化
-	m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
+	m_newModel = g_assetManagerPtr->makeModel<CellModel>();
 	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->SetModel(m_newModel);
 	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->SetModel(m_newModel);
 	g_viewerManagerPtr->makeViewer<ReleaseViewer>()->SetModel(m_newModel);
@@ -140,24 +140,24 @@ void FieldViewer::Update()
 			{
 				auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& p : rv->GetModel<CellModel>()->GetPartConfigs())
+				for (const auto& p : rv->getModel<CellModel>()->GetPartConfigs())
 				{
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->GetRotation())
 						.translated(p->GetPosition()));
 
-					for (const auto& s : p->GetModel()->GetShapes())
+					for (const auto& s : p->getModel()->GetShapes())
 						s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 				}
 			}
 
 			if (MouseL.up())
 			{
-				const auto& c = g_cellManagerPtr->AddCellState(rv->GetModel<CellModel>());
+				const auto& c = g_cellManagerPtr->AddCellState(rv->getModel<CellModel>());
 				c->SetPosition(Cursor::PosF());
 				c->SetVelocity(Vec2::Zero());
 				c->Init();
 
-				m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
+				m_newModel = g_assetManagerPtr->makeModel<CellModel>();
 				ppv->SetModel(m_newModel);
 				av->SetModel(m_newModel);
 				rv->SetModel(m_newModel);

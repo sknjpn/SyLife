@@ -25,7 +25,7 @@ class ModuleState
 	: public PartState
 {
 public:
-	void	Draw(const CellState& cell) const { GetPartConfig()->GetModel()->Draw(); }
+	void	Draw(const CellState& cell) const { GetPartConfig()->getModel()->Draw(); }
 	void	Update(CellState& cell) override {}
 };
 

@@ -95,7 +95,7 @@ public:
 	// Update
 	void Update_this()
 	{
-		auto model = GetModel<CellModel>();
+		auto model = getModel<CellModel>();
 		static Font font(24, Typeface::Bold);
 
 		ModelViewer::Update_this();

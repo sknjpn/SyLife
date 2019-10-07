@@ -55,7 +55,7 @@ class PartConfig
 
 public:
 	// Get
-	const shared_ptr<PartModel>& GetModel() const { return m_partModel; }
+	const shared_ptr<PartModel>& getModel() const { return m_partModel; }
 	const Vec2& GetPosition() const { return m_position; }
 	double	GetRotation() const { return m_rotation; }
 
@@ -100,7 +100,7 @@ public:
 	{
 		ModelViewer::reloadProperties_this();
 
-		m_textEditState_mass.text = ToString(GetModel<PartModel>()->m_mass);
+		m_textEditState_mass.text = ToString(getModel<PartModel>()->m_mass);
 	}
 	void reloadProperties() override { reloadProperties_this(); }
 
@@ -111,7 +111,7 @@ public:
 
 		// mass
 		SimpleGUI::TextBox(m_textEditState_mass, Vec2(8, 8));
-		GetModel<PartModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
+		getModel<PartModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
 		MoveDrawPos(0, 48);
 	}
 	void Update() override { Update_this(); }

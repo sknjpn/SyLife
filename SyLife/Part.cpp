@@ -114,7 +114,7 @@ void PartModel::save_this(ptree& pt) const
 void PartConfig::load_this(const ptree& pt)
 {
 	// model
-	m_partModel = g_assetManagerPtr->GetModel<PartModel>(pt.get<string>("model"));
+	m_partModel = g_assetManagerPtr->getModel<PartModel>(pt.get<string>("model"));
 
 	// position
 	m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));

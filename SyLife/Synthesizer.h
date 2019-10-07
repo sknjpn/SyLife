@@ -31,7 +31,7 @@ class SynthesizerState
 public:
 	void	Draw(const CellState& cell) const
 	{
-		GetPartConfig()->GetModel()->Draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
+		GetPartConfig()->getModel()->Draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
 	}
 
 	void	Update(CellState& cell) override;

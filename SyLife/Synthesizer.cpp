@@ -22,7 +22,7 @@ void SynthesizerModel::load_this(const ptree& pt)
 	m_import.load(pt.get_child("import"));
 
 	// export
-	m_export = g_assetManagerPtr->GetModel<MoleculeModel>(pt.get<string>("export"));
+	m_export = g_assetManagerPtr->getModel<MoleculeModel>(pt.get<string>("export"));
 
 	ModuleModel::load_this(pt);
 }
@@ -50,7 +50,7 @@ void SynthesizerState::Update(CellState& cell)
 {
 	m_timer += g_systemManagerPtr->GetDeltaTime();
 
-	auto model = dynamic_pointer_cast<SynthesizerModel>(GetPartConfig()->GetModel());
+	auto model = dynamic_pointer_cast<SynthesizerModel>(GetPartConfig()->getModel());
 	if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->GetMaterial().numMolecule(model->GetExport()) > cell.m_storage.numMolecule(model->GetExport()))
 	{
 		m_timer = 0.0;

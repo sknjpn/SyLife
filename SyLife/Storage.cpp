@@ -74,7 +74,7 @@ void Storage::load_this(const ptree& pt)
 	{
 		auto name = m.second.get<string>("name");
 
-		const auto& model = g_assetManagerPtr->GetModel<MoleculeModel>(name);
+		const auto& model = g_assetManagerPtr->getModel<MoleculeModel>(name);
 
 		emplace_back(model, m.second.get<int>("size"));
 	}
