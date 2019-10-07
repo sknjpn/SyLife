@@ -11,9 +11,9 @@ public:
 	AssetManager() { m_models.reserve(1024); }
 
 	template <typename T>
-	shared_ptr<T>		MakeModel() { return dynamic_pointer_cast<T>(m_models.emplace_back(make_shared<T>())); }
+	shared_ptr<T>		MakeModel(const string& name) { return dynamic_pointer_cast<T>(m_models.emplace_back(make_shared<T>(name))); }
 
-	shared_ptr<Model>	MakeModel(const string& type);
+	shared_ptr<Model>	MakeModel(const string& name, const string& type);
 
 	void	Init();
 
