@@ -237,7 +237,7 @@
       <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
     <ClCompile Include="ModelViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
