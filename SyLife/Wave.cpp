@@ -2,7 +2,7 @@
 
 #include "ViewerManager.h"
 
-void WaveModel::MakeViewer()
+void WaveModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<WaveViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<WaveViewer>()->SetModel(shared_from_this());
 }

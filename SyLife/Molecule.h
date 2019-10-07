@@ -16,7 +16,7 @@ class MoleculeModel
 	Storage	m_material;
 
 public:
-	void	MakeViewer() override;
+	void	makeViewer() override;
 
 	// Get
 	double	GetMass() const { return m_mass; }

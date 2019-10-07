@@ -10,10 +10,10 @@ void ChloroplastState::MakeNutrition()
 {
 }
 
-void ChloroplastModel::MakeViewer()
+void ChloroplastModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<ChloroplastViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<ChloroplastViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 shared_ptr<PartState> ChloroplastModel::MakeState()

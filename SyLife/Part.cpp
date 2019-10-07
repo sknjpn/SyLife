@@ -3,10 +3,10 @@
 #include "AssetManager.h"
 #include "ViewerManager.h"
 
-void PartModel::MakeViewer()
+void PartModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<PartViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 shared_ptr<PartState> PartModel::MakeState()

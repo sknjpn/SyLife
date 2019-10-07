@@ -2,10 +2,10 @@
 
 #include "ViewerManager.h"
 
-void ModuleModel::MakeViewer()
+void ModuleModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<ModuleViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<ModuleViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 shared_ptr<PartState> ModuleModel::MakeState()

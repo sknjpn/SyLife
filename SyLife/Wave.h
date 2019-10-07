@@ -18,7 +18,7 @@ public:
 	double	GetForce() const { return m_force; }
 	double	GetInterval() const { return m_interval; }
 
-	void	MakeViewer() override;
+	void	makeViewer() override;
 };
 
 class WaveViewer

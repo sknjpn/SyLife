@@ -7,7 +7,7 @@ class NeedleModel
 	: public EquipmentModel
 {
 public:
-	void	MakeViewer() override;
+	void	makeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	load_this(const ptree& pt) { EquipmentModel::load_this(pt); }

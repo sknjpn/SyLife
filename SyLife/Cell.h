@@ -21,7 +21,7 @@ class CellModel
 	double	m_inertia;
 
 public:
-	void	MakeViewer() override;
+	void	makeViewer() override;
 
 	// Get
 	const Storage& GetMaterial() const { return m_material; }

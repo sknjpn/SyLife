@@ -4,10 +4,10 @@
 #include "ViewerManager.h"
 #include "CellManager.h"
 
-void NeedleModel::MakeViewer()
+void NeedleModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<NeedleViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<NeedleViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 shared_ptr<PartState> NeedleModel::MakeState()

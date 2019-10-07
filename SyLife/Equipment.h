@@ -6,7 +6,7 @@ class EquipmentModel
 	: public PartModel
 {
 public:
-	void MakeViewer() override;
+	void makeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	load_this(const ptree& pt) { PartModel::load_this(pt); }

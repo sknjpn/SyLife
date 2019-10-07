@@ -2,10 +2,10 @@
 
 #include "ViewerManager.h"
 
-void EyeModel::MakeViewer()
+void EyeModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<EyeViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<EyeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 shared_ptr<PartState> EyeModel::MakeState()

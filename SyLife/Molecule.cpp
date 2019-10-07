@@ -2,9 +2,9 @@
 
 #include "ViewerManager.h"
 
-void MoleculeModel::MakeViewer()
+void MoleculeModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<MoleculeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<MoleculeViewer>()->SetModel(shared_from_this());
 }
 
 void MoleculeModel::load_this(const ptree& pt)

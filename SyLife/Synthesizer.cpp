@@ -5,10 +5,10 @@
 #include "AssetManager.h"
 #include "SystemManager.h"
 
-void SynthesizerModel::MakeViewer()
+void SynthesizerModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<SynthesizerViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<SynthesizerViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 shared_ptr<PartState> SynthesizerModel::MakeState()

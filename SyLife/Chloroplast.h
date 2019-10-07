@@ -6,7 +6,7 @@ class ChloroplastModel
 	: public ModuleModel
 {
 public:
-	void		MakeViewer() override;
+	void		makeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 	void	load_this(const ptree& pt) { ModuleModel::load_this(pt); }

@@ -29,7 +29,7 @@ void Main()
 
 	g_terrainManagerPtr->SetTerrainModel(g_assetManagerPtr->GetModel<TerrainModel>("Terrain A"));
 
-	g_viewerManagerPtr->MakeViewer<TitleViewer>();
+	g_viewerManagerPtr->makeViewer<TitleViewer>();
 
 	while (System::Update())
 	{

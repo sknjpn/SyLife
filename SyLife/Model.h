@@ -14,7 +14,7 @@ class Model
 public:
 	virtual ~Model() = default;
 
-	virtual void	MakeViewer() {}
+	virtual void	makeViewer() {}
 
 	// JSON Load
 	void	load_this(const ptree& pt)

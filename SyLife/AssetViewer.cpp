@@ -26,7 +26,7 @@ void AssetViewer::Update()
 		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();
 
-		if (f.region().leftClicked() && !g_viewerManagerPtr->HasViewer<AddModelViewer>()) g_viewerManagerPtr->MakeViewer<AddModelViewer>();
+		if (f.region().leftClicked() && !g_viewerManagerPtr->HasViewer<AddModelViewer>()) g_viewerManagerPtr->makeViewer<AddModelViewer>();
 
 		MoveDrawPos(0, 16);
 	}

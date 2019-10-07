@@ -34,10 +34,10 @@ void FieldViewer::Init()
 {
 	// 付属Viewerの初期化
 	m_newModel = g_assetManagerPtr->MakeModel<CellModel>();
-	g_viewerManagerPtr->MakeViewer<PartPaletteViewer>()->SetModel(m_newModel);
-	g_viewerManagerPtr->MakeViewer<AssemblyViewer>()->SetModel(m_newModel);
-	g_viewerManagerPtr->MakeViewer<ReleaseViewer>()->SetModel(m_newModel);
-	g_viewerManagerPtr->MakeViewer<CellStateViewer>();
+	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->SetModel(m_newModel);
+	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->SetModel(m_newModel);
+	g_viewerManagerPtr->makeViewer<ReleaseViewer>()->SetModel(m_newModel);
+	g_viewerManagerPtr->makeViewer<CellStateViewer>();
 }
 
 void FieldViewer::Update()

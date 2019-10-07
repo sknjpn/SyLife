@@ -10,7 +10,7 @@ void AssetViewer::SetSelectedModel(const shared_ptr<Model>& model)
 	g_viewerManagerPtr->DeleteViewer<ModelViewer>();
 
 	// 対象のViewを追加
-	model->MakeViewer();
+	model->makeViewer();
 
 	// 対象モデルの設定
 	m_selectedModel = model;

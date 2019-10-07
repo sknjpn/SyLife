@@ -10,7 +10,7 @@ public:
 	bool	m_isRight = false;
 
 public:
-	void MakeViewer() override;
+	void makeViewer() override;
 	shared_ptr<PartState>	MakeState() override;
 
 

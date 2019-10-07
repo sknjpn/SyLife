@@ -7,10 +7,10 @@ void WingState::Flap(CellState& cell)
 	cell.AddImpulseInLocal(Vec2::Up() * 10000.0, GetPartConfig()->GetPosition());
 }
 
-void WingModel::MakeViewer()
+void WingModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<WingViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->MakeViewer<PartShapeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<WingViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->SetModel(shared_from_this());
 }
 
 shared_ptr<PartState> WingModel::MakeState()

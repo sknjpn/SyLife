@@ -263,19 +263,19 @@ public:
 	void	Enter_LaunchNewGame()
 	{
 		g_viewerManagerPtr->ClearViewers();
-		g_viewerManagerPtr->MakeViewer<FieldViewer>();
+		g_viewerManagerPtr->makeViewer<FieldViewer>();
 	}
 
 	void	Enter_ContinueGame()
 	{
 		g_viewerManagerPtr->ClearViewers();
-		g_viewerManagerPtr->MakeViewer<FieldViewer>();
+		g_viewerManagerPtr->makeViewer<FieldViewer>();
 	}
 
 	void	Enter_LaunchEditor()
 	{
 		g_viewerManagerPtr->ClearViewers();
-		g_viewerManagerPtr->MakeViewer<EditorViewer>();
+		g_viewerManagerPtr->makeViewer<EditorViewer>();
 	}
 
 	void	Enter_Exit()

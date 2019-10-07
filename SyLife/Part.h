@@ -27,7 +27,7 @@ public:
 	const Storage& GetMaterial() const { return m_material; }
 	const Array<ShapeModel>& GetShapes() const { return m_shapes; }
 
-	void MakeViewer() override;
+	void makeViewer() override;
 	virtual shared_ptr<PartState>	MakeState();
 
 	void	Draw(double a = 0.5) { for (const auto& s : m_shapes) s.Draw(a); }

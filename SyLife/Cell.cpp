@@ -52,9 +52,9 @@ void CellModel::save_this(ptree& pt) const
 	pt.put("type", "CellModel");
 }
 
-void CellModel::MakeViewer()
+void CellModel::makeViewer()
 {
-	g_viewerManagerPtr->MakeViewer<CellViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<CellViewer>()->SetModel(shared_from_this());
 }
 
 

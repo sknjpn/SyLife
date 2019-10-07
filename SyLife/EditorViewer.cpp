@@ -11,7 +11,7 @@ EditorViewer::EditorViewer()
 
 void EditorViewer::Init()
 {
-	g_viewerManagerPtr->MakeViewer<AssetViewer>();
+	g_viewerManagerPtr->makeViewer<AssetViewer>();
 }
 
 void EditorViewer::update()
