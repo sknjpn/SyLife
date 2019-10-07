@@ -3,6 +3,7 @@
     "mass": "120",
     "material": {
         "name":"",
+        "nutrition":"0.0",
         "molecules": [
             {
                 "name": "Amino Acid",

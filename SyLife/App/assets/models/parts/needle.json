@@ -2,6 +2,7 @@
     "mass": "30",
     "material": {
         "name":"",
+        "nutrition":"0.0",
         "molecules": [
             {
                 "name": "Oxygen",

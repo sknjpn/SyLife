@@ -4,6 +4,7 @@
     "isRight": "true",
     "material": {
         "name":"",
+        "nutrition":"0.0",
         "molecules": [
             {
                 "name": "Oxygen",
