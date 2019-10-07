@@ -123,8 +123,10 @@
     <ClCompile Include="BodyModel.cpp" />
     <ClCompile Include="BodyEditor.cpp" />
     <ClCompile Include="BodyState.cpp" />
-    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="CellEditor.cpp" />
     <ClCompile Include="CellManager.cpp" />
+    <ClCompile Include="CellModel.cpp" />
+    <ClCompile Include="CellState.cpp" />
     <ClCompile Include="Chip.cpp" />
     <ClCompile Include="ChipManager.cpp" />
     <ClCompile Include="EditorViewer.cpp" />
@@ -262,8 +264,10 @@
     <ClInclude Include="BodyModel.h" />
     <ClInclude Include="BodyEditor.h" />
     <ClInclude Include="BodyState.h" />
-    <ClInclude Include="Cell.h" />
+    <ClInclude Include="CellEditor.h" />
     <ClInclude Include="CellManager.h" />
+    <ClInclude Include="CellModel.h" />
+    <ClInclude Include="CellState.h" />
     <ClInclude Include="CellStateViewer.h" />
     <ClInclude Include="Chip.h" />
     <ClInclude Include="ChipManager.h" />

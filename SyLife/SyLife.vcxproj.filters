@@ -114,6 +114,12 @@
     <Filter Include="Source Files\SyLife\Others">
       <UniqueIdentifier>{2e4be1e8-8093-4053-810b-4049d89a5415}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife\State\Cell">
+      <UniqueIdentifier>{ecd83657-a057-4394-8208-8b9d0e2cd80a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\State\Cell\src">
+      <UniqueIdentifier>{1dab0c67-e08d-4e40-93df-bf8f13c4423a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp">
@@ -169,9 +175,6 @@
     </ClCompile>
     <ClCompile Include="Storage.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
     <ClCompile Include="Egg.cpp">
       <Filter>Source Files\SyLife\State\src</Filter>
@@ -280,6 +283,15 @@
     </ClCompile>
     <ClCompile Include="WingState.cpp">
       <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="CellEditor.cpp">
+      <Filter>Source Files\SyLife\State\Cell\src</Filter>
+    </ClCompile>
+    <ClCompile Include="CellModel.cpp">
+      <Filter>Source Files\SyLife\State\Cell\src</Filter>
+    </ClCompile>
+    <ClCompile Include="CellState.cpp">
+      <Filter>Source Files\SyLife\State\Cell\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -549,9 +561,6 @@
     <ClInclude Include="FieldViewer.h">
       <Filter>Source Files\SyLife\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClInclude>
     <ClInclude Include="Egg.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
@@ -668,6 +677,15 @@
     </ClInclude>
     <ClInclude Include="WingState.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="CellEditor.h">
+      <Filter>Source Files\SyLife\State\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="CellModel.h">
+      <Filter>Source Files\SyLife\State\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="CellState.h">
+      <Filter>Source Files\SyLife\State\Cell</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

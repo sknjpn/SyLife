@@ -1,13 +1,10 @@
 ﻿#pragma once
 
 #include "AssetModel.h"
-#include "ModelEditor.h"
-#include "Rigidbody.h"
 
 #include "Storage.h"
 
 class PartConfig;
-class PartState;
 
 class CellModel
 	: public AssetModel
@@ -57,66 +54,4 @@ public:
 	void	save_this(ptree& pt) const;
 	void	save(ptree& pt) const override { save_this(pt); }
 	string	getFilepath() const override { return "assets/models/cells/" + getFilename(); }
-};
-
-class CellState
-	: public Rigidbody
-{
-public:
-	double	m_startTimer;
-	double	m_deathTimer;
-	Storage	m_storage;
-
-	shared_ptr<CellModel>	m_model;
-
-	Array<shared_ptr<PartState>>		m_partStates;
-
-public:
-	CellState(const shared_ptr<CellModel>& model);
-
-	void	UpdateCell();
-	void	Draw();
-
-	// void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
-	// void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);
-};
-
-class CellViewer
-	: public ModelEditor
-{
-public:
-	// Reload
-	void reloadProperties_this()
-	{
-		ModelEditor::reloadProperties_this();
-	}
-	void reloadProperties() override { reloadProperties_this(); }
-
-	// Update
-	void Update_this()
-	{
-		auto model = getModel<CellModel>();
-		static Font font(24, Typeface::Bold);
-
-		ModelEditor::Update_this();
-
-		MoveDrawPos(4, 0);
-		font(U"Mass:").draw();
-		MoveDrawPos(96, 0);
-		font(ToString(model->getMass())).draw();
-		MoveDrawPos(-100, 28);
-
-		MoveDrawPos(4, 0);
-		font(U"Radius:").draw();
-		MoveDrawPos(96, 0);
-		font(ToString(model->getRadius())).draw();
-		MoveDrawPos(-100, 28);
-
-		MoveDrawPos(4, 0);
-		font(U"Inertia:").draw();
-		MoveDrawPos(96, 0);
-		font(ToString(model->getInertia())).draw();
-		MoveDrawPos(-100, 28);
-	}
-	void Update() override { Update_this(); }
 };
