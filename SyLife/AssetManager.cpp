@@ -14,21 +14,12 @@ void AssetManager::Init()
 
 	for (const auto& filepath : filepaths)
 	{
-		Logger << Unicode::Widen(filepath);
 		ptree pt;
 
 		read_json(filepath, pt);
 
 		MakeModel(pt.get<string>("name"), pt.get<string>("type"));
 	}
-
-	Logger << U"Path";
-	for (const auto& m : filepaths)
-		Logger << Unicode::Widen(m);
-
-	Logger << U"Model";
-	for (const auto& m : m_models)
-		Logger << Unicode::Widen(m->GetName());
 
 	for (const auto& m : m_models)
 	{
