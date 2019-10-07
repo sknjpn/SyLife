@@ -25,7 +25,7 @@ void AssetManager::Init()
 	{
 		ptree pt;
 
-		read_json(m->GetFilepath(), pt);
+		read_json(m->getFilepath(), pt);
 
 		try
 		{
@@ -36,7 +36,7 @@ void AssetManager::Init()
 			LOG_ERROR(U"JSONアセットの読み込みに問題が発生しました");
 			LOG_ERROR(U" What:" + Unicode::Widen(string(e.what())));
 			LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
-			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->GetFilepath()));
+			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->getFilepath()));
 
 			System::Exit();
 		}
@@ -44,7 +44,7 @@ void AssetManager::Init()
 		{
 			LOG_ERROR(U" What:" + e.what());
 			LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
-			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->GetFilepath()));
+			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->getFilepath()));
 
 			System::Exit();
 		}

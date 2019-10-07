@@ -36,6 +36,6 @@ void AssetViewer::Update()
 	{
 		ptree pt;
 		m_selectedModel->save(pt);
-		write_json(m_selectedModel->GetFilepath(), pt);
+		write_json(m_selectedModel->getFilepath(), pt);
 	}
 }

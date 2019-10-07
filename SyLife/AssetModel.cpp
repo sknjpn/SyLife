@@ -7,7 +7,7 @@ void AssetModel::setName(const string& name)
 
 	// ファイルの削除
 	{
-		const boost::filesystem::path path(GetFilepath());
+		const boost::filesystem::path path(getFilepath());
 
 		boost::filesystem::remove(path);
 	}
@@ -21,7 +21,7 @@ void AssetModel::setName(const string& name)
 
 		save(pt);
 
-		write_json(GetFilepath(), pt);
+		write_json(getFilepath(), pt);
 	}
 }
 

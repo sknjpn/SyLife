@@ -24,7 +24,7 @@ public:
 
 	// Path
 	virtual string	getFilename() const;
-	virtual string	GetFilepath() const { return "assets/model/" + getFilename(); }
+	virtual string	getFilepath() const { return "assets/model/" + getFilename(); }
 
 	// JSON
 	void	load_this(const ptree& pt);
