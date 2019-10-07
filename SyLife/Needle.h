@@ -31,22 +31,3 @@ public:
 	void	Draw(const CellState& cell) const;
 	void	Update(CellState& cell) override;
 };
-
-class NeedleViewer
-	: public EquipmentViewer
-{
-public:
-	// Reload
-	void reloadProperties_this()
-	{
-		EquipmentViewer::reloadProperties_this();
-	}
-	void reloadProperties() override { reloadProperties_this(); }
-
-	// Update
-	void Update_this()
-	{
-		EquipmentViewer::Update_this();
-	}
-	void Update() override { Update_this(); }
-};
