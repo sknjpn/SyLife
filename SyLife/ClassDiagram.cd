@@ -287,7 +287,7 @@
       <FileName>Module.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ModuleViewer" Collapsed="true">
+  <Class Name="ModuleEditor" Collapsed="true">
     <Position X="26.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
