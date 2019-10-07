@@ -1,5 +1,5 @@
 ﻿#include "EggManager.h"
-#include "Egg.h"
+#include "EggState.h"
 
 unique_ptr<EggManager> g_eggManagerPtr;
 

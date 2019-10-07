@@ -120,6 +120,9 @@
     <Filter Include="Source Files\SyLife\State\Cell\src">
       <UniqueIdentifier>{1dab0c67-e08d-4e40-93df-bf8f13c4423a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife\State\Egg">
+      <UniqueIdentifier>{a84304d5-286b-491d-a76b-063986608c07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp">
@@ -561,9 +564,6 @@
     <ClInclude Include="FieldViewer.h">
       <Filter>Source Files\SyLife\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="Egg.h">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClInclude>
     <ClInclude Include="Molecule.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
@@ -686,6 +686,9 @@
     </ClInclude>
     <ClInclude Include="CellState.h">
       <Filter>Source Files\SyLife\State\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="EggState.h">
+      <Filter>Source Files\SyLife\State\Egg</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

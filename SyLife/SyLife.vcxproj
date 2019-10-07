@@ -273,7 +273,7 @@
     <ClInclude Include="ChipManager.h" />
     <ClInclude Include="Curtain.h" />
     <ClInclude Include="EditorViewer.h" />
-    <ClInclude Include="Egg.h" />
+    <ClInclude Include="EggState.h" />
     <ClInclude Include="EggManager.h" />
     <ClInclude Include="EquipmentModel.h" />
     <ClInclude Include="EquipmentEditor.h" />

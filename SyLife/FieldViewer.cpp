@@ -13,7 +13,7 @@
 #include "ReleaseViewer.h"
 #include "CellStateViewer.h"
 
-#include "Egg.h"
+#include "EggState.h"
 
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")

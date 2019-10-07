@@ -158,7 +158,7 @@
     <Position X="18" Y="16.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEBAAEAAAAAAAgAAAAAAAAQABAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>Egg.h</FileName>
+      <FileName>EggState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MoleculeModel" Collapsed="true">

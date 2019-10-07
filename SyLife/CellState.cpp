@@ -9,7 +9,7 @@
 #include "PartConfig.h"
 #include "PartState.h"
 
-#include "Egg.h"
+#include "EggState.h"
 
 #include <boost/math/constants/constants.hpp>
 
