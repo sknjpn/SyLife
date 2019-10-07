@@ -134,6 +134,7 @@
     <ClCompile Include="FieldViewer.cpp" />
     <ClCompile Include="HotspotManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="Needle.cpp" />

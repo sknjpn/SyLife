@@ -230,6 +230,9 @@
     <ClCompile Include="AssetModel.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
