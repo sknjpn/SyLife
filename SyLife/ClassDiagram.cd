@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AssetManager" Collapsed="true">
+    <Position X="50.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAQAAGAAAAAAAAAAAAAAAAAAAAIAAACAAAAAAA=</HashCode>
+      <FileName>AssetManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellManager" Collapsed="true">
+    <Position X="53.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIgAgAAAAAAACAAAAAAACAAAwAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>CellManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChipManager" Collapsed="true">
+    <Position X="50.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAKAAAAACAAAAAAAABAgAAAIAAAQAABAAACA=</HashCode>
+      <FileName>ChipManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EggManager" Collapsed="true">
+    <Position X="53.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAANAAAAAAAAAABAABAAAAAAAAAAEAAAAEAA=</HashCode>
+      <FileName>EggManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FieldManager" Collapsed="true">
+    <Position X="55.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAIAAAA=</HashCode>
+      <FileName>FieldManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HotspotManager" Collapsed="true">
+    <Position X="50.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAACAAJAAAAgAAAAAAQAAAACAAEIBAA=</HashCode>
+      <FileName>HotspotManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SystemManager" Collapsed="true">
+    <Position X="52" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>SystemManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TerrainManager" Collapsed="true">
+    <Position X="53.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAQAEQAAAAAUAAAAAAQBgEAACAACAAAAEAAAAAAA=</HashCode>
+      <FileName>TerrainManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewerManager" Collapsed="true">
+    <Position X="55.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAACgAACAABAAAAgAAAAAAAAAAAAIAAAAAAg=</HashCode>
+      <FileName>ViewerManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaveManager" Collapsed="true">
+    <Position X="50.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAACAAAAAAAAAAAAAAgAAIAAAAAAAAAAAAEQ=</HashCode>
+      <FileName>WaveManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AddModelViewer" Collapsed="true">
+    <Position X="38.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAgAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddModelViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AssemblyViewer" Collapsed="true">
+    <Position X="18.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAEAAAIAIABAAAAAAAEAAAAAACAAAACAAAAAAA=</HashCode>
+      <FileName>AssemblyViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AssetViewer" Collapsed="true">
+    <Position X="43.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAABBAAAEAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AssetViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellStateViewer" Collapsed="true">
+    <Position X="45.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>CellStateViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditorViewer" Collapsed="true">
+    <Position X="47.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAgAAAAAAAAAAAAAAAAACAAAEAAA=</HashCode>
+      <FileName>EditorViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FieldViewer" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACQAAAAAAAYAgAAAAAAAAAAAAAAAAAAACAAAAAEA=</HashCode>
+      <FileName>FieldViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelViewer" Collapsed="true">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgQAAAAACACAAAAAAAAAAAAAAIAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>ModelViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PartPaletteViewer" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAAAAAAAAEAAAAAAQBAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PartPaletteViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PartShapeViewer" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAIAAAACAAAAAAAIAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>PartShapeViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReleaseViewer" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ReleaseViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TitleViewer" Collapsed="true">
+    <Position X="41" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>0AQBAQAAAIBAAQAAIABAAIAAAAQAAABAAAACAgAAAAE=</HashCode>
+      <FileName>TitleViewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellModel" Collapsed="true">
+    <Position X="26.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAARECAAICIAiAAAAAAAAAEAgAABABAIAAIAAgAAAA=</HashCode>
+      <FileName>Cell.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellState" Collapsed="true">
+    <Position X="20.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAgAAACgQAAAAAAAAAAAAAAAAEAEAAAAAAgAA=</HashCode>
+      <FileName>Cell.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellViewer" Collapsed="true">
+    <Position X="23" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Cell.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EggState" Collapsed="true">
+    <Position X="18" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBAAEAAAAAAAgAAAAAAAAQABAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Egg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoleculeModel" Collapsed="true">
+    <Position X="4.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABACAAICIACAAAAAAAAAEAAAABACAAAAIAAgAAAA=</HashCode>
+      <FileName>Molecule.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoleculeViewer" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAQAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Molecule.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Particle" Collapsed="true">
+    <Position X="18" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAEAKAAAAgQBAAAAAAEAABAAkQgAAAgAAAAAAE=</HashCode>
+      <FileName>Particle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rigidbody" Collapsed="true">
+    <Position X="19" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAIAAAAAACIAAAAAgAAAAAARAAFAAkQAABCAAmAEAA=</HashCode>
+      <FileName>Rigidbody.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BodyModel" Collapsed="true">
+    <Position X="17.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
+      <FileName>Body.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BodyState" Collapsed="true">
+    <Position X="12.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Body.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BodyViewer" Collapsed="true">
+    <Position X="36.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Body.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChloroplastModel" Collapsed="true">
+    <Position X="22.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
+      <FileName>Chloroplast.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChloroplastState" Collapsed="true">
+    <Position X="1" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Chloroplast.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChloroplastViewer" Collapsed="true">
+    <Position X="25.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Chloroplast.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquipmentModel" Collapsed="true">
+    <Position X="13.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
+      <FileName>Equipment.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquipmentState" Collapsed="true">
+    <Position X="7.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Equipment.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquipmentViewer" Collapsed="true">
+    <Position X="32" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Equipment.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EyeModel" Collapsed="true">
+    <Position X="15.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
+      <FileName>Eye.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EyeState" Collapsed="true">
+    <Position X="10" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Eye.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EyeViewer" Collapsed="true">
+    <Position X="34.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Eye.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModuleModel" Collapsed="true">
+    <Position X="21" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
+      <FileName>Module.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModuleState" Collapsed="true">
+    <Position X="2" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Module.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModuleViewer" Collapsed="true">
+    <Position X="26.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Module.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeedleModel" Collapsed="true">
+    <Position X="11" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
+      <FileName>Needle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeedleState" Collapsed="true">
+    <Position X="5.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Needle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeedleViewer" Collapsed="true">
+    <Position X="29.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Needle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PartModel" Collapsed="true">
+    <Position X="16.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABECAAICAAigACAAAACAEIAAAJAAAFAAIAAAAAAg=</HashCode>
+      <FileName>Part.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PartConfig" Collapsed="true">
+    <Position X="29" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAACACKCAACAAAAEAAAAAAAAAAggAAAAAAAEAAAA=</HashCode>
+      <FileName>Part.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PartState" Collapsed="true">
+    <Position X="6.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIgwAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Part.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PartViewer" Collapsed="true">
+    <Position X="30.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAQAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Part.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynthesizerModel" Collapsed="true">
+    <Position X="20" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAACAAACAAAAIAAAAAAAAAAAAIBAAAAAk=</HashCode>
+      <FileName>Synthesizer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynthesizerState" Collapsed="true">
+    <Position X="3.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Synthesizer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynthesizerViewer" Collapsed="true">
+    <Position X="27.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Synthesizer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WingModel" Collapsed="true">
+    <Position X="13.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAACAAAAAAEAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
+      <FileName>Wing.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WingState" Collapsed="true">
+    <Position X="7.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACAAAAAAAgAAAAAAAAEAQAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Wing.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WingViewer" Collapsed="true">
+    <Position X="32" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Wing.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chip" Collapsed="true">
+    <Position X="55.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAEAAAAAAIAQAAABKAAAAQAgAAAAAA=</HashCode>
+      <FileName>Chip.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Curtain" Collapsed="true">
+    <Position X="52" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAwACAAAAIAAAAAQAAAAAAUCAAAAAAAACAAIAA=</HashCode>
+      <FileName>Curtain.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HotspotModel" Collapsed="true">
+    <Position X="33.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAQICCACEAAAAAAAAAAAAADAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Hotspot.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HotspotConfig" Collapsed="true">
+    <Position X="2" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAKCAACAAAAAAABAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hotspot.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HotspotState" Collapsed="true">
+    <Position X="15.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAgAAABAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Hotspot.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HotspotViewer" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hotspot.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model" Collapsed="true">
+    <Position X="17.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Model.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShapeModel" Collapsed="true">
+    <Position X="8.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAICAAiAACAAAAAAAAAAAAACAACAAAAgAAAA=</HashCode>
+      <FileName>ShapeModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Storage" Collapsed="true">
+    <Position X="24.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACAAICAACAAAAAAAQIAAAAAkAAAAAAgAAABAAA=</HashCode>
+      <FileName>Storage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TerrainModel" Collapsed="true">
+    <Position X="31.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAACAAICAACAIAAAAAAAAAAAABAAQAAAIAAIAAAA=</HashCode>
+      <FileName>Terrain.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TerrainViewer" Collapsed="true">
+    <Position X="20.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Terrain.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicCamera" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAACAEAgAAEAAAEQAiQDACBAAAAAAAAAg=</HashCode>
+      <FileName>TinyCamera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TinyCamera" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAhAAEgQACAAAjAEAAImAAAAgAAAIBAICAIAQQWAAY=</HashCode>
+      <FileName>TinyCamera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Viewer" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwQAIAECAAAAAIAgSAAAAFAAAAAAEQAAAACAAAAAAA=</HashCode>
+      <FileName>Viewer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaveModel" Collapsed="true">
+    <Position X="6.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACBAEAAAAAAAAAAAAAAAAAAAAIAgAAAAA=</HashCode>
+      <FileName>Wave.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaveViewer" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Wave.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AssetModel" Collapsed="true">
+    <Position X="52" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAAAACAAICAACAAAAAAAAAAAAAABAAAAAAIQAAARAA=</HashCode>
+      <FileName>AssetModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="CellStateAdapter" Collapsed="true">
+    <Position X="50.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>CellManager.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="EggStateAdapter" Collapsed="true">
+    <Position X="52" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>EggManager.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="HotspotStateAdapter" Collapsed="true">
+    <Position X="53.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>HotspotManager.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>

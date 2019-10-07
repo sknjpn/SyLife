@@ -13,6 +13,9 @@ public:
 	template <typename T>
 	shared_ptr<T>		MakeModel(const string& name) { return dynamic_pointer_cast<T>(m_models.emplace_back(make_shared<T>(name))); }
 
+	template <typename T>
+	shared_ptr<T>		MakeModel() { return MakeModel<T>(U"Model " + ToString(m_models.size())); }
+
 	shared_ptr<Model>	MakeModel(const string& name, const string& type);
 
 	void	Init();

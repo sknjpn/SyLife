@@ -116,6 +116,7 @@
     <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_MakeModel.cpp" />
+    <ClCompile Include="AssetModel.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="Body.cpp" />
@@ -212,6 +213,7 @@
     <None Include="App\example\test.toml" />
     <None Include="App\nlp\japanese\jumanpp\LICENSE" />
     <None Include="App\nlp\japanese\jumanpp\README.md" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="App\engine\font\fontawesome\LICENSE.txt" />
@@ -240,6 +242,7 @@
     <ClInclude Include="AddModelViewer.h" />
     <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="AssetModel.h" />
     <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cell.h" />
