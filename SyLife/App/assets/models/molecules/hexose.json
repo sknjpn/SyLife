@@ -5,6 +5,20 @@
         "g": "255",
         "b": "255"
     },
+    "material": {
+        "name":"",
+        "nutrition":"2.0",
+        "molecules": [
+            {
+                "name": "Carbon",
+                "size": 1
+            },
+            {
+                "name": "Oxygen",
+                "size": 1
+            }
+        ]
+    },
     "name": "Hexose",
     "type": "MoleculeModel"
 }

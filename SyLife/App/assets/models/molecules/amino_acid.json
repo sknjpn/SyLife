@@ -6,5 +6,23 @@
         "g": "192",
         "b": "0"
     },
+    "material": {
+        "name":"",
+        "nutrition":"1.0",
+        "molecules": [
+            {
+                "name": "Carbon",
+                "size": 1
+            },
+            {
+                "name": "Oxygen",
+                "size": 1
+            },
+            {
+                "name": "Nitrogen",
+                "size": 1
+            }
+        ]
+    },
     "name": "Amino Acid"
 }

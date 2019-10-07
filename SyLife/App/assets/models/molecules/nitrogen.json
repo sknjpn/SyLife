@@ -6,5 +6,10 @@
         "g": "192",
         "b": "0"
     },
+    "material": {
+        "name": "",
+        "nutrition": "1.0",
+        "molecules": []
+    },
     "name": "Nitrogen"
 }

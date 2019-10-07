@@ -1,10 +1,15 @@
 {
-    "type":"MoleculeModel",
+    "type": "MoleculeModel",
     "mass": "12",
     "color": {
         "r": "128",
         "g": "192",
         "b": "255"
+    },
+    "material": {
+        "name": "",
+        "nutrition": "1.0",
+        "molecules": []
     },
     "name": "Carbon"
 }
