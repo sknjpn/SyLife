@@ -142,6 +142,7 @@
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="NeedleModel.cpp" />
     <ClCompile Include="NeedleEditor.cpp" />
+    <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="PartModel.cpp" />
     <ClCompile Include="PartEditor.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -273,6 +274,7 @@
     <ClInclude Include="Molecule.h" />
     <ClInclude Include="NeedleModel.h" />
     <ClInclude Include="NeedleEditor.h" />
+    <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartModel.h" />
     <ClInclude Include="PartEditor.h" />
     <ClInclude Include="Particle.h" />

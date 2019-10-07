@@ -254,6 +254,9 @@
     <ClCompile Include="SynthesizerModel.cpp">
       <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
+    <ClCompile Include="PartConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -616,5 +619,6 @@
     <ClInclude Include="SynthesizerModel.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
+    <ClInclude Include="PartConfig.h" />
   </ItemGroup>
 </Project>
