@@ -1,4 +1,17 @@
 ﻿#include "CellState.h"
+#include "CellModel.h"
+
+#include "SystemManager.h"
+#include "EggManager.h"
+#include "CellManager.h"
+
+#include "PartModel.h"
+#include "PartConfig.h"
+#include "PartState.h"
+
+#include "Egg.h"
+
+#include <boost/math/constants/constants.hpp>
 
 CellState::CellState(const shared_ptr<CellModel>& model)
 	: m_model(model)
