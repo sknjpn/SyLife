@@ -17,10 +17,6 @@ public:
 
 	void	Init();
 
-	void	AddModelsFromDirectory(const string& directory);
-
-	void	AddModelFromFile(const string& filepath);
-
 	bool	HasModel(const string& name) const { return GetModel(name) != nullptr; }
 
 	template <typename T>
