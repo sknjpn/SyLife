@@ -12,7 +12,7 @@ public:
 
 	// Get
 	bool	IsDestroyed() const { return m_isDestroyed; }
-	double	GetMass() const { return m_mass; }
+	double	getMass() const { return m_mass; }
 	const Vec2&	GetPosition() const { return m_position; }
 	const Vec2&	GetVelocity() const { return m_velocity; }
 

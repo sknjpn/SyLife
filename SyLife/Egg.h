@@ -15,9 +15,9 @@ public:
 	void	SetCellModel(const shared_ptr<CellModel>& cellModel)
 	{
 		m_cellModel = cellModel;
-		SetRadius(cellModel->GetRadius() / 2.0);
-		SetMass(cellModel->GetMass() / 4.0);
-		SetInertia(GetMass() * GetRadius() * GetRadius() / 2.0);
+		SetRadius(cellModel->getRadius() / 2.0);
+		SetMass(cellModel->getMass() / 4.0);
+		SetInertia(getMass() * getRadius() * getRadius() / 2.0);
 	}
 
 	const shared_ptr<CellModel>&	GetCellModel() const { return m_cellModel; }

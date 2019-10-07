@@ -34,7 +34,7 @@ public:
 
 		{
 			auto t1 = Transformer2D(Mat3x2::Translate(100, 50));
-			auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_model->GetRadius()));
+			auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_model->getRadius()));
 
 			m_cellState->m_model->Draw(1.0);
 		}

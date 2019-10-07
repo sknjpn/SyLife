@@ -36,7 +36,7 @@ void NeedleState::Update(CellState& cell)
 		{
 			auto& t = g_cellManagerPtr->GetCellStates()[i];
 
-			if (!t->IsDestroyed() && t->GetRadius() > (t->GetPosition() - p).length() && t->m_model != cell.m_model)
+			if (!t->IsDestroyed() && t->getRadius() > (t->GetPosition() - p).length() && t->m_model != cell.m_model)
 			{
 				t->Destroy();
 				cell.m_storage += t->m_storage;

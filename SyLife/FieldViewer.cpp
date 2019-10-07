@@ -74,7 +74,7 @@ void FieldViewer::Update()
 				{
 					auto& cell = g_cellManagerPtr->GetCellStates()[i];
 
-					if (cell->GetRadius() > (cell->GetPosition() - Cursor::PosF()).length())
+					if (cell->getRadius() > (cell->GetPosition() - Cursor::PosF()).length())
 					{
 						selectedRigidbody = cell;
 						g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cell);
@@ -103,11 +103,11 @@ void FieldViewer::Update()
 			circle.draw(ColorF(Palette::Red, 0.5));
 
 			for (const auto& c : g_cellManagerPtr->GetCellStates())
-				if (Circle(c->GetPosition(), c->GetRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+				if (Circle(c->GetPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
 			for (const auto& e : g_eggManagerPtr->GetEggStates())
 			{
-				if (Circle(e->GetPosition(), e->GetRadius()).intersects(circle))
+				if (Circle(e->GetPosition(), e->getRadius()).intersects(circle))
 				{
 					e->Destroy();
 
@@ -122,7 +122,7 @@ void FieldViewer::Update()
 
 							// 吐き出されたMoleculeState
 							const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
-							ms->SetPosition(e->GetPosition() + v * (e->GetRadius() + m.first->GetRadius()) * Random(1.0));
+							ms->SetPosition(e->GetPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
 							ms->SetVelocity(v * 0.1);
 						}
 					}*/
@@ -169,7 +169,7 @@ void FieldViewer::Update()
 
 			if (cs != nullptr)
 			{
-				Circle(cs->GetPosition(), cs->GetRadius() * 1.5)
+				Circle(cs->GetPosition(), cs->getRadius() * 1.5)
 					.draw(ColorF(1.0, 0.25))
 					.drawFrame(4.0, Palette::Black);
 			}

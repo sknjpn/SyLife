@@ -24,7 +24,7 @@ void EggState::Draw()
 		.rotated(GetRotation())
 		.translated(GetPosition().x, GetPosition().y));
 
-	Circle(GetRadius() * 2.0)
+	Circle(getRadius() * 2.0)
 		.draw(ColorF(Palette::Papayawhip, 0.5))
 		.drawFrame(1.0, ColorF(1.0, 0.5));
 

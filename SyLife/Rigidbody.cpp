@@ -10,10 +10,10 @@ void Rigidbody::AddForceInWorld(const Vec2& force, const Vec2& worldPosition)
 void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
 {
 	// 運動量
-	const Vec2 momentum = GetVelocity() * GetMass() + impulse;
+	const Vec2 momentum = GetVelocity() * getMass() + impulse;
 
 	// 速度
-	SetVelocity(momentum / GetMass());
+	SetVelocity(momentum / getMass());
 
 	// 力のモーメント
 	const double momentOfForce = (worldPosition - GetPosition()).cross(impulse);

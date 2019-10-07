@@ -11,7 +11,7 @@ public:
 
 public:
 	// Get
-	const Color&	GetColor() const { return m_color; }
+	const Color&	getColor() const { return m_color; }
 	const Polygon&	GetPolygon() const { return m_polygon; }
 	Polygon&	GetPolygon() { return m_polygon; }
 

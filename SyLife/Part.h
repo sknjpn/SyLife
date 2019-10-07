@@ -23,7 +23,7 @@ public:
 
 public:
 	// Get
-	double	GetMass() const { return m_mass; }
+	double	getMass() const { return m_mass; }
 	const Storage& GetMaterial() const { return m_material; }
 	const Array<ShapeModel>& GetShapes() const { return m_shapes; }
 
@@ -64,7 +64,7 @@ public:
 	void	SetPosition(const Vec2& position) { m_position = position; }
 	void	SetRotation(double rotation) { m_rotation = rotation; }
 
-	double	GetInertia() const { return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->GetMass(); }
+	double	GetInertia() const { return m_partModel->GetRectInertia() + (m_position + m_partModel->GetCenter().rotated(m_rotation)).lengthSq() * m_partModel->getMass(); }
 
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }

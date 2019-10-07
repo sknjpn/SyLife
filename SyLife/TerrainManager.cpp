@@ -14,7 +14,7 @@ double TerrainManager::GetHeight(const Vec2& position) const
 	return EaseIn(Easing::Expo, m, 0.0, l);
 }
 
-Color TerrainManager::GetColor(const Vec2& position)
+Color TerrainManager::getColor(const Vec2& position)
 {
 	return Color(int(GetHeight(position) * 30), 0, 0);
 
@@ -29,7 +29,7 @@ void TerrainManager::MakeTexture(int textureSize)
 	{
 		for (int y = 0; y < textureSize - 1; y += 2)
 		{
-			auto color = GetColor(Vec2(x - textureSize / 2, y - textureSize / 2) * m_terrainModel->m_size / double(textureSize));
+			auto color = getColor(Vec2(x - textureSize / 2, y - textureSize / 2) * m_terrainModel->m_size / double(textureSize));
 
 			image[y][x] = color;
 			image[y][x + 1] = color;

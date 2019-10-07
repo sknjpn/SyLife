@@ -66,10 +66,10 @@ shared_ptr<PartConfig>& CellModel::AddPartConfig()
 void CellModel::UpdateProperties()
 {
 	// mass
-	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->GetModel()->GetMass(); });
+	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->GetModel()->getMass(); });
 
 	// center
-	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->GetModel()->GetMass() * (p->GetPosition() + p->GetModel()->GetCenter().rotated(p->GetRotation())); }) / m_mass;
+	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->GetModel()->getMass() * (p->GetPosition() + p->GetModel()->GetCenter().rotated(p->GetRotation())); }) / m_mass;
 
 	// centerを原点に設定
 	for (const auto& p : m_partConfigs) p->SetPosition(p->GetPosition() - center);
@@ -89,8 +89,8 @@ CellState::CellState(const shared_ptr<CellModel>& model)
 	, m_startTimer(0.0)
 	, m_deathTimer(25.0)
 {
-	SetMass(m_model->GetMass());
-	SetRadius(m_model->GetRadius());
+	SetMass(m_model->getMass());
+	SetRadius(m_model->getRadius());
 	SetInertia(m_model->GetInertia());
 
 	// parts
@@ -107,9 +107,9 @@ void CellState::UpdateCell()
 		{
 			auto& t = g_cellManagerPtr->GetCellStates()[result[1]];
 
-			if (t->GetPosition() != GetPosition() && (GetRadius() + t->GetRadius() - (t->GetPosition() - GetPosition()).length()) > 0)
+			if (t->GetPosition() != GetPosition() && (getRadius() + t->getRadius() - (t->GetPosition() - GetPosition()).length()) > 0)
 			{
-				auto f = -1000.0 * (t->GetPosition() - GetPosition()).normalized() * (GetRadius() + t->GetRadius() - (t->GetPosition() - GetPosition()).length());
+				auto f = -1000.0 * (t->GetPosition() - GetPosition()).normalized() * (getRadius() + t->getRadius() - (t->GetPosition() - GetPosition()).length());
 				AddForceInWorld(f, GetPosition());
 				t->AddForceInWorld(-f, t->GetPosition());
 			}
@@ -129,7 +129,7 @@ void CellState::UpdateCell()
 	{
 		auto& m = g_moleculeManagerPtr->GetMoleculeStates()[i];
 
-		if (!m->IsDestroyed() && (m->GetPosition() - GetPosition()).length() - GetRadius() < 0.0) TakeMolecule(m);
+		if (!m->IsDestroyed() && (m->GetPosition() - GetPosition()).length() - getRadius() < 0.0) TakeMolecule(m);
 	}
 	*/
 
@@ -181,7 +181,7 @@ void CellState::UpdateCell()
 
 				// 吐き出されたMoleculeState
 				const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
-				ms->SetPosition(GetPosition() + v * (GetRadius() + m.first->GetRadius()) * Random(1.0));
+				ms->SetPosition(GetPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
 				ms->SetVelocity(v * 0.1);
 			}
 		}
@@ -210,7 +210,7 @@ void CellState::Draw()
 	{
 		double a = min(0.5, m_deathTimer * 0.25);
 
-		Circle(GetRadius())
+		Circle(getRadius())
 			.draw(ColorF(Palette::Lightpink, a))
 			.drawFrame(1.0, Palette::Gray);
 	}
@@ -235,7 +235,7 @@ void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned 
 
 		// 吐き出されたMoleculeState
 		const auto& t = g_moleculeManagerPtr->AddMoleculeState(model);
-		t->SetPosition(GetPosition() + v * (GetRadius() + model->GetRadius()));
+		t->SetPosition(GetPosition() + v * (getRadius() + model->getRadius()));
 		t->SetVelocity(v * 0.5);
 
 		// Storageから出す

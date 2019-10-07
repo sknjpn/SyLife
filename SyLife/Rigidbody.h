@@ -14,7 +14,7 @@ public:
 	virtual ~Rigidbody() = default;
 
 	// Get
-	double	GetRadius() const { return m_radius; }
+	double	getRadius() const { return m_radius; }
 	double	GetRotation() const { return m_rotation; }
 	double	GetInertia() const { return m_inertia; }
 	double	GetAngularVelocity() const { return m_angularVelocity; }
@@ -28,7 +28,7 @@ public:
 	void	Init()
 	{
 		// 角運動量の計算
-		m_inertia = GetMass() * m_radius * m_radius * 0.5;
+		m_inertia = getMass() * m_radius * m_radius * 0.5;
 	}
 
 	Vec2	GetVelocityAt(const Vec2& position) const { return GetVelocity() + (position - GetPosition()).rotated(m_rotation) * m_angularVelocity; }

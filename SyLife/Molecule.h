@@ -19,9 +19,9 @@ public:
 	void	makeViewer() override;
 
 	// Get
-	double	GetMass() const { return m_mass; }
-	double	GetRadius() const { return m_radius; }
-	const Color&	GetColor() const { return m_color; }
+	double	getMass() const { return m_mass; }
+	double	getRadius() const { return m_radius; }
+	const Color&	getColor() const { return m_color; }
 
 	// JSON
 	void	load_this(const ptree& pt);

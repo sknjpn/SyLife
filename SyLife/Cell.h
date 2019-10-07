@@ -26,8 +26,8 @@ public:
 	// Get
 	const Storage& GetMaterial() const { return m_material; }
 	Storage& GetMaterial() { return m_material; }
-	double	GetMass() const { return m_mass; }
-	double	GetRadius() const { return m_radius; }
+	double	getMass() const { return m_mass; }
+	double	getRadius() const { return m_radius; }
 	double	GetInertia() const { return m_inertia; }
 	const Array<shared_ptr<PartConfig>>& GetPartConfigs() const { return m_partConfigs; }
 	Array<shared_ptr<PartConfig>>& GetPartConfigs() { return m_partConfigs; }
@@ -103,13 +103,13 @@ public:
 		MoveDrawPos(4, 0);
 		font(U"Mass:").draw();
 		MoveDrawPos(96, 0);
-		font(ToString(model->GetMass())).draw();
+		font(ToString(model->getMass())).draw();
 		MoveDrawPos(-100, 28);
 
 		MoveDrawPos(4, 0);
 		font(U"Radius:").draw();
 		MoveDrawPos(96, 0);
-		font(ToString(model->GetRadius())).draw();
+		font(ToString(model->getRadius())).draw();
 		MoveDrawPos(-100, 28);
 
 		MoveDrawPos(4, 0);
