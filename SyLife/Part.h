@@ -60,7 +60,7 @@ public:
 	double	GetRotation() const { return m_rotation; }
 
 	// Set
-	void	SetModel(const shared_ptr<PartModel>& partModel) { m_partModel = partModel; }
+	void	setModel(const shared_ptr<PartModel>& partModel) { m_partModel = partModel; }
 	void	SetPosition(const Vec2& position) { m_position = position; }
 	void	SetRotation(double rotation) { m_rotation = rotation; }
 

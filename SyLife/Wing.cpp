@@ -9,8 +9,8 @@ void WingState::Flap(CellState& cell)
 
 void WingModel::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<WingViewer>()->SetModel(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->SetModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<WingViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
 shared_ptr<PartState> WingModel::MakeState()

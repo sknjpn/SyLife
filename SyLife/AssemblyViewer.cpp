@@ -82,7 +82,7 @@ void AssemblyViewer::Update()
 			{
 				const auto& partConfig = getModel<CellModel>()->AddPartConfig();
 
-				partConfig->SetModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
+				partConfig->setModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
 				partConfig->SetPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 				partConfig->SetRotation(0.0);
 			}

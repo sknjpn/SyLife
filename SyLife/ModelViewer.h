@@ -16,7 +16,7 @@ public:
 	shared_ptr<T>	getModel() const { return dynamic_pointer_cast<T>(m_model); }
 
 	// Set
-	void	SetModel(const shared_ptr<Model> model) { m_model = model; reloadProperties(); }
+	void	setModel(const shared_ptr<Model> model) { m_model = model; reloadProperties(); }
 
 	// Reload
 	void reloadProperties_this() 

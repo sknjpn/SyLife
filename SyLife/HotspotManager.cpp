@@ -9,7 +9,7 @@ const shared_ptr<HotspotState>& HotspotManager::AddHotspotState(const shared_ptr
 {
 	const auto& m = GetHotspotStates().emplace_back(make_shared<HotspotState>());
 
-	m->SetModel(model);
+	m->setModel(model);
 
 	return m;
 }
