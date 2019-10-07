@@ -148,6 +148,7 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
+    <ClCompile Include="PartState.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -280,6 +281,7 @@
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartPaletteViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
+    <ClInclude Include="PartState.h" />
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="ShapeModel.h" />
