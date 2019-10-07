@@ -1,4 +1,6 @@
 ﻿#include "BodyModel.h"
+#include "BodyState.h"
+#include "BodyEditor.h"
 
 #include "ViewerManager.h"
 
