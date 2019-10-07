@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "Part.h"
+#include "PartModel.h"
 
 class BodyModel
 	: public PartModel

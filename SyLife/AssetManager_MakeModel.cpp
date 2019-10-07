@@ -2,12 +2,12 @@
 
 #include "Cell.h"
 #include "Molecule.h"
-#include "Body.h"
-#include "Equipment.h"
-#include "Module.h"
-#include "Synthesizer.h"
-#include "Wing.h"
-#include "Needle.h"
+#include "BodyModel.h.h"
+#include "EquipmentModel.h"
+#include "ModuleModel.h"
+#include "SynthesizerModel.h"
+#include "WingModel.h"
+#include "NeedleModel.h"
 
 shared_ptr<Model> AssetManager::makeModel(const string& name, const string& type)
 {

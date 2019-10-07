@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "Equipment.h"
+#include "EquipmentModel.h"
 #include "Cell.h"
 
 class NeedleModel

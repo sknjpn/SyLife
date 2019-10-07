@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "Module.h"
+#include "ModuleModel.h"
 #include "Storage.h"
 #include "Cell.h"
 

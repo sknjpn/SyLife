@@ -529,32 +529,14 @@
     <ClInclude Include="Egg.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
     <ClInclude Include="Molecule.h">
       <Filter>Source Files\SyLife\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Needle.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Part.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
       <Filter>Source Files\SyLife\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Synthesizer.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="Wing.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
     <ClInclude Include="Curtain.h">
       <Filter>Source Files\SyLife\Util</Filter>
@@ -582,9 +564,6 @@
     </ClInclude>
     <ClInclude Include="ChipManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Body.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
     <ClInclude Include="AssetModel.h">
       <Filter>Source Files\SyLife\Util</Filter>
@@ -614,6 +593,27 @@
       <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
     <ClInclude Include="BodyEditor.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyModel.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentModel.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleModel.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="NeedleModel.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="PartModel.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="WingModel.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="SynthesizerModel.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
   </ItemGroup>

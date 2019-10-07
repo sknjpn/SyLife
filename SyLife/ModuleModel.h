@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "Part.h"
+#include "PartModel.h"
 
-class EquipmentModel
+class ModuleModel
 	: public PartModel
 {
 public:
@@ -16,12 +16,12 @@ public:
 		PartModel::save_this(pt);
 
 		// type
-		pt.put("type", "EquipmentModel");
+		pt.put("type", "ModuleModel");
 	}
 	void	save(ptree& pt) const override { save_this(pt); }
 };
 
-class EquipmentState
+class ModuleState
 	: public PartState
 {
 public:

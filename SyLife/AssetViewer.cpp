@@ -2,10 +2,10 @@
 #include "AddModelViewer.h"
 #include "Cell.h"
 #include "Molecule.h"
-#include "Part.h"
-#include "Body.h"
-#include "Equipment.h"
-#include "Module.h"
+#include "PartModel.h"
+#include "BodyModel.h.h"
+#include "EquipmentModel.h"
+#include "ModuleModel.h"
 
 #include "ViewerManager.h"
 

@@ -1,4 +1,4 @@
-﻿#include "Wing.h"
+﻿#include "WingModel.h"
 
 #include "ViewerManager.h"
 

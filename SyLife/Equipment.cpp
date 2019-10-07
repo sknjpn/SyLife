@@ -1,4 +1,4 @@
-﻿#include "Equipment.h"
+﻿#include "EquipmentModel.h"
 #include "ViewerManager.h"
 
 void EquipmentModel::makeViewer()

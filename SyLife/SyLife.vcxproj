@@ -251,7 +251,7 @@
     <ClInclude Include="AssetModel.h" />
     <ClInclude Include="AssetModelEditor.h" />
     <ClInclude Include="AssetViewer.h" />
-    <ClInclude Include="Body.h" />
+    <ClInclude Include="BodyModel.h" />
     <ClInclude Include="BodyEditor.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
@@ -262,18 +262,18 @@
     <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="Egg.h" />
     <ClInclude Include="EggManager.h" />
-    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="EquipmentModel.h" />
     <ClInclude Include="EquipmentEditor.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelEditor.h" />
-    <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleModel.h" />
     <ClInclude Include="ModuleEditor.h" />
     <ClInclude Include="Molecule.h" />
-    <ClInclude Include="Needle.h" />
+    <ClInclude Include="NeedleModel.h" />
     <ClInclude Include="NeedleEditor.h" />
-    <ClInclude Include="Part.h" />
+    <ClInclude Include="PartModel.h" />
     <ClInclude Include="PartEditor.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartPaletteViewer.h" />
@@ -283,7 +283,7 @@
     <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
-    <ClInclude Include="Synthesizer.h" />
+    <ClInclude Include="SynthesizerModel.h" />
     <ClInclude Include="SynthesizerEditor.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TinyCamera.h" />
@@ -292,7 +292,7 @@
     <ClInclude Include="ViewerManager.h" />
     <ClInclude Include="Wave.h" />
     <ClInclude Include="WaveManager.h" />
-    <ClInclude Include="Wing.h" />
+    <ClInclude Include="WingModel.h" />
     <ClInclude Include="WingEditor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

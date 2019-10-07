@@ -1,8 +1,8 @@
 ﻿#include "PartPaletteViewer.h"
-#include "Part.h"
-#include "Body.h"
-#include "Equipment.h"
-#include "Module.h"
+#include "PartModel.h"
+#include "BodyModel.h.h"
+#include "EquipmentModel.h"
+#include "ModuleModel.h"
 
 void	PartPaletteViewer::Update()
 {
@@ -43,8 +43,8 @@ void	PartPaletteViewer::Update()
 
 		MoveDrawPos(0, -h * m_bar);
 
-		DrawModels<BodyModel>("Body");
-		DrawModels<EquipmentModel>("Equipment");
-		DrawModels<ModuleModel>("Module");
+		DrawModels<BodyModel>("BodyModel.h");
+		DrawModels<EquipmentModel>("EquipmentModel");
+		DrawModels<ModuleModel>("ModuleModel");
 	}
 }

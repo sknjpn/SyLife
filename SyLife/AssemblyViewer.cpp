@@ -4,7 +4,7 @@
 
 #include "PartPaletteViewer.h"
 #include "Cell.h"
-#include "Part.h"
+#include "PartModel.h"
 
 AssemblyViewer::AssemblyViewer()
 {

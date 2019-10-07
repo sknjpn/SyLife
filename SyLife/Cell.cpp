@@ -1,6 +1,6 @@
 ﻿#include "Cell.h"
 
-#include "Part.h"
+#include "PartModel.h"
 #include "Egg.h"
 
 #include "EggManager.h"

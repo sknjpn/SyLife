@@ -1,4 +1,4 @@
-﻿#include "Synthesizer.h"
+﻿#include "SynthesizerModel.h"
 
 #include "Molecule.h"
 #include "ViewerManager.h"
