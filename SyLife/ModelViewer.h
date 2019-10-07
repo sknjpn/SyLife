@@ -19,20 +19,10 @@ public:
 	void	setModel(const shared_ptr<Model> model) { m_model = model; reloadProperties(); }
 
 	// Reload
-	void reloadProperties_this() 
-	{
-		// name
-		m_textEditState_name.text = Unicode::Widen(getModel<Model>()->getName());
-	}
+	void reloadProperties_this() {}
 	virtual void reloadProperties() { reloadProperties_this(); }
 
 	// Update
-	void	Update_this()
-	{
-		// name
-		SimpleGUI::TextBox(m_textEditState_name, Vec2(8, 8), 240);
-		getModel<Model>()->setName(Unicode::Narrow(m_textEditState_name.text));
-		MoveDrawPos(0, 48);
-	}
+	void	Update_this() {}
 	void	Update() override { Update_this(); }
 };

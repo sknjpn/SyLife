@@ -117,6 +117,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_MakeModel.cpp" />
     <ClCompile Include="AssetModel.cpp" />
+    <ClCompile Include="AssetModelViewer.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="Body.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AssetModel.h" />
+    <ClInclude Include="AssetModelViewer.h" />
     <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cell.h" />
