@@ -15,7 +15,7 @@ class PartModel
 	: public AssetModel
 {
 public:
-	friend class PartViewer;
+	friend class PartEditor;
 
 	double	m_mass;
 	Storage	m_material;
@@ -89,7 +89,7 @@ public:
 	virtual void	Update(CellState& cell) {}
 };
 
-class PartViewer
+class PartEditor
 	: public ModelEditor
 {
 	TextEditState		m_textEditState_mass;

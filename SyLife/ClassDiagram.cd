@@ -336,7 +336,7 @@
       <FileName>Part.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PartViewer" Collapsed="true">
+  <Class Name="PartEditor" Collapsed="true">
     <Position X="30.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAQAAAgAAAAEAAAAAAAAAA=</HashCode>

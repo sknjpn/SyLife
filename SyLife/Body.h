@@ -28,22 +28,3 @@ public:
 	void	Draw(const CellState& cell) const { GetPartConfig()->getModel()->Draw(); }
 	void	Update(CellState& cell) override {}
 };
-
-class BodyViewer
-	: public PartViewer
-{
-public:
-	// Reload
-	void reloadProperties_this()
-	{
-		PartViewer::reloadProperties_this();
-	}
-	void reloadProperties() override { reloadProperties_this(); }
-
-	// Update
-	void Update_this()
-	{
-		PartViewer::Update_this();
-	}
-	void Update() override { Update_this(); }
-};

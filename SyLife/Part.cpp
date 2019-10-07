@@ -5,7 +5,7 @@
 
 void PartModel::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<PartViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 

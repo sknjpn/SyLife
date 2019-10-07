@@ -30,20 +30,20 @@ public:
 };
 
 class ModuleViewer
-	: public PartViewer
+	: public PartEditor
 {
 public:
 	// Reload
 	void reloadProperties_this()
 	{
-		PartViewer::reloadProperties_this();
+		PartEditor::reloadProperties_this();
 	}
 	void reloadProperties() override { reloadProperties_this(); }
 
 	// Update
 	void Update_this()
 	{
-		PartViewer::Update_this();
+		PartEditor::Update_this();
 	}
 	void Update() override { Update_this(); }
 };
