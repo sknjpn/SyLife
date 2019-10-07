@@ -39,7 +39,7 @@ public:
 
 			MoveDrawPos(4, 4);
 			{
-				font10(Unicode::Widen((*it)->GetName())).draw();
+				font10(Unicode::Widen((*it)->getName())).draw();
 
 
 				// パーツ描画

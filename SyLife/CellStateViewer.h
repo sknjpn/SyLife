@@ -53,7 +53,7 @@ public:
 			for (const auto& m : model->GetMaterial().getMoleculeList())
 			{
 				auto t = Transformer2D(Mat3x2::Translate(pos));
-				font(Unicode::Widen(m.first->GetName()) + U":" + ToString(m.second) + U"U").draw();
+				font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();
 				pos.moveBy(0, 15);
 			}
 			pos.moveBy(0, 32);
@@ -71,7 +71,7 @@ public:
 			for (const auto& m : m_cellState->m_storage.getMoleculeList())
 			{
 				auto t = Transformer2D(Mat3x2::Translate(pos));
-				font(Unicode::Widen(m.first->GetName()) + U":" + ToString(m.second) + U"U").draw();
+				font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();
 				pos.moveBy(0, 15);
 			}
 			pos.moveBy(-16.0, 0.0);

@@ -22,7 +22,7 @@ public:
 	void reloadProperties_this() 
 	{
 		// name
-		m_textEditState_name.text = Unicode::Widen(GetModel<Model>()->GetName());
+		m_textEditState_name.text = Unicode::Widen(GetModel<Model>()->getName());
 	}
 	virtual void reloadProperties() { reloadProperties_this(); }
 

@@ -128,7 +128,7 @@ void PartConfig::load_this(const ptree& pt)
 void PartConfig::save_this(ptree& pt) const
 {
 	// model
-	pt.put("model", m_partModel->GetName());
+	pt.put("model", m_partModel->getName());
 
 	// position
 	{

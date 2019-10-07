@@ -39,7 +39,7 @@ void SynthesizerModel::save_this(ptree& pt) const
 	}
 
 	// export
-	pt.put("export", m_export->GetName());
+	pt.put("export", m_export->getName());
 
 	ModuleModel::save_this(pt);
 

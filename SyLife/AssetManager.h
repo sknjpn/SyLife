@@ -26,7 +26,7 @@ public:
 	shared_ptr<T>		GetModel(const string& name) const
 	{
 		for (auto it = m_models.begin(); it != m_models.end(); ++it)
-			if ((*it)->GetName() == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
+			if ((*it)->getName() == name && dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
 
 		throw Error(U"存在しない名前のモデルを参照しました");
 	}

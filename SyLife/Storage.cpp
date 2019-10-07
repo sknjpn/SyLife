@@ -94,7 +94,7 @@ void Storage::save_this(ptree& pt) const
 		for (const auto& m : *this)
 		{
 			ptree part;
-			part.put<string>("name", m.first->GetName());
+			part.put<string>("name", m.first->getName());
 			part.put<int>("size", m.second);
 
 			molecules.push_back(std::make_pair("", part));

@@ -35,7 +35,7 @@ public:
 			const auto& models = g_assetManagerPtr->GetModels<T>();
 			for (auto it = models.begin(); it != models.end(); ++it)
 			{
-				auto f = font10(Unicode::Widen((*it)->GetName()));
+				auto f = font10(Unicode::Widen((*it)->getName()));
 
 				f.region().draw(m_selectedModel == *it ? ColorF(Palette::Darkorange) : ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 				f.draw();
