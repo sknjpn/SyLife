@@ -228,7 +228,7 @@
       <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
     <ClCompile Include="AssetModel.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -571,6 +571,8 @@
     <ClInclude Include="Body.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
-    <ClInclude Include="AssetModel.h" />
+    <ClInclude Include="AssetModel.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
