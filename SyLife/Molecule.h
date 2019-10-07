@@ -3,6 +3,7 @@
 #include "Model.h"
 #include "ModelViewer.h"
 #include "Rigidbody.h"
+#include "Storage.h"
 
 class MoleculeModel
 	: public Model
@@ -12,6 +13,7 @@ class MoleculeModel
 	double	m_mass;
 	double	m_radius;
 	Color	m_color;
+	Storage	m_material;
 
 public:
 	void	MakeViewer() override;
