@@ -40,6 +40,14 @@ void AssetManager::AddModelFromFile(const string& filepath)
 
 		System::Exit();
 	}
+	catch (Error& e)
+	{
+		LOG_ERROR(U" What:" + e.what());
+		LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
+		LOG_ERROR(U" Filepath:" + Unicode::Widen(filepath));
+
+		System::Exit();
+	}
 }
 
 shared_ptr<Model> AssetManager::GetModel(const string& name) const
