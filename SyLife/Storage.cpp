@@ -64,6 +64,9 @@ int Storage::numMolecule(const shared_ptr<MoleculeModel>& model) const
 
 void Storage::load_this(const ptree& pt)
 {
+	// nutrition
+	m_nutrition = pt.get<double>("nutrition");
+
 	// molecules
 	for (auto m : pt.get_child("molecules"))
 	{
@@ -79,6 +82,9 @@ void Storage::load_this(const ptree& pt)
 
 void Storage::save_this(ptree& pt) const
 {
+	// nutrition
+	pt.put<double>("nutrition", m_nutrition);
+
 	// molecules
 	{
 		ptree molecules;
