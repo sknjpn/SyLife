@@ -19,9 +19,7 @@ void AssetManager::Init()
 
 		read_json(filepath, pt);
 
-		auto m = MakeModel(pt.get<string>("type"));
-
-		m->SetName(pt.get<string>("name"));
+		MakeModel(pt.get<string>("name"), pt.get<string>("type"));
 	}
 
 	Logger << U"Path";
