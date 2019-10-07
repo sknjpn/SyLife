@@ -65,22 +65,3 @@ public:
 
 	void	Flap(CellState& cell);
 };
-
-class WingViewer
-	: public EquipmentViewer
-{
-public:
-	// Reload
-	void reloadProperties_this()
-	{
-		EquipmentViewer::reloadProperties_this();
-	}
-	void reloadProperties() override { reloadProperties_this(); }
-
-	// Update
-	void Update_this()
-	{
-		EquipmentViewer::Update_this();
-	}
-	void Update() override { Update_this(); }
-};
