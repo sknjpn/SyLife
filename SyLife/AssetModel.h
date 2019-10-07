@@ -14,8 +14,6 @@ public:
 		: m_name(name)
 	{}
 
-	virtual void	makeViewer() {}
-
 	// Set
 	void	setName(const string& name);
 
