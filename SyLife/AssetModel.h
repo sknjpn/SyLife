@@ -5,6 +5,7 @@
 // AssetManagerに登録可能なModel
 // JSONファイルに対応している
 class AssetModel
+	: public Model
 {
 	string	m_name;
 
