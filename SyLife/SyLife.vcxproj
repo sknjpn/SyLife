@@ -136,6 +136,7 @@
     <ClCompile Include="HotspotManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelViewer.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="Needle.cpp" />

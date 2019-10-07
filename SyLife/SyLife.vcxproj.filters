@@ -230,10 +230,13 @@
     <ClCompile Include="AssetModel.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AssetModelViewer.cpp">
+      <Filter>Source Files\SyLife\Util\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\SyLife\Util\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -496,9 +499,6 @@
     <ClInclude Include="TitleViewer.h">
       <Filter>Source Files\SyLife\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="ModelViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
     <ClInclude Include="EditorViewer.h">
       <Filter>Source Files\SyLife\Viewer</Filter>
     </ClInclude>
@@ -580,6 +580,11 @@
     <ClInclude Include="AssetModel.h">
       <Filter>Source Files\SyLife\Util</Filter>
     </ClInclude>
-    <ClInclude Include="AssetModelViewer.h" />
+    <ClInclude Include="AssetModelViewer.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelViewer.h">
+      <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

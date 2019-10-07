@@ -19,10 +19,10 @@ public:
 	void	setModel(const shared_ptr<Model> model) { m_model = model; reloadProperties(); }
 
 	// Reload
-	void reloadProperties_this() {}
+	void	reloadProperties_this();
 	virtual void reloadProperties() { reloadProperties_this(); }
 
 	// Update
-	void	Update_this() {}
+	void	Update_this();
 	void	Update() override { Update_this(); }
 };
