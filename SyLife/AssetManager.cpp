@@ -57,7 +57,7 @@ void AssetManager::init()
 shared_ptr<Asset> AssetManager::getAsset(const string& name) const
 {
 	for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
-		if ((*it)->getName() == name && dynamic_pointer_cast<Asset>(*it) != nullptr) return dynamic_pointer_cast<Asset>(*it);
+		if ((*it)->getName() == name) return dynamic_pointer_cast<Asset>(*it);
 
 	return nullptr;
 }
