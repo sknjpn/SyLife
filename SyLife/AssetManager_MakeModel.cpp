@@ -9,7 +9,7 @@
 #include "WingModel.h"
 #include "NeedleModel.h"
 
-shared_ptr<Model> AssetManager::makeAsset(const string& name, const string& type)
+shared_ptr<Asset> AssetManager::makeAsset(const string& name, const string& type)
 {
 	if (type == "CellModel")		return makeAsset<CellModel>(name);
 	if (type == "MoleculeModel")	return makeAsset<MoleculeModel>(name);
