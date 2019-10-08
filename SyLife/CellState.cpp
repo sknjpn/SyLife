@@ -154,7 +154,7 @@ void CellState::draw()
 void CellState::TakeNutrition()
 {
 	const double space = m_model->getMaxStorage().getNutrition() - m_storage.getNutrition();
-	const double amount = g_chipManagerPtr->getNutrition();
+	const double amount = g_chipManagerPtr->getNutrition(getPosition());
 	const double value = Min(space, amount);
 
 	g_chipManagerPtr->pullNutrition(getPosition(), value);
