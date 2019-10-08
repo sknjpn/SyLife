@@ -161,18 +161,18 @@
       <FileName>EggState.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MoleculeAsset" Collapsed="true">
+  <Class Name="ElementAsset" Collapsed="true">
     <Position X="4.25" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABACAAICIACAAAAAAAAAEAAAABACAAAAIAAgAAAA=</HashCode>
-      <FileName>Molecule.h</FileName>
+      <FileName>Element.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MoleculeEditor" Collapsed="true">
+  <Class Name="ElementEditor" Collapsed="true">
     <Position X="7.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAQAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>Molecule.h</FileName>
+      <FileName>Element.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Particle" Collapsed="true">

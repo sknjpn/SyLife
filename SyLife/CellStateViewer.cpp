@@ -42,7 +42,7 @@ void CellStateViewer::update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		for (const auto& m : model->getMaterial().getMoleculeList())
+		for (const auto& m : model->getMaterial().getElementList())
 		{
 			auto t = Transformer2D(Mat3x2::Translate(pos));
 			font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();
@@ -60,7 +60,7 @@ void CellStateViewer::update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		for (const auto& m : m_cellState->m_storage.getMoleculeList())
+		for (const auto& m : m_cellState->m_storage.getElementList())
 		{
 			auto t = Transformer2D(Mat3x2::Translate(pos));
 			font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();

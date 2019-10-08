@@ -1,6 +1,6 @@
 ﻿#include "AddModelViewer.h"
 
-#include "Molecule.h"
+#include "Element.h"
 #include "CellAsset.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"
@@ -10,7 +10,7 @@
 
 void AddModelViewer::update()
 {
-	DrawModels<MoleculeAsset>("MoleculeAsset");
+	DrawModels<ElementAsset>("ElementAsset");
 	DrawModels<CellAsset>("CellAsset");
 	DrawModels<PartAsset>("PartAsset");
 	DrawModels<BodyAsset>("BodyAsset");

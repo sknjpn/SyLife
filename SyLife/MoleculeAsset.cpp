@@ -1,11 +1,11 @@
-﻿#include "MoleculeAsset.h"
+﻿#include "ElementAsset.h"
 
-void MoleculeAsset::makeViewer()
+void ElementAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<MoleculeEditor>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<ElementEditor>()->setModel(shared_from_this());
 }
 
-void MoleculeAsset::load_this(const ptree& pt)
+void ElementAsset::load_this(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");
@@ -22,7 +22,7 @@ void MoleculeAsset::load_this(const ptree& pt)
 	Model::load_this(pt);
 }
 
-void MoleculeAsset::save_this(ptree& pt) const
+void ElementAsset::save_this(ptree& pt) const
 {
 	// mass
 	pt.put<double>("mass", m_mass);
@@ -49,5 +49,5 @@ void MoleculeAsset::save_this(ptree& pt) const
 
 	Model::save_this(pt);
 
-	pt.put("type", "MoleculeAsset");
+	pt.put("type", "ElementAsset");
 }

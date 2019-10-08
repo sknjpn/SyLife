@@ -17,11 +17,11 @@ void SynthesizerState::update(CellState& cell)
 	m_timer += g_systemManagerPtr->GetDeltaTime();
 
 	auto model = dynamic_pointer_cast<SynthesizerAsset>(getPartConfig()->getModel());
-	if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->getMaterial().numMolecule(model->GetExport()) > cell.m_storage.numMolecule(model->GetExport()))
+	if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->getMaterial().numElement(model->GetExport()) > cell.m_storage.numElement(model->GetExport()))
 	{
 		m_timer = 0.0;
 
 		cell.m_storage -= model->GetImport();
-		cell.m_storage.addMolecule(model->GetExport(), 1);
+		cell.m_storage.addElement(model->GetExport(), 1);
 	}
 }

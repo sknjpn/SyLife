@@ -1,6 +1,6 @@
 ﻿#include "SynthesizerAsset.h"
 
-#include "Molecule.h"
+#include "Element.h"
 #include "ViewerManager.h"
 #include "AssetManager.h"
 #include "SystemManager.h"
@@ -22,7 +22,7 @@ void SynthesizerAsset::load_this(const ptree& pt)
 	m_import.load(pt.get_child("import"));
 
 	// export
-	m_export = g_assetManagerPtr->getModel<MoleculeAsset>(pt.get<string>("export"));
+	m_export = g_assetManagerPtr->getModel<ElementAsset>(pt.get<string>("export"));
 
 	ModuleAsset::load_this(pt);
 }

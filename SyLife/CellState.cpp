@@ -52,27 +52,27 @@ void CellState::UpdateCell()
 	// parts
 	for (const auto& p : m_partStates) p->update(*this);
 
-	// 接触したMoleculeStateの取り込み
+	// 接触したElementStateの取り込み
 	/*
-	for (auto i : g_moleculeManagerPtr->GetMoleculeStateKDTree().knnSearch(1, getPosition()))
+	for (auto i : g_elementManagerPtr->GetElementStateKDTree().knnSearch(1, getPosition()))
 	{
-		auto& m = g_moleculeManagerPtr->GetMoleculeStates()[i];
+		auto& m = g_elementManagerPtr->GetElementStates()[i];
 
-		if (!m->IsDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) TakeMolecule(m);
+		if (!m->IsDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) TakeElement(m);
 	}
 	*/
 
-	// 余剰のMoleculeStateの投棄
+	// 余剰のElementStateの投棄
 	/*
 	for (;;)
 	{
 		bool flag = true;
 
-		for (const auto& m : m_storage.GetMolecules())
+		for (const auto& m : m_storage.GetElements())
 		{
 			if (2 * m_model->getMaterial().Num(m.first) < m_storage.Num(m.first))
 			{
-				ExpireMolecule(m.first);
+				ExpireElement(m.first);
 
 				flag = false;
 
@@ -98,18 +98,18 @@ void CellState::UpdateCell()
 	// 死亡処理
 	if (m_deathTimer <= 0.0)
 	{
-		// MoleculeStateの吐き出し
+		// ElementStateの吐き出し
 		/*
 		auto s = m_storage + m_model->getMaterial();
-		for (const auto& m : s.GetMolecules())
+		for (const auto& m : s.GetElements())
 		{
 			for (unsigned int i = 0; i < m.second; i++)
 			{
 				// 吐き出す方向
 				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
-				// 吐き出されたMoleculeState
-				const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
+				// 吐き出されたElementState
+				const auto& ms = g_elementManagerPtr->AddElementState(m.first);
 				ms->setPosition(getPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
 				ms->SetVelocity(v * 0.1);
 			}
@@ -146,24 +146,24 @@ void CellState::draw()
 }
 
 /*
-void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
+void CellState::TakeElement(const shared_ptr<ElementState>& element)
 {
-	m_storage.Add(molecule->getModel());
+	m_storage.Add(element->getModel());
 
-	molecule->Destroy();
+	element->Destroy();
 }
 */
 
 /*
-void CellState::ExpireMolecule(const shared_ptr<MoleculeAsset>& model, unsigned int size)
+void CellState::ExpireElement(const shared_ptr<ElementAsset>& model, unsigned int size)
 {
 	for (unsigned int i = 0; i < size; ++i)
 	{
 		// 吐き出す方向
 		auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
-		// 吐き出されたMoleculeState
-		const auto& t = g_moleculeManagerPtr->AddMoleculeState(model);
+		// 吐き出されたElementState
+		const auto& t = g_elementManagerPtr->AddElementState(model);
 		t->setPosition(getPosition() + v * (getRadius() + model->getRadius()));
 		t->SetVelocity(v * 0.5);
 

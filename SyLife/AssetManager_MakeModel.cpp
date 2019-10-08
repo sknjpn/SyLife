@@ -1,7 +1,7 @@
 ﻿#include "AssetManager.h"
 
 #include "CellAsset.h"
-#include "Molecule.h"
+#include "Element.h"
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
 #include "ModuleAsset.h"
@@ -12,7 +12,7 @@
 shared_ptr<Asset> AssetManager::makeAsset(const string& name, const string& type)
 {
 	if (type == "CellAsset")		return makeAsset<CellAsset>(name);
-	if (type == "MoleculeAsset")	return makeAsset<MoleculeAsset>(name);
+	if (type == "ElementAsset")	return makeAsset<ElementAsset>(name);
 
 	if (type == "BodyAsset")		return makeAsset<BodyAsset>(name);
 	if (type == "EquipmentAsset")	return makeAsset<EquipmentAsset>(name);

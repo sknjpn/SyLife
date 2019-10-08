@@ -4,10 +4,10 @@
 
 #include "Storage.h"
 
-class MoleculeAsset
+class ElementAsset
 	: public Asset
 {
-	friend class MoleculeEditor;
+	friend class ElementEditor;
 
 	double	m_mass;
 	double	m_radius;
@@ -27,5 +27,5 @@ public:
 	void	load(const ptree& pt) override { load_this(pt); }
 	void	save_this(ptree& pt) const;
 	void	save(ptree& pt) const override { save_this(pt); }
-	string	getFilepath() const override { return "assets/models/molecules/" + getFilename(); }
+	string	getFilepath() const override { return "assets/models/elements/" + getFilename(); }
 };

@@ -110,17 +110,17 @@ void FieldViewer::update()
 				{
 					e->Destroy();
 
-					// MoleculeStateの吐き出し
+					// ElementStateの吐き出し
 					/*auto s = e->getCellAsset()->getMaterial();
-					for (const auto& m : s.GetMolecules())
+					for (const auto& m : s.GetElements())
 					{
 						for (unsigned int i = 0; i < m.second; i++)
 						{
 							// 吐き出す方向
 							auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
-							// 吐き出されたMoleculeState
-							const auto& ms = g_moleculeManagerPtr->AddMoleculeState(m.first);
+							// 吐き出されたElementState
+							const auto& ms = g_elementManagerPtr->AddElementState(m.first);
 							ms->setPosition(e->getPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
 							ms->SetVelocity(v * 0.1);
 						}

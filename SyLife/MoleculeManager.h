@@ -1,11 +1,11 @@
 ﻿#pragma once
 
-class MoleculeState;
-class MoleculeModel;
+class ElementState;
+class ElementModel;
 
-struct MoleculeStateAdapter
+struct ElementStateAdapter
 {
-	using dataset_type = Array<shared_ptr<MoleculeState>>;
+	using dataset_type = Array<shared_ptr<ElementState>>;
 	using point_type = Vec2;
 	using element_type = double;
 	static constexpr int32 Dimensions = 2;
@@ -15,33 +15,33 @@ struct MoleculeStateAdapter
 	static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other);
 };
 
-// MoleculeStateの保存および更新を行う
-class MoleculeManager
+// ElementStateの保存および更新を行う
+class ElementManager
 {
-	Array<shared_ptr<MoleculeState>>	m_moleculeStates;
-	Array<shared_ptr<MoleculeState>>	m_newMoleculeStates;
-	KDTree<MoleculeStateAdapter>		m_moleculeStateKDTree;
+	Array<shared_ptr<ElementState>>	m_elementStates;
+	Array<shared_ptr<ElementState>>	m_newElementStates;
+	KDTree<ElementStateAdapter>		m_elementStateKDTree;
 
 public:
-	MoleculeManager()
-		: m_moleculeStateKDTree(m_moleculeStates)
+	ElementManager()
+		: m_elementStateKDTree(m_elementStates)
 	{
-		m_moleculeStates.reserve(0xFFFF);
+		m_elementStates.reserve(0xFFFF);
 	}
 
-	int NumMolecule(const shared_ptr<MoleculeModel>& model);
+	int NumElement(const shared_ptr<ElementModel>& model);
 
-	const shared_ptr<MoleculeState>& AddMoleculeState(const shared_ptr<MoleculeModel>& model);
-	const shared_ptr<MoleculeState>& AddMoleculeState(const shared_ptr<MoleculeModel>& model, const Vec2& position);
+	const shared_ptr<ElementState>& AddElementState(const shared_ptr<ElementModel>& model);
+	const shared_ptr<ElementState>& AddElementState(const shared_ptr<ElementModel>& model, const Vec2& position);
 
-	void	AddMoleculesRandom(const shared_ptr<MoleculeModel>& model, size_t size);
+	void	AddElementsRandom(const shared_ptr<ElementModel>& model, size_t size);
 
 	// Get
-	const Array<shared_ptr<MoleculeState>>& GetMoleculeStates() const { return m_moleculeStates; }
-	const KDTree<MoleculeStateAdapter>& GetMoleculeStateKDTree() const { return m_moleculeStateKDTree; }
+	const Array<shared_ptr<ElementState>>& GetElementStates() const { return m_elementStates; }
+	const KDTree<ElementStateAdapter>& GetElementStateKDTree() const { return m_elementStateKDTree; }
 
-	void	UpdateMoleculeStates();
-	void	DrawMoleculeStates();
+	void	UpdateElementStates();
+	void	DrawElementStates();
 };
 
-extern unique_ptr<MoleculeManager> g_moleculeManagerPtr;
+extern unique_ptr<ElementManager> g_elementManagerPtr;

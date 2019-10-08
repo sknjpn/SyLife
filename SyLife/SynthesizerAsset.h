@@ -5,10 +5,10 @@
 class SynthesizerAsset
 	: public ModuleAsset
 {
-	shared_ptr<MoleculeAsset>	m_product;
+	shared_ptr<ElementAsset>	m_product;
 
 public:
-	const shared_ptr<MoleculeAsset>& GetProduct() const { return m_product; }
+	const shared_ptr<ElementAsset>& GetProduct() const { return m_product; }
 
 	void	makeViewer() override;
 	shared_ptr<PartState>	makeState() override;

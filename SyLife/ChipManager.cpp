@@ -42,17 +42,17 @@ void ChipManager::init()
 	}
 
 
-	// molecules
+	// elements
 	/*
 	{
 		ptree pt;
 		read_json("assets/generation.json", pt);
 
-		for (auto molecules : pt.get_child("molecules"))
+		for (auto elements : pt.get_child("elements"))
 		{
-			const string name = molecules.second.get<string>("name");
-			const auto& model = g_assetManagerPtr->getModel<MoleculeAsset>(name);
-			const int size = molecules.second.get<int>("size");
+			const string name = elements.second.get<string>("name");
+			const auto& model = g_assetManagerPtr->getModel<ElementAsset>(name);
+			const int size = elements.second.get<int>("size");
 
 			for (int i = 0; i < size; ++i)
 			{

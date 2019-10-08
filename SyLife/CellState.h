@@ -25,6 +25,6 @@ public:
 	void	UpdateCell();
 	void	draw();
 
-	// void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
-	// void	ExpireMolecule(const shared_ptr<MoleculeAsset>& model, unsigned int size = 1);
+	// void	TakeElement(const shared_ptr<ElementState>& element);
+	// void	ExpireElement(const shared_ptr<ElementAsset>& model, unsigned int size = 1);
 };

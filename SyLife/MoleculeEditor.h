@@ -2,7 +2,7 @@
 
 #include "AssetEditor.h"
 
-class MoleculeEditor
+class ElementEditor
 	: public AssetEditor
 {
 	TextEditState		m_textEditState_mass;

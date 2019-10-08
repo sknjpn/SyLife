@@ -1,23 +1,23 @@
 ﻿#pragma once
 
 
-class MoleculeState
+class ElementState
 	: public Rigidbody
 {
-	shared_ptr<MoleculeModel>	m_model;
+	shared_ptr<ElementModel>	m_model;
 
 public:
 	// Get
-	const shared_ptr<MoleculeModel>& GetModel() const { return m_model; }
+	const shared_ptr<ElementModel>& GetModel() const { return m_model; }
 
 	// Set
-	void	SetModel(const shared_ptr<MoleculeModel>& model)
+	void	SetModel(const shared_ptr<ElementModel>& model)
 	{
 		m_model = model;
 		SetRadius(model->GetRadius());
 		SetMass(model->GetMass());
 	}
 
-	void	UpdateMolecule();
+	void	UpdateElement();
 	void	Draw();
 };

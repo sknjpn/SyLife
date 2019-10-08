@@ -1,7 +1,7 @@
 ﻿#include "AssetsViewer.h"
 #include "AddModelViewer.h"
 #include "CellAsset.h"
-#include "Molecule.h"
+#include "Element.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
@@ -12,7 +12,7 @@
 void AssetsViewer::update()
 {
 	DrawModels<CellAsset>("CellAsset");
-	DrawModels<MoleculeAsset>("MoleculeAsset");
+	DrawModels<ElementAsset>("ElementAsset");
 	DrawModels<BodyAsset>("BodyAsset");
 	DrawModels<EquipmentAsset>("EquipmentAsset");
 	DrawModels<ModuleAsset>("ModuleAsset");

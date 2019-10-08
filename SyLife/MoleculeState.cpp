@@ -1,14 +1,14 @@
-﻿#include "MoleculeState.h"
+﻿#include "ElementState.h"
 
-void MoleculeState::UpdateMolecule()
+void ElementState::UpdateElement()
 {
 	/*
 	// Amino Acidの分解
 	if (m_model->GetName() == "Amino Acid" && RandomBool(0.1))
 	{
-		g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Nitrogen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
-		g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Carbon"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
-		g_moleculeManagerPtr->AddMoleculeState(g_assetManagerPtr->GetModel<MoleculeModel>("Oxygen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->AddElementState(g_assetManagerPtr->GetModel<ElementModel>("Nitrogen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->AddElementState(g_assetManagerPtr->GetModel<ElementModel>("Carbon"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->AddElementState(g_assetManagerPtr->GetModel<ElementModel>("Oxygen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
 
 		Destroy();
 		return;
@@ -18,7 +18,7 @@ void MoleculeState::UpdateMolecule()
 	// if (RandomBool(0.01)) Destroy();
 }
 
-void MoleculeState::Draw()
+void ElementState::Draw()
 {
 	static Texture particle(U"assets/image/particle.png", TextureDesc::Mipped);
 
