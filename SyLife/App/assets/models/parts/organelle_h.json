@@ -6,16 +6,12 @@
         "nutrition":"1.0",
         "elements": [
             {
-                "name": "Amino Acid",
+                "name": "Hexose",
                 "size": 1
-            },
-            {
-                "name": "Nitrogen",
-                "size": 2
             }
         ]
     },
-    "export": "Amino Acid",
+    "export": "Hexose",
     "shapes": [
         {
             "color": {
@@ -116,5 +112,5 @@
             "name": ""
         }
     ],
-    "name": "Organelle"
+    "name": "Organelle H"
 }
