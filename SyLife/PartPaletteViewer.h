@@ -1,18 +1,15 @@
 ﻿#pragma once
 
-#include "ModelEditor.h"
-#include "ShapeModel.h"
+#include "Viewer.h"
 
 #include "AssetManager.h"
 
 class PartAsset;
 
 class PartPaletteViewer
-	: public ModelEditor
+	: public Viewer
 {
 	double	m_bar = 0.0;
-
-public:
 	shared_ptr<PartAsset>	m_selectedPart;
 
 public:
@@ -20,6 +17,9 @@ public:
 	{
 		SetDrawRect(Scene::Width() - 100, 20, 80, 400);
 	}
+
+	const shared_ptr<PartAsset>& getSelectedPart() const { return m_selectedPart; }
+	void	clearSelectedPart() { m_selectedPart = nullptr; }
 
 	template <typename T>
 	void	drawModels(const string& name)

@@ -36,6 +36,7 @@ void FieldViewer::init()
 	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->setModel(m_newModel);
 	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setModel(m_newModel);
 	g_viewerManagerPtr->makeViewer<ReleaseViewer>()->setModel(m_newModel);
+
 	g_viewerManagerPtr->makeViewer<CellStateViewer>();
 }
 

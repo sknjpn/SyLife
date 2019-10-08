@@ -7,7 +7,6 @@ class CellAsset;
 class ReleaseViewer
 	: public Viewer
 {
-public:
 	shared_ptr<CellAsset>	m_cellAsset;
 	bool	m_isDragged;
 

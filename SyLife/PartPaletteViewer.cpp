@@ -1,5 +1,7 @@
 ﻿#include "PartPaletteViewer.h"
+
 #include "PartAsset.h"
+
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
 #include "ModuleAsset.h"

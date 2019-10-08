@@ -1,10 +1,12 @@
 ﻿#pragma once
 
+#include "Viewer.h"
 #include "TinyCamera.h"
-#include "AssetEditor.h"
+
+class CellAsset;
 
 class AssemblyViewer
-	: public AssetEditor
+	: public Viewer
 {
 public:
 	TinyCamera	m_camera;
@@ -14,6 +16,8 @@ public:
 	double	m_radius;
 	double	m_width = 300;
 	double	m_height = 300;
+
+	shared_ptr<CellAsset>	m_cellAsset;
 
 public:
 	AssemblyViewer();
