@@ -1,13 +1,16 @@
 ﻿#include "AssetsViewer.h"
+
+#include "ViewerManager.h"
+
 #include "AddModelViewer.h"
+#include "AssetEditor.h"
+
 #include "CellAsset.h"
 #include "ElementAsset.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
 #include "ModuleAsset.h"
-
-#include "ViewerManager.h"
 
 void AssetsViewer::update()
 {
@@ -43,7 +46,7 @@ void AssetsViewer::update()
 void AssetsViewer::setSelectedModel(const shared_ptr<Model>& model)
 {
 	// ModelEditorを消す
-	g_viewerManagerPtr->deleteViewer<ModelEditor>();
+	g_viewerManagerPtr->deleteViewer<AssetEditor>();
 
 	// 対象のViewを追加
 	model->makeViewer();

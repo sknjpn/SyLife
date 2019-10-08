@@ -75,7 +75,7 @@ void ChipManager::drawChips()
 	// 領域の取得
 	Rect rect;
 	{
-		auto cameraRect = g_viewerManagerPtr->GetViewer<FieldViewer>()->getCamera().getCameraRect();
+		auto cameraRect = g_viewerManagerPtr->getViewer<FieldViewer>()->getCamera().getCameraRect();
 
 		rect.pos = getPoint(cameraRect.pos);
 		rect.size = getPoint(cameraRect.br()) - rect.pos;

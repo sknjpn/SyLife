@@ -30,7 +30,7 @@ public:
 		font13(Unicode::Widen(name)).draw();
 		MoveDrawPos(0, 16);
 
-		const auto& models = g_assetManagerPtr->getModels<T>();
+		const auto& models = g_assetManagerPtr->getAssets<T>();
 		for (auto it = models.begin(); it != models.end(); ++it)
 		{
 			const auto block = Rect(64, 64).stretched(-2);
