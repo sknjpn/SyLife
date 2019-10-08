@@ -12,7 +12,7 @@
 shared_ptr<Asset> AssetManager::makeAsset(const string& name, const string& type)
 {
 	if (type == "CellAsset")		return makeAsset<CellAsset>(name);
-	if (type == "ElementAsset")	return makeAsset<ElementAsset>(name);
+	if (type == "ElementAsset")		return makeAsset<ElementAsset>(name);
 
 	if (type == "BodyAsset")		return makeAsset<BodyAsset>(name);
 	if (type == "EquipmentAsset")	return makeAsset<EquipmentAsset>(name);
