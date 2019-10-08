@@ -6,28 +6,28 @@ void CellEditor::reloadProperties_this()
 	ModelEditor::reloadProperties_this();
 }
 
-void CellEditor::Update_this()
+void CellEditor::update_this()
 {
 	auto model = getModel<CellAsset>();
 	static Font font(24, Typeface::Bold);
 
-	ModelEditor::Update_this();
+	ModelEditor::update_this();
 
-	MovedrawPos(4, 0);
+	MoveDrawPos(4, 0);
 	font(U"Mass:").draw();
-	MovedrawPos(96, 0);
+	MoveDrawPos(96, 0);
 	font(ToString(model->getMass())).draw();
-	MovedrawPos(-100, 28);
+	MoveDrawPos(-100, 28);
 
-	MovedrawPos(4, 0);
+	MoveDrawPos(4, 0);
 	font(U"Radius:").draw();
-	MovedrawPos(96, 0);
+	MoveDrawPos(96, 0);
 	font(ToString(model->getRadius())).draw();
-	MovedrawPos(-100, 28);
+	MoveDrawPos(-100, 28);
 
-	MovedrawPos(4, 0);
+	MoveDrawPos(4, 0);
 	font(U"Inertia:").draw();
-	MovedrawPos(96, 0);
+	MoveDrawPos(96, 0);
 	font(ToString(model->getInertia())).draw();
-	MovedrawPos(-100, 28);
+	MoveDrawPos(-100, 28);
 }

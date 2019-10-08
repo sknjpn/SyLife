@@ -10,7 +10,7 @@ TitleViewer::TitleViewer()
 	, m_closeCurtain(Color(0, 0), Color(11, 22, 33), 0.5)
 	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
-	SetdrawRect(Scene::Size());
+	SetDrawRect(Scene::Size());
 	m_audio.setLoop(true);
 	m_audio.play();
 }
@@ -62,7 +62,7 @@ void TitleViewer::drawBubbles()
 	}
 }
 
-void TitleViewer::Init()
+void TitleViewer::init()
 {
 	for (int i = 0; i < 2000; ++i) UpdateBubbles();
 }
@@ -113,7 +113,7 @@ void TitleViewer::update()
 				if (r.leftClicked())
 				{
 					m_selectedOption = Option::LaunchNewGame;
-					m_closeCurtain.Start();
+					m_closeCurtain.start();
 				}
 			}
 
@@ -129,7 +129,7 @@ void TitleViewer::update()
 				if (r.leftClicked())
 				{
 					m_selectedOption = Option::ContinueGame;
-					m_closeCurtain.Start();
+					m_closeCurtain.start();
 				}
 			}
 
@@ -145,7 +145,7 @@ void TitleViewer::update()
 				if (r.leftClicked())
 				{
 					m_selectedOption = Option::LaunchEditor;
-					m_closeCurtain.Start();
+					m_closeCurtain.start();
 				}
 			}
 
@@ -161,12 +161,12 @@ void TitleViewer::update()
 				if (r.leftClicked())
 				{
 					m_selectedOption = Option::Exit;
-					m_closeCurtain.Start();
+					m_closeCurtain.start();
 				}
 			}
 		}
 
-		if (!m_closeCurtain.IsRunning())
+		if (!m_closeCurtain.isRunning())
 		{
 			// 下に遷移
 			if (KeyS.down() || KeyDown.down())
@@ -193,19 +193,19 @@ void TitleViewer::update()
 			}
 
 			// セレクト
-			if (KeyEnter.down()) m_closeCurtain.Start();
+			if (KeyEnter.down()) m_closeCurtain.start();
 		}
 	}
 
 
 	// Open Curtain
 	{
-		if (m_openCurtain.IsRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.GetProgress());
+		if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
 		else m_audio.setVolume(1.0);
 	}
 
 	// CloseCurtain
-	if (m_closeCurtain.IsRunning())
+	if (m_closeCurtain.isRunning())
 	{
 		if (m_closeCurtain.update())
 		{
@@ -234,6 +234,6 @@ void TitleViewer::update()
 			}
 		}
 
-		m_audio.setVolume(m_closeCurtain.GetProgress());
+		m_audio.setVolume(m_closeCurtain.getProgress());
 	}
 }

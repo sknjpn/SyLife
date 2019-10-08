@@ -24,12 +24,12 @@ FieldViewer::FieldViewer()
 	m_camera.setCenter(Vec2::Zero());
 	m_camera.setTargetCenter(Vec2::Zero());
 
-	SetdrawRect(Scene::Size());
+	SetDrawRect(Scene::Size());
 	m_audio.setLoop(true);
 	m_audio.play();
 }
 
-void FieldViewer::Init()
+void FieldViewer::init()
 {
 	// 付属Viewerの初期化
 	m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
@@ -58,7 +58,7 @@ void FieldViewer::update()
 		{
 			g_terrainManagerPtr->UpdateTerrain();
 			g_waveManagerPtr->UpdateWave();
-			g_cellManagerPtr->UpdateCellStates();
+			g_cellManagerPtr->updateCellStates();
 			g_eggManagerPtr->UpdateEggStates();
 			g_chipManagerPtr->updateChips();
 		}
@@ -108,7 +108,7 @@ void FieldViewer::update()
 			{
 				if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
 				{
-					e->Destroy();
+					e->destroy();
 
 					// ElementStateの吐き出し
 					/*auto s = e->getCellAsset()->getMaterial();
@@ -122,7 +122,7 @@ void FieldViewer::update()
 							// 吐き出されたElementState
 							const auto& ms = g_elementManagerPtr->AddElementState(m.first);
 							ms->setPosition(e->getPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
-							ms->SetVelocity(v * 0.1);
+							ms->setVelocity(v * 0.1);
 						}
 					}*/
 				}
@@ -151,10 +151,10 @@ void FieldViewer::update()
 
 			if (MouseL.up())
 			{
-				const auto& c = g_cellManagerPtr->AddCellState(rv->getModel<CellAsset>());
+				const auto& c = g_cellManagerPtr->addCellState(rv->getModel<CellAsset>());
 				c->setPosition(Cursor::PosF());
-				c->SetVelocity(Vec2::Zero());
-				c->Init();
+				c->setVelocity(Vec2::Zero());
+				c->init();
 
 				m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
 				ppv->setModel(m_newModel);
@@ -176,6 +176,6 @@ void FieldViewer::update()
 	}
 
 	// Open Curtain
-	if (m_openCurtain.IsRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.GetProgress());
+	if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
 	else m_audio.setVolume(1.0);
 }

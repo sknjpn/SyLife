@@ -4,7 +4,7 @@
 
 #include "ModelEditor.h"
 
-void AssetsViewer::SetSelectedModel(const shared_ptr<Model>& model)
+void AssetsViewer::setSelectedModel(const shared_ptr<Model>& model)
 {
 	// ModelEditorを消す
 	g_viewerManagerPtr->DeleteViewer<ModelEditor>();

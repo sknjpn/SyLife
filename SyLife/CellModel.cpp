@@ -22,7 +22,7 @@ void CellAsset::load_this(const ptree& pt)
 	// parts
 	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->load(part.second);
 
-	UpdateProperties();
+	updateProperties();
 
 	Model::load_this(pt);
 }
@@ -53,12 +53,12 @@ void CellAsset::makeViewer()
 }
 
 
-shared_ptr<PartConfig>& CellAsset::AddPartConfig()
+shared_ptr<PartConfig>& CellAsset::addPartConfig()
 {
 	return m_partConfigs.emplace_back(make_shared<PartConfig>());
 }
 
-void CellAsset::UpdateProperties()
+void CellAsset::updateProperties()
 {
 	// mass
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });

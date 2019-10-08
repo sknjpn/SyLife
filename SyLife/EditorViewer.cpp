@@ -9,7 +9,7 @@ EditorViewer::EditorViewer()
 
 }
 
-void EditorViewer::Init()
+void EditorViewer::init()
 {
 	g_viewerManagerPtr->makeViewer<AssetsViewer>();
 }

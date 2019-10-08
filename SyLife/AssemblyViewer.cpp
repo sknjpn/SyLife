@@ -9,7 +9,7 @@
 
 AssemblyViewer::AssemblyViewer()
 {
-	SetdrawRect(Scene::Width() - 400, 20, 300, 300);
+	SetDrawRect(Scene::Width() - 400, 20, 300, 300);
 	m_camera.setScreen(Rect(300, 300));
 	m_camera.setRestrictedRect(RectF(m_width, m_height).setCenter(Vec2::Zero()));
 	m_camera.setCenter(Vec2::Zero());
@@ -17,7 +17,7 @@ AssemblyViewer::AssemblyViewer()
 	m_camera.setMaxScale(4.0);
 }
 
-void AssemblyViewer::Init()
+void AssemblyViewer::init()
 {
 }
 
@@ -81,7 +81,7 @@ void AssemblyViewer::update()
 
 			if (MouseL.up())
 			{
-				const auto& partConfig = getModel<CellAsset>()->AddPartConfig();
+				const auto& partConfig = getModel<CellAsset>()->addPartConfig();
 
 				partConfig->setModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
 				partConfig->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
@@ -92,5 +92,5 @@ void AssemblyViewer::update()
 		if (!MouseL.pressed()) g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart = nullptr;
 	}
 
-	getModel<CellAsset>()->UpdateProperties();
+	getModel<CellAsset>()->updateProperties();
 }

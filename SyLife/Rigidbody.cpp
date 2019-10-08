@@ -2,18 +2,18 @@
 
 #include "SystemManager.h"
 
-void Rigidbody::AddForceInWorld(const Vec2& force, const Vec2& worldPosition)
+void Rigidbody::addForceInWorld(const Vec2& force, const Vec2& worldPosition)
 {
-	AddImpulseInWorld(force * g_systemManagerPtr->GetDeltaTime(), worldPosition);
+	addImpulseInWorld(force * g_systemManagerPtr->GetDeltaTime(), worldPosition);
 }
 
-void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
+void Rigidbody::addImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
 {
 	// 運動量
-	const Vec2 momentum = GetVelocity() * getMass() + impulse;
+	const Vec2 momentum = getVelocity() * getMass() + impulse;
 
 	// 速度
-	SetVelocity(momentum / getMass());
+	setVelocity(momentum / getMass());
 
 	// 力のモーメント
 	const double momentOfForce = (worldPosition - getPosition()).cross(impulse);
@@ -25,7 +25,7 @@ void Rigidbody::AddImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition
 	m_angularVelocity = angularMomentum / m_inertia;
 }
 
-void Rigidbody::UpdateRigidbody()
+void Rigidbody::updateRigidbody()
 {
 	// 回転運動
 	m_rotation += m_angularVelocity * g_systemManagerPtr->GetDeltaTime();

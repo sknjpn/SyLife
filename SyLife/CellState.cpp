@@ -18,16 +18,16 @@ CellState::CellState(const shared_ptr<CellAsset>& model)
 	, m_startTimer(0.0)
 	, m_deathTimer(25.0)
 {
-	SetMass(m_model->getMass());
-	SetRadius(m_model->getRadius());
-	SetInertia(m_model->getInertia());
+	setMass(m_model->getMass());
+	setRadius(m_model->getRadius());
+	setInertia(m_model->getInertia());
 
 	// parts
 	for (const auto& pc : m_model->getPartConfigs())
-		m_partStates.emplace_back(pc->getModel()->makeState())->SetPartConfig(pc);
+		m_partStates.emplace_back(pc->getModel()->makeState())->setPartConfig(pc);
 }
 
-void CellState::UpdateCell()
+void CellState::updateCell()
 {
 	// 衝突処理
 	{
@@ -58,7 +58,7 @@ void CellState::UpdateCell()
 	{
 		auto& m = g_elementManagerPtr->GetElementStates()[i];
 
-		if (!m->IsDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) TakeElement(m);
+		if (!m->isDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) TakeElement(m);
 	}
 	*/
 
@@ -92,7 +92,7 @@ void CellState::UpdateCell()
 		const auto& e = g_eggManagerPtr->AddEggState(m_model);
 		e->setPosition(getPosition());
 		e->setRotation(Random(boost::math::constants::pi<double>() * 2.0));
-		e->SetVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
+		e->setVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
 	}
 
 	// 死亡処理
@@ -111,12 +111,12 @@ void CellState::UpdateCell()
 				// 吐き出されたElementState
 				const auto& ms = g_elementManagerPtr->AddElementState(m.first);
 				ms->setPosition(getPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
-				ms->SetVelocity(v * 0.1);
+				ms->setVelocity(v * 0.1);
 			}
 		}
 		*/
 
-		Destroy();
+		destroy();
 	}
 }
 
@@ -150,7 +150,7 @@ void CellState::TakeElement(const shared_ptr<ElementState>& element)
 {
 	m_storage.Add(element->getModel());
 
-	element->Destroy();
+	element->destroy();
 }
 */
 
@@ -165,7 +165,7 @@ void CellState::ExpireElement(const shared_ptr<ElementAsset>& model, unsigned in
 		// 吐き出されたElementState
 		const auto& t = g_elementManagerPtr->AddElementState(model);
 		t->setPosition(getPosition() + v * (getRadius() + model->getRadius()));
-		t->SetVelocity(v * 0.5);
+		t->setVelocity(v * 0.5);
 
 		// Storageから出す
 		m_storage.Pull(model);

@@ -16,7 +16,7 @@ public:
 public:
 	PartShapeViewer()
 	{
-		SetdrawRect(0, 0, 600, 600);
+		SetDrawRect(0, 0, 600, 600);
 
 		m_camera.setControlOutOfScreenEnabled(false);
 		m_camera.setRestrictedRect(RectF(-150, -150, 300, 300));
@@ -26,7 +26,7 @@ public:
 		m_camera.setCenter(Vec2::Zero());
 	}
 
-	void	Init() override;
+	void	init() override;
 	void	update() override;
 };
 

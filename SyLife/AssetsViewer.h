@@ -13,11 +13,11 @@ class AssetsViewer
 public:
 	AssetsViewer()
 	{
-		SetdrawRect(0, 0, 400, 1080);
+		SetDrawRect(0, 0, 400, 1080);
 	}
 
 	void	update() override;
-	void	SetSelectedModel(const shared_ptr<Model>& model);
+	void	setSelectedModel(const shared_ptr<Model>& model);
 
 	template <typename T>
 	void	drawModels(const string& text)
@@ -27,11 +27,11 @@ public:
 
 		// Type
 		font13(Unicode::Widen(text)).draw();
-		MovedrawPos(0, 16);
+		MoveDrawPos(0, 16);
 
 		// Models
 		{
-			MovedrawPos(16, 0);
+			MoveDrawPos(16, 0);
 			const auto& models = g_assetManagerPtr->getModels<T>();
 			for (auto it = models.begin(); it != models.end(); ++it)
 			{
@@ -40,11 +40,11 @@ public:
 				f.region().draw(m_selectedModel == *it ? ColorF(Palette::Darkorange) : ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 				f.draw();
 
-				if (f.region().leftClicked()) SetSelectedModel(*it);
+				if (f.region().leftClicked()) setSelectedModel(*it);
 
-				MovedrawPos(0, 15);
+				MoveDrawPos(0, 15);
 			}
-			MovedrawPos(-16, 0);
+			MoveDrawPos(-16, 0);
 		}
 	}
 };

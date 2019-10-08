@@ -5,7 +5,7 @@ void WingEditor::reloadProperties_this()
 	EquipmentEditor::reloadProperties_this();
 }
 
-void WingEditor::Update_this()
+void WingEditor::update_this()
 {
-	EquipmentEditor::Update_this();
+	EquipmentEditor::update_this();
 }

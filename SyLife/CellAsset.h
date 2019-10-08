@@ -30,7 +30,7 @@ public:
 	Array<shared_ptr<PartConfig>>& getPartConfigs() { return m_partConfigs; }
 
 	// Add
-	shared_ptr<PartConfig>& AddPartConfig();
+	shared_ptr<PartConfig>& addPartConfig();
 
 	template <typename T>
 	Array<shared_ptr<T>>	getPartConfigs() const
@@ -43,7 +43,7 @@ public:
 		return tModels;
 	}
 
-	void	UpdateProperties();
+	void	updateProperties();
 
 	// draw
 	void	draw(double a = 0.5);

@@ -9,9 +9,9 @@
 void EggState::setCellAsset(const shared_ptr<CellAsset>& cellModel)
 {
 	m_cellAsset = cellModel;
-	SetRadius(cellModel->getRadius() / 2.0);
-	SetMass(cellModel->getMass() / 4.0);
-	SetInertia(getMass() * getRadius() * getRadius() / 2.0);
+	setRadius(cellModel->getRadius() / 2.0);
+	setMass(cellModel->getMass() / 4.0);
+	setInertia(getMass() * getRadius() * getRadius() / 2.0);
 }
 
 void EggState::updateEgg()
@@ -21,9 +21,9 @@ void EggState::updateEgg()
 	// 孵化
 	if (m_timer < 0 && RandomBool(0.1))
 	{
-		Destroy();
+		destroy();
 
-		const auto& c = g_cellManagerPtr->AddCellState(getCellAsset());
+		const auto& c = g_cellManagerPtr->addCellState(getCellAsset());
 		c->setPosition(getPosition());
 		c->setRotation(getRotation());
 	}

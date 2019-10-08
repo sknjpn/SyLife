@@ -5,7 +5,7 @@ void BodyEditor::reloadProperties_this()
 	PartEditor::reloadProperties_this();
 }
 
-void BodyEditor::Update_this()
+void BodyEditor::update_this()
 {
-	PartEditor::Update_this();
+	PartEditor::update_this();
 }

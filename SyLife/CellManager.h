@@ -34,9 +34,9 @@ public:
 	KDTree<CellStateAdapter>& GetCellStateKDTree() { return m_cellStateKDTree; }
 	const KDTree<CellStateAdapter>& GetCellStateKDTree() const { return m_cellStateKDTree; }
 
-	const shared_ptr<CellState>& AddCellState(const shared_ptr<CellAsset>& model);
+	const shared_ptr<CellState>& addCellState(const shared_ptr<CellAsset>& model);
 
-	void	UpdateCellStates();
+	void	updateCellStates();
 	void	drawCellStates();
 };
 

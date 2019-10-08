@@ -18,7 +18,7 @@ public:
 
 	shared_ptr<Asset>	makeAsset(const string& name, const string& type);
 
-	void	Init();
+	void	init();
 
 	bool	HasAsset(const string& name) const { return getAsset(name) != nullptr; }
 

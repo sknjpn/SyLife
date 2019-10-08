@@ -18,7 +18,7 @@ public:
 public:
 	PartPaletteViewer()
 	{
-		SetdrawRect(Scene::Width() - 100, 20, 80, 400);
+		SetDrawRect(Scene::Width() - 100, 20, 80, 400);
 	}
 
 	template <typename T>
@@ -28,7 +28,7 @@ public:
 		static Font font10(10, Typeface::Bold);
 
 		font13(Unicode::Widen(name)).draw();
-		MovedrawPos(0, 16);
+		MoveDrawPos(0, 16);
 
 		const auto& models = g_assetManagerPtr->getModels<T>();
 		for (auto it = models.begin(); it != models.end(); ++it)
@@ -37,7 +37,7 @@ public:
 			block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
 			if (block.leftClicked()) m_selectedPart = *it;
 
-			MovedrawPos(4, 4);
+			MoveDrawPos(4, 4);
 			{
 				font10(Unicode::Widen((*it)->getName())).draw();
 
@@ -52,12 +52,12 @@ public:
 						s.draw(0.5);
 				}
 			}
-			MovedrawPos(-4, -4);
+			MoveDrawPos(-4, -4);
 
-			MovedrawPos(0, 64);
+			MoveDrawPos(0, 64);
 		}
 
-		MovedrawPos(0, 16);
+		MoveDrawPos(0, 16);
 	}
 
 	void	update() override;

@@ -5,7 +5,7 @@
 
 ReleaseViewer::ReleaseViewer()
 {
-	SetdrawRect(Scene::Width() - 400, 320, 300, 100);
+	SetDrawRect(Scene::Width() - 400, 320, 300, 100);
 }
 
 void ReleaseViewer::update()

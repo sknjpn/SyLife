@@ -8,7 +8,7 @@ class SynthesizerAsset
 	shared_ptr<ElementAsset>	m_product;
 
 public:
-	const shared_ptr<ElementAsset>& GetProduct() const { return m_product; }
+	const shared_ptr<ElementAsset>& getProduct() const { return m_product; }
 
 	void	makeViewer() override;
 	shared_ptr<PartState>	makeState() override;

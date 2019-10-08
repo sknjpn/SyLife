@@ -41,7 +41,7 @@ void	PartPaletteViewer::update()
 	{
 		const double h = 32 * 3 - 16 + g_assetManagerPtr->getModels<PartAsset>().size() * 64 - 400.0;
 
-		MovedrawPos(0, -h * m_bar);
+		MoveDrawPos(0, -h * m_bar);
 
 		drawModels<BodyAsset>("BodyAsset.h");
 		drawModels<EquipmentAsset>("EquipmentAsset");

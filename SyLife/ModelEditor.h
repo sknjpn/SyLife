@@ -23,6 +23,6 @@ public:
 	virtual void reloadProperties() { reloadProperties_this(); }
 
 	// update
-	void	Update_this();
-	void	update() override { Update_this(); }
+	void	update_this();
+	void	update() override { update_this(); }
 };

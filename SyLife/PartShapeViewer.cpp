@@ -1,7 +1,7 @@
 ﻿#include "PartShapeViewer.h"
 #include "BodyAsset.h"
 
-void PartShapeViewer::Init()
+void PartShapeViewer::init()
 {
 }
 

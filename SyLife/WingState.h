@@ -14,5 +14,5 @@ public:
 	void	draw(const CellState& cell) const override;
 	void	update(CellState& cell) override;
 
-	void	Flap(CellState& cell);
+	void	flap(CellState& cell);
 };

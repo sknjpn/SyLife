@@ -3,7 +3,7 @@
 
 unique_ptr<AssetManager>	g_assetManagerPtr;
 
-void AssetManager::Init()
+void AssetManager::init()
 {
 
 	Array<string> filepaths;

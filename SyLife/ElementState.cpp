@@ -3,8 +3,8 @@
 void ElementState::setModel(const shared_ptr<ElementModel>& model)
 {
 	m_model = model;
-	SetRadius(model->GetRadius());
-	SetMass(model->GetMass());
+	setRadius(model->GetRadius());
+	setMass(model->GetMass());
 }
 
 void ElementState::updateElement()
@@ -17,12 +17,12 @@ void ElementState::updateElement()
 		g_elementManagerPtr->AddElementState(g_assetManagerPtr->getModel<ElementModel>("Carbon"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
 		g_elementManagerPtr->AddElementState(g_assetManagerPtr->getModel<ElementModel>("Oxygen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
 
-		Destroy();
+		destroy();
 		return;
 	}
 	*/
 
-	// if (RandomBool(0.01)) Destroy();
+	// if (RandomBool(0.01)) destroy();
 }
 
 void ElementState::draw()

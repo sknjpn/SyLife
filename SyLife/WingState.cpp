@@ -20,7 +20,7 @@ void WingState::update(CellState& cell)
 		if (m_counter > 0) --m_counter;
 		else
 		{
-			Flap(cell);
+			flap(cell);
 			m_v = 0.1;
 		}
 	}
@@ -32,7 +32,7 @@ void WingState::update(CellState& cell)
 	m_v *= 0.95;
 }
 
-void WingState::Flap(CellState& cell)
+void WingState::flap(CellState& cell)
 {
-	cell.AddImpulseInLocal(Vec2::Up() * 10000.0, getPartConfig()->getPosition());
+	cell.addImpulseInLocal(Vec2::Up() * 10000.0, getPartConfig()->getPosition());
 }

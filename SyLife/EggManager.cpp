@@ -7,7 +7,7 @@ const shared_ptr<EggState>& EggManager::AddEggState(const shared_ptr<CellAsset>&
 {
 	const auto& e = GetEggStates().emplace_back(make_shared<EggState>());
 	e->setCellAsset(cellModel);
-	e->SetMass(1.0);
+	e->setMass(1.0);
 
 	return e;
 }
@@ -16,21 +16,21 @@ void EggManager::UpdateEggStates()
 {
 	for (const auto& e : GetEggStates())
 	{
-		if (!e->IsDestroyed())
+		if (!e->isDestroyed())
 		{
-			e->UpdateParticle();
+			e->updateParticle();
 			e->updateEgg();
 		}
 	}
 
-	m_eggStates.remove_if([](const auto& e) { return e->IsDestroyed(); });
+	m_eggStates.remove_if([](const auto& e) { return e->isDestroyed(); });
 	m_eggStateKDTree.rebuildIndex();
 }
 
 void EggManager::drawEggStates()
 {
 	for (const auto& e : GetEggStates())
-		if (!e->IsDestroyed()) e->draw();
+		if (!e->isDestroyed()) e->draw();
 }
 
 EggStateAdapter::element_type EggStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->getPosition().elem(dim); }

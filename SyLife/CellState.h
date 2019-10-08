@@ -22,7 +22,7 @@ public:
 public:
 	CellState(const shared_ptr<CellAsset>& model);
 
-	void	UpdateCell();
+	void	updateCell();
 	void	draw();
 
 	// void	TakeElement(const shared_ptr<ElementState>& element);

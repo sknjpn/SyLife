@@ -8,12 +8,12 @@ void ElementEditor::reloadProperties_this()
 	m_textEditState_mass.text = ToString(getModel<ElementAsset>()->m_mass);
 }
 
-void ElementEditor::Update_this()
+void ElementEditor::update_this()
 {
-	ModelEditor::Update_this();
+	ModelEditor::update_this();
 
 	// mass
 	SimpleGUI::TextBox(m_textEditState_mass, Vec2(8, 8));
 	getModel<ElementAsset>()->m_mass = Parse<double>(m_textEditState_mass.text);
-	MovedrawPos(0, 48);
+	MoveDrawPos(0, 48);
 }

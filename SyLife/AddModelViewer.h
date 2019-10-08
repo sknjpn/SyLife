@@ -10,11 +10,11 @@ class AddModelViewer
 public:
 	AddModelViewer()
 	{
-		SetdrawRect(100, 150, 400, 300);
+		SetDrawRect(100, 150, 400, 300);
 	}
 
 	template <typename T>
-	void	AddModel()
+	void	addModel()
 	{
 		for (int i = 1;; ++i)
 		{
@@ -40,9 +40,9 @@ public:
 		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();
 
-		if (f.region().leftClicked()) AddModel<T>();
+		if (f.region().leftClicked()) addModel<T>();
 
-		MovedrawPos(0, 15);
+		MoveDrawPos(0, 15);
 	}
 
 	void	update() override;

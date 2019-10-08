@@ -22,8 +22,8 @@ SystemManager::SystemManager()
 	g_terrainManagerPtr = make_unique<TerrainManager>();
 	g_chipManagerPtr = make_unique<ChipManager>();
 
-	g_assetManagerPtr->Init();
-	g_fieldManagerPtr->Init();
+	g_assetManagerPtr->init();
+	g_fieldManagerPtr->init();
 	g_chipManagerPtr->init();
 }
 

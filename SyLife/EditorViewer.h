@@ -12,7 +12,7 @@ class EditorViewer
 public:
 	EditorViewer();
 
-	void	Init();
+	void	init();
 
 	void	update();
 };

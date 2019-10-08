@@ -15,7 +15,7 @@ const shared_ptr<ElementState>& ElementManager::AddElementState(const shared_ptr
 {
 	const auto& m = AddElementState(model);
 	m->SetPosition(position);
-	m->SetVelocity(RandomVec2(Random(100.0)));
+	m->setVelocity(RandomVec2(Random(100.0)));
 
 	return m;
 }
@@ -24,15 +24,15 @@ void ElementManager::updateElementStates()
 {
 	for (const auto& e : GetElementStates())
 	{
-		if (!e->IsDestroyed())
+		if (!e->isDestroyed())
 		{
-			e->UpdateParticle();
+			e->updateParticle();
 			e->updateElement();
 		}
 	}
 
 	// 存在しないElementの削除
-	m_elementStates.remove_if([](const auto& m) { return m->IsDestroyed(); });
+	m_elementStates.remove_if([](const auto& m) { return m->isDestroyed(); });
 
 	// 新しいElementの追加
 	m_elementStates.append(m_newElementStates);
@@ -44,7 +44,7 @@ void ElementManager::updateElementStates()
 void ElementManager::drawElementStates()
 {
 	for (const auto& e : GetElementStates())
-		if (!e->IsDestroyed()) e->draw();
+		if (!e->isDestroyed()) e->draw();
 }
 
 int ElementManager::NumElement(const shared_ptr<ElementModel>& model)
@@ -61,7 +61,7 @@ void ElementManager::AddElementsRandom(const shared_ptr<ElementModel>& model, si
 		const auto& m = g_elementManagerPtr->AddElementState(model);
 		m->SetPosition(Vec2(p.x, p.y));
 
-		m->Init();
+		m->init();
 	}
 }
 

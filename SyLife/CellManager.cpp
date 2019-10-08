@@ -4,31 +4,31 @@
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 
-const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellAsset>& model)
+const shared_ptr<CellState>& CellManager::addCellState(const shared_ptr<CellAsset>& model)
 {
 	return m_cellStates.emplace_back(make_shared<CellState>(model));
 }
 
-void	CellManager::UpdateCellStates()
+void	CellManager::updateCellStates()
 {
 	for (const auto& c : m_cellStates)
 	{
-		if (!c->IsDestroyed())
+		if (!c->isDestroyed())
 		{
-			c->UpdateParticle();
-			c->UpdateRigidbody();
-			c->UpdateCell();
+			c->updateParticle();
+			c->updateRigidbody();
+			c->updateCell();
 		}
 	}
 
-	m_cellStates.remove_if([](const auto& c) { return c->IsDestroyed(); });
+	m_cellStates.remove_if([](const auto& c) { return c->isDestroyed(); });
 	m_cellStateKDTree.rebuildIndex();
 }
 
 void	CellManager::drawCellStates()
 {
 	for (const auto& c : m_cellStates)
-		if (!c->IsDestroyed()) c->draw();
+		if (!c->isDestroyed()) c->draw();
 }
 
 CellStateAdapter::element_type CellStateAdapter::GetElement(const dataset_type& dataset, size_t index, size_t dim) { return dataset[index]->getPosition().elem(dim); }

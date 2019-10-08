@@ -2,7 +2,7 @@
 
 unique_ptr<FieldManager>	g_fieldManagerPtr;
 
-void FieldManager::Init()
+void FieldManager::init()
 {
 
 }

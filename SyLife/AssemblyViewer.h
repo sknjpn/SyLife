@@ -18,7 +18,7 @@ public:
 public:
 	AssemblyViewer();
 
-	void	Init() override;
+	void	init() override;
 
 	void	update() override;
 };
