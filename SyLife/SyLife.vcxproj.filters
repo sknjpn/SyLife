@@ -90,9 +90,6 @@
     <Filter Include="Source Files\SyLife\Manager\src">
       <UniqueIdentifier>{11aa1fc0-5773-47d7-91e8-8a749a3e178c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SyLife\Viewer\src">
-      <UniqueIdentifier>{c8a3b6b8-c649-46fc-ba47-f47f0e6adf7c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\SyLife\State">
       <UniqueIdentifier>{ba627efe-cc42-43c0-9314-98efd643daf8}</UniqueIdentifier>
     </Filter>
@@ -126,6 +123,24 @@
     <Filter Include="Source Files\SyLife\State\Egg\src">
       <UniqueIdentifier>{571fe371-9a64-4250-a859-589f33a98f6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife\Viewer\Editor">
+      <UniqueIdentifier>{bf221479-d289-4727-baea-52699a0e481b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Viewer\Field">
+      <UniqueIdentifier>{6fe11359-3880-428d-90a0-3f313ac09386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Viewer\Title">
+      <UniqueIdentifier>{321dcdac-4222-433f-a9ab-3f19698b8caa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Viewer\Title\src">
+      <UniqueIdentifier>{8adba3b6-184d-44f5-aa2f-37bbadf97845}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Viewer\Editor\src">
+      <UniqueIdentifier>{4fb4108c-eb08-4531-bfb1-aab20bc7cadd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\Viewer\Field\src">
+      <UniqueIdentifier>{38331d5e-5762-46c3-a0fa-f93fd7715b19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp">
@@ -152,21 +167,6 @@
     <ClCompile Include="WaveManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
-    <ClCompile Include="AddModelViewer.cpp">
-      <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer.cpp">
-      <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
-      <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="PartPaletteViewer.cpp">
-      <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="PartShapeViewer.cpp">
-      <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
     <ClCompile Include="Chip.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
     </ClCompile>
@@ -181,15 +181,6 @@
     </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Source Files\SyLife\State\src</Filter>
-    </ClCompile>
-    <ClCompile Include="AssemblyViewer.cpp">
-      <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldViewer.cpp">
-      <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorViewer.cpp">
-      <Filter>Source Files\SyLife\Viewer\src</Filter>
     </ClCompile>
     <ClCompile Include="Wave.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
@@ -292,6 +283,30 @@
     </ClCompile>
     <ClCompile Include="WingAsset.cpp">
       <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AddModelViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartPaletteViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
+      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartShapeViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -531,36 +546,6 @@
     <ClInclude Include="WaveManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="AddModelViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="AssemblyViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="PartPaletteViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="PartShapeViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="ReleaseViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="EditorViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="CellStateViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldViewer.h">
-      <Filter>Source Files\SyLife\Viewer</Filter>
-    </ClInclude>
     <ClInclude Include="Molecule.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
@@ -686,6 +671,36 @@
     </ClInclude>
     <ClInclude Include="WingAsset.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="AddModelViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="CellStateViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="PartPaletteViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="AssemblyViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="ReleaseViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="PartShapeViewer.h">
+      <Filter>Source Files\SyLife\Viewer\Editor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
