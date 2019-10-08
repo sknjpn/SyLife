@@ -6,7 +6,6 @@
 #include "ViewerManager.h"
 #include "EggManager.h"
 #include "WaveManager.h"
-#include "TerrainManager.h"
 #include "ChipManager.h"
 
 unique_ptr<SystemManager>	g_systemManagerPtr;
@@ -19,7 +18,6 @@ SystemManager::SystemManager()
 	g_viewerManagerPtr = make_unique<ViewerManager>();
 	g_eggManagerPtr = make_unique<EggManager>();
 	g_waveManagerPtr = make_unique<WaveManager>();
-	g_terrainManagerPtr = make_unique<TerrainManager>();
 	g_chipManagerPtr = make_unique<ChipManager>();
 
 	g_assetManagerPtr->init();
