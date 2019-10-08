@@ -4,6 +4,7 @@
 #include "SystemManager.h"
 #include "EggManager.h"
 #include "CellManager.h"
+#include "ChipManager.h"
 
 #include "PartAsset.h"
 #include "PartConfig.h"
@@ -145,6 +146,11 @@ void CellState::draw()
 			.draw(ColorF(Palette::Lightpink, a))
 			.drawFrame(1.0, Palette::Gray);
 	}
+}
+
+void CellState::TakeNutrition()
+{
+	g_chipManagerPtr->pullNutrition(Min(g_chipManagerPtr->getNutrition(), m_model->getMaxStorage().getNutrition() - m_storage.getNutrition());
 }
 
 void CellState::TakeElement(const shared_ptr<ElementState>& element)
