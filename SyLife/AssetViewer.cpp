@@ -1,6 +1,6 @@
 ﻿#include "AssetViewer.h"
 #include "AddModelViewer.h"
-#include "Cell.h"
+#include "CellModel.h"
 #include "Molecule.h"
 #include "PartModel.h"
 #include "BodyModel.h"
