@@ -22,5 +22,5 @@ shared_ptr<Asset> AssetManager::makeAsset(const string& type)
 	if (type == "WingAsset")		return makeAsset<WingAsset>();
 	if (type == "NeedleAsset")		return makeAsset<NeedleAsset>();
 
-	return nullptr;
+	throw Error(U"存在しないタイプのAssetを生成しようとしました\r Type:" + Unicode::Widen(type));
 }
