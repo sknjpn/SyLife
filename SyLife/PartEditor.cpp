@@ -1,5 +1,7 @@
 ﻿#include "PartEditor.h"
 
+#include "PartAsset.h"
+
 void PartEditor::reloadProperties_this()
 {
 	ModelEditor::reloadProperties_this();

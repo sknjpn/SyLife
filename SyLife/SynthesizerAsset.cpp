@@ -1,13 +1,17 @@
 ﻿#include "SynthesizerAsset.h"
 
-#include "Element.h"
 #include "ViewerManager.h"
 #include "AssetManager.h"
 #include "SystemManager.h"
 
+#include "SynthesizerEditor.h"
+#include "SynthesizerState.h"
+#include "ElementAsset.h"
+#include "PartShapeViewer.h"
+
 void SynthesizerAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<SynthesizerViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<SynthesizerEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 

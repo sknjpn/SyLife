@@ -1,12 +1,12 @@
 ﻿#include "NeedleState.h"
-#include "NeedleAsset.h"
-
-#include "PartConfig.h"
-
-#include "CellState.h"
 
 #include "SystemManager.h"
 #include "CellManager.h"
+
+#include "NeedleAsset.h"
+#include "PartConfig.h"
+#include "CellState.h"
+#include "CellAsset.h"
 
 void NeedleState::draw(const CellState& cellState) const
 {

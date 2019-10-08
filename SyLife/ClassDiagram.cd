@@ -357,7 +357,7 @@
       <FileName>SynthesizerAsset.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SynthesizerViewer" Collapsed="true">
+  <Class Name="SynthesizerEditor" Collapsed="true">
     <Position X="27.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>

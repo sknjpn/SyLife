@@ -2,6 +2,7 @@
 
 #include "CellAsset.h"
 #include "PartConfig.h"
+#include "PartAsset.h"
 
 ReleaseViewer::ReleaseViewer()
 {

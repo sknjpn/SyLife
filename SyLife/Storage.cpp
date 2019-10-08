@@ -1,6 +1,6 @@
 ﻿#include "Storage.h"
 
-#include "Element.h"
+#include "ElementAsset.h"
 
 #include "AssetManager.h"
 
@@ -74,7 +74,7 @@ void Storage::load_this(const ptree& pt)
 	{
 		auto name = m.second.get<string>("name");
 
-		const auto& model = g_assetManagerPtr->getModel<ElementAsset>(name);
+		const auto& model = g_assetManagerPtr->getAsset<ElementAsset>(name);
 
 		emplace_back(model, m.second.get<int>("size"));
 	}
