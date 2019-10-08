@@ -154,7 +154,7 @@ void CellState::TakeNutrition()
 	const double amount = g_chipManagerPtr->getNutrition();
 	const double value = Min(space, amount);
 
-	g_chipManagerPtr->pullNutrition(value);
+	g_chipManagerPtr->pullNutrition(getPosition(), value);
 	m_storage.addNutrition(value);
 }
 
