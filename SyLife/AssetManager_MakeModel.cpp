@@ -1,6 +1,6 @@
 ﻿#include "AssetManager.h"
 
-#include "Cell.h"
+#include "CellModel.h"
 #include "Molecule.h"
 #include "BodyModel.h"
 #include "EquipmentModel.h"

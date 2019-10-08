@@ -1,6 +1,6 @@
 ﻿#include "CellManager.h"
 
-#include "Cell.h"
+#include "CellState.h"
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 
