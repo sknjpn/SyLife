@@ -11,16 +11,20 @@
 
 shared_ptr<Asset> AssetManager::makeAsset(const string& name, const string& type)
 {
-	if (type == "CellAsset")		return makeAsset<CellAsset>(name);
-	if (type == "ElementAsset")		return makeAsset<ElementAsset>(name);
+	shared_ptr<Asset> asset;
 
-	if (type == "BodyAsset")		return makeAsset<BodyAsset>(name);
-	if (type == "EquipmentAsset")	return makeAsset<EquipmentAsset>(name);
-	if (type == "ModuleAsset")		return makeAsset<ModuleAsset>(name);
+	if (type == "CellAsset")		asset = makeAsset<CellAsset>();
+	if (type == "ElementAsset")		asset = makeAsset<ElementAsset>();
 
-	if (type == "SynthesizerAsset")	return makeAsset<SynthesizerAsset>(name);
-	if (type == "WingAsset")		return makeAsset<WingAsset>(name);
-	if (type == "NeedleAsset")		return makeAsset<NeedleAsset>(name);
+	if (type == "BodyAsset")		asset = makeAsset<BodyAsset>();
+	if (type == "EquipmentAsset")	asset = makeAsset<EquipmentAsset>();
+	if (type == "ModuleAsset")		asset = makeAsset<ModuleAsset>();
 
-	return nullptr;
+	if (type == "SynthesizerAsset")	asset = makeAsset<SynthesizerAsset>();
+	if (type == "WingAsset")		asset = makeAsset<WingAsset>();
+	if (type == "NeedleAsset")		asset = makeAsset<NeedleAsset>();
+
+	if (asset) asset->setName(name);
+
+	return asset;
 }
