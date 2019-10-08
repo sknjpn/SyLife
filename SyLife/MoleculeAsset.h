@@ -1,5 +1,9 @@
 ﻿#pragma once
 
+#include "Asset.h"
+
+#include "Storage.h"
+
 class MoleculeAsset
 	: public Asset
 {
