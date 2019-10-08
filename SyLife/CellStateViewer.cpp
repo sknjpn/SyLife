@@ -2,6 +2,7 @@
 
 #include "CellAsset.h"
 #include "CellState.h"
+#include "ElementAsset.h"
 
 CellStateViewer::CellStateViewer()
 	: m_cellState(nullptr)
