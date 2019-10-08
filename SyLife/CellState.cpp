@@ -39,8 +39,8 @@ void CellState::updateCell()
 			if (t->getPosition() != getPosition() && (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length()) > 0)
 			{
 				auto f = -1000.0 * (t->getPosition() - getPosition()).normalized() * (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length());
-				AddForceInWorld(f, getPosition());
-				t->AddForceInWorld(-f, t->getPosition());
+				addForceInWorld(f, getPosition());
+				t->addForceInWorld(-f, t->getPosition());
 			}
 		}
 	}
@@ -89,7 +89,7 @@ void CellState::updateCell()
 	{
 		m_storage -= m_model->getMaterial();
 
-		const auto& e = g_eggManagerPtr->AddEggState(m_model);
+		const auto& e = g_eggManagerPtr->addEggState(m_model);
 		e->setPosition(getPosition());
 		e->setRotation(Random(boost::math::constants::pi<double>() * 2.0));
 		e->setVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
