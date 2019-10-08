@@ -1,9 +1,8 @@
 ﻿#include "Asset.h"
 
-void Asset::setName(const string& name)
+void Asset::setFilepath(const string& filepath)
 {
-	// 変化がなければ何もしない
-	if (name == m_name) return;
+	if (filepath == m_filepath || m_filepath == "") return;
 
 	// ファイルの削除
 	{
@@ -13,7 +12,7 @@ void Asset::setName(const string& name)
 	}
 
 	// nameのセット
-	m_name = name;
+	m_filepath = filepath;
 
 	// 新規ファイルの作成
 	{

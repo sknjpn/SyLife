@@ -8,21 +8,16 @@ class Asset
 	: public Model
 {
 	string	m_name;
+	string	m_filepath;
 
 public:
-	Asset(const string& name)
-		: m_name(name)
-	{}
-
 	// Set
-	void	setName(const string& name);
+	void	setName(const string& name) { m_name = m_filepath; }
+	void	setFilepath(const string& filepath);
 
 	// Get
 	const string& getName() const { return m_name; }
-
-	// Path
-	virtual string	getFilename() const;
-	virtual string	getFilepath() const { return "assets/model/" + getFilename(); }
+	const string& getFilepath() const { return m_filepath; }
 
 	// JSON
 	void	load_this(const ptree& pt);
