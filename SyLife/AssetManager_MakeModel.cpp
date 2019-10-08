@@ -1,7 +1,7 @@
 ﻿#include "AssetManager.h"
 
 #include "CellAsset.h"
-#include "Element.h"
+#include "ElementAsset.h"
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
 #include "ModuleAsset.h"
