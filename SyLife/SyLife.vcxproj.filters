@@ -311,6 +311,9 @@
     <ClCompile Include="TitleViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Title\src</Filter>
     </ClCompile>
+    <ClCompile Include="ReleaseViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">

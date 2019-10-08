@@ -54,7 +54,7 @@ void AssemblyViewer::update()
 
 	// part
 	{
-		for (const auto& p : getModel<CellAsset>()->GetPartConfigs())
+		for (const auto& p : getModel<CellAsset>()->getPartConfigs())
 		{
 			auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 				.translated(p->getPosition().x, p->getPosition().y));

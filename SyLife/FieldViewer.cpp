@@ -139,7 +139,7 @@ void FieldViewer::update()
 			{
 				auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& p : rv->getModel<CellAsset>()->GetPartConfigs())
+				for (const auto& p : rv->getModel<CellAsset>()->getPartConfigs())
 				{
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition()));

@@ -23,7 +23,7 @@ CellState::CellState(const shared_ptr<CellAsset>& model)
 	SetInertia(m_model->getInertia());
 
 	// parts
-	for (const auto& pc : m_model->GetPartConfigs())
+	for (const auto& pc : m_model->getPartConfigs())
 		m_partStates.emplace_back(pc->getModel()->makeState())->SetPartConfig(pc);
 }
 

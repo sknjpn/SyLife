@@ -26,14 +26,14 @@ public:
 	double	getMass() const { return m_mass; }
 	double	getRadius() const { return m_radius; }
 	double	getInertia() const { return m_inertia; }
-	const Array<shared_ptr<PartConfig>>& GetPartConfigs() const { return m_partConfigs; }
-	Array<shared_ptr<PartConfig>>& GetPartConfigs() { return m_partConfigs; }
+	const Array<shared_ptr<PartConfig>>& getPartConfigs() const { return m_partConfigs; }
+	Array<shared_ptr<PartConfig>>& getPartConfigs() { return m_partConfigs; }
 
 	// Add
 	shared_ptr<PartConfig>& AddPartConfig();
 
 	template <typename T>
-	Array<shared_ptr<T>>	GetPartConfigs() const
+	Array<shared_ptr<T>>	getPartConfigs() const
 	{
 		Array<shared_ptr<T>> tModels;
 
