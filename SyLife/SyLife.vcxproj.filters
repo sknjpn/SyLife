@@ -320,17 +320,17 @@
     <ClCompile Include="CellStateViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
     </ClCompile>
-    <ClCompile Include="MoleculeManager.cpp">
+    <ClCompile Include="ElementAsset.cpp">
+      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementEditor.cpp">
+      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementState.cpp">
+      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeAsset.cpp">
-      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeEditor.cpp">
-      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeState.cpp">
-      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -723,17 +723,17 @@
     <ClInclude Include="AssetsViewer.h">
       <Filter>Source Files\SyLife\Viewer\Editor</Filter>
     </ClInclude>
-    <ClInclude Include="MoleculeManager.h">
+    <ClInclude Include="ElementAsset.h">
+      <Filter>Source Files\SyLife\State\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementEditor.h">
+      <Filter>Source Files\SyLife\State\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementState.h">
+      <Filter>Source Files\SyLife\State\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeAsset.h">
-      <Filter>Source Files\SyLife\State\Molecule</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeEditor.h">
-      <Filter>Source Files\SyLife\State\Molecule</Filter>
-    </ClInclude>
-    <ClInclude Include="MoleculeState.h">
-      <Filter>Source Files\SyLife\State\Molecule</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
