@@ -126,3 +126,13 @@ void ChipManager::updateChips()
 			c->sendTo(c->m_r->m_d, value * (rect.br().x - 1.0) * (rect.br().y - 1.0));
 	}
 }
+
+double ChipManager::getNutrition(const Vec2& position) const
+{
+	return getChip(position)->getNutrition();
+}
+
+void ChipManager::pullNutrition(const Vec2& position, double nutrition)
+{
+	getChip(position)->pullNutrition(nutrition);
+}

@@ -22,6 +22,9 @@ public:
 
 	const Rect& getRect() const { return m_rect; }
 	const Point& getSize() const { return m_rect.size; }
+
+	double	getNutrition(const Vec2& position) const;
+	void	pullNutrition(const Vec2& position, double nutrition);
 };
 
 extern unique_ptr<ChipManager>	g_chipManagerPtr;
