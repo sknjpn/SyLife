@@ -22,18 +22,18 @@ void NeedleState::update(CellState& cellState)
 	{
 		m_heat = 5.0;
 
-		auto p = cell.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up() * 50.0);
+		auto p = cellState.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up() * 50.0);
 
 
 		for (auto i : g_cellManagerPtr->getCellStateKDTree().knnSearch(1, p))
 		{
 			auto& t = g_cellManagerPtr->getCellStates()[i];
 
-			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_model != cell.m_model)
+			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_model != cellState.m_model)
 			{
 				t->destroy();
-				cell.m_storage += t->m_storage;
-				cell.m_storage += t->m_model->getMaterial();
+				cellState.m_storage += t->m_storage;
+				cellState.m_storage += t->m_model->getMaterial();
 			}
 		}
 	}

@@ -1,10 +1,10 @@
 ﻿#pragma once
 
 #include "TinyCamera.h"
-#include "ModelEditor.h"
+#include "AssetEditor.h"
 
 class AssemblyViewer
-	: public ModelEditor
+	: public AssetEditor
 {
 public:
 	TinyCamera	m_camera;

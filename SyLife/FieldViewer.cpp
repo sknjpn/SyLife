@@ -71,12 +71,12 @@ void FieldViewer::update()
 			{
 				for (auto i : g_cellManagerPtr->getCellStateKDTree().knnSearch(1, Cursor::PosF()))
 				{
-					auto& cell = g_cellManagerPtr->getCellStates()[i];
+					auto& cellState = g_cellManagerPtr->getCellStates()[i];
 
-					if (cell->getRadius() > (cell->getPosition() - Cursor::PosF()).length())
+					if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 					{
-						selectedRigidbody = cell;
-						g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cell);
+						selectedRigidbody = cellState;
+						g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cellState);
 					}
 				}
 			}

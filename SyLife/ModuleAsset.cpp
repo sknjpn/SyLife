@@ -1,8 +1,10 @@
 ﻿#include "ModuleAsset.h"
-#include "ModuleState.h"
-#include "ModuleEditor.h"
 
 #include "ViewerManager.h"
+
+#include "ModuleState.h"
+#include "ModuleEditor.h"
+#include "PartShapeViewer.h"
 
 void ModuleAsset::makeViewer()
 {

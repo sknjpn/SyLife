@@ -31,7 +31,7 @@ void ElementState::draw()
 {
 	static Texture particle(U"assets/image/particle.png", TextureDesc::Mipped);
 
-	particle.resized(m_elementAsset->getRadius() * 2.0, m_elementAsset->getRadius() * 2.0).drawAt(getPosition(), m_elementAsset->GetColor());
+	particle.resized(m_elementAsset->getRadius() * 2.0, m_elementAsset->getRadius() * 2.0).drawAt(getPosition(), m_elementAsset->getColor());
 	/*
 	Circle(GetPosition().x, GetPosition().y, GetRadius())
 		.draw(ColorF(m_elementAsset->GetColor(), 0.5));
