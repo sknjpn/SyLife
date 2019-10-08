@@ -3,7 +3,7 @@
     "mass": "10",
     "material": {
         "name": "",
-        "nutrition":"0.0",
+        "nutrition":"1.0",
         "elements": [
             {
                 "name": "Amino Acid",

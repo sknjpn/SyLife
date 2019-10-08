@@ -2,19 +2,11 @@
     "type": "BodyAsset",
     "mass": "100",
     "material": {
-        "name":"",
-        "nutrition":"0.0",
+        "name": "",
+        "nutrition": "20.0",
         "elements": [
             {
                 "name": "Amino Acid",
-                "size": 1
-            },
-            {
-                "name": "Carbon",
-                "size": 2
-            },
-            {
-                "name": "Oxygen",
                 "size": 1
             }
         ]
