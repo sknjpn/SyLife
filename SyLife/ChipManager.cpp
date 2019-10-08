@@ -51,7 +51,7 @@ void ChipManager::init()
 		for (auto elements : pt.get_child("elements"))
 		{
 			const string name = elements.second.get<string>("name");
-			const auto& model = g_assetManagerPtr->getModel<ElementAsset>(name);
+			const auto& model = g_assetManagerPtr->getAsset<ElementAsset>(name);
 			const int size = elements.second.get<int>("size");
 
 			for (int i = 0; i < size; ++i)

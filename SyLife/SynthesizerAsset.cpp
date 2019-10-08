@@ -26,7 +26,7 @@ void SynthesizerAsset::load_this(const ptree& pt)
 	m_import.load(pt.get_child("import"));
 
 	// export
-	m_export = g_assetManagerPtr->getModel<ElementAsset>(pt.get<string>("export"));
+	m_export = g_assetManagerPtr->getAsset<ElementAsset>(pt.get<string>("export"));
 	*/
 	ModuleAsset::load_this(pt);
 }

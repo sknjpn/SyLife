@@ -1,12 +1,14 @@
 ﻿#include "NeedleAsset.h"
-#include "NeedleState.h"
-#include "NeedleEditor.h"
 
 #include "ViewerManager.h"
 
+#include "NeedleState.h"
+#include "NeedleEditor.h"
+#include "PartShapeViewer.h"
+
 void NeedleAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<NeedleViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<NeedleEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
