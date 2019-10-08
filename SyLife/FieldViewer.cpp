@@ -6,6 +6,7 @@
 #include "EggManager.h"
 #include "ChipManager.h"
 #include "CellManager.h"
+#include "ElementManager.h"
 
 #include "PartPaletteViewer.h"
 #include "AssemblyViewer.h"
@@ -57,11 +58,11 @@ void FieldViewer::update()
 		// update
 		for (int i = 0; i < speed; ++i)
 		{
-			g_terrainManagerPtr->UpdateTerrain();
 			g_waveManagerPtr->updateWave();
 			g_cellManagerPtr->updateCellStates();
 			g_eggManagerPtr->updateEggStates();
 			g_chipManagerPtr->updateChips();
+			g_elementManagerPtr->updateElementStates();
 		}
 
 		// Rigidbody Capture
@@ -90,11 +91,11 @@ void FieldViewer::update()
 		}
 
 		// draw
-		g_terrainManagerPtr->drawTerrain();
 		g_waveManagerPtr->drawWave();
 		g_eggManagerPtr->drawEggStates();
 		g_cellManagerPtr->drawCellStates();
 		g_chipManagerPtr->drawChips();
+		g_elementManagerPtr->drawElementStates();
 
 		// delete
 		if (MouseR.pressed())
