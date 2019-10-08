@@ -6,6 +6,7 @@
 
 class CellAsset;
 class PartState;
+class ElementState;
 
 class CellState
 	: public Rigidbody
