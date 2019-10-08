@@ -39,7 +39,7 @@ public:
 				f.region().draw(m_selectedAsset == *it ? ColorF(Palette::Darkorange) : ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 				f.draw();
 
-				if (f.region().leftClicked()) setSelectedModel(*it);
+				if (f.region().leftClicked()) setSelectedAsset(*it);
 
 				MoveDrawPos(0, 15);
 			}
