@@ -13,7 +13,7 @@ class EggState
 public:
 	EggState() { m_timer = 10.0; }
 
-	void	SetCellModel(const shared_ptr<CellModel>& cellModel);
+	void	setCellModel(const shared_ptr<CellModel>& cellModel);
 
 	const shared_ptr<CellModel>&	getCellModel() const { return m_cellModel; }
 

@@ -2,9 +2,11 @@
 
 #include "SystemManager.h"
 #include "CellManager.h"
-#include "EggState.h"
 
-void EggState::SetCellModel(const shared_ptr<CellModel>& cellModel)
+#include "CellModel.h"
+#include "CellState.h"
+
+void EggState::setCellModel(const shared_ptr<CellModel>& cellModel)
 {
 	m_cellModel = cellModel;
 	SetRadius(cellModel->getRadius() / 2.0);
