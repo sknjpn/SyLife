@@ -22,7 +22,7 @@ public:
 
 			if (!g_assetManagerPtr->HasModel(name))
 			{
-				auto m = g_assetManagerPtr->makeModel<T>();
+				auto m = g_assetManagerPtr->makeAsset<T>();
 
 				m->setName(name);
 

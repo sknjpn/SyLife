@@ -32,7 +32,7 @@ FieldViewer::FieldViewer()
 void FieldViewer::Init()
 {
 	// 付属Viewerの初期化
-	m_newModel = g_assetManagerPtr->makeModel<CellAsset>();
+	m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
 	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->setModel(m_newModel);
 	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setModel(m_newModel);
 	g_viewerManagerPtr->makeViewer<ReleaseViewer>()->setModel(m_newModel);
@@ -156,7 +156,7 @@ void FieldViewer::update()
 				c->SetVelocity(Vec2::Zero());
 				c->Init();
 
-				m_newModel = g_assetManagerPtr->makeModel<CellAsset>();
+				m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
 				ppv->setModel(m_newModel);
 				av->setModel(m_newModel);
 				rv->setModel(m_newModel);
