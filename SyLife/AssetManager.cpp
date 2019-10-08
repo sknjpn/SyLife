@@ -1,6 +1,8 @@
 ﻿#include "Asset.h"
 #include "AssetManager.h"
 
+#include "CellAsset.h"
+
 unique_ptr<AssetManager>	g_assetManagerPtr;
 
 void AssetManager::init()
@@ -52,6 +54,10 @@ void AssetManager::init()
 			System::Exit();
 		}
 	}
+
+	// CellAssetの初期化
+	auto cellAssets = getAssets<CellAsset>();
+	for (const auto& ca : cellAssets) ca->updateProperties();
 }
 
 shared_ptr<Asset> AssetManager::getAsset(const string& name) const

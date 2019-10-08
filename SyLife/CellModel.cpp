@@ -22,8 +22,6 @@ void CellAsset::load_this(const ptree& pt)
 	// parts
 	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->load(part.second);
 
-	updateProperties();
-
 	Model::load_this(pt);
 }
 
