@@ -1,5 +1,5 @@
 {
-    "type": "MoleculeModel",
+    "type": "ElementAsset",
     "mass": "12",
     "color": {
         "r": "128",

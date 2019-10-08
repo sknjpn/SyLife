@@ -1,5 +1,5 @@
 {
-    "type": "WingModel",
+    "type": "WingAsset",
     "mass": "20",
     "isRight": "false",
     "material": {
