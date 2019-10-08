@@ -19,6 +19,8 @@ public:
 	Storage& operator+=(const Storage& s) noexcept;
 	Storage& operator-=(const Storage& s) noexcept;
 
+	double	getNutrition() const { return m_nutrition; }
+
 	// element
 	const Array<pair<shared_ptr<ElementAsset>, int>>&	getElementList() const { return *this; }
 	void	addElement(const shared_ptr<ElementAsset>& model, int size = 1);
