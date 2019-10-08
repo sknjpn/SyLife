@@ -1,13 +1,11 @@
 ﻿#include "AddModelViewer.h"
 
 #include "Molecule.h"
-#include "Cell.h"
+#include "CellModel.h"
 #include "PartModel.h"
 #include "BodyModel.h"
 #include "EquipmentModel.h"
 #include "ModuleModel.h"
-#include "Eye.h"
-#include "Chloroplast.h"
 #include "WingModel.h"
 
 void AddModelViewer::update()
