@@ -7,7 +7,7 @@ class Model;
 class EditorViewer
 	: public Viewer
 {
-	shared_ptr<Model>	m_selectedModel;
+	shared_ptr<Model>	m_selectedAsset;
 
 public:
 	EditorViewer();

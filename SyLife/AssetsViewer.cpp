@@ -1,7 +1,7 @@
 ﻿#include "AssetsViewer.h"
 #include "AddModelViewer.h"
 #include "CellAsset.h"
-#include "Element.h"
+#include "ElementAsset.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
@@ -32,10 +32,10 @@ void AssetsViewer::update()
 	}
 
 	// save
-	if (KeyControl.pressed() && KeyS.down() && m_selectedModel != nullptr)
+	if (KeyControl.pressed() && KeyS.down() && m_selectedAsset != nullptr)
 	{
 		ptree pt;
-		m_selectedModel->save(pt);
-		write_json(m_selectedModel->getFilepath(), pt);
+		m_selectedAsset->save(pt);
+		write_json(m_selectedAsset->getFilepath(), pt);
 	}
 }

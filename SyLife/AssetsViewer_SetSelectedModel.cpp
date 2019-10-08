@@ -13,5 +13,5 @@ void AssetsViewer::setSelectedModel(const shared_ptr<Model>& model)
 	model->makeViewer();
 
 	// 対象モデルの設定
-	m_selectedModel = model;
+	m_selectedAsset = model;
 }
