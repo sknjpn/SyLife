@@ -10,6 +10,7 @@ class CellAsset
 	: public Asset
 {
 	Storage	m_material;
+	Storage	m_maxStorage;
 	Array<shared_ptr<PartConfig>>	m_partConfigs;
 
 	// Rigidbody
