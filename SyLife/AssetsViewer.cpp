@@ -43,14 +43,14 @@ void AssetsViewer::update()
 	}
 }
 
-void AssetsViewer::setSelectedModel(const shared_ptr<Model>& model)
+void AssetsViewer::setSelectedAsset(const shared_ptr<Asset>& asset)
 {
 	// ModelEditorを消す
 	g_viewerManagerPtr->deleteViewer<AssetEditor>();
 
 	// 対象のViewを追加
-	model->makeViewer();
+	asset->makeViewer();
 
 	// 対象モデルの設定
-	m_selectedAsset = model;
+	m_selectedAsset = asset;
 }

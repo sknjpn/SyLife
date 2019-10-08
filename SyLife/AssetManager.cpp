@@ -18,7 +18,7 @@ void AssetManager::init()
 
 		read_json(filepath, pt);
 
-		makeAsset(pt.get<string>("name"), pt.get<string>("type"));
+		makeAsset(pt.get<string>("type"));
 	}
 
 	for (const auto& m : m_models)
@@ -31,7 +31,7 @@ void AssetManager::init()
 		{
 			m->load(pt);
 		}
-		catch (boost::property_tree::ptree_bad_path& e)
+		catch (boost::property_tree::ptree_bad_path & e)
 		{
 			LOG_ERROR(U"JSONアセットの読み込みに問題が発生しました");
 			LOG_ERROR(U" What:" + Unicode::Widen(string(e.what())));
@@ -40,7 +40,7 @@ void AssetManager::init()
 
 			System::Exit();
 		}
-		catch (Error& e)
+		catch (Error & e)
 		{
 			LOG_ERROR(U" What:" + e.what());
 			LOG_ERROR(U" Asset:" + Unicode::Widen(pt.get<string>("type")));

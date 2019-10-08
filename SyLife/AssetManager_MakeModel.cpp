@@ -9,22 +9,18 @@
 #include "WingAsset.h"
 #include "NeedleAsset.h"
 
-shared_ptr<Asset> AssetManager::makeAsset(const string& name, const string& type)
+shared_ptr<Asset> AssetManager::makeAsset(const string& type)
 {
-	shared_ptr<Asset> asset;
+	if (type == "CellAsset")		return makeAsset<CellAsset>();
+	if (type == "ElementAsset")		return makeAsset<ElementAsset>();
 
-	if (type == "CellAsset")		asset = makeAsset<CellAsset>();
-	if (type == "ElementAsset")		asset = makeAsset<ElementAsset>();
+	if (type == "BodyAsset")		return makeAsset<BodyAsset>();
+	if (type == "EquipmentAsset")	return makeAsset<EquipmentAsset>();
+	if (type == "ModuleAsset")		return makeAsset<ModuleAsset>();
 
-	if (type == "BodyAsset")		asset = makeAsset<BodyAsset>();
-	if (type == "EquipmentAsset")	asset = makeAsset<EquipmentAsset>();
-	if (type == "ModuleAsset")		asset = makeAsset<ModuleAsset>();
+	if (type == "SynthesizerAsset")	return makeAsset<SynthesizerAsset>();
+	if (type == "WingAsset")		return makeAsset<WingAsset>();
+	if (type == "NeedleAsset")		return makeAsset<NeedleAsset>();
 
-	if (type == "SynthesizerAsset")	asset = makeAsset<SynthesizerAsset>();
-	if (type == "WingAsset")		asset = makeAsset<WingAsset>();
-	if (type == "NeedleAsset")		asset = makeAsset<NeedleAsset>();
-
-	if (asset) asset->setName(name);
-
-	return asset;
+	return nullptr;
 }

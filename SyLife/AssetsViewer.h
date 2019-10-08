@@ -47,6 +47,6 @@ public:
 		}
 	}
 
-	void setSelectedModel(const shared_ptr<Model>& model);
+	void setSelectedAsset(const shared_ptr<Asset>& asset);
 };
 
