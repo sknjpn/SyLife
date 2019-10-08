@@ -1,4 +1,10 @@
 ﻿#include "CellModel.h"
+#include "CellEditor.h"
+
+#include "ViewerManager.h"
+
+#include "PartModel.h"
+#include "PartConfig.h"
 
 void CellModel::draw(double a)
 {
