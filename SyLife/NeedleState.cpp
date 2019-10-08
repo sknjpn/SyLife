@@ -1,5 +1,5 @@
 ﻿#include "NeedleState.h"
-#include "NeedleModel.h"
+#include "NeedleAsset.h"
 
 #include "PartConfig.h"
 

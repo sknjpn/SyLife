@@ -1,5 +1,5 @@
 ﻿#include "PartConfig.h"
-#include "PartModel.h"
+#include "PartAsset.h"
 
 #include "AssetManager.h"
 
@@ -11,7 +11,7 @@ double PartConfig::getInertia() const
 void PartConfig::load_this(const ptree& pt)
 {
 	// model
-	m_partModel = g_assetManagerPtr->getModel<PartModel>(pt.get<string>("model"));
+	m_partModel = g_assetManagerPtr->getModel<PartAsset>(pt.get<string>("model"));
 
 	// position
 	m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));

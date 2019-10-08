@@ -1,26 +1,26 @@
 ﻿#include "AssetManager.h"
 
-#include "CellModel.h"
+#include "CellAsset.h"
 #include "Molecule.h"
-#include "BodyModel.h"
-#include "EquipmentModel.h"
-#include "ModuleModel.h"
-#include "SynthesizerModel.h"
-#include "WingModel.h"
-#include "NeedleModel.h"
+#include "BodyAsset.h"
+#include "EquipmentAsset.h"
+#include "ModuleAsset.h"
+#include "SynthesizerAsset.h"
+#include "WingAsset.h"
+#include "NeedleAsset.h"
 
 shared_ptr<Asset> AssetManager::makeAsset(const string& name, const string& type)
 {
-	if (type == "CellModel")		return makeAsset<CellModel>(name);
-	if (type == "MoleculeModel")	return makeAsset<MoleculeModel>(name);
+	if (type == "CellAsset")		return makeAsset<CellAsset>(name);
+	if (type == "MoleculeAsset")	return makeAsset<MoleculeAsset>(name);
 
-	if (type == "BodyModel")		return makeAsset<BodyModel>(name);
-	if (type == "EquipmentModel")	return makeAsset<EquipmentModel>(name);
-	if (type == "ModuleModel")		return makeAsset<ModuleModel>(name);
+	if (type == "BodyAsset")		return makeAsset<BodyAsset>(name);
+	if (type == "EquipmentAsset")	return makeAsset<EquipmentAsset>(name);
+	if (type == "ModuleAsset")		return makeAsset<ModuleAsset>(name);
 
-	if (type == "SynthesizerModel")	return makeAsset<SynthesizerModel>(name);
-	if (type == "WingModel")		return makeAsset<WingModel>(name);
-	if (type == "NeedleModel")		return makeAsset<NeedleModel>(name);
+	if (type == "SynthesizerAsset")	return makeAsset<SynthesizerAsset>(name);
+	if (type == "WingAsset")		return makeAsset<WingAsset>(name);
+	if (type == "NeedleAsset")		return makeAsset<NeedleAsset>(name);
 
 	return nullptr;
 }

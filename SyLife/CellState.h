@@ -4,7 +4,7 @@
 
 #include "Storage.h"
 
-class CellModel;
+class CellAsset;
 class PartState;
 
 class CellState
@@ -15,16 +15,16 @@ public:
 	double	m_deathTimer;
 	Storage	m_storage;
 
-	shared_ptr<CellModel>	m_model;
+	shared_ptr<CellAsset>	m_model;
 
 	Array<shared_ptr<PartState>>		m_partStates;
 
 public:
-	CellState(const shared_ptr<CellModel>& model);
+	CellState(const shared_ptr<CellAsset>& model);
 
 	void	UpdateCell();
 	void	draw();
 
 	// void	TakeMolecule(const shared_ptr<MoleculeState>& molecule);
-	// void	ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size = 1);
+	// void	ExpireMolecule(const shared_ptr<MoleculeAsset>& model, unsigned int size = 1);
 };

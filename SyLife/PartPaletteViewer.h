@@ -5,7 +5,7 @@
 
 #include "AssetManager.h"
 
-class PartModel;
+class PartAsset;
 
 class PartPaletteViewer
 	: public ModelEditor
@@ -13,7 +13,7 @@ class PartPaletteViewer
 	double	m_bar = 0.0;
 
 public:
-	shared_ptr<PartModel>	m_selectedPart;
+	shared_ptr<PartAsset>	m_selectedPart;
 
 public:
 	PartPaletteViewer()

@@ -1,15 +1,11 @@
 ﻿#pragma once
 
-#include "ModuleModel.h"
+#include "PartAsset.h"
 
-class SynthesizerModel
-	: public ModuleModel
+class BodyAsset
+	: public PartAsset
 {
-	shared_ptr<MoleculeModel>	m_product;
-
 public:
-	const shared_ptr<MoleculeModel>& GetProduct() const { return m_product; }
-
 	void	makeViewer() override;
 	shared_ptr<PartState>	makeState() override;
 

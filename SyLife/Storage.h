@@ -2,11 +2,11 @@
 
 #include "Model.h"
 
-class MoleculeModel;
+class MoleculeAsset;
 
 class Storage
 	: public Model
-	, private Array<pair<shared_ptr<MoleculeModel>, int>>
+	, private Array<pair<shared_ptr<MoleculeAsset>, int>>
 {	
 	double m_nutrition;
 
@@ -20,10 +20,10 @@ public:
 	Storage& operator-=(const Storage& s) noexcept;
 
 	// molecule
-	const Array<pair<shared_ptr<MoleculeModel>, int>>&	getMoleculeList() const { return *this; }
-	void	addMolecule(const shared_ptr<MoleculeModel>& model, int size);
-	void	pullMolecule(const shared_ptr<MoleculeModel>& model, int size);
-	int		numMolecule(const shared_ptr<MoleculeModel>& model) const;
+	const Array<pair<shared_ptr<MoleculeAsset>, int>>&	getMoleculeList() const { return *this; }
+	void	addMolecule(const shared_ptr<MoleculeAsset>& model, int size);
+	void	pullMolecule(const shared_ptr<MoleculeAsset>& model, int size);
+	int		numMolecule(const shared_ptr<MoleculeAsset>& model) const;
 
 	// JSON
 	void	load_this(const ptree& pt);

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 class EggState;
-class CellModel;
+class CellAsset;
 
 struct EggStateAdapter
 {
@@ -33,7 +33,7 @@ public:
 	const Array<shared_ptr<EggState>>& GetEggStates() const { return m_eggStates; }
 	const KDTree<EggStateAdapter>& GetEggStateKDTree() const { return m_eggStateKDTree; }
 
-	const shared_ptr<EggState>& AddEggState(const shared_ptr<CellModel>& cellModel);
+	const shared_ptr<EggState>& AddEggState(const shared_ptr<CellAsset>& cellModel);
 
 	void	UpdateEggStates();
 	void	DrawEggStates();

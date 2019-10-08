@@ -36,7 +36,7 @@ Storage& Storage::operator-=(const Storage& s) noexcept
 	return *this;
 }
 
-void Storage::addMolecule(const shared_ptr<MoleculeModel>& model, int size)
+void Storage::addMolecule(const shared_ptr<MoleculeAsset>& model, int size)
 {
 	auto it = find_if(begin(), end(), [&model](const auto& m) { return m.first == model; });
 
@@ -44,7 +44,7 @@ void Storage::addMolecule(const shared_ptr<MoleculeModel>& model, int size)
 	else (*it).second += size;
 }
 
-void Storage::pullMolecule(const shared_ptr<MoleculeModel>& model, int size)
+void Storage::pullMolecule(const shared_ptr<MoleculeAsset>& model, int size)
 {
 	auto it = find_if(begin(), end(), [&model](const auto& m) { return m.first == model; });
 
@@ -56,7 +56,7 @@ void Storage::pullMolecule(const shared_ptr<MoleculeModel>& model, int size)
 	}
 }
 
-int Storage::numMolecule(const shared_ptr<MoleculeModel>& model) const
+int Storage::numMolecule(const shared_ptr<MoleculeAsset>& model) const
 {
 	auto it = find_if(begin(), end(), [&model](const auto& m) { return m.first == model; });
 
@@ -74,7 +74,7 @@ void Storage::load_this(const ptree& pt)
 	{
 		auto name = m.second.get<string>("name");
 
-		const auto& model = g_assetManagerPtr->getModel<MoleculeModel>(name);
+		const auto& model = g_assetManagerPtr->getModel<MoleculeAsset>(name);
 
 		emplace_back(model, m.second.get<int>("size"));
 	}

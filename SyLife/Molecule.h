@@ -5,7 +5,7 @@
 #include "Rigidbody.h"
 #include "Storage.h"
 
-class MoleculeModel
+class MoleculeAsset
 	: public Asset
 {
 	friend class MoleculeViewer;
@@ -42,7 +42,7 @@ public:
 	{
 		ModelEditor::reloadProperties_this();
 
-		m_textEditState_mass.text = ToString(getModel<MoleculeModel>()->m_mass); 
+		m_textEditState_mass.text = ToString(getModel<MoleculeAsset>()->m_mass); 
 	}
 	void reloadProperties() override { reloadProperties_this(); }
 
@@ -53,7 +53,7 @@ public:
 
 		// mass
 		SimpleGUI::TextBox(m_textEditState_mass, Vec2(8,8));
-		getModel<MoleculeModel>()->m_mass = Parse<double>(m_textEditState_mass.text);
+		getModel<MoleculeAsset>()->m_mass = Parse<double>(m_textEditState_mass.text);
 		MoveDrawPos(0, 48);
 	}
 	void update() override { Update_this(); }

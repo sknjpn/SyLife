@@ -1,5 +1,5 @@
 ﻿#include "PartShapeViewer.h"
-#include "BodyModel.h"
+#include "BodyAsset.h"
 
 void PartShapeViewer::Init()
 {
@@ -41,7 +41,7 @@ void PartShapeViewer::update()
 	}
 
 	// ShapeModels
-	for (const auto& s : getModel<PartModel>()->getShapes())
+	for (const auto& s : getModel<PartAsset>()->getShapes())
 	{
 		// Face
 		s.GetPolygon().draw(ColorF(s.m_color, 0.5));

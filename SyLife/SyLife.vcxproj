@@ -120,7 +120,7 @@
     <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
-    <ClCompile Include="BodyModel.cpp" />
+    <ClCompile Include="BodyAsset.cpp" />
     <ClCompile Include="BodyEditor.cpp" />
     <ClCompile Include="BodyState.cpp" />
     <ClCompile Include="CellEditor.cpp" />
@@ -132,7 +132,7 @@
     <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="EggManager.cpp" />
-    <ClCompile Include="EquipmentModel.cpp" />
+    <ClCompile Include="EquipmentAsset.cpp" />
     <ClCompile Include="EquipmentEditor.cpp" />
     <ClCompile Include="EquipmentState.cpp" />
     <ClCompile Include="FieldManager.cpp" />
@@ -140,15 +140,15 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelEditor.cpp" />
-    <ClCompile Include="ModuleModel.cpp" />
+    <ClCompile Include="ModuleAsset.cpp" />
     <ClCompile Include="ModuleEditor.cpp" />
     <ClCompile Include="ModuleState.cpp" />
     <ClCompile Include="Molecule.cpp" />
-    <ClCompile Include="NeedleModel.cpp" />
+    <ClCompile Include="NeedleAsset.cpp" />
     <ClCompile Include="NeedleEditor.cpp" />
     <ClCompile Include="NeedleState.cpp" />
     <ClCompile Include="PartConfig.cpp" />
-    <ClCompile Include="PartModel.cpp" />
+    <ClCompile Include="PartAsset.cpp" />
     <ClCompile Include="PartEditor.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartPaletteViewer.cpp" />
@@ -160,14 +160,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
-    <ClCompile Include="SynthesizerModel.cpp" />
+    <ClCompile Include="SynthesizerAsset.cpp" />
     <ClCompile Include="SynthesizerEditor.cpp" />
     <ClCompile Include="SynthesizerState.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="Wave.cpp" />
     <ClCompile Include="WaveManager.cpp" />
-    <ClCompile Include="WingModel.cpp" />
+    <ClCompile Include="WingAsset.cpp" />
     <ClCompile Include="WingEditor.cpp" />
     <ClCompile Include="WingState.cpp" />
   </ItemGroup>
@@ -259,12 +259,12 @@
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEditor.h" />
     <ClInclude Include="AssetViewer.h" />
-    <ClInclude Include="BodyModel.h" />
+    <ClInclude Include="BodyAsset.h" />
     <ClInclude Include="BodyEditor.h" />
     <ClInclude Include="BodyState.h" />
     <ClInclude Include="CellEditor.h" />
     <ClInclude Include="CellManager.h" />
-    <ClInclude Include="CellModel.h" />
+    <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
     <ClInclude Include="CellStateViewer.h" />
     <ClInclude Include="Chip.h" />
@@ -273,22 +273,22 @@
     <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="EggState.h" />
     <ClInclude Include="EggManager.h" />
-    <ClInclude Include="EquipmentModel.h" />
+    <ClInclude Include="EquipmentAsset.h" />
     <ClInclude Include="EquipmentEditor.h" />
     <ClInclude Include="EquipmentState.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelEditor.h" />
-    <ClInclude Include="ModuleModel.h" />
+    <ClInclude Include="ModuleAsset.h" />
     <ClInclude Include="ModuleEditor.h" />
     <ClInclude Include="ModuleState.h" />
     <ClInclude Include="Molecule.h" />
-    <ClInclude Include="NeedleModel.h" />
+    <ClInclude Include="NeedleAsset.h" />
     <ClInclude Include="NeedleEditor.h" />
     <ClInclude Include="NeedleState.h" />
     <ClInclude Include="PartConfig.h" />
-    <ClInclude Include="PartModel.h" />
+    <ClInclude Include="PartAsset.h" />
     <ClInclude Include="PartEditor.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartPaletteViewer.h" />
@@ -299,7 +299,7 @@
     <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
-    <ClInclude Include="SynthesizerModel.h" />
+    <ClInclude Include="SynthesizerAsset.h" />
     <ClInclude Include="SynthesizerEditor.h" />
     <ClInclude Include="SynthesizerState.h" />
     <ClInclude Include="SystemManager.h" />
@@ -309,7 +309,7 @@
     <ClInclude Include="ViewerManager.h" />
     <ClInclude Include="Wave.h" />
     <ClInclude Include="WaveManager.h" />
-    <ClInclude Include="WingModel.h" />
+    <ClInclude Include="WingAsset.h" />
     <ClInclude Include="WingEditor.h" />
     <ClInclude Include="WingState.h" />
   </ItemGroup>

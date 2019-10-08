@@ -1,5 +1,5 @@
 ﻿#include "CellEditor.h"
-#include "CellModel.h"
+#include "CellAsset.h"
 
 void CellEditor::reloadProperties_this()
 {
@@ -8,7 +8,7 @@ void CellEditor::reloadProperties_this()
 
 void CellEditor::Update_this()
 {
-	auto model = getModel<CellModel>();
+	auto model = getModel<CellAsset>();
 	static Font font(24, Typeface::Bold);
 
 	ModelEditor::Update_this();

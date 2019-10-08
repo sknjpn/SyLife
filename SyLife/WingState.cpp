@@ -6,7 +6,7 @@
 
 void WingState::draw(const CellState& cell) const
 {
-	auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingModel>(getPartConfig()->getModel())->m_isRight ? m_p : -m_p));
+	auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingAsset>(getPartConfig()->getModel())->m_isRight ? m_p : -m_p));
 
 	getPartConfig()->getModel()->draw();
 }

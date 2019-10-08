@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "PartModel.h"
+#include "EquipmentAsset.h"
 
-class BodyModel
-	: public PartModel
+class NeedleAsset
+	: public EquipmentAsset
 {
 public:
 	void	makeViewer() override;

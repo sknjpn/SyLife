@@ -1,8 +1,8 @@
 ﻿#include "PartPaletteViewer.h"
-#include "PartModel.h"
-#include "BodyModel.h"
-#include "EquipmentModel.h"
-#include "ModuleModel.h"
+#include "PartAsset.h"
+#include "BodyAsset.h"
+#include "EquipmentAsset.h"
+#include "ModuleAsset.h"
 
 void	PartPaletteViewer::update()
 {
@@ -39,12 +39,12 @@ void	PartPaletteViewer::update()
 	}
 
 	{
-		const double h = 32 * 3 - 16 + g_assetManagerPtr->GetModels<PartModel>().size() * 64 - 400.0;
+		const double h = 32 * 3 - 16 + g_assetManagerPtr->GetModels<PartAsset>().size() * 64 - 400.0;
 
 		MoveDrawPos(0, -h * m_bar);
 
-		DrawModels<BodyModel>("BodyModel.h");
-		DrawModels<EquipmentModel>("EquipmentModel");
-		DrawModels<ModuleModel>("ModuleModel");
+		DrawModels<BodyAsset>("BodyAsset.h");
+		DrawModels<EquipmentAsset>("EquipmentAsset");
+		DrawModels<ModuleAsset>("ModuleAsset");
 	}
 }

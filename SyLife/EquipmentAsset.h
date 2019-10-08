@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include "EquipmentModel.h"
+#include "PartAsset.h"
 
-class NeedleModel
-	: public EquipmentModel
+class EquipmentAsset
+	: public PartAsset
 {
 public:
-	void	makeViewer() override;
+	void makeViewer() override;
 	shared_ptr<PartState>	makeState() override;
 
 	void	load_this(const ptree& pt);

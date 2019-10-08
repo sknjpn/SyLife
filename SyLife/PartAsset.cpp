@@ -1,21 +1,21 @@
-﻿#include "PartModel.h"
+﻿#include "PartAsset.h"
 #include "PartEditor.h"
 
 #include "AssetManager.h"
 #include "ViewerManager.h"
 
-void PartModel::makeViewer()
+void PartAsset::makeViewer()
 {
 	g_viewerManagerPtr->makeViewer<PartEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
-shared_ptr<PartState> PartModel::makeState()
+shared_ptr<PartState> PartAsset::makeState()
 {
 	return make_shared<PartState>();
 }
 
-RectF PartModel::getApproximateRect() const
+RectF PartAsset::getApproximateRect() const
 {
 	const Vec2 tl = getApproximateRectTopLeft();
 	const Vec2 br = getApproximateRectBottomDown();
@@ -23,7 +23,7 @@ RectF PartModel::getApproximateRect() const
 	return RectF(tl, br - tl);
 }
 
-Vec2 PartModel::getApproximateRectTopLeft() const
+Vec2 PartAsset::getApproximateRectTopLeft() const
 {
 	double x = m_shapes.front().m_polygon.vertices().front().x;
 	double y = m_shapes.front().m_polygon.vertices().front().y;
@@ -40,7 +40,7 @@ Vec2 PartModel::getApproximateRectTopLeft() const
 	return Vec2(x, y);
 }
 
-Vec2 PartModel::getApproximateRectBottomDown() const
+Vec2 PartAsset::getApproximateRectBottomDown() const
 {
 	double x = m_shapes.front().m_polygon.vertices().front().x;
 	double y = m_shapes.front().m_polygon.vertices().front().y;
@@ -57,7 +57,7 @@ Vec2 PartModel::getApproximateRectBottomDown() const
 	return Vec2(x, y);
 }
 
-double PartModel::getRectInertia() const
+double PartAsset::getRectInertia() const
 {
 	auto w = (getApproximateRectBottomDown() - getApproximateRectTopLeft()).x;
 	auto h = (getApproximateRectBottomDown() - getApproximateRectTopLeft()).y;
@@ -65,7 +65,7 @@ double PartModel::getRectInertia() const
 	return  m_mass * (w * w + h * h) / 12.0;
 }
 
-void PartModel::load_this(const ptree& pt)
+void PartAsset::load_this(const ptree& pt)
 {
 	// mass
 	m_mass = pt.get<double>("mass");
@@ -80,7 +80,7 @@ void PartModel::load_this(const ptree& pt)
 	Model::load_this(pt);
 }
 
-void PartModel::save_this(ptree& pt) const
+void PartAsset::save_this(ptree& pt) const
 {
 	// mass
 	pt.put<double>("mass", m_mass);
@@ -109,5 +109,5 @@ void PartModel::save_this(ptree& pt) const
 
 	Model::save_this(pt);
 
-	pt.put("type", "PartModel");
+	pt.put("type", "PartAsset");
 }

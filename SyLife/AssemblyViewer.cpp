@@ -3,8 +3,8 @@
 #include "ViewerManager.h"
 
 #include "PartPaletteViewer.h"
-#include "CellModel.h"
-#include "PartModel.h"
+#include "CellAsset.h"
+#include "PartAsset.h"
 #include "PartConfig.h"
 
 AssemblyViewer::AssemblyViewer()
@@ -54,7 +54,7 @@ void AssemblyViewer::update()
 
 	// part
 	{
-		for (const auto& p : getModel<CellModel>()->GetPartConfigs())
+		for (const auto& p : getModel<CellAsset>()->GetPartConfigs())
 		{
 			auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 				.translated(p->getPosition().x, p->getPosition().y));
@@ -81,7 +81,7 @@ void AssemblyViewer::update()
 
 			if (MouseL.up())
 			{
-				const auto& partConfig = getModel<CellModel>()->AddPartConfig();
+				const auto& partConfig = getModel<CellAsset>()->AddPartConfig();
 
 				partConfig->setModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
 				partConfig->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
@@ -92,5 +92,5 @@ void AssemblyViewer::update()
 		if (!MouseL.pressed()) g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart = nullptr;
 	}
 
-	getModel<CellModel>()->UpdateProperties();
+	getModel<CellAsset>()->UpdateProperties();
 }

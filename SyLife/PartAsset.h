@@ -7,7 +7,7 @@
 
 class PartState;
 
-class PartModel
+class PartAsset
 	: public Asset
 {
 public:

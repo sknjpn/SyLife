@@ -1,33 +1,33 @@
-﻿#include "SynthesizerModel.h"
+﻿#include "SynthesizerAsset.h"
 
 #include "Molecule.h"
 #include "ViewerManager.h"
 #include "AssetManager.h"
 #include "SystemManager.h"
 
-void SynthesizerModel::makeViewer()
+void SynthesizerAsset::makeViewer()
 {
 	g_viewerManagerPtr->makeViewer<SynthesizerViewer>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
-shared_ptr<PartState> SynthesizerModel::makeState()
+shared_ptr<PartState> SynthesizerAsset::makeState()
 {
 	return make_shared<SynthesizerState>();
 }
 
-void SynthesizerModel::load_this(const ptree& pt)
+void SynthesizerAsset::load_this(const ptree& pt)
 {
 	// import
 	m_import.load(pt.get_child("import"));
 
 	// export
-	m_export = g_assetManagerPtr->getModel<MoleculeModel>(pt.get<string>("export"));
+	m_export = g_assetManagerPtr->getModel<MoleculeAsset>(pt.get<string>("export"));
 
-	ModuleModel::load_this(pt);
+	ModuleAsset::load_this(pt);
 }
 
-void SynthesizerModel::save_this(ptree& pt) const
+void SynthesizerAsset::save_this(ptree& pt) const
 {
 	// import
 	{
@@ -41,7 +41,7 @@ void SynthesizerModel::save_this(ptree& pt) const
 	// export
 	pt.put("export", m_export->getName());
 
-	ModuleModel::save_this(pt);
+	ModuleAsset::save_this(pt);
 
-	pt.put("type", "SynthesizerModel");
+	pt.put("type", "SynthesizerAsset");
 }

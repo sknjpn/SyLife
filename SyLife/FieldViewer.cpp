@@ -32,7 +32,7 @@ FieldViewer::FieldViewer()
 void FieldViewer::Init()
 {
 	// 付属Viewerの初期化
-	m_newModel = g_assetManagerPtr->makeModel<CellModel>();
+	m_newModel = g_assetManagerPtr->makeModel<CellAsset>();
 	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->setModel(m_newModel);
 	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setModel(m_newModel);
 	g_viewerManagerPtr->makeViewer<ReleaseViewer>()->setModel(m_newModel);
@@ -111,7 +111,7 @@ void FieldViewer::update()
 					e->Destroy();
 
 					// MoleculeStateの吐き出し
-					/*auto s = e->getCellModel()->getMaterial();
+					/*auto s = e->getCellAsset()->getMaterial();
 					for (const auto& m : s.GetMolecules())
 					{
 						for (unsigned int i = 0; i < m.second; i++)
@@ -139,7 +139,7 @@ void FieldViewer::update()
 			{
 				auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& p : rv->getModel<CellModel>()->GetPartConfigs())
+				for (const auto& p : rv->getModel<CellAsset>()->GetPartConfigs())
 				{
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition()));
@@ -151,12 +151,12 @@ void FieldViewer::update()
 
 			if (MouseL.up())
 			{
-				const auto& c = g_cellManagerPtr->AddCellState(rv->getModel<CellModel>());
+				const auto& c = g_cellManagerPtr->AddCellState(rv->getModel<CellAsset>());
 				c->setPosition(Cursor::PosF());
 				c->SetVelocity(Vec2::Zero());
 				c->Init();
 
-				m_newModel = g_assetManagerPtr->makeModel<CellModel>();
+				m_newModel = g_assetManagerPtr->makeModel<CellAsset>();
 				ppv->setModel(m_newModel);
 				av->setModel(m_newModel);
 				rv->setModel(m_newModel);

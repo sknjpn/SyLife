@@ -1,20 +1,20 @@
 ﻿#include "AddModelViewer.h"
 
 #include "Molecule.h"
-#include "CellModel.h"
-#include "PartModel.h"
-#include "BodyModel.h"
-#include "EquipmentModel.h"
-#include "ModuleModel.h"
-#include "WingModel.h"
+#include "CellAsset.h"
+#include "PartAsset.h"
+#include "BodyAsset.h"
+#include "EquipmentAsset.h"
+#include "ModuleAsset.h"
+#include "WingAsset.h"
 
 void AddModelViewer::update()
 {
-	DrawModels<MoleculeModel>("MoleculeModel");
-	DrawModels<CellModel>("CellModel");
-	DrawModels<PartModel>("PartModel");
-	DrawModels<BodyModel>("BodyModel");
-	DrawModels<EquipmentModel>("EquipmentModel");
-	DrawModels<ModuleModel>("ModuleModel");
-	DrawModels<WingModel>("WingModel");
+	DrawModels<MoleculeAsset>("MoleculeAsset");
+	DrawModels<CellAsset>("CellAsset");
+	DrawModels<PartAsset>("PartAsset");
+	DrawModels<BodyAsset>("BodyAsset");
+	DrawModels<EquipmentAsset>("EquipmentAsset");
+	DrawModels<ModuleAsset>("ModuleAsset");
+	DrawModels<WingAsset>("WingAsset");
 }

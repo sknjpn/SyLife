@@ -4,7 +4,7 @@
 
 unique_ptr<CellManager>	g_cellManagerPtr;
 
-const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellModel>& model)
+const shared_ptr<CellState>& CellManager::AddCellState(const shared_ptr<CellAsset>& model)
 {
 	return m_cellStates.emplace_back(make_shared<CellState>(model));
 }

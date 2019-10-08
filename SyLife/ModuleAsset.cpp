@@ -1,29 +1,29 @@
-﻿#include "ModuleModel.h"
+﻿#include "ModuleAsset.h"
 #include "ModuleState.h"
 #include "ModuleEditor.h"
 
 #include "ViewerManager.h"
 
-void ModuleModel::makeViewer()
+void ModuleAsset::makeViewer()
 {
 	g_viewerManagerPtr->makeViewer<ModuleEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
-shared_ptr<PartState> ModuleModel::makeState()
+shared_ptr<PartState> ModuleAsset::makeState()
 {
 	return make_shared<ModuleState>();
 }
 
-void ModuleModel::load_this(const ptree& pt)
+void ModuleAsset::load_this(const ptree& pt)
 {
-	PartModel::load_this(pt);
+	PartAsset::load_this(pt);
 }
 
-void ModuleModel::save_this(ptree& pt) const
+void ModuleAsset::save_this(ptree& pt) const
 {
-	PartModel::save_this(pt);
+	PartAsset::save_this(pt);
 
 	// type
-	pt.put("type", "ModuleModel");
+	pt.put("type", "ModuleAsset");
 }

@@ -1,18 +1,18 @@
 ﻿#pragma once
 
-#include "EquipmentModel.h"
+#include "ModuleAsset.h"
 
-class WingModel
-	: public EquipmentModel
+class SynthesizerAsset
+	: public ModuleAsset
 {
-public:
-	bool	m_isRight = false;
+	shared_ptr<MoleculeAsset>	m_product;
 
 public:
-	void makeViewer() override;
+	const shared_ptr<MoleculeAsset>& GetProduct() const { return m_product; }
+
+	void	makeViewer() override;
 	shared_ptr<PartState>	makeState() override;
 
-	// JSON
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
 	void	save_this(ptree& pt) const;

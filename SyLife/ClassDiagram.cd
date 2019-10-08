@@ -133,7 +133,7 @@
       <FileName>TitleViewer.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CellModel" Collapsed="true">
+  <Class Name="CellAsset" Collapsed="true">
     <Position X="26.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QQAARECAAICIAiAAAAAAAAAEAgAABABAIAAIAAgAAAA=</HashCode>
@@ -161,7 +161,7 @@
       <FileName>EggState.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MoleculeModel" Collapsed="true">
+  <Class Name="MoleculeAsset" Collapsed="true">
     <Position X="4.25" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABACAAICIACAAAAAAAAAEAAAABACAAAAIAAgAAAA=</HashCode>
@@ -189,25 +189,25 @@
       <FileName>Rigidbody.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BodyModel" Collapsed="true">
+  <Class Name="BodyAsset" Collapsed="true">
     <Position X="17.75" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
-      <FileName>BodyModel.h</FileName>
+      <FileName>BodyAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BodyState" Collapsed="true">
     <Position X="12.25" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BodyModel.h</FileName>
+      <FileName>BodyAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BodyEditor" Collapsed="true">
     <Position X="36.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>BodyModel.h</FileName>
+      <FileName>BodyAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ChloroplastModel" Collapsed="true">
@@ -231,25 +231,25 @@
       <FileName>Chloroplast.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EquipmentModel" Collapsed="true">
+  <Class Name="EquipmentAsset" Collapsed="true">
     <Position X="13.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
-      <FileName>EquipmentModel.h</FileName>
+      <FileName>EquipmentAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EquipmentState" Collapsed="true">
     <Position X="7.75" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>EquipmentModel.h</FileName>
+      <FileName>EquipmentAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EquipmentEditor" Collapsed="true">
     <Position X="32" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>EquipmentModel.h</FileName>
+      <FileName>EquipmentAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EyeModel" Collapsed="true">
@@ -273,116 +273,116 @@
       <FileName>Eye.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ModuleModel" Collapsed="true">
+  <Class Name="ModuleAsset" Collapsed="true">
     <Position X="21" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
-      <FileName>ModuleModel.h</FileName>
+      <FileName>ModuleAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ModuleState" Collapsed="true">
     <Position X="2" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ModuleModel.h</FileName>
+      <FileName>ModuleAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ModuleEditor" Collapsed="true">
     <Position X="26.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>ModuleModel.h</FileName>
+      <FileName>ModuleAsset.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NeedleModel" Collapsed="true">
+  <Class Name="NeedleAsset" Collapsed="true">
     <Position X="11" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAICAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
-      <FileName>NeedleModel.h</FileName>
+      <FileName>NeedleAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NeedleState" Collapsed="true">
     <Position X="5.5" Y="16.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>NeedleModel.h</FileName>
+      <FileName>NeedleAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NeedleViewer" Collapsed="true">
     <Position X="29.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>NeedleModel.h</FileName>
+      <FileName>NeedleAsset.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PartModel" Collapsed="true">
+  <Class Name="PartAsset" Collapsed="true">
     <Position X="16.5" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABECAAICAAigACAAAACAEIAAAJAAAFAAIAAAAAAg=</HashCode>
-      <FileName>PartModel.h</FileName>
+      <FileName>PartAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PartConfig" Collapsed="true">
     <Position X="29" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAACACKCAACAAAAEAAAAAAAAAAggAAAAAAAEAAAA=</HashCode>
-      <FileName>PartModel.h</FileName>
+      <FileName>PartAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PartState" Collapsed="true">
     <Position X="6.5" Y="13.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAIgwAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
-      <FileName>PartModel.h</FileName>
+      <FileName>PartAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PartEditor" Collapsed="true">
     <Position X="30.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAQAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>PartModel.h</FileName>
+      <FileName>PartAsset.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SynthesizerModel" Collapsed="true">
+  <Class Name="SynthesizerAsset" Collapsed="true">
     <Position X="20" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAICAACAAACAAAAIAAAAAAAAAAAAIBAAAAAk=</HashCode>
-      <FileName>SynthesizerModel.h</FileName>
+      <FileName>SynthesizerAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SynthesizerState" Collapsed="true">
     <Position X="3.25" Y="16.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>SynthesizerModel.h</FileName>
+      <FileName>SynthesizerAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SynthesizerViewer" Collapsed="true">
     <Position X="27.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>SynthesizerModel.h</FileName>
+      <FileName>SynthesizerAsset.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WingModel" Collapsed="true">
+  <Class Name="WingAsset" Collapsed="true">
     <Position X="13.25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAICAACAAAAAAEAAAAAAAAAAAAAAIAAAAAAg=</HashCode>
-      <FileName>WingModel.h</FileName>
+      <FileName>WingAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WingState" Collapsed="true">
     <Position X="7.75" Y="16.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAACAAAAAAAgAAAAAAAAEAQAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>WingModel.h</FileName>
+      <FileName>WingAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WingEditor" Collapsed="true">
     <Position X="32" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>WingModel.h</FileName>
+      <FileName>WingAsset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chip" Collapsed="true">

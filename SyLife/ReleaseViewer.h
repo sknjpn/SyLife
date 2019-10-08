@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Viewer.h"
-#include "PartModel.h"
+#include "PartAsset.h"
 #include "Cell.h"
 #include "ModelEditor.h"
 
@@ -32,9 +32,9 @@ public:
 
 		// part
 		{
-			auto t1 = Transformer2D(Mat3x2::Scale(45.0 / getModel<CellModel>()->getRadius() / 2.0).translated(circle.center));
+			auto t1 = Transformer2D(Mat3x2::Scale(45.0 / getModel<CellAsset>()->getRadius() / 2.0).translated(circle.center));
 
-			for (const auto& p : getModel<CellModel>()->GetPartConfigs())
+			for (const auto& p : getModel<CellAsset>()->GetPartConfigs())
 			{
 				auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 					.translated(p->getPosition().x, p->getPosition().y));

@@ -5,7 +5,7 @@
 #include "TinyCamera.h"
 #include "Curtain.h"
 
-class CellModel;
+class CellAsset;
 
 class FieldViewer
 	: public Viewer
@@ -14,7 +14,7 @@ class FieldViewer
 	Audio		m_audio;
 	Curtain		m_openCurtain;
 	
-	shared_ptr<CellModel>	m_newModel;
+	shared_ptr<CellAsset>	m_newModel;
 
 public:
 	FieldViewer();

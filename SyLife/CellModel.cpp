@@ -1,12 +1,12 @@
-﻿#include "CellModel.h"
+﻿#include "CellAsset.h"
 #include "CellEditor.h"
 
 #include "ViewerManager.h"
 
-#include "PartModel.h"
+#include "PartAsset.h"
 #include "PartConfig.h"
 
-void CellModel::draw(double a)
+void CellAsset::draw(double a)
 {
 	// parts
 	for (const auto& pc : m_partConfigs)
@@ -17,7 +17,7 @@ void CellModel::draw(double a)
 	}
 }
 
-void CellModel::load_this(const ptree& pt)
+void CellAsset::load_this(const ptree& pt)
 {
 	// parts
 	for (auto part : pt.get_child("parts")) m_partConfigs.emplace_back(make_shared<PartConfig>())->load(part.second);
@@ -27,7 +27,7 @@ void CellModel::load_this(const ptree& pt)
 	Model::load_this(pt);
 }
 
-void CellModel::save_this(ptree& pt) const
+void CellAsset::save_this(ptree& pt) const
 {
 	// parts
 	{
@@ -44,21 +44,21 @@ void CellModel::save_this(ptree& pt) const
 
 	Model::save_this(pt);
 
-	pt.put("type", "CellModel");
+	pt.put("type", "CellAsset");
 }
 
-void CellModel::makeViewer()
+void CellAsset::makeViewer()
 {
 	g_viewerManagerPtr->makeViewer<CellEditor>()->setModel(shared_from_this());
 }
 
 
-shared_ptr<PartConfig>& CellModel::AddPartConfig()
+shared_ptr<PartConfig>& CellAsset::AddPartConfig()
 {
 	return m_partConfigs.emplace_back(make_shared<PartConfig>());
 }
 
-void CellModel::UpdateProperties()
+void CellAsset::UpdateProperties()
 {
 	// mass
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });

@@ -3,10 +3,10 @@
 #include "SystemManager.h"
 #include "CellManager.h"
 
-#include "CellModel.h"
+#include "CellAsset.h"
 #include "CellState.h"
 
-void EggState::setCellModel(const shared_ptr<CellModel>& cellModel)
+void EggState::setCellAsset(const shared_ptr<CellAsset>& cellModel)
 {
 	m_cellModel = cellModel;
 	SetRadius(cellModel->getRadius() / 2.0);
@@ -23,7 +23,7 @@ void EggState::updateEgg()
 	{
 		Destroy();
 
-		const auto& c = g_cellManagerPtr->AddCellState(getCellModel());
+		const auto& c = g_cellManagerPtr->AddCellState(getCellAsset());
 		c->setPosition(getPosition());
 		c->setRotation(getRotation());
 	}

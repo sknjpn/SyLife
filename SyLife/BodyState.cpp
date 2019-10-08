@@ -1,5 +1,5 @@
 ﻿#include "BodyState.h"
-#include "BodyModel.h"
+#include "BodyAsset.h"
 
 #include "PartConfig.h"
 

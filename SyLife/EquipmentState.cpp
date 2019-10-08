@@ -1,5 +1,5 @@
 ﻿#include "EquipmentState.h"
-#include "EquipmentModel.h"
+#include "EquipmentAsset.h"
 
 #include "PartConfig.h"
 

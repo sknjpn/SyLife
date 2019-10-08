@@ -224,27 +224,6 @@
     <ClCompile Include="WingEditor.cpp">
       <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
-    <ClCompile Include="BodyModel.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="EquipmentModel.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleModel.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="NeedleModel.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="PartModel.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="WingModel.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
-    <ClCompile Include="SynthesizerModel.cpp">
-      <Filter>Source Files\SyLife\State\Part\src</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\SyLife\Others</Filter>
     </ClCompile>
@@ -292,6 +271,27 @@
     </ClCompile>
     <ClCompile Include="Asset.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyAsset.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentAsset.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAsset.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="NeedleAsset.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="SynthesizerAsset.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
+    </ClCompile>
+    <ClCompile Include="WingAsset.cpp">
+      <Filter>Source Files\SyLife\State\Part\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -621,27 +621,6 @@
     <ClInclude Include="BodyEditor.h">
       <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
-    <ClInclude Include="BodyModel.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipmentModel.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleModel.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="NeedleModel.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="PartModel.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="WingModel.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
-    <ClInclude Include="SynthesizerModel.h">
-      <Filter>Source Files\SyLife\State\Part</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Source Files\SyLife\Others</Filter>
     </ClInclude>
@@ -672,9 +651,6 @@
     <ClInclude Include="CellEditor.h">
       <Filter>Source Files\SyLife\State\Cell</Filter>
     </ClInclude>
-    <ClInclude Include="CellModel.h">
-      <Filter>Source Files\SyLife\State\Cell</Filter>
-    </ClInclude>
     <ClInclude Include="CellState.h">
       <Filter>Source Files\SyLife\State\Cell</Filter>
     </ClInclude>
@@ -686,6 +662,30 @@
     </ClInclude>
     <ClInclude Include="AssetEditor.h">
       <Filter>Source Files\SyLife\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="CellAsset.h">
+      <Filter>Source Files\SyLife\State\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyAsset.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentAsset.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAsset.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="NeedleAsset.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="SynthesizerAsset.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="WingAsset.h">
+      <Filter>Source Files\SyLife\State\Part</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

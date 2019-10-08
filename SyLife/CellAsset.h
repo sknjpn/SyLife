@@ -6,7 +6,7 @@
 
 class PartConfig;
 
-class CellModel
+class CellAsset
 	: public Asset
 {
 	Storage	m_material;

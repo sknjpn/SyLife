@@ -1,11 +1,11 @@
 ﻿#include "CellState.h"
-#include "CellModel.h"
+#include "CellAsset.h"
 
 #include "SystemManager.h"
 #include "EggManager.h"
 #include "CellManager.h"
 
-#include "PartModel.h"
+#include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartState.h"
 
@@ -13,7 +13,7 @@
 
 #include <boost/math/constants/constants.hpp>
 
-CellState::CellState(const shared_ptr<CellModel>& model)
+CellState::CellState(const shared_ptr<CellAsset>& model)
 	: m_model(model)
 	, m_startTimer(0.0)
 	, m_deathTimer(25.0)
@@ -155,7 +155,7 @@ void CellState::TakeMolecule(const shared_ptr<MoleculeState>& molecule)
 */
 
 /*
-void CellState::ExpireMolecule(const shared_ptr<MoleculeModel>& model, unsigned int size)
+void CellState::ExpireMolecule(const shared_ptr<MoleculeAsset>& model, unsigned int size)
 {
 	for (unsigned int i = 0; i < size; ++i)
 	{

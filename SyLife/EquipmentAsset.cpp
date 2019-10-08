@@ -1,29 +1,29 @@
-﻿#include "EquipmentModel.h"
+﻿#include "EquipmentAsset.h"
 #include "EquipmentState.h"
 #include "EquipmentEditor.h"
 
 #include "ViewerManager.h"
 
-void EquipmentModel::makeViewer()
+void EquipmentAsset::makeViewer()
 {
 	g_viewerManagerPtr->makeViewer<EquipmentEditor>()->setModel(shared_from_this());
 	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
 }
 
-shared_ptr<PartState> EquipmentModel::makeState()
+shared_ptr<PartState> EquipmentAsset::makeState()
 {
 	return make_shared<EquipmentState>();
 }
 
-void EquipmentModel::load_this(const ptree& pt)
+void EquipmentAsset::load_this(const ptree& pt)
 {
-	PartModel::load_this(pt);
+	PartAsset::load_this(pt);
 }
 
-void EquipmentModel::save_this(ptree& pt) const
+void EquipmentAsset::save_this(ptree& pt) const
 {
-	PartModel::save_this(pt);
+	PartAsset::save_this(pt);
 
 	// type
-	pt.put("type", "EquipmentModel");
+	pt.put("type", "EquipmentAsset");
 }

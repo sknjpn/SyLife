@@ -1,5 +1,5 @@
 ﻿#include "SynthesizerState.h"
-#include "SynthesizerModel.h"
+#include "SynthesizerAsset.h"
 
 #include "PartConfig.h"
 
@@ -16,7 +16,7 @@ void SynthesizerState::update(CellState& cell)
 {
 	m_timer += g_systemManagerPtr->GetDeltaTime();
 
-	auto model = dynamic_pointer_cast<SynthesizerModel>(getPartConfig()->getModel());
+	auto model = dynamic_pointer_cast<SynthesizerAsset>(getPartConfig()->getModel());
 	if (m_timer > 2.0 && cell.m_storage >= model->GetImport() && cell.m_model->getMaterial().numMolecule(model->GetExport()) > cell.m_storage.numMolecule(model->GetExport()))
 	{
 		m_timer = 0.0;
