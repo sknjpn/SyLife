@@ -1,13 +1,13 @@
 ﻿#pragma once
 
-#include "AssetModel.h"
+#include "Asset.h"
 
 #include "Storage.h"
 
 class PartConfig;
 
 class CellModel
-	: public AssetModel
+	: public Asset
 {
 	Storage	m_material;
 	Array<shared_ptr<PartConfig>>	m_partConfigs;

@@ -455,11 +455,11 @@
       <FileName>Wave.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AssetModel" Collapsed="true">
+  <Class Name="Asset" Collapsed="true">
     <Position X="52" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EQAAAACAAICAACAAAAAAAAAAAAAABAAAAAAIQAAARAA=</HashCode>
-      <FileName>AssetModel.h</FileName>
+      <FileName>Asset.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="CellStateAdapter" Collapsed="true">

@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "AssetModelEditor.h"
+#include "AssetEditor.h"
 
 class CellEditor
-	: public AssetModelEditor
+	: public AssetEditor
 {
 public:
 	// Reload

@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "AssetModelEditor.h"
+#include "AssetEditor.h"
 
 class PartEditor :
-	public AssetModelEditor
+	public AssetEditor
 {
 	TextEditState		m_textEditState_mass;
 

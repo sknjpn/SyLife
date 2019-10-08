@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include "AssetModel.h"
+#include "Asset.h"
 #include "ModelEditor.h"
 #include "Rigidbody.h"
 #include "Storage.h"
 
 class MoleculeModel
-	: public AssetModel
+	: public Asset
 {
 	friend class MoleculeViewer;
 

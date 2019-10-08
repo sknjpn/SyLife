@@ -116,8 +116,8 @@
     <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssetManager_MakeModel.cpp" />
-    <ClCompile Include="AssetModel.cpp" />
-    <ClCompile Include="AssetModelEditor.cpp" />
+    <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="AssetViewer.cpp" />
     <ClCompile Include="AssetViewer_SetSelectedModel.cpp" />
     <ClCompile Include="BodyModel.cpp" />
@@ -256,8 +256,8 @@
     <ClInclude Include="AddModelViewer.h" />
     <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="AssetModel.h" />
-    <ClInclude Include="AssetModelEditor.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="AssetEditor.h" />
     <ClInclude Include="AssetViewer.h" />
     <ClInclude Include="BodyModel.h" />
     <ClInclude Include="BodyEditor.h" />

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class Model;
+class Asset;
 
 // すべてのAssetの統合管理を行う
 class AssetManager

@@ -1,6 +1,6 @@
-﻿#include "AssetModel.h"
+﻿#include "Asset.h"
 
-void AssetModel::setName(const string& name)
+void Asset::setName(const string& name)
 {
 	// 変化がなければ何もしない
 	if (name == m_name) return;
@@ -25,7 +25,7 @@ void AssetModel::setName(const string& name)
 	}
 }
 
-string AssetModel::getFilename() const
+string Asset::getFilename() const
 {
 	auto filename = m_name + ".json";
 	auto f = [](unsigned char c) { return char(c == 0x20 ? 0x5f : tolower(c)); };
@@ -35,12 +35,12 @@ string AssetModel::getFilename() const
 	return filename;
 }
 
-void AssetModel::load_this(const ptree& pt)
+void Asset::load_this(const ptree& pt)
 {
 	m_name = pt.get<string>("name");
 }
 
-void AssetModel::save_this(ptree& pt) const
+void Asset::save_this(ptree& pt) const
 {
 	// name
 	pt.put("name", m_name);

@@ -4,13 +4,13 @@
 
 // AssetManagerに登録可能なModel
 // JSONファイルに対応している
-class AssetModel
+class Asset
 	: public Model
 {
 	string	m_name;
 
 public:
-	AssetModel(const string& name)
+	Asset(const string& name)
 		: m_name(name)
 	{}
 
