@@ -146,9 +146,6 @@
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
-    <ClCompile Include="TerrainManager.cpp">
-      <Filter>Source Files\SyLife\Manager\src</Filter>
-    </ClCompile>
     <ClCompile Include="ViewerManager.cpp">
       <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
@@ -169,9 +166,6 @@
     </ClCompile>
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\src</Filter>
-    </ClCompile>
-    <ClCompile Include="HotspotManager.cpp">
-      <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
     <ClCompile Include="Chip.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
