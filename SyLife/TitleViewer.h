@@ -36,6 +36,5 @@ public:
 	void	DrawBubbles();
 
 	void	Init() override;
-
 	void	update() override;
 };
