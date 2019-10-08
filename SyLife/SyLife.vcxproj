@@ -119,7 +119,6 @@
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="AssetsViewer.cpp" />
-    <ClCompile Include="AssetsViewer_SetSelectedModel.cpp" />
     <ClCompile Include="BodyAsset.cpp" />
     <ClCompile Include="BodyEditor.cpp" />
     <ClCompile Include="BodyState.cpp" />

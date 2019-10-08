@@ -314,9 +314,6 @@
     <ClCompile Include="AssetsViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
     </ClCompile>
-    <ClCompile Include="AssetsViewer_SetSelectedModel.cpp">
-      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
-    </ClCompile>
     <ClCompile Include="CellStateViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
     </ClCompile>

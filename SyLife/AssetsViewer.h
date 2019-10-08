@@ -46,5 +46,7 @@ public:
 			MoveDrawPos(-16, 0);
 		}
 	}
+
+	void setSelectedModel(const shared_ptr<Model>& model);
 };
 
