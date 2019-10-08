@@ -6,7 +6,7 @@ const shared_ptr<ElementState>& ElementManager::AddElementState(const shared_ptr
 {
 	const auto& m = m_newElementStates.emplace_back(make_shared<ElementState>());
 
-	m->SetModel(model);
+	m->setModel(model);
 
 	return m;
 }
@@ -20,14 +20,14 @@ const shared_ptr<ElementState>& ElementManager::AddElementState(const shared_ptr
 	return m;
 }
 
-void ElementManager::UpdateElementStates()
+void ElementManager::updateElementStates()
 {
 	for (const auto& e : GetElementStates())
 	{
 		if (!e->IsDestroyed())
 		{
 			e->UpdateParticle();
-			e->UpdateElement();
+			e->updateElement();
 		}
 	}
 
@@ -41,15 +41,15 @@ void ElementManager::UpdateElementStates()
 	m_elementStateKDTree.rebuildIndex();
 }
 
-void ElementManager::DrawElementStates()
+void ElementManager::drawElementStates()
 {
 	for (const auto& e : GetElementStates())
-		if (!e->IsDestroyed()) e->Draw();
+		if (!e->IsDestroyed()) e->draw();
 }
 
 int ElementManager::NumElement(const shared_ptr<ElementModel>& model)
 {
-	return static_cast<int>(count_if(GetElementStates().begin(), GetElementStates().end(), [&model](const auto& m) { return m->GetModel() == model; }));
+	return static_cast<int>(count_if(GetElementStates().begin(), GetElementStates().end(), [&model](const auto& m) { return m->getModel() == model; }));
 }
 
 void ElementManager::AddElementsRandom(const shared_ptr<ElementModel>& model, size_t size)

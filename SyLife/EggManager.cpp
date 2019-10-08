@@ -27,7 +27,7 @@ void EggManager::UpdateEggStates()
 	m_eggStateKDTree.rebuildIndex();
 }
 
-void EggManager::DrawEggStates()
+void EggManager::drawEggStates()
 {
 	for (const auto& e : GetEggStates())
 		if (!e->IsDestroyed()) e->draw();

@@ -15,7 +15,7 @@ public:
 	Vec2	GetWaveVelocity(const Vec2& position) const;
 
 	void	UpdateWave();
-	void	DrawWave() const;
+	void	drawWave() const;
 };
 
 extern unique_ptr<WaveManager>	g_waveManagerPtr;

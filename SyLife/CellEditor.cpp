@@ -13,21 +13,21 @@ void CellEditor::Update_this()
 
 	ModelEditor::Update_this();
 
-	MoveDrawPos(4, 0);
+	MovedrawPos(4, 0);
 	font(U"Mass:").draw();
-	MoveDrawPos(96, 0);
+	MovedrawPos(96, 0);
 	font(ToString(model->getMass())).draw();
-	MoveDrawPos(-100, 28);
+	MovedrawPos(-100, 28);
 
-	MoveDrawPos(4, 0);
+	MovedrawPos(4, 0);
 	font(U"Radius:").draw();
-	MoveDrawPos(96, 0);
+	MovedrawPos(96, 0);
 	font(ToString(model->getRadius())).draw();
-	MoveDrawPos(-100, 28);
+	MovedrawPos(-100, 28);
 
-	MoveDrawPos(4, 0);
+	MovedrawPos(4, 0);
 	font(U"Inertia:").draw();
-	MoveDrawPos(96, 0);
+	MovedrawPos(96, 0);
 	font(ToString(model->getInertia())).draw();
-	MoveDrawPos(-100, 28);
+	MovedrawPos(-100, 28);
 }

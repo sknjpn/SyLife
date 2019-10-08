@@ -37,7 +37,7 @@ public:
 	const shared_ptr<CellState>& AddCellState(const shared_ptr<CellAsset>& model);
 
 	void	UpdateCellStates();
-	void	DrawCellStates();
+	void	drawCellStates();
 };
 
 extern unique_ptr<CellManager>	g_cellManagerPtr;

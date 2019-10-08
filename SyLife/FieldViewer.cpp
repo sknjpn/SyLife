@@ -24,7 +24,7 @@ FieldViewer::FieldViewer()
 	m_camera.setCenter(Vec2::Zero());
 	m_camera.setTargetCenter(Vec2::Zero());
 
-	SetDrawRect(Scene::Size());
+	SetdrawRect(Scene::Size());
 	m_audio.setLoop(true);
 	m_audio.play();
 }
@@ -89,10 +89,10 @@ void FieldViewer::update()
 		}
 
 		// draw
-		g_terrainManagerPtr->DrawTerrain();
-		g_waveManagerPtr->DrawWave();
-		g_eggManagerPtr->DrawEggStates();
-		g_cellManagerPtr->DrawCellStates();
+		g_terrainManagerPtr->drawTerrain();
+		g_waveManagerPtr->drawWave();
+		g_eggManagerPtr->drawEggStates();
+		g_cellManagerPtr->drawCellStates();
 		g_chipManagerPtr->drawChips();
 
 		// delete

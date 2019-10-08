@@ -13,26 +13,26 @@ class AssetsViewer
 public:
 	AssetsViewer()
 	{
-		SetDrawRect(0, 0, 400, 1080);
+		SetdrawRect(0, 0, 400, 1080);
 	}
 
 	void	update() override;
 	void	SetSelectedModel(const shared_ptr<Model>& model);
 
 	template <typename T>
-	void	DrawModels(const string& text)
+	void	drawModels(const string& text)
 	{
 		static Font font13(13);
 		static Font font10(10, Typeface::Bold);
 
 		// Type
 		font13(Unicode::Widen(text)).draw();
-		MoveDrawPos(0, 16);
+		MovedrawPos(0, 16);
 
 		// Models
 		{
-			MoveDrawPos(16, 0);
-			const auto& models = g_assetManagerPtr->GetModels<T>();
+			MovedrawPos(16, 0);
+			const auto& models = g_assetManagerPtr->getModels<T>();
 			for (auto it = models.begin(); it != models.end(); ++it)
 			{
 				auto f = font10(Unicode::Widen((*it)->getName()));
@@ -42,9 +42,9 @@ public:
 
 				if (f.region().leftClicked()) SetSelectedModel(*it);
 
-				MoveDrawPos(0, 15);
+				MovedrawPos(0, 15);
 			}
-			MoveDrawPos(-16, 0);
+			MovedrawPos(-16, 0);
 		}
 	}
 };

@@ -10,7 +10,7 @@ class AddModelViewer
 public:
 	AddModelViewer()
 	{
-		SetDrawRect(100, 150, 400, 300);
+		SetdrawRect(100, 150, 400, 300);
 	}
 
 	template <typename T>
@@ -32,7 +32,7 @@ public:
 	}
 
 	template <typename T>
-	void	DrawModels(const string& name)
+	void	drawModels(const string& name)
 	{
 		static Font font10(10, Typeface::Bold);
 		auto f = font10(Unicode::Widen(name));
@@ -42,7 +42,7 @@ public:
 
 		if (f.region().leftClicked()) AddModel<T>();
 
-		MoveDrawPos(0, 15);
+		MovedrawPos(0, 15);
 	}
 
 	void	update() override;

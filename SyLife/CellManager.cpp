@@ -25,7 +25,7 @@ void	CellManager::UpdateCellStates()
 	m_cellStateKDTree.rebuildIndex();
 }
 
-void	CellManager::DrawCellStates()
+void	CellManager::drawCellStates()
 {
 	for (const auto& c : m_cellStates)
 		if (!c->IsDestroyed()) c->draw();

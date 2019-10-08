@@ -11,11 +11,11 @@ class ElementState
 
 public:
 	// Get
-	const shared_ptr<ElementModel>& GetModel() const { return m_model; }
+	const shared_ptr<ElementModel>& getModel() const { return m_model; }
 
 	// Set
-	void	SetModel(const shared_ptr<ElementModel>& model);
+	void	setModel(const shared_ptr<ElementModel>& model);
 
-	void	UpdateElement();
-	void	Draw();
+	void	updateElement();
+	void	draw();
 };

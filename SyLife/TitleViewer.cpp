@@ -10,7 +10,7 @@ TitleViewer::TitleViewer()
 	, m_closeCurtain(Color(0, 0), Color(11, 22, 33), 0.5)
 	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
-	SetDrawRect(Scene::Size());
+	SetdrawRect(Scene::Size());
 	m_audio.setLoop(true);
 	m_audio.play();
 }
@@ -38,7 +38,7 @@ void TitleViewer::UpdateBubbles()
 	m_bubbles.remove_if([](const auto& b) { return b.m_timer > 1800.0; });
 }
 
-void TitleViewer::DrawBubbles()
+void TitleViewer::drawBubbles()
 {
 	static Texture texture(U"assets/image/particle.png", TextureDesc::Mipped);
 
@@ -92,7 +92,7 @@ void TitleViewer::update()
 	{
 		for (int i = 0; i < 3; ++i) UpdateBubbles();
 
-		DrawBubbles();
+		drawBubbles();
 	}
 
 	// オプション選択

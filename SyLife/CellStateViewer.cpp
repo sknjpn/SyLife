@@ -6,13 +6,13 @@
 CellStateViewer::CellStateViewer()
 	: m_cellState(nullptr)
 {
-	SetDrawRect(Scene::Width() - 300, 450, 200, 400);
+	SetdrawRect(Scene::Width() - 300, 450, 200, 400);
 
 }
 
 void CellStateViewer::update()
 {
-	Rect(GetDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
+	Rect(GetdrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 	if (!m_cellState) return;
 	if (m_cellState->IsDestroyed())

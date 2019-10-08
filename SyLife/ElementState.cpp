@@ -1,21 +1,21 @@
 ﻿#include "ElementState.h"
 
-void ElementState::SetModel(const shared_ptr<ElementModel>& model)
+void ElementState::setModel(const shared_ptr<ElementModel>& model)
 {
 	m_model = model;
 	SetRadius(model->GetRadius());
 	SetMass(model->GetMass());
 }
 
-void ElementState::UpdateElement()
+void ElementState::updateElement()
 {
 	/*
 	// Amino Acidの分解
 	if (m_model->GetName() == "Amino Acid" && RandomBool(0.1))
 	{
-		g_elementManagerPtr->AddElementState(g_assetManagerPtr->GetModel<ElementModel>("Nitrogen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
-		g_elementManagerPtr->AddElementState(g_assetManagerPtr->GetModel<ElementModel>("Carbon"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
-		g_elementManagerPtr->AddElementState(g_assetManagerPtr->GetModel<ElementModel>("Oxygen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->AddElementState(g_assetManagerPtr->getModel<ElementModel>("Nitrogen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->AddElementState(g_assetManagerPtr->getModel<ElementModel>("Carbon"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->AddElementState(g_assetManagerPtr->getModel<ElementModel>("Oxygen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
 
 		Destroy();
 		return;
@@ -25,7 +25,7 @@ void ElementState::UpdateElement()
 	// if (RandomBool(0.01)) Destroy();
 }
 
-void ElementState::Draw()
+void ElementState::draw()
 {
 	static Texture particle(U"assets/image/particle.png", TextureDesc::Mipped);
 

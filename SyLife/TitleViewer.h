@@ -33,7 +33,7 @@ public:
 	TitleViewer();
 
 	void	UpdateBubbles();
-	void	DrawBubbles();
+	void	drawBubbles();
 
 	void	Init() override;
 	void	update() override;

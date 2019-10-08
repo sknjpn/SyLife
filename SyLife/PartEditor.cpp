@@ -14,5 +14,5 @@ void PartEditor::Update_this()
 	// mass
 	SimpleGUI::TextBox(m_textEditState_mass, Vec2(8, 8));
 	getModel<PartAsset>()->m_mass = Parse<double>(m_textEditState_mass.text);
-	MoveDrawPos(0, 48);
+	MovedrawPos(0, 48);
 }

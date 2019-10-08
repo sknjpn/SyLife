@@ -11,11 +11,11 @@
 
 void AssetsViewer::update()
 {
-	DrawModels<CellAsset>("CellAsset");
-	DrawModels<ElementAsset>("ElementAsset");
-	DrawModels<BodyAsset>("BodyAsset");
-	DrawModels<EquipmentAsset>("EquipmentAsset");
-	DrawModels<ModuleAsset>("ModuleAsset");
+	drawModels<CellAsset>("CellAsset");
+	drawModels<ElementAsset>("ElementAsset");
+	drawModels<BodyAsset>("BodyAsset");
+	drawModels<EquipmentAsset>("EquipmentAsset");
+	drawModels<ModuleAsset>("ModuleAsset");
 
 	// AddNewModel
 	{
@@ -28,7 +28,7 @@ void AssetsViewer::update()
 
 		if (f.region().leftClicked() && !g_viewerManagerPtr->HasViewer<AddModelViewer>()) g_viewerManagerPtr->makeViewer<AddModelViewer>();
 
-		MoveDrawPos(0, 16);
+		MovedrawPos(0, 16);
 	}
 
 	// save

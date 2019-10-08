@@ -29,7 +29,7 @@ void WaveManager::UpdateWave()
 	m_timer += g_systemManagerPtr->GetDeltaTime();
 }
 
-void WaveManager::DrawWave() const
+void WaveManager::drawWave() const
 {
 	static bool showWave = false;
 	if (KeyP.down()) showWave = !showWave;

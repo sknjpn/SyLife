@@ -40,8 +40,8 @@ public:
 	const Array<shared_ptr<ElementState>>& GetElementStates() const { return m_elementStates; }
 	const KDTree<ElementStateAdapter>& GetElementStateKDTree() const { return m_elementStateKDTree; }
 
-	void	UpdateElementStates();
-	void	DrawElementStates();
+	void	updateElementStates();
+	void	drawElementStates();
 };
 
 extern unique_ptr<ElementManager> g_elementManagerPtr;
