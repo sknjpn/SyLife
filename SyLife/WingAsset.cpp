@@ -1,8 +1,10 @@
 ﻿#include "WingAsset.h"
-#include "WingState.h"
-#include "WingEditor.h"
 
 #include "ViewerManager.h"
+
+#include "WingState.h"
+#include "WingEditor.h"
+#include "PartShapeViewer.h"
 
 void WingAsset::makeViewer()
 {
