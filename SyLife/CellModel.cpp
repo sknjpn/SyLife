@@ -76,4 +76,7 @@ void CellAsset::updateProperties()
 
 	// material
 	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getModel()->getMaterial(); });
+
+	// maxStorage (生成の必要量の二倍)
+	m_maxStorage = m_material;
 }
