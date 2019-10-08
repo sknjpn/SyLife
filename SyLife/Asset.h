@@ -12,7 +12,7 @@ class Asset
 
 public:
 	// Set
-	void	setName(const string& name) { m_name = m_filepath; }
+	void	setName(const string& name) { m_name = name; }
 	void	setFilepath(const string& filepath);
 
 	// Get
