@@ -144,7 +144,6 @@
     <ClCompile Include="ModuleAsset.cpp" />
     <ClCompile Include="ModuleEditor.cpp" />
     <ClCompile Include="ModuleState.cpp" />
-    <ClCompile Include="Molecule.cpp" />
     <ClCompile Include="MoleculeAsset.cpp" />
     <ClCompile Include="MoleculeEditor.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
@@ -290,7 +289,6 @@
     <ClInclude Include="ModuleAsset.h" />
     <ClInclude Include="ModuleEditor.h" />
     <ClInclude Include="ModuleState.h" />
-    <ClInclude Include="Molecule.h" />
     <ClInclude Include="MoleculeAsset.h" />
     <ClInclude Include="MoleculeEditor.h" />
     <ClInclude Include="MoleculeManager.h" />

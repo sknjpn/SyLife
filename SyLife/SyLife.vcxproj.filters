@@ -141,6 +141,12 @@
     <Filter Include="Source Files\SyLife\Viewer\Field\src">
       <UniqueIdentifier>{38331d5e-5762-46c3-a0fa-f93fd7715b19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SyLife\State\Molecule">
+      <UniqueIdentifier>{c0ba4681-f5c9-4375-a4c4-751149b772a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SyLife\State\Molecule\src">
+      <UniqueIdentifier>{abc8f486-84b6-4eb5-b578-e997cd9e44e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp">
@@ -184,9 +190,6 @@
     </ClCompile>
     <ClCompile Include="Wave.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Molecule.cpp">
-      <Filter>Source Files\SyLife\State\src</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\SyLife\Util\src</Filter>
@@ -318,16 +321,16 @@
       <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MoleculeEditor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Manager\src</Filter>
     </ClCompile>
     <ClCompile Include="MoleculeAsset.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeEditor.cpp">
+      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeState.cpp">
+      <Filter>Source Files\SyLife\State\Molecule\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -567,9 +570,6 @@
     <ClInclude Include="WaveManager.h">
       <Filter>Source Files\SyLife\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Molecule.h">
-      <Filter>Source Files\SyLife\State</Filter>
-    </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Source Files\SyLife\State</Filter>
     </ClInclude>
@@ -723,9 +723,17 @@
     <ClInclude Include="AssetsViewer.h">
       <Filter>Source Files\SyLife\Viewer\Editor</Filter>
     </ClInclude>
-    <ClInclude Include="MoleculeManager.h" />
-    <ClInclude Include="MoleculeState.h" />
-    <ClInclude Include="MoleculeEditor.h" />
-    <ClInclude Include="MoleculeAsset.h" />
+    <ClInclude Include="MoleculeManager.h">
+      <Filter>Source Files\SyLife\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculeAsset.h">
+      <Filter>Source Files\SyLife\State\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculeEditor.h">
+      <Filter>Source Files\SyLife\State\Molecule</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleculeState.h">
+      <Filter>Source Files\SyLife\State\Molecule</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
