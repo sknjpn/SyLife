@@ -2,7 +2,12 @@
 
 void Asset::setFilepath(const string& filepath)
 {
-	if (filepath == m_filepath || m_filepath == "") return;
+	if (filepath == m_filepath || m_filepath == "")
+	{
+		m_filepath = filepath; 
+		
+		return;
+	}
 
 	// ファイルの削除
 	{
