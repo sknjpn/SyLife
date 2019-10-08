@@ -23,7 +23,6 @@ public:
 
 	// Get
 	const Storage& getMaterial() const { return m_material; }
-	Storage& getMaterial() { return m_material; }
 	double	getMass() const { return m_mass; }
 	double	getRadius() const { return m_radius; }
 	double	getInertia() const { return m_inertia; }
