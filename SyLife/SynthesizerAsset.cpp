@@ -2,7 +2,6 @@
 
 #include "ViewerManager.h"
 #include "AssetManager.h"
-#include "SystemManager.h"
 
 #include "SynthesizerEditor.h"
 #include "SynthesizerState.h"
@@ -22,17 +21,19 @@ shared_ptr<PartState> SynthesizerAsset::makeState()
 
 void SynthesizerAsset::load_this(const ptree& pt)
 {
+	/*
 	// import
 	m_import.load(pt.get_child("import"));
 
 	// export
 	m_export = g_assetManagerPtr->getModel<ElementAsset>(pt.get<string>("export"));
-
+	*/
 	ModuleAsset::load_this(pt);
 }
 
 void SynthesizerAsset::save_this(ptree& pt) const
 {
+	/*
 	// import
 	{
 		ptree pt2;
@@ -44,7 +45,7 @@ void SynthesizerAsset::save_this(ptree& pt) const
 
 	// export
 	pt.put("export", m_export->getName());
-
+	*/
 	ModuleAsset::save_this(pt);
 
 	pt.put("type", "SynthesizerAsset");

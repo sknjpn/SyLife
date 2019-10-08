@@ -1,8 +1,10 @@
 ﻿#include "PartAsset.h"
-#include "PartEditor.h"
 
 #include "AssetManager.h"
 #include "ViewerManager.h"
+
+#include "PartEditor.h"
+#include "PartShapeViewer.h"
 
 void PartAsset::makeViewer()
 {
