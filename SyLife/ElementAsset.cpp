@@ -1,5 +1,9 @@
 ﻿#include "ElementAsset.h"
 
+#include "ViewerManager.h"
+
+#include "ElementEditor.h"
+
 void ElementAsset::makeViewer()
 {
 	g_viewerManagerPtr->makeViewer<ElementEditor>()->setModel(shared_from_this());
