@@ -147,7 +147,7 @@
       <FileName>Cell.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CellViewer" Collapsed="true">
+  <Class Name="CellEditor" Collapsed="true">
     <Position X="23" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA=</HashCode>
