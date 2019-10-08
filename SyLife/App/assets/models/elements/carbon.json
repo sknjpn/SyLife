@@ -9,7 +9,7 @@
     "material": {
         "name": "",
         "nutrition": "1.0",
-        "molecules": []
+        "elements": []
     },
     "name": "Carbon"
 }

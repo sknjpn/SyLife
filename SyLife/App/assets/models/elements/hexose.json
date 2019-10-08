@@ -1,15 +1,14 @@
 {
-    "type":"MoleculeModel",
-    "mass": "72",
+    "mass": "120",
     "color": {
         "r": "255",
-        "g": "192",
-        "b": "0"
+        "g": "255",
+        "b": "255"
     },
     "material": {
         "name":"",
-        "nutrition":"1.0",
-        "molecules": [
+        "nutrition":"2.0",
+        "elements": [
             {
                 "name": "Carbon",
                 "size": 1
@@ -17,12 +16,9 @@
             {
                 "name": "Oxygen",
                 "size": 1
-            },
-            {
-                "name": "Nitrogen",
-                "size": 1
             }
         ]
     },
-    "name": "Amino Acid"
+    "name": "Hexose",
+    "type": "MoleculeModel"
 }

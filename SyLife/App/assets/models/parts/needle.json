@@ -3,7 +3,7 @@
     "material": {
         "name":"",
         "nutrition":"0.0",
-        "molecules": [
+        "elements": [
             {
                 "name": "Oxygen",
                 "size": 1

@@ -1,15 +1,15 @@
 {
     "type":"MoleculeModel",
-    "mass": "36",
+    "mass": "24",
     "color": {
         "r": "0",
-        "g": "0",
-        "b": "192"
+        "g": "192",
+        "b": "0"
     },
     "material": {
         "name": "",
         "nutrition": "1.0",
-        "molecules": []
+        "elements": []
     },
-    "name": "Oxygen"
+    "name": "Nitrogen"
 }
