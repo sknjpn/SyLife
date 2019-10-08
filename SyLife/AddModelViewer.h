@@ -20,7 +20,7 @@ public:
 		{
 			string name = "model_" + to_string(i);
 
-			if (!g_assetManagerPtr->HasModel(name))
+			if (!g_assetManagerPtr->hasAsset(name))
 			{
 				auto m = g_assetManagerPtr->makeAsset<T>();
 

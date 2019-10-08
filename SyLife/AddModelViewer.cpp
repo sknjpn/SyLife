@@ -1,6 +1,6 @@
 ﻿#include "AddModelViewer.h"
 
-#include "Element.h"
+#include "ElementAsset.h"
 #include "CellAsset.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"

@@ -1,7 +1,7 @@
 ﻿#include "TitleViewer.h"
 
-#include "AssetManager.h"
 #include "SystemManager.h"
+#include "ViewerManager.h"
 
 void Main()
 {
@@ -20,8 +20,12 @@ void Main()
 		if (!Window::SetFullscreen(true, resolutions[index])) throw Error(U"フルスクリーンモードへの切り替えに失敗しました。");
 	}
 	*/
-	Window::Resize(1920, 1080);
-	Window::SetStyle(WindowStyle::Sizable);
+
+	// Windowの利用
+	{
+		Window::Resize(1920, 1080);
+		Window::SetStyle(WindowStyle::Sizable);
+	}
 
 	g_systemManagerPtr = make_unique<SystemManager>();
 

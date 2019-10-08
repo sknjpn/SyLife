@@ -20,7 +20,7 @@ public:
 
 	void	init();
 
-	bool	HasAsset(const string& name) const { return getAsset(name) != nullptr; }
+	bool	hasAsset(const string& name) const { return getAsset(name) != nullptr; }
 
 	template <typename T>
 	shared_ptr<T>		getAsset(const string& name) const
