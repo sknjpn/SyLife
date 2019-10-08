@@ -27,4 +27,5 @@ public:
 	void	draw();
 
 	void	TakeElement(const shared_ptr<ElementState>& element);
+	void	TakeElement(const shared_ptr<ElementState>& element);
 };
