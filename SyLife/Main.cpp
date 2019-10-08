@@ -1,9 +1,7 @@
 ﻿#include "TitleViewer.h"
-#include "Terrain.h"
 
 #include "AssetManager.h"
 #include "SystemManager.h"
-#include "TerrainManager.h"
 
 void Main()
 {
@@ -27,11 +25,9 @@ void Main()
 
 	g_systemManagerPtr = make_unique<SystemManager>();
 
-	g_terrainManagerPtr->SetTerrainModel(g_assetManagerPtr->getModel<TerrainModel>("Terrain A"));
-
 	g_viewerManagerPtr->makeViewer<TitleViewer>();
 
-	while (System::update())
+	while (System::Update())
 	{
 		g_systemManagerPtr->update();
 
