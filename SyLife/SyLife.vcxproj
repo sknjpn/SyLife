@@ -164,6 +164,7 @@
     <ClCompile Include="SynthesizerEditor.cpp" />
     <ClCompile Include="SynthesizerState.cpp" />
     <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="Wave.cpp" />
     <ClCompile Include="WaveManager.cpp" />

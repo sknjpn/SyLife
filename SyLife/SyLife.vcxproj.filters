@@ -308,6 +308,9 @@
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
     </ClCompile>
+    <ClCompile Include="TitleViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Title\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
