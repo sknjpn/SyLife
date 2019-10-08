@@ -20,6 +20,9 @@ public:
 	Storage& operator-=(const Storage& s) noexcept;
 
 	double	getNutrition() const { return m_nutrition; }
+	void	setNutrition(double nutrition) { m_nutrition = nutrition; }
+	void	addNutrition(double nutrition) { m_nutrition += nutrition; }
+	void	pullNutrition(double nutrition) { m_nutrition -= nutrition; }
 
 	// element
 	const Array<pair<shared_ptr<ElementAsset>, int>>&	getElementList() const { return *this; }
