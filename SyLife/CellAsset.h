@@ -27,7 +27,6 @@ public:
 	double	getRadius() const { return m_radius; }
 	double	getInertia() const { return m_inertia; }
 	const Array<shared_ptr<PartConfig>>& getPartConfigs() const { return m_partConfigs; }
-	Array<shared_ptr<PartConfig>>& getPartConfigs() { return m_partConfigs; }
 
 	// Add
 	shared_ptr<PartConfig>& addPartConfig();
