@@ -312,7 +312,7 @@
       <Filter>Source Files\SyLife\Viewer\Title\src</Filter>
     </ClCompile>
     <ClCompile Include="ReleaseViewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
