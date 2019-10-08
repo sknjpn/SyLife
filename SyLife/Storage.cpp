@@ -6,6 +6,8 @@
 
 bool Storage::operator>=(const Storage& s) const
 {
+	if (m_nutrition < s.m_nutrition) return false;
+
 	for (const auto& m : s)
 		if (numElement(m.first) < m.second) return false;
 
@@ -14,14 +16,18 @@ bool Storage::operator>=(const Storage& s) const
 
 bool Storage::operator<=(const Storage& s) const
 {
-	for (const auto& m : s)
-		if (s.numElement(m.first) < m.second) return false;
+	if (s.m_nutrition > m_nutrition) return false;
+
+	for (const auto& m : *this)
+		if (m.second > s.numElement(m.first)) return false;
 
 	return true;
 }
 
 Storage& Storage::operator+=(const Storage& s) noexcept
 {
+	m_nutrition += s.m_nutrition;
+
 	for (const auto& m : s)
 		addElement(m.first, m.second);
 
@@ -30,6 +36,8 @@ Storage& Storage::operator+=(const Storage& s) noexcept
 
 Storage& Storage::operator-=(const Storage& s) noexcept
 {
+	m_nutrition -= s.m_nutrition;
+
 	for (const auto& m : s)
 		pullElement(m.first, m.second);
 
