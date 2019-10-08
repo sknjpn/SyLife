@@ -55,6 +55,9 @@ void CellState::updateCell()
 	// parts
 	for (const auto& p : m_partStates) p->update(*this);
 
+	// Nutritionの取り込み
+	TakeNutrition();
+
 	// 接触したElementStateの取り込み
 	/*
 	for (auto i : g_elementManagerPtr->getElementStateKDTree().knnSearch(1, getPosition()))
