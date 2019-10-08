@@ -24,6 +24,7 @@ public:
 	const Point& getSize() const { return m_rect.size; }
 
 	double	getNutrition(const Vec2& position) const;
+	void	addNutrition(const Vec2& position, double nutrition);
 	void	pullNutrition(const Vec2& position, double nutrition);
 };
 

@@ -132,6 +132,11 @@ double ChipManager::getNutrition(const Vec2& position) const
 	return getChip(position)->getNutrition();
 }
 
+void ChipManager::addNutrition(const Vec2& position, double nutrition)
+{
+	getChip(position)->addNutrition(nutrition);
+}
+
 void ChipManager::pullNutrition(const Vec2& position, double nutrition)
 {
 	getChip(position)->pullNutrition(nutrition);
