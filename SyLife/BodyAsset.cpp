@@ -1,8 +1,10 @@
 ﻿#include "BodyAsset.h"
-#include "BodyState.h"
-#include "BodyEditor.h"
 
 #include "ViewerManager.h"
+
+#include "BodyState.h"
+#include "BodyEditor.h"
+#include "PartShapeViewer.h"
 
 void BodyAsset::makeViewer()
 {

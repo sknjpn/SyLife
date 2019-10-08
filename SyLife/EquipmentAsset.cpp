@@ -1,8 +1,10 @@
 ﻿#include "EquipmentAsset.h"
-#include "EquipmentState.h"
-#include "EquipmentEditor.h"
 
 #include "ViewerManager.h"
+
+#include "EquipmentState.h"
+#include "EquipmentEditor.h"
+#include "PartShapeViewer.h"
 
 void EquipmentAsset::makeViewer()
 {
