@@ -127,6 +127,7 @@
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="CellModel.cpp" />
     <ClCompile Include="CellState.cpp" />
+    <ClCompile Include="CellStateViewer.cpp" />
     <ClCompile Include="Chip.cpp" />
     <ClCompile Include="ChipManager.cpp" />
     <ClCompile Include="EditorViewer.cpp" />
