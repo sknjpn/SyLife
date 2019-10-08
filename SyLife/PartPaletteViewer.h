@@ -4,6 +4,8 @@
 
 #include "AssetManager.h"
 
+#include "ShapeModel.h"
+
 class PartAsset;
 
 class PartPaletteViewer

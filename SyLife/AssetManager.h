@@ -14,7 +14,7 @@ public:
 	shared_ptr<T>		makeAsset(const string& name) { return dynamic_pointer_cast<T>(m_models.emplace_back(make_shared<T>(name))); }
 
 	template <typename T>
-	shared_ptr<T>		makeAsset() { return makeAsset<T>(U"Asset " + ToString(m_models.size())); }
+	shared_ptr<T>		makeAsset() { return makeAsset<T>(string("Asset ") + to_string(m_models.size())); }
 
 	shared_ptr<Asset>	makeAsset(const string& name, const string& type);
 
