@@ -320,6 +320,15 @@
     <ClCompile Include="MoleculeManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MoleculeState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeAsset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -715,5 +724,8 @@
       <Filter>Source Files\SyLife\Viewer\Editor</Filter>
     </ClInclude>
     <ClInclude Include="MoleculeManager.h" />
+    <ClInclude Include="MoleculeState.h" />
+    <ClInclude Include="MoleculeEditor.h" />
+    <ClInclude Include="MoleculeAsset.h" />
   </ItemGroup>
 </Project>

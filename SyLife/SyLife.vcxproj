@@ -145,7 +145,10 @@
     <ClCompile Include="ModuleEditor.cpp" />
     <ClCompile Include="ModuleState.cpp" />
     <ClCompile Include="Molecule.cpp" />
+    <ClCompile Include="MoleculeAsset.cpp" />
+    <ClCompile Include="MoleculeEditor.cpp" />
     <ClCompile Include="MoleculeManager.cpp" />
+    <ClCompile Include="MoleculeState.cpp" />
     <ClCompile Include="NeedleAsset.cpp" />
     <ClCompile Include="NeedleEditor.cpp" />
     <ClCompile Include="NeedleState.cpp" />
@@ -288,7 +291,10 @@
     <ClInclude Include="ModuleEditor.h" />
     <ClInclude Include="ModuleState.h" />
     <ClInclude Include="Molecule.h" />
+    <ClInclude Include="MoleculeAsset.h" />
+    <ClInclude Include="MoleculeEditor.h" />
     <ClInclude Include="MoleculeManager.h" />
+    <ClInclude Include="MoleculeState.h" />
     <ClInclude Include="NeedleAsset.h" />
     <ClInclude Include="NeedleEditor.h" />
     <ClInclude Include="NeedleState.h" />
