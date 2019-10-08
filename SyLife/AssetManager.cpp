@@ -19,8 +19,9 @@ void AssetManager::init()
 		read_json(filepath, pt);
 
 		auto a = makeAsset(pt.get<string>("type"));
+
 		a->setName(pt.get<string>("name"));
-		a->setFilepath(pt.get<string>("filepath"));
+		a->setFilepath(filepath);
 	}
 
 	for (const auto& m : m_models)
