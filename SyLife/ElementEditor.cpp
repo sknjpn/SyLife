@@ -1,5 +1,6 @@
-﻿#include "stdafx.h"
-#include "ElementEditor.h"
+﻿#include "ElementEditor.h"
+
+#include "ElementAsset.h"
 
 void ElementEditor::reloadProperties_this()
 {
