@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include "Rigidbody.h"
+
+class ElementModel;
 
 class ElementState
 	: public Rigidbody
