@@ -317,6 +317,9 @@
     <ClCompile Include="CellStateViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
     </ClCompile>
+    <ClCompile Include="MoleculeManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -711,5 +714,6 @@
     <ClInclude Include="AssetsViewer.h">
       <Filter>Source Files\SyLife\Viewer\Editor</Filter>
     </ClInclude>
+    <ClInclude Include="MoleculeManager.h" />
   </ItemGroup>
 </Project>
