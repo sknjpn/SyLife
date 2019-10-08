@@ -2,19 +2,19 @@
 
 #include "Rigidbody.h"
 
-class ElementModel;
+class ElementAsset;
 
 class ElementState
 	: public Rigidbody
 {
-	shared_ptr<ElementModel>	m_model;
+	shared_ptr<ElementAsset>	m_elementAsset;
 
 public:
 	// Get
-	const shared_ptr<ElementModel>& getModel() const { return m_model; }
+	const shared_ptr<ElementAsset>& getModel() const { return m_elementAsset; }
 
 	// Set
-	void	setModel(const shared_ptr<ElementModel>& model);
+	void	setElementAsset(const shared_ptr<ElementAsset>& elementAsset);
 
 	void	updateElement();
 	void	draw();

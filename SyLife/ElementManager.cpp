@@ -2,7 +2,7 @@
 
 unique_ptr<ElementManager> g_elementManagerPtr;
 
-const shared_ptr<ElementState>& ElementManager::addElementState(const shared_ptr<ElementModel>& model)
+const shared_ptr<ElementState>& ElementManager::addElementState(const shared_ptr<ElementAsset>& model)
 {
 	const auto& m = m_newElementStates.emplace_back(make_shared<ElementState>());
 
@@ -11,7 +11,7 @@ const shared_ptr<ElementState>& ElementManager::addElementState(const shared_ptr
 	return m;
 }
 
-const shared_ptr<ElementState>& ElementManager::addElementState(const shared_ptr<ElementModel>& model, const Vec2& position)
+const shared_ptr<ElementState>& ElementManager::addElementState(const shared_ptr<ElementAsset>& model, const Vec2& position)
 {
 	const auto& m = addElementState(model);
 	m->SetPosition(position);
@@ -47,12 +47,12 @@ void ElementManager::drawElementStates()
 		if (!e->isDestroyed()) e->draw();
 }
 
-int ElementManager::NumElement(const shared_ptr<ElementModel>& model)
+int ElementManager::NumElement(const shared_ptr<ElementAsset>& model)
 {
 	return static_cast<int>(count_if(getElementStates().begin(), getElementStates().end(), [&model](const auto& m) { return m->getModel() == model; }));
 }
 
-void ElementManager::addElementsRandom(const shared_ptr<ElementModel>& model, size_t size)
+void ElementManager::addElementsRandom(const shared_ptr<ElementAsset>& model, size_t size)
 {
 	for (int i = 0; i < size; i++)
 	{
