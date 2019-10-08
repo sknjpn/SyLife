@@ -3,6 +3,7 @@
 #include "AssetManager.h"
 #include "ViewerManager.h"
 
+#include "PartState.h"
 #include "PartEditor.h"
 #include "PartShapeViewer.h"
 
