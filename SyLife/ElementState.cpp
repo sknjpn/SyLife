@@ -1,5 +1,12 @@
 ﻿#include "ElementState.h"
 
+void ElementState::SetModel(const shared_ptr<ElementModel>& model)
+{
+	m_model = model;
+	SetRadius(model->GetRadius());
+	SetMass(model->GetMass());
+}
+
 void ElementState::UpdateElement()
 {
 	/*

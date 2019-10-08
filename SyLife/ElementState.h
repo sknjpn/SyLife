@@ -14,12 +14,7 @@ public:
 	const shared_ptr<ElementModel>& GetModel() const { return m_model; }
 
 	// Set
-	void	SetModel(const shared_ptr<ElementModel>& model)
-	{
-		m_model = model;
-		SetRadius(model->GetRadius());
-		SetMass(model->GetMass());
-	}
+	void	SetModel(const shared_ptr<ElementModel>& model);
 
 	void	UpdateElement();
 	void	Draw();
