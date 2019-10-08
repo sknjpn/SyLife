@@ -24,16 +24,6 @@ void Asset::setFilepath(const string& filepath)
 	}
 }
 
-string Asset::getFilename() const
-{
-	auto filename = m_name + ".json";
-	auto f = [](unsigned char c) { return char(c == 0x20 ? 0x5f : tolower(c)); };
-
-	transform(filename.begin(), filename.end(), filename.begin(), f);
-
-	return filename;
-}
-
 void Asset::load_this(const ptree& pt)
 {
 	m_name = pt.get<string>("name");
