@@ -26,6 +26,6 @@ public:
 	void	updateCell();
 	void	draw();
 
-	void	TakeNutrition();
-	void	TakeElement(const shared_ptr<ElementState>& element);
+	void	takeNutrition();
+	void	takeElement(const shared_ptr<ElementState>& element);
 };

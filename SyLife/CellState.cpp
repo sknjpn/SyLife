@@ -56,7 +56,7 @@ void CellState::updateCell()
 	for (const auto& p : m_partStates) p->update(*this);
 
 	// Nutritionの取り込み
-	TakeNutrition();
+	takeNutrition();
 
 	// 接触したElementStateの取り込み
 	/*
@@ -64,7 +64,7 @@ void CellState::updateCell()
 	{
 		auto& m = g_elementManagerPtr->getElementStates()[i];
 
-		if (!m->isDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) TakeElement(m);
+		if (!m->isDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) takeElement(m);
 	}
 	*/
 
@@ -151,7 +151,7 @@ void CellState::draw()
 	}
 }
 
-void CellState::TakeNutrition()
+void CellState::takeNutrition()
 {
 	const double space = m_model->getMaxStorage().getNutrition() - m_storage.getNutrition();
 	const double amount = g_chipManagerPtr->getNutrition(getPosition());
@@ -161,7 +161,7 @@ void CellState::TakeNutrition()
 	m_storage.addNutrition(value);
 }
 
-void CellState::TakeElement(const shared_ptr<ElementState>& element)
+void CellState::takeElement(const shared_ptr<ElementState>& element)
 {
 	m_storage.addElement(element->getModel());
 
