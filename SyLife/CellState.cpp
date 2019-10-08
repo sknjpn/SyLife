@@ -9,6 +9,8 @@
 #include "PartConfig.h"
 #include "PartState.h"
 
+#include "ElementState.h"
+
 #include "EggState.h"
 
 #include <boost/math/constants/constants.hpp>
@@ -145,14 +147,12 @@ void CellState::draw()
 	}
 }
 
-/*
 void CellState::TakeElement(const shared_ptr<ElementState>& element)
 {
-	m_storage.Add(element->getModel());
+	m_storage.addElement(element->getModel());
 
 	element->destroy();
 }
-*/
 
 /*
 void CellState::ExpireElement(const shared_ptr<ElementAsset>& model, unsigned int size)

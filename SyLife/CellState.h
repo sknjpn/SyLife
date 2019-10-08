@@ -25,6 +25,5 @@ public:
 	void	updateCell();
 	void	draw();
 
-	// void	TakeElement(const shared_ptr<ElementState>& element);
-	// void	ExpireElement(const shared_ptr<ElementAsset>& model, unsigned int size = 1);
+	void	TakeElement(const shared_ptr<ElementState>& element);
 };
