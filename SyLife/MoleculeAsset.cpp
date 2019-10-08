@@ -2,7 +2,7 @@
 
 void MoleculeAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<MoleculeViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<MoleculeEditor>()->setModel(shared_from_this());
 }
 
 void MoleculeAsset::load_this(const ptree& pt)

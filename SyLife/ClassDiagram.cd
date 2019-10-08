@@ -168,7 +168,7 @@
       <FileName>Molecule.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MoleculeViewer" Collapsed="true">
+  <Class Name="MoleculeEditor" Collapsed="true">
     <Position X="7.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAAAAAAAAAAAAAAAAQAAAgAAAAEAAAAAAAAAA=</HashCode>

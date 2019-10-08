@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class MoleculeViewer
+class MoleculeEditor
 	: public ModelEditor
 {
 	TextEditState		m_textEditState_mass;

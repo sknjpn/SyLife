@@ -3,7 +3,7 @@
 class MoleculeAsset
 	: public Asset
 {
-	friend class MoleculeViewer;
+	friend class MoleculeEditor;
 
 	double	m_mass;
 	double	m_radius;
