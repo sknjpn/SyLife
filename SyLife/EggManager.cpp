@@ -3,18 +3,18 @@
 
 unique_ptr<EggManager> g_eggManagerPtr;
 
-const shared_ptr<EggState>& EggManager::AddEggState(const shared_ptr<CellAsset>& cellModel)
+const shared_ptr<EggState>& EggManager::addEggState(const shared_ptr<CellAsset>& cellModel)
 {
-	const auto& e = GetEggStates().emplace_back(make_shared<EggState>());
+	const auto& e = getEggStates().emplace_back(make_shared<EggState>());
 	e->setCellAsset(cellModel);
 	e->setMass(1.0);
 
 	return e;
 }
 
-void EggManager::UpdateEggStates()
+void EggManager::updateEggStates()
 {
-	for (const auto& e : GetEggStates())
+	for (const auto& e : getEggStates())
 	{
 		if (!e->isDestroyed())
 		{
@@ -29,7 +29,7 @@ void EggManager::UpdateEggStates()
 
 void EggManager::drawEggStates()
 {
-	for (const auto& e : GetEggStates())
+	for (const auto& e : getEggStates())
 		if (!e->isDestroyed()) e->draw();
 }
 

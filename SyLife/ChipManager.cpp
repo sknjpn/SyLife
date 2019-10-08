@@ -92,7 +92,7 @@ void ChipManager::drawChips()
 			.draw(c->getColor())
 			.drawFrame(2.0, Palette::White);
 
-		auto v = g_waveManagerPtr->GetWaveVelocity(p * m_length);
+		auto v = g_waveManagerPtr->getWaveVelocity(p * m_length);
 		Line(p * m_length, p * m_length + v * 50)
 			.movedBy(m_length / 2.0, m_length / 2.0)
 			.drawArrow(5.0, Vec2(10, 10));
@@ -103,7 +103,7 @@ void ChipManager::updateChips()
 {
 	for (const auto& c : m_chips)
 	{
-		auto d = g_waveManagerPtr->GetWaveVelocity(c->getCenter()) * 0.05;
+		auto d = g_waveManagerPtr->getWaveVelocity(c->getCenter()) * 0.05;
 		double l = 0.1;
 		RectF rect = RectF(-l, -l, 1.0 + l + l, 1.0 + l + l).movedBy(d);
 		double value = c->m_nutrition / (1.0 + l + l) * (1.0 + l + l);

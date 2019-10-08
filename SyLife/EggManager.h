@@ -29,13 +29,13 @@ public:
 	}
 
 	// Get
-	Array<shared_ptr<EggState>>& GetEggStates() { return m_eggStates; }
-	const Array<shared_ptr<EggState>>& GetEggStates() const { return m_eggStates; }
-	const KDTree<EggStateAdapter>& GetEggStateKDTree() const { return m_eggStateKDTree; }
+	Array<shared_ptr<EggState>>& getEggStates() { return m_eggStates; }
+	const Array<shared_ptr<EggState>>& getEggStates() const { return m_eggStates; }
+	const KDTree<EggStateAdapter>& getEggStateKDTree() const { return m_eggStateKDTree; }
 
-	const shared_ptr<EggState>& AddEggState(const shared_ptr<CellAsset>& cellModel);
+	const shared_ptr<EggState>& addEggState(const shared_ptr<CellAsset>& cellModel);
 
-	void	UpdateEggStates();
+	void	updateEggStates();
 	void	drawEggStates();
 };
 

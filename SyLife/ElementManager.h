@@ -31,14 +31,14 @@ public:
 
 	int NumElement(const shared_ptr<ElementModel>& model);
 
-	const shared_ptr<ElementState>& AddElementState(const shared_ptr<ElementModel>& model);
-	const shared_ptr<ElementState>& AddElementState(const shared_ptr<ElementModel>& model, const Vec2& position);
+	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementModel>& model);
+	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementModel>& model, const Vec2& position);
 
-	void	AddElementsRandom(const shared_ptr<ElementModel>& model, size_t size);
+	void	addElementsRandom(const shared_ptr<ElementModel>& model, size_t size);
 
 	// Get
-	const Array<shared_ptr<ElementState>>& GetElementStates() const { return m_elementStates; }
-	const KDTree<ElementStateAdapter>& GetElementStateKDTree() const { return m_elementStateKDTree; }
+	const Array<shared_ptr<ElementState>>& getElementStates() const { return m_elementStates; }
+	const KDTree<ElementStateAdapter>& getElementStateKDTree() const { return m_elementStateKDTree; }
 
 	void	updateElementStates();
 	void	drawElementStates();

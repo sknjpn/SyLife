@@ -29,10 +29,10 @@ public:
 	}
 
 	// Get
-	Array<shared_ptr<CellState>>& GetCellStates() { return m_cellStates; }
-	const Array<shared_ptr<CellState>>& GetCellStates() const { return m_cellStates; }
-	KDTree<CellStateAdapter>& GetCellStateKDTree() { return m_cellStateKDTree; }
-	const KDTree<CellStateAdapter>& GetCellStateKDTree() const { return m_cellStateKDTree; }
+	Array<shared_ptr<CellState>>& getCellStates() { return m_cellStates; }
+	const Array<shared_ptr<CellState>>& getCellStates() const { return m_cellStates; }
+	KDTree<CellStateAdapter>& getCellStateKDTree() { return m_cellStateKDTree; }
+	const KDTree<CellStateAdapter>& getCellStateKDTree() const { return m_cellStateKDTree; }
 
 	const shared_ptr<CellState>& addCellState(const shared_ptr<CellAsset>& model);
 

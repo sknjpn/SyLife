@@ -12,9 +12,9 @@ class WaveManager
 public:
 	WaveManager();
 
-	Vec2	GetWaveVelocity(const Vec2& position) const;
+	Vec2	getWaveVelocity(const Vec2& position) const;
 
-	void	UpdateWave();
+	void	updateWave();
 	void	drawWave() const;
 };
 

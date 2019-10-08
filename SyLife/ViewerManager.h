@@ -17,7 +17,7 @@ public:
 	shared_ptr<T>	makeViewer(Args&& ...args) { auto v = dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); v->init(); return v; }
 
 	template<typename T>
-	shared_ptr<T> GetViewer() const
+	shared_ptr<T> getViewer() const
 	{
 		for (const auto& v : m_viewers)
 			if (dynamic_pointer_cast<T>(v) != nullptr) return dynamic_pointer_cast<T>(v);
@@ -26,10 +26,10 @@ public:
 	}
 
 	template <typename T>
-	bool	HasViewer() const { return GetViewer<T>() != nullptr; }
+	bool	hasViewer() const { return getViewer<T>() != nullptr; }
 
 	template <typename T>
-	void	DeleteViewer()
+	void	deleteViewer()
 	{
 		// m_viewers.erase(remove_if(m_viewers.begin(), m_viewers.end(), [](const auto& v) { return dynamic_pointer_cast<T>(v) != nullptr; }), m_viewers.end()); 
 
@@ -38,7 +38,7 @@ public:
 			if (dynamic_pointer_cast<T>(v) != nullptr) v = nullptr;
 	}
 
-	void	ClearViewers()
+	void	clearViewers()
 	{
 		// nullptrにすることで、配列の配置を変えない
 		for (auto& v : m_viewers) v = nullptr;

@@ -34,7 +34,7 @@ public:
 	shared_ptr<Asset>	getAsset(const string& name) const;
 
 	template <typename T>
-	Array<shared_ptr<T>>	GetAssets() const
+	Array<shared_ptr<T>>	getAssets() const
 	{
 		Array<shared_ptr<T>> tAssets;
 

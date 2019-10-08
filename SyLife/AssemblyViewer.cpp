@@ -65,14 +65,14 @@ void AssemblyViewer::update()
 	}
 
 	// selectedPart
-	if (g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart != nullptr)
+	if (g_viewerManagerPtr->getViewer<PartPaletteViewer>()->m_selectedPart != nullptr)
 	{
 		if (IsMouseOver())
 		{
 			{
 				auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& s : g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart->getShapes())
+				for (const auto& s : g_viewerManagerPtr->getViewer<PartPaletteViewer>()->m_selectedPart->getShapes())
 				{
 					s.draw(0.5);
 					s.GetPolygon().drawFrame(2.0, Palette::White);
@@ -83,13 +83,13 @@ void AssemblyViewer::update()
 			{
 				const auto& partConfig = getModel<CellAsset>()->addPartConfig();
 
-				partConfig->setModel(g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart);
+				partConfig->setModel(g_viewerManagerPtr->getViewer<PartPaletteViewer>()->m_selectedPart);
 				partConfig->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 				partConfig->setRotation(0.0);
 			}
 		}
 
-		if (!MouseL.pressed()) g_viewerManagerPtr->GetViewer<PartPaletteViewer>()->m_selectedPart = nullptr;
+		if (!MouseL.pressed()) g_viewerManagerPtr->getViewer<PartPaletteViewer>()->m_selectedPart = nullptr;
 	}
 
 	getModel<CellAsset>()->updateProperties();

@@ -25,9 +25,9 @@ void NeedleState::update(CellState& cellState)
 		auto p = cell.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up() * 50.0);
 
 
-		for (auto i : g_cellManagerPtr->GetCellStateKDTree().knnSearch(1, p))
+		for (auto i : g_cellManagerPtr->getCellStateKDTree().knnSearch(1, p))
 		{
-			auto& t = g_cellManagerPtr->GetCellStates()[i];
+			auto& t = g_cellManagerPtr->getCellStates()[i];
 
 			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_model != cell.m_model)
 			{

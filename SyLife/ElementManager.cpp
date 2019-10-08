@@ -2,7 +2,7 @@
 
 unique_ptr<ElementManager> g_elementManagerPtr;
 
-const shared_ptr<ElementState>& ElementManager::AddElementState(const shared_ptr<ElementModel>& model)
+const shared_ptr<ElementState>& ElementManager::addElementState(const shared_ptr<ElementModel>& model)
 {
 	const auto& m = m_newElementStates.emplace_back(make_shared<ElementState>());
 
@@ -11,9 +11,9 @@ const shared_ptr<ElementState>& ElementManager::AddElementState(const shared_ptr
 	return m;
 }
 
-const shared_ptr<ElementState>& ElementManager::AddElementState(const shared_ptr<ElementModel>& model, const Vec2& position)
+const shared_ptr<ElementState>& ElementManager::addElementState(const shared_ptr<ElementModel>& model, const Vec2& position)
 {
-	const auto& m = AddElementState(model);
+	const auto& m = addElementState(model);
 	m->SetPosition(position);
 	m->setVelocity(RandomVec2(Random(100.0)));
 
@@ -22,7 +22,7 @@ const shared_ptr<ElementState>& ElementManager::AddElementState(const shared_ptr
 
 void ElementManager::updateElementStates()
 {
-	for (const auto& e : GetElementStates())
+	for (const auto& e : getElementStates())
 	{
 		if (!e->isDestroyed())
 		{
@@ -43,22 +43,22 @@ void ElementManager::updateElementStates()
 
 void ElementManager::drawElementStates()
 {
-	for (const auto& e : GetElementStates())
+	for (const auto& e : getElementStates())
 		if (!e->isDestroyed()) e->draw();
 }
 
 int ElementManager::NumElement(const shared_ptr<ElementModel>& model)
 {
-	return static_cast<int>(count_if(GetElementStates().begin(), GetElementStates().end(), [&model](const auto& m) { return m->getModel() == model; }));
+	return static_cast<int>(count_if(getElementStates().begin(), getElementStates().end(), [&model](const auto& m) { return m->getModel() == model; }));
 }
 
-void ElementManager::AddElementsRandom(const shared_ptr<ElementModel>& model, size_t size)
+void ElementManager::addElementsRandom(const shared_ptr<ElementModel>& model, size_t size)
 {
 	for (int i = 0; i < size; i++)
 	{
 		auto p = RandomVec2(Random(1000));
 
-		const auto& m = g_elementManagerPtr->AddElementState(model);
+		const auto& m = g_elementManagerPtr->addElementState(model);
 		m->SetPosition(Vec2(p.x, p.y));
 
 		m->init();

@@ -31,10 +31,10 @@ void CellState::updateCell()
 {
 	// 衝突処理
 	{
-		auto result = g_cellManagerPtr->GetCellStateKDTree().knnSearch(2, getPosition());
+		auto result = g_cellManagerPtr->getCellStateKDTree().knnSearch(2, getPosition());
 		if (result.size() == 2)
 		{
-			auto& t = g_cellManagerPtr->GetCellStates()[result[1]];
+			auto& t = g_cellManagerPtr->getCellStates()[result[1]];
 
 			if (t->getPosition() != getPosition() && (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length()) > 0)
 			{
@@ -54,9 +54,9 @@ void CellState::updateCell()
 
 	// 接触したElementStateの取り込み
 	/*
-	for (auto i : g_elementManagerPtr->GetElementStateKDTree().knnSearch(1, getPosition()))
+	for (auto i : g_elementManagerPtr->getElementStateKDTree().knnSearch(1, getPosition()))
 	{
-		auto& m = g_elementManagerPtr->GetElementStates()[i];
+		auto& m = g_elementManagerPtr->getElementStates()[i];
 
 		if (!m->isDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) TakeElement(m);
 	}
@@ -109,7 +109,7 @@ void CellState::updateCell()
 				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 				// 吐き出されたElementState
-				const auto& ms = g_elementManagerPtr->AddElementState(m.first);
+				const auto& ms = g_elementManagerPtr->addElementState(m.first);
 				ms->setPosition(getPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
 				ms->setVelocity(v * 0.1);
 			}
@@ -163,7 +163,7 @@ void CellState::ExpireElement(const shared_ptr<ElementAsset>& model, unsigned in
 		auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 		// 吐き出されたElementState
-		const auto& t = g_elementManagerPtr->AddElementState(model);
+		const auto& t = g_elementManagerPtr->addElementState(model);
 		t->setPosition(getPosition() + v * (getRadius() + model->getRadius()));
 		t->setVelocity(v * 0.5);
 

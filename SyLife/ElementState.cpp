@@ -13,9 +13,9 @@ void ElementState::updateElement()
 	// Amino Acidの分解
 	if (m_model->GetName() == "Amino Acid" && RandomBool(0.1))
 	{
-		g_elementManagerPtr->AddElementState(g_assetManagerPtr->getModel<ElementModel>("Nitrogen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
-		g_elementManagerPtr->AddElementState(g_assetManagerPtr->getModel<ElementModel>("Carbon"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
-		g_elementManagerPtr->AddElementState(g_assetManagerPtr->getModel<ElementModel>("Oxygen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->addElementState(g_assetManagerPtr->getModel<ElementModel>("Nitrogen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->addElementState(g_assetManagerPtr->getModel<ElementModel>("Carbon"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_elementManagerPtr->addElementState(g_assetManagerPtr->getModel<ElementModel>("Oxygen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
 
 		destroy();
 		return;

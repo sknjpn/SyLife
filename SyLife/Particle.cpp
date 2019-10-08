@@ -20,7 +20,7 @@ void Particle::updateParticle()
 	else
 	{
 		// 摩擦抵抗
-		auto waveVelocity = g_waveManagerPtr->GetWaveVelocity(m_position);
+		auto waveVelocity = g_waveManagerPtr->getWaveVelocity(m_position);
 		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.95;
 	}
 }

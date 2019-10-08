@@ -32,7 +32,7 @@ public:
 		// Models
 		{
 			MoveDrawPos(16, 0);
-			const auto& models = g_assetManagerPtr->getModels<T>();
+			const auto& models = g_assetManagerPtr->getAssets<T>();
 			for (auto it = models.begin(); it != models.end(); ++it)
 			{
 				auto f = font10(Unicode::Widen((*it)->getName()));

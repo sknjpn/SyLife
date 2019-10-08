@@ -57,9 +57,9 @@ void FieldViewer::update()
 		for (int i = 0; i < speed; ++i)
 		{
 			g_terrainManagerPtr->UpdateTerrain();
-			g_waveManagerPtr->UpdateWave();
+			g_waveManagerPtr->updateWave();
 			g_cellManagerPtr->updateCellStates();
-			g_eggManagerPtr->UpdateEggStates();
+			g_eggManagerPtr->updateEggStates();
 			g_chipManagerPtr->updateChips();
 		}
 
@@ -69,14 +69,14 @@ void FieldViewer::update()
 
 			if (MouseL.down())
 			{
-				for (auto i : g_cellManagerPtr->GetCellStateKDTree().knnSearch(1, Cursor::PosF()))
+				for (auto i : g_cellManagerPtr->getCellStateKDTree().knnSearch(1, Cursor::PosF()))
 				{
-					auto& cell = g_cellManagerPtr->GetCellStates()[i];
+					auto& cell = g_cellManagerPtr->getCellStates()[i];
 
 					if (cell->getRadius() > (cell->getPosition() - Cursor::PosF()).length())
 					{
 						selectedRigidbody = cell;
-						g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cell);
+						g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cell);
 					}
 				}
 			}
@@ -101,10 +101,10 @@ void FieldViewer::update()
 			Circle circle(Cursor::PosF(), 128.0);
 			circle.draw(ColorF(Palette::Red, 0.5));
 
-			for (const auto& c : g_cellManagerPtr->GetCellStates())
+			for (const auto& c : g_cellManagerPtr->getCellStates())
 				if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
-			for (const auto& e : g_eggManagerPtr->GetEggStates())
+			for (const auto& e : g_eggManagerPtr->getEggStates())
 			{
 				if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
 				{
@@ -120,7 +120,7 @@ void FieldViewer::update()
 							auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 							// 吐き出されたElementState
-							const auto& ms = g_elementManagerPtr->AddElementState(m.first);
+							const auto& ms = g_elementManagerPtr->addElementState(m.first);
 							ms->setPosition(e->getPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
 							ms->setVelocity(v * 0.1);
 						}
@@ -129,9 +129,9 @@ void FieldViewer::update()
 			}
 		}
 
-		auto rv = g_viewerManagerPtr->GetViewer<ReleaseViewer>();
-		auto ppv = g_viewerManagerPtr->GetViewer<PartPaletteViewer>();
-		auto av = g_viewerManagerPtr->GetViewer<AssemblyViewer>();
+		auto rv = g_viewerManagerPtr->getViewer<ReleaseViewer>();
+		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
+		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
 
 		if (rv->m_isDragged && IsMouseOver())
 		{
@@ -164,7 +164,7 @@ void FieldViewer::update()
 		}
 
 		{
-			const auto& cs = g_viewerManagerPtr->GetViewer<CellStateViewer>()->m_cellState;
+			const auto& cs = g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState;
 
 			if (cs != nullptr)
 			{
