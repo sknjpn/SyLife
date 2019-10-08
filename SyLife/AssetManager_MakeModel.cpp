@@ -9,18 +9,18 @@
 #include "WingModel.h"
 #include "NeedleModel.h"
 
-shared_ptr<Model> AssetManager::makeModel(const string& name, const string& type)
+shared_ptr<Model> AssetManager::makeAsset(const string& name, const string& type)
 {
-	if (type == "CellModel")		return makeModel<CellModel>(name);
-	if (type == "MoleculeModel")	return makeModel<MoleculeModel>(name);
+	if (type == "CellModel")		return makeAsset<CellModel>(name);
+	if (type == "MoleculeModel")	return makeAsset<MoleculeModel>(name);
 
-	if (type == "BodyModel")		return makeModel<BodyModel>(name);
-	if (type == "EquipmentModel")	return makeModel<EquipmentModel>(name);
-	if (type == "ModuleModel")		return makeModel<ModuleModel>(name);
+	if (type == "BodyModel")		return makeAsset<BodyModel>(name);
+	if (type == "EquipmentModel")	return makeAsset<EquipmentModel>(name);
+	if (type == "ModuleModel")		return makeAsset<ModuleModel>(name);
 
-	if (type == "SynthesizerModel")	return makeModel<SynthesizerModel>(name);
-	if (type == "WingModel")		return makeModel<WingModel>(name);
-	if (type == "NeedleModel")		return makeModel<NeedleModel>(name);
+	if (type == "SynthesizerModel")	return makeAsset<SynthesizerModel>(name);
+	if (type == "WingModel")		return makeAsset<WingModel>(name);
+	if (type == "NeedleModel")		return makeAsset<NeedleModel>(name);
 
 	return nullptr;
 }

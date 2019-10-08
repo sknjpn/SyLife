@@ -1,4 +1,4 @@
-﻿#include "Model.h"
+﻿#include "Asset.h"
 #include "AssetManager.h"
 
 unique_ptr<AssetManager>	g_assetManagerPtr;
@@ -18,7 +18,7 @@ void AssetManager::Init()
 
 		read_json(filepath, pt);
 
-		makeModel(pt.get<string>("name"), pt.get<string>("type"));
+		makeAsset(pt.get<string>("name"), pt.get<string>("type"));
 	}
 
 	for (const auto& m : m_models)
@@ -35,7 +35,7 @@ void AssetManager::Init()
 		{
 			LOG_ERROR(U"JSONアセットの読み込みに問題が発生しました");
 			LOG_ERROR(U" What:" + Unicode::Widen(string(e.what())));
-			LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
+			LOG_ERROR(U" Asset:" + Unicode::Widen(pt.get<string>("type")));
 			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->getFilepath()));
 
 			System::Exit();
@@ -43,7 +43,7 @@ void AssetManager::Init()
 		catch (Error& e)
 		{
 			LOG_ERROR(U" What:" + e.what());
-			LOG_ERROR(U" Model:" + Unicode::Widen(pt.get<string>("type")));
+			LOG_ERROR(U" Asset:" + Unicode::Widen(pt.get<string>("type")));
 			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->getFilepath()));
 
 			System::Exit();
@@ -51,10 +51,10 @@ void AssetManager::Init()
 	}
 }
 
-shared_ptr<Model> AssetManager::getModel(const string& name) const
+shared_ptr<Asset> AssetManager::getAsset(const string& name) const
 {
 	for (auto it = m_models.begin(); it != m_models.end(); ++it)
-		if ((*it)->getName() == name && dynamic_pointer_cast<Model>(*it) != nullptr) return dynamic_pointer_cast<Model>(*it);
+		if ((*it)->getName() == name && dynamic_pointer_cast<Asset>(*it) != nullptr) return dynamic_pointer_cast<Asset>(*it);
 
 	return nullptr;
 }
