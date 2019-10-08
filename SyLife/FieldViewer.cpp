@@ -13,6 +13,8 @@
 #include "ReleaseViewer.h"
 #include "CellStateViewer.h"
 
+#include "Rigidbody.h"
+#include "CellState.h"
 #include "EggState.h"
 
 FieldViewer::FieldViewer()
