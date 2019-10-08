@@ -299,12 +299,6 @@
     <ClCompile Include="AssemblyViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
     </ClCompile>
-    <ClCompile Include="AssetViewer.cpp">
-      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetViewer_SetSelectedModel.cpp">
-      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
-    </ClCompile>
     <ClCompile Include="PartShapeViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
     </ClCompile>
@@ -313,6 +307,12 @@
     </ClCompile>
     <ClCompile Include="ReleaseViewer.cpp">
       <Filter>Source Files\SyLife\Viewer\Field\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetsViewer.cpp">
+      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetsViewer_SetSelectedModel.cpp">
+      <Filter>Source Files\SyLife\Viewer\Editor\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -702,10 +702,10 @@
     <ClInclude Include="ReleaseViewer.h">
       <Filter>Source Files\SyLife\Viewer\Field</Filter>
     </ClInclude>
-    <ClInclude Include="AssetViewer.h">
+    <ClInclude Include="PartShapeViewer.h">
       <Filter>Source Files\SyLife\Viewer\Editor</Filter>
     </ClInclude>
-    <ClInclude Include="PartShapeViewer.h">
+    <ClInclude Include="AssetsViewer.h">
       <Filter>Source Files\SyLife\Viewer\Editor</Filter>
     </ClInclude>
   </ItemGroup>

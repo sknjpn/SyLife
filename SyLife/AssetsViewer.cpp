@@ -1,4 +1,4 @@
-﻿#include "AssetViewer.h"
+﻿#include "AssetsViewer.h"
 #include "AddModelViewer.h"
 #include "CellAsset.h"
 #include "Molecule.h"
@@ -9,7 +9,7 @@
 
 #include "ViewerManager.h"
 
-void AssetViewer::update()
+void AssetsViewer::update()
 {
 	DrawModels<CellAsset>("CellAsset");
 	DrawModels<MoleculeAsset>("MoleculeAsset");

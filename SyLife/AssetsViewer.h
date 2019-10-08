@@ -5,13 +5,13 @@
 
 #include "AssetManager.h"
 
-class AssetViewer
+class AssetsViewer
 	: public Viewer
 {
 	shared_ptr<Model>	m_selectedModel;
 
 public:
-	AssetViewer()
+	AssetsViewer()
 	{
 		SetDrawRect(0, 0, 400, 1080);
 	}

@@ -70,11 +70,11 @@
       <FileName>AssemblyViewer.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AssetViewer" Collapsed="true">
+  <Class Name="AssetsViewer" Collapsed="true">
     <Position X="43.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAABBAAAEAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>AssetViewer.h</FileName>
+      <FileName>AssetsViewer.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CellStateViewer" Collapsed="true">
