@@ -1,17 +1,18 @@
 ﻿#include "WingState.h"
 
+#include "WingAsset.h"
 #include "PartConfig.h"
 
-#include "Cell.h"
+#include "CellState.h"
 
-void WingState::draw(const CellState& cell) const
+void WingState::draw(const CellState& cellState) const
 {
 	auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingAsset>(getPartConfig()->getModel())->m_isRight ? m_p : -m_p));
 
 	getPartConfig()->getModel()->draw();
 }
 
-void WingState::update(CellState& cell)
+void WingState::update(CellState& cellState)
 {
 	if ((m_timer++) == 60)
 	{
@@ -32,7 +33,7 @@ void WingState::update(CellState& cell)
 	m_v *= 0.95;
 }
 
-void WingState::flap(CellState& cell)
+void WingState::flap(CellState& cellState)
 {
 	cell.addImpulseInLocal(Vec2::Up() * 10000.0, getPartConfig()->getPosition());
 }

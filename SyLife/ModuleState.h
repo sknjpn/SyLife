@@ -6,6 +6,6 @@ class ModuleState
 	: public PartState
 {
 public:
-	void	draw(const CellState& cell) const override;
-	void	update(CellState& cell) override;
+	void	draw(const CellState& cellState) const override;
+	void	update(CellState& cellState) override;
 };

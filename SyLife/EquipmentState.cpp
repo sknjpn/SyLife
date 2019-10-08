@@ -3,11 +3,11 @@
 
 #include "PartConfig.h"
 
-void EquipmentState::draw(const CellState& cell) const
+void EquipmentState::draw(const CellState& cellState) const
 {
 	getPartConfig()->getModel()->draw();
 }
 
-void EquipmentState::update(CellState& cell)
+void EquipmentState::update(CellState& cellState)
 {
 }
