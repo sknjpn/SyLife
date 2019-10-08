@@ -3,8 +3,9 @@
 #include "ViewerManager.h"
 
 #include "PartPaletteViewer.h"
-#include "Cell.h"
+#include "CellModel.h"
 #include "PartModel.h"
+#include "PartConfig.h"
 
 AssemblyViewer::AssemblyViewer()
 {
