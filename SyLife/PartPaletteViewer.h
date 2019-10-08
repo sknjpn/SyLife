@@ -19,6 +19,7 @@ public:
 	}
 
 	const shared_ptr<PartAsset>& getSelectedPart() const { return m_selectedPart; }
+
 	void	clearSelectedPart() { m_selectedPart = nullptr; }
 
 	template <typename T>

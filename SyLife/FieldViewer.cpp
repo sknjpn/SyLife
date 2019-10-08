@@ -14,7 +14,10 @@
 #include "CellStateViewer.h"
 
 #include "Rigidbody.h"
+#include "CellAsset.h"
 #include "CellState.h"
+#include "PartAsset.h"
+#include "PartConfig.h"
 #include "EggState.h"
 
 FieldViewer::FieldViewer()
@@ -36,9 +39,9 @@ void FieldViewer::init()
 {
 	// 付属Viewerの初期化
 	m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
-	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->setModel(m_newModel);
-	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setModel(m_newModel);
-	g_viewerManagerPtr->makeViewer<ReleaseViewer>()->setModel(m_newModel);
+	g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
+	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setCellAsset(m_newModel);
+	g_viewerManagerPtr->makeViewer<ReleaseViewer>()->setCellAsset(m_newModel);
 
 	g_viewerManagerPtr->makeViewer<CellStateViewer>();
 }
@@ -137,13 +140,13 @@ void FieldViewer::update()
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
 
-		if (rv->m_isDragged && IsMouseOver())
+		if (rv->isDragged() && IsMouseOver())
 		{
 			// part
 			{
 				auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& p : rv->getModel<CellAsset>()->getPartConfigs())
+				for (const auto& p : m_newModel->getPartConfigs())
 				{
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition()));
@@ -155,15 +158,14 @@ void FieldViewer::update()
 
 			if (MouseL.up())
 			{
-				const auto& c = g_cellManagerPtr->addCellState(rv->getModel<CellAsset>());
+				const auto& c = g_cellManagerPtr->addCellState(m_newModel);
 				c->setPosition(Cursor::PosF());
 				c->setVelocity(Vec2::Zero());
 				c->init();
 
 				m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
-				ppv->setModel(m_newModel);
-				av->setModel(m_newModel);
-				rv->setModel(m_newModel);
+				av->setCellAsset(m_newModel);
+				rv->setCellAsset(m_newModel);
 			}
 		}
 
