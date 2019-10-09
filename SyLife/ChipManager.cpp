@@ -66,7 +66,7 @@ void ChipManager::init()
 
 	for (auto p : step(m_chips.size()))
 	{
-		m_chips[p]->m_nutrition = Random(1.0);
+		m_chips[p]->m_nutrition = 50;
 	}
 }
 
