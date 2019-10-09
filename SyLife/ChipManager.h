@@ -11,10 +11,10 @@ class ChipManager
 public:
 	ChipManager();
 
-	Point	getPoint(const Vec2& position) const;
+	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_length), int(position.y / m_length)); }
 
-	shared_ptr<Chip>& getChip(const Vec2& position) { return m_chips[getPoint(position)]; }
-	const shared_ptr<Chip>& getChip(const Vec2& position) const { return m_chips[getPoint(position)]; }
+	shared_ptr<Chip> getChip(const Point& point) { return m_rect.contains(point) ? m_chips[point] : nullptr; }
+	shared_ptr<Chip> getChip(const Vec2& position) { return getChip(getPoint(position)); }
 
 	void	init();
 	void	drawChips();
