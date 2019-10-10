@@ -1,5 +1,8 @@
 ﻿#include "ElementState.h"
 
+#include "ChipManager.h"
+#include "ElementManager.h"
+
 #include "ElementAsset.h"
 
 void ElementState::setElementAsset(const shared_ptr<ElementAsset>& elementAsset)
@@ -11,18 +14,17 @@ void ElementState::setElementAsset(const shared_ptr<ElementAsset>& elementAsset)
 
 void ElementState::updateElement()
 {
-	/*
-	// Amino Acidの分解
-	if (m_elementAsset->GetName() == "Amino Acid" && RandomBool(0.1))
+	// 分解
+	if (RandomBool(0.01))
 	{
-		g_elementManagerPtr->addElementState(g_assetManagerPtr->getelementAsset<ElementelementAsset>("Nitrogen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
-		g_elementManagerPtr->addElementState(g_assetManagerPtr->getelementAsset<ElementelementAsset>("Carbon"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
-		g_elementManagerPtr->addElementState(g_assetManagerPtr->getelementAsset<ElementelementAsset>("Oxygen"), GetPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		g_chipManagerPtr->addNutrition(getPosition(), m_elementAsset->getMaterial().getNutrition());
+
+		for(const auto& e : m_elementAsset->getMaterial().getElementList())
+			g_elementManagerPtr->addElementState(e.first, getPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
 
 		destroy();
 		return;
 	}
-	*/
 
 	// if (RandomBool(0.01)) destroy();
 }
