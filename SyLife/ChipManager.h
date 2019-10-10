@@ -6,6 +6,7 @@ class ChipManager
 {
 	Grid<shared_ptr<Chip>> m_chips;
 	Rect	m_rect;
+	Vec2	m_size;
 	double	m_length;
 
 public:
@@ -13,7 +14,7 @@ public:
 
 	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_length), int(position.y / m_length)); }
 
-	shared_ptr<Chip> getChip(const Point& point) const { return m_rect.contains(point) ? m_chips[point] : nullptr; }
+	shared_ptr<Chip> getChip(const Point& point) const;
 	shared_ptr<Chip> getChip(const Vec2& position) const { return getChip(getPoint(position)); }
 
 	void	init();
