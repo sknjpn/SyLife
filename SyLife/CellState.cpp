@@ -5,11 +5,13 @@
 #include "EggManager.h"
 #include "CellManager.h"
 #include "ChipManager.h"
+#include "ElementManager.h"
 
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartState.h"
 
+#include "ElementAsset.h"
 #include "ElementState.h"
 
 #include "EggState.h"
@@ -108,11 +110,10 @@ void CellState::updateCell()
 		g_chipManagerPtr->addNutrition(getPosition(), m_storage.getNutrition() + m_model->getMaterial().getNutrition());
 
 		// ElementStateの吐き出し
-		/*
 		auto s = m_storage + m_model->getMaterial();
-		for (const auto& m : s.GetElements())
+		for (const auto& m : s.getElementList())
 		{
-			for (unsigned int i = 0; i < m.second; i++)
+			for (int i = 0; i < m.second; i++)
 			{
 				// 吐き出す方向
 				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
@@ -123,7 +124,6 @@ void CellState::updateCell()
 				ms->setVelocity(v * 0.1);
 			}
 		}
-		*/
 
 		destroy();
 	}
