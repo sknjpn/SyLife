@@ -8,6 +8,8 @@
 
 void CellMakingViewer::init()
 {
+	m_isOpened = false;
+
 	// Viewerの初期化
 	g_viewerManagerPtr->makeViewer<AssemblyViewer>();
 	g_viewerManagerPtr->makeViewer<ReleaseViewer>();
@@ -16,4 +18,12 @@ void CellMakingViewer::init()
 
 void CellMakingViewer::update()
 {
+	if (m_isOpened)
+	{
+
+	}
+	else
+	{
+
+	}
 }
