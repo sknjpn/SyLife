@@ -39,6 +39,8 @@ void CellMakingViewer::update()
 					isClicked = false;
 
 					open();
+
+					return;
 				}
 
 				if (isClicked && MouseL.pressed()) setBackgroundColor(ColorF(1.0, 0.3));
