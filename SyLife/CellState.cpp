@@ -104,6 +104,9 @@ void CellState::updateCell()
 	// 死亡処理
 	if (m_deathTimer <= 0.0)
 	{
+		// Nutritionの吐き出し
+		g_chipManagerPtr->addNutrition(getPosition(), m_storage.getNutrition() + m_model->getMaterial().getNutrition());
+
 		// ElementStateの吐き出し
 		/*
 		auto s = m_storage + m_model->getMaterial();
