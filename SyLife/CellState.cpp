@@ -65,7 +65,12 @@ void CellState::updateCell()
 	{
 		auto& m = g_elementManagerPtr->getElementStates()[i];
 
-		if (!m->isDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) takeElement(m);
+		if (!m->isDestroyed() &&
+			(m->getPosition() - getPosition()).length() - getRadius() < 0.0 &&
+			m_model->getMaxStorage().numElement(m->getModel()) > m_storage.numElement(m->getModel()))
+		{
+			takeElement(m);
+		}
 	}
 
 	// 余剰のElementStateの投棄
