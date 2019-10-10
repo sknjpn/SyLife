@@ -8,14 +8,14 @@
 
 void	PartPaletteViewer::update()
 {
-	Rect(64, 0, 16, 400).stretched(-2).drawFrame(1.0, Palette::White);
+	RectF(m_itemWidth, 0, m_barWidth, 400).stretched(-2).drawFrame(1.0, Palette::White);
 
 	// Bar
 	{
 		static bool barPressed = false;
 		static double barDelta = 0.0;
 		static double barPosition = 0.0;
-		auto r = Rect(64, int(Math::Lerp<int>(0, 400 - 48, m_bar)), 16, 48).stretched(-4);
+		auto r = RectF(m_itemWidth, int(Math::Lerp<int>(0, 400 - 60, m_bar)), m_barWidth, 60).stretched(-4);
 
 		if (r.leftClicked())
 		{
@@ -30,7 +30,7 @@ void	PartPaletteViewer::update()
 		{
 			barDelta += Cursor::DeltaF().y;
 
-			m_bar = Clamp<double>((barPosition + barDelta) / double(400 - 48), 0.0, 1.0);
+			m_bar = Clamp<double>((barPosition + barDelta) / double(400 - 60), 0.0, 1.0);
 		}
 		else if (IsMouseOver())
 		{
@@ -41,11 +41,11 @@ void	PartPaletteViewer::update()
 	}
 
 	{
-		const double h = 32 * 3 - 16 + g_assetManagerPtr->getAssets<PartAsset>().size() * 64 - 400.0;
+		const double h = 32 * 3 - 16 + g_assetManagerPtr->getAssets<PartAsset>().size() * m_itemWidth - 400.0;
 
 		MoveDrawPos(0, -h * m_bar);
 
-		drawModels<BodyAsset>("BodyAsset.h");
+		drawModels<BodyAsset>("BodyAsset");
 		drawModels<EquipmentAsset>("EquipmentAsset");
 		drawModels<ModuleAsset>("ModuleAsset");
 	}
