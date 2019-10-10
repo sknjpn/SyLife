@@ -9,7 +9,7 @@
 unique_ptr<ChipManager> g_chipManagerPtr;
 
 ChipManager::ChipManager()
-	: m_rect(32, 32)
+	: m_rect(128, 128)
 	, m_length(100)
 {
 
@@ -21,18 +21,19 @@ void ChipManager::init()
 	{
 		const Size size(128, 128);
 
+		m_rect.size = size;
 		m_chips.resize(size);
 
 		for (auto p : step(size))
 			m_chips[p] = MakeShared<Chip>(RectF(p * m_length, Vec2(m_length, m_length)));
 
 		// 結びつきの作成
-		for (auto p : step(size.movedBy(-1, -1)))
+		for (auto p : step(size))
 		{
-			m_chips[p]->m_r = m_chips[p.movedBy(1, 0)];
-			m_chips[p]->m_d = m_chips[p.movedBy(0, 1)];
-			m_chips[p.movedBy(1, 0)]->m_l = m_chips[p];
-			m_chips[p.movedBy(0, 1)]->m_u = m_chips[p];
+			if (p.x != 0) m_chips[p]->m_l = m_chips[p.movedBy(-1, 0)];
+			if (p.y != 0) m_chips[p]->m_u = m_chips[p.movedBy(0, -1)];
+			if (p.x != size.x - 1) m_chips[p]->m_r = m_chips[p.movedBy(1, 0)];
+			if (p.y != size.y - 1) m_chips[p]->m_d = m_chips[p.movedBy(0, 1)];
 		}
 	}
 
@@ -61,12 +62,24 @@ void ChipManager::init()
 
 	for (auto p : step(m_chips.size()))
 	{
-		m_chips[p]->m_nutrition = 50;
+		m_chips[p]->m_nutrition = 10;
 	}
 }
 
 void ChipManager::drawChips()
 {
+	{
+		auto c = getChip(Cursor::PosF());
+
+		ClearPrint();
+		if (c != nullptr) Print << c->getNutrition();
+
+		double sum = 0.0;
+		for (auto p : step(m_rect.size))
+			sum += getChip(p)->getNutrition();
+		Print << sum;
+	}
+
 	// 領域の取得
 	Rect rect;
 	{
@@ -84,8 +97,7 @@ void ChipManager::drawChips()
 		const auto& c = m_chips[p];
 
 		RectF(p * m_length, Vec2(m_length, m_length))
-			.draw(c->getColor())
-			.drawFrame(2.0, Palette::White);
+			.draw(c->getColor());
 
 		auto v = g_waveManagerPtr->getWaveVelocity(p * m_length);
 		Line(p * m_length, p * m_length + v * 50)
@@ -98,16 +110,16 @@ void ChipManager::updateChips()
 {
 	for (const auto& c : m_chips)
 	{
-		auto d = g_waveManagerPtr->getWaveVelocity(c->getCenter()) * 0.05;
-		double l = 0.1;
-		RectF rect = RectF(-l, -l, 1.0 + l + l, 1.0 + l + l).movedBy(d);
-		double value = c->m_nutrition / (1.0 + l + l) * (1.0 + l + l);
+		const Vec2 d = g_waveManagerPtr->getWaveVelocity(c->getCenter()) * 0.005;
+		const double l = 0.01;
+		const double w = 1.0 + l * 2;
+		const RectF rect = RectF(-l, -l, w, w).movedBy(d);
+		const double value = c->m_nutrition / (w * w);
 
-		if (c->m_l && rect.tl().x < 0.0) c->sendTo(c->m_l, value * (-rect.tl().x) * (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)));
+		if (c->m_l != nullptr && rect.tl().x < 0.0) c->sendTo(c->m_l, value * (-rect.tl().x) * (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)));
 		if (c->m_u && rect.tl().y < 0.0) c->sendTo(c->m_u, value * (-rect.tl().y) * (Min(rect.br().x, 1.0) - Max(rect.tl().x, 0.0)));
 		if (c->m_r && rect.br().x > 1.0) c->sendTo(c->m_r, value * (rect.br().x - 1) * (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)));
 		if (c->m_d && rect.br().y > 1.0) c->sendTo(c->m_d, value * (rect.br().y - 1) * (Min(rect.br().x, 1.0) - Max(rect.tl().x, 0.0)));
-
 		if (c->m_l && c->m_l->m_u && rect.tl().x < 0.0 && rect.tl().y < 0.0)
 			c->sendTo(c->m_l->m_u, value * (-rect.tl().x) * (-rect.tl().y));
 
