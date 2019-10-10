@@ -59,6 +59,8 @@ void CellMakingViewer::open()
 {
 	m_isOpened = true;
 
+	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
+
 	// Viewerの初期化
 	g_viewerManagerPtr->makeViewer<AssemblyViewer>();
 	g_viewerManagerPtr->makeViewer<ReleaseViewer>();
