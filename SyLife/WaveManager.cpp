@@ -14,9 +14,9 @@ Vec2 WaveManager::getWaveVelocity(const Vec2& position) const
 {
 	//return (-position * 0.0001) * 100.0;
 
-	auto interval = 250.0;
-	//auto x = perlinNoiseX.noise(Vec3(position.x / interval, position.y / interval, m_timer * 0.15));
-	//auto y = perlinNoiseY.noise(Vec3(position.x / interval, position.y / interval, m_timer * 0.15));
+	auto interval = 300.0;
+	//auto x = perlinNoiseX.noise(Vec3(position.x / interval, position.y / interval, m_timer * 0.05));
+	//auto y = perlinNoiseY.noise(Vec3(position.x / interval, position.y / interval, m_timer * 0.05));
 	auto x = perlinNoiseX.noise(Vec3(position.x / interval, position.y / interval, 0.5));
 	auto y = perlinNoiseY.noise(Vec3(position.x / interval, position.y / interval, 0.5));
 
