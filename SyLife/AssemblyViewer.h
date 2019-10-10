@@ -20,8 +20,6 @@ public:
 public:
 	AssemblyViewer();
 
-	void	setCellAsset(const shared_ptr<CellAsset> cellAsset) { m_cellAsset = cellAsset; }
-
 	void	init() override;
 
 	void	update() override;
