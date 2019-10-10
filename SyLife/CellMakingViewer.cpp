@@ -8,12 +8,7 @@
 
 void CellMakingViewer::init()
 {
-	m_isOpened = false;
-
-	// Viewerの初期化
-	g_viewerManagerPtr->makeViewer<AssemblyViewer>();
-	g_viewerManagerPtr->makeViewer<ReleaseViewer>();
-	g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
+	close();
 }
 
 void CellMakingViewer::update()
@@ -24,6 +19,25 @@ void CellMakingViewer::update()
 	}
 	else
 	{
+		static Font font(32, Typeface::Bold);
 
+		font(U"Create Cell").drawAt(getDrawSize().center());
 	}
+}
+
+void CellMakingViewer::open()
+{
+	m_isOpened = true;
+
+	// Viewerの初期化
+	g_viewerManagerPtr->makeViewer<AssemblyViewer>();
+	g_viewerManagerPtr->makeViewer<ReleaseViewer>();
+	g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
+}
+
+void CellMakingViewer::close()
+{
+	m_isOpened = false;
+
+	setDrawRect(1920 / 2 - 80, 20, 160, 60);
 }
