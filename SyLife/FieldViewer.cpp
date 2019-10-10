@@ -29,8 +29,8 @@ FieldViewer::FieldViewer()
 	m_camera.setRestrictedRect(g_chipManagerPtr->getRect().scaledAt(Vec2::Zero(),g_chipManagerPtr->getLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
-	m_camera.setCenter(Vec2::Zero());
-	m_camera.setTargetCenter(Vec2::Zero());
+	m_camera.setCenter(m_camera.getRestrictedRect()->center());
+	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
 
 	SetDrawRect(Scene::Size());
 	m_audio.setLoop(true);
