@@ -125,7 +125,7 @@ void FieldViewer::update()
 					auto s = e->getCellAsset()->getMaterial();
 					for (const auto& m : s.getElementList())
 					{
-						for (unsigned int i = 0; i < m.second; i++)
+						for (int i = 0; i < m.second; i++)
 						{
 							// 吐き出す方向
 							auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
