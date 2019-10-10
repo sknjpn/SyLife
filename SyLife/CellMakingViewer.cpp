@@ -60,6 +60,9 @@ void CellMakingViewer::open()
 {
 	m_isOpened = true;
 
+	// DrawRectの設定
+	setDrawRect(RectF(1200, 900).setCenter(Scene::CenterF()));
+
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
 
 	// Viewerの初期化
@@ -72,5 +75,6 @@ void CellMakingViewer::close()
 {
 	m_isOpened = false;
 
+	// DrawRectの設定
 	setDrawRect(RectF(200, 50).setCenter(Scene::CenterF().x, 50));
 }
