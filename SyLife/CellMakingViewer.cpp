@@ -19,9 +19,39 @@ void CellMakingViewer::update()
 	}
 	else
 	{
-		static Font font(32, Typeface::Bold);
+		// Push
+		{
+			static bool isClicked = false;
 
-		font(U"Create Cell").drawAt(getDrawSize() / 2.0);
+
+			if (isMouseOver())
+			{
+				if (MouseL.down()) isClicked = true;
+
+				if (MouseL.up())
+				{
+					isClicked = false;
+
+					open();
+				}
+
+				if (isClicked && MouseL.pressed()) setBackgroundColor(ColorF(1.0, 0.3));
+				else setBackgroundColor(ColorF(1.0, 0.5));
+			}
+			else
+			{
+				if (MouseL.up()) isClicked = false;
+
+				setBackgroundColor(ColorF(1.0, 0.1));
+			}
+		}
+
+		// Text
+		{
+			static Font font(32, Typeface::Bold);
+
+			font(U"Create Cell").drawAt(getDrawSize() / 2.0);
+		}
 	}
 }
 

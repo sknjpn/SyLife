@@ -4,9 +4,17 @@
 
 class CellAsset;
 
+class AssemblyViewer;
+class ReleaseViewer;
+class PartPaletteViewer;
+
 class CellMakingViewer :
 	public Viewer
 {
+	friend class AssemblyViewer;
+	friend class ReleaseViewer;
+	friend class PartPaletteViewer;
+
 	bool	m_isOpened;
 	shared_ptr<CellAsset>	m_cellAsset;
 
