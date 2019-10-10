@@ -2,6 +2,7 @@
 
 #include "ViewerManager.h"
 
+#include "CellAsset.h"
 #include "AssemblyViewer.h"
 #include "ReleaseViewer.h"
 #include "PartPaletteViewer.h"
