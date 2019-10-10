@@ -9,7 +9,7 @@
 unique_ptr<ChipManager> g_chipManagerPtr;
 
 ChipManager::ChipManager()
-	: m_rect(128, 128)
+	: m_rect(64, 64)
 	, m_length(100)
 {
 
@@ -19,7 +19,7 @@ void ChipManager::init()
 {
 	// Chips
 	{
-		const Size size(128, 128);
+		const Size size = m_rect.size;
 
 		m_rect.size = size;
 		m_chips.resize(size);
