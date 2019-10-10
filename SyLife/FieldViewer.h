@@ -14,8 +14,6 @@ class FieldViewer
 	Audio		m_audio;
 	Curtain		m_openCurtain;
 	
-	shared_ptr<CellAsset>	m_newModel;
-
 public:
 	FieldViewer();
 
