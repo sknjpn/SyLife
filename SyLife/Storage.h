@@ -7,10 +7,14 @@ class ElementAsset;
 class Storage
 	: public Model
 	, private Array<pair<shared_ptr<ElementAsset>, int>>
-{	
+{
 	double m_nutrition;
 
 public:
+	Storage()
+		: m_nutrition(0.0)
+	{}
+
 	// operator
 	Storage	operator+(const Storage& s) const { return Storage(*this) += s; }
 	Storage	operator-(const Storage& s) const { return Storage(*this) -= s; }
@@ -25,7 +29,7 @@ public:
 	void	pullNutrition(double nutrition) { m_nutrition -= nutrition; }
 
 	// element
-	const Array<pair<shared_ptr<ElementAsset>, int>>&	getElementList() const { return *this; }
+	const Array<pair<shared_ptr<ElementAsset>, int>>& getElementList() const { return *this; }
 	void	addElement(const shared_ptr<ElementAsset>& model, int size = 1);
 	void	pullElement(const shared_ptr<ElementAsset>& model, int size = 1);
 	int		numElement(const shared_ptr<ElementAsset>& model) const;
