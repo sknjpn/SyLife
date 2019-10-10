@@ -61,14 +61,12 @@ void CellState::updateCell()
 	takeNutrition();
 
 	// 接触したElementStateの取り込み
-	/*
 	for (auto i : g_elementManagerPtr->getElementStateKDTree().knnSearch(1, getPosition()))
 	{
 		auto& m = g_elementManagerPtr->getElementStates()[i];
 
 		if (!m->isDestroyed() && (m->getPosition() - getPosition()).length() - getRadius() < 0.0) takeElement(m);
 	}
-	*/
 
 	// 余剰のElementStateの投棄
 	/*
