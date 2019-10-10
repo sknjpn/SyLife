@@ -55,7 +55,7 @@ void CellMakingViewer::update()
 		{
 			static Font font(32, Typeface::Bold);
 
-			font(U"Create Cell").drawAt(getDrawSize() / 2.0);
+			font(U"Create Cell").drawAt(getDrawCenter());
 		}
 	}
 }
