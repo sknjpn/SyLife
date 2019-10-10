@@ -16,7 +16,11 @@ void CellMakingViewer::update()
 {
 	if (m_isOpened)
 	{
+		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
+		auto rv = g_viewerManagerPtr->getViewer<ReleaseViewer>();
+		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 
+		av->setDrawRect(RectF(900, 900).setCenter(getDrawCenter()));
 	}
 	else
 	{
