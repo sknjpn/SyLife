@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{94cee78b-4633-4d79-8d50-f82eda94fcc4}</ProjectGuid>
+    <ProjectGuid>{340bb96b-734d-46c7-a984-7cc899ae3ea4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SyLife</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -44,8 +44,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_0)\include;$(SIV3D_0_4_0)\include\ThirdParty;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SIV3D_0_4_0)\lib\Windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SIV3D_0_4_1)\include;$(SIV3D_0_4_1)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SIV3D_0_4_1)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\Intermediate\</IntDir>
     <TargetName>$(ProjectName)(debug)</TargetName>
@@ -53,8 +53,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_0)\include;$(SIV3D_0_4_0)\include\ThirdParty;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SIV3D_0_4_0)\lib\Windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SIV3D_0_4_1)\include;$(SIV3D_0_4_1)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SIV3D_0_4_1)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\Intermediate\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
@@ -72,8 +72,8 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MinimalRebuild>false</MinimalRebuild>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0\include\boost-1_70</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>C:\boost_1_70_0\include\boost-1_70</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -112,77 +112,13 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddModelViewer.cpp" />
-    <ClCompile Include="AssemblyViewer.cpp" />
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AssetManager_MakeModel.cpp" />
-    <ClCompile Include="Asset.cpp" />
-    <ClCompile Include="AssetEditor.cpp" />
-    <ClCompile Include="AssetsViewer.cpp" />
-    <ClCompile Include="BodyAsset.cpp" />
-    <ClCompile Include="BodyEditor.cpp" />
-    <ClCompile Include="BodyState.cpp" />
-    <ClCompile Include="CellEditor.cpp" />
-    <ClCompile Include="CellManager.cpp" />
-    <ClCompile Include="CellModel.cpp" />
-    <ClCompile Include="CellState.cpp" />
-    <ClCompile Include="CellStateViewer.cpp" />
-    <ClCompile Include="Chip.cpp" />
-    <ClCompile Include="ChipManager.cpp" />
-    <ClCompile Include="EditorViewer.cpp" />
-    <ClCompile Include="EggState.cpp" />
-    <ClCompile Include="EggManager.cpp" />
-    <ClCompile Include="EquipmentAsset.cpp" />
-    <ClCompile Include="EquipmentEditor.cpp" />
-    <ClCompile Include="EquipmentState.cpp" />
-    <ClCompile Include="FieldManager.cpp" />
-    <ClCompile Include="FieldViewer.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ModelEditor.cpp" />
-    <ClCompile Include="ModuleAsset.cpp" />
-    <ClCompile Include="ModuleEditor.cpp" />
-    <ClCompile Include="ModuleState.cpp" />
-    <ClCompile Include="ElementAsset.cpp" />
-    <ClCompile Include="ElementEditor.cpp" />
-    <ClCompile Include="ElementManager.cpp" />
-    <ClCompile Include="ElementState.cpp" />
-    <ClCompile Include="NeedleAsset.cpp" />
-    <ClCompile Include="NeedleEditor.cpp" />
-    <ClCompile Include="NeedleState.cpp" />
-    <ClCompile Include="PartConfig.cpp" />
-    <ClCompile Include="PartAsset.cpp" />
-    <ClCompile Include="PartEditor.cpp" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="PartPaletteViewer.cpp" />
-    <ClCompile Include="PartShapeViewer.cpp" />
-    <ClCompile Include="PartState.cpp" />
-    <ClCompile Include="ReleaseViewer.cpp" />
-    <ClCompile Include="Rigidbody.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="Storage.cpp" />
-    <ClCompile Include="SynthesizerAsset.cpp" />
-    <ClCompile Include="SynthesizerEditor.cpp" />
-    <ClCompile Include="SynthesizerState.cpp" />
-    <ClCompile Include="SystemManager.cpp" />
-    <ClCompile Include="TitleViewer.cpp" />
-    <ClCompile Include="ViewerManager.cpp" />
-    <ClCompile Include="Wave.cpp" />
-    <ClCompile Include="WaveManager.cpp" />
-    <ClCompile Include="WingAsset.cpp" />
-    <ClCompile Include="WingEditor.cpp" />
-    <ClCompile Include="WingState.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
     <Image Include="App\engine\texture\box-shadow\16.png" />
     <Image Include="App\engine\texture\box-shadow\256.png" />
     <Image Include="App\engine\texture\box-shadow\32.png" />
     <Image Include="App\engine\texture\box-shadow\64.png" />
     <Image Include="App\engine\texture\box-shadow\8.png" />
+    <Image Include="App\example\bay.jpg" />
     <Image Include="App\example\particle.png" />
     <Image Include="App\example\siv3d-kun.png" />
     <Image Include="App\example\windmill.png" />
@@ -210,11 +146,12 @@
     <None Include="App\engine\objdetect\haarcascade\face_anime.xml.zstdcmp" />
     <None Include="App\engine\objdetect\haarcascade\frontal_catface.xml.zstdcmp" />
     <None Include="App\engine\objdetect\haarcascade\frontal_face_alt2.xml.zstdcmp" />
-    <None Include="App\engine\shader\fullscreen_triangle.vs" />
+    <None Include="App\engine\shader\copy.ps" />
     <None Include="App\engine\shader\fullscreen_triangle_draw.ps" />
     <None Include="App\engine\shader\fullscreen_triangle_draw.vs" />
     <None Include="App\engine\shader\fullscreen_triangle_resolve.ps" />
     <None Include="App\engine\shader\fullscreen_triangle_resolve.vs" />
+    <None Include="App\engine\shader\gaussian_blur_9.ps" />
     <None Include="App\engine\shader\round_dot.ps" />
     <None Include="App\engine\shader\sdf.ps" />
     <None Include="App\engine\shader\shape.ps" />
@@ -222,22 +159,21 @@
     <None Include="App\engine\shader\square_dot.ps" />
     <None Include="App\engine\shader\texture.ps" />
     <None Include="App\engine\soundfont\GMGSx.sf2.zstdcmp" />
-    <None Include="App\example\countries\countries.csv" />
-    <None Include="App\example\countries\countries.json" />
+    <None Include="App\example\config\config.csv" />
+    <None Include="App\example\config\config.ini" />
+    <None Include="App\example\config\config.json" />
+    <None Include="App\example\config\config.toml" />
     <None Include="App\example\font\NotoSansCJKjp\README" />
     <None Include="App\example\font\Pecita\LICENSE" />
     <None Include="App\example\svm\a1a_testing" />
     <None Include="App\example\svm\a1a_training" />
-    <None Include="App\example\test.ini" />
     <None Include="App\example\test.toml" />
     <None Include="App\nlp\japanese\jumanpp\LICENSE" />
     <None Include="App\nlp\japanese\jumanpp\README.md" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="App\engine\font\fontawesome\LICENSE.txt" />
     <Text Include="App\engine\font\noto\LICENSE_OFL.txt" />
-    <Text Include="App\example\countries\LICENSE.txt" />
     <Text Include="App\example\font\AnnyantRoman\readme.txt" />
     <Text Include="App\example\font\NotoSansCJKjp\LICENSE_OFL.txt" />
     <Text Include="App\example\LICENSE.txt" />
@@ -255,29 +191,134 @@
     <Media Include="App\example\test.mp3" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="App\example\config\config.xml" />
     <Xml Include="App\example\test.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App\example\shader\2d\default_shape.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\default_texture.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\game_of_life.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\grayscale.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\multi_texture_blend.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\multi_texture_mask.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\poisson_disk.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\posterize.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\rgb_shift.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\rgb_to_bgr.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="App\example\shader\2d\swirl.hlsl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AddModelViewer.cpp" />
+    <ClCompile Include="AssemblyViewer.cpp" />
+    <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="AssetEditor.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AssetManager_MakeModel.cpp" />
+    <ClCompile Include="AssetsViewer.cpp" />
+    <ClCompile Include="BodyAsset.cpp" />
+    <ClCompile Include="BodyEditor.cpp" />
+    <ClCompile Include="BodyState.cpp" />
+    <ClCompile Include="CellEditor.cpp" />
+    <ClCompile Include="CellManager.cpp" />
+    <ClCompile Include="CellModel.cpp" />
+    <ClCompile Include="CellState.cpp" />
+    <ClCompile Include="CellStateViewer.cpp" />
+    <ClCompile Include="Chip.cpp" />
+    <ClCompile Include="ChipManager.cpp" />
+    <ClCompile Include="EditorViewer.cpp" />
+    <ClCompile Include="EggManager.cpp" />
+    <ClCompile Include="EggState.cpp" />
+    <ClCompile Include="ElementAsset.cpp" />
+    <ClCompile Include="ElementEditor.cpp" />
+    <ClCompile Include="ElementManager.cpp" />
+    <ClCompile Include="ElementState.cpp" />
+    <ClCompile Include="EquipmentAsset.cpp" />
+    <ClCompile Include="EquipmentEditor.cpp" />
+    <ClCompile Include="EquipmentState.cpp" />
+    <ClCompile Include="FieldManager.cpp" />
+    <ClCompile Include="FieldViewer.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelEditor.cpp" />
+    <ClCompile Include="ModuleAsset.cpp" />
+    <ClCompile Include="ModuleEditor.cpp" />
+    <ClCompile Include="ModuleState.cpp" />
+    <ClCompile Include="NeedleAsset.cpp" />
+    <ClCompile Include="NeedleEditor.cpp" />
+    <ClCompile Include="NeedleState.cpp" />
+    <ClCompile Include="PartAsset.cpp" />
+    <ClCompile Include="PartConfig.cpp" />
+    <ClCompile Include="PartEditor.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="PartPaletteViewer.cpp" />
+    <ClCompile Include="PartShapeViewer.cpp" />
+    <ClCompile Include="PartState.cpp" />
+    <ClCompile Include="ReleaseViewer.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp" />
+    <ClCompile Include="SynthesizerAsset.cpp" />
+    <ClCompile Include="SynthesizerEditor.cpp" />
+    <ClCompile Include="SynthesizerState.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="TitleViewer.cpp" />
+    <ClCompile Include="ViewerManager.cpp" />
+    <ClCompile Include="Wave.cpp" />
+    <ClCompile Include="WaveManager.cpp" />
+    <ClCompile Include="WingAsset.cpp" />
+    <ClCompile Include="WingEditor.cpp" />
+    <ClCompile Include="WingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddModelViewer.h" />
     <ClInclude Include="AssemblyViewer.h" />
-    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEditor.h" />
+    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AssetsViewer.h" />
     <ClInclude Include="BodyAsset.h" />
     <ClInclude Include="BodyEditor.h" />
     <ClInclude Include="BodyState.h" />
+    <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellEditor.h" />
     <ClInclude Include="CellManager.h" />
-    <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
     <ClInclude Include="CellStateViewer.h" />
     <ClInclude Include="Chip.h" />
     <ClInclude Include="ChipManager.h" />
     <ClInclude Include="Curtain.h" />
     <ClInclude Include="EditorViewer.h" />
-    <ClInclude Include="EggState.h" />
     <ClInclude Include="EggManager.h" />
+    <ClInclude Include="EggState.h" />
+    <ClInclude Include="ElementAsset.h" />
+    <ClInclude Include="ElementEditor.h" />
+    <ClInclude Include="ElementManager.h" />
+    <ClInclude Include="ElementState.h" />
     <ClInclude Include="EquipmentAsset.h" />
     <ClInclude Include="EquipmentEditor.h" />
     <ClInclude Include="EquipmentState.h" />
@@ -288,15 +329,11 @@
     <ClInclude Include="ModuleAsset.h" />
     <ClInclude Include="ModuleEditor.h" />
     <ClInclude Include="ModuleState.h" />
-    <ClInclude Include="ElementAsset.h" />
-    <ClInclude Include="ElementEditor.h" />
-    <ClInclude Include="ElementManager.h" />
-    <ClInclude Include="ElementState.h" />
     <ClInclude Include="NeedleAsset.h" />
     <ClInclude Include="NeedleEditor.h" />
     <ClInclude Include="NeedleState.h" />
-    <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartAsset.h" />
+    <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartEditor.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartPaletteViewer.h" />
