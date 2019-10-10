@@ -26,7 +26,7 @@ FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
 	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
-	m_camera.setRestrictedRect(RectF(12800, 12800));
+	m_camera.setRestrictedRect(g_chipManagerPtr->getRect().scaledAt(Vec2::Zero(),g_chipManagerPtr->getLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(Vec2::Zero());

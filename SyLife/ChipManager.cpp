@@ -9,7 +9,7 @@
 unique_ptr<ChipManager> g_chipManagerPtr;
 
 ChipManager::ChipManager()
-	: m_rect(64, 64)
+	: m_rect(80, 45)
 	, m_length(100)
 {
 
