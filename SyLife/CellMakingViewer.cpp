@@ -21,7 +21,7 @@ void CellMakingViewer::update()
 	{
 		static Font font(32, Typeface::Bold);
 
-		font(U"Create Cell").drawAt(getDrawSize().center());
+		font(U"Create Cell").drawAt(getDrawSize() / 2.0);
 	}
 }
 
@@ -39,5 +39,5 @@ void CellMakingViewer::close()
 {
 	m_isOpened = false;
 
-	setDrawRect(1920 / 2 - 80, 20, 160, 60);
+	setDrawRect(RectF(200, 50).setCenter(Scene::CenterF().x, 50));
 }
