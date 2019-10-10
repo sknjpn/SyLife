@@ -39,7 +39,7 @@ void ReleaseViewer::update()
 
 	// material
 	{
-		SetdrawPos(Vec2(128, 0));
+		SetDrawPos(Vec2(128, 0));
 
 		static Font font(13, Typeface::Bold);
 
