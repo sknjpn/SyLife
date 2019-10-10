@@ -2,6 +2,7 @@
 
 #include "ViewerManager.h"
 
+#include "CellMakingViewer.h"
 #include "PartPaletteViewer.h"
 #include "CellAsset.h"
 #include "PartAsset.h"
@@ -23,6 +24,8 @@ void AssemblyViewer::init()
 
 void AssemblyViewer::update()
 {
+	auto cmv = g_viewerManagerPtr->getViewer<CellMakingViewer>();
+
 	//Rect(getDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 	m_camera.update();
@@ -54,7 +57,7 @@ void AssemblyViewer::update()
 
 	// part
 	{
-		for (const auto& p : m_cellAsset->getPartConfigs())
+		for (const auto& p : cmv->m_cellAsset->getPartConfigs())
 		{
 			auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 				.translated(p->getPosition().x, p->getPosition().y));
@@ -81,7 +84,7 @@ void AssemblyViewer::update()
 
 			if (MouseL.up())
 			{
-				const auto& partConfig = m_cellAsset->addPartConfig();
+				const auto& partConfig = cmv->m_cellAsset->addPartConfig();
 
 				partConfig->setModel(g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart());
 				partConfig->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
@@ -92,5 +95,5 @@ void AssemblyViewer::update()
 		if (!MouseL.pressed()) g_viewerManagerPtr->getViewer<PartPaletteViewer>()->clearSelectedPart();
 	}
 
-	m_cellAsset->updateProperties();
+	cmv->m_cellAsset->updateProperties();
 }

@@ -17,8 +17,6 @@ public:
 	double	m_width = 300;
 	double	m_height = 300;
 
-	shared_ptr<CellAsset>	m_cellAsset;
-
 public:
 	AssemblyViewer();
 
