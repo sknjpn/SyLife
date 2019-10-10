@@ -8,9 +8,8 @@
 #include "CellManager.h"
 #include "ElementManager.h"
 
-#include "PartPaletteViewer.h"
-#include "AssemblyViewer.h"
-#include "ReleaseViewer.h"
+#include "CellMakingViewer.h"
+
 #include "CellStateViewer.h"
 
 #include "Rigidbody.h"
@@ -41,10 +40,8 @@ void FieldViewer::init()
 {
 	// 付属Viewerの初期化
 	m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
-	g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
-	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setCellAsset(m_newModel);
-	g_viewerManagerPtr->makeViewer<ReleaseViewer>()->setCellAsset(m_newModel);
-
+	
+	g_viewerManagerPtr->makeViewer<CellMakingViewer>();
 	g_viewerManagerPtr->makeViewer<CellStateViewer>();
 }
 
@@ -140,7 +137,7 @@ void FieldViewer::update()
 				}
 			}
 		}
-
+		/*
 		auto rv = g_viewerManagerPtr->getViewer<ReleaseViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
@@ -173,6 +170,7 @@ void FieldViewer::update()
 				rv->setCellAsset(m_newModel);
 			}
 		}
+		*/
 
 		{
 			const auto& cs = g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState;
