@@ -110,10 +110,12 @@ void ChipManager::drawChips()
 		RectF(p * m_length, Vec2(m_length, m_length))
 			.draw(c->getColor());
 
+		/*
 		auto position = Vec2(p * m_length).movedBy(m_length / 2.0, m_length / 2.0);
 		auto v = g_waveManagerPtr->getWaveVelocity(position);
 		Line(position, position + v)
 			.drawArrow(5.0, Vec2(10, 10));
+			*/
 	}
 }
 
