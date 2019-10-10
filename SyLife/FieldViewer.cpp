@@ -19,6 +19,7 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "EggState.h"
+#include "ElementState.h"s
 
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
@@ -121,8 +122,8 @@ void FieldViewer::update()
 					g_chipManagerPtr->addNutrition(e->getPosition(), e->getCellAsset()->getMaterial().getNutrition());
 
 					// ElementStateの吐き出し
-					/*auto s = e->getCellAsset()->getMaterial();
-					for (const auto& m : s.GetElements())
+					auto s = e->getCellAsset()->getMaterial();
+					for (const auto& m : s.getElementList())
 					{
 						for (unsigned int i = 0; i < m.second; i++)
 						{
@@ -134,7 +135,7 @@ void FieldViewer::update()
 							ms->setPosition(e->getPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
 							ms->setVelocity(v * 0.1);
 						}
-					}*/
+					}
 				}
 			}
 		}
