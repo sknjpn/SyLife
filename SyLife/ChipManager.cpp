@@ -11,7 +11,6 @@ unique_ptr<ChipManager> g_chipManagerPtr;
 ChipManager::ChipManager()
 	: m_rect(64, 64)
 	, m_length(100)
-	, m_size(m_rect.size * m_length)
 {
 
 }
