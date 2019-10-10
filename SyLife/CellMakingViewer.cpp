@@ -1,2 +1,9 @@
-﻿#include "stdafx.h"
-#include "CellMakingViewer.h"
+﻿#include "CellMakingViewer.h"
+
+void CellMakingViewer::init()
+{
+}
+
+void CellMakingViewer::update()
+{
+}
