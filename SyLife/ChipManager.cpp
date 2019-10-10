@@ -121,7 +121,7 @@ void ChipManager::updateChips()
 {
 	for (const auto& c : m_chips)
 	{
-		const Vec2 d = g_waveManagerPtr->getWaveVelocity(c->getCenter()) / 100.0 * 0.005;
+		const Vec2 d = g_waveManagerPtr->getWaveVelocity(c->getCenter()) / 50.0 * 0.005;
 		const double l = 0.01;
 		const double w = 1.0 + l * 2;
 		const RectF rect = RectF(-l, -l, w, w).movedBy(d);
