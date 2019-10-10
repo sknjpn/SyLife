@@ -117,6 +117,9 @@ void FieldViewer::update()
 				{
 					e->destroy();
 
+					// Nutritionの吐き出し
+					g_chipManagerPtr->addNutrition(e->getPosition(), e->getCellAsset()->getMaterial().getNutrition());
+
 					// ElementStateの吐き出し
 					/*auto s = e->getCellAsset()->getMaterial();
 					for (const auto& m : s.GetElements())
