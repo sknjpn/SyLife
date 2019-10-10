@@ -63,6 +63,7 @@ void CellMakingViewer::open()
 	// DrawRectの設定
 	setDrawRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
+	// 新しいモデルの登録
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
 
 	// Viewerの初期化
