@@ -20,6 +20,7 @@ public:
 	void	drawChips();
 	void	updateChips();
 
+	double	getLength() const { return m_length; }
 	const Rect& getRect() const { return m_rect; }
 	const Point& getSize() const { return m_rect.size; }
 
