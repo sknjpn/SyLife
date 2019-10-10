@@ -20,10 +20,10 @@ shared_ptr<Chip> ChipManager::getChip(const Point& point) const
 	Point ap = point;
 
 	if (ap.x < 0) ap.x = 0;
-	if (ap.y < 0) ap.x = 0;
+	if (ap.y < 0) ap.y = 0;
 	if (ap.x >= m_rect.size.x) ap.x = m_rect.size.x - 1;
 	if (ap.y >= m_rect.size.y) ap.y = m_rect.size.y - 1;
-
+	//Logger << ap;
 	return m_chips[ap];
 }
 
