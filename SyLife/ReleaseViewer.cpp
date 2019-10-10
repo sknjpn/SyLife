@@ -3,6 +3,7 @@
 #include "CellAsset.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
+#include "ElementAsset.h"
 
 ReleaseViewer::ReleaseViewer()
 {
@@ -33,6 +34,25 @@ void ReleaseViewer::update()
 
 			for (const auto& s : p->getModel()->getShapes())
 				s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
+		}
+	}
+
+	// material
+	{
+		SetdrawPos(Vec2(128, 0));
+
+		static Font font(13, Typeface::Bold);
+
+		// Nutrition
+		font(U"Nutrition: "+ToString(m_cellAsset->getMaterial().getNutrition())).draw();
+		MoveDrawPos(0, 20);
+
+		// Elements
+		for (const auto& e : m_cellAsset->getMaterial().getElementList())
+		{
+			font(Unicode::Widen(e.first->getName()) + U": " + ToString(e.second) + U"U").draw();
+
+			MoveDrawPos(0, 16);
 		}
 	}
 }
