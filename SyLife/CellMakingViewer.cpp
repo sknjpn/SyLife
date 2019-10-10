@@ -20,7 +20,8 @@ void CellMakingViewer::update()
 		auto rv = g_viewerManagerPtr->getViewer<ReleaseViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 
-		av->setDrawRect(RectF(900, 900).setCenter(getDrawCenter()));
+		av->setDrawRect(RectF(900, 900).setCenter(getDrawCenter()).stretched(-5));
+		// rv->setDrawRect(RectF()
 	}
 	else
 	{
@@ -63,6 +64,9 @@ void CellMakingViewer::update()
 void CellMakingViewer::open()
 {
 	m_isOpened = true;
+
+	// BackgroundColorの設定
+	setBackgroundColor(Palette::Deepskyblue);
 
 	// DrawRectの設定
 	setDrawRect(RectF(1200, 900).setCenter(Scene::CenterF()));
