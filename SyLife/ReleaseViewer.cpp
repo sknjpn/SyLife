@@ -1,5 +1,8 @@
 ﻿#include "ReleaseViewer.h"
 
+#include "ViewerManager.h"
+
+#include "CellMakingViewer.h"
 #include "CellAsset.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
@@ -12,6 +15,8 @@ ReleaseViewer::ReleaseViewer()
 
 void ReleaseViewer::update()
 {
+	auto cmv = g_viewerManagerPtr->getViewer<CellMakingViewer>();
+
 	Circle circle(50, 50, 45);
 
 	circle
@@ -25,9 +30,9 @@ void ReleaseViewer::update()
 
 	// part
 	{
-		auto t1 = Transformer2D(Mat3x2::Scale(45.0 / m_cellAsset->getRadius() / 2.0).translated(circle.center));
+		auto t1 = Transformer2D(Mat3x2::Scale(45.0 / cmv->m_cellAsset->getRadius() / 2.0).translated(circle.center));
 
-		for (const auto& p : m_cellAsset->getPartConfigs())
+		for (const auto& p : cmv->m_cellAsset->getPartConfigs())
 		{
 			auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 				.translated(p->getPosition().x, p->getPosition().y));
@@ -44,11 +49,11 @@ void ReleaseViewer::update()
 		static Font font(13, Typeface::Bold);
 
 		// Nutrition
-		font(U"Nutrition: "+ToString(m_cellAsset->getMaterial().getNutrition())).draw();
+		font(U"Nutrition: "+ToString(cmv->m_cellAsset->getMaterial().getNutrition())).draw();
 		moveDrawPos(0, 20);
 
 		// Elements
-		for (const auto& e : m_cellAsset->getMaterial().getElementList())
+		for (const auto& e : cmv->m_cellAsset->getMaterial().getElementList())
 		{
 			font(Unicode::Widen(e.first->getName()) + U": " + ToString(e.second) + U"U").draw();
 
