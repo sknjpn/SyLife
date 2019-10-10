@@ -7,7 +7,7 @@ class CellAsset;
 class CellMakingViewer :
 	public Viewer
 {
-	bool	m_isOpened
+	bool	m_isOpened;
 	shared_ptr<CellAsset>	m_cellAsset;
 
 public:
