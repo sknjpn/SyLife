@@ -38,9 +38,6 @@ FieldViewer::FieldViewer()
 
 void FieldViewer::init()
 {
-	// 付属Viewerの初期化
-	m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
-	
 	g_viewerManagerPtr->makeViewer<CellMakingViewer>();
 	g_viewerManagerPtr->makeViewer<CellStateViewer>();
 }
