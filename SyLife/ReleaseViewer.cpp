@@ -7,7 +7,7 @@
 
 ReleaseViewer::ReleaseViewer()
 {
-	SetDrawRect(Scene::Width() - 400, 320, 300, 100);
+	setDrawRect(Scene::Width() - 400, 320, 300, 100);
 }
 
 void ReleaseViewer::update()
@@ -39,20 +39,20 @@ void ReleaseViewer::update()
 
 	// material
 	{
-		SetDrawPos(Vec2(128, 0));
+		setDrawPos(Vec2(128, 0));
 
 		static Font font(13, Typeface::Bold);
 
 		// Nutrition
 		font(U"Nutrition: "+ToString(m_cellAsset->getMaterial().getNutrition())).draw();
-		MoveDrawPos(0, 20);
+		moveDrawPos(0, 20);
 
 		// Elements
 		for (const auto& e : m_cellAsset->getMaterial().getElementList())
 		{
 			font(Unicode::Widen(e.first->getName()) + U": " + ToString(e.second) + U"U").draw();
 
-			MoveDrawPos(0, 16);
+			moveDrawPos(0, 16);
 		}
 	}
 }

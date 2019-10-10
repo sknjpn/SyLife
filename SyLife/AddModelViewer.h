@@ -10,7 +10,7 @@ class AddModelViewer
 public:
 	AddModelViewer()
 	{
-		SetDrawRect(100, 150, 400, 300);
+		setDrawRect(100, 150, 400, 300);
 	}
 
 	template <typename T>
@@ -42,7 +42,7 @@ public:
 
 		if (f.region().leftClicked()) addModel<T>();
 
-		MoveDrawPos(0, 15);
+		moveDrawPos(0, 15);
 	}
 
 	void	update() override;

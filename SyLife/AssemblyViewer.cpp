@@ -9,7 +9,7 @@
 
 AssemblyViewer::AssemblyViewer()
 {
-	SetDrawRect(Scene::Width() - 400, 20, 300, 300);
+	setDrawRect(Scene::Width() - 400, 20, 300, 300);
 	m_camera.setScreen(Rect(300, 300));
 	m_camera.setRestrictedRect(RectF(m_width, m_height).setCenter(Vec2::Zero()));
 	m_camera.setCenter(Vec2::Zero());
@@ -23,7 +23,7 @@ void AssemblyViewer::init()
 
 void AssemblyViewer::update()
 {
-	//Rect(GetdrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
+	//Rect(getDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 	m_camera.update();
 
@@ -67,7 +67,7 @@ void AssemblyViewer::update()
 	// selectedPart
 	if (g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart() != nullptr)
 	{
-		if (IsMouseOver())
+		if (isMouseOver())
 		{
 			{
 				auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));

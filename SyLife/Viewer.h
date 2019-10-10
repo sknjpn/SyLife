@@ -14,19 +14,19 @@ public:
 	virtual ~Viewer() = default;
 
 	// Set
-	void	SetBackgroundColor(const Color& color) { m_backgroundColor = color; }
-	void	SetDrawPos(const Vec2& pos) { m_drawPos = pos; m_transformer.reset(); m_transformer = make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), true); }
-	void	SetDrawPos(double x, double y) { SetDrawPos(Vec2(x, y)); }
-	void	SetDrawRect(const Vec2& pos, const Vec2& size) { m_drawRect = RectF(pos, size); }
-	void	SetDrawRect(const Vec2& size) { m_drawRect = RectF(size); }
-	void	SetDrawRect(double x, double y, double w, double h) { m_drawRect = RectF(x, y, w, h); }
-	void	SetDrawRect(double w, double h) { m_drawRect = RectF(w, h); }
-	void	MoveDrawPos(double dx, double dy) { SetDrawPos(m_drawPos.movedBy(dx, dy)); }
+	void	setBackgroundColor(const Color& color) { m_backgroundColor = color; }
+	void	setDrawPos(const Vec2& pos) { m_drawPos = pos; m_transformer.reset(); m_transformer = make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), true); }
+	void	setDrawPos(double x, double y) { setDrawPos(Vec2(x, y)); }
+	void	setDrawRect(const Vec2& pos, const Vec2& size) { m_drawRect = RectF(pos, size); }
+	void	setDrawRect(const Vec2& size) { m_drawRect = RectF(size); }
+	void	setDrawRect(double x, double y, double w, double h) { m_drawRect = RectF(x, y, w, h); }
+	void	setDrawRect(double w, double h) { m_drawRect = RectF(w, h); }
+	void	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); }
 
 	// Get
-	const RectF&	GetdrawRect() const { return m_drawRect; }
-	const Vec2&		GetdrawPos() const { return m_drawPos; }
-	bool	IsMouseOver() const { return m_isMouseOver; }
+	const RectF&	getDrawRect() const { return m_drawRect; }
+	const Vec2&		getDrawPos() const { return m_drawPos; }
+	bool	isMouseOver() const { return m_isMouseOver; }
 
 	virtual void	init() {}
 	virtual void	update() {}

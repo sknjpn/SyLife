@@ -10,7 +10,7 @@ TitleViewer::TitleViewer()
 	, m_closeCurtain(Color(0, 0), Color(11, 22, 33), 0.5)
 	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
-	SetDrawRect(Scene::Size());
+	setDrawRect(Scene::Size());
 	m_audio.setLoop(true);
 	m_audio.play();
 }

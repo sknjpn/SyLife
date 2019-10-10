@@ -32,7 +32,7 @@ FieldViewer::FieldViewer()
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
 
-	SetDrawRect(Scene::Size());
+	setDrawRect(Scene::Size());
 	m_audio.setLoop(true);
 	m_audio.play();
 }
@@ -52,7 +52,7 @@ void FieldViewer::update()
 {
 	{
 		// camera
-		if (IsMouseOver()) m_camera.update();
+		if (isMouseOver()) m_camera.update();
 		auto t = m_camera.createTransformer();
 
 		// speed
@@ -90,7 +90,7 @@ void FieldViewer::update()
 				}
 			}
 
-			if (MouseL.pressed() && IsMouseOver())
+			if (MouseL.pressed() && isMouseOver())
 			{
 				if (selectedRigidbody != nullptr) selectedRigidbody->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 			}
@@ -145,7 +145,7 @@ void FieldViewer::update()
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
 
-		if (rv->isDragged() && IsMouseOver())
+		if (rv->isDragged() && isMouseOver())
 		{
 			// part
 			{

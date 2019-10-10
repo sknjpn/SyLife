@@ -19,7 +19,7 @@ class PartPaletteViewer
 public:
 	PartPaletteViewer()
 	{
-		SetDrawRect(Scene::Width() - m_barWidth - m_itemWidth, 20, m_barWidth + m_itemWidth, 400);
+		setDrawRect(Scene::Width() - m_barWidth - m_itemWidth, 20, m_barWidth + m_itemWidth, 400);
 	}
 
 	const shared_ptr<PartAsset>& getSelectedPart() const { return m_selectedPart; }
@@ -33,7 +33,7 @@ public:
 		static Font font10(13, Typeface::Bold);
 
 		font13(Unicode::Widen(name)).draw();
-		MoveDrawPos(0, 20);
+		moveDrawPos(0, 20);
 
 		const auto& models = g_assetManagerPtr->getAssets<T>();
 		for (auto it = models.begin(); it != models.end(); ++it)
@@ -55,10 +55,10 @@ public:
 					s.draw(0.5);
 			}
 
-			MoveDrawPos(0, m_itemWidth);
+			moveDrawPos(0, m_itemWidth);
 		}
 
-		MoveDrawPos(0, 16);
+		moveDrawPos(0, 16);
 	}
 
 	void	update() override;

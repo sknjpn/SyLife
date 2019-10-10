@@ -32,7 +32,7 @@ void	PartPaletteViewer::update()
 
 			m_bar = Clamp<double>((barPosition + barDelta) / double(400 - 60), 0.0, 1.0);
 		}
-		else if (IsMouseOver())
+		else if (isMouseOver())
 		{
 			m_bar = Clamp<double>(m_bar + Mouse::Wheel() * 0.05, 0.0, 1.0);
 		}
@@ -43,7 +43,7 @@ void	PartPaletteViewer::update()
 	{
 		const double h = 32 * 3 - 16 + g_assetManagerPtr->getAssets<PartAsset>().size() * m_itemWidth - 400.0;
 
-		MoveDrawPos(0, -h * m_bar);
+		moveDrawPos(0, -h * m_bar);
 
 		drawModels<BodyAsset>("BodyAsset");
 		drawModels<EquipmentAsset>("EquipmentAsset");

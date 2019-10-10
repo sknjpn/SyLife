@@ -13,7 +13,7 @@ class AssetsViewer
 public:
 	AssetsViewer()
 	{
-		SetDrawRect(0, 0, 400, 1080);
+		setDrawRect(0, 0, 400, 1080);
 	}
 
 	void	update() override;
@@ -26,11 +26,11 @@ public:
 
 		// Type
 		font13(Unicode::Widen(text)).draw();
-		MoveDrawPos(0, 16);
+		moveDrawPos(0, 16);
 
 		// Models
 		{
-			MoveDrawPos(16, 0);
+			moveDrawPos(16, 0);
 			const auto& models = g_assetManagerPtr->getAssets<T>();
 			for (auto it = models.begin(); it != models.end(); ++it)
 			{
@@ -41,9 +41,9 @@ public:
 
 				if (f.region().leftClicked()) setSelectedAsset(*it);
 
-				MoveDrawPos(0, 15);
+				moveDrawPos(0, 15);
 			}
-			MoveDrawPos(-16, 0);
+			moveDrawPos(-16, 0);
 		}
 	}
 

@@ -88,7 +88,7 @@ void PartShapeViewer::update()
 	}
 
 	// update
-	if (IsMouseOver())
+	if (isMouseOver())
 	{
 		// Verticleの配置
 		if (m_verticles.empty() && MouseL.down()) m_verticles.emplace_back(cursor);

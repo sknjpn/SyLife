@@ -31,7 +31,7 @@ void AssetsViewer::update()
 
 		if (f.region().leftClicked() && !g_viewerManagerPtr->hasViewer<AddModelViewer>()) g_viewerManagerPtr->makeViewer<AddModelViewer>();
 
-		MoveDrawPos(0, 16);
+		moveDrawPos(0, 16);
 	}
 
 	// save
