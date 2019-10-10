@@ -98,9 +98,9 @@ void ChipManager::drawChips()
 		RectF(p * m_length, Vec2(m_length, m_length))
 			.draw(c->getColor());
 
-		auto v = g_waveManagerPtr->getWaveVelocity(p * m_length);
-		Line(p * m_length, p * m_length + v * 50)
-			.movedBy(m_length / 2.0, m_length / 2.0)
+		auto position = Vec2(p * m_length).movedBy(m_length / 2.0, m_length / 2.0);
+		auto v = g_waveManagerPtr->getWaveVelocity(position);
+		Line(position, position + v)
 			.drawArrow(5.0, Vec2(10, 10));
 	}
 }
@@ -109,7 +109,7 @@ void ChipManager::updateChips()
 {
 	for (const auto& c : m_chips)
 	{
-		const Vec2 d = g_waveManagerPtr->getWaveVelocity(c->getCenter()) * 0.005;
+		const Vec2 d = g_waveManagerPtr->getWaveVelocity(c->getCenter()) / 100.0 * 0.005;
 		const double l = 0.01;
 		const double w = 1.0 + l * 2;
 		const RectF rect = RectF(-l, -l, w, w).movedBy(d);
