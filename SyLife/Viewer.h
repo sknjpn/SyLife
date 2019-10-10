@@ -18,6 +18,8 @@ public:
 	void	setDrawPos(const Vec2& pos) { m_drawPos = pos; m_transformer.reset(); m_transformer = make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), true); }
 	void	setDrawPos(double x, double y) { setDrawPos(Vec2(x, y)); }
 	void	setDrawRect(const Vec2& pos, const Vec2& size) { m_drawRect = RectF(pos, size); }
+	void	setDrawRect(const Rect& rect) { m_drawRect = rect; }
+	void	setDrawRect(const RectF& rect) { m_drawRect = rect; }
 	void	setDrawRect(const Vec2& size) { m_drawRect = RectF(size); }
 	void	setDrawRect(double x, double y, double w, double h) { m_drawRect = RectF(x, y, w, h); }
 	void	setDrawRect(double w, double h) { m_drawRect = RectF(w, h); }
