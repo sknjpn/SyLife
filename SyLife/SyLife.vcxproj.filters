@@ -524,6 +524,9 @@
     <ClCompile Include="PartState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CellMakingViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -711,6 +714,9 @@
     </ClInclude>
     <ClInclude Include="PartState.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellMakingViewer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
