@@ -19,7 +19,7 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "EggState.h"
-#include "ElementState.h"s
+#include "ElementState.h"
 
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
