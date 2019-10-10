@@ -96,10 +96,10 @@ void FieldViewer::update()
 		}
 
 		// draw
+		g_chipManagerPtr->drawChips();
 		g_waveManagerPtr->drawWave();
 		g_eggManagerPtr->drawEggStates();
 		g_cellManagerPtr->drawCellStates();
-		g_chipManagerPtr->drawChips();
 		g_elementManagerPtr->drawElementStates();
 
 		// delete
