@@ -25,6 +25,7 @@ public:
 
 	// Get
 	const RectF&	getDrawRect() const { return m_drawRect; }
+	const Vec2&		getDrawSize() const { return m_drawRect.size; }
 	const Vec2&		getDrawPos() const { return m_drawPos; }
 	bool	isMouseOver() const { return m_isMouseOver; }
 
