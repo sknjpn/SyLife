@@ -12,7 +12,7 @@ TitleViewer::TitleViewer()
 {
 	setDrawRect(Scene::Size());
 	m_audio.setLoop(true);
-	m_audio.play();
+	//m_audio.play();
 }
 
 void TitleViewer::UpdateBubbles()
