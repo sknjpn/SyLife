@@ -71,7 +71,6 @@ void ChipManager::drawChips()
 	{
 		auto c = getChip(Cursor::PosF());
 
-		ClearPrint();
 		if (c != nullptr) Print << c->getNutrition();
 
 		double sum = 0.0;

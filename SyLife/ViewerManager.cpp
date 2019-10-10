@@ -6,6 +6,9 @@ unique_ptr<ViewerManager>	g_viewerManagerPtr;
 
 void ViewerManager::update()
 {
+	// ログ出力のクリア
+	ClearPrint();
+
 	// nullptr になったViewerのリセット
 	m_viewers.remove(nullptr);
 
