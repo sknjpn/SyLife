@@ -14,7 +14,7 @@ void ReleaseViewer::update()
 	auto fv = g_viewerManagerPtr->getViewer<FieldViewer>();
 
 	auto t = fv->getCamera().createTransformer();
-	Circle circle(Cursor::PosF(), cmv->m_cellAsset->getRadius());
+	Circle circle(Cursor::PosF(), cmv->m_cellAsset->getRadius() * 2.0);
 
 	circle
 		.draw(circle.mouseOver() ? Palette::Orange : Palette::Skyblue)
