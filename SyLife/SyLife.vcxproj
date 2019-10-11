@@ -279,6 +279,7 @@
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="ReleaseViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="SlideBar.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -346,6 +347,7 @@
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="ShapeModel.h" />
+    <ClInclude Include="SlideBar.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="SynthesizerAsset.h" />

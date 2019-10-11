@@ -530,6 +530,9 @@
     <ClCompile Include="DebugViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SlideBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -723,6 +726,9 @@
     </ClInclude>
     <ClInclude Include="DebugViewer.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SlideBar.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
