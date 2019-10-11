@@ -527,6 +527,9 @@
     <ClCompile Include="CellMakingViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DebugViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -716,6 +719,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CellMakingViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugViewer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
