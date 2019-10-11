@@ -175,5 +175,5 @@ void CellMakingViewer::release()
 	av->setInvisible(false);
 	ppv->setInvisible(false);
 
-	m_isReleasing = true;
+	m_isReleasing = false;
 }
