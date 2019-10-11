@@ -24,16 +24,7 @@ void CellMakingViewer::update()
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 
-		if (m_isReleasing)
-		{
-			if (MouseL.up())
-			{
-				setInvisible(false);
-				av->setInvisible(false);
-				ppv->setInvisible(false);
-			}
-		}
-		else
+		if (!m_isReleasing)
 		{
 			// Release
 			{
@@ -176,4 +167,13 @@ void CellMakingViewer::close()
 void CellMakingViewer::release()
 {
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
+
+	auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
+	auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
+
+	setInvisible(false);
+	av->setInvisible(false);
+	ppv->setInvisible(false);
+
+	m_isReleasing = true;
 }
