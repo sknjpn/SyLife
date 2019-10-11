@@ -19,11 +19,6 @@ void CellMakingViewer::update()
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
 		auto rv = g_viewerManagerPtr->getViewer<ReleaseViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
-
-		av->setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)).stretched(-5));
-		av->setSize(Vec2(800, 800));
-		ppv->setDrawRect(RectF(200, 900).setCenter(getDrawCenter().movedBy(500, 0)).stretched(-5));
-		// rv->setDrawRect(RectF()
 	}
 	else
 	{
@@ -79,9 +74,13 @@ void CellMakingViewer::open()
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
 
 	// Viewerの初期化
-	g_viewerManagerPtr->makeViewer<AssemblyViewer>();
-	g_viewerManagerPtr->makeViewer<ReleaseViewer>();
-	g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
+	auto av = g_viewerManagerPtr->makeViewer<AssemblyViewer>();
+	auto rv = g_viewerManagerPtr->makeViewer<ReleaseViewer>();
+	auto ppv = g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
+
+	av->setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)).stretched(-5));
+	av->setSize(Vec2(800, 800));
+	ppv->setDrawRect(RectF(200, 900).setCenter(getDrawCenter().movedBy(500, 0)).stretched(-5));
 }
 
 void CellMakingViewer::close()
