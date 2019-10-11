@@ -13,7 +13,7 @@ class PartAsset;
 class PartPaletteViewer
 	: public Viewer
 {
-	double	m_itemWidth = 80;
+	double	m_itemHeight = 80;
 	SlideBar	m_slideBar;
 	shared_ptr<PartAsset>	m_selectedPart;
 

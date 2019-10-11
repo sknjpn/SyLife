@@ -19,24 +19,24 @@ void PartPaletteViewer::drawModels()
 	const auto& models = g_assetManagerPtr->getAssets<PartAsset>();
 	for (auto it = models.begin(); it != models.end(); ++it)
 	{
-		const auto block = RectF(m_itemWidth, m_itemWidth).stretched(-2.0);
+		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
 		block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
 		if (block.leftClicked()) m_selectedPart = *it;
-
-		// 名前描画
-		font(Unicode::Widen((*it)->getName())).draw(4, 4);
 
 		// パーツ描画
 		{
 			RectF rect = (*it)->getApproximateRect();
-			auto scale = Min((m_itemWidth - 8) / rect.w, (m_itemWidth - 8) / rect.h);
-			auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(m_itemWidth / 2.0, m_itemWidth / 2.0)));
+			auto scale = Min((m_itemHeight - 20) / rect.w, (m_itemHeight - 20) / rect.h);
+			auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(170 - m_itemHeight/2.0, m_itemHeight / 2.0)));
 
 			for (const ShapeModel& s : (*it)->getShapes())
 				s.draw(0.5);
 		}
 
-		moveDrawPos(0, m_itemWidth);
+		// 名前描画
+		font(Unicode::Widen((*it)->getName())).draw(4, 4);
+
+		moveDrawPos(0, m_itemHeight);
 	}
 }
 
@@ -50,7 +50,7 @@ void	PartPaletteViewer::update()
 	}
 
 	{
-		const double h = g_assetManagerPtr->getAssets<PartAsset>().size() * m_itemWidth - 800;
+		const double h = g_assetManagerPtr->getAssets<PartAsset>().size() * m_itemHeight - 800;
 
 		moveDrawPos(0, -h * m_slideBar.getValue());
 
