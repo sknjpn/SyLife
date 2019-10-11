@@ -30,11 +30,12 @@ public:
 	void	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); }
 
 	// Get
+	int		getPriority() const { return m_priority; }
+	bool	isMouseOver() const { return m_isMouseOver; }
 	const RectF&	getDrawRect() const { return m_drawRect; }
 	const Vec2&		getDrawSize() const { return m_drawRect.size; }
 	const Vec2		getDrawCenter() const { return m_drawRect.center(); }
 	const Vec2&		getDrawPos() const { return m_drawPos; }
-	bool	isMouseOver() const { return m_isMouseOver; }
 
 	virtual void	init() {}
 	virtual void	update() {}
