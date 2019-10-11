@@ -7,12 +7,12 @@ class CellAsset;
 class ReleaseViewer
 	: public Viewer
 {
-	bool	m_isDragged;
-
 public:
-	ReleaseViewer();
-
-	bool	isDragged() const { return m_isDragged; }
+	ReleaseViewer() 
+	{
+		setDrawRect(Scene::Rect()); 
+		setBackgroundColor(Color(0, 0));
+	}
 
 	void	update() override;
 };
