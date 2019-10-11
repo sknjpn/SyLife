@@ -1,6 +1,6 @@
-﻿#include "stdafx.h"
-#include "SlideBar.h"
+﻿#include "SlideBar.h"
 
 void SlideBar::update()
 {
+
 }
