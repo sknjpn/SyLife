@@ -12,7 +12,8 @@ void AssemblyViewer::init()
 {
 	setPriority(2);
 
-	setSize(Vec2(300, 300));
+	setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
+	setSize(Vec2(800, 800));
 }
 
 void AssemblyViewer::update()

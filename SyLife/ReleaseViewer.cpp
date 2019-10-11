@@ -2,6 +2,7 @@
 
 #include "ViewerManager.h"
 #include "CellManager.h"
+#include "AssetManager.h"
 
 #include "FieldViewer.h"
 #include "CellMakingViewer.h"
@@ -19,6 +20,8 @@ ReleaseViewer::ReleaseViewer()
 
 void ReleaseViewer::update()
 {
+	if (isInvisible()) return;
+
 	auto cmv = g_viewerManagerPtr->getViewer<CellMakingViewer>();
 	auto fv = g_viewerManagerPtr->getViewer<FieldViewer>();
 
@@ -46,14 +49,15 @@ void ReleaseViewer::update()
 	// Release
 	if (MouseL.up())
 	{
+		// 新規Cell
 		const auto& c = g_cellManagerPtr->addCellState(cmv->m_cellAsset);
 		c->setPosition(Cursor::PosF());
 		c->setVelocity(Vec2::Zero());
 		c->init();
 
-		cmv->release();
-
-		g_viewerManagerPtr->deleteViewer<ReleaseViewer>();
+		// CMVのリスタート
+		cmv->makeAsset();
+		cmv->setMode(CellMakingViewer::Mode::Close);
 
 		return;
 	}

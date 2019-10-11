@@ -10,6 +10,8 @@ PartPaletteViewer::PartPaletteViewer()
 	: m_slideBar(800, 800 / 8.0)
 {
 	setPriority(2);
+	
+	setDrawRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
 }
 
 void PartPaletteViewer::drawModels()
