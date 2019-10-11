@@ -14,8 +14,12 @@ void CellMakingViewer::init()
 {
 	setPriority(1);
 
+	// サブViewer生成hu
 	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setInvisible(true);
 	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->setInvisible(true);
+
+	// 新しいモデルの登録
+	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
 
 	close();
 }
@@ -146,9 +150,6 @@ void CellMakingViewer::open()
 
 	// DrawRectの設定
 	setDrawRect(RectF(1200, 900).setCenter(Scene::CenterF()));
-
-	// 新しいモデルの登録
-	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
 
 	// Viewerの初期化
 	auto av = g_viewerManagerPtr->makeViewer<AssemblyViewer>();
