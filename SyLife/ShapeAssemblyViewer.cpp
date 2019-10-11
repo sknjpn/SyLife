@@ -1,19 +1,6 @@
 ﻿#include "ShapeAssemblyViewer.h"
 
-
-void ShapeAssemblyViewer::drawParts() const
-{
-	auto cmv = g_viewerManagerPtr->getViewer<CellMakingViewer>();
-
-	for (const auto& p : cmv->m_cellAsset->getPartConfigs())
-	{
-		auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
-			.translated(p->getPosition().x, p->getPosition().y));
-
-		for (const auto& s : p->getModel()->getShapes())
-			s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
-	}
-}
+#include "ViewerManager.h"
 
 void ShapeAssemblyViewer::drawGrid() const
 {

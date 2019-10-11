@@ -16,6 +16,5 @@ public:
 
 	void	update() override;
 
-	void	drawParts() const;
 	void	drawGrid() const;
 };
