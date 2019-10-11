@@ -7,9 +7,7 @@ class ShapeAssemblyViewer :
 	public Viewer
 {
 	TinyCamera	m_camera;
-
-	double	m_width = 300;
-	double	m_height = 300;
+	Vec2	m_size;
 
 public:
 	void	init() override;
