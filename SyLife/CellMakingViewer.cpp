@@ -47,7 +47,7 @@ void CellMakingViewer::update()
 				const double r = rect.size.x / 2.0;
 				setDrawPos(rect.pos);
 
-				Circle circle(rect.size / 2.0, r)
+				Circle(rect.size / 2.0, r)
 					.draw(Palette::Skyblue)
 					.drawFrame(4.0, Palette::Black);
 
