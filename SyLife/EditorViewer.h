@@ -12,8 +12,8 @@ class EditorViewer
 public:
 	EditorViewer();
 
-	void	init();
+	void	init() override;
 
-	void	update();
+	void	update() override;
 };
 
