@@ -6,6 +6,8 @@
 
 #include "ShapeModel.h"
 
+#include "SlideBar.h"
+
 class PartAsset;
 
 class PartPaletteViewer
@@ -14,6 +16,7 @@ class PartPaletteViewer
 	double	m_barWidth = 20;
 	double	m_itemWidth = 80;
 	double	m_bar = 0.0;
+	SlideBar	m_slideBar;
 	shared_ptr<PartAsset>	m_selectedPart;
 
 public:
