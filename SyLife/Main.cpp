@@ -25,6 +25,7 @@ void Main()
 	{
 		Window::Resize(1920, 1080);
 		Window::SetStyle(WindowStyle::Sizable);
+		Window::Maximize();
 	}
 
 	g_systemManagerPtr = make_unique<SystemManager>();
