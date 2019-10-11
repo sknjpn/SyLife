@@ -5,7 +5,6 @@ void SlideBar::update()
 	RectF(30, m_size).stretched(-2).draw(ColorF(0.25)).drawFrame(1.0, 0.0, Palette::White);
 	auto bar = RectF(0, getBarPositionY(), 30, m_length).stretched(-4);
 
-	Print << m_value;
 	if (m_isDragged)
 	{
 		if (MouseL.up()) m_isDragged = false;
