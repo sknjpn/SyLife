@@ -14,8 +14,7 @@ public:
 	double	m_mass;
 	double	m_inertia;
 	double	m_radius;
-	double	m_width = 300;
-	double	m_height = 300;
+	Vec2	m_size;
 
 public:
 	void	init() override;

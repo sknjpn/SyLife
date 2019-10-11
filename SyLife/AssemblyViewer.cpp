@@ -34,17 +34,17 @@ void AssemblyViewer::update()
 	{
 		const auto color = ColorF(Palette::White, 0.25);
 
-		for (double x = -m_width / 2.0; x <= m_width / 2.0; x += interval)
-			Line(x, -m_height / 2.0, x, m_height / 2.0).draw(thickness, color);
+		for (double x = -m_size.x / 2.0; x <= m_size.x / 2.0; x += interval)
+			Line(x, -m_size.y / 2.0, x, m_size.y / 2.0).draw(thickness, color);
 
-		for (double y = -m_height / 2.0; y <= m_height / 2.0; y += interval)
-			Line(-m_width / 2.0, y, m_width / 2.0, y).draw(thickness, color);
+		for (double y = -m_size.y / 2.0; y <= m_size.y / 2.0; y += interval)
+			Line(-m_size.x / 2.0, y, m_size.x / 2.0, y).draw(thickness, color);
 	}
 
 	// XY軸
 	{
-		Line(-m_width / 2.0, 0, m_width / 2.0, 0).draw(thickness, Palette::Red);
-		Line(0, -m_height / 2.0, 0, m_height / 2.0).draw(thickness, Palette::Red);
+		Line(-m_size.x / 2.0, 0, m_size.x / 2.0, 0).draw(thickness, Palette::Red);
+		Line(0, -m_size.y / 2.0, 0, m_size.y / 2.0).draw(thickness, Palette::Red);
 	}
 
 	// part
@@ -92,13 +92,12 @@ void AssemblyViewer::update()
 
 void AssemblyViewer::setSize(const Vec2& size)
 {
-	m_width = size.x;
-	m_height = size.y;
+	m_size = size;
 
 	setDrawSize(size);
 
-	m_camera.setScreen(RectF(m_width, m_height));
-	m_camera.setRestrictedRect(RectF(m_width, m_height).setCenter(Vec2::Zero()));
+	m_camera.setScreen(RectF(m_size.x, m_size.y));
+	m_camera.setRestrictedRect(RectF(m_size.x, m_size.y).setCenter(Vec2::Zero()));
 	m_camera.setCenter(Vec2::Zero());
 	m_camera.setTargetCenter(Vec2::Zero());
 	m_camera.setMaxScale(4.0);
