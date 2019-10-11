@@ -7,53 +7,53 @@
 #include "ModuleAsset.h"
 
 PartPaletteViewer::PartPaletteViewer()
+	: m_slideBar(800, 800 / 8.0)
 {
 	setPriority(2);
+}
 
-	setDrawRect(Scene::Width() - m_barWidth - m_itemWidth, 20, m_barWidth + m_itemWidth, 400);
+void PartPaletteViewer::drawModels()
+{
+	static Font font(13, Typeface::Bold);
+
+	const auto& models = g_assetManagerPtr->getAssets<PartAsset>();
+	for (auto it = models.begin(); it != models.end(); ++it)
+	{
+		const auto block = RectF(m_itemWidth, m_itemWidth).stretched(-2.0);
+		block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+		if (block.leftClicked()) m_selectedPart = *it;
+
+		// 名前描画
+		font(Unicode::Widen((*it)->getName())).draw(4, 4);
+
+		// パーツ描画
+		{
+			RectF rect = (*it)->getApproximateRect();
+			auto scale = Min((m_itemWidth - 8) / rect.w, (m_itemWidth - 8) / rect.h);
+			auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(m_itemWidth / 2.0, m_itemWidth / 2.0)));
+
+			for (const ShapeModel& s : (*it)->getShapes())
+				s.draw(0.5);
+		}
+
+		moveDrawPos(0, m_itemWidth);
+	}
 }
 
 void	PartPaletteViewer::update()
 {
-	RectF(m_itemWidth, 0, m_barWidth, 400).stretched(-2).drawFrame(1.0, Palette::White);
-
 	// Bar
 	{
-		static bool barPressed = false;
-		static double barDelta = 0.0;
-		static double barPosition = 0.0;
-		auto r = RectF(m_itemWidth, int(Math::Lerp<int>(0, 400 - 60, m_bar)), m_barWidth, 60).stretched(-4);
+		auto t = Transformer2D(Mat3x2::Translate(200 - 30, 0), true);
 
-		if (r.leftClicked())
-		{
-			barPressed = true;
-			barDelta = 0.0;
-			barPosition = m_bar * double(400 - 48);
-		}
-
-		if (!MouseL.pressed()) barPressed = false;
-
-		if (barPressed)
-		{
-			barDelta += Cursor::DeltaF().y;
-
-			m_bar = Clamp<double>((barPosition + barDelta) / double(400 - 60), 0.0, 1.0);
-		}
-		else if (isMouseOver())
-		{
-			m_bar = Clamp<double>(m_bar + Mouse::Wheel() * 0.05, 0.0, 1.0);
-		}
-
-		r.draw(ColorF(1.0, r.mouseOver() ? 0.5 : 0.25));
+		m_slideBar.update();
 	}
 
 	{
-		const double h = 32 * 3 - 16 + g_assetManagerPtr->getAssets<PartAsset>().size() * m_itemWidth - 400.0;
+		const double h = g_assetManagerPtr->getAssets<PartAsset>().size() * m_itemWidth - 800;
 
-		moveDrawPos(0, -h * m_bar);
+		moveDrawPos(0, -h * m_slideBar.getValue());
 
-		drawModels<BodyAsset>("BodyAsset");
-		drawModels<EquipmentAsset>("EquipmentAsset");
-		drawModels<ModuleAsset>("ModuleAsset");
+		drawModels();
 	}
 }
