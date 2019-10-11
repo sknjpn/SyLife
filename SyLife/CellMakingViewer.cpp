@@ -153,3 +153,8 @@ void CellMakingViewer::close()
 	// DrawRectの設定
 	setDrawRect(RectF(200, 50).setCenter(Scene::CenterF().x, 50));
 }
+
+void CellMakingViewer::release()
+{
+	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
+}

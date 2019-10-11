@@ -24,5 +24,7 @@ public:
 
 	void	open();
 	void	close();
+
+	void	release();
 };
 
