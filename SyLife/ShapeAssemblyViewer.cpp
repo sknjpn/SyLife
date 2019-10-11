@@ -50,8 +50,9 @@ void ShapeAssemblyViewer::update()
 			if (!polygons.empty()) m_partAsset->m_shapes[index].m_polygon = polygons.front();
 		}
 
-		m_partAsset->m_mass = m_partAsset->m_shapes[0].m_polygon.area();
-		m_partAsset->m_material.setNutrition(m_partAsset->m_shapes[0].m_polygon.area());
+		double k = 0.01;
+		m_partAsset->m_mass = m_partAsset->m_shapes[0].m_polygon.area() * k;
+		m_partAsset->m_material.setNutrition(m_partAsset->m_mass);
 	}
 }
 
