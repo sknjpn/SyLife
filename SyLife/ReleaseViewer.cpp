@@ -10,6 +10,13 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 
+ReleaseViewer::ReleaseViewer()
+{
+	setPriority(3);
+	setDrawRect(Scene::Rect());
+	setBackgroundColor(Color(0, 0));
+}
+
 void ReleaseViewer::update()
 {
 	auto cmv = g_viewerManagerPtr->getViewer<CellMakingViewer>();

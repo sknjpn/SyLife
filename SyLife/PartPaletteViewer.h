@@ -17,12 +17,7 @@ class PartPaletteViewer
 	shared_ptr<PartAsset>	m_selectedPart;
 
 public:
-	PartPaletteViewer()
-	{
-		setPriority(2);
-
-		setDrawRect(Scene::Width() - m_barWidth - m_itemWidth, 20, m_barWidth + m_itemWidth, 400);
-	}
+	PartPaletteViewer();
 
 	const shared_ptr<PartAsset>& getSelectedPart() const { return m_selectedPart; }
 

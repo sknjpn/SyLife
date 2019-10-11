@@ -8,12 +8,7 @@ class ReleaseViewer
 	: public Viewer
 {
 public:
-	ReleaseViewer() 
-	{
-		setPriority(3);
-		setDrawRect(Scene::Rect()); 
-		setBackgroundColor(Color(0, 0));
-	}
+	ReleaseViewer();
 
 	void	update() override;
 };

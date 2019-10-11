@@ -6,6 +6,13 @@
 #include "EquipmentAsset.h"
 #include "ModuleAsset.h"
 
+PartPaletteViewer::PartPaletteViewer()
+{
+	setPriority(2);
+
+	setDrawRect(Scene::Width() - m_barWidth - m_itemWidth, 20, m_barWidth + m_itemWidth, 400);
+}
+
 void	PartPaletteViewer::update()
 {
 	RectF(m_itemWidth, 0, m_barWidth, 400).stretched(-2).drawFrame(1.0, Palette::White);
