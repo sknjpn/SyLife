@@ -134,40 +134,6 @@ void FieldViewer::update()
 				}
 			}
 		}
-		/*
-		auto rv = g_viewerManagerPtr->getViewer<ReleaseViewer>();
-		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
-		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
-
-		if (rv->isDragged() && isMouseOver())
-		{
-			// part
-			{
-				auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
-
-				for (const auto& p : m_newModel->getPartConfigs())
-				{
-					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
-						.translated(p->getPosition()));
-
-					for (const auto& s : p->getModel()->getShapes())
-						s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
-				}
-			}
-
-			if (MouseL.up())
-			{
-				const auto& c = g_cellManagerPtr->addCellState(m_newModel);
-				c->setPosition(Cursor::PosF());
-				c->setVelocity(Vec2::Zero());
-				c->init();
-
-				m_newModel = g_assetManagerPtr->makeAsset<CellAsset>();
-				av->setCellAsset(m_newModel);
-				rv->setCellAsset(m_newModel);
-			}
-		}
-		*/
 
 		{
 			const auto& cs = g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState;

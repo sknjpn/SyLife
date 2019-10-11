@@ -1,10 +1,12 @@
 ﻿#include "ReleaseViewer.h"
 
 #include "ViewerManager.h"
+#include "CellManager.h"
 
 #include "FieldViewer.h"
 #include "CellMakingViewer.h"
 #include "CellAsset.h"
+#include "CellState.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
 
@@ -32,5 +34,16 @@ void ReleaseViewer::update()
 			for (const auto& s : p->getModel()->getShapes())
 				s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 		}
+	}
+
+	// Release
+	if (MouseL.up())
+	{
+		const auto& c = g_cellManagerPtr->addCellState(cmv->m_cellAsset);
+		c->setPosition(Cursor::PosF());
+		c->setVelocity(Vec2::Zero());
+		c->init();
+
+		cmv->release();
 	}
 }
