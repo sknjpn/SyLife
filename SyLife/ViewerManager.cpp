@@ -39,20 +39,29 @@ void ViewerManager::update()
 		// Viewerが消されてnullptrになっている可能性がある
 		if (*it == nullptr) continue;
 
-		auto vp = ScopedViewport2D(Rect((*it)->m_drawRect));
-		auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_drawRect.pos));
-
-		RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);
-
-		(*it)->update();
-
-		if (*it != nullptr)
+		if ((*it)->isInvisible())
 		{
-			// Viewerが消されてnullptrになっている可能性がある
-			(*it)->m_transformer.reset();
+			ScopedViewport2D(0, 0);
 
-			// フレーム描画
-			RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
+			(*it)->update();
+		}
+		else
+		{
+			auto vp = ScopedViewport2D(Rect((*it)->m_drawRect));
+			auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_drawRect.pos));
+
+			RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);
+
+			(*it)->update();
+
+			if (*it != nullptr)
+			{
+				// Viewerが消されてnullptrになっている可能性がある
+				(*it)->m_transformer.reset();
+
+				// フレーム描画
+				RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
+			}
 		}
 	}
 }
