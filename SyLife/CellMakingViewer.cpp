@@ -21,14 +21,20 @@ void CellMakingViewer::update()
 {
 	if (m_isOpened)
 	{
+		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
+		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
+
 		if (m_isReleasing)
 		{
+			if (MouseL.up())
+			{
+				setInvisible(false);
+				av->setInvisible(false);
+				ppv->setInvisible(false);
+			}
 		}
 		else
 		{
-			auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
-			auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
-
 			// Release
 			{
 				const RectF rect = Rect(200, 200).stretched(-5);
@@ -70,6 +76,10 @@ void CellMakingViewer::update()
 					auto rv = g_viewerManagerPtr->makeViewer<ReleaseViewer>();
 
 					m_isReleasing = true;
+
+					setInvisible(true);
+					av->setInvisible(true);
+					ppv->setInvisible(true);
 				}
 			}
 
