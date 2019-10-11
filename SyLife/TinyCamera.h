@@ -8,7 +8,7 @@
 class BasicCamera
 {
 protected:
-	Rect	m_screen = Scene::Rect();	// 投影先の領域
+	RectF	m_screen = Scene::Rect();	// 投影先の領域
 	Vec2	m_center = Scene::Center();	// 切り取り領域の中心
 	double	m_scale = 1.0;				// 切り取り領域の拡大率
 
@@ -25,7 +25,7 @@ public:
 
 	[[nodiscard]] Mat3x2 getCursorMat3x2() const { return Mat3x2::Translate(-m_center).scaled(m_scale).translated(m_screen.center()); }
 	[[nodiscard]] Mat3x2 getGraphics2DMat3x2() const { return Mat3x2::Translate(-m_center).scaled(m_scale).translated(m_screen.size / 2.0); }
-	[[nodiscard]] ScopedViewport2D createScopedViewport() const { return ScopedViewport2D(m_screen); }
+	[[nodiscard]] ScopedViewport2D createScopedViewport() const { return ScopedViewport2D(Rect(m_screen)); }
 	[[nodiscard]] Transformer2D createTransformer() const { return Transformer2D(getGraphics2DMat3x2(), getCursorMat3x2()); }
 
 	// 描画対象の切り取り領域を設定する
@@ -39,13 +39,13 @@ public:
 	void		setCenter(const Vec2& center) { m_center = center; }
 
 	// 投影する領域を設定する
-	void		setScreen(const Rect& screen) { m_screen = screen; }
+	void		setScreen(const RectF& screen) { m_screen = screen; }
 
 	void		setScale(double scale) { m_scale = scale; }
 
 	// 描画対象の切り取り領域の中心を返す
 	const Vec2& getCenter() const noexcept { return m_center; }
-	const Rect& getScreen() const noexcept { return m_screen; }
+	const RectF& getScreen() const noexcept { return m_screen; }
 
 	double		getScale() const noexcept { return m_scale; }
 };
