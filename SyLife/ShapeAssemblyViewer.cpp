@@ -38,3 +38,11 @@ void AssemblyViewer::drawGrid() const
 		Line(0, -m_size.y / 2.0, 0, m_size.y / 2.0).draw(thickness, Palette::Red);
 	}
 }
+
+void ShapeAssemblyViewer::init()
+{
+}
+
+void ShapeAssemblyViewer::update()
+{
+}
