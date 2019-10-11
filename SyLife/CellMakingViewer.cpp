@@ -20,7 +20,6 @@ void CellMakingViewer::update()
 	if (m_isOpened)
 	{
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
-		auto rv = g_viewerManagerPtr->getViewer<ReleaseViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 
 		// Release
@@ -52,6 +51,17 @@ void CellMakingViewer::update()
 					for (const auto& s : p->getModel()->getShapes())
 						s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 				}
+			}
+		}
+
+		// Button
+		{
+			setDrawPos(5, 210);
+
+			if (SimpleGUI::Button(U"Release", Vec2(0, 0), 180))
+			{
+
+				auto rv = g_viewerManagerPtr->makeViewer<ReleaseViewer>();
 			}
 		}
 
@@ -129,7 +139,6 @@ void CellMakingViewer::open()
 
 	// Viewerの初期化
 	auto av = g_viewerManagerPtr->makeViewer<AssemblyViewer>();
-	auto rv = g_viewerManagerPtr->makeViewer<ReleaseViewer>();
 	auto ppv = g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
 
 	av->setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)).stretched(-5));
