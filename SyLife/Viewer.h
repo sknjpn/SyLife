@@ -5,6 +5,7 @@ class Viewer
 	friend class ViewerManager;
 
 	bool	m_isMouseOver = false;
+	int		m_priority = 0;
 	Vec2	m_drawPos = Vec2::Zero();
 	RectF	m_drawRect = RectF(Scene::Size());
 	Color	m_backgroundColor = Color(11, 22, 33, 128);
@@ -14,6 +15,7 @@ public:
 	virtual ~Viewer() = default;
 
 	// Set
+	void	setPriority(int priority) { m_priority = priority; }
 	void	setBackgroundColor(const Color& color) { m_backgroundColor = color; }
 	void	setDrawPos(const Vec2& pos) { m_drawPos = pos; m_transformer.reset(); m_transformer = make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), true); }
 	void	setDrawPos(double x, double y) { setDrawPos(Vec2(x, y)); }
