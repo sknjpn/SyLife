@@ -35,7 +35,7 @@ void CellMakingViewer::update()
 
 			return;
 		}
-		
+
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 
@@ -47,16 +47,9 @@ void CellMakingViewer::update()
 				const double r = rect.size.x / 2.0;
 				setDrawPos(rect.pos);
 
-				Circle circle(rect.size / 2.0, r);
-
-				circle
-					.draw(circle.mouseOver() ? Palette::Orange : Palette::Skyblue)
+				Circle circle(rect.size / 2.0, r)
+					.draw(Palette::Skyblue)
 					.drawFrame(4.0, Palette::Black);
-
-				/*if (m_isDragged) circle.draw(Palette::Red);
-				if (circle.leftClicked()) m_isDragged = true;
-				if (!MouseL.pressed()) m_isDragged = false;
-				*/
 
 				// part
 				{
