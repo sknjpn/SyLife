@@ -152,8 +152,10 @@ void CellMakingViewer::open()
 	setDrawRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
 	// Viewerの初期化
-	auto av = g_viewerManagerPtr->makeViewer<AssemblyViewer>();
-	auto ppv = g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
+	auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
+	auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
+	av->setInvisible(false);
+	ppv->setInvisible(false);
 
 	av->setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)).stretched(-5));
 	av->setSize(Vec2(800, 800) - Vec2(10, 10));
