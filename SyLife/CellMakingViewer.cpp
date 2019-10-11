@@ -20,7 +20,8 @@ void CellMakingViewer::update()
 		auto rv = g_viewerManagerPtr->getViewer<ReleaseViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 
-		av->setDrawRect(RectF(900, 900).setCenter(getDrawCenter()).stretched(-5));
+		av->setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)).stretched(-5));
+		ppv->setDrawRect(RectF(200, 900).setCenter(getDrawCenter().movedBy(500, 0)).stretched(-5));
 		// rv->setDrawRect(RectF()
 	}
 	else
@@ -58,7 +59,7 @@ void CellMakingViewer::update()
 		{
 			static Font font(32, Typeface::Bold);
 
-			font(U"Create Cell").drawAt(getDrawCenter());
+			font(U"Create Cell").drawAt(getDrawSize() / 2.0);
 		}
 	}
 }
