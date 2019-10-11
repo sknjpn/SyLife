@@ -279,6 +279,7 @@
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="ReleaseViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="ShapeAssemblyViewer.cpp" />
     <ClCompile Include="ShapeLayerViewer.cpp" />
     <ClCompile Include="SlideBar.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -347,6 +348,7 @@
     <ClInclude Include="PartState.h" />
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="ShapeAssemblyViewer.h" />
     <ClInclude Include="ShapeLayerViewer.h" />
     <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="SlideBar.h" />
