@@ -37,9 +37,6 @@ void ShapeAssemblyViewer::update()
 	{
 		if (MouseL.pressed())
 		{
-			auto slv = g_viewerManagerPtr->getViewer<ShapeLayerViewer>();
-			auto index = slv->getSelectedIndex();
-
 			m_partAsset->m_shapes[index].m_polygon.append(Circle(Cursor::PosF(), 10).asPolygon());
 		}
 
