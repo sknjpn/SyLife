@@ -14,7 +14,7 @@ class TitleViewer
 		double	m_timer = 0.0;
 	};
 
-	enum Option
+	enum struct Option
 	{
 		LaunchNewGame,
 		ContinueGame,
