@@ -96,7 +96,7 @@ void AssemblyViewer::setSize(const Vec2& size)
 
 	setDrawSize(size);
 
-	m_camera.setScreen(Rect(m_width, m_height));
+	m_camera.setScreen(RectF(m_width, m_height));
 	m_camera.setRestrictedRect(RectF(m_width, m_height).setCenter(Vec2::Zero()));
 	m_camera.setCenter(Vec2::Zero());
 	m_camera.setTargetCenter(Vec2::Zero());
