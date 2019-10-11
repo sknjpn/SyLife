@@ -15,6 +15,14 @@ class CellMakingViewer :
 	friend class ReleaseViewer;
 	friend class PartPaletteViewer;
 
+	enum struct Mode
+	{
+		Close,
+		EditParts,
+		EditBodyShapes,
+		Release,
+	} m_mode;
+
 	bool	m_isOpened;
 	bool	m_isReleasing;
 	shared_ptr<CellAsset>	m_cellAsset;
