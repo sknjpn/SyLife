@@ -1,14 +1,16 @@
 ﻿#include "ShapeLayerViewer.h"
 
+#include "ShapeModel.h"
+#include "PartAsset.h"
+
 void ShapeLayerViewer::init()
 {
 }
 
 void ShapeLayerViewer::update()
 {
-}
-
-void ShapeLayerViewer::setShapeModel(const shared_ptr<ShapeModel>& shapeModel)
-{
-	m_shapeModel = shapeModel;
+	for (const auto& l : m_partAsset->getShapes())
+	{
+		
+	}
 }
