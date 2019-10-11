@@ -53,7 +53,7 @@ void CellMakingViewer::update()
 
 				// part
 				{
-					auto t1 = Transformer2D(Mat3x2::Scale(r / m_cellAsset->getRadius() / 2.0).translated(circle.center));
+					auto t1 = Transformer2D(Mat3x2::Scale(r / m_cellAsset->getRadius() / 2.0).translated(rect.center));
 
 					for (const auto& p : m_cellAsset->getPartConfigs())
 					{
