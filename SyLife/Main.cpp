@@ -28,6 +28,9 @@ void Main()
 		Window::Maximize();
 	}
 
+	// ESCキーによる終了の防止
+	System::SetTerminationTriggers(UserAction::CloseButtonClicked);
+
 	g_systemManagerPtr = make_unique<SystemManager>();
 
 	g_viewerManagerPtr->makeViewer<TitleViewer>();
