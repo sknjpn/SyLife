@@ -22,5 +22,8 @@ public:
 	void	update() override;
 
 	void	setSize(const Vec2& size);
+	
+	void	drawParts() const;
+	void	drawGrid() const;
 };
 
