@@ -80,17 +80,6 @@ void ChipManager::init()
 
 void ChipManager::drawChips()
 {
-	{
-		auto c = getChip(Cursor::PosF());
-
-		if (c != nullptr) Print << c->getNutrition();
-
-		double sum = 0.0;
-		for (auto p : step(m_rect.size))
-			sum += getChip(p)->getNutrition();
-		Print << sum;
-	}
-
 	// 領域の取得
 	Rect rect;
 	{
