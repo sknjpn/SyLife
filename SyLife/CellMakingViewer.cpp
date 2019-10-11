@@ -157,9 +157,9 @@ void CellMakingViewer::open()
 	av->setInvisible(false);
 	ppv->setInvisible(false);
 
-	av->setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)).stretched(-5));
+	av->setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
 	av->setSize(Vec2(800, 800) - Vec2(10, 10));
-	ppv->setDrawRect(RectF(200, 900).setCenter(getDrawCenter().movedBy(500, 0)).stretched(-5));
+	ppv->setDrawRect(RectF(200, 900).setCenter(getDrawCenter().movedBy(500, 0)));
 }
 
 void CellMakingViewer::close()
