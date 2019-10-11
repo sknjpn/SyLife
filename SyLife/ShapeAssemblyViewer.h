@@ -5,9 +5,10 @@
 
 class PartAsset;
 
-class ShapeAssemblyViewer :
-	public Viewer
+class ShapeAssemblyViewer
+	: public Viewer
 {
+	double	m_circleRadius = 10.0;
 	Vec2	m_size;
 	TinyCamera	m_camera;
 	shared_ptr<PartAsset>	m_partAsset;
