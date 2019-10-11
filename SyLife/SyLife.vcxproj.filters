@@ -733,14 +733,14 @@
     <ClInclude Include="DebugViewer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="SlideBar.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ShapeAssemblyViewer.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ShapeLayerViewer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeAssemblyViewer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SlideBar.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
