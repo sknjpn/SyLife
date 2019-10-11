@@ -18,10 +18,10 @@ public:
 	double	m_height = 300;
 
 public:
-	AssemblyViewer();
-
 	void	init() override;
 
 	void	update() override;
+
+	void	setSize(const Vec2& size);
 };
 

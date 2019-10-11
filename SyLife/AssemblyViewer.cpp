@@ -8,18 +8,9 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 
-AssemblyViewer::AssemblyViewer()
-{
-	setDrawRect(Scene::Width() - 400, 20, 300, 300);
-	m_camera.setScreen(Rect(300, 300));
-	m_camera.setRestrictedRect(RectF(m_width, m_height).setCenter(Vec2::Zero()));
-	m_camera.setCenter(Vec2::Zero());
-	m_camera.setTargetCenter(Vec2::Zero());
-	m_camera.setMaxScale(4.0);
-}
-
 void AssemblyViewer::init()
 {
+	setSize(Vec2(300, 300));
 }
 
 void AssemblyViewer::update()
@@ -96,4 +87,18 @@ void AssemblyViewer::update()
 	}
 
 	cmv->m_cellAsset->updateProperties();
+}
+
+void AssemblyViewer::setSize(const Vec2& size)
+{
+	m_width = size.x;
+	m_height = size.y;
+
+	setDrawSize(size);
+
+	m_camera.setScreen(Rect(m_width, m_height));
+	m_camera.setRestrictedRect(RectF(m_width, m_height).setCenter(Vec2::Zero()));
+	m_camera.setCenter(Vec2::Zero());
+	m_camera.setTargetCenter(Vec2::Zero());
+	m_camera.setMaxScale(4.0);
 }
