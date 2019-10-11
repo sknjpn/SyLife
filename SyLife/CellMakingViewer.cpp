@@ -14,6 +14,9 @@ void CellMakingViewer::init()
 {
 	setPriority(1);
 
+	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setInvisible(true);
+	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->setInvisible(true);
+
 	close();
 }
 
@@ -160,20 +163,26 @@ void CellMakingViewer::close()
 {
 	m_isOpened = false;
 
+	// サブViewerの非表示
+	auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
+	auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
+	av->setInvisible(true);
+	ppv->setInvisible(true);
+
+	// 本体の表示
+	setInvisible(false);
+
 	// DrawRectの設定
 	setDrawRect(RectF(200, 50).setCenter(Scene::CenterF().x, 50));
 }
 
 void CellMakingViewer::release()
 {
+	// フラグ
+	m_isReleasing = false;
+
+	// 新規Asset生成
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
 
-	auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
-	auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
-
-	setInvisible(false);
-	av->setInvisible(false);
-	ppv->setInvisible(false);
-
-	m_isReleasing = false;
+	close();
 }
