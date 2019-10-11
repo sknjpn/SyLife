@@ -159,7 +159,7 @@ void CellMakingViewer::open()
 	m_isOpened = true;
 
 	// BackgroundColorの設定
-	setBackgroundColor(Palette::Deepskyblue);
+	setBackgroundColor(Color(11, 22, 33));
 
 	// DrawRectの設定
 	setDrawRect(RectF(1200, 900).setCenter(Scene::CenterF()));
