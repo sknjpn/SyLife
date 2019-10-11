@@ -28,6 +28,14 @@ void CellMakingViewer::update()
 {
 	if (m_isOpened)
 	{
+		// 閉じる
+		if (KeyEscape.down())
+		{
+			close();
+
+			return;
+		}
+		
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 
