@@ -20,7 +20,6 @@ void AssemblyViewer::update()
 	//Rect(getDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 	m_camera.update();
-
 	const auto t1 = m_camera.createTransformer();
 	const int scale = (int)log10(m_camera.getScale());
 	const double thickness = 2.0 / m_camera.getScale();
