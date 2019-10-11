@@ -85,7 +85,7 @@ void CellMakingViewer::update()
 
 			// material
 			{
-				setDrawPos(Vec2(0, 200));
+				setDrawPos(Vec2(0, 250));
 
 				static Font font(13, Typeface::Bold);
 
