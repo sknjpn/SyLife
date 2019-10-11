@@ -84,7 +84,7 @@ void CellMakingViewer::update()
 
 			// Close Button
 			{
-				setDrawPos(5, 240);
+				setDrawPos(5, 250);
 
 				if (SimpleGUI::Button(U"Close", Vec2(0, 0), 180))
 				{
@@ -96,7 +96,7 @@ void CellMakingViewer::update()
 
 			// material
 			{
-				setDrawPos(Vec2(0, 270));
+				setDrawPos(Vec2(0, 290));
 
 				static Font font(13, Typeface::Bold);
 
