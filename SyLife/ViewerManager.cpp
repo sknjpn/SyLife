@@ -41,7 +41,7 @@ void ViewerManager::update()
 
 		if ((*it)->isInvisible())
 		{
-			ScopedViewport2D(0, 0);
+			auto vp = ScopedViewport2D(0, 0);
 
 			(*it)->update();
 
