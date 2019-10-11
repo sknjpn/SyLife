@@ -716,7 +716,7 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CellMakingViewer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
