@@ -12,6 +12,9 @@ void ViewerManager::update()
 	// nullptr になったViewerのリセット
 	m_viewers.remove(nullptr);
 
+	// Priorityに応じた昇順に並び替え
+	m_viewers.sort_by([](const shared_ptr<Viewer>& v1, const shared_ptr<Viewer>& v2) { return v1->getPriority() < v2->getPriority(); });
+
 	// Viewerのリセット
 	for (auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
 	{
