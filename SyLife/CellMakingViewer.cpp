@@ -26,8 +26,46 @@ void CellMakingViewer::init()
 
 void CellMakingViewer::update()
 {
-	if (m_isOpened)
+	switch (m_mode)
 	{
+	case CellMakingViewer::Mode::Close:
+		// Push
+	{
+		static bool isClicked = false;
+
+
+		if (isMouseOver())
+		{
+			if (MouseL.down()) isClicked = true;
+
+			if (MouseL.up())
+			{
+				isClicked = false;
+
+				open();
+
+				return;
+			}
+
+			if (isClicked && MouseL.pressed()) setBackgroundColor(ColorF(1.0, 0.3));
+			else setBackgroundColor(ColorF(1.0, 0.5));
+		}
+		else
+		{
+			if (MouseL.up()) isClicked = false;
+
+			setBackgroundColor(ColorF(1.0, 0.1));
+		}
+	}
+
+	// Text
+	{
+		static Font font(32, Typeface::Bold);
+
+		font(U"Create Cell").drawAt(getDrawSize() / 2.0);
+	}
+	break;
+	case CellMakingViewer::Mode::EditParts:
 		// 閉じる
 		if (KeyEscape.down())
 		{
@@ -39,124 +77,90 @@ void CellMakingViewer::update()
 		auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
 		auto ppv = g_viewerManagerPtr->getViewer<PartPaletteViewer>();
 
-		if (!m_isReleasing)
+		// Release
 		{
-			// Release
+			const RectF rect = Rect(200, 200).stretched(-5);
+			const double r = rect.size.x / 2.0;
+			setDrawPos(rect.pos);
+
+			Circle(rect.size / 2.0, r)
+				.draw(Palette::Skyblue)
+				.drawFrame(4.0, Palette::Black);
+
+			// part
 			{
-				const RectF rect = Rect(200, 200).stretched(-5);
-				const double r = rect.size.x / 2.0;
-				setDrawPos(rect.pos);
+				auto t1 = Transformer2D(Mat3x2::Scale(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
 
-				Circle(rect.size / 2.0, r)
-					.draw(Palette::Skyblue)
-					.drawFrame(4.0, Palette::Black);
-
-				// part
+				for (const auto& p : m_cellAsset->getPartConfigs())
 				{
-					auto t1 = Transformer2D(Mat3x2::Scale(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
+					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
+						.translated(p->getPosition().x, p->getPosition().y));
 
-					for (const auto& p : m_cellAsset->getPartConfigs())
-					{
-						auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
-							.translated(p->getPosition().x, p->getPosition().y));
-
-						for (const auto& s : p->getModel()->getShapes())
-							s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
-					}
-				}
-			}
-
-			// Release Button
-			{
-				setDrawPos(5, 210);
-
-				if (SimpleGUI::Button(U"Release", Vec2(0, 0), 180))
-				{
-					auto rv = g_viewerManagerPtr->makeViewer<ReleaseViewer>();
-
-					m_isReleasing = true;
-
-					setInvisible(true);
-					av->setInvisible(true);
-					ppv->setInvisible(true);
-				}
-			}
-
-			// Close Button
-			{
-				setDrawPos(5, 250);
-
-				if (SimpleGUI::Button(U"Close", Vec2(0, 0), 180))
-				{
-					close();
-
-					return;
-				}
-			}
-
-			// material
-			{
-				setDrawPos(Vec2(0, 290));
-
-				static Font font(13, Typeface::Bold);
-
-				// Nutrition
-				font(U"Nutrition: " + ToString(m_cellAsset->getMaterial().getNutrition())).draw();
-				moveDrawPos(0, 20);
-
-				// Elements
-				for (const auto& e : m_cellAsset->getMaterial().getElementList())
-				{
-					font(Unicode::Widen(e.first->getName()) + U": " + ToString(e.second) + U"U").draw();
-
-					moveDrawPos(0, 16);
+					for (const auto& s : p->getModel()->getShapes())
+						s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 				}
 			}
 		}
-	}
-	else
-	{
-		// Push
+
+		// Release Button
 		{
-			static bool isClicked = false;
+			setDrawPos(5, 210);
 
-
-			if (isMouseOver())
+			if (SimpleGUI::Button(U"Release", Vec2(0, 0), 180))
 			{
-				if (MouseL.down()) isClicked = true;
+				auto rv = g_viewerManagerPtr->makeViewer<ReleaseViewer>();
 
-				if (MouseL.up())
-				{
-					isClicked = false;
+				m_isReleasing = true;
 
-					open();
-
-					return;
-				}
-
-				if (isClicked && MouseL.pressed()) setBackgroundColor(ColorF(1.0, 0.3));
-				else setBackgroundColor(ColorF(1.0, 0.5));
-			}
-			else
-			{
-				if (MouseL.up()) isClicked = false;
-
-				setBackgroundColor(ColorF(1.0, 0.1));
+				setInvisible(true);
+				av->setInvisible(true);
+				ppv->setInvisible(true);
 			}
 		}
 
-		// Text
+		// Close Button
 		{
-			static Font font(32, Typeface::Bold);
+			setDrawPos(5, 250);
 
-			font(U"Create Cell").drawAt(getDrawSize() / 2.0);
+			if (SimpleGUI::Button(U"Close", Vec2(0, 0), 180))
+			{
+				close();
+
+				return;
+			}
 		}
+
+		// material
+		{
+			setDrawPos(Vec2(0, 290));
+
+			static Font font(13, Typeface::Bold);
+
+			// Nutrition
+			font(U"Nutrition: " + ToString(m_cellAsset->getMaterial().getNutrition())).draw();
+			moveDrawPos(0, 20);
+
+			// Elements
+			for (const auto& e : m_cellAsset->getMaterial().getElementList())
+			{
+				font(Unicode::Widen(e.first->getName()) + U": " + ToString(e.second) + U"U").draw();
+
+				moveDrawPos(0, 16);
+			}
+		}
+		break;
+	case CellMakingViewer::Mode::EditBodyShapes:
+		break;
+	case CellMakingViewer::Mode::Release:
+		break;
+	default:
+		break;
 	}
 }
 
 void CellMakingViewer::open()
 {
-	m_isOpened = true;
+	m_mode = Mode::EditBodyShapes;
 
 	// BackgroundColorの設定
 	setBackgroundColor(Color(11, 22, 33));
@@ -177,7 +181,7 @@ void CellMakingViewer::open()
 
 void CellMakingViewer::close()
 {
-	m_isOpened = false;
+	m_mode = Mode::Close;
 
 	// サブViewerの非表示
 	auto av = g_viewerManagerPtr->getViewer<AssemblyViewer>();
@@ -194,8 +198,7 @@ void CellMakingViewer::close()
 
 void CellMakingViewer::release()
 {
-	// フラグ
-	m_isReleasing = false;
+	m_mode = Mode::Release;
 
 	// 新規Asset生成
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
