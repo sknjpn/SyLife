@@ -14,7 +14,7 @@ void CellMakingViewer::init()
 {
 	setPriority(1);
 
-	// サブViewer生成hu
+	// サブViewer生成
 	g_viewerManagerPtr->makeViewer<AssemblyViewer>()->setInvisible(true);
 	g_viewerManagerPtr->makeViewer<PartPaletteViewer>()->setInvisible(true);
 
