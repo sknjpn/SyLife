@@ -44,6 +44,9 @@ void ViewerManager::update()
 			ScopedViewport2D(0, 0);
 
 			(*it)->update();
+
+			// Viewerが消されてnullptrになっている可能性がある
+			if (*it != nullptr) (*it)->m_transformer.reset();
 		}
 		else
 		{
