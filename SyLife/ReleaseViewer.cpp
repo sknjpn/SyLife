@@ -52,5 +52,9 @@ void ReleaseViewer::update()
 		c->init();
 
 		cmv->release();
+
+		g_viewerManagerPtr->deleteViewer<ReleaseViewer>();
+
+		return;
 	}
 }
