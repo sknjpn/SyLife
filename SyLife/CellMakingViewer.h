@@ -16,6 +16,7 @@ class CellMakingViewer :
 	friend class PartPaletteViewer;
 
 	bool	m_isOpened;
+	bool	m_isReleasing;
 	shared_ptr<CellAsset>	m_cellAsset;
 
 public:
