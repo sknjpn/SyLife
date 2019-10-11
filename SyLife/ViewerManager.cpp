@@ -25,7 +25,7 @@ void ViewerManager::update()
 	// mouseOver 適用
 	for (auto it = m_viewers.rbegin(); it < m_viewers.rend(); ++it)
 	{
-		if ((*it)->m_drawRect.mouseOver())
+		if (!(*it)->isInvisible() && (*it)->m_drawRect.mouseOver())
 		{
 			(*it)->m_isMouseOver = true;
 
