@@ -16,7 +16,7 @@ public:
 	virtual ~Viewer() = default;
 
 	// Set
-	void	setInvisible(bool isInvisible) { m_isInvisible = isInvisible };
+	void	setInvisible(bool isInvisible) { m_isInvisible = isInvisible; };
 	void	setPriority(int priority) { m_priority = priority; }
 	void	setBackgroundColor(const Color& color) { m_backgroundColor = color; }
 	void	setDrawPos(const Vec2& pos) { m_drawPos = pos; m_transformer.reset(); m_transformer = make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), true); }
