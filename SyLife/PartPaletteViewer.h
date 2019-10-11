@@ -19,6 +19,8 @@ class PartPaletteViewer
 public:
 	PartPaletteViewer()
 	{
+		setPriority(2);
+
 		setDrawRect(Scene::Width() - m_barWidth - m_itemWidth, 20, m_barWidth + m_itemWidth, 400);
 	}
 

@@ -10,6 +10,7 @@ class ReleaseViewer
 public:
 	ReleaseViewer() 
 	{
+		setPriority(3);
 		setDrawRect(Scene::Rect()); 
 		setBackgroundColor(Color(0, 0));
 	}

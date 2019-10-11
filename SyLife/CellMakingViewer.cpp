@@ -12,6 +12,8 @@
 
 void CellMakingViewer::init()
 {
+	setPriority(1);
+
 	close();
 }
 

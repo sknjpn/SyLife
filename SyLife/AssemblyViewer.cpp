@@ -10,6 +10,8 @@
 
 void AssemblyViewer::init()
 {
+	setPriority(2);
+
 	setSize(Vec2(300, 300));
 }
 
