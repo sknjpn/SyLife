@@ -66,7 +66,7 @@ void CellMakingViewer::update()
 				}
 			}
 
-			// Button
+			// Release Button
 			{
 				setDrawPos(5, 210);
 
@@ -82,9 +82,21 @@ void CellMakingViewer::update()
 				}
 			}
 
+			// Close Button
+			{
+				setDrawPos(5, 240);
+
+				if (SimpleGUI::Button(U"Close", Vec2(0, 0), 180))
+				{
+					close();
+
+					return;
+				}
+			}
+
 			// material
 			{
-				setDrawPos(Vec2(0, 250));
+				setDrawPos(Vec2(0, 270));
 
 				static Font font(13, Typeface::Bold);
 
