@@ -1,7 +1,7 @@
 ﻿#include "ShapeAssemblyViewer.h"
 
 
-void AssemblyViewer::drawParts() const
+void ShapeAssemblyViewer::drawParts() const
 {
 	auto cmv = g_viewerManagerPtr->getViewer<CellMakingViewer>();
 
@@ -15,7 +15,7 @@ void AssemblyViewer::drawParts() const
 	}
 }
 
-void AssemblyViewer::drawGrid() const
+void ShapeAssemblyViewer::drawGrid() const
 {
 	const int scale = (int)log10(m_camera.getScale());
 	const double thickness = 2.0 / m_camera.getScale();
