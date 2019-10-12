@@ -3,10 +3,10 @@
 ColorPicker::ColorPicker()
 {
 	const int length = 64;
-	const Size size(length, length);
 
 	// Circle
 	{
+		const Size size(length, length);
 		Image image(size);
 		for (auto p : step(size))
 		{
@@ -16,6 +16,16 @@ ColorPicker::ColorPicker()
 				image[p] = HSV(ToDegrees(atan2(d.y, d.x)), d.length() / (length / 2), 1.0);
 		}
 		m_circleTexture = Texture(image);
+	}
+
+	// Bar
+	{
+		const Size size(length / 8, length);
+		Image image(size);
+		for (auto p : step(size))
+		{
+			image[p] = 
+		}
 	}
 }
 
