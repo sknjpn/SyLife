@@ -20,8 +20,6 @@ void ShapeLayerViewer::update()
 	if (!m_partAsset || isInvisible()) return;
 
 	drawLayers();
-
-	m_colorPicker.update();
 }
 
 void ShapeLayerViewer::drawLayers()
@@ -34,6 +32,9 @@ void ShapeLayerViewer::drawLayers()
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
 		block.draw((int(it - shapes.begin()) == m_selectedIndex) ? ColorF(Palette::Blue, 0.5) : ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
 		if (block.leftClicked()) m_selectedIndex = int(it - shapes.begin());
+
+		// ColorPicker
+		m_colorPicker.update();
 
 		// パーツ描画
 		{
