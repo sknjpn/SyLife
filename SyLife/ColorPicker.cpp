@@ -62,6 +62,11 @@ HSV ColorPicker::update(const HSV& hsv)
 		auto t = Transformer2D(Mat3x2::Translate(76, 8), true);
 
 		m_barTexture.draw();
+
+		Triangle(Vec2(0, 0), Vec2(8, -4), Vec2(8, 4))
+			.movedBy(length / 8, (1.0 - hsv.v) * length)
+			.draw()
+			.drawFrame(1.0, Palette::Black);
 	}
 
 	return result;
