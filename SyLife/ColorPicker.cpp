@@ -32,8 +32,10 @@ ColorPicker::ColorPicker()
 	}
 }
 
-void ColorPicker::update(const HSV& hsv)
+HSV ColorPicker::update(const HSV& hsv)
 {
+	HSV result = hsv;
+
 	m_circleTexture.draw(8, 8);
 	m_barTexture.draw(76, 8);
 
@@ -44,4 +46,10 @@ void ColorPicker::update(const HSV& hsv)
 		.movedBy(length / 2 + 8, length / 2 + 8)
 		.draw(hsv)
 		.drawFrame(1.0, Palette::Black);
+
+	auto d = Cursor::PosF() - Vec2(length / 2.0, length / 2.0) - Vec2(8, 8);
+	result.h = ToDegrees(atan2(d.y, d.x));
+	result.s = d.length() / (length / 2);
+
+	return result;
 }

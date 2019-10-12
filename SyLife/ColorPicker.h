@@ -8,6 +8,6 @@ class ColorPicker
 public:
 	ColorPicker();
 
-	void	update(const HSV& hsv);
+	HSV	update(const HSV& hsv);
 };
 
