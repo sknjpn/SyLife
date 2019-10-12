@@ -26,8 +26,9 @@ ColorPicker::ColorPicker()
 		Image image(size);
 		for (auto p : step(size))
 		{
-			image[p] = 
+			image[p] = ColorF(1.0 - p.y / double(length));
 		}
+		m_barTexture = Texture(image);
 	}
 }
 
