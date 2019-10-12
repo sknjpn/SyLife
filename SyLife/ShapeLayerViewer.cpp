@@ -20,12 +20,28 @@ void ShapeLayerViewer::update()
 	if (!m_partAsset || isInvisible()) return;
 
 	drawLayers();
+
+	// 新規Layer
+	{
+		static Font font(13, Typeface::Bold);
+
+		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
+		block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+
+		if (block.leftClicked())
+		{
+			// 新しいShapeの追加
+			auto& s = m_partAsset->m_shapes.emplace_back();
+			s.m_color = Palette::White;
+			s.m_polygon = Circle(10.0).asPolygon();
+		}
+
+		moveDrawPos(0, m_itemHeight);
+	}
 }
 
 void ShapeLayerViewer::drawLayers()
 {
-	static Font font(13, Typeface::Bold);
-
 	auto& shapes = m_partAsset->m_shapes;
 	for (auto it = shapes.begin(); it != shapes.end(); ++it)
 	{
