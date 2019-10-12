@@ -48,8 +48,11 @@ HSV ColorPicker::update(const HSV& hsv)
 		.drawFrame(1.0, Palette::Black);
 
 	auto d = Cursor::PosF() - Vec2(length / 2.0, length / 2.0) - Vec2(8, 8);
-	result.h = ToDegrees(atan2(d.y, d.x));
-	result.s = d.length() / (length / 2);
+	if (d.length() < length / 2 && MouseL.pressed())
+	{
+		result.h = ToDegrees(atan2(d.y, d.x));
+		result.s = d.length() / (length / 2);
+	}
 
 	return result;
 }
