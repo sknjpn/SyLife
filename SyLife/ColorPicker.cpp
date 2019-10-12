@@ -19,5 +19,5 @@ ColorPicker::ColorPicker()
 
 void ColorPicker::update()
 {
-
+	m_circleTexture.draw();
 }

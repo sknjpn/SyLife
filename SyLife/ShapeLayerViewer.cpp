@@ -20,6 +20,8 @@ void ShapeLayerViewer::update()
 	if (!m_partAsset || isInvisible()) return;
 
 	drawLayers();
+
+	m_colorPicker.update();
 }
 
 void ShapeLayerViewer::drawLayers()
