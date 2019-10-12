@@ -14,6 +14,8 @@ ColorPicker::ColorPicker()
 
 			if (d.length() < length / 2)
 				image[p] = HSV(ToDegrees(atan2(d.y, d.x)), d.length() / (length / 2), 1.0);
+			else
+				image[p] = Color(0, 0);
 		}
 		m_circleTexture = Texture(image);
 	}
