@@ -36,4 +36,9 @@ void ColorPicker::update(const HSV& hsv)
 {
 	m_circleTexture.draw(8, 8);
 	m_barTexture.draw(76, 8);
+
+	const int length = 64;
+
+	// Circle
+	RectF(Vec2(hsv.s * length, 0.0).rotated(ToRadians(hsv.h)), Vec2(3, 3)).draw(hsv).drawFrame(1.0, Palette::Black);
 }
