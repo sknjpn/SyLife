@@ -32,7 +32,7 @@ ColorPicker::ColorPicker()
 	}
 }
 
-void ColorPicker::update()
+void ColorPicker::update(const HSV& hsv)
 {
 	m_circleTexture.draw(8, 8);
 	m_barTexture.draw(76, 8);
