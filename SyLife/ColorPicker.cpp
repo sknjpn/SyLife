@@ -13,7 +13,7 @@ ColorPicker::ColorPicker()
 			const Point d = (p - size / 2);
 
 			if (d.length() < length / 2)
-				image[p] = HSV(ToDegrees(atan2()), d.length() / (length / 2), 1.0);
+				image[p] = HSV(ToDegrees(atan2(d.y, d.x)), d.length() / (length / 2), 1.0);
 		}
 		m_circleTexture = Texture(image);
 	}
