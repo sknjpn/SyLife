@@ -36,32 +36,32 @@ HSV ColorPicker::update(const HSV& hsv)
 {
 	HSV result = hsv;
 
-	m_circleTexture.draw(8, 8);
-	m_barTexture.draw(76, 8);
-
 	const int length = 64;
-
-	// Circle
-	RectF(Vec2(10, 10))
-		.setCenter(Vec2(hsv.s * length / 2.0, 0.0).rotated(ToRadians(hsv.h)))
-		.movedBy(length / 2 + 8, length / 2 + 8)
-		.drawFrame(1.0, Palette::Black);
-
-	auto d = Cursor::PosF() - Vec2(length / 2.0, length / 2.0) - Vec2(8, 8);
-	if (d.length() < length / 2 && MouseL.pressed())
-	{
-		result.h = ToDegrees(atan2(d.y, d.x));
-		result.s = d.length() / (length / 2);
-	}
 
 	// Circle
 	{
 		auto t = Transformer2D(Mat3x2::Translate(8, 8), true);
+
+		m_circleTexture.draw(8, 8);
+
+		RectF(Vec2(10, 10))
+			.setCenter(Vec2(hsv.s * length / 2.0, 0.0).rotated(ToRadians(hsv.h)))
+			.movedBy(length / 2 + 8, length / 2 + 8)
+			.drawFrame(1.0, Palette::Black);
+
+		auto d = Cursor::PosF() - Vec2(length / 2.0, length / 2.0) - Vec2(8, 8);
+		if (d.length() < length / 2 && MouseL.pressed())
+		{
+			result.h = ToDegrees(atan2(d.y, d.x));
+			result.s = d.length() / (length / 2);
+		}
 	}
 
 	// Bar
 	{
 		auto t = Transformer2D(Mat3x2::Translate(76, 8), true);
+
+		m_barTexture.draw(76, 8);
 	}
 
 	return result;
