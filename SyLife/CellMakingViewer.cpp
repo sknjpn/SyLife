@@ -331,7 +331,7 @@ void CellMakingViewer::makeAsset()
 		m_bodyAsset->m_material.setNutrition(1.0);
 		auto& s = m_bodyAsset->m_shapes.emplace_back();
 		s.m_color = Palette::White;
-		s.m_polygon = Circle(1.0).asPolygon();
+		s.m_polygon = Circle(10.0).asPolygon();
 	}
 
 	m_cellAsset->addPartConfig()->setModel(m_bodyAsset);
