@@ -34,7 +34,7 @@ void ShapeLayerViewer::drawLayers()
 		if (block.leftClicked()) m_selectedIndex = int(it - shapes.begin());
 
 		// ColorPicker
-		m_colorPicker.update();
+		m_colorPicker.update(it->m_color);
 
 		// パーツ描画
 		{
