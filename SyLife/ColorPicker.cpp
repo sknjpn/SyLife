@@ -35,5 +35,5 @@ ColorPicker::ColorPicker()
 void ColorPicker::update()
 {
 	m_circleTexture.draw(8, 8);
-	m_barTexture.draw(88, 8);
+	m_barTexture.draw(76, 8);
 }
