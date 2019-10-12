@@ -7,7 +7,7 @@ ColorPicker::ColorPicker()
 
 	// Circle
 	{
-		Image image;
+		Image image(size);
 		for (auto p : step(size))
 		{
 			if ((p - size / 2).length() < length / 2)
