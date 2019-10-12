@@ -40,5 +40,8 @@ void ColorPicker::update(const HSV& hsv)
 	const int length = 64;
 
 	// Circle
-	RectF(Vec2(hsv.s * length, 0.0).rotated(ToRadians(hsv.h)), Vec2(3, 3)).draw(hsv).drawFrame(1.0, Palette::Black);
+	RectF(Vec2(hsv.s * length, 0.0).rotated(ToRadians(hsv.h)), Vec2(10, 10))
+		.movedBy(length / 2 + 8, length / 2 + 8)
+		.draw(hsv)
+		.drawFrame(1.0, Palette::Black);
 }
