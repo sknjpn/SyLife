@@ -43,7 +43,7 @@ HSV ColorPicker::update(const HSV& hsv)
 
 	// Circle
 	RectF(Vec2(10, 10))
-		.setCenter(Vec2(hsv.s * length, 0.0).rotated(ToRadians(hsv.h)))
+		.setCenter(Vec2(hsv.s * length / 2.0, 0.0).rotated(ToRadians(hsv.h)))
 		.movedBy(length / 2 + 8, length / 2 + 8)
 		.draw(hsv)
 		.drawFrame(1.0, Palette::Black);
