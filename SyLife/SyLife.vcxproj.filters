@@ -539,6 +539,9 @@
     <ClCompile Include="ShapeAssemblyViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ColorPicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -741,6 +744,9 @@
     </ClInclude>
     <ClInclude Include="SlideBar.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorPicker.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
