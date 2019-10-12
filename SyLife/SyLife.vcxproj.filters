@@ -746,7 +746,7 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ColorPicker.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
