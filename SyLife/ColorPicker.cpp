@@ -67,6 +67,9 @@ HSV ColorPicker::update(const HSV& hsv)
 			.movedBy(length / 8, (1.0 - hsv.v) * length)
 			.draw()
 			.drawFrame(1.0, Palette::Black);
+
+		if (RectF(length / 8 + 8, length).leftPressed())
+			result.v = 1.0 - Cursor::PosF().y / length;
 	}
 
 	return result;
