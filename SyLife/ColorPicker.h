@@ -2,9 +2,13 @@
 
 class ColorPicker
 {
-	Color	m_color;
+	HSV		m_hsv;
+	Texture	m_circleTexture;
+	Texture	m_barTexture;
 
 public:
+	ColorPicker();
+
 	void	update();
 };
 
