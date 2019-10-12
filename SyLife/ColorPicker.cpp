@@ -54,5 +54,15 @@ HSV ColorPicker::update(const HSV& hsv)
 		result.s = d.length() / (length / 2);
 	}
 
+	// Circle
+	{
+		auto t = Transformer2D(Mat3x2::Translate(8, 8), true);
+	}
+
+	// Bar
+	{
+		auto t = Transformer2D(Mat3x2::Translate(76, 8), true);
+	}
+
 	return result;
 }
