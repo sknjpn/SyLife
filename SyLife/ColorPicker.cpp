@@ -45,7 +45,6 @@ HSV ColorPicker::update(const HSV& hsv)
 	RectF(Vec2(10, 10))
 		.setCenter(Vec2(hsv.s * length / 2.0, 0.0).rotated(ToRadians(hsv.h)))
 		.movedBy(length / 2 + 8, length / 2 + 8)
-		.draw(hsv)
 		.drawFrame(1.0, Palette::Black);
 
 	auto d = Cursor::PosF() - Vec2(length / 2.0, length / 2.0) - Vec2(8, 8);
