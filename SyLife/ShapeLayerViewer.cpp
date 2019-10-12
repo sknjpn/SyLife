@@ -26,7 +26,7 @@ void ShapeLayerViewer::drawLayers()
 {
 	static Font font(13, Typeface::Bold);
 
-	auto shapes = m_partAsset->getShapes();
+	auto& shapes = m_partAsset->m_shapes;
 	for (auto it = shapes.begin(); it != shapes.end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
