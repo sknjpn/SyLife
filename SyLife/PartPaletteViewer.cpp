@@ -10,7 +10,7 @@ PartPaletteViewer::PartPaletteViewer()
 	: m_slideBar(800, 800 / 8.0)
 {
 	setPriority(2);
-	
+
 	setDrawRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
 }
 
@@ -18,7 +18,9 @@ void PartPaletteViewer::drawModels()
 {
 	static Font font(13, Typeface::Bold);
 
-	const auto& models = g_assetManagerPtr->getAssets<PartAsset>();
+	Array<shared_ptr<PartAsset>> models;
+	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) models.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<ModuleAsset>()) models.emplace_back(m);
 	for (auto it = models.begin(); it != models.end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
@@ -29,7 +31,7 @@ void PartPaletteViewer::drawModels()
 		{
 			RectF rect = (*it)->getApproximateRect();
 			auto scale = Min((m_itemHeight - 20) / rect.w, (m_itemHeight - 20) / rect.h);
-			auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(170 - m_itemHeight/2.0, m_itemHeight / 2.0)));
+			auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(170 - m_itemHeight / 2.0, m_itemHeight / 2.0)));
 
 			for (const ShapeModel& s : (*it)->getShapes())
 				s.draw(0.5);
