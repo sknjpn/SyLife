@@ -53,7 +53,6 @@ void CellState::updateCell()
 
 	// Timer
 	m_startTimer += g_systemManagerPtr->GetDeltaTime();
-	if (m_yieldTimer > 0) m_yieldTimer += g_systemManagerPtr->GetDeltaTime();
 
 	// parts
 	for (const auto& p : m_partStates) p->update(*this);
@@ -97,14 +96,22 @@ void CellState::updateCell()
 	*/
 
 	// 分裂処理
-	if (m_storage >= m_model->getMaterial())
+	if (m_yieldTimer > 0)
 	{
-		m_storage -= m_model->getMaterial();
+		if ((m_yieldTimer += g_systemManagerPtr->GetDeltaTime()) >= 3.0)
+		{
+			m_yieldTimer = 0.0;
+			m_storage -= m_model->getMaterial();
 
-		const auto& e = g_eggManagerPtr->addEggState(m_model);
-		e->setPosition(getPosition());
-		e->setRotation(Random(boost::math::constants::pi<double>() * 2.0));
-		e->setVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
+			const auto& e = g_eggManagerPtr->addEggState(m_model);
+			e->setPosition(getPosition());
+			e->setRotation(Random(boost::math::constants::pi<double>() * 2.0));
+			e->setVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
+		}
+	}
+	else if (m_storage >= m_model->getMaterial())
+	{
+		m_yieldTimer += g_systemManagerPtr->GetDeltaTime();
 	}
 
 	// 死亡処理
