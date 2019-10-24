@@ -49,29 +49,6 @@ void ChipManager::init()
 		}
 	}
 
-
-	// elements
-	/*
-	{
-		ptree pt;
-		read_json("assets/generation.json", pt);
-
-		for (auto elements : pt.get_child("elements"))
-		{
-			const string name = elements.second.get<string>("name");
-			const auto& model = g_assetManagerPtr->getAsset<ElementAsset>(name);
-			const int size = elements.second.get<int>("size");
-
-			for (int i = 0; i < size; ++i)
-			{
-				const Point point = RandomPoint(m_rect);
-
-				m_chips[point]->m_storage.Add(model, 1.0);
-			}
-		}
-	}
-	*/
-
 	for (auto p : step(m_chips.size()))
 	{
 		m_chips[p]->m_nutrition = 10;

@@ -29,11 +29,11 @@ void NeedleState::update(CellState& cellState)
 		{
 			auto& t = g_cellManagerPtr->getCellStates()[i];
 
-			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_model != cellState.m_model)
+			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_asset != cellState.m_asset)
 			{
 				t->destroy();
 				cellState.m_storage += t->m_storage;
-				cellState.m_storage += t->m_model->getMaterial();
+				cellState.m_storage += t->m_asset->getMaterial();
 			}
 		}
 	}

@@ -44,17 +44,17 @@ Storage& Storage::operator-=(const Storage& s) noexcept
 	return *this;
 }
 
-void Storage::addElement(const shared_ptr<ElementAsset>& model, int size)
+void Storage::addElement(const shared_ptr<ElementAsset>& asset, int size)
 {
-	auto it = find_if(begin(), end(), [&model](const auto& m) { return m.first == model; });
+	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 
-	if (it == end()) emplace_back(model, size);
+	if (it == end()) emplace_back(asset, size);
 	else (*it).second += size;
 }
 
-void Storage::pullElement(const shared_ptr<ElementAsset>& model, int size)
+void Storage::pullElement(const shared_ptr<ElementAsset>& asset, int size)
 {
-	auto it = find_if(begin(), end(), [&model](const auto& m) { return m.first == model; });
+	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 
 	if (it == end()) throw Error(U"全く存在しないElementの削除を試みました");
 	else
@@ -64,9 +64,9 @@ void Storage::pullElement(const shared_ptr<ElementAsset>& model, int size)
 	}
 }
 
-int Storage::numElement(const shared_ptr<ElementAsset>& model) const
+int Storage::numElement(const shared_ptr<ElementAsset>& asset) const
 {
-	auto it = find_if(begin(), end(), [&model](const auto& m) { return m.first == model; });
+	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 
 	if (it == end()) return 0;
 	else return (*it).second;
@@ -82,9 +82,9 @@ void Storage::load_this(const ptree& pt)
 	{
 		auto name = m.second.get<string>("name");
 
-		const auto& model = g_assetManagerPtr->getAsset<ElementAsset>(name);
+		const auto& asset = g_assetManagerPtr->getAsset<ElementAsset>(name);
 
-		emplace_back(model, m.second.get<int>("size"));
+		emplace_back(asset, m.second.get<int>("size"));
 	}
 
 	Model::load_this(pt);

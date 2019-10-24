@@ -30,9 +30,9 @@ public:
 
 	// element
 	const Array<pair<shared_ptr<ElementAsset>, int>>& getElementList() const { return *this; }
-	void	addElement(const shared_ptr<ElementAsset>& model, int size = 1);
-	void	pullElement(const shared_ptr<ElementAsset>& model, int size = 1);
-	int		numElement(const shared_ptr<ElementAsset>& model) const;
+	void	addElement(const shared_ptr<ElementAsset>& asset, int size = 1);
+	void	pullElement(const shared_ptr<ElementAsset>& asset, int size = 1);
+	int		numElement(const shared_ptr<ElementAsset>& asset) const;
 
 	// JSON
 	void	load_this(const ptree& pt);

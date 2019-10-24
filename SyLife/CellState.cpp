@@ -18,19 +18,19 @@
 
 #include <boost/math/constants/constants.hpp>
 
-CellState::CellState(const shared_ptr<CellAsset>& model)
-	: m_model(model)
+CellState::CellState(const shared_ptr<CellAsset>& asset)
+	: m_asset(asset)
 	, m_startTimer(0.0)
-	, m_deathTimer(model->getLifespanTime())
+	, m_deathTimer(asset->getLifespanTime())
 	, m_yieldTimer(0.0)
 	, m_hitpoint(100.0)
 {
-	setMass(m_model->getMass());
-	setRadius(m_model->getRadius());
-	setInertia(m_model->getInertia());
+	setMass(m_asset->getMass());
+	setRadius(m_asset->getRadius());
+	setInertia(m_asset->getInertia());
 
 	// parts
-	for (const auto& pc : m_model->getPartConfigs())
+	for (const auto& pc : m_asset->getPartConfigs())
 		m_partStates.emplace_back(pc->getModel()->makeState())->setPartConfig(pc);
 }
 
@@ -68,7 +68,7 @@ void CellState::updateCell()
 
 		if (!m->isDestroyed() &&
 			(m->getPosition() - getPosition()).length() - getRadius() < 0.0 &&
-			m_model->getMaxStorage().numElement(m->getModel()) > m_storage.numElement(m->getModel()))
+			m_asset->getMaxStorage().numElement(m->getModel()) > m_storage.numElement(m->getModel()))
 		{
 			takeElement(m);
 		}
@@ -82,7 +82,7 @@ void CellState::updateCell()
 
 		for (const auto& m : m_storage.GetElements())
 		{
-			if (2 * m_model->getMaterial().Num(m.first) < m_storage.Num(m.first))
+			if (2 * m_asset->getMaterial().Num(m.first) < m_storage.Num(m.first))
 			{
 				ExpireElement(m.first);
 
@@ -99,18 +99,18 @@ void CellState::updateCell()
 	// 分裂処理
 	if (m_yieldTimer > 0)
 	{
-		if ((m_yieldTimer += g_systemManagerPtr->GetDeltaTime()) >= m_model->getYieldTime())
+		if ((m_yieldTimer += g_systemManagerPtr->GetDeltaTime()) >= m_asset->getYieldTime())
 		{
 			m_yieldTimer = 0.0;
-			m_storage -= m_model->getMaterial();
+			m_storage -= m_asset->getMaterial();
 
-			const auto& e = g_eggManagerPtr->addEggState(m_model);
+			const auto& e = g_eggManagerPtr->addEggState(m_asset);
 			e->setPosition(getPosition());
 			e->setRotation(Random(boost::math::constants::pi<double>() * 2.0));
 			e->setVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
 		}
 	}
-	else if (m_storage >= m_model->getMaterial())
+	else if (m_storage >= m_asset->getMaterial())
 	{
 		m_yieldTimer += g_systemManagerPtr->GetDeltaTime();
 	}
@@ -119,10 +119,10 @@ void CellState::updateCell()
 	if ((m_deathTimer -= g_systemManagerPtr->GetDeltaTime()) <= 0.0)
 	{
 		// Nutritionの吐き出し
-		g_chipManagerPtr->addNutrition(getPosition(), m_storage.getNutrition() + m_model->getMaterial().getNutrition());
+		g_chipManagerPtr->addNutrition(getPosition(), m_storage.getNutrition() + m_asset->getMaterial().getNutrition());
 
 		// ElementStateの吐き出し
-		auto s = m_storage + m_model->getMaterial();
+		auto s = m_storage + m_asset->getMaterial();
 		for (const auto& m : s.getElementList())
 		{
 			for (int i = 0; i < m.second; i++)
@@ -168,7 +168,7 @@ void CellState::draw()
 
 void CellState::takeNutrition()
 {
-	const double space = m_model->getMaxStorage().getNutrition() - m_storage.getNutrition();
+	const double space = m_asset->getMaxStorage().getNutrition() - m_storage.getNutrition();
 	const double amount = g_chipManagerPtr->getNutrition(getPosition());
 	const double value = Min(space, amount);
 
@@ -182,22 +182,3 @@ void CellState::takeElement(const shared_ptr<ElementState>& element)
 
 	element->destroy();
 }
-
-/*
-void CellState::ExpireElement(const shared_ptr<ElementAsset>& model, unsigned int size)
-{
-	for (unsigned int i = 0; i < size; ++i)
-	{
-		// 吐き出す方向
-		auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
-
-		// 吐き出されたElementState
-		const auto& t = g_elementManagerPtr->addElementState(model);
-		t->setPosition(getPosition() + v * (getRadius() + model->getRadius()));
-		t->setVelocity(v * 0.5);
-
-		// Storageから出す
-		m_storage.Pull(model);
-	}
-}
-*/

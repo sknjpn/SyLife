@@ -4,6 +4,8 @@
 #include "CellAsset.h"
 #include "CellManager.h"
 
+#include "EggManager.h"
+#include "EggState.h"
 #include "AssetManager.h"
 
 void StatisticsViewer::init()
@@ -22,7 +24,7 @@ void StatisticsViewer::update()
 	// Logの更新
 	for (auto& l : m_logs)
 	{
-		l.m_statuses.emplace_back();
+		l.m_statuses.emplace_back(l.m_cellAsset);
 		while (l.m_statuses.size() > m_statusesSizeMax) l.m_statuses.pop_front();
 	}
 
@@ -41,7 +43,8 @@ void StatisticsViewer::update()
 	}
 }
 
-StatisticsViewer::Log::Status::Status()
+StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)
 {
-	m_num = g_cellManagerPtr->getCellStates().count_if([this](const auto& cs) { return cs.getModel() == m_cellAsset; });
+	m_num = g_cellManagerPtr->getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; });
+	m_num = g_eggManagerPtr->getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; });
 }

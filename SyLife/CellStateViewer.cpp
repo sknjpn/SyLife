@@ -24,13 +24,13 @@ void CellStateViewer::update()
 		return;
 	}
 
-	const auto& model = m_cellState->m_model;
+	const auto& asset = m_cellState->m_asset;
 
 	{
 		auto t1 = Transformer2D(Mat3x2::Translate(100, 50));
-		auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_model->getRadius()));
+		auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_asset->getRadius()));
 
-		m_cellState->m_model->draw(1.0);
+		m_cellState->m_asset->draw(1.0);
 	}
 
 	Vec2 pos(0, 100);
@@ -44,7 +44,7 @@ void CellStateViewer::update()
 		}
 
 		pos.moveBy(16.0, 0.0);
-		for (const auto& m : model->getMaterial().getElementList())
+		for (const auto& m : asset->getMaterial().getElementList())
 		{
 			auto t = Transformer2D(Mat3x2::Translate(pos));
 			font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();

@@ -29,12 +29,12 @@ public:
 		m_elementStates.reserve(0xFFFF);
 	}
 
-	int NumElement(const shared_ptr<ElementAsset>& model);
+	int NumElement(const shared_ptr<ElementAsset>& asset);
 
-	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementAsset>& model);
-	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementAsset>& model, const Vec2& position);
+	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementAsset>& asset);
+	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementAsset>& asset, const Vec2& position);
 
-	void	addElementsRandom(const shared_ptr<ElementAsset>& model, size_t size);
+	void	addElementsRandom(const shared_ptr<ElementAsset>& asset, size_t size);
 
 	// Get
 	const Array<shared_ptr<ElementState>>& getElementStates() const { return m_elementStates; }

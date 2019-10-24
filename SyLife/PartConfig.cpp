@@ -10,8 +10,8 @@ double PartConfig::getInertia() const
 
 void PartConfig::load_this(const ptree& pt)
 {
-	// model
-	m_partModel = g_assetManagerPtr->getAsset<PartAsset>(pt.get<string>("model"));
+	// asset
+	m_partModel = g_assetManagerPtr->getAsset<PartAsset>(pt.get<string>("asset"));
 
 	// position
 	m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
@@ -24,8 +24,8 @@ void PartConfig::load_this(const ptree& pt)
 
 void PartConfig::save_this(ptree& pt) const
 {
-	// model
-	pt.put("model", m_partModel->getName());
+	// asset
+	pt.put("asset", m_partModel->getName());
 
 	// position
 	{

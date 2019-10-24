@@ -13,7 +13,7 @@ class StatisticsViewer :
 		{
 			int		m_num;
 
-			Status();
+			Status(const shared_ptr<CellAsset>& cellAsset);
 		};
 
 		shared_ptr<CellAsset>	m_cellAsset;

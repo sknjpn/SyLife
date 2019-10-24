@@ -102,7 +102,7 @@ void PartShapeViewer::update()
 					// Connect
 					if (it != m_verticles.begin()) m_verticles.erase(m_verticles.begin(), it);
 
-					//m_model->getShapes().emplace_back(m_verticles);
+					//m_asset->getShapes().emplace_back(m_verticles);
 
 					m_verticles.clear();
 
