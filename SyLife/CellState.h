@@ -15,6 +15,9 @@ public:
 	double	m_startTimer;
 	double	m_deathTimer;
 	double	m_yieldTimer;
+
+	double	m_hitpoint;
+
 	Storage	m_storage;
 
 	shared_ptr<CellAsset>	m_model;

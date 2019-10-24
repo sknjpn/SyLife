@@ -23,6 +23,7 @@ CellState::CellState(const shared_ptr<CellAsset>& model)
 	, m_startTimer(0.0)
 	, m_deathTimer(model->getLifespanTime())
 	, m_yieldTimer(0.0)
+	, m_hitpoint(100.0)
 {
 	setMass(m_model->getMass());
 	setRadius(m_model->getRadius());
