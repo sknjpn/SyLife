@@ -29,4 +29,6 @@ public:
 
 	void	takeNutrition();
 	void	takeElement(const shared_ptr<ElementState>& element);
+
+	bool	isPregnant();
 };
