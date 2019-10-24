@@ -19,8 +19,10 @@ void StatisticsViewer::update()
 
 	// Logの更新
 	for (auto& l : m_logs)
+	{
 		l.m_statuses.emplace_back();
-
+		while (l.m_statuses.size() > m_statusesSizeMax) l.m_statuses.pop_front();
+	}
 	// Logの表示
 }
 
