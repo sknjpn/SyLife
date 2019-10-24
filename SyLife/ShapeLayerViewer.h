@@ -22,7 +22,7 @@ public:
 	void	init() override;
 	void	update() override;
 
-	void	setPartAsset(const shared_ptr<PartAsset>& partAsset) { m_partAsset = partAsset; }
+	void	setPartAsset(const shared_ptr<PartAsset>& partAsset);
 
 	void	drawLayers();
 

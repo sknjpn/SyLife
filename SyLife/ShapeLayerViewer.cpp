@@ -45,6 +45,12 @@ void ShapeLayerViewer::update()
 	}
 }
 
+void ShapeLayerViewer::setPartAsset(const shared_ptr<PartAsset>& partAsset)
+{
+	m_partAsset = partAsset;
+	m_selectedIndex = 0;
+}
+
 void ShapeLayerViewer::drawLayers()
 {
 	auto& shapes = m_partAsset->m_shapes;
