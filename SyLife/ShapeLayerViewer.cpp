@@ -36,6 +36,9 @@ void ShapeLayerViewer::update()
 			auto& s = m_partAsset->m_shapes.emplace_back();
 			s.m_color = Palette::White;
 			s.m_polygon = Circle(10.0).asPolygon();
+
+			// 選択中のShapeを変更
+			m_selectedIndex = m_partAsset->m_shapes.size() - 1;
 		}
 
 		moveDrawPos(0, m_itemHeight);
