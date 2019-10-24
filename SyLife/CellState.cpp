@@ -53,6 +53,7 @@ void CellState::updateCell()
 	// Timer
 	m_deathTimer -= g_systemManagerPtr->GetDeltaTime();
 	m_startTimer += g_systemManagerPtr->GetDeltaTime();
+	if (m_yieldTimer > 0) m_yieldTimer += g_systemManagerPtr->GetDeltaTime();
 
 	// parts
 	for (const auto& p : m_partStates) p->update(*this);
