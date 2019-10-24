@@ -18,6 +18,11 @@ class CellAsset
 	double	m_radius;
 	double	m_inertia;
 
+	// timer
+	double	m_ageMax;		// 寿命
+	double	m_bornTime;		// 生まれるまでの時間
+	double	m_yieldTime;	// 生むのにかかる時間
+
 public:
 	void	makeViewer() override;
 
