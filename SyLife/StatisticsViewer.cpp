@@ -26,15 +26,16 @@ void StatisticsViewer::update()
 	}
 
 	// Logの表示
-	for (auto& l : m_logs)
+	for(int i = 0; i < m_logs.size(); ++i)
 	{
-		double max = 1;
+		auto& l = m_logs[i];
+		double max = 100;
 		for (auto& s : l.m_statuses) max = Max(max, double(s.m_num));
-		for (int i = 0; i < l.m_statuses.size() - 1; ++i)
+		for (int j = 0; j < l.m_statuses.size() - 1; ++j)
 		{
-			Vec2 p0(i, (1.0 - (l.m_statuses[i].m_num / max)) * 100.0);
-			Vec2 p1(i + 1, (1.0 - (l.m_statuses[i + 1].m_num / max)) * 100.0);
-			Line(p0, p1).draw();
+			Vec2 p0(j, (1.0 - (l.m_statuses[j].m_num / max)) * 100.0);
+			Vec2 p1(j + 1, (1.0 - (l.m_statuses[j + 1].m_num / max)) * 100.0);
+			Line(p0, p1).draw(HSV(i * 60));
 		}
 	}
 }
