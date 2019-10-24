@@ -22,6 +22,7 @@ CellState::CellState(const shared_ptr<CellAsset>& model)
 	: m_model(model)
 	, m_startTimer(0.0)
 	, m_deathTimer(25.0)
+	, m_yieldTimer(0.0)
 {
 	setMass(m_model->getMass());
 	setRadius(m_model->getRadius());
@@ -51,7 +52,6 @@ void CellState::updateCell()
 	}
 
 	// Timer
-	m_deathTimer -= g_systemManagerPtr->GetDeltaTime();
 	m_startTimer += g_systemManagerPtr->GetDeltaTime();
 	if (m_yieldTimer > 0) m_yieldTimer += g_systemManagerPtr->GetDeltaTime();
 
@@ -108,7 +108,7 @@ void CellState::updateCell()
 	}
 
 	// 死亡処理
-	if (m_deathTimer <= 0.0)
+	if ((m_deathTimer -= g_systemManagerPtr->GetDeltaTime()) <= 0.0)
 	{
 		// Nutritionの吐き出し
 		g_chipManagerPtr->addNutrition(getPosition(), m_storage.getNutrition() + m_model->getMaterial().getNutrition());
