@@ -6,6 +6,10 @@
 #include "CellAsset.h"
 #include "CellState.h"
 
+EggState::EggState()
+	: m_timer(m_cellAsset->getBornTime())
+{}
+
 void EggState::setCellAsset(const shared_ptr<CellAsset>& cellModel)
 {
 	m_cellAsset = cellModel;
@@ -19,7 +23,7 @@ void EggState::updateEgg()
 	m_timer -= g_systemManagerPtr->GetDeltaTime();
 
 	// 孵化
-	if (m_timer < 0 && RandomBool(0.1))
+	if (m_timer <= 0)
 	{
 		destroy();
 
