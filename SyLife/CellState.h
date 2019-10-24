@@ -27,6 +27,8 @@ public:
 public:
 	CellState(const shared_ptr<CellAsset>& model);
 
+	const shared_ptr<CellAsset>&	getCellAsset() const { return m_model; }
+
 	void	updateCell();
 	void	draw();
 

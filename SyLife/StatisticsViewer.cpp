@@ -1,5 +1,6 @@
 ﻿#include "StatisticsViewer.h"
 
+#include "CellState.h"
 #include "CellAsset.h"
 #include "CellManager.h"
 
@@ -42,5 +43,5 @@ void StatisticsViewer::update()
 
 StatisticsViewer::Log::Status::Status()
 {
-	m_num = g_cellManagerPtr->getCellStates().size();
+	m_num = g_cellManagerPtr->getCellStates().count_if([this](const auto& cs) { return cs.getModel() == m_cellAsset; });
 }
