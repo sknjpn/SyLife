@@ -28,8 +28,8 @@ void StatisticsViewer::update()
 	// Logの表示
 	for (auto& l : m_logs)
 	{
-		int max = 1;
-		for (auto& s : l.m_statuses) max = Max(max, s.m_num);
+		double max = 1;
+		for (auto& s : l.m_statuses) max = Max(max, double(s.m_num));
 		for (int i = 0; i < l.m_statuses.size() - 1; ++i)
 		{
 			Vec2 p0(i, (1.0 - (l.m_statuses[i].m_num / max)) * 100.0);
