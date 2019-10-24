@@ -5,11 +5,7 @@ unique_ptr<EggManager> g_eggManagerPtr;
 
 const shared_ptr<EggState>& EggManager::addEggState(const shared_ptr<CellAsset>& cellModel)
 {
-	const auto& e = getEggStates().emplace_back(make_shared<EggState>());
-	e->setCellAsset(cellModel);
-	e->setMass(1.0);
-
-	return e;
+	return getEggStates().emplace_back(MakeShared<EggState>(cellModel));
 }
 
 void EggManager::updateEggStates()

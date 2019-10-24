@@ -6,15 +6,12 @@
 #include "CellAsset.h"
 #include "CellState.h"
 
-EggState::EggState()
-	: m_timer(m_cellAsset->getBornTime())
-{}
-
-void EggState::setCellAsset(const shared_ptr<CellAsset>& cellModel)
+EggState::EggState(const shared_ptr<CellAsset>& cellAsset)
+	: m_cellAsset(cellAsset)
+	, m_timer(m_cellAsset->getBornTime())
 {
-	m_cellAsset = cellModel;
-	setRadius(cellModel->getRadius() / 2.0);
-	setMass(cellModel->getMass() / 4.0);
+	setRadius(cellAsset->getRadius() / 2.0);
+	setMass(cellAsset->getMass() / 4.0);
 	setInertia(getMass() * getRadius() * getRadius() / 2.0);
 }
 

@@ -11,9 +11,7 @@ class EggState
 	double	m_timer;
 
 public:
-	EggState();
-
-	void	setCellAsset(const shared_ptr<CellAsset>& cellModel);
+	EggState(const shared_ptr<CellAsset>& cellAsset);
 
 	const shared_ptr<CellAsset>&	getCellAsset() const { return m_cellAsset; }
 
