@@ -542,6 +542,9 @@
     <ClCompile Include="CellAsset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StatisticsViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -746,6 +749,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ColorPicker.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StatisticsViewer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

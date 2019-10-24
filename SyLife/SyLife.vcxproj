@@ -283,6 +283,7 @@
     <ClCompile Include="ShapeAssemblyViewer.cpp" />
     <ClCompile Include="ShapeLayerViewer.cpp" />
     <ClCompile Include="SlideBar.cpp" />
+    <ClCompile Include="StatisticsViewer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -354,6 +355,7 @@
     <ClInclude Include="ShapeLayerViewer.h" />
     <ClInclude Include="ShapeModel.h" />
     <ClInclude Include="SlideBar.h" />
+    <ClInclude Include="StatisticsViewer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="SynthesizerAsset.h" />
