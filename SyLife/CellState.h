@@ -14,6 +14,7 @@ class CellState
 public:
 	double	m_startTimer;
 	double	m_deathTimer;
+	double	m_yieldTimer;
 	Storage	m_storage;
 
 	shared_ptr<CellAsset>	m_model;
