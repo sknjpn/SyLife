@@ -38,7 +38,7 @@ void ShapeLayerViewer::update()
 			s.m_polygon = Circle(10.0).asPolygon();
 
 			// 選択中のShapeを変更
-			m_selectedIndex = m_partAsset->m_shapes.size() - 1;
+			m_selectedIndex = int(m_partAsset->m_shapes.size()) - 1;
 		}
 
 		moveDrawPos(0, m_itemHeight);
