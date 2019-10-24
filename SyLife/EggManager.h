@@ -33,7 +33,7 @@ public:
 	const Array<shared_ptr<EggState>>& getEggStates() const { return m_eggStates; }
 	const KDTree<EggStateAdapter>& getEggStateKDTree() const { return m_eggStateKDTree; }
 
-	const shared_ptr<EggState>& addEggState(const shared_ptr<CellAsset>& cellModel);
+	const shared_ptr<EggState>& addEggState(const shared_ptr<CellAsset>& cellAsset);
 
 	void	updateEggStates();
 	void	drawEggStates();

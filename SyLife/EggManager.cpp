@@ -3,9 +3,9 @@
 
 unique_ptr<EggManager> g_eggManagerPtr;
 
-const shared_ptr<EggState>& EggManager::addEggState(const shared_ptr<CellAsset>& cellModel)
+const shared_ptr<EggState>& EggManager::addEggState(const shared_ptr<CellAsset>& cellAsset)
 {
-	return getEggStates().emplace_back(MakeShared<EggState>(cellModel));
+	return getEggStates().emplace_back(MakeShared<EggState>(cellAsset));
 }
 
 void EggManager::updateEggStates()
