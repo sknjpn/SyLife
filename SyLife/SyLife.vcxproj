@@ -240,10 +240,10 @@
     <ClCompile Include="BodyAsset.cpp" />
     <ClCompile Include="BodyEditor.cpp" />
     <ClCompile Include="BodyState.cpp" />
+    <ClCompile Include="CellAsset.cpp" />
     <ClCompile Include="CellEditor.cpp" />
     <ClCompile Include="CellMakingViewer.cpp" />
     <ClCompile Include="CellManager.cpp" />
-    <ClCompile Include="CellModel.cpp" />
     <ClCompile Include="CellState.cpp" />
     <ClCompile Include="CellStateViewer.cpp" />
     <ClCompile Include="Chip.cpp" />

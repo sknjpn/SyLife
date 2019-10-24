@@ -425,9 +425,6 @@
     <ClCompile Include="CellManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CellModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CellState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -540,6 +537,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ColorPicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CellAsset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
