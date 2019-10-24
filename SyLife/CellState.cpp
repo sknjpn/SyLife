@@ -21,7 +21,7 @@
 CellState::CellState(const shared_ptr<CellAsset>& model)
 	: m_model(model)
 	, m_startTimer(0.0)
-	, m_deathTimer(25.0)
+	, m_deathTimer(model->getLifespanTime())
 	, m_yieldTimer(0.0)
 {
 	setMass(m_model->getMass());
@@ -98,7 +98,7 @@ void CellState::updateCell()
 	// 分裂処理
 	if (m_yieldTimer > 0)
 	{
-		if ((m_yieldTimer += g_systemManagerPtr->GetDeltaTime()) >= 3.0)
+		if ((m_yieldTimer += g_systemManagerPtr->GetDeltaTime()) >= m_model->getYieldTime())
 		{
 			m_yieldTimer = 0.0;
 			m_storage -= m_model->getMaterial();
