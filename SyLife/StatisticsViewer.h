@@ -25,7 +25,7 @@ class StatisticsViewer :
 	};
 
 	Array<Log>	m_logs;
-	int	m_statusesSizeMax = 100;
+	int	m_statusesSizeMax = 1000;
 
 public:
 	void	init() override;

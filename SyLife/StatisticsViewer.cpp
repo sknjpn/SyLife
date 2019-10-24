@@ -32,8 +32,8 @@ void StatisticsViewer::update()
 		for (auto& s : l.m_statuses) max = Max(max, s.m_num);
 		for (int i = 0; i < l.m_statuses.size() - 1; ++i)
 		{
-			Vec2 p0(i, l.m_statuses[i].m_num * 100.0 / max);
-			Vec2 p1(i + 1, l.m_statuses[i + 1].m_num * 100.0 / max);
+			Vec2 p0(i, (1.0 - (l.m_statuses[i].m_num / max)) * 100.0);
+			Vec2 p1(i + 1, (1.0 - (l.m_statuses[i + 1].m_num / max)) * 100.0);
 			Line(p0, p1).draw();
 		}
 	}
