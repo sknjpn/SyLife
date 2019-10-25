@@ -21,7 +21,7 @@ public:
 	// Get
 	double	getMass() const { return m_mass; }
 	const Storage& getMaterial() const { return m_material; }
-	const Shape& getShapes() const { return m_shape; }
+	const Shape& getShape() const { return m_shape; }
 
 	void	makeViewer() override;
 	virtual shared_ptr<PartState>	makeState();

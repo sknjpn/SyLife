@@ -28,12 +28,12 @@ RectF PartAsset::getApproximateRect() const
 
 Vec2 PartAsset::getApproximateRectTopLeft() const
 {
-	double x = m_shapes.front().m_polygon.vertices().front().x;
-	double y = m_shapes.front().m_polygon.vertices().front().y;
+	double x = m_shape.front().m_polygon.vertices().front().x;
+	double y = m_shape.front().m_polygon.vertices().front().y;
 
-	for (const auto& s : m_shapes)
+	for (const auto& l : m_shape)
 	{
-		for (const auto& v : s.m_polygon.vertices())
+		for (const auto& v : l.m_polygon.vertices())
 		{
 			if (x > v.x) x = v.x;
 			if (y > v.y) y = v.y;
@@ -45,12 +45,12 @@ Vec2 PartAsset::getApproximateRectTopLeft() const
 
 Vec2 PartAsset::getApproximateRectBottomDown() const
 {
-	double x = m_shapes.front().m_polygon.vertices().front().x;
-	double y = m_shapes.front().m_polygon.vertices().front().y;
+	double x = m_shape.front().m_polygon.vertices().front().x;
+	double y = m_shape.front().m_polygon.vertices().front().y;
 
-	for (const auto& s : m_shapes)
+	for (const auto& l : m_shape)
 	{
-		for (const auto& v : s.m_polygon.vertices())
+		for (const auto& v : l.m_polygon.vertices())
 		{
 			if (x < v.x) x = v.x;
 			if (y < v.y) y = v.y;
@@ -75,7 +75,7 @@ void PartAsset::load_this(const ptree& pt)
 
 	// shapes
 	for (auto shape : pt.get_child("shapes"))
-		m_shapes.emplace_back().load_this(shape.second);
+		m_shape.emplace_back().load_this(shape.second);
 
 	// material
 	m_material.load(pt.get_child("material"));
@@ -92,7 +92,7 @@ void PartAsset::save_this(ptree& pt) const
 	{
 		ptree shapes;
 
-		for (const auto& v : m_shapes)
+		for (const auto& v : m_shape)
 		{
 			ptree shape; v.save(shape);
 			shapes.push_back(std::make_pair("", shape));

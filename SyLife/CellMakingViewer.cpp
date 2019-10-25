@@ -100,8 +100,8 @@ void CellMakingViewer::update()
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition().x, p->getPosition().y));
 
-					for (const auto& s : p->getModel()->getShapes())
-						s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
+					for (const auto& l : p->getModel()->getShape())
+						l.m_polygon.draw(ColorF(l.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 				}
 			}
 		}
@@ -191,8 +191,8 @@ void CellMakingViewer::update()
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition().x, p->getPosition().y));
 
-					for (const auto& s : p->getModel()->getShapes())
-						s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
+					for (const auto& l : p->getModel()->getShape())
+						l.m_polygon.draw(ColorF(l.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 				}
 			}
 		}
@@ -330,9 +330,9 @@ void CellMakingViewer::makeAsset()
 	{
 		m_bodyAsset->m_mass = 1.0;
 		m_bodyAsset->m_material.setNutrition(1.0);
-		auto& s = m_bodyAsset->m_shape.emplace_back();
-		s.m_color = Palette::White;
-		s.m_polygon = Circle(10.0).asPolygon();
+		auto& l = m_bodyAsset->m_shape.emplace_back();
+		l.m_color = Palette::White;
+		l.m_polygon = Circle(10.0).asPolygon();
 	}
 
 	m_cellAsset->addPartConfig()->setModel(m_bodyAsset);

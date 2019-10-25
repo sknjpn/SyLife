@@ -36,10 +36,10 @@ void AssemblyViewer::update()
 			{
 				auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& s : g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart()->getShapes())
+				for (const auto& l : g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart()->getShape())
 				{
-					s.draw(0.5);
-					s.GetPolygon().drawFrame(2.0, Palette::White);
+					l.draw(0.5);
+					l.GetPolygon().drawFrame(2.0, Palette::White);
 				}
 			}
 
@@ -81,8 +81,8 @@ void AssemblyViewer::drawParts() const
 		auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 			.translated(p->getPosition().x, p->getPosition().y));
 
-		for (const auto& s : p->getModel()->getShapes())
-			s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
+		for (const auto& l : p->getModel()->getShape())
+			l.m_polygon.draw(ColorF(l.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 	}
 }
 

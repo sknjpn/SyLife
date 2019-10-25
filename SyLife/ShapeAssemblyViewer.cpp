@@ -27,8 +27,8 @@ void ShapeAssemblyViewer::update()
 	drawGrid();
 
 	// Part
-	for (const auto& s : m_partAsset->getShapes())
-		s.m_polygon.draw(ColorF(s.m_color, 0.5)).drawFrame(1.0, Palette::Black);
+	for (const auto& l : m_partAsset->getShape())
+		l.m_polygon.draw(ColorF(l.m_color, 0.5)).drawFrame(1.0, Palette::Black);
 
 	if (KeyShift.pressed())
 		m_circleRadius = Clamp<double>(m_circleRadius * (1.0 + Mouse::Wheel() * 0.1), 1.0, 100.0);
@@ -40,18 +40,18 @@ void ShapeAssemblyViewer::update()
 	{
 		if (MouseL.pressed())
 		{
-			m_partAsset->m_shapes[index].m_polygon.append(Circle(Cursor::PosF(), m_circleRadius).asPolygon());
+			m_partAsset->m_shape[index].m_polygon.append(Circle(Cursor::PosF(), m_circleRadius).asPolygon());
 		}
 
 		if (MouseR.pressed())
 		{
-			auto polygons = Geometry2D::Subtract(m_partAsset->m_shapes[index].m_polygon, Circle(Cursor::PosF(), m_circleRadius).asPolygon());
+			auto polygons = Geometry2D::Subtract(m_partAsset->m_shape[index].m_polygon, Circle(Cursor::PosF(), m_circleRadius).asPolygon());
 
-			if (!polygons.empty()) m_partAsset->m_shapes[index].m_polygon = polygons.front();
+			if (!polygons.empty()) m_partAsset->m_shape[index].m_polygon = polygons.front();
 		}
 
 		double k = 0.01;
-		m_partAsset->m_mass = m_partAsset->m_shapes[0].m_polygon.area() * k;
+		m_partAsset->m_mass = m_partAsset->m_shape[0].m_polygon.area() * k;
 		m_partAsset->m_material.setNutrition(m_partAsset->m_mass);
 	}
 }

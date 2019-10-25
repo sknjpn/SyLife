@@ -41,17 +41,17 @@ void PartShapeViewer::update()
 	}
 
 	// ShapeModels
-	for (const auto& s : getModel<PartAsset>()->getShapes())
+	for (const auto& l : getModel<PartAsset>()->getShape())
 	{
 		// Face
-		s.GetPolygon().draw(ColorF(s.m_color, 0.5));
+		l.m_polygon.draw(ColorF(l.m_color, 0.5));
 
 		// Line
-		/*for (auto it = s.m_verticles.begin(); it != s.m_verticles.end(); ++it)
+		/*for (auto it = l.m_verticles.begin(); it != l.m_verticles.end(); ++it)
 		{
-			Line l = (it == s.m_verticles.end() - 1) ? Line(s.m_verticles.front(), s.m_verticles.back()) : Line(*it, *(it + 1));
+			Line l = (it == l.m_verticles.end() - 1) ? Line(l.m_verticles.front(), l.m_verticles.back()) : Line(*it, *(it + 1));
 
-			l.draw(thickness, ColorF(s.m_color, 0.5));
+			l.draw(thickness, ColorF(l.m_color, 0.5));
 		}*/
 
 		// Verticle
@@ -102,7 +102,7 @@ void PartShapeViewer::update()
 					// Connect
 					if (it != m_verticles.begin()) m_verticles.erase(m_verticles.begin(), it);
 
-					//m_asset->getShapes().emplace_back(m_verticles);
+					//m_asset->getShape().emplace_back(m_verticles);
 
 					m_verticles.clear();
 
