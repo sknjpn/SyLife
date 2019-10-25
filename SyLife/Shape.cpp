@@ -42,6 +42,29 @@ bool Shape::updateProperties()
 	return true;
 }
 
+double Shape::getInertia(double mass)
+{
+	const auto centroid = m_polygon.centroid();
+	const auto numTriangles = m_polygon.num_triangles();
+	const auto area = m_polygon.area();
+
+	double inertia = 0;
+	for (int i = 0; i < numTriangles; ++i)
+	{
+		const auto triangle = m_polygon.triangle(i);
+		const auto v0 = triangle.p0 - triangle.centroid();
+		const auto v1 = triangle.p1 - triangle.centroid();
+		const auto v2 = triangle.p2 - triangle.centroid();
+		const auto m = mass * triangle.area() / area;
+		const auto it = m / 12 * (v0.lengthSq() + v1.lengthSq() + v2.lengthSq());
+		const auto id = m * (triangle.centroid() - centroid).lengthSq();
+
+		inertia += it + id;
+	}
+
+	return inertia;
+}
+
 void Shape::load_this(const ptree& pt)
 {
 	// layers
