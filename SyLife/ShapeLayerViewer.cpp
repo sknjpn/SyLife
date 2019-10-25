@@ -33,12 +33,12 @@ void ShapeLayerViewer::update()
 		if (block.leftClicked())
 		{
 			// 新しいShapeの追加
-			auto& s = m_partAsset->m_shapes.emplace_back();
+			auto& s = m_partAsset->m_shape.emplace_back();
 			s.m_color = Palette::White;
 			s.m_polygon = Circle(10.0).asPolygon();
 
 			// 選択中のShapeを変更
-			m_selectedIndex = int(m_partAsset->m_shapes.size()) - 1;
+			m_selectedIndex = int(m_partAsset->m_shape.size()) - 1;
 		}
 
 		moveDrawPos(0, m_itemHeight);
@@ -53,12 +53,11 @@ void ShapeLayerViewer::setPartAsset(const shared_ptr<PartAsset>& partAsset)
 
 void ShapeLayerViewer::drawLayers()
 {
-	auto& shapes = m_partAsset->m_shapes;
-	for (auto it = shapes.begin(); it != shapes.end(); ++it)
+	for (auto it = m_partAsset->m_shape.begin(); it != m_partAsset->m_shape.end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
-		block.draw((int(it - shapes.begin()) == m_selectedIndex) ? ColorF(Palette::Blue, 0.5) : ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
-		if (block.leftClicked()) m_selectedIndex = int(it - shapes.begin());
+		block.draw((int(it - m_partAsset->m_shape.begin()) == m_selectedIndex) ? ColorF(Palette::Blue, 0.5) : ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+		if (block.leftClicked()) m_selectedIndex = int(it - m_partAsset->m_shape.begin());
 
 		// ColorPicker
 		it->m_color = m_colorPicker.update(it->m_color);
