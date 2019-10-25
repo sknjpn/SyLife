@@ -1,6 +1,7 @@
 ﻿#include "CellMakingViewer.h"
 
 #include "ViewerManager.h"
+#include "AssetManager.h"
 
 #include "PartConfig.h"
 #include "PartAsset.h"
