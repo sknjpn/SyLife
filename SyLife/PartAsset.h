@@ -28,12 +28,6 @@ public:
 
 	void	draw(double a = 0.5) { for (const auto& l : m_shape) l.draw(a); }
 
-	RectF	getApproximateRect() const;
-	Vec2	getApproximateRectTopLeft() const;
-	Vec2	getApproximateRectBottomDown() const;
-	double	getRectInertia() const;
-	Vec2	getCenter() const { return (getApproximateRectTopLeft() + getApproximateRectBottomDown()) / 2.0; }
-
 	// JSON
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
