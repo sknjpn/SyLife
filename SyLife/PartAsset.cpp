@@ -18,56 +18,6 @@ shared_ptr<PartState> PartAsset::makeState()
 	return make_shared<PartState>();
 }
 
-RectF PartAsset::getApproximateRect() const
-{
-	const Vec2 tl = getApproximateRectTopLeft();
-	const Vec2 br = getApproximateRectBottomDown();
-
-	return RectF(tl, br - tl);
-}
-
-Vec2 PartAsset::getApproximateRectTopLeft() const
-{
-	double x = m_shape.front().m_polygon.vertices().front().x;
-	double y = m_shape.front().m_polygon.vertices().front().y;
-
-	for (const auto& l : m_shape)
-	{
-		for (const auto& v : l.m_polygon.vertices())
-		{
-			if (x > v.x) x = v.x;
-			if (y > v.y) y = v.y;
-		}
-	}
-
-	return Vec2(x, y);
-}
-
-Vec2 PartAsset::getApproximateRectBottomDown() const
-{
-	double x = m_shape.front().m_polygon.vertices().front().x;
-	double y = m_shape.front().m_polygon.vertices().front().y;
-
-	for (const auto& l : m_shape)
-	{
-		for (const auto& v : l.m_polygon.vertices())
-		{
-			if (x < v.x) x = v.x;
-			if (y < v.y) y = v.y;
-		}
-	}
-
-	return Vec2(x, y);
-}
-
-double PartAsset::getRectInertia() const
-{
-	auto w = (getApproximateRectBottomDown() - getApproximateRectTopLeft()).x;
-	auto h = (getApproximateRectBottomDown() - getApproximateRectTopLeft()).y;
-
-	return  m_mass * (w * w + h * h) / 12.0;
-}
-
 void PartAsset::load_this(const ptree& pt)
 {
 	// mass
