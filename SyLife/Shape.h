@@ -16,9 +16,9 @@ public:
 
 	const Polygon& getPolygon() const { return m_polygon; }
 
-	double	getInertia(double mass);
-
-	Circle	approximateAsCircle() { return Circle(m_polygon.centroid(), Sqrt(2 * getInertia(1.0))); }
+	double	getInertia(double mass) const;
+	double	getRadius() const { return Sqrt(2 * getInertia(1.0)); }
+	Vec2	getCentroid() const { return m_polygon.centroid(); }
 
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }

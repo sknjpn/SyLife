@@ -1,5 +1,4 @@
-﻿#include "stdafx.h"
-#include "Shape.h"
+﻿#include "Shape.h"
 
 bool Shape::updateProperties()
 {
@@ -42,7 +41,7 @@ bool Shape::updateProperties()
 	return true;
 }
 
-double Shape::getInertia(double mass)
+double Shape::getInertia(double mass) const
 {
 	const auto centroid = m_polygon.centroid();
 	const auto numTriangles = m_polygon.num_triangles();
