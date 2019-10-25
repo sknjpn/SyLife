@@ -59,7 +59,7 @@ void PartShapeViewer::update()
 		{
 			auto r = RectF(Arg::center(*it), boxSize);
 
-			r.draw(r.mouseOver() ? Palette::Blue : s.m_color);
+			r.draw(r.mouseOver() ? Palette::Blue : l.m_color);
 		}
 	}
 
