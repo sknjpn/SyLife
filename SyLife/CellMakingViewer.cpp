@@ -330,7 +330,7 @@ void CellMakingViewer::makeAsset()
 	{
 		m_bodyAsset->m_mass = 1.0;
 		m_bodyAsset->m_material.setNutrition(1.0);
-		auto& s = m_bodyAsset->m_shapes.emplace_back();
+		auto& s = m_bodyAsset->m_shape.emplace_back();
 		s.m_color = Palette::White;
 		s.m_polygon = Circle(10.0).asPolygon();
 	}
