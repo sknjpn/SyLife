@@ -26,6 +26,10 @@ void ShapeAssemblyViewer::update()
 
 	drawGrid();
 
+	
+	m_partAsset->m_shape.updateProperties();
+	m_partAsset->getShape().getPolygon().calculateBuffer(2).draw();
+
 	// Part
 	for (const auto& l : m_partAsset->getShape())
 		l.m_polygon.draw(ColorF(l.m_color, 0.5)).drawFrame(1.0, Palette::Black);

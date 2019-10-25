@@ -3,8 +3,8 @@
 
 bool Shape::updateProperties()
 {
+	// 初期化
 	m_polygon = Polygon();
-	m_radius = 0.0;
 
 	Array<Polygon> copies;
 	for (const auto& l : *this) 
@@ -25,6 +25,7 @@ bool Shape::updateProperties()
 
 			if (polygons.size() == 1)
 			{
+				result = polygons.front();
 				copies.erase(it);
 
 				flag = false;
