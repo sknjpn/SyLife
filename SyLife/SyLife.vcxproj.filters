@@ -556,9 +556,6 @@
     <ClInclude Include="Rigidbody.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeModel.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -758,6 +755,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Layer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

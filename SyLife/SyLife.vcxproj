@@ -355,7 +355,7 @@
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="ShapeAssemblyViewer.h" />
     <ClInclude Include="ShapeLayerViewer.h" />
-    <ClInclude Include="ShapeModel.h" />
+    <ClInclude Include="Shape.h" />
     <ClInclude Include="SlideBar.h" />
     <ClInclude Include="StatisticsViewer.h" />
     <ClInclude Include="stdafx.h" />
