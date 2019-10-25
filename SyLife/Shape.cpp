@@ -8,8 +8,6 @@ void Shape::load_this(const ptree& pt)
 	{
 		emplace_back().load(m.second);
 	}
-
-	Model::load_this(pt);
 }
 
 void Shape::save_this(ptree& pt) const
@@ -28,10 +26,4 @@ void Shape::save_this(ptree& pt) const
 
 		pt.add_child("layers", layers);
 	}
-
-
-	Model::save_this(pt);
-
-	// type
-	pt.put("type", "Shape");
 }

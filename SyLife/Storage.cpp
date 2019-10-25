@@ -86,8 +86,6 @@ void Storage::load_this(const ptree& pt)
 
 		emplace_back(asset, m.second.get<int>("size"));
 	}
-
-	Model::load_this(pt);
 }
 
 void Storage::save_this(ptree& pt) const
@@ -110,9 +108,4 @@ void Storage::save_this(ptree& pt) const
 
 		pt.add_child("elements", elements);
 	}
-
-	Model::save_this(pt);
-
-	// type
-	pt.put("type", "Storage");
 }
