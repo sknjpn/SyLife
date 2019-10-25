@@ -3,10 +3,10 @@
 bool Shape::updateProperties()
 {
 	// 初期化
-	m_polygon = Polygon();
+	m_polygon = front().m_polygon;
 
 	Array<Polygon> copies;
-	for (const auto& l : *this) 
+	for (const auto& l : *this)
 	{
 		if (l.m_polygon.isEmpty()) return false;
 
@@ -62,6 +62,22 @@ double Shape::getInertia(double mass) const
 	}
 
 	return inertia;
+}
+
+RectF Shape::getRect() const
+{
+	if (m_polygon.isEmpty()) return RectF();
+
+	RectF result(m_polygon.vertices().front(), Vec2::Zero());
+	for (const auto& v : m_polygon.vertices())
+	{
+		if (v.x < result.x) result.x = v.x;
+		if (v.y < result.y) result.y = v.y;
+		if (result.br().x < v.x) result.w = v.x - result.x;
+		if (result.br().y < v.y) result.w = v.y - result.y;
+	}
+
+	return result;
 }
 
 void Shape::load_this(const ptree& pt)

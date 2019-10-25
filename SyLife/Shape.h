@@ -20,6 +20,8 @@ public:
 	double	getRadius() const { return Sqrt(2 * getInertia(1.0)); }
 	Vec2	getCentroid() const { return m_polygon.centroid(); }
 
+	RectF	getRect() const;
+
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
 	void	save_this(ptree& pt) const;
