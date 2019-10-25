@@ -39,7 +39,7 @@ void AssemblyViewer::update()
 				for (const auto& l : g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart()->getShape())
 				{
 					l.draw(0.5);
-					l.GetPolygon().drawFrame(2.0, Palette::White);
+					l.m_polygon.drawFrame(2.0, Palette::White);
 				}
 			}
 
