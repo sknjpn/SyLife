@@ -1,6 +1,46 @@
 ﻿#include "stdafx.h"
 #include "Shape.h"
 
+bool Shape::updateProperties()
+{
+	m_polygon = Polygon();
+	m_radius = 0.0;
+
+	Array<Polygon> copies;
+	for (const auto& l : *this) 
+	{
+		if (l.m_polygon.isEmpty()) return false;
+
+		copies.emplace_back(l.m_polygon);
+	}
+
+	Polygon result;
+	while (!copies.empty())
+	{
+		bool flag = true;
+
+		for (auto it = copies.begin(); it != copies.end(); ++it)
+		{
+			auto polygons = Geometry2D::Or(result, *it);
+
+			if (polygons.size() == 1)
+			{
+				copies.erase(it);
+
+				flag = false;
+
+				break;
+			}
+		}
+
+		if (flag) return false;
+	}
+
+	m_polygon = result;
+
+	return true;
+}
+
 void Shape::load_this(const ptree& pt)
 {
 	// layers

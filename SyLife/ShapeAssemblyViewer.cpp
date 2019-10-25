@@ -45,9 +45,17 @@ void ShapeAssemblyViewer::update()
 
 		if (MouseR.pressed())
 		{
-			auto polygons = Geometry2D::Subtract(m_partAsset->m_shape[index].m_polygon, Circle(Cursor::PosF(), m_circleRadius).asPolygon());
+			const auto polygons = Geometry2D::Subtract(m_partAsset->m_shape[index].m_polygon, Circle(Cursor::PosF(), m_circleRadius).asPolygon());
 
-			if (!polygons.empty()) m_partAsset->m_shape[index].m_polygon = polygons.front();
+			if (polygons.empty()) m_partAsset->m_shape[index].m_polygon = Polygon();
+			else
+			{
+				int maxIndex = 0;
+				for (int i = 1; i < polygons.size(); ++i)
+					if (polygons[maxIndex].area() < polygons[i].area()) maxIndex = i;
+
+				m_partAsset->m_shape[index].m_polygon = polygons[maxIndex];
+			}
 		}
 
 		double k = 0.01;
