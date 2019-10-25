@@ -99,11 +99,11 @@ void Storage::save_this(ptree& pt) const
 
 		for (const auto& m : *this)
 		{
-			ptree pt;
-			pt.put<string>("name", m.first->getName());
-			pt.put<int>("size", m.second);
+			ptree pt2;
+			pt2.put<string>("name", m.first->getName());
+			pt2.put<int>("size", m.second);
 
-			elements.push_back(std::make_pair("", pt));
+			elements.push_back(std::make_pair("", pt2));
 		}
 
 		pt.add_child("elements", elements);

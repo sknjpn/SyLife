@@ -18,10 +18,10 @@ void Shape::save_this(ptree& pt) const
 
 		for (const auto& m : *this)
 		{
-			ptree pt;
-			m.save(pt);
+			ptree pt2;
+			m.save(pt2);
 
-			layers.push_back(std::make_pair("", pt));
+			layers.push_back(std::make_pair("", pt2));
 		}
 
 		pt.add_child("layers", layers);
