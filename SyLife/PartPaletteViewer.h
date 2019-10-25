@@ -2,10 +2,6 @@
 
 #include "Viewer.h"
 
-#include "AssetManager.h"
-
-#include "ShapeModel.h"
-
 #include "SlideBar.h"
 
 class PartAsset;

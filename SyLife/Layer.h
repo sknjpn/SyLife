@@ -5,7 +5,7 @@
 struct Layer
 	: public Model
 {
-	MultiPolygon	m_polygon;
+	Polygon	m_polygon;
 	Color			m_color;
 
 	void	draw(double a) const
