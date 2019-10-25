@@ -2,7 +2,6 @@
     "type": "SynthesizerAsset",
     "mass": "10",
     "material": {
-        "name": "",
         "nutrition":"1.0",
         "elements": [
             {
@@ -12,7 +11,7 @@
         ]
     },
     "export": "Carbon",
-    "shapes": [
+    "layers": [
         {
             "color": {
                 "r": "255",
@@ -44,8 +43,7 @@
                     "x": "6",
                     "y": "-5"
                 }
-            ],
-            "name": ""
+            ]
         },
         {
             "color": {
@@ -74,8 +72,7 @@
                     "x": "9",
                     "y": "5"
                 }
-            ],
-            "name": ""
+            ]
         },
         {
             "color": {
@@ -108,8 +105,7 @@
                     "x": "-1",
                     "y": "1"
                 }
-            ],
-            "name": ""
+            ]
         }
     ],
     "name": "Organelle C"

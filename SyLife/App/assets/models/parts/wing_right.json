@@ -3,8 +3,7 @@
     "mass": "20",
     "isRight": "true",
     "material": {
-        "name":"",
-        "nutrition":"2.0",
+        "nutrition": "2.0",
         "elements": [
             {
                 "name": "Oxygen",
@@ -12,7 +11,7 @@
             }
         ]
     },
-    "shapes": [
+    "layers": [
         {
             "color": {
                 "r": "249",
@@ -44,8 +43,7 @@
                     "x": "40",
                     "y": "5"
                 }
-            ],
-            "name": ""
+            ]
         },
         {
             "color": {
@@ -70,8 +68,7 @@
                     "x": "5",
                     "y": "0"
                 }
-            ],
-            "name": ""
+            ]
         }
     ],
     "name": "Wing Right"
