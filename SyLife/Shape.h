@@ -15,7 +15,6 @@ public:
 	bool	updateProperties();
 
 	const Polygon& getPolygon() const { return m_polygon; }
-	double	getRadius() const { return m_radius; }
 
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
