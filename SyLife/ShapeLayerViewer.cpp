@@ -28,7 +28,7 @@ void ShapeLayerViewer::update()
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
 		block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
 
-		font(U"Add Shape").drawAt(block.center());
+		font(U"Add Layer").drawAt(block.center());
 
 		if (block.leftClicked())
 		{
