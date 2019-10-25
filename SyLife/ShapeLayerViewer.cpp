@@ -1,6 +1,6 @@
 ﻿#include "ShapeLayerViewer.h"
 
-#include "ShapeModel.h"
+#include "Shape.h"
 #include "PartAsset.h"
 
 ShapeLayerViewer::ShapeLayerViewer()
