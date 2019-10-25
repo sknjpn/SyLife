@@ -32,12 +32,12 @@ void ShapeLayerViewer::update()
 
 		if (block.leftClicked())
 		{
-			// 新しいShapeの追加
-			auto& s = m_partAsset->m_shape.emplace_back();
-			s.m_color = Palette::White;
-			s.m_polygon = Circle(10.0).asPolygon();
+			// 新しいLayerの追加
+			auto& l = m_partAsset->m_shape.emplace_back();
+			l.m_color = Palette::White;
+			l.m_polygon = Circle(10.0).asPolygon();
 
-			// 選択中のShapeを変更
+			// 選択中のLayerを変更
 			m_selectedIndex = int(m_partAsset->m_shape.size()) - 1;
 		}
 
