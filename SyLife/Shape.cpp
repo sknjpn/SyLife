@@ -72,6 +72,8 @@ void Shape::load_this(const ptree& pt)
 	{
 		emplace_back().load(m.second);
 	}
+
+	updateProperties();
 }
 
 void Shape::save_this(ptree& pt) const
