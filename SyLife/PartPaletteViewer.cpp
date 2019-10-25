@@ -1,5 +1,7 @@
 ﻿#include "PartPaletteViewer.h"
 
+#include "AssetManager.h"
+
 #include "PartAsset.h"
 
 #include "BodyAsset.h"
@@ -33,8 +35,8 @@ void PartPaletteViewer::drawModels()
 			auto scale = Min((m_itemHeight - 20) / rect.w, (m_itemHeight - 20) / rect.h);
 			auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(170 - m_itemHeight / 2.0, m_itemHeight / 2.0)));
 
-			for (const ShapeModel& s : (*it)->getShapes())
-				s.draw(0.5);
+			for (const auto& l : (*it)->getShapes())
+				l.draw(0.5);
 		}
 
 		// 名前描画
