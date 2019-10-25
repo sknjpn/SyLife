@@ -262,6 +262,7 @@
     <ClCompile Include="EquipmentState.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldViewer.cpp" />
+    <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelEditor.cpp" />
@@ -334,6 +335,7 @@
     <ClInclude Include="EquipmentState.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelEditor.h" />
     <ClInclude Include="ModuleAsset.h" />
