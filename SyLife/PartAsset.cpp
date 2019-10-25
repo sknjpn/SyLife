@@ -73,9 +73,8 @@ void PartAsset::load_this(const ptree& pt)
 	// mass
 	m_mass = pt.get<double>("mass");
 
-	// shapes
-	for (auto shape : pt.get_child("shapes"))
-		m_shape.emplace_back().load_this(shape.second);
+	// layers
+	m_shape.load(pt);
 
 	// material
 	m_material.load(pt.get_child("material"));
@@ -88,18 +87,8 @@ void PartAsset::save_this(ptree& pt) const
 	// mass
 	pt.put<double>("mass", m_mass);
 
-	// shapes
-	{
-		ptree shapes;
-
-		for (const auto& v : m_shape)
-		{
-			ptree shape; v.save(shape);
-			shapes.push_back(std::make_pair("", shape));
-		}
-
-		pt.add_child("shapes", shapes);
-	}
+	// layers
+	m_shape.save(pt);
 
 	// material
 	{
