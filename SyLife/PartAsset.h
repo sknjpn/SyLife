@@ -3,7 +3,7 @@
 #include "Asset.h"
 
 #include "Storage.h"
-#include "ShapeModel.h"
+#include "Shape.h"
 
 class PartState;
 
@@ -15,18 +15,18 @@ public:
 
 	double	m_mass;
 	Storage	m_material;
-	Array<ShapeModel>	m_shapes;
+	Shape	m_shape;
 
 public:
 	// Get
 	double	getMass() const { return m_mass; }
 	const Storage& getMaterial() const { return m_material; }
-	const Array<ShapeModel>& getShapes() const { return m_shapes; }
+	const Shape& getShapes() const { return m_shape; }
 
 	void	makeViewer() override;
 	virtual shared_ptr<PartState>	makeState();
 
-	void	draw(double a = 0.5) { for (const auto& s : m_shapes) s.draw(a); }
+	void	draw(double a = 0.5) { for (const auto& l : m_shape) l.draw(a); }
 
 	RectF	getApproximateRect() const;
 	Vec2	getApproximateRectTopLeft() const;
