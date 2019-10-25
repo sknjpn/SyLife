@@ -6,7 +6,7 @@ struct Layer
 	: public Model
 {
 	Polygon	m_polygon;
-	Color			m_color;
+	Color	m_color;
 
 	void	draw(double a) const
 	{
