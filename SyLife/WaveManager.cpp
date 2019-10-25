@@ -13,13 +13,13 @@ WaveManager::WaveManager()
 
 Vec2 WaveManager::getWaveVelocity(const Vec2& position) const
 {
-	auto interval = 300.0;
+	auto interval = 400.0;
 	//auto x = perlinNoiseX.noise(Vec3(position.x / interval, position.y / interval, m_timer * 0.05));
 	//auto y = perlinNoiseY.noise(Vec3(position.x / interval, position.y / interval, m_timer * 0.05));
 	auto x = perlinNoiseX.noise(Vec3(position.x / interval, position.y / interval, 0.5));
 	auto y = perlinNoiseY.noise(Vec3(position.x / interval, position.y / interval, 0.5));
 
-	return Vec2(x, y) * 50.0;
+	return Vec2(x, y) * 100.0;
 }
 
 void WaveManager::updateWave()
