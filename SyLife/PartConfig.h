@@ -23,6 +23,7 @@ public:
 	void	setRotation(double rotation) { m_rotation = rotation; }
 
 	double	getInertia() const;
+
 	void	load_this(const ptree& pt);
 	void	load(const ptree& pt) override { load_this(pt); }
 	void	save_this(ptree& pt) const;

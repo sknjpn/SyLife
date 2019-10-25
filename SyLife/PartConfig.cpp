@@ -5,7 +5,7 @@
 
 double PartConfig::getInertia() const
 {
-	return m_partModel->getRectInertia() + (m_position + m_partModel->getCenter().rotated(m_rotation)).lengthSq() * m_partModel->getMass();
+	return m_partModel->getShape().getInertia(m_partModel->getMass()) + (m_position + m_partModel->getShape().getCentroid().rotated(m_rotation)).lengthSq() * m_partModel->getMass();
 }
 
 void PartConfig::load_this(const ptree& pt)
