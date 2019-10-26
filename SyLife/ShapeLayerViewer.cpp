@@ -64,7 +64,7 @@ void ShapeLayerViewer::drawLayers()
 
 		// パーツ描画
 		{
-			RectF rect = it->getRect();
+			RectF rect = it->m_polygon.boundingRect();
 			auto scale = Min((m_itemHeight - 20) / rect.w, (m_itemHeight - 20) / rect.h);
 			auto t = Transformer2D(Mat3x2::Translate(-rect.center()).scaled(scale).translated(Vec2(170 - m_itemHeight / 2.0, m_itemHeight / 2.0)));
 
