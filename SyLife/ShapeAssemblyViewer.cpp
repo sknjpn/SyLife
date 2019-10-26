@@ -26,7 +26,6 @@ void ShapeAssemblyViewer::update()
 
 	drawGrid();
 
-	
 	m_partAsset->m_shape.updateProperties();
 	m_partAsset->getShape().getPolygon().draw();
 

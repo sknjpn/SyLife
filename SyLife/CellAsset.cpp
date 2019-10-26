@@ -46,6 +46,17 @@ void CellAsset::save_this(ptree& pt) const
 	pt.put("type", "CellAsset");
 }
 
+void CellAsset::updateMaxStorage()
+{
+	// ストック出来る量は必要資源の２倍
+	m_maxStorage = m_material + m_material;
+}
+
+void CellAsset::updateMaterial()
+{
+	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getModel()->getMaterial(); });
+}
+
 void CellAsset::makeViewer()
 {
 	g_viewerManagerPtr->makeViewer<CellEditor>()->setModel(shared_from_this());
@@ -75,7 +86,7 @@ void CellAsset::updateProperties()
 	m_radius = sqrt(2 * m_inertia / m_mass);
 
 	// material
-	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getModel()->getMaterial(); });
+	updateMaterial();
 
 	// maxStorage (生成の必要量の二倍)
 	m_maxStorage = m_material;
