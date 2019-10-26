@@ -1,5 +1,24 @@
 ﻿#include "Layer.h"
 
+RectF Layer::getRect() const
+{
+	if (m_polygon.isEmpty()) return RectF();
+
+	RectF result(m_polygon.vertices().front().x, m_polygon.vertices().front().y, 0, 0);
+	for (const auto& v : m_polygon.vertices())
+	{
+		if (v.x < result.x) result.x = v.x;
+		if (v.y < result.y) result.y = v.y;
+	}
+	for (const auto& v : m_polygon.vertices())
+	{
+		if (result.br().x < v.x) result.w = v.x - result.x;
+		if (result.br().y < v.y) result.h = v.y - result.y;
+	}
+
+	return result;
+}
+
 void Layer::load_this(const ptree& pt)
 {
 	// color
