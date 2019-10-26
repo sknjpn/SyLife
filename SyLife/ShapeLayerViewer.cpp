@@ -56,7 +56,7 @@ void ShapeLayerViewer::drawLayers()
 	for (auto it = m_partAsset->m_shape.begin(); it != m_partAsset->m_shape.end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
-		block.draw((int(it - m_partAsset->m_shape.begin()) == m_selectedIndex) ? ColorF(Palette::Blue, 0.5) : ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+		block.draw((distance(m_partAsset->m_shape.begin(), it) == m_selectedIndex) ? ColorF(Palette::Blue, 0.5) : ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
 		if (block.leftClicked()) m_selectedIndex = int(it - m_partAsset->m_shape.begin());
 
 		// ColorPicker
@@ -64,7 +64,7 @@ void ShapeLayerViewer::drawLayers()
 
 		// パーツ描画
 		{
-			RectF rect = it->m_polygon.boundingRect();
+			RectF rect = it->getRect();
 			auto scale = Min((m_itemHeight - 20) / rect.w, (m_itemHeight - 20) / rect.h);
 			auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(170 - m_itemHeight / 2.0, m_itemHeight / 2.0)));
 
