@@ -41,15 +41,18 @@ void AssemblyViewer::update()
 
 	if (MouseL.down() && isMouseOver())
 	{
-		m_selectedPartConfig = nullptr;
-
 		for (const auto& pc : getCellAsset()->getPartConfigs())
 		{
 			auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation())
 				.translated(pc->getPosition().x, pc->getPosition().y));
 
-			if (pc->getModel()->getShape().getPolygon().mouseOver()) m_selectedPartConfig = pc
+			if (pc->getModel()->getShape().getPolygon().mouseOver()) m_selectedPartConfig = pc;
 		}
+	}
+
+	if (MouseL.up())
+	{
+		m_selectedPartConfig = nullptr;
 	}
 
 	// selectedPart
