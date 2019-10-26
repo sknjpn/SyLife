@@ -39,18 +39,24 @@ void AssemblyViewer::update()
 
 	drawParts();
 
-	if (MouseL.down()) m_grabCircle = false;
-	if (MouseL.down() && m_selectedPartConfig)
+	if (m_selectedPartConfig)
 	{
 		auto t = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
-		auto r = m_selectedPartConfig->getModel()->getShape().getRadius();
 
-		if (Circle(Vec2::Down() * r, r * 0.2).mouseOver())
+		if (m_state == State::MoveMode)
 		{
-			m_grabCircle = true;
+			m_selectedPartConfig->setPosition(m_selectedPartConfig->getPosition() + Cursor::DeltaF());
 		}
-		else m_selectedPartConfig = nullptr;
+
+		if (m_state == State::RotateMode)
+		{
+			auto delta = Cursor::PreviousPosF().getAngle(Cursor::PosF());
+			m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
+
+			if (MouseL.up()) m_selectedPartConfig = nullptr;
+		}
 	}
+	
 	if (MouseL.down() && isMouseOver())
 	{
 		for (const auto& pc : getCellAsset()->getPartConfigs())
@@ -58,27 +64,13 @@ void AssemblyViewer::update()
 			auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation())
 				.translated(pc->getPosition()), true);
 
-			if (pc->getModel()->getShape().getPolygon().mouseOver()) m_selectedPartConfig = pc;
-		}
-	}
+			if (pc->getModel()->getShape().getPolygon().mouseOver())
+			{
+				if(m_selectedPartConfig == pc) m_state = State::RotateMode;
+				else m_state = State::MoveMode;
 
-	if (m_selectedPartConfig)
-	{
-		auto t = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
-		auto r = m_selectedPartConfig->getModel()->getShape().getRadius();
-
-		Geometry2D::Subtract(Circle(Vec2::Down() * r * 0.1, r).asPolygon(), Circle(Vec2::Up() * r * 0.1, r).asPolygon()).front().draw();
-
-		if (m_grabCircle)
-		{
-			auto delta = Cursor::PreviousPosF().getAngle(Cursor::PosF());
-			m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
-
-			Circle(Cursor::PosF().setLength(r), r * 0.2).draw(Palette::Orange);
-		}
-		else
-		{
-			Circle(Vec2::Down() * r, r * 0.2).draw(Palette::Orange);
+				m_selectedPartConfig = pc;
+			}
 		}
 	}
 
