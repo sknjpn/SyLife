@@ -37,7 +37,6 @@ void PartPaletteViewer::drawModels()
 
 			for (const auto& l : (*it)->getShape())
 				l.draw(0.5);
-			(*it)->getShape().getPolygon().calculateBuffer(2).draw();
 		}
 
 		// 名前描画
