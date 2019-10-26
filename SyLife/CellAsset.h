@@ -29,10 +29,7 @@ class CellAsset
 	void	updateInertia();
 	void	updateMaxStorage();
 	void	updateMaterial();
-	void	setCentroidAsOrigin() {
-		auto centroid = getCenter();
-		for (const auto& p : m_partConfigs) p->setPosition(p->getPosition() - centroid);
-	}
+	void	setCentroidAsOrigin();
 
 public:
 	void	makeViewer() override;
