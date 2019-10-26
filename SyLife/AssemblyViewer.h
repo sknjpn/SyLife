@@ -5,6 +5,7 @@
 
 class CellAsset;
 class BodyAsset;
+class PartConfig;
 
 class AssemblyViewer
 	: public Viewer
@@ -19,7 +20,7 @@ public:
 	double	m_inertia;
 	double	m_radius;
 	Vec2	m_size;
-	shared_ptr<PartAsset>	m_selectedPart;
+	shared_ptr<PartConfig>	m_selectedPartConfig;
 
 public:
 	void	init() override;
