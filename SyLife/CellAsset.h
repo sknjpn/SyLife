@@ -23,7 +23,6 @@ class CellAsset
 	double	m_bornTime;		// 生まれるまでの時間
 	double	m_yieldTime;	// 生むのにかかる時間
 
-	Vec2	getCenter();
 	void	updateMass();
 	void	updateRadius() { m_radius = sqrt(2 * m_inertia / m_mass); }
 	void	updateInertia();
@@ -32,6 +31,8 @@ class CellAsset
 
 public:
 	void	makeViewer() override;
+
+	Vec2	getCenter();
 
 	void	setCentroidAsOrigin();
 

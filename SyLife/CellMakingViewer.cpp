@@ -93,15 +93,15 @@ void CellMakingViewer::update()
 
 			// part
 			{
-				auto t1 = Transformer2D(Mat3x2::Scale(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
+				auto t1 = Transformer2D(Mat3x2::Translate(-m_cellAsset->getCenter()).scaled(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
 
 				for (const auto& p : m_cellAsset->getPartConfigs())
 				{
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition().x, p->getPosition().y));
 
-					for (const auto& l : p->getModel()->getShape())
-						l.m_polygon.draw(ColorF(l.m_color, 0.5)).drawFrame(1.0, Palette::Black);
+					p->getModel()->getShape().draw(0.5);
+					p->getModel()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
 				}
 			}
 		}
@@ -184,15 +184,15 @@ void CellMakingViewer::update()
 
 			// part
 			{
-				auto t1 = Transformer2D(Mat3x2::Scale(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
+				auto t1 = Transformer2D(Mat3x2::Translate(-m_cellAsset->getCenter()).scaled(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
 
 				for (const auto& p : m_cellAsset->getPartConfigs())
 				{
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition().x, p->getPosition().y));
 
-					for (const auto& l : p->getModel()->getShape())
-						l.m_polygon.draw(ColorF(l.m_color, 0.5)).drawFrame(1.0, Palette::Black);
+					p->getModel()->getShape().draw(0.5);
+					p->getModel()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
 				}
 			}
 		}
