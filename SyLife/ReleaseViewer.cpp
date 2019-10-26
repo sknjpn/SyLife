@@ -55,6 +55,7 @@ void ReleaseViewer::update()
 	if (MouseL.up())
 	{
 		// CellAssetのリセット
+		getCellAsset()->setCentroidAsOrigin();
 
 		// 新規Cell
 		const auto& c = g_cellManagerPtr->addCellState(cmv->m_cellAsset);
