@@ -33,7 +33,7 @@ void PartPaletteViewer::drawModels()
 		{
 			RectF rect = (*it)->getShape().getRect();
 			auto scale = Min((m_itemHeight - 20) / rect.w, (m_itemHeight - 20) / rect.h);
-			auto t = Transformer2D(Mat3x2::Scale(scale).translated(-rect.center() + Vec2(170 - m_itemHeight / 2.0, m_itemHeight / 2.0)));
+			auto t = Transformer2D(Mat3x2::Translate(-rect.center()).scaled(scale).translated(Vec2(170 - m_itemHeight / 2.0, m_itemHeight / 2.0)));
 
 			(*it)->draw(0.5);
 		}
