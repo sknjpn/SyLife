@@ -34,6 +34,11 @@ void AssemblyViewer::update()
 
 	drawParts();
 
+	if (MouseL.down() && isMouseOver())
+	{
+
+	}
+
 	// selectedPart
 	if (auto& selectedPart = g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart())
 	{

@@ -9,6 +9,7 @@ class BodyAsset;
 class AssemblyViewer
 	: public Viewer
 {
+	const shared_ptr<CellAsset>& getCellAsset() const;
 	const shared_ptr<BodyAsset>& getBodyAsset() const;
 
 public:
@@ -18,6 +19,7 @@ public:
 	double	m_inertia;
 	double	m_radius;
 	Vec2	m_size;
+	shared_ptr<PartAsset>	m_selectedPart;
 
 public:
 	void	init() override;
