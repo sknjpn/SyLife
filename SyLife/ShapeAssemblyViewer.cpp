@@ -30,8 +30,8 @@ void ShapeAssemblyViewer::update()
 	m_partAsset->getShape().getPolygon().draw();
 
 	// Part
-	for (const auto& l : m_partAsset->getShape())
-		l.m_polygon.draw(ColorF(l.m_color, 0.5)).drawFrame(1.0, Palette::Black);
+	m_partAsset->getShape().draw(0.5);
+	m_partAsset->getShape().getPolygon().drawFrame(1.0, Palette::Black);
 
 	if (KeyShift.pressed())
 		m_circleRadius = Clamp<double>(m_circleRadius * (1.0 + Mouse::Wheel() * 0.1), 1.0, 100.0);
