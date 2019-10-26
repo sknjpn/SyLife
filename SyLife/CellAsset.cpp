@@ -79,6 +79,14 @@ void CellAsset::updateMaterial()
 	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getModel()->getMaterial(); });
 }
 
+void CellAsset::setCentroidAsOrigin()
+{
+	auto centroid = getCenter();
+
+	for (const auto& p : m_partConfigs)
+		p->setPosition(p->getPosition() - centroid);
+}
+
 void CellAsset::makeViewer()
 {
 	g_viewerManagerPtr->makeViewer<CellEditor>()->setModel(shared_from_this());
@@ -96,10 +104,7 @@ void CellAsset::updateProperties()
 	updateMass();
 
 	// centerを原点に設定
-	{
-		auto centroid = getCenter();
-		for (const auto& p : m_partConfigs) p->setPosition(p->getPosition() - centroid);
-	}
+	setCentroidAsOrigin();
 
 	// inertia
 	updateInertia();
