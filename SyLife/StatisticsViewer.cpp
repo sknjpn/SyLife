@@ -45,6 +45,6 @@ void StatisticsViewer::update()
 
 StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)
 {
-	m_num = g_cellManagerPtr->getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; });
-	m_num = g_eggManagerPtr->getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; });
+	m_num = int(g_cellManagerPtr->getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; }));
+	m_num = int(g_eggManagerPtr->getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; }));
 }
