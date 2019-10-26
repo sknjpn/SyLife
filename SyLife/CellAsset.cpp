@@ -46,6 +46,11 @@ void CellAsset::save_this(ptree& pt) const
 	pt.put("type", "CellAsset");
 }
 
+Vec2 CellAsset::getCenter()
+{
+	return accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getModel()->getMass() * (p->getPosition() + p->getModel()->getShape().getCentroid().rotated(p->getRotation())); }) / m_mass;
+}
+
 void CellAsset::updateMaxStorage()
 {
 	// ストック出来る量は必要資源の２倍
@@ -73,11 +78,8 @@ void CellAsset::updateProperties()
 	// mass
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });
 
-	// center
-	Vec2 center = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getModel()->getMass() * (p->getPosition() + p->getModel()->getShape().getCentroid().rotated(p->getRotation())); }) / m_mass;
-
 	// centerを原点に設定
-	for (const auto& p : m_partConfigs) p->setPosition(p->getPosition() - center);
+	for (const auto& p : m_partConfigs) p->setPosition(p->getPosition() - getCenter());
 
 	// inertia
 	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double acc, const auto& p) { return acc + p->getInertia(); });

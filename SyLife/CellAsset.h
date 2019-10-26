@@ -23,7 +23,8 @@ class CellAsset
 	double	m_bornTime;		// 生まれるまでの時間
 	double	m_yieldTime;	// 生むのにかかる時間
 
-	void	updateMaxStorage() { m_maxStorage = m_material + m_material; // ２倍に設定}
+	Vec2	getCenter();
+	void	updateMaxStorage();
 	void	updateMaterial();
 
 public:
