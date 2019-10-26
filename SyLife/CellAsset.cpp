@@ -103,9 +103,6 @@ void CellAsset::updateProperties()
 	// mass
 	updateMass();
 
-	// centerを原点に設定
-	setCentroidAsOrigin();
-
 	// inertia
 	updateInertia();
 
