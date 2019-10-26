@@ -53,9 +53,14 @@ Vec2 CellAsset::getCenter()
 
 void CellAsset::updateInertia()
 {
+	auto centroid = getCenter();
 
-
-	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double acc, const auto& p) { return acc + p->getInertia(); });
+	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [&centroid](double acc, const auto& pc) {
+		auto id = (pc->getCentroid() - centroid).lengthSq() * pc->getModel()->getMass();
+		auto is = pc->getModel()->getShape().getInertia(pc->getModel()->getMass());
+		
+		return acc + id + is;
+		});
 }
 
 void CellAsset::updateMaxStorage()
