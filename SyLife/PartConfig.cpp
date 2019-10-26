@@ -3,14 +3,9 @@
 
 #include "AssetManager.h"
 
-double PartConfig::getInertia(const Vec2& center) const
+Vec2 PartConfig::getCentroid() const
 {
-	auto d = m_position + m_partModel->getShape().getCentroid().rotated(m_rotation) - center;
-
-	auto is = m_partModel->getShape().getInertia(m_partModel->getMass());
-	auto id = d.lengthSq() * m_partModel->getMass();
-
-	return is + id;
+	return  m_position + m_partModel->getShape().getCentroid().rotated(m_rotation);
 }
 
 void PartConfig::load_this(const ptree& pt)
