@@ -8,6 +8,11 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 
+const shared_ptr<BodyAsset>& AssemblyViewer::getBodyAsset() const
+{
+	return g_viewerManagerPtr->getViewer<CellMakingViewer>()->m_bodyAsset;
+}
+
 void AssemblyViewer::init()
 {
 	setPriority(2);

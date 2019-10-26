@@ -9,6 +9,8 @@ class BodyAsset;
 class AssemblyViewer
 	: public Viewer
 {
+	const shared_ptr<BodyAsset>& getBodyAsset() const;
+
 public:
 	TinyCamera	m_camera;
 
