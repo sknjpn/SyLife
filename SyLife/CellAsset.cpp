@@ -51,6 +51,11 @@ Vec2 CellAsset::getCenter()
 	return accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getModel()->getMass() * (p->getPosition() + p->getModel()->getShape().getCentroid().rotated(p->getRotation())); }) / m_mass;
 }
 
+void CellAsset::updateMass()
+{
+	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });
+}
+
 void CellAsset::updateInertia()
 {
 	auto centroid = getCenter();
@@ -88,7 +93,7 @@ shared_ptr<PartConfig>& CellAsset::addPartConfig()
 void CellAsset::updateProperties()
 {
 	// mass
-	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });
+	updateMass();
 
 	// centerを原点に設定
 	{
