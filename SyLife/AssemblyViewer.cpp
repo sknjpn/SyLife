@@ -37,6 +37,8 @@ void AssemblyViewer::update()
 	// selectedPart
 	if (auto& selectedPart = g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart())
 	{
+		bool canSetPart = getBodyAsset()->getShape().getPolygon().contains(Cursor::PosF());
+
 		if (isMouseOver())
 		{
 			{
@@ -45,7 +47,7 @@ void AssemblyViewer::update()
 				selectedPart->getShape().draw(0.5);
 			}
 
-			if (MouseL.up())
+			if (MouseL.up() && canSetPart)
 			{
 				const auto& partConfig = cmv->m_cellAsset->addPartConfig();
 
@@ -54,8 +56,7 @@ void AssemblyViewer::update()
 				partConfig->setRotation(0.0);
 			}
 
-			auto polygon = getBodyAsset()->getShape().getPolygon();
-			selectedPart->getShape().getPolygon().movedBy(Cursor::PosF()).draw(ColorF(polygon.contains(Cursor::PosF()) ? Palette::Green : Palette::Red, 0.5));
+			selectedPart->getShape().getPolygon().movedBy(Cursor::PosF()).draw(ColorF(canSetPart ? Palette::Green : Palette::Red, 0.5));
 		}
 
 		if (!MouseL.pressed()) g_viewerManagerPtr->getViewer<PartPaletteViewer>()->clearSelectedPart();
