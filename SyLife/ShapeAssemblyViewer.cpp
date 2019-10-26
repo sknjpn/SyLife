@@ -7,6 +7,8 @@
 
 void ShapeAssemblyViewer::init()
 {
+	setBackgroundColor(Palette::Gray);
+
 	setPriority(2);
 
 	setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
