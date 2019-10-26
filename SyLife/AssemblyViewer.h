@@ -14,6 +14,12 @@ class AssemblyViewer
 	const shared_ptr<BodyAsset>& getBodyAsset() const;
 
 public:
+	enum struct State
+	{
+		MoveMode,
+		RotateMode,
+	} m_state;
+
 	TinyCamera	m_camera;
 
 	double	m_mass;
@@ -29,7 +35,7 @@ public:
 	void	update() override;
 
 	void	setSize(const Vec2& size);
-	
+
 	void	drawParts() const;
 	void	drawGrid() const;
 };
