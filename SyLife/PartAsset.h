@@ -25,8 +25,7 @@ public:
 
 	void	makeViewer() override;
 	virtual shared_ptr<PartState>	makeState();
-
-	void	draw(double a = 0.5) { for (const auto& l : m_shape) l.draw(a); }
+	void	draw(double a = 0.5) { m_shape.draw(a); }
 
 	// JSON
 	void	load_this(const ptree& pt);
