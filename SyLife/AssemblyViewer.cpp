@@ -42,11 +42,7 @@ void AssemblyViewer::update()
 			{
 				auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& l : selectedPart->getShape())
-				{
-					l.draw(0.5);
-					l.m_polygon.drawFrame(2.0, Palette::White);
-				}
+				selectedPart->getShape().draw(0.5);
 			}
 
 			if (MouseL.up())
