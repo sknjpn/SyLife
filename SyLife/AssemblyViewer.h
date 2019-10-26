@@ -16,7 +16,6 @@ public:
 	double	m_inertia;
 	double	m_radius;
 	Vec2	m_size;
-	shared_ptr<BodyAsset>	m_bodyAsset;
 
 public:
 	void	init() override;
