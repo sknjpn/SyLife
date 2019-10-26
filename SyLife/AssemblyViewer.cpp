@@ -39,20 +39,47 @@ void AssemblyViewer::update()
 
 	drawParts();
 
+	if (MouseL.down()) m_grabCircle = false;
+	if (MouseL.down() && m_selectedPartConfig)
+	{
+		auto t = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
+		auto r = m_selectedPartConfig->getModel()->getShape().getRadius();
+
+		if (Circle(Vec2::Down() * r, r * 0.2).mouseOver())
+		{
+			m_grabCircle = true;
+		}
+		else m_selectedPartConfig = nullptr;
+	}
 	if (MouseL.down() && isMouseOver())
 	{
 		for (const auto& pc : getCellAsset()->getPartConfigs())
 		{
 			auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation())
-				.translated(pc->getPosition().x, pc->getPosition().y));
+				.translated(pc->getPosition()), true);
 
 			if (pc->getModel()->getShape().getPolygon().mouseOver()) m_selectedPartConfig = pc;
 		}
 	}
 
-	if (MouseL.up())
+	if (m_selectedPartConfig)
 	{
-		m_selectedPartConfig = nullptr;
+		auto t = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
+		auto r = m_selectedPartConfig->getModel()->getShape().getRadius();
+
+		Geometry2D::Subtract(Circle(Vec2::Down() * r * 0.1, r).asPolygon(), Circle(Vec2::Up() * r * 0.1, r).asPolygon()).front().draw();
+
+		if (m_grabCircle)
+		{
+			auto delta = Cursor::PreviousPosF().getAngle(Cursor::PosF());
+			m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
+
+			Circle(Cursor::PosF().setLength(r), r * 0.2).draw(Palette::Orange);
+		}
+		else
+		{
+			Circle(Vec2::Down() * r, r * 0.2).draw(Palette::Orange);
+		}
 	}
 
 	// selectedPart
@@ -110,6 +137,14 @@ void AssemblyViewer::drawParts() const
 
 		p->getModel()->getShape().draw(0.5);
 		p->getModel()->getShape().getPolygon().drawFrame(1.0, Palette::Black);
+	}
+
+	if (m_selectedPartConfig)
+	{
+		auto t2 = Transformer2D(Mat3x2::Rotate(m_selectedPartConfig->getRotation())
+			.translated(m_selectedPartConfig->getPosition()));
+
+		m_selectedPartConfig->getModel()->getShape().getPolygon().draw(ColorF(1.0, 0.5));
 	}
 }
 

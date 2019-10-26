@@ -20,6 +20,7 @@ public:
 	double	m_inertia;
 	double	m_radius;
 	Vec2	m_size;
+	bool	m_grabCircle;
 	shared_ptr<PartConfig>	m_selectedPartConfig;
 
 public:

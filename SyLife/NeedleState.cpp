@@ -22,7 +22,7 @@ void NeedleState::update(CellState& cellState)
 	{
 		m_heat = 5.0;
 
-		auto p = cellState.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up() * 50.0);
+		auto p = cellState.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up().rotated(getPartConfig()->getRotation()) * 50.0);
 
 
 		for (auto i : g_cellManagerPtr->getCellStateKDTree().knnSearch(1, p))
