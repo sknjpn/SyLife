@@ -29,10 +29,11 @@ class CellAsset
 	void	updateInertia();
 	void	updateMaxStorage();
 	void	updateMaterial();
-	void	setCentroidAsOrigin();
 
 public:
 	void	makeViewer() override;
+
+	void	setCentroidAsOrigin();
 
 	// Get
 	const Storage& getMaterial() const { return m_material; }
