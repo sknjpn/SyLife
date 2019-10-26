@@ -53,6 +53,8 @@ Vec2 CellAsset::getCenter()
 
 void CellAsset::updateInertia()
 {
+
+
 	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double acc, const auto& p) { return acc + p->getInertia(); });
 }
 
