@@ -7,6 +7,7 @@
 #include "CellAsset.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
+#include "BodyAsset.h"
 
 const shared_ptr<BodyAsset>& AssemblyViewer::getBodyAsset() const
 {
@@ -34,14 +35,14 @@ void AssemblyViewer::update()
 	drawParts();
 
 	// selectedPart
-	if (g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart() != nullptr)
+	if (auto& selectedPart = g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart())
 	{
 		if (isMouseOver())
 		{
 			{
 				auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				for (const auto& l : g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart()->getShape())
+				for (const auto& l : selectedPart->getShape())
 				{
 					l.draw(0.5);
 					l.m_polygon.drawFrame(2.0, Palette::White);
@@ -52,10 +53,13 @@ void AssemblyViewer::update()
 			{
 				const auto& partConfig = cmv->m_cellAsset->addPartConfig();
 
-				partConfig->setModel(g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart());
+				partConfig->setModel(selectedPart);
 				partConfig->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 				partConfig->setRotation(0.0);
 			}
+
+			auto polygon = getBodyAsset()->getShape().getPolygon();
+			selectedPart->getShape().getPolygon().movedBy(Cursor::PosF()).draw(ColorF(polygon.contains(Cursor::PosF()) ? Palette::Green : Palette::Red, 0.5));
 		}
 
 		if (!MouseL.pressed()) g_viewerManagerPtr->getViewer<PartPaletteViewer>()->clearSelectedPart();
