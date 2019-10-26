@@ -91,12 +91,16 @@ void CellAsset::updateProperties()
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });
 
 	// centerを原点に設定
-	for (const auto& p : m_partConfigs) p->setPosition(p->getPosition() - getCenter());
+	{
+		auto centroid = getCenter();
+		for (const auto& p : m_partConfigs) p->setPosition(p->getPosition() - centroid);
+	}
 
 	// inertia
+	updateInertia();
 
 	// radius
-	m_radius = sqrt(2 * m_inertia / m_mass);
+	updateRadius();
 
 	// material
 	updateMaterial();

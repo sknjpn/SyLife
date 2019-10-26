@@ -24,6 +24,7 @@ class CellAsset
 	double	m_yieldTime;	// 生むのにかかる時間
 
 	Vec2	getCenter();
+	void	updateRadius() { m_radius = sqrt(2 * m_inertia / m_mass); }
 	void	updateInertia();
 	void	updateMaxStorage();
 	void	updateMaterial();
