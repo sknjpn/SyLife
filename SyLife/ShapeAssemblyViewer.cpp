@@ -28,7 +28,7 @@ void ShapeAssemblyViewer::update()
 
 	
 	m_partAsset->m_shape.updateProperties();
-	m_partAsset->getShape().getPolygon().calculateBuffer(2).draw();
+	m_partAsset->getShape().getPolygon().draw();
 
 	// Part
 	for (const auto& l : m_partAsset->getShape())
@@ -38,7 +38,7 @@ void ShapeAssemblyViewer::update()
 		m_circleRadius = Clamp<double>(m_circleRadius * (1.0 + Mouse::Wheel() * 0.1), 1.0, 100.0);
 
 	// Mouse
-	Circle(Cursor::PosF(), m_circleRadius).draw(Palette::White);
+	Circle(Cursor::PosF(), m_circleRadius).draw(ColorF(m_partAsset->m_shape[index].m_color, 0.5));
 
 	if (isMouseOver())
 	{
