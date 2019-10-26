@@ -11,6 +11,11 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 
+const shared_ptr<CellAsset>& ReleaseViewer::getCellAsset() const
+{
+	return g_viewerManagerPtr->getViewer<CellMakingViewer>()->m_cellAsset;
+}
+
 ReleaseViewer::ReleaseViewer()
 {
 	setPriority(3);
@@ -49,6 +54,8 @@ void ReleaseViewer::update()
 	// Release
 	if (MouseL.up())
 	{
+		// CellAssetのリセット
+
 		// 新規Cell
 		const auto& c = g_cellManagerPtr->addCellState(cmv->m_cellAsset);
 		c->setPosition(Cursor::PosF());
