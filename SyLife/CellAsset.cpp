@@ -116,7 +116,7 @@ void CellAsset::updateProperties()
 	updateMaterial();
 
 	// maxStorage (生成の必要量の二倍)
-	m_maxStorage = m_material;
+	updateMaxStorage();
 
 	m_lifespanTime = 25.0;
 	m_yieldTime = 5.0;
