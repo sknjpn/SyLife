@@ -74,7 +74,7 @@ RectF Shape::getRect() const
 		if (v.x < result.x) result.x = v.x;
 		if (v.y < result.y) result.y = v.y;
 		if (result.br().x < v.x) result.w = v.x - result.x;
-		if (result.br().y < v.y) result.w = v.y - result.y;
+		if (result.br().y < v.y) result.h = v.y - result.y;
 	}
 
 	return result;
