@@ -1,11 +1,7 @@
 {
     "type": "ElementAsset",
     "mass": "12",
-    "color": {
-        "r": "128",
-        "g": "192",
-        "b": "255"
-    },
+    "color": "(128, 192, 255)",
     "material": {
         "nutrition": "1.0",
         "elements": []
