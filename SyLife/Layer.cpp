@@ -24,7 +24,7 @@ void Layer::load(const ptree& pt)
 	Model::load(pt);
 
 	// color
-	m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
+	m_color = Parse<Color>(Unicode::Widen(pt.get<string>("color")));
 
 	// polygon
 	{
@@ -42,15 +42,7 @@ void Layer::save(ptree& pt) const
 	Model::save(pt);
 
 	// color
-	{
-		ptree color;
-
-		color.put("r", m_color.r);
-		color.put("g", m_color.g);
-		color.put("b", m_color.b);
-
-		pt.add_child("color", color);
-	}
+	pt.put<string>("color", Unicode::Narrow(Format(m_color)));
 
 	// verticles
 	{

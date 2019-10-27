@@ -33,6 +33,7 @@ void ElementAsset::save(ptree& pt) const
 	// mass
 	pt.put<double>("mass", m_mass);
 
+	// color
 	pt.put<string>("color", Unicode::Narrow(Format(m_color)));
 
 	// material
