@@ -25,7 +25,7 @@ public:
 	Array<shared_ptr<PartState>>		m_partStates;
 
 public:
-	CellState(const shared_ptr<CellAsset>& asset);
+	CellState(const shared_ptr<CellAsset>& cellAsset);
 
 	const shared_ptr<CellAsset>&	getCellAsset() const { return m_cellAsset; }
 

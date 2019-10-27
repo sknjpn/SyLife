@@ -18,10 +18,10 @@
 
 #include <boost/math/constants/constants.hpp>
 
-CellState::CellState(const shared_ptr<CellAsset>& asset)
-	: m_cellAsset(asset)
+CellState::CellState(const shared_ptr<CellAsset>& cellAsset)
+	: m_cellAsset(cellAsset)
 	, m_startTimer(0.0)
-	, m_deathTimer(asset->getLifespanTime())
+	, m_deathTimer(cellAsset->getLifespanTime())
 	, m_yieldTimer(0.0)
 	, m_hitpoint(100.0)
 {
