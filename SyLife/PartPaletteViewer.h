@@ -20,7 +20,7 @@ public:
 
 	void	clearSelectedPart() { m_selectedPart = nullptr; }
 
-	void	drawModels();
+	void	drawAssets();
 
 	void	update() override;
 };

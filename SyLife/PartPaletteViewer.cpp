@@ -16,7 +16,7 @@ PartPaletteViewer::PartPaletteViewer()
 	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
 }
 
-void PartPaletteViewer::drawModels()
+void PartPaletteViewer::drawAssets()
 {
 	static Font font(13, Typeface::Bold);
 
@@ -59,6 +59,6 @@ void	PartPaletteViewer::update()
 
 		moveDrawPos(0, -h * m_slideBar.getValue());
 
-		drawModels();
+		drawAssets();
 	}
 }

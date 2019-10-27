@@ -19,7 +19,7 @@ public:
 	void	update() override;
 
 	template <typename T>
-	void	drawModels(const string& text)
+	void	drawAssets(const string& text)
 	{
 		static Font font13(13);
 		static Font font10(10, Typeface::Bold);

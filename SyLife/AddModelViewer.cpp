@@ -10,11 +10,11 @@
 
 void AddModelViewer::update()
 {
-	drawModels<ElementAsset>("ElementAsset");
-	drawModels<CellAsset>("CellAsset");
-	drawModels<PartAsset>("PartAsset");
-	drawModels<BodyAsset>("BodyAsset");
-	drawModels<EquipmentAsset>("EquipmentAsset");
-	drawModels<ModuleAsset>("ModuleAsset");
-	drawModels<WingAsset>("WingAsset");
+	drawAssets<ElementAsset>("ElementAsset");
+	drawAssets<CellAsset>("CellAsset");
+	drawAssets<PartAsset>("PartAsset");
+	drawAssets<BodyAsset>("BodyAsset");
+	drawAssets<EquipmentAsset>("EquipmentAsset");
+	drawAssets<ModuleAsset>("ModuleAsset");
+	drawAssets<WingAsset>("WingAsset");
 }

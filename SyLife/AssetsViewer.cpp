@@ -14,11 +14,11 @@
 
 void AssetsViewer::update()
 {
-	drawModels<CellAsset>("CellAsset");
-	drawModels<ElementAsset>("ElementAsset");
-	drawModels<BodyAsset>("BodyAsset");
-	drawModels<EquipmentAsset>("EquipmentAsset");
-	drawModels<ModuleAsset>("ModuleAsset");
+	drawAssets<CellAsset>("CellAsset");
+	drawAssets<ElementAsset>("ElementAsset");
+	drawAssets<BodyAsset>("BodyAsset");
+	drawAssets<EquipmentAsset>("EquipmentAsset");
+	drawAssets<ModuleAsset>("ModuleAsset");
 
 	// AddNewModel
 	{

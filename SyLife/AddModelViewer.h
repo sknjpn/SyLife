@@ -32,7 +32,7 @@ public:
 	}
 
 	template <typename T>
-	void	drawModels(const string& name)
+	void	drawAssets(const string& name)
 	{
 		static Font font10(10, Typeface::Bold);
 		auto f = font10(Unicode::Widen(name));
