@@ -8,7 +8,7 @@ void ScalingViewer::init()
 
 void ScalingViewer::update()
 {
-	Rect(80, 320).rounded(4)
+	Rect(80, 320).rounded(10)
 		.draw(Palette::White)
 		.drawFrame(2.0, 0.0, Palette::Black);
 }
