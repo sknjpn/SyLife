@@ -23,6 +23,8 @@ public:
 	void	setDrawPos(double x, double y) { setDrawPos(Vec2(x, y)); }
 	void	setViewerSize(const Vec2& size) { m_viewerRect.size = size; }
 	void	setViewerSize(double x, double y) { setViewerSize(Vec2(x, y)); }
+	void	setViewerPos(const Vec2& pos) { m_viewerRect.pos = pos; }
+	void	setViewerPos(double x, double y) { setViewerPos(Vec2(x, y)); }
 	void	setViewerRect(const Vec2& pos, const Vec2& size) { m_viewerRect = RectF(pos, size); }
 	void	setViewerRect(const Rect& rect) { m_viewerRect = rect; }
 	void	setViewerRect(const RectF& rect) { m_viewerRect = rect; }
