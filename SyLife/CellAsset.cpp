@@ -46,7 +46,7 @@ void CellAsset::save_this(ptree& pt) const
 	pt.put("type", "CellAsset");
 }
 
-Vec2 CellAsset::getCenter()
+Vec2 CellAsset::getCentroid()
 {
 	return accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getPartAsset()->getMass() * (p->getPosition() + p->getPartAsset()->getShape().getCentroid().rotated(p->getRotation())); }) / m_mass;
 }
@@ -58,7 +58,7 @@ void CellAsset::updateMass()
 
 void CellAsset::updateInertia()
 {
-	auto centroid = getCenter();
+	auto centroid = getCentroid();
 
 	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [&centroid](double acc, const auto& pc) {
 		auto id = (pc->getCentroid() - centroid).lengthSq() * pc->getPartAsset()->getMass();
@@ -81,7 +81,7 @@ void CellAsset::updateMaterial()
 
 void CellAsset::setCentroidAsOrigin()
 {
-	auto centroid = getCenter();
+	auto centroid = getCentroid();
 
 	for (const auto& p : m_partConfigs)
 		p->setPosition(p->getPosition() - centroid);

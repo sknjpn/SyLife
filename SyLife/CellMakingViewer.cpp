@@ -93,7 +93,7 @@ void CellMakingViewer::update()
 
 			// part
 			{
-				auto t1 = Transformer2D(Mat3x2::Translate(-m_cellAsset->getCenter()).scaled(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
+				auto t1 = Transformer2D(Mat3x2::Translate(-m_cellAsset->getCentroid()).scaled(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
 
 				for (const auto& p : m_cellAsset->getPartConfigs())
 				{
@@ -184,7 +184,7 @@ void CellMakingViewer::update()
 
 			// part
 			{
-				auto t1 = Transformer2D(Mat3x2::Translate(-m_cellAsset->getCenter()).scaled(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
+				auto t1 = Transformer2D(Mat3x2::Translate(-m_cellAsset->getCentroid()).scaled(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
 
 				for (const auto& p : m_cellAsset->getPartConfigs())
 				{

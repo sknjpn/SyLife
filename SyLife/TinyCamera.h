@@ -44,7 +44,7 @@ public:
 	void		setScale(double scale) { m_scale = scale; }
 
 	// 描画対象の切り取り領域の中心を返す
-	const Vec2& getCenter() const noexcept { return m_center; }
+	const Vec2& getCentroid() const noexcept { return m_center; }
 	const RectF& getScreen() const noexcept { return m_screen; }
 
 	double		getScale() const noexcept { return m_scale; }

@@ -22,7 +22,7 @@ public:
 		, m_nutrition(0.0)
 	{}
 
-	Vec2	getCenter() const { return m_center; }
+	Vec2	getCentroid() const { return m_center; }
 	double	getNutrition() const { return m_nutrition; }
 
 	void	setNutrition(double nutrition) { m_nutrition = nutrition; }

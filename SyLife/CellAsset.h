@@ -32,7 +32,7 @@ class CellAsset
 public:
 	void	makeViewer() override;
 
-	Vec2	getCenter();
+	Vec2	getCentroid();
 
 	void	setCentroidAsOrigin();
 
