@@ -5,13 +5,13 @@
 
 Vec2 PartConfig::getCentroid() const
 {
-	return  m_position + m_partModel->getShape().getCentroid().rotated(m_rotation);
+	return  m_position + m_partAsset->getShape().getCentroid().rotated(m_rotation);
 }
 
 void PartConfig::load_this(const ptree& pt)
 {
 	// asset
-	m_partModel = g_assetManagerPtr->getAsset<PartAsset>(pt.get<string>("asset"));
+	m_partAsset = g_assetManagerPtr->getAsset<PartAsset>(pt.get<string>("asset"));
 
 	// position
 	m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
@@ -25,7 +25,7 @@ void PartConfig::load_this(const ptree& pt)
 void PartConfig::save_this(ptree& pt) const
 {
 	// asset
-	pt.put("asset", m_partModel->getName());
+	pt.put("asset", m_partAsset->getName());
 
 	// position
 	{

@@ -7,18 +7,18 @@ class PartAsset;
 class PartConfig
 	: public Model
 {
-	shared_ptr<PartAsset>	m_partModel;
+	shared_ptr<PartAsset>	m_partAsset;
 	Vec2	m_position;
 	double	m_rotation;
 
 public:
 	// Get
-	const shared_ptr<PartAsset>& getModel() const { return m_partModel; }
+	const shared_ptr<PartAsset>& getModel() const { return m_partAsset; }
 	const Vec2& getPosition() const { return m_position; }
 	double	getRotation() const { return m_rotation; }
 
 	// Set
-	void	setModel(const shared_ptr<PartAsset>& partModel) { m_partModel = partModel; }
+	void	setModel(const shared_ptr<PartAsset>& partModel) { m_partAsset = partModel; }
 	void	setPosition(const Vec2& position) { m_position = position; }
 	void	setRotation(double rotation) { m_rotation = rotation; }
 
