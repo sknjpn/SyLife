@@ -33,7 +33,7 @@ public:
 	void	draw();
 
 	void	takeNutrition();
-	void	takeElement(const shared_ptr<ElementState>& element);
+	void	takeElement(const shared_ptr<ElementState>& elementState);
 
 	bool	isPregnant();
 };

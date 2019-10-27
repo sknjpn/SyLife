@@ -176,9 +176,9 @@ void CellState::takeNutrition()
 	m_storage.addNutrition(value);
 }
 
-void CellState::takeElement(const shared_ptr<ElementState>& element)
+void CellState::takeElement(const shared_ptr<ElementState>& elementState)
 {
-	m_storage.addElement(element->getPartAsset());
+	m_storage.addElement(elementState->getPartAsset());
 
-	element->destroy();
+	elementState->destroy();
 }
