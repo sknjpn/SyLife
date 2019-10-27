@@ -39,6 +39,7 @@ void AssemblyViewer::update()
 
 	drawParts();
 
+
 	if (m_selectedPartConfig)
 	{
 		auto t = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
@@ -46,6 +47,8 @@ void AssemblyViewer::update()
 		if (m_state == State::MoveMode)
 		{
 			m_selectedPartConfig->setPosition(m_selectedPartConfig->getPosition() + Cursor::DeltaF());
+
+			if (MouseL.down()) m_state = State::RotateMode;
 		}
 
 		if (m_state == State::RotateMode)
@@ -53,24 +56,20 @@ void AssemblyViewer::update()
 			auto delta = Cursor::PreviousPosF().getAngle(Cursor::PosF());
 			m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
 
-			if (MouseL.up()) m_selectedPartConfig = nullptr;
+			if (MouseL.up()) 
+			{
+				m_selectedPartConfig = nullptr;
+				m_state = State::MoveMode;
+			}
 		}
 	}
-	
-	if (MouseL.down() && isMouseOver())
+	else if (MouseL.down() && isMouseOver())
 	{
 		for (const auto& pc : getCellAsset()->getPartConfigs())
 		{
-			auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation())
-				.translated(pc->getPosition()), true);
+			auto t = Transformer2D(Mat3x2::Rotate(pc->getRotation()).translated(pc->getPosition()), true);
 
-			if (pc->getPartAsset()->getShape().getPolygon().mouseOver())
-			{
-				if(m_selectedPartConfig == pc) m_state = State::RotateMode;
-				else m_state = State::MoveMode;
-
-				m_selectedPartConfig = pc;
-			}
+			if (pc->getPartAsset()->getShape().getPolygon().mouseOver()) m_selectedPartConfig = pc;
 		}
 	}
 
