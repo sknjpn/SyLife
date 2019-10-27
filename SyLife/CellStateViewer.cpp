@@ -14,7 +14,7 @@ CellStateViewer::CellStateViewer()
 
 void CellStateViewer::update()
 {
-	Rect(getDrawRect().size.asPoint()).draw(Color(11, 22, 33, 192));
+	Rect(getViewerRect().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 	if (!m_cellState) return;
 	if (m_cellState->isDestroyed())

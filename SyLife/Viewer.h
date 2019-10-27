@@ -37,8 +37,8 @@ public:
 	int		getPriority() const { return m_priority; }
 	bool	isInvisible() const { return m_isInvisible; }
 	bool	isMouseOver() const { return m_isMouseOver; }
-	const RectF&	getDrawRect() const { return m_viewerRect; }
-	const Vec2&		getDrawSize() const { return m_viewerRect.size; }
+	const RectF&	getViewerRect() const { return m_viewerRect; }
+	const Vec2&		getViewerSize() const { return m_viewerRect.size; }
 	const Vec2		getDrawCenter() const { return m_viewerRect.center(); }
 	const Vec2&		getDrawPos() const { return m_drawPos; }
 
