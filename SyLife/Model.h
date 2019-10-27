@@ -17,8 +17,6 @@ public:
 	virtual void	makeViewer() {}
 
 	// JSON
-	void	load_this(const ptree& pt);
-	virtual void	load(const ptree& pt) { load_this(pt); }
-	void	save_this(ptree& pt) const;
-	virtual void	save(ptree& pt) const { save_this(pt); }
+	virtual void	load(const ptree& pt) {}
+	virtual void	save(ptree& pt) const {}
 };

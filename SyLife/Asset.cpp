@@ -29,13 +29,17 @@ void Asset::setFilepath(const string& filepath)
 	}
 }
 
-void Asset::load_this(const ptree& pt)
+void Asset::load(const ptree& pt)
 {
+	Model::load(pt);
+
 	m_name = pt.get<string>("name");
 }
 
-void Asset::save_this(ptree& pt) const
+void Asset::save(ptree& pt) const
 {
+	Model::save(pt);
+
 	// name
 	pt.put("name", m_name);
 

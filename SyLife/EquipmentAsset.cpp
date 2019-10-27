@@ -17,14 +17,14 @@ shared_ptr<PartState> EquipmentAsset::makeState()
 	return make_shared<EquipmentState>();
 }
 
-void EquipmentAsset::load_this(const ptree& pt)
+void EquipmentAsset::load(const ptree& pt)
 {
-	PartAsset::load_this(pt);
+	PartAsset::load(pt);
 }
 
-void EquipmentAsset::save_this(ptree& pt) const
+void EquipmentAsset::save(ptree& pt) const
 {
-	PartAsset::save_this(pt);
+	PartAsset::save(pt);
 
 	// type
 	pt.put("type", "EquipmentAsset");

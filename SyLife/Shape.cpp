@@ -83,8 +83,10 @@ RectF Shape::getRect() const
 	return result;
 }
 
-void Shape::load_this(const ptree& pt)
+void Shape::load(const ptree& pt)
 {
+	Model::load(pt);
+
 	// layers
 	for (auto m : pt.get_child("layers"))
 	{
@@ -94,8 +96,10 @@ void Shape::load_this(const ptree& pt)
 	updateProperties();
 }
 
-void Shape::save_this(ptree& pt) const
+void Shape::save(ptree& pt) const
 {
+	Model::save(pt);
+
 	// layers
 	{
 		ptree layers;

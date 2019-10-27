@@ -18,8 +18,10 @@ shared_ptr<PartState> PartAsset::makeState()
 	return make_shared<PartState>();
 }
 
-void PartAsset::load_this(const ptree& pt)
+void PartAsset::load(const ptree& pt)
 {
+	Asset::load(pt);
+
 	// mass
 	m_mass = pt.get<double>("mass");
 
@@ -28,12 +30,12 @@ void PartAsset::load_this(const ptree& pt)
 
 	// material
 	m_material.load(pt.get_child("material"));
-
-	Model::load_this(pt);
 }
 
-void PartAsset::save_this(ptree& pt) const
+void PartAsset::save(ptree& pt) const
 {
+	Asset::save(pt);
+
 	// mass
 	pt.put<double>("mass", m_mass);
 
@@ -48,8 +50,6 @@ void PartAsset::save_this(ptree& pt) const
 
 		pt.add_child("material", material);
 	}
-
-	Model::save_this(pt);
 
 	pt.put("type", "PartAsset");
 }

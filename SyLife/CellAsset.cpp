@@ -17,17 +17,19 @@ void CellAsset::draw(double a)
 	}
 }
 
-void CellAsset::load_this(const ptree& pt)
+void CellAsset::load(const ptree& pt)
 {
+	Asset::load(pt);
+
 	// parts
 	for (auto part : pt.get_child("parts"))
 		m_partConfigs.emplace_back(make_shared<PartConfig>())->load(part.second);
-
-	Model::load_this(pt);
 }
 
-void CellAsset::save_this(ptree& pt) const
+void CellAsset::save(ptree& pt) const
 {
+	Asset::save(pt);
+
 	// parts
 	{
 		ptree parts;
@@ -40,8 +42,6 @@ void CellAsset::save_this(ptree& pt) const
 
 		pt.add_child("parts", parts);
 	}
-
-	Model::save_this(pt);
 
 	pt.put("type", "CellAsset");
 }

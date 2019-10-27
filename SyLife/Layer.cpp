@@ -19,8 +19,10 @@ RectF Layer::getRect() const
 	return result;
 }
 
-void Layer::load_this(const ptree& pt)
+void Layer::load(const ptree& pt)
 {
+	Model::load(pt);
+
 	// color
 	m_color = Color(pt.get<int>("color.r"), pt.get<int>("color.g"), pt.get<int>("color.b"));
 
@@ -33,12 +35,12 @@ void Layer::load_this(const ptree& pt)
 
 		m_polygon = Polygon(verticles);
 	}
-
-	Model::load_this(pt);
 }
 
-void Layer::save_this(ptree& pt) const
+void Layer::save(ptree& pt) const
 {
+	Model::save(pt);
+
 	// color
 	{
 		ptree color;
@@ -68,9 +70,4 @@ void Layer::save_this(ptree& pt) const
 
 		pt.add_child("verticles", verticles);
 	}
-
-	Model::save_this(pt);
-
-	// type
-	pt.put("type", "ShapeModel");
 }

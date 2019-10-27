@@ -17,14 +17,14 @@ shared_ptr<PartState> ModuleAsset::makeState()
 	return make_shared<ModuleState>();
 }
 
-void ModuleAsset::load_this(const ptree& pt)
+void ModuleAsset::load(const ptree& pt)
 {
-	PartAsset::load_this(pt);
+	PartAsset::load(pt);
 }
 
-void ModuleAsset::save_this(ptree& pt) const
+void ModuleAsset::save(ptree& pt) const
 {
-	PartAsset::save_this(pt);
+	PartAsset::save(pt);
 
 	// type
 	pt.put("type", "ModuleAsset");

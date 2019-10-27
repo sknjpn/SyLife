@@ -9,8 +9,10 @@ void ElementAsset::makeViewer()
 	g_viewerManagerPtr->makeViewer<ElementEditor>()->setPartAsset(shared_from_this());
 }
 
-void ElementAsset::load_this(const ptree& pt)
+void ElementAsset::load(const ptree& pt)
 {
+	Asset::load(pt);
+
 	// mass
 	m_mass = pt.get<double>("mass");
 
@@ -22,12 +24,12 @@ void ElementAsset::load_this(const ptree& pt)
 
 	// material
 	m_material.load(pt.get_child("material"));
-
-	Model::load_this(pt);
 }
 
-void ElementAsset::save_this(ptree& pt) const
+void ElementAsset::save(ptree& pt) const
 {
+	Asset::save(pt);
+
 	// mass
 	pt.put<double>("mass", m_mass);
 
@@ -50,8 +52,6 @@ void ElementAsset::save_this(ptree& pt) const
 
 		pt.add_child("material", material);
 	}
-
-	Model::save_this(pt);
 
 	pt.put("type", "ElementAsset");
 }

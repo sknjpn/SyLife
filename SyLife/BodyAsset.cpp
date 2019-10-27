@@ -17,14 +17,14 @@ shared_ptr<PartState> BodyAsset::makeState()
 	return make_shared<BodyState>();
 }
 
-void BodyAsset::load_this(const ptree& pt)
+void BodyAsset::load(const ptree& pt)
 {
-	PartAsset::load_this(pt);
+	PartAsset::load(pt);
 }
 
-void BodyAsset::save_this(ptree& pt) const
+void BodyAsset::save(ptree& pt) const
 {
-	PartAsset::save_this(pt);
+	PartAsset::save(pt);
 
 	// type
 	pt.put("type", "BodyAsset");

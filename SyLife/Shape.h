@@ -24,9 +24,7 @@ public:
 
 	void	draw(double a) const { for (const auto& l : *this) l.m_polygon.draw(ColorF(l.m_color, a)); }
 
-	void	load_this(const ptree& pt);
-	void	load(const ptree& pt) override { load_this(pt); }
-	void	save_this(ptree& pt) const;
-	void	save(ptree& pt) const override { save_this(pt); }
+	void	load(const ptree& pt) override;
+	void	save(ptree& pt) const override;
 };
 

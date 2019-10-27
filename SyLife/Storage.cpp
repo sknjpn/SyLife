@@ -72,8 +72,10 @@ int Storage::numElement(const shared_ptr<ElementAsset>& asset) const
 	else return (*it).second;
 }
 
-void Storage::load_this(const ptree& pt)
+void Storage::load(const ptree& pt)
 {
+	Model::load(pt);
+
 	// nutrition
 	m_nutrition = pt.get<double>("nutrition");
 
@@ -88,8 +90,10 @@ void Storage::load_this(const ptree& pt)
 	}
 }
 
-void Storage::save_this(ptree& pt) const
+void Storage::save(ptree& pt) const
 {
+	Model::save(pt);
+
 	// nutrition
 	pt.put<double>("nutrition", m_nutrition);
 

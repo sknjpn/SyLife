@@ -28,8 +28,6 @@ public:
 	void	draw(double a = 0.5) { m_shape.draw(a); }
 
 	// JSON
-	void	load_this(const ptree& pt);
-	void	load(const ptree& pt) override { load_this(pt); }
-	void	save_this(ptree& pt) const;
-	void	save(ptree& pt) const override { save_this(pt); }
+	void	load(const ptree& pt) override;
+	void	save(ptree& pt) const override;
 };

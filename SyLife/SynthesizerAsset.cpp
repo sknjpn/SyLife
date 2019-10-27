@@ -19,20 +19,20 @@ shared_ptr<PartState> SynthesizerAsset::makeState()
 	return make_shared<SynthesizerState>();
 }
 
-void SynthesizerAsset::load_this(const ptree& pt)
+void SynthesizerAsset::load(const ptree& pt)
 {
+	ModuleAsset::load(pt);
+
 	// export
 	m_export = g_assetManagerPtr->getAsset<ElementAsset>(pt.get<string>("export"));
-
-	ModuleAsset::load_this(pt);
 }
 
-void SynthesizerAsset::save_this(ptree& pt) const
+void SynthesizerAsset::save(ptree& pt) const
 {
+	ModuleAsset::save(pt);
+
 	// export
 	pt.put("export", m_export->getName());
-	
-	ModuleAsset::save_this(pt);
 
 	pt.put("type", "SynthesizerAsset");
 }

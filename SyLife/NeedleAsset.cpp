@@ -17,14 +17,14 @@ shared_ptr<PartState> NeedleAsset::makeState()
 	return make_shared<NeedleState>();
 }
 
-void NeedleAsset::load_this(const ptree& pt)
+void NeedleAsset::load(const ptree& pt)
 {
-	EquipmentAsset::load_this(pt);
+	EquipmentAsset::load(pt);
 }
 
-void NeedleAsset::save_this(ptree& pt) const
+void NeedleAsset::save(ptree& pt) const
 {
-	EquipmentAsset::save_this(pt);
+	EquipmentAsset::save(pt);
 
 	// type
 	pt.put("type", "NeedleAsset");
