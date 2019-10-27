@@ -24,13 +24,13 @@ void CellStateViewer::update()
 		return;
 	}
 
-	const auto& asset = m_cellState->m_asset;
+	const auto& asset = m_cellState->m_cellAsset;
 
 	{
 		auto t1 = Transformer2D(Mat3x2::Translate(100, 50));
-		auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_asset->getRadius()));
+		auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_cellAsset->getRadius()));
 
-		m_cellState->m_asset->draw(1.0);
+		m_cellState->m_cellAsset->draw(1.0);
 	}
 
 	Vec2 pos(0, 100);

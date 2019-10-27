@@ -21,7 +21,7 @@ void SynthesizerState::update(CellState& cellState)
 	auto asset = dynamic_pointer_cast<SynthesizerAsset>(getPartConfig()->getPartAsset());
 	if (m_timer > 2.0 &&
 		cellState.m_storage >= asset->getExport()->getMaterial() &&
-		cellState.m_asset->getMaxStorage().numElement(asset->getExport()) > cellState.m_storage.numElement(asset->getExport()))
+		cellState.m_cellAsset->getMaxStorage().numElement(asset->getExport()) > cellState.m_storage.numElement(asset->getExport()))
 	{
 		m_timer = 0.0;
 

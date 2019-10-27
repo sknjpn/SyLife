@@ -20,14 +20,14 @@ public:
 
 	Storage	m_storage;
 
-	shared_ptr<CellAsset>	m_asset;
+	shared_ptr<CellAsset>	m_cellAsset;
 
 	Array<shared_ptr<PartState>>		m_partStates;
 
 public:
 	CellState(const shared_ptr<CellAsset>& asset);
 
-	const shared_ptr<CellAsset>&	getCellAsset() const { return m_asset; }
+	const shared_ptr<CellAsset>&	getCellAsset() const { return m_cellAsset; }
 
 	void	updateCell();
 	void	draw();
