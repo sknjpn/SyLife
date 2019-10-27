@@ -274,7 +274,7 @@ void CellMakingViewer::setMode(Mode mode)
 		m_shapeLayerViewer->setInvisible(true);
 
 		// DrawRectの設定
-		setDrawRect(RectF(200, 50).setCenter(Scene::CenterF().x, 50));
+		setViewerRect(RectF(200, 50).setCenter(Scene::CenterF().x, 50));
 		break;
 
 	case CellMakingViewer::Mode::EditParts:
@@ -289,7 +289,7 @@ void CellMakingViewer::setMode(Mode mode)
 		setBackgroundColor(Color(11, 22, 33));
 
 		// DrawRectの設定
-		setDrawRect(RectF(1200, 900).setCenter(Scene::CenterF()));
+		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
 		break;
 
@@ -305,7 +305,7 @@ void CellMakingViewer::setMode(Mode mode)
 		setBackgroundColor(Color(11, 22, 33));
 
 		// DrawRectの設定
-		setDrawRect(RectF(1200, 900).setCenter(Scene::CenterF()));
+		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 		break;
 
 	case CellMakingViewer::Mode::Release:

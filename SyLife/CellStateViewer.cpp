@@ -9,7 +9,7 @@ CellStateViewer::CellStateViewer()
 {
 	setPriority(1);
 
-	setDrawRect(Scene::Width() - 300, 450, 200, 400);
+	setViewerRect(Scene::Width() - 300, 450, 200, 400);
 }
 
 void CellStateViewer::update()

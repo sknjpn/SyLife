@@ -13,7 +13,7 @@ class AssetsViewer
 public:
 	AssetsViewer()
 	{
-		setDrawRect(0, 0, 400, 1080);
+		setViewerRect(0, 0, 400, 1080);
 	}
 
 	void	update() override;

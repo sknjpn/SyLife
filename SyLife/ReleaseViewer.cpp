@@ -19,7 +19,7 @@ const shared_ptr<CellAsset>& ReleaseViewer::getCellAsset() const
 ReleaseViewer::ReleaseViewer()
 {
 	setPriority(3);
-	setDrawRect(Scene::Rect());
+	setViewerRect(Scene::Rect());
 	setBackgroundColor(Color(0, 0));
 }
 

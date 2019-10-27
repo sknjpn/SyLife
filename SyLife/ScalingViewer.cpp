@@ -3,7 +3,7 @@
 void ScalingViewer::init()
 {
 	setBackgroundColor(Color(0, 0));
-	setDrawSize(80, 320);
+	setViewerSize(80, 320);
 }
 
 void ScalingViewer::update()

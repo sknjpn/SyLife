@@ -16,7 +16,7 @@ public:
 public:
 	PartShapeViewer()
 	{
-		setDrawRect(0, 0, 600, 600);
+		setViewerRect(0, 0, 600, 600);
 
 		m_camera.setControlOutOfScreenEnabled(false);
 		m_camera.setRestrictedRect(RectF(-150, -150, 300, 300));

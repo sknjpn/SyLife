@@ -10,7 +10,7 @@
 
 void StatisticsViewer::init()
 {
-	setDrawSize(m_statusesSizeMax, 100);
+	setViewerSize(m_statusesSizeMax, 100);
 }
 
 void StatisticsViewer::update()

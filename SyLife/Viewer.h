@@ -21,14 +21,14 @@ public:
 	void	setBackgroundColor(const Color& color) { m_backgroundColor = color; }
 	void	setDrawPos(const Vec2& pos) { m_drawPos = pos; m_transformer.reset(); m_transformer = make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), true); }
 	void	setDrawPos(double x, double y) { setDrawPos(Vec2(x, y)); }
-	void	setDrawSize(const Vec2& size) { m_viewerRect.size = size; }
-	void	setDrawSize(double x, double y) { setDrawSize(Vec2(x, y)); }
-	void	setDrawRect(const Vec2& pos, const Vec2& size) { m_viewerRect = RectF(pos, size); }
-	void	setDrawRect(const Rect& rect) { m_viewerRect = rect; }
-	void	setDrawRect(const RectF& rect) { m_viewerRect = rect; }
-	void	setDrawRect(const Vec2& size) { m_viewerRect = RectF(size); }
-	void	setDrawRect(double x, double y, double w, double h) { m_viewerRect = RectF(x, y, w, h); }
-	void	setDrawRect(double w, double h) { m_viewerRect = RectF(w, h); }
+	void	setViewerSize(const Vec2& size) { m_viewerRect.size = size; }
+	void	setViewerSize(double x, double y) { setViewerSize(Vec2(x, y)); }
+	void	setViewerRect(const Vec2& pos, const Vec2& size) { m_viewerRect = RectF(pos, size); }
+	void	setViewerRect(const Rect& rect) { m_viewerRect = rect; }
+	void	setViewerRect(const RectF& rect) { m_viewerRect = rect; }
+	void	setViewerRect(const Vec2& size) { m_viewerRect = RectF(size); }
+	void	setViewerRect(double x, double y, double w, double h) { m_viewerRect = RectF(x, y, w, h); }
+	void	setViewerRect(double w, double h) { m_viewerRect = RectF(w, h); }
 	void	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); }
 
 	// Get

@@ -33,7 +33,7 @@ FieldViewer::FieldViewer()
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
 
-	setDrawRect(Scene::Size());
+	setViewerRect(Scene::Size());
 	m_audio.setLoop(true);
 	//m_audio.play();
 }

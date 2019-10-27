@@ -10,7 +10,7 @@ class AddModelViewer
 public:
 	AddModelViewer()
 	{
-		setDrawRect(100, 150, 400, 300);
+		setViewerRect(100, 150, 400, 300);
 	}
 
 	template <typename T>

@@ -11,7 +11,7 @@ void ShapeAssemblyViewer::init()
 
 	setPriority(2);
 
-	setDrawRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
+	setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
 	setSize(Vec2(800, 800));
 }
 
@@ -72,7 +72,7 @@ void ShapeAssemblyViewer::setSize(const Vec2& size)
 {
 	m_size = size;
 
-	setDrawSize(size);
+	setViewerSize(size);
 
 	m_camera.setScreen(RectF(m_size.x, m_size.y));
 	m_camera.setRestrictedRect(RectF(m_size.x, m_size.y).setCenter(Vec2::Zero()));
