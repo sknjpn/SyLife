@@ -104,7 +104,7 @@ void FieldViewer::update()
 		// delete
 		if (MouseR.pressed())
 		{
-			Circle circle(Cursor::PosF(), 128.0);
+			Circle circle(Cursor::PosF(), 256.0);
 			circle.draw(ColorF(Palette::Red, 0.5));
 
 			for (const auto& c : g_cellManagerPtr->getCellStates())
