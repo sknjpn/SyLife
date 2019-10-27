@@ -31,7 +31,7 @@ CellState::CellState(const shared_ptr<CellAsset>& asset)
 
 	// parts
 	for (const auto& pc : m_asset->getPartConfigs())
-		m_partStates.emplace_back(pc->getModel()->makeState())->setPartConfig(pc);
+		m_partStates.emplace_back(pc->getPartAsset()->makeState())->setPartConfig(pc);
 }
 
 void CellState::updateCell()
@@ -68,7 +68,7 @@ void CellState::updateCell()
 
 		if (!m->isDestroyed() &&
 			(m->getPosition() - getPosition()).length() - getRadius() < 0.0 &&
-			m_asset->getMaxStorage().numElement(m->getModel()) > m_storage.numElement(m->getModel()))
+			m_asset->getMaxStorage().numElement(m->getPartAsset()) > m_storage.numElement(m->getPartAsset()))
 		{
 			takeElement(m);
 		}
@@ -178,7 +178,7 @@ void CellState::takeNutrition()
 
 void CellState::takeElement(const shared_ptr<ElementState>& element)
 {
-	m_storage.addElement(element->getModel());
+	m_storage.addElement(element->getPartAsset());
 
 	element->destroy();
 }

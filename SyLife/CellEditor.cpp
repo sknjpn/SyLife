@@ -8,7 +8,7 @@ void CellEditor::reloadProperties_this()
 
 void CellEditor::update_this()
 {
-	auto asset = getModel<CellAsset>();
+	auto asset = getPartAsset<CellAsset>();
 	static Font font(24, Typeface::Bold);
 
 	ModelEditor::update_this();

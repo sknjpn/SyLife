@@ -5,7 +5,7 @@
 
 void ModuleState::draw(const CellState& cellState) const
 {
-	getPartConfig()->getModel()->draw();
+	getPartConfig()->getPartAsset()->draw();
 }
 
 void ModuleState::update(CellState& cellState)

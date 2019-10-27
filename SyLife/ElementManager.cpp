@@ -51,7 +51,7 @@ void ElementManager::drawElementStates()
 
 int ElementManager::NumElement(const shared_ptr<ElementAsset>& asset)
 {
-	return static_cast<int>(count_if(getElementStates().begin(), getElementStates().end(), [&asset](const auto& m) { return m->getModel() == asset; }));
+	return static_cast<int>(count_if(getElementStates().begin(), getElementStates().end(), [&asset](const auto& m) { return m->getPartAsset() == asset; }));
 }
 
 void ElementManager::addElementsRandom(const shared_ptr<ElementAsset>& asset, size_t size)

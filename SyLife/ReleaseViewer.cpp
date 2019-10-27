@@ -46,7 +46,7 @@ void ReleaseViewer::update()
 			auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 				.translated(p->getPosition().x, p->getPosition().y));
 
-			p->getModel()->getShape().draw(0.5);
+			p->getPartAsset()->getShape().draw(0.5);
 		}
 	}
 

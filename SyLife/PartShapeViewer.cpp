@@ -41,7 +41,7 @@ void PartShapeViewer::update()
 	}
 
 	// ShapeModels
-	for (const auto& l : getModel<PartAsset>()->getShape())
+	for (const auto& l : getPartAsset<PartAsset>()->getShape())
 	{
 		// Face
 		l.m_polygon.draw(ColorF(l.m_color, 0.5));

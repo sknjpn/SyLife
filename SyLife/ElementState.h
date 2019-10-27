@@ -11,7 +11,7 @@ class ElementState
 
 public:
 	// Get
-	const shared_ptr<ElementAsset>& getModel() const { return m_elementAsset; }
+	const shared_ptr<ElementAsset>& getPartAsset() const { return m_elementAsset; }
 
 	// Set
 	void	setElementAsset(const shared_ptr<ElementAsset>& elementAsset);

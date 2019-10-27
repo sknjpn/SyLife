@@ -13,7 +13,7 @@ class PartConfig
 
 public:
 	// Get
-	const shared_ptr<PartAsset>& getModel() const { return m_partAsset; }
+	const shared_ptr<PartAsset>& getPartAsset() const { return m_partAsset; }
 	const Vec2& getPosition() const { return m_position; }
 	double	getRotation() const { return m_rotation; }
 

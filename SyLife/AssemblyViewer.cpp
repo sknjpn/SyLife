@@ -64,7 +64,7 @@ void AssemblyViewer::update()
 			auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation())
 				.translated(pc->getPosition()), true);
 
-			if (pc->getModel()->getShape().getPolygon().mouseOver())
+			if (pc->getPartAsset()->getShape().getPolygon().mouseOver())
 			{
 				if(m_selectedPartConfig == pc) m_state = State::RotateMode;
 				else m_state = State::MoveMode;
@@ -127,8 +127,8 @@ void AssemblyViewer::drawParts() const
 		auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 			.translated(p->getPosition().x, p->getPosition().y));
 
-		p->getModel()->getShape().draw(0.5);
-		p->getModel()->getShape().getPolygon().drawFrame(1.0, Palette::Black);
+		p->getPartAsset()->getShape().draw(0.5);
+		p->getPartAsset()->getShape().getPolygon().drawFrame(1.0, Palette::Black);
 	}
 
 	if (m_selectedPartConfig)
@@ -136,7 +136,7 @@ void AssemblyViewer::drawParts() const
 		auto t2 = Transformer2D(Mat3x2::Rotate(m_selectedPartConfig->getRotation())
 			.translated(m_selectedPartConfig->getPosition()));
 
-		m_selectedPartConfig->getModel()->getShape().getPolygon().draw(ColorF(1.0, 0.5));
+		m_selectedPartConfig->getPartAsset()->getShape().getPolygon().draw(ColorF(1.0, 0.5));
 	}
 }
 

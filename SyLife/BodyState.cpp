@@ -5,7 +5,7 @@
 
 void BodyState::draw(const CellState& cellState) const
 {
-	getPartConfig()->getModel()->draw();
+	getPartConfig()->getPartAsset()->draw();
 }
 
 void BodyState::update(CellState& cellState)

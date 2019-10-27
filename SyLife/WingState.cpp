@@ -7,9 +7,9 @@
 
 void WingState::draw(const CellState& cellState) const
 {
-	auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingAsset>(getPartConfig()->getModel())->m_isRight ? m_p : -m_p));
+	auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<WingAsset>(getPartConfig()->getPartAsset())->m_isRight ? m_p : -m_p));
 
-	getPartConfig()->getModel()->draw();
+	getPartConfig()->getPartAsset()->draw();
 }
 
 void WingState::update(CellState& cellState)
@@ -35,6 +35,6 @@ void WingState::update(CellState& cellState)
 
 void WingState::flap(CellState& cellState)
 {
-	auto center = getPartConfig()->getModel()->getShape().getCentroid().rotated(getPartConfig()->getRotation());
+	auto center = getPartConfig()->getPartAsset()->getShape().getCentroid().rotated(getPartConfig()->getRotation());
 	cellState.addImpulseInLocal(Vec2::Up().rotated(getPartConfig()->getRotation()) * 10000.0, getPartConfig()->getPosition() + center);
 }

@@ -13,7 +13,7 @@ class ModelEditor
 public:
 	// Get
 	template <typename T>
-	shared_ptr<T>	getModel() const { return dynamic_pointer_cast<T>(m_model); }
+	shared_ptr<T>	getPartAsset() const { return dynamic_pointer_cast<T>(m_model); }
 
 	// Set
 	void	setPartAsset(const shared_ptr<Model> model) { m_model = model; reloadProperties(); }

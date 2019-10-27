@@ -11,14 +11,14 @@
 
 void SynthesizerState::draw(const CellState& cellState) const
 {
-	getPartConfig()->getModel()->draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
+	getPartConfig()->getPartAsset()->draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
 }
 
 void SynthesizerState::update(CellState& cellState)
 {
 	m_timer += g_systemManagerPtr->GetDeltaTime();
 
-	auto asset = dynamic_pointer_cast<SynthesizerAsset>(getPartConfig()->getModel());
+	auto asset = dynamic_pointer_cast<SynthesizerAsset>(getPartConfig()->getPartAsset());
 	if (m_timer > 2.0 &&
 		cellState.m_storage >= asset->getExport()->getMaterial() &&
 		cellState.m_asset->getMaxStorage().numElement(asset->getExport()) > cellState.m_storage.numElement(asset->getExport()))

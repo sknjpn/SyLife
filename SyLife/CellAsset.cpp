@@ -13,7 +13,7 @@ void CellAsset::draw(double a)
 	{
 		auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation()).translated(pc->getPosition()));
 
-		pc->getModel()->draw(a);
+		pc->getPartAsset()->draw(a);
 	}
 }
 
@@ -48,12 +48,12 @@ void CellAsset::save_this(ptree& pt) const
 
 Vec2 CellAsset::getCenter()
 {
-	return accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getModel()->getMass() * (p->getPosition() + p->getModel()->getShape().getCentroid().rotated(p->getRotation())); }) / m_mass;
+	return accumulate(m_partConfigs.begin(), m_partConfigs.end(), Vec2::Zero(), [](Vec2 acc, const auto& p) { return acc + p->getPartAsset()->getMass() * (p->getPosition() + p->getPartAsset()->getShape().getCentroid().rotated(p->getRotation())); }) / m_mass;
 }
 
 void CellAsset::updateMass()
 {
-	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getModel()->getMass(); });
+	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getPartAsset()->getMass(); });
 }
 
 void CellAsset::updateInertia()
@@ -61,8 +61,8 @@ void CellAsset::updateInertia()
 	auto centroid = getCenter();
 
 	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [&centroid](double acc, const auto& pc) {
-		auto id = (pc->getCentroid() - centroid).lengthSq() * pc->getModel()->getMass();
-		auto is = pc->getModel()->getShape().getInertia(pc->getModel()->getMass());
+		auto id = (pc->getCentroid() - centroid).lengthSq() * pc->getPartAsset()->getMass();
+		auto is = pc->getPartAsset()->getShape().getInertia(pc->getPartAsset()->getMass());
 		
 		return acc + id + is;
 		});
@@ -76,7 +76,7 @@ void CellAsset::updateMaxStorage()
 
 void CellAsset::updateMaterial()
 {
-	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getModel()->getMaterial(); });
+	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getPartAsset()->getMaterial(); });
 }
 
 void CellAsset::setCentroidAsOrigin()

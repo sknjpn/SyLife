@@ -100,8 +100,8 @@ void CellMakingViewer::update()
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition().x, p->getPosition().y));
 
-					p->getModel()->getShape().draw(0.5);
-					p->getModel()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
+					p->getPartAsset()->getShape().draw(0.5);
+					p->getPartAsset()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
 				}
 			}
 		}
@@ -191,8 +191,8 @@ void CellMakingViewer::update()
 					auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 						.translated(p->getPosition().x, p->getPosition().y));
 
-					p->getModel()->getShape().draw(0.5);
-					p->getModel()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
+					p->getPartAsset()->getShape().draw(0.5);
+					p->getPartAsset()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
 				}
 			}
 		}

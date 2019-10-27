@@ -12,7 +12,7 @@ void NeedleState::draw(const CellState& cellState) const
 {
 	auto t = Transformer2D(Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
 
-	getPartConfig()->getModel()->draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
+	getPartConfig()->getPartAsset()->draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
 }
 
 void NeedleState::update(CellState& cellState)
