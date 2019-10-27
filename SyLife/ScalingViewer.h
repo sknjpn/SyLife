@@ -5,12 +5,9 @@
 class ScalingViewer :
 	public Viewer
 {
-public:
-	ScalingViewer()
-	{
-		setDrawSize(80, 320);
-	}
+	double	m_value = 0.0;
 
+public:
 	void	init() override;
 	void	update() override;
 };
