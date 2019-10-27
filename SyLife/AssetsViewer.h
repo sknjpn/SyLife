@@ -31,8 +31,8 @@ public:
 		// Models
 		{
 			moveDrawPos(16, 0);
-			const auto& models = g_assetManagerPtr->getAssets<T>();
-			for (auto it = models.begin(); it != models.end(); ++it)
+			const auto& assets = g_assetManagerPtr->getAssets<T>();
+			for (auto it = assets.begin(); it != assets.end(); ++it)
 			{
 				auto f = font10(Unicode::Widen((*it)->getName()));
 
