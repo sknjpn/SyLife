@@ -8,8 +8,8 @@
 
 void BodyAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<BodyEditor>()->setModel(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<BodyEditor>()->setPartAsset(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> BodyAsset::makeState()

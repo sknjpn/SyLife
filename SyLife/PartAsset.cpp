@@ -9,8 +9,8 @@
 
 void PartAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<PartEditor>()->setModel(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartEditor>()->setPartAsset(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> PartAsset::makeState()

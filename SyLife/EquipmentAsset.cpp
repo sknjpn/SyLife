@@ -8,8 +8,8 @@
 
 void EquipmentAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<EquipmentEditor>()->setModel(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<EquipmentEditor>()->setPartAsset(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> EquipmentAsset::makeState()

@@ -4,5 +4,5 @@
 
 void WaveModel::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<WaveViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<WaveViewer>()->setPartAsset(shared_from_this());
 }

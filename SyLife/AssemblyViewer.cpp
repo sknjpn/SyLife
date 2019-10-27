@@ -91,7 +91,7 @@ void AssemblyViewer::update()
 			{
 				const auto& partConfig = cmv->m_cellAsset->addPartConfig();
 
-				partConfig->setModel(selectedPart);
+				partConfig->setPartAsset(selectedPart);
 				partConfig->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 				partConfig->setRotation(0.0);
 			}

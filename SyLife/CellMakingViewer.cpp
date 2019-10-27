@@ -335,7 +335,7 @@ void CellMakingViewer::makeAsset()
 		l.m_polygon = Circle(10.0).asPolygon();
 	}
 
-	m_cellAsset->addPartConfig()->setModel(m_bodyAsset);
+	m_cellAsset->addPartConfig()->setPartAsset(m_bodyAsset);
 	m_cellAsset->updateProperties();
 
 	m_shapeAssemblyViewer->setPartAsset(m_bodyAsset);

@@ -89,7 +89,7 @@ void CellAsset::setCentroidAsOrigin()
 
 void CellAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<CellEditor>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<CellEditor>()->setPartAsset(shared_from_this());
 }
 
 

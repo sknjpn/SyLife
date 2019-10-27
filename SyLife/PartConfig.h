@@ -18,7 +18,7 @@ public:
 	double	getRotation() const { return m_rotation; }
 
 	// Set
-	void	setModel(const shared_ptr<PartAsset>& partAsset) { m_partAsset = partAsset; }
+	void	setPartAsset(const shared_ptr<PartAsset>& partAsset) { m_partAsset = partAsset; }
 	void	setPosition(const Vec2& position) { m_position = position; }
 	void	setRotation(double rotation) { m_rotation = rotation; }
 

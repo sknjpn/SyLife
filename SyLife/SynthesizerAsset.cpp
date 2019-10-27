@@ -10,8 +10,8 @@
 
 void SynthesizerAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<SynthesizerEditor>()->setModel(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setModel(shared_from_this());
+	g_viewerManagerPtr->makeViewer<SynthesizerEditor>()->setPartAsset(shared_from_this());
+	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> SynthesizerAsset::makeState()
