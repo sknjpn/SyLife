@@ -25,7 +25,7 @@ void ViewerManager::update()
 	// mouseOver 適用
 	for (auto it = m_viewers.rbegin(); it < m_viewers.rend(); ++it)
 	{
-		if (!(*it)->isInvisible() && (*it)->m_drawRect.mouseOver())
+		if (!(*it)->isInvisible() && (*it)->m_viewerRect.mouseOver())
 		{
 			(*it)->m_isMouseOver = true;
 
@@ -50,10 +50,10 @@ void ViewerManager::update()
 		}
 		else
 		{
-			auto vp = ScopedViewport2D(Rect((*it)->m_drawRect));
-			auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_drawRect.pos));
+			auto vp = ScopedViewport2D(Rect((*it)->m_viewerRect));
+			auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_viewerRect.pos));
 
-			RectF((*it)->m_drawRect.size).draw((*it)->m_backgroundColor);
+			RectF((*it)->m_viewerRect.size).draw((*it)->m_backgroundColor);
 
 			(*it)->update();
 
@@ -63,7 +63,7 @@ void ViewerManager::update()
 				(*it)->m_transformer.reset();
 
 				// フレーム描画
-				RectF((*it)->m_drawRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
+				RectF((*it)->m_viewerRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
 			}
 		}
 	}
