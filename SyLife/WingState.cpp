@@ -35,6 +35,6 @@ void WingState::update(CellState& cellState)
 
 void WingState::flap(CellState& cellState)
 {
-	auto center = getPartConfig()->getPartAsset()->getShape().getCentroid().rotated(getPartConfig()->getRotation());
-	cellState.addImpulseInLocal(Vec2::Up().rotated(getPartConfig()->getRotation()) * 10000.0, getPartConfig()->getPosition() + center);
+	auto centroid = getPartConfig()->getPartAsset()->getShape().getCentroid().rotated(getPartConfig()->getRotation());
+	cellState.addImpulseInLocal(Vec2::Up().rotated(getPartConfig()->getRotation()) * 10000.0, getPartConfig()->getPosition() + centroid);
 }
