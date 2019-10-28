@@ -5,16 +5,6 @@
 #include "ShapeLayerViewer.h"
 #include "PartAsset.h"
 
-void ShapeAssemblyViewer::init()
-{
-	setBackgroundColor(Palette::Gray);
-
-	setPriority(2);
-
-	setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
-	setSize(Vec2(800, 800));
-}
-
 void ShapeAssemblyViewer::update()
 {
 	if (!m_partAsset || isInvisible()) return;
