@@ -8,11 +8,6 @@
 #include "BodyAsset.h"
 #include "ElementAsset.h"
 #include "CellAsset.h"
-#include "AssemblyViewer.h"
-#include "ReleaseViewer.h"
-#include "PartPaletteViewer.h"
-#include "ShapeAssemblyViewer.h"
-#include "ShapeLayerViewer.h"
 
 void CellMakingViewer::update()
 {
