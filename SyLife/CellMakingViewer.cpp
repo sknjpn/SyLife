@@ -13,51 +13,15 @@ void CellMakingViewer::update()
 {
 	switch (m_mode)
 	{
-	case CellMakingViewer::Mode::Close:
-	{
-		static bool isClicked = false;
-
-
-		if (isMouseOver())
-		{
-			if (MouseL.down()) isClicked = true;
-
-			if (MouseL.up())
-			{
-				isClicked = false;
-
-				setMode(Mode::EditBodyShapes);
-
-				return;
-			}
-
-			if (isClicked && MouseL.pressed()) setBackgroundColor(ColorF(1.0, 0.3));
-			else setBackgroundColor(ColorF(1.0, 0.5));
-		}
-		else
-		{
-			if (MouseL.up()) isClicked = false;
-
-			setBackgroundColor(ColorF(1.0, 0.1));
-		}
-	}
-
-	// Text
-	{
-		static Font font(32, Typeface::Bold);
-
-		font(U"Create Cell").drawAt(getViewerSize() / 2.0);
-	}
-	break;
 	case CellMakingViewer::Mode::EditParts:
 
 		// 閉じる
-		if (KeyEscape.down())
+		/*if (KeyEscape.down())
 		{
 			setMode(Mode::Close);
 
 			return;
-		}
+		}*/
 
 		// Release
 		{
@@ -97,7 +61,7 @@ void CellMakingViewer::update()
 		}
 
 		// Close Button
-		{
+		/*{
 			setDrawPos(5, 250);
 
 			if (SimpleGUI::Button(U"Close", Vec2(0, 0), 180))
@@ -106,7 +70,7 @@ void CellMakingViewer::update()
 
 				return;
 			}
-		}
+		}*/
 
 		// Mode Change Button
 		{
@@ -143,12 +107,12 @@ void CellMakingViewer::update()
 	case CellMakingViewer::Mode::EditBodyShapes:
 
 		// 閉じる
-		if (KeyEscape.down())
+		/*if (KeyEscape.down())
 		{
 			setMode(Mode::Close);
 
 			return;
-		}
+		}*/
 
 		// Release
 		{
@@ -191,12 +155,12 @@ void CellMakingViewer::update()
 		{
 			setDrawPos(5, 250);
 
-			if (SimpleGUI::Button(U"Close", Vec2(0, 0), 180))
+			/*if (SimpleGUI::Button(U"Close", Vec2(0, 0), 180))
 			{
 				setMode(Mode::Close);
 
 				return;
-			}
+			}*/
 		}
 
 		// Mode Change Button
@@ -243,18 +207,6 @@ void CellMakingViewer::setMode(Mode mode)
 
 	switch (mode)
 	{
-	case CellMakingViewer::Mode::Close:
-		setInvisible(false);
-		m_assemblyViewer.setInvisible(true);
-		m_partPaletteViewer.setInvisible(true);
-		m_releaseViewer.setInvisible(true);
-		m_shapeAssemblyViewer.setInvisible(true);
-		m_shapeLayerViewer.setInvisible(true);
-
-		// DrawRectの設定
-		setViewerRect(RectF(200, 50).setCenter(Scene::CenterF().x, 50));
-		break;
-
 	case CellMakingViewer::Mode::EditParts:
 		setInvisible(false);
 		m_assemblyViewer.setInvisible(false);

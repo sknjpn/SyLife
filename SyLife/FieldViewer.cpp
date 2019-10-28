@@ -38,6 +38,7 @@ FieldViewer::FieldViewer()
 	m_cellMakingButton = MakeUnique<CellMakingButton>();
 	m_cellStateViewer = MakeUnique<CellStateViewer>();
 	m_statisticsViewer = MakeUnique<StatisticsViewer>();
+	m_releaseViewer = MakeUnique<ReleaseViewer>();
 }
 
 void FieldViewer::update()
@@ -148,6 +149,8 @@ void FieldViewer::update()
 	if (m_cellMakingButton && m_cellMakingButton->isSelected()) 
 	{
 		m_cellMakingButton = nullptr;
+
+		m_cellMakingViewer = MakeUnique<CellMakingViewer>();
 	}
 
 	// Open Curtain

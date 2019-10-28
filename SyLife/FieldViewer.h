@@ -9,6 +9,7 @@ class CellMakingButton;
 class CellMakingViewer;
 class CellStateViewer;
 class StatisticsViewer;
+class ReleaseViewer;
 
 class FieldViewer
 	: public Viewer
@@ -21,7 +22,8 @@ class FieldViewer
 	unique_ptr<CellMakingViewer>	m_cellMakingViewer;
 	unique_ptr<CellStateViewer>		m_cellStateViewer;
 	unique_ptr<StatisticsViewer>	m_statisticsViewer;
-	
+	unique_ptr<ReleaseViewer>		m_releaseViewer;
+
 public:
 	FieldViewer();
 

@@ -22,7 +22,6 @@ class CellMakingViewer :
 
 	enum struct Mode
 	{
-		Close,
 		EditParts,
 		EditBodyShapes,
 		Release,
@@ -45,7 +44,7 @@ public:
 		// 新しいモデルの登録
 		makeAsset();
 
-		setMode(Mode::Close);
+		setMode(Mode::EditParts);
 	}
 
 	void	update() override;

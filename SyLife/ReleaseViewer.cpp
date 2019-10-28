@@ -63,8 +63,8 @@ void ReleaseViewer::update()
 		c->init();
 
 		// CMVのリスタート
-		cmv->makeAsset();
-		cmv->setMode(CellMakingViewer::Mode::Close);
+		//cmv->makeAsset();
+		//cmv->setMode(CellMakingViewer::Mode::Close);
 
 		return;
 	}
