@@ -13,6 +13,9 @@ public:
 
 	void	update();
 
+	void	registerViewer(Viewer* viewer);
+	void	deregisterViewer(Viewer* viewer);
+
 	template <typename T, typename... Args>
 	shared_ptr<T>	makeViewer(Args&& ...args) { auto v = dynamic_pointer_cast<T>(m_viewers.emplace_back(make_shared<T>(args...))); v->init(); return v; }
 
