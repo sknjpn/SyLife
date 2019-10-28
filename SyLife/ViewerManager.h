@@ -6,7 +6,7 @@ class Viewer;
 class ViewerManager
 {
 public:
-	Array<shared_ptr<Viewer>>	m_viewers;
+	Array<Viewer*>	m_viewers;
 
 public:
 	ViewerManager() { m_viewers.reserve(1024); }
