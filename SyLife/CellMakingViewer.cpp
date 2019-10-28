@@ -19,11 +19,11 @@ void CellMakingViewer::init()
 	setPriority(1);
 
 	// サブViewer生成
-	m_assemblyViewer = g_viewerManagerPtr->makeViewer<AssemblyViewer>();
-	m_partPaletteViewer = g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
-	m_releaseViewer = g_viewerManagerPtr->makeViewer<ReleaseViewer>();
-	m_shapeAssemblyViewer = g_viewerManagerPtr->makeViewer<ShapeAssemblyViewer>();
-	m_shapeLayerViewer = g_viewerManagerPtr->makeViewer<ShapeLayerViewer>();
+	//m_assemblyViewer = g_viewerManagerPtr->makeViewer<AssemblyViewer>();
+	//m_partPaletteViewer = g_viewerManagerPtr->makeViewer<PartPaletteViewer>();
+	//m_releaseViewer = g_viewerManagerPtr->makeViewer<ReleaseViewer>();
+	//m_shapeAssemblyViewer = g_viewerManagerPtr->makeViewer<ShapeAssemblyViewer>();
+	//m_shapeLayerViewer = g_viewerManagerPtr->makeViewer<ShapeLayerViewer>();
 
 	// 新しいモデルの登録
 	makeAsset();
