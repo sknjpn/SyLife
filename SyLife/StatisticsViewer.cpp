@@ -8,11 +8,6 @@
 #include "EggState.h"
 #include "AssetManager.h"
 
-void StatisticsViewer::init()
-{
-	setViewerSize(m_statusesSizeMax, 100);
-}
-
 void StatisticsViewer::update()
 {
 	// Logの追加

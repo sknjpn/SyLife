@@ -19,7 +19,7 @@ class StatisticsViewer :
 		shared_ptr<CellAsset>	m_cellAsset;
 		Array<Status>	m_statuses;
 
-		Log(const shared_ptr<CellAsset>& cellAsset) 
+		Log(const shared_ptr<CellAsset>& cellAsset)
 			: m_cellAsset(cellAsset)
 		{}
 	};
@@ -28,7 +28,11 @@ class StatisticsViewer :
 	int	m_statusesSizeMax = 1000;
 
 public:
-	void	init() override;
+	StatisticsViewer()
+	{
+		setViewerSize(m_statusesSizeMax, 100);
+	}
+
 	void	update() override;
 };
 
