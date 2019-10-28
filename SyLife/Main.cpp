@@ -1,7 +1,5 @@
 ﻿#include "TitleViewer.h"
-
 #include "SystemManager.h"
-#include "ViewerManager.h"
 
 void Main()
 {
@@ -33,7 +31,7 @@ void Main()
 
 	g_systemManagerPtr = make_unique<SystemManager>();
 
-	g_viewerManagerPtr->registerViewer(new TitleViewer);
+	new TitleViewer;
 
 	while (System::Update())
 	{
