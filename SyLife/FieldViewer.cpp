@@ -1,7 +1,6 @@
 ﻿#include "FieldViewer.h"
 
 #include "AssetManager.h"
-#include "ViewerManager.h"
 #include "WaveManager.h"
 #include "EggManager.h"
 #include "ChipManager.h"
