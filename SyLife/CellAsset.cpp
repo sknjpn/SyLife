@@ -121,7 +121,7 @@ void CellAsset::updateProperties()
 	m_bornTime = 10.0;
 }
 
-const shared_ptr<BodyAsset>& CellAsset::getBodyAsset() const
+shared_ptr<BodyAsset> CellAsset::getBodyAsset() const
 {
 	for (const auto& pc : m_partConfigs)
 	{

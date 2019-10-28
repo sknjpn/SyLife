@@ -64,7 +64,7 @@ public:
 
 	void	updateProperties();
 
-	const shared_ptr<BodyAsset>& getBodyAsset() const;
+	shared_ptr<BodyAsset> getBodyAsset() const;
 
 	// draw
 	void	draw(double a = 0.5);
