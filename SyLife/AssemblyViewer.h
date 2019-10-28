@@ -6,10 +6,13 @@
 class CellAsset;
 class BodyAsset;
 class PartConfig;
+class CellMakingViewer;
 
 class AssemblyViewer
 	: public Viewer
 {
+	friend class CellMakingViewer;
+
 	shared_ptr<CellAsset> m_cellAsset;
 
 public:
@@ -29,7 +32,7 @@ public:
 	shared_ptr<PartConfig>	m_selectedPartConfig;
 
 public:
-	AssemblyViewer(const shared_ptr<CellAsset>& cellAsset);
+	AssemblyViewer();
 
 	void	update() override;
 

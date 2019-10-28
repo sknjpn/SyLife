@@ -9,8 +9,7 @@
 #include "PartConfig.h"
 #include "BodyAsset.h"
 
-AssemblyViewer::AssemblyViewer(const shared_ptr<CellAsset>& cellAsset)
-	: m_cellAsset(cellAsset)
+AssemblyViewer::AssemblyViewer()
 {
 	setPriority(2);
 
