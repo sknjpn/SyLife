@@ -34,7 +34,7 @@ public:
 	template <typename T>
 	shared_ptr<T>	addChildViewer(){ return dynamic_pointer_cast<T>(m_assets.emplace_back(make_shared<T>())); }
 
-	void	destroy();
+	void	destroy() { m_isDestroyed = true; }
 
 	// Set
 	void	setInvisible(bool isInvisible) { m_isInvisible = isInvisible; };
