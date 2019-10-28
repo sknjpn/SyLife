@@ -8,12 +8,6 @@
 #include "CellManager.h"
 #include "ElementManager.h"
 
-#include "CellMakingViewer.h"
-
-#include "CellStateViewer.h"
-
-#include "StatisticsViewer.h"
-
 #include "Rigidbody.h"
 #include "CellAsset.h"
 #include "CellState.h"
@@ -40,9 +34,7 @@ FieldViewer::FieldViewer()
 
 void FieldViewer::init()
 {
-	//g_viewerManagerPtr->makeViewer<CellMakingViewer>();
-	//g_viewerManagerPtr->makeViewer<CellStateViewer>();
-	//g_viewerManagerPtr->makeViewer<StatisticsViewer>();
+
 }
 
 void FieldViewer::update()
