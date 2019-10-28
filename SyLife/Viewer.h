@@ -6,9 +6,7 @@ class Viewer
 
 	bool	m_isRoot = false;
 	bool	m_isDestroyed = false;
-	bool	m_isInvisible = false;
 	bool	m_isMouseover = false;
-	int		m_priority = 0;
 	Vec2	m_drawPos = Vec2::Zero();
 	RectF	m_viewerRect = RectF(Scene::Size());
 	Color	m_backgroundColor = Color(11, 22, 33, 128);
@@ -37,8 +35,6 @@ public:
 	void	destroy() { m_isDestroyed = true; }
 
 	// Set
-	void	setInvisible(bool isInvisible) { m_isInvisible = isInvisible; };
-	void	setPriority(int priority) { m_priority = priority; }
 	void	setBackgroundColor(const Color& color) { m_backgroundColor = color; }
 	void	setDrawPos(const Vec2& pos) { m_drawPos = pos; m_transformer.reset(); m_transformer = make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), true); }
 	void	setDrawPos(double x, double y) { setDrawPos(Vec2(x, y)); }
@@ -55,9 +51,7 @@ public:
 	void	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); }
 
 	// Get
-	int		getPriority() const { return m_priority; }
-	bool	isInvisible() const { return m_isInvisible; }
-	bool	isMouseOver() const { return m_isMouseOver; }
+	bool	isMouseOver() const { return m_isMouseover; }
 	const RectF&	getViewerRect() const { return m_viewerRect; }
 	const Vec2&		getViewerSize() const { return m_viewerRect.size; }
 	const Vec2		getDrawCenter() const { return m_viewerRect.center(); }
