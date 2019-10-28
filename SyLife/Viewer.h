@@ -15,8 +15,7 @@ class Viewer
 	Array<shared_ptr<Viewer>>	m_childViewers;
 
 public:
-	Viewer();
-	virtual ~Viewer();
+	virtual ~Viewer() = default;
 
 	const shared_ptr<Viewer>& getParentViewer() const { return m_parentViewer; }
 
