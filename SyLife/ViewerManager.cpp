@@ -5,10 +5,6 @@
 
 unique_ptr<ViewerManager>	g_viewerManagerPtr;
 
-void ViewerManager::update(const shared_ptr<Viewer>& viewer)
-{
-}
-
 ViewerManager::ViewerManager()
 {
 	m_rootViewer = MakeShared<RootViewer>();

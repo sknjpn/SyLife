@@ -5,10 +5,7 @@ class Viewer;
 // 表示を行うViewerの保存と更新
 class ViewerManager
 {
-public:
 	shared_ptr<Viewer>	m_rootViewer;
-
-	void	update(const shared_ptr<Viewer>& viewer);
 
 public:
 	ViewerManager();
