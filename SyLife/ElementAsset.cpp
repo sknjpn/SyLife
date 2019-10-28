@@ -6,7 +6,7 @@
 
 void ElementAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<ElementEditor>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<ElementEditor>()->setPartAsset(shared_from_this());
 }
 
 void ElementAsset::load(const ptree& pt)

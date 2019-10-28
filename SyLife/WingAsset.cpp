@@ -8,8 +8,8 @@
 
 void WingAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<WingEditor>()->setPartAsset(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<WingEditor>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> WingAsset::makeState()

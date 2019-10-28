@@ -8,8 +8,8 @@
 
 void ModuleAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<ModuleEditor>()->setPartAsset(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<ModuleEditor>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> ModuleAsset::makeState()
