@@ -6,7 +6,6 @@ class Viewer;
 class ViewerManager
 {
 public:
-	Array<Viewer*>	m_viewers;
 
 public:
 	ViewerManager() { m_viewers.reserve(1024); }
