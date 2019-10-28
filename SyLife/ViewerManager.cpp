@@ -1,8 +1,18 @@
 ﻿#include "ViewerManager.h"
 
 #include "Viewer.h"
+#include "RootViewer.h"
 
 unique_ptr<ViewerManager>	g_viewerManagerPtr;
+
+void ViewerManager::update(const shared_ptr<Viewer>& viewer)
+{
+}
+
+ViewerManager::ViewerManager()
+{
+	m_rootViewer = MakeShared<RootViewer>();
+}
 
 void ViewerManager::update()
 {
