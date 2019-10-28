@@ -7,6 +7,7 @@ class CellAsset;
 class BodyAsset;
 class PartConfig;
 class CellMakingViewer;
+class PartPaletteViewer;
 
 class AssemblyViewer
 	: public Viewer
