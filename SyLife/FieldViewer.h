@@ -9,8 +9,6 @@
 #include "CellStateViewer.h"
 #include "StatisticsViewer.h"
 
-class CellAsset;
-
 class FieldViewer
 	: public Viewer
 {
