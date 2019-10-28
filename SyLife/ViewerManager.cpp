@@ -16,6 +16,28 @@ ViewerManager::ViewerManager()
 
 void ViewerManager::update()
 {
+	// destroyされたViewerの削除
+	{
+		auto viewers = m_rootViewer->getAllChildren();
+
+		for (;;)
+		{
+			bool flag = true;
+
+			for (auto& v : viewers)
+			{
+				if (v->m_childViewers.isEmpty() && v->m_isDestroyed)
+				{
+					v->m_parentViewer->m_childViewers.remove(v);
+
+					flag = false;
+				}
+			}
+
+			if (flag) break;
+		}
+	}
+
 	// ログ出力のクリア
 	ClearPrint();
 
