@@ -214,18 +214,18 @@ void TitleViewer::update()
 			switch (m_selectedOption)
 			{
 			case Option::LaunchNewGame:
-				g_viewerManagerPtr->clearViewers();
-				g_viewerManagerPtr->makeViewer<FieldViewer>();
+				delete this;
+				g_viewerManagerPtr->registerViewer(new FieldViewer);
 				return;
 
 			case Option::ContinueGame:
-				g_viewerManagerPtr->clearViewers();
-				g_viewerManagerPtr->makeViewer<FieldViewer>();
+				delete this;
+				g_viewerManagerPtr->registerViewer(new FieldViewer);
 				return;
 
 			case Option::LaunchEditor:
-				g_viewerManagerPtr->clearViewers();
-				g_viewerManagerPtr->makeViewer<EditorViewer>();
+				delete this;
+				//g_viewerManagerPtr->makeViewer<EditorViewer>();
 				return;
 
 			case Option::Exit:
