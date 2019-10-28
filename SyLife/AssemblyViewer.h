@@ -10,8 +10,7 @@ class PartConfig;
 class AssemblyViewer
 	: public Viewer
 {
-	const shared_ptr<CellAsset>& getCellAsset() const;
-	const shared_ptr<BodyAsset>& getBodyAsset() const;
+	shared_ptr<CellAsset> m_cellAsset;
 
 public:
 	enum struct State
@@ -30,7 +29,7 @@ public:
 	shared_ptr<PartConfig>	m_selectedPartConfig;
 
 public:
-	AssemblyViewer();
+	AssemblyViewer(const shared_ptr<CellAsset>& cellAsset);
 
 	void	update() override;
 

@@ -9,17 +9,8 @@
 #include "PartConfig.h"
 #include "BodyAsset.h"
 
-const shared_ptr<CellAsset>& AssemblyViewer::getCellAsset() const
-{
-	return g_viewerManagerPtr->getViewer<CellMakingViewer>()->m_cellAsset;
-}
-
-const shared_ptr<BodyAsset>& AssemblyViewer::getBodyAsset() const
-{
-	return g_viewerManagerPtr->getViewer<CellMakingViewer>()->m_bodyAsset;
-}
-
-AssemblyViewer::AssemblyViewer()
+AssemblyViewer::AssemblyViewer(const shared_ptr<CellAsset>& cellAsset)
+	: m_cellAsset(cellAsset)
 {
 	setPriority(2);
 
