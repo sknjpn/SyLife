@@ -15,8 +15,6 @@ public:
 
 	void	update();
 
-	Array<shared_ptr<Viewer>>	getViewers() const;
-
 	const shared_ptr<Viewer>& getRootViewer() const { return m_rootViewer; }
 };
 

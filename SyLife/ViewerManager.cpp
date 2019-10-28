@@ -78,8 +78,3 @@ void ViewerManager::update()
 		}
 	}
 }
-
-Array<shared_ptr<Viewer>> ViewerManager::getViewers() const
-{
-	Array<shared_ptr<Viewer>> result;
-}
