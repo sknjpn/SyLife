@@ -39,6 +39,7 @@ class CellMakingViewer :
 
 public:
 	CellMakingViewer()
+		: m_assemblyViewer(m_cellAsset)
 	{
 		setPriority(1);
 
