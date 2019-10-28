@@ -10,10 +10,6 @@ class EditorViewer
 	shared_ptr<Model>	m_selectedAsset;
 
 public:
-	EditorViewer();
-
-	void	init() override;
-
-	void	update() override;
+	void	update() override {}
 };
 
