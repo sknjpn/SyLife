@@ -5,6 +5,7 @@
 
 #include "PartAsset.h"
 #include "PartConfig.h"
+#include "BodyAsset.h"
 
 void CellAsset::draw(double a)
 {
