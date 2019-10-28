@@ -4,17 +4,37 @@ class Viewer
 {
 	friend class ViewerManager;
 
+	bool	m_isRoot = false;
+	bool	m_isDestroyed = false;
 	bool	m_isInvisible = false;
-	bool	m_isMouseOver = false;
+	bool	m_isMouseover = false;
 	int		m_priority = 0;
 	Vec2	m_drawPos = Vec2::Zero();
 	RectF	m_viewerRect = RectF(Scene::Size());
 	Color	m_backgroundColor = Color(11, 22, 33, 128);
 	unique_ptr<Transformer2D>	m_transformer;
+	shared_ptr<Viewer>			m_parentViewer;
+	Array<shared_ptr<Viewer>>	m_childViewers;
 
 public:
 	Viewer();
 	virtual ~Viewer();
+
+	const shared_ptr<Viewer>& getParentViewer() const { return m_parentViewer; }
+
+	template <typename T>
+	shared_ptr<T>	getChildViewer() const
+	{
+		for (auto it = m_childViewers.begin(); it != m_childViewers.end(); ++it)
+			if (dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
+
+		throw Error(U"存在しないViewerを参照しました");
+	}
+	
+	template <typename T>
+	shared_ptr<T>	addChildViewer(){ return dynamic_pointer_cast<T>(m_assets.emplace_back(make_shared<T>())); }
+
+	void	destroy();
 
 	// Set
 	void	setInvisible(bool isInvisible) { m_isInvisible = isInvisible; };
