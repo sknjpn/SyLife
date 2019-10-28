@@ -245,11 +245,11 @@ void CellMakingViewer::setMode(Mode mode)
 	{
 	case CellMakingViewer::Mode::Close:
 		setInvisible(false);
-		m_assemblyViewer->setInvisible(true);
-		m_partPaletteViewer->setInvisible(true);
-		m_releaseViewer->setInvisible(true);
-		m_shapeAssemblyViewer->setInvisible(true);
-		m_shapeLayerViewer->setInvisible(true);
+		m_assemblyViewer.setInvisible(true);
+		m_partPaletteViewer.setInvisible(true);
+		m_releaseViewer.setInvisible(true);
+		m_shapeAssemblyViewer.setInvisible(true);
+		m_shapeLayerViewer.setInvisible(true);
 
 		// DrawRectの設定
 		setViewerRect(RectF(200, 50).setCenter(Scene::CenterF().x, 50));
@@ -257,11 +257,11 @@ void CellMakingViewer::setMode(Mode mode)
 
 	case CellMakingViewer::Mode::EditParts:
 		setInvisible(false);
-		m_assemblyViewer->setInvisible(false);
-		m_partPaletteViewer->setInvisible(false);
-		m_releaseViewer->setInvisible(true);
-		m_shapeAssemblyViewer->setInvisible(true);
-		m_shapeLayerViewer->setInvisible(true);
+		m_assemblyViewer.setInvisible(false);
+		m_partPaletteViewer.setInvisible(false);
+		m_releaseViewer.setInvisible(true);
+		m_shapeAssemblyViewer.setInvisible(true);
+		m_shapeLayerViewer.setInvisible(true);
 
 		// BackgroundColorの設定
 		setBackgroundColor(Color(11, 22, 33));
@@ -273,11 +273,11 @@ void CellMakingViewer::setMode(Mode mode)
 
 	case CellMakingViewer::Mode::EditBodyShapes:
 		setInvisible(false);
-		m_assemblyViewer->setInvisible(true);
-		m_partPaletteViewer->setInvisible(true);
-		m_releaseViewer->setInvisible(true);
-		m_shapeAssemblyViewer->setInvisible(false);
-		m_shapeLayerViewer->setInvisible(false);
+		m_assemblyViewer.setInvisible(true);
+		m_partPaletteViewer.setInvisible(true);
+		m_releaseViewer.setInvisible(true);
+		m_shapeAssemblyViewer.setInvisible(false);
+		m_shapeLayerViewer.setInvisible(false);
 
 		// BackgroundColorの設定
 		setBackgroundColor(Color(11, 22, 33));
@@ -288,11 +288,11 @@ void CellMakingViewer::setMode(Mode mode)
 
 	case CellMakingViewer::Mode::Release:
 		setInvisible(true);
-		m_assemblyViewer->setInvisible(true);
-		m_partPaletteViewer->setInvisible(true);
-		m_releaseViewer->setInvisible(false);
-		m_shapeAssemblyViewer->setInvisible(true);
-		m_shapeLayerViewer->setInvisible(true);
+		m_assemblyViewer.setInvisible(true);
+		m_partPaletteViewer.setInvisible(true);
+		m_releaseViewer.setInvisible(false);
+		m_shapeAssemblyViewer.setInvisible(true);
+		m_shapeLayerViewer.setInvisible(true);
 		break;
 
 	default:
@@ -316,6 +316,6 @@ void CellMakingViewer::makeAsset()
 	m_cellAsset->addPartConfig()->setPartAsset(m_bodyAsset);
 	m_cellAsset->updateProperties();
 
-	m_shapeAssemblyViewer->setPartAsset(m_bodyAsset);
-	m_shapeLayerViewer->setPartAsset(m_bodyAsset);
+	m_shapeAssemblyViewer.setPartAsset(m_bodyAsset);
+	m_shapeLayerViewer.setPartAsset(m_bodyAsset);
 }
