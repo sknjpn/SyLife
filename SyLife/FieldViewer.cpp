@@ -74,7 +74,7 @@ void FieldViewer::update()
 					if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 					{
 						selectedRigidbody = cellState;
-						g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cellState);
+						m_cellStateViewer.m_cellState = dynamic_pointer_cast<CellState>(cellState);
 					}
 				}
 			}
@@ -131,8 +131,7 @@ void FieldViewer::update()
 		}
 
 		{
-			const auto& cs = g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState;
-
+			const auto& cs = m_cellStateViewer.m_cellState;
 			if (cs != nullptr)
 			{
 				Circle(cs->getPosition(), cs->getRadius() * 1.5)
