@@ -51,7 +51,7 @@ public:
 	void	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); }
 
 	// Get
-	bool	isMouseOver() const { return m_isMouseover; }
+	bool	isMouseover() const { return m_isMouseover; }
 	const RectF&	getViewerRect() const { return m_viewerRect; }
 	const Vec2&		getViewerSize() const { return m_viewerRect.size; }
 	const Vec2		getDrawCenter() const { return m_viewerRect.center(); }

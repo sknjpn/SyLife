@@ -30,7 +30,7 @@ void ShapeAssemblyViewer::update()
 	// Mouse
 	Circle(Cursor::PosF(), m_circleRadius).draw(ColorF(m_partAsset->m_shape[index].m_color, 0.5));
 
-	if (isMouseOver())
+	if (isMouseover())
 	{
 		if (MouseL.pressed())
 		{

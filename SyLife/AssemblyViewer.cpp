@@ -50,7 +50,7 @@ void AssemblyViewer::update()
 			}
 		}
 	}
-	else if (MouseL.down() && isMouseOver())
+	else if (MouseL.down() && isMouseover())
 	{
 		for (const auto& pc : m_cellAsset->getPartConfigs())
 		{
@@ -65,7 +65,7 @@ void AssemblyViewer::update()
 	{
 		bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(Cursor::PosF());
 
-		if (isMouseOver())
+		if (isMouseover())
 		{
 			{
 				auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));

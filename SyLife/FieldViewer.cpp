@@ -45,7 +45,7 @@ void FieldViewer::update()
 {
 	{
 		// camera
-		if (isMouseOver()) m_camera.update();
+		if (isMouseover()) m_camera.update();
 		auto t = m_camera.createTransformer();
 
 		// speed
@@ -83,7 +83,7 @@ void FieldViewer::update()
 				}
 			}
 
-			if (MouseL.pressed() && isMouseOver())
+			if (MouseL.pressed() && isMouseover())
 			{
 				if (selectedRigidbody != nullptr) selectedRigidbody->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 			}
