@@ -548,9 +548,6 @@
     <ClCompile Include="Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScalingViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -761,9 +758,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScalingViewer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
