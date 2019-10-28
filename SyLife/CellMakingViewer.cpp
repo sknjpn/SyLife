@@ -304,7 +304,7 @@ void CellMakingViewer::makeAsset()
 {
 	m_bodyAsset = g_assetManagerPtr->makeAsset<BodyAsset>();
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
-	m_assemblyViewer->m_cellAsset = m_cellAsset;
+	m_assemblyViewer.m_cellAsset = m_cellAsset;
 
 	{
 		m_bodyAsset->m_mass = 1.0;
