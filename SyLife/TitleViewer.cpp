@@ -1,7 +1,4 @@
 ﻿#include "TitleViewer.h"
-
-#include "ViewerManager.h"
-
 #include "FieldViewer.h"
 #include "EditorViewer.h"
 
@@ -212,17 +209,17 @@ void TitleViewer::update()
 			{
 			case Option::LaunchNewGame:
 				delete this;
-				g_viewerManagerPtr->registerViewer(new FieldViewer);
+				new FieldViewer;
 				return;
 
 			case Option::ContinueGame:
 				delete this;
-				g_viewerManagerPtr->registerViewer(new FieldViewer);
+				new FieldViewer;
 				return;
 
 			case Option::LaunchEditor:
 				delete this;
-				//g_viewerManagerPtr->makeViewer<EditorViewer>();
+				new EditorViewer;
 				return;
 
 			case Option::Exit:
