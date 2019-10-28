@@ -72,6 +72,8 @@ void ViewerManager::update()
 void ViewerManager::registerViewer(Viewer* viewer)
 {
 	m_viewers.emplace_back(viewer);
+
+	viewer->init();
 }
 
 void ViewerManager::deregisterViewer( Viewer* viewer)
