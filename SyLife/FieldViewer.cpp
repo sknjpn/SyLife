@@ -144,6 +144,12 @@ void FieldViewer::update()
 		}
 	}
 
+	// Cell Making
+	if (m_cellMakingButton && m_cellMakingButton->isSelected()) 
+	{
+		m_cellMakingButton = nullptr;
+	}
+
 	// Open Curtain
 	if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
 	else m_audio.setVolume(1.0);
