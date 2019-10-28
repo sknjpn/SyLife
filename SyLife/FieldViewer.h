@@ -5,9 +5,10 @@
 #include "TinyCamera.h"
 #include "Curtain.h"
 
-#include "CellMakingViewer.h"
-#include "CellStateViewer.h"
-#include "StatisticsViewer.h"
+class CellMakingButton;
+class CellMakingViewer;
+class CellStateViewer;
+class StatisticsViewer;
 
 class FieldViewer
 	: public Viewer
@@ -16,9 +17,10 @@ class FieldViewer
 	Audio		m_audio;
 	Curtain		m_openCurtain;
 
-	CellMakingViewer	m_cellMakingViewer;
-	CellStateViewer		m_cellStateViewer;
-	StatisticsViewer	m_statisticsViewer;
+	unique_ptr<CellMakingButton>	m_cellMakingButton;
+	unique_ptr<CellMakingViewer>	m_cellMakingViewer;
+	unique_ptr<CellStateViewer>		m_cellStateViewer;
+	unique_ptr<StatisticsViewer>	m_statisticsViewer;
 	
 public:
 	FieldViewer();

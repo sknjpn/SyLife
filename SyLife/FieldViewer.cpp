@@ -16,11 +16,16 @@
 #include "ElementState.h"
 #include "ElementAsset.h"
 
+#include "CellMakingButton.h"
+#include "CellMakingViewer.h"
+#include "CellStateViewer.h"
+#include "StatisticsViewer.h"
+
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
 	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
-	m_camera.setRestrictedRect(g_chipManagerPtr->getRect().scaledAt(Vec2::Zero(),g_chipManagerPtr->getLength()));
+	m_camera.setRestrictedRect(g_chipManagerPtr->getRect().scaledAt(Vec2::Zero(), g_chipManagerPtr->getLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
@@ -29,6 +34,10 @@ FieldViewer::FieldViewer()
 	setViewerRect(Scene::Size());
 	m_audio.setLoop(true);
 	//m_audio.play();
+
+	m_cellMakingButton = MakeUnique<CellMakingButton>();
+	m_cellStateViewer = MakeUnique<CellStateViewer>();
+	m_statisticsViewer = MakeUnique<StatisticsViewer>();
 }
 
 void FieldViewer::update()
@@ -68,7 +77,7 @@ void FieldViewer::update()
 					if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 					{
 						selectedRigidbody = cellState;
-						m_cellStateViewer.m_cellState = dynamic_pointer_cast<CellState>(cellState);
+						m_cellStateViewer->m_cellState = dynamic_pointer_cast<CellState>(cellState);
 					}
 				}
 			}
@@ -125,7 +134,7 @@ void FieldViewer::update()
 		}
 
 		{
-			const auto& cs = m_cellStateViewer.m_cellState;
+			const auto& cs = m_cellStateViewer->m_cellState;
 			if (cs != nullptr)
 			{
 				Circle(cs->getPosition(), cs->getRadius() * 1.5)

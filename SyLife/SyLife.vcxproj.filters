@@ -551,7 +551,7 @@
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CreateCellButton.cpp">
+    <ClCompile Include="CellMakingButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -763,7 +763,7 @@
     <ClInclude Include="Shape.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CreateCellButton.h">
+    <ClInclude Include="CellMakingButton.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
