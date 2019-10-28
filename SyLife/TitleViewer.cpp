@@ -13,6 +13,8 @@ TitleViewer::TitleViewer()
 	setViewerRect(Scene::Size());
 	m_audio.setLoop(true);
 	//m_audio.play();
+
+	for (int i = 0; i < 2000; ++i) UpdateBubbles();
 }
 
 void TitleViewer::UpdateBubbles()
@@ -60,11 +62,6 @@ void TitleViewer::drawBubbles()
 		texture.resized(r * 0.6).drawAt(x, y, ColorF(Palette::Lightblue, a));
 		texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
 	}
-}
-
-void TitleViewer::init()
-{
-	for (int i = 0; i < 2000; ++i) UpdateBubbles();
 }
 
 void TitleViewer::update()
