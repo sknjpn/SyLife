@@ -30,13 +30,7 @@ public:
 	shared_ptr<PartConfig>	m_selectedPartConfig;
 
 public:
-	AssemblyViewer()
-	{
-		setPriority(2);
-
-		setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
-		setSize(Vec2(800, 800));
-	}
+	AssemblyViewer();
 
 	void	update() override;
 

@@ -19,6 +19,14 @@ const shared_ptr<BodyAsset>& AssemblyViewer::getBodyAsset() const
 	return g_viewerManagerPtr->getViewer<CellMakingViewer>()->m_bodyAsset;
 }
 
+AssemblyViewer::AssemblyViewer()
+{
+	setPriority(2);
+
+	setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
+	setSize(Vec2(800, 800));
+}
+
 void AssemblyViewer::update()
 {
 	auto cmv = g_viewerManagerPtr->getViewer<CellMakingViewer>();
