@@ -10,6 +10,7 @@
 
 class CellAsset;
 class BodyAsset;
+class FieldViewer;
 
 class CellMakingViewer :
 	public Viewer
