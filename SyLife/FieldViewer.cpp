@@ -32,11 +32,6 @@ FieldViewer::FieldViewer()
 	//m_audio.play();
 }
 
-void FieldViewer::init()
-{
-
-}
-
 void FieldViewer::update()
 {
 	{
