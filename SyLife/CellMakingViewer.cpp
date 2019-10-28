@@ -211,7 +211,6 @@ void CellMakingViewer::setMode(Mode mode)
 		setInvisible(false);
 		m_assemblyViewer.setInvisible(false);
 		m_partPaletteViewer.setInvisible(false);
-		m_releaseViewer.setInvisible(true);
 		m_shapeAssemblyViewer.setInvisible(true);
 		m_shapeLayerViewer.setInvisible(true);
 
@@ -227,7 +226,6 @@ void CellMakingViewer::setMode(Mode mode)
 		setInvisible(false);
 		m_assemblyViewer.setInvisible(true);
 		m_partPaletteViewer.setInvisible(true);
-		m_releaseViewer.setInvisible(true);
 		m_shapeAssemblyViewer.setInvisible(false);
 		m_shapeLayerViewer.setInvisible(false);
 
@@ -242,7 +240,6 @@ void CellMakingViewer::setMode(Mode mode)
 		setInvisible(true);
 		m_assemblyViewer.setInvisible(true);
 		m_partPaletteViewer.setInvisible(true);
-		m_releaseViewer.setInvisible(false);
 		m_shapeAssemblyViewer.setInvisible(true);
 		m_shapeLayerViewer.setInvisible(true);
 		break;

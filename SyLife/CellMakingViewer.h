@@ -28,7 +28,6 @@ class CellMakingViewer :
 	} m_mode;
 
 	AssemblyViewer		m_assemblyViewer;
-	ReleaseViewer		m_releaseViewer;
 	PartPaletteViewer	m_partPaletteViewer;
 	ShapeLayerViewer	m_shapeLayerViewer;
 	ShapeAssemblyViewer	m_shapeAssemblyViewer;
