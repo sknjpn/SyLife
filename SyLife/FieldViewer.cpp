@@ -147,7 +147,7 @@ void FieldViewer::update()
 	}
 
 	// Cell Making
-	if (m_cellMakingButton && m_cellMakingButton->isSelected()) 
+	if (m_cellMakingButton && m_cellMakingButton->isSelected())
 	{
 		m_cellMakingButton = nullptr;
 
@@ -159,6 +159,8 @@ void FieldViewer::update()
 	else m_audio.setVolume(1.0);
 }
 
-void FieldViewer::makeReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
+void FieldViewer::makeReleaseViewer()
 {
+	m_releaseViewer = MakeUnique<ReleaseViewer>(m_cellMakingViewer->getCellAsset());
+	m_cellMakingViewer = nullptr;
 }
