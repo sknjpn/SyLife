@@ -13,8 +13,8 @@ public:
 
 	void	update();
 
-	void	registerViewer(Viewer* viewer);
-	void	deregisterViewer(Viewer* viewer);
+	void	registerViewer(Viewer* viewer) { m_viewers.emplace_back(viewer); }
+	void	deregisterViewer(Viewer* viewer) { m_viewers.remove(viewer); }
 
 	template<typename T>
 	T* getViewer() const

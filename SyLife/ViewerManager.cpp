@@ -68,13 +68,3 @@ void ViewerManager::update()
 		}
 	}
 }
-
-void ViewerManager::registerViewer(Viewer* viewer)
-{
-	m_viewers.emplace_back(viewer);
-}
-
-void ViewerManager::deregisterViewer( Viewer* viewer)
-{
-	m_viewers.remove(viewer);
-}
