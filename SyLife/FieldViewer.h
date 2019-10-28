@@ -20,12 +20,6 @@ class FieldViewer
 	Audio		m_audio;
 	Curtain		m_openCurtain;
 
-	unique_ptr<CellMakingButton>	m_cellMakingButton;
-	unique_ptr<CellMakingViewer>	m_cellMakingViewer;
-	unique_ptr<CellStateViewer>		m_cellStateViewer;
-	unique_ptr<StatisticsViewer>	m_statisticsViewer;
-	unique_ptr<ReleaseViewer>		m_releaseViewer;
-
 public:
 	FieldViewer();
 

@@ -36,9 +36,9 @@ FieldViewer::FieldViewer()
 	m_audio.setLoop(true);
 	//m_audio.play();
 
-	m_cellMakingButton = MakeUnique<CellMakingButton>();
-	m_cellStateViewer = MakeUnique<CellStateViewer>();
-	m_statisticsViewer = MakeUnique<StatisticsViewer>();
+	addChildViewer<CellMakingButton>();
+	addChildViewer<CellStateViewer>();
+	addChildViewer<StatisticsViewer>();
 }
 
 void FieldViewer::update()
@@ -78,7 +78,7 @@ void FieldViewer::update()
 					if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 					{
 						selectedRigidbody = cellState;
-						m_cellStateViewer->m_cellState = dynamic_pointer_cast<CellState>(cellState);
+						getChildViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cellState);
 					}
 				}
 			}
@@ -135,7 +135,7 @@ void FieldViewer::update()
 		}
 
 		{
-			const auto& cs = m_cellStateViewer->m_cellState;
+			const auto& cs =getChildViewer<CellStateViewer>()->m_cellState;
 			if (cs != nullptr)
 			{
 				Circle(cs->getPosition(), cs->getRadius() * 1.5)
@@ -146,11 +146,10 @@ void FieldViewer::update()
 	}
 
 	// Cell Making
-	if (m_cellMakingButton && m_cellMakingButton->isSelected())
+	if (getChildViewer<CellMakingButton>() && getChildViewer<CellMakingButton>()->isSelected())
 	{
-		m_cellMakingButton = nullptr;
-
-		m_cellMakingViewer = MakeUnique<CellMakingViewer>();
+		getChildViewer<CellMakingButton>()->destroy();
+		addChildViewer<CellMakingViewer>();
 	}
 
 	// Open Curtain
@@ -160,6 +159,7 @@ void FieldViewer::update()
 
 void FieldViewer::makeReleaseViewer()
 {
+	addChildViewer<ReleaseViewer>();
 	m_releaseViewer = MakeUnique<ReleaseViewer>(m_cellMakingViewer->getCellAsset());
-	m_cellMakingViewer = nullptr;
+	getChildViewer<CellMakingViewer>()->destroy();
 }
