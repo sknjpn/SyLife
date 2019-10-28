@@ -18,7 +18,7 @@ void ViewerManager::update()
 {
 	// destroyされたViewerの削除
 	{
-		auto viewers = m_rootViewer->getAllChildren();
+		auto viewers = m_rootViewer->getAllChildViewers();
 
 		for (;;)
 		{

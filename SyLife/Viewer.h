@@ -35,7 +35,7 @@ public:
 	void	destroy();
 
 	// 再帰的
-	Array<shared_ptr<Viewer>>	getAllChildren() const;
+	Array<shared_ptr<Viewer>>	getAllChildViewers() const;
 
 	// Set
 	void	setBackgroundColor(const Color& color) { m_backgroundColor = color; }
