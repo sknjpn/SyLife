@@ -20,6 +20,7 @@
 #include "CellMakingViewer.h"
 #include "CellStateViewer.h"
 #include "StatisticsViewer.h"
+#include "ReleaseViewer.h"
 
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
@@ -156,4 +157,8 @@ void FieldViewer::update()
 	// Open Curtain
 	if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
 	else m_audio.setVolume(1.0);
+}
+
+void FieldViewer::makeReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
+{
 }
