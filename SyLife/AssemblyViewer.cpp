@@ -56,7 +56,7 @@ void AssemblyViewer::update()
 	}
 	else if (MouseL.down() && isMouseOver())
 	{
-		for (const auto& pc : getCellAsset()->getPartConfigs())
+		for (const auto& pc : m_cellAsset->getPartConfigs())
 		{
 			auto t = Transformer2D(Mat3x2::Rotate(pc->getRotation()).translated(pc->getPosition()), true);
 
@@ -67,7 +67,7 @@ void AssemblyViewer::update()
 	// selectedPart
 	if (auto& selectedPart = g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart())
 	{
-		bool canSetPart = getBodyAsset()->getShape().getPolygon().contains(Cursor::PosF());
+		bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(Cursor::PosF());
 
 		if (isMouseOver())
 		{
