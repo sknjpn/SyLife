@@ -554,6 +554,9 @@
     <ClCompile Include="ScalingViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Viewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">

@@ -13,7 +13,8 @@ class Viewer
 	unique_ptr<Transformer2D>	m_transformer;
 
 public:
-	virtual ~Viewer() = default;
+	Viewer();
+	virtual ~Viewer();
 
 	// Set
 	void	setInvisible(bool isInvisible) { m_isInvisible = isInvisible; };
