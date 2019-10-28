@@ -43,7 +43,6 @@ public:
 	const Vec2		getDrawCenter() const { return m_viewerRect.center(); }
 	const Vec2&		getDrawPos() const { return m_drawPos; }
 
-	virtual void	init() {}
 	virtual void	update() {}
 };
 
