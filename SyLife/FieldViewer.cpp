@@ -40,9 +40,9 @@ FieldViewer::FieldViewer()
 
 void FieldViewer::init()
 {
-	g_viewerManagerPtr->makeViewer<CellMakingViewer>();
-	g_viewerManagerPtr->makeViewer<CellStateViewer>();
-	g_viewerManagerPtr->makeViewer<StatisticsViewer>();
+	//g_viewerManagerPtr->makeViewer<CellMakingViewer>();
+	//g_viewerManagerPtr->makeViewer<CellStateViewer>();
+	//g_viewerManagerPtr->makeViewer<StatisticsViewer>();
 }
 
 void FieldViewer::update()
