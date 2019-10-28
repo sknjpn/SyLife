@@ -41,16 +41,11 @@ void ViewerManager::update()
 	// ログ出力のクリア
 	ClearPrint();
 
-	// nullptr になったViewerのリセット
-	m_viewers.remove(nullptr);
-
-	// Priorityに応じた昇順に並び替え
-	m_viewers.sort_by([](const Viewer* v1, const Viewer* v2) { return v1->getPriority() < v2->getPriority(); });
-
+	auto viewers = m_rootViewer->getAllChildViewers();
 	// Viewerのリセット
-	for (auto it = m_viewers.begin(); it < m_viewers.end(); ++it)
+	for (auto it = viewers.begin(); it < viewers.end(); ++it)
 	{
-		(*it)->m_isMouseOver = false;
+		(*it)->m_isMouseover = false;
 		(*it)->m_drawPos = Vec2::Zero();
 	}
 
@@ -59,7 +54,7 @@ void ViewerManager::update()
 	{
 		if (!(*it)->isInvisible() && (*it)->m_viewerRect.mouseOver())
 		{
-			(*it)->m_isMouseOver = true;
+			(*it)->m_isMouseover = true;
 
 			break;
 		}
