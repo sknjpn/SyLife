@@ -11,10 +11,6 @@ ShapeLayerViewer::ShapeLayerViewer()
 	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
 }
 
-void ShapeLayerViewer::init()
-{
-}
-
 void ShapeLayerViewer::update()
 {
 	if (!m_partAsset || isInvisible()) return;

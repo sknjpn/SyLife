@@ -19,7 +19,6 @@ class ShapeLayerViewer :
 public:
 	ShapeLayerViewer();
 
-	void	init() override;
 	void	update() override;
 
 	void	setPartAsset(const shared_ptr<PartAsset>& partAsset);
