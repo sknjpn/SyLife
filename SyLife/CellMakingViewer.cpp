@@ -194,10 +194,6 @@ void CellMakingViewer::update()
 			}
 		}
 		break;
-	case CellMakingViewer::Mode::Release:
-		break;
-	default:
-		break;
 	}
 }
 
@@ -234,17 +230,6 @@ void CellMakingViewer::setMode(Mode mode)
 
 		// DrawRectの設定
 		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
-		break;
-
-	case CellMakingViewer::Mode::Release:
-		setInvisible(true);
-		m_assemblyViewer.setInvisible(true);
-		m_partPaletteViewer.setInvisible(true);
-		m_shapeAssemblyViewer.setInvisible(true);
-		m_shapeLayerViewer.setInvisible(true);
-		break;
-
-	default:
 		break;
 	}
 }

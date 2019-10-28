@@ -24,7 +24,6 @@ class CellMakingViewer :
 	{
 		EditParts,
 		EditBodyShapes,
-		Release,
 	} m_mode;
 
 	AssemblyViewer		m_assemblyViewer;
