@@ -1,10 +1,6 @@
 ﻿#include "PartShapeViewer.h"
 #include "BodyAsset.h"
 
-void PartShapeViewer::init()
-{
-}
-
 void PartShapeViewer::update()
 {
 	m_camera.update();

@@ -26,7 +26,6 @@ public:
 		m_camera.setCenter(Vec2::Zero());
 	}
 
-	void	init() override;
 	void	update() override;
 };
 
