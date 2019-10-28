@@ -52,5 +52,7 @@ public:
 	void	setMode(Mode mode);
 
 	void	makeAsset();
+
+	const shared_ptr<CellAsset>& getCellAsset() const { return m_cellAsset; }
 };
 
