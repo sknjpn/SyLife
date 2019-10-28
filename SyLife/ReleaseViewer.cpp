@@ -11,12 +11,8 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 
-const shared_ptr<CellAsset>& ReleaseViewer::getCellAsset() const
-{
-	return g_viewerManagerPtr->getViewer<CellMakingViewer>()->m_cellAsset;
-}
-
-ReleaseViewer::ReleaseViewer()
+ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
+	: m_cellAsset(cellAsset)
 {
 	setPriority(3);
 	setViewerRect(Scene::Rect());
@@ -54,17 +50,13 @@ void ReleaseViewer::update()
 	if (MouseL.up())
 	{
 		// CellAssetのリセット
-		getCellAsset()->setCentroidAsOrigin();
+		m_cellAsset->setCentroidAsOrigin();
 
 		// 新規Cell
 		const auto& c = g_cellManagerPtr->addCellState(cmv->m_cellAsset);
 		c->setPosition(Cursor::PosF());
 		c->setVelocity(Vec2::Zero());
 		c->init();
-
-		// CMVのリスタート
-		//cmv->makeAsset();
-		//cmv->setMode(CellMakingViewer::Mode::Close);
 
 		return;
 	}
