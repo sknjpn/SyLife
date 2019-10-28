@@ -119,3 +119,14 @@ void CellAsset::updateProperties()
 	m_yieldTime = 5.0;
 	m_bornTime = 10.0;
 }
+
+const shared_ptr<BodyAsset>& CellAsset::getBodyAsset() const
+{
+	for (const auto& pc : m_partConfigs)
+	{
+		if (dynamic_pointer_cast<BodyAsset>(pc->getPartAsset()))
+			return dynamic_pointer_cast<BodyAsset>(pc->getPartAsset());
+	}
+
+	throw Error(U"BodyAssetが存在しません。");
+}

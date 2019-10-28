@@ -5,6 +5,7 @@
 #include "Storage.h"
 
 class PartConfig;
+class BodyAsset;
 
 class CellAsset
 	: public Asset
@@ -62,6 +63,8 @@ public:
 	}
 
 	void	updateProperties();
+
+	const shared_ptr<BodyAsset>& getBodyAsset() const;
 
 	// draw
 	void	draw(double a = 0.5);
