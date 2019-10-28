@@ -2,14 +2,14 @@
 
 #include "Viewer.h"
 
+#include "AssemblyViewer.h"
+#include "ReleaseViewer.h"
+#include "PartPaletteViewer.h"
+#include "ShapeAssemblyViewer.h"
+#include "ShapeLayerViewer.h"
+
 class CellAsset;
 class BodyAsset;
-
-class AssemblyViewer;
-class ReleaseViewer;
-class PartPaletteViewer;
-class ShapeLayerViewer;
-class ShapeAssemblyViewer;
 
 class CellMakingViewer :
 	public Viewer
@@ -28,11 +28,11 @@ class CellMakingViewer :
 		Release,
 	} m_mode;
 
-	shared_ptr<AssemblyViewer>	m_assemblyViewer;
-	shared_ptr<ReleaseViewer>	m_releaseViewer;
-	shared_ptr<PartPaletteViewer>	m_partPaletteViewer;
-	shared_ptr<ShapeLayerViewer>	m_shapeLayerViewer;
-	shared_ptr<ShapeAssemblyViewer>	m_shapeAssemblyViewer;
+	AssemblyViewer		m_assemblyViewer;
+	ReleaseViewer		m_releaseViewer;
+	PartPaletteViewer	m_partPaletteViewer;
+	ShapeLayerViewer	m_shapeLayerViewer;
+	ShapeAssemblyViewer	m_shapeAssemblyViewer;
 
 	shared_ptr<CellAsset>	m_cellAsset;
 	shared_ptr<BodyAsset>	m_bodyAsset;
