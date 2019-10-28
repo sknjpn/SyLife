@@ -551,6 +551,9 @@
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CreateCellButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -758,6 +761,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateCellButton.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
