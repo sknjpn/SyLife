@@ -6,6 +6,8 @@ class CreateCellButton :
 	public Viewer
 {
 public:
-	void update();
+	CreateCellButton();
+
+	void	update() override;
 };
 
