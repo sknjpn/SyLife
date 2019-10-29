@@ -4,6 +4,7 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "BodyAsset.h"
+#include "NucleusAsset.h"
 
 void CellAsset::draw(double a)
 {
@@ -128,4 +129,15 @@ shared_ptr<BodyAsset> CellAsset::getBodyAsset() const
 	}
 
 	throw Error(U"BodyAssetが存在しません。");
+}
+
+shared_ptr<NucleusAsset> CellAsset::getNucleusAsset() const
+{
+	for (const auto& pc : m_partConfigs)
+	{
+		if (dynamic_pointer_cast<NucleusAsset>(pc->getPartAsset()))
+			return dynamic_pointer_cast<NucleusAsset>(pc->getPartAsset());
+	}
+
+	throw Error(U"NucleusAssetが存在しません。");
 }

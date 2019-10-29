@@ -6,6 +6,7 @@
 
 class PartConfig;
 class BodyAsset;
+class NucleusAsset;
 
 class CellAsset
 	: public Asset
@@ -65,6 +66,7 @@ public:
 	void	updateProperties();
 
 	shared_ptr<BodyAsset> getBodyAsset() const;
+	shared_ptr<NucleusAsset> getNucleusAsset() const;
 
 	// draw
 	void	draw(double a = 0.5);
