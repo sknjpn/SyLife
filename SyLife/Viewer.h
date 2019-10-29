@@ -24,6 +24,14 @@ public:
 	const shared_ptr<Viewer>& getParentViewer() const { return m_parentViewer; }
 
 	template <typename T>
+	shared_ptr<T>	getParentViewer() const
+	{
+			if (dynamic_pointer_cast<T>(m_parentViewer) != nullptr) return dynamic_pointer_cast<T>(m_parentViewer);
+
+		throw Error(U"ParentViewerを異なる型として参照しました");
+	}
+
+	template <typename T>
 	shared_ptr<T>	getChildViewer() const
 	{
 		for (auto it = m_childViewers.begin(); it != m_childViewers.end(); ++it)
