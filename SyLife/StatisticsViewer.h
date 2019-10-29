@@ -28,11 +28,7 @@ class StatisticsViewer :
 	int	m_statusesSizeMax = 1000;
 
 public:
-	StatisticsViewer()
-	{
-		setViewerSize(m_statusesSizeMax, 100);
-	}
-
 	void	update() override;
+	void	init() override;
 };
 
