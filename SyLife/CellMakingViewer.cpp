@@ -155,26 +155,26 @@ void CellMakingViewer::setMode(Mode mode)
 		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
 		addChildViewer<ShapeLayerViewer>();
-		getChildViewer<ShapeLayerViewer>()->setPartAsset(m_bodyAsset);
+		getChildViewer<ShapeLayerViewer>()->setPartAsset(m_cellAsset->getBodyAsset());
 		addChildViewer<ShapeAssemblyViewer>();
-		getChildViewer<ShapeAssemblyViewer>()->setPartAsset(m_bodyAsset);
+		getChildViewer<ShapeAssemblyViewer>()->setPartAsset(m_cellAsset->getBodyAsset());
 		break;
 	}
 }
 
 void CellMakingViewer::makeAsset()
 {
-	m_bodyAsset = g_assetManagerPtr->makeAsset<BodyAsset>();
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
 
+	auto bodyAsset = g_assetManagerPtr->makeAsset<BodyAsset>();
+	m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 	{
-		m_bodyAsset->m_mass = 1.0;
-		m_bodyAsset->m_material.setNutrition(1.0);
-		auto& l = m_bodyAsset->m_shape.emplace_back();
+		bodyAsset->m_mass = 1.0;
+		bodyAsset->m_material.setNutrition(1.0);
+		auto& l = bodyAsset->m_shape.emplace_back();
 		l.m_color = Palette::White;
 		l.m_polygon = Circle(10.0).asPolygon();
 	}
 
-	m_cellAsset->addPartConfig()->setPartAsset(m_bodyAsset);
 	m_cellAsset->updateProperties();
 }
