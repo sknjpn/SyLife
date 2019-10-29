@@ -143,7 +143,7 @@ void CellMakingViewer::setMode(Mode mode)
 		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
 		addChildViewer<AssemblyViewer>();
-		getChildViewer<AssemblyViewer>()->m_cellAsset = m_cellAsset;
+		getChildViewer<AssemblyViewer>()->setCellAsset(m_cellAsset);
 		addChildViewer<PartPaletteViewer>();
 		break;
 

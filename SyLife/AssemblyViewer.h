@@ -4,19 +4,13 @@
 #include "TinyCamera.h"
 
 class CellAsset;
-class BodyAsset;
 class PartConfig;
-class CellMakingViewer;
-class PartPaletteViewer;
 
 class AssemblyViewer
 	: public Viewer
 {
-	friend class CellMakingViewer;
-
 	shared_ptr<CellAsset> m_cellAsset;
 
-public:
 	enum struct State
 	{
 		MoveMode,
@@ -41,5 +35,7 @@ public:
 
 	void	drawParts() const;
 	void	drawGrid() const;
+
+	void	setCellAsset(const shared_ptr<CellAsset>& cellAsset) { m_cellAsset = cellAsset; }
 };
 
