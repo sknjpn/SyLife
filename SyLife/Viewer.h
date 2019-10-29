@@ -28,7 +28,7 @@ public:
 	template <typename T>
 	shared_ptr<T>	getParentViewer() const
 	{
-			if (dynamic_pointer_cast<T>(m_parentViewer) != nullptr) return dynamic_pointer_cast<T>(m_parentViewer);
+		if (dynamic_pointer_cast<T>(m_parentViewer) != nullptr) return dynamic_pointer_cast<T>(m_parentViewer);
 
 		throw Error(U"ParentViewerを異なる型として参照しました");
 	}
@@ -42,8 +42,17 @@ public:
 		throw Error(U"存在しないViewerを参照しました");
 	}
 
+	template <typename T>
+	bool	hasChildViewer() const
+	{
+		for (auto it = m_childViewers.begin(); it != m_childViewers.end(); ++it)
+			if (dynamic_pointer_cast<T>(*it) != nullptr) return true;
+
+		return false;
+	}
+
 	template <typename T, typename... Args>
-	shared_ptr<T>	addChildViewer(Args&&... args) 
+	shared_ptr<T>	addChildViewer(Args&&... args)
 	{
 		auto cv = make_shared<T>(args...);
 

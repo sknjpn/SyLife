@@ -27,6 +27,4 @@ public:
 	void	update() override;
 
 	const TinyCamera& getCamera() const { return m_camera; }
-
-	void	makeReleaseViewer();
 };
