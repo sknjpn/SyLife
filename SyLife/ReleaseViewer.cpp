@@ -19,7 +19,7 @@ ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 
 void ReleaseViewer::update()
 {
-	auto cmv = getParentViewer()->getChildViewer()->getViewer<CellMakingViewer>();
+	auto cmv = getParentViewer()->getChildViewer<CellMakingViewer>();
 	auto fv = getParentViewer<FieldViewer>();
 
 	auto t = fv->getCamera().createTransformer();
