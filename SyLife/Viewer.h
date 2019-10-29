@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 class Viewer
+	: public enable_shared_from_this<Viewer>
 {
 	friend class ViewerManager;
 
@@ -15,6 +16,7 @@ class Viewer
 	Array<shared_ptr<Viewer>>	m_childViewers;
 
 	static void UpdateAllViewers();
+
 public:
 	virtual ~Viewer() = default;
 
@@ -41,7 +43,15 @@ public:
 	}
 
 	template <typename T, typename... Args>
-	shared_ptr<T>	addChildViewer(Args&&... args) { return dynamic_pointer_cast<T>(m_childViewers.emplace_back(make_shared<T>(args...))); }
+	shared_ptr<T>	addChildViewer(Args&&... args) 
+	{
+		auto cv = make_shared<T>(args...);
+
+		m_childViewers.emplace_back(cv);
+		cv->m_parentViewer = shared_from_this();
+
+		return cv;
+	}
 
 	void	destroy();
 
