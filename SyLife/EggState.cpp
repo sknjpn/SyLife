@@ -1,6 +1,5 @@
 ﻿#include "EggState.h"
 
-#include "SystemManager.h"
 #include "CellManager.h"
 
 #include "CellAsset.h"
@@ -17,7 +16,7 @@ EggState::EggState(const shared_ptr<CellAsset>& cellAsset)
 
 void EggState::updateEgg()
 {
-	m_timer -= g_systemManagerPtr->GetDeltaTime();
+	m_timer -= DeltaTime;
 
 	// 孵化
 	if (m_timer <= 0)
