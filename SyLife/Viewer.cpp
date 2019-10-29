@@ -1,6 +1,10 @@
 ﻿#include "Viewer.h"
 #include "ViewerManager.h"
 
+void Viewer::Run()
+{
+}
+
 void Viewer::destroy()
 {
 	m_isDestroyed = true;

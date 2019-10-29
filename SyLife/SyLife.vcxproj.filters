@@ -554,9 +554,6 @@
     <ClCompile Include="CellMakingButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RootViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -768,9 +765,6 @@
     </ClInclude>
     <ClInclude Include="CellMakingButton.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RootViewer.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
