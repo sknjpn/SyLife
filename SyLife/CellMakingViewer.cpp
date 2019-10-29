@@ -33,8 +33,7 @@ void CellMakingViewer::update()
 
 			for (const auto& p : m_cellAsset->getPartConfigs())
 			{
-				auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
-					.translated(p->getPosition().x, p->getPosition().y));
+				auto t2 = Transformer2D(p->getMat3x2());
 
 				p->getPartAsset()->getShape().draw(0.5);
 				p->getPartAsset()->getShape().getPolygon().drawFrame(2.0, Palette::Black);

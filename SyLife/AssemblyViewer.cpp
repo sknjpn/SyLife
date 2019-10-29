@@ -50,7 +50,7 @@ void AssemblyViewer::update()
 	{
 		for (const auto& pc : m_cellAsset->getPartConfigs())
 		{
-			auto t = Transformer2D(Mat3x2::Rotate(pc->getRotation()).translated(pc->getPosition()), true);
+			auto t = Transformer2D(pc->getMat3x2(), true);
 
 			if (pc->getPartAsset()->getShape().getPolygon().mouseOver()) m_selectedPartConfig = pc;
 		}
@@ -104,8 +104,7 @@ void AssemblyViewer::drawParts() const
 {
 	for (const auto& p : m_cellAsset->getPartConfigs())
 	{
-		auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
-			.translated(p->getPosition().x, p->getPosition().y));
+		auto t2 = Transformer2D(p->getMat3x2());
 
 		p->getPartAsset()->getShape().draw(0.5);
 		p->getPartAsset()->getShape().getPolygon().drawFrame(1.0, Palette::Black);
@@ -113,8 +112,7 @@ void AssemblyViewer::drawParts() const
 
 	if (m_selectedPartConfig)
 	{
-		auto t2 = Transformer2D(Mat3x2::Rotate(m_selectedPartConfig->getRotation())
-			.translated(m_selectedPartConfig->getPosition()));
+		auto t2 = Transformer2D(m_selectedPartConfig->getMat3x2());
 
 		m_selectedPartConfig->getPartAsset()->getShape().getPolygon().draw(ColorF(1.0, 0.5));
 	}

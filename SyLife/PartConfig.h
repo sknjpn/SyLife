@@ -17,6 +17,8 @@ public:
 	const Vec2& getPosition() const { return m_position; }
 	double	getRotation() const { return m_rotation; }
 
+	Mat3x2	getMat3x2() const { return Mat3x2::Rotate(getRotation()).translated(getPosition()); }
+
 	// Set
 	void	setPartAsset(const shared_ptr<PartAsset>& partAsset) { m_partAsset = partAsset; }
 	void	setPosition(const Vec2& position) { m_position = position; }
