@@ -75,7 +75,7 @@ void Viewer::Run()
 
 const shared_ptr<Viewer>& Viewer::GetRootViewer()
 {
-	static shared_ptr<Viewer> rootViewer;
+	static shared_ptr<Viewer> rootViewer = MakeShared<Viewer>();
 
 	return rootViewer;
 }
