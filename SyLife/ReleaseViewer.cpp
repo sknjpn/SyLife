@@ -9,6 +9,7 @@
 #include "CellState.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
+#include "CellMakingButton.h"
 
 ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
@@ -19,11 +20,10 @@ ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 
 void ReleaseViewer::update()
 {
-	auto cmv = getParentViewer()->getChildViewer<CellMakingViewer>();
 	auto fv = getParentViewer<FieldViewer>();
 
 	auto t = fv->getCamera().createTransformer();
-	Circle circle(Cursor::PosF(), cmv->m_cellAsset->getRadius() * 2.0);
+	Circle circle(Cursor::PosF(), m_cellAsset->getRadius() * 2.0);
 
 	circle
 		.draw(circle.mouseOver() ? Palette::Orange : Palette::Skyblue)
@@ -33,7 +33,7 @@ void ReleaseViewer::update()
 	{
 		auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-		for (const auto& p : cmv->m_cellAsset->getPartConfigs())
+		for (const auto& p : m_cellAsset->getPartConfigs())
 		{
 			auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
 				.translated(p->getPosition().x, p->getPosition().y));
@@ -49,11 +49,12 @@ void ReleaseViewer::update()
 		m_cellAsset->setCentroidAsOrigin();
 
 		// 新規Cell
-		const auto& c = g_cellManagerPtr->addCellState(cmv->m_cellAsset);
+		const auto& c = g_cellManagerPtr->addCellState(m_cellAsset);
 		c->setPosition(Cursor::PosF());
 		c->setVelocity(Vec2::Zero());
 		c->init();
 
-		return;
+		GetRootViewer()->addChildViewer<CellMakingButton>();
+		destroy();
 	}
 }

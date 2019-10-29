@@ -81,7 +81,7 @@ void AssemblyViewer::update()
 			selectedPart->getShape().getPolygon().movedBy(Cursor::PosF()).draw(ColorF(canSetPart ? Palette::Green : Palette::Red, 0.5));
 		}
 
-		if (!MouseL.pressed()) getChildViewer<PartPaletteViewer>()->clearSelectedPart();
+		if (!MouseL.pressed()) getParentViewer()->getChildViewer<PartPaletteViewer>()->clearSelectedPart();
 	}
 
 	m_cellAsset->updateProperties();

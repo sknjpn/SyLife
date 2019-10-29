@@ -65,6 +65,8 @@ public:
 
 	void	destroy();
 
+	const Array<shared_ptr<Viewer>>& getChildViewers() const { return m_childViewers; }
+
 	// 再帰的
 	Array<shared_ptr<Viewer>>	getAllChildViewers() const;
 

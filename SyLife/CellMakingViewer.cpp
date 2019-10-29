@@ -48,7 +48,7 @@ void CellMakingViewer::update()
 
 		if (SimpleGUI::Button(U"Release", Vec2(0, 0), 180))
 		{
-			addChildViewer<ReleaseViewer>(m_cellAsset);
+			getParentViewer()->addChildViewer<ReleaseViewer>(m_cellAsset);
 			destroy();
 			return;
 		}
@@ -121,11 +121,6 @@ void CellMakingViewer::update()
 
 void CellMakingViewer::init()
 {
-	addChildViewer<AssemblyViewer>();
-	addChildViewer<PartPaletteViewer>();
-	addChildViewer<ShapeLayerViewer>();
-	addChildViewer<ShapeAssemblyViewer>();
-	
 	// 新しいモデルの登録
 	makeAsset();
 
@@ -136,6 +131,8 @@ void CellMakingViewer::setMode(Mode mode)
 {
 	m_mode = mode;
 
+	for (auto& cv : getChildViewers()) cv->destroy();
+
 	switch (mode)
 	{
 	case CellMakingViewer::Mode::EditParts:
@@ -145,6 +142,9 @@ void CellMakingViewer::setMode(Mode mode)
 		// DrawRectの設定
 		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
+		addChildViewer<AssemblyViewer>();
+		getChildViewer<AssemblyViewer>()->m_cellAsset = m_cellAsset;
+		addChildViewer<PartPaletteViewer>();
 		break;
 
 	case CellMakingViewer::Mode::EditBodyShapes:
@@ -153,6 +153,11 @@ void CellMakingViewer::setMode(Mode mode)
 
 		// DrawRectの設定
 		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
+
+		addChildViewer<ShapeLayerViewer>();
+		getChildViewer<ShapeLayerViewer>()->setPartAsset(m_bodyAsset);
+		addChildViewer<ShapeAssemblyViewer>();
+		getChildViewer<ShapeAssemblyViewer>()->setPartAsset(m_bodyAsset);
 		break;
 	}
 }
@@ -161,7 +166,6 @@ void CellMakingViewer::makeAsset()
 {
 	m_bodyAsset = g_assetManagerPtr->makeAsset<BodyAsset>();
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
-	getChildViewer<AssemblyViewer>()->m_cellAsset = m_cellAsset;
 
 	{
 		m_bodyAsset->m_mass = 1.0;
@@ -173,7 +177,4 @@ void CellMakingViewer::makeAsset()
 
 	m_cellAsset->addPartConfig()->setPartAsset(m_bodyAsset);
 	m_cellAsset->updateProperties();
-
-	getChildViewer<ShapeAssemblyViewer>()->setPartAsset(m_bodyAsset);
-	getChildViewer<ShapeLayerViewer>()->setPartAsset(m_bodyAsset);
 }
