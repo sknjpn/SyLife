@@ -1,6 +1,5 @@
 ﻿#include "SynthesizerAsset.h"
 
-#include "ViewerManager.h"
 #include "AssetManager.h"
 
 #include "SynthesizerEditor.h"

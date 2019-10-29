@@ -1,7 +1,5 @@
 ﻿#include "WingAsset.h"
 
-#include "ViewerManager.h"
-
 #include "WingState.h"
 #include "WingEditor.h"
 #include "PartShapeViewer.h"

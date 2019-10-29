@@ -1,6 +1,5 @@
 ﻿#include "ReleaseViewer.h"
 
-#include "ViewerManager.h"
 #include "CellManager.h"
 #include "AssetManager.h"
 
@@ -14,7 +13,6 @@
 ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 {
-	setPriority(3);
 	setViewerRect(Scene::Rect());
 	setBackgroundColor(Color(0, 0));
 }

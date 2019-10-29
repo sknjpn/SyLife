@@ -16,7 +16,7 @@ void SynthesizerState::draw(const CellState& cellState) const
 
 void SynthesizerState::update(CellState& cellState)
 {
-	m_timer += g_systemManagerPtr->GetDeltaTime();
+	m_timer += DeltaTime;
 
 	auto asset = dynamic_pointer_cast<SynthesizerAsset>(getPartConfig()->getPartAsset());
 	if (m_timer > 2.0 &&

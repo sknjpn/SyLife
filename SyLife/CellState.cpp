@@ -53,7 +53,7 @@ void CellState::updateCell()
 	}
 
 	// Timer
-	m_startTimer += g_systemManagerPtr->GetDeltaTime();
+	m_startTimer += DeltaTime;
 
 	// parts
 	for (const auto& p : m_partStates) p->update(*this);
@@ -99,7 +99,7 @@ void CellState::updateCell()
 	// 分裂処理
 	if (m_yieldTimer > 0)
 	{
-		if ((m_yieldTimer += g_systemManagerPtr->GetDeltaTime()) >= m_cellAsset->getYieldTime())
+		if ((m_yieldTimer += DeltaTime) >= m_cellAsset->getYieldTime())
 		{
 			m_yieldTimer = 0.0;
 			m_storage -= m_cellAsset->getMaterial();
@@ -112,11 +112,11 @@ void CellState::updateCell()
 	}
 	else if (m_storage >= m_cellAsset->getMaterial())
 	{
-		m_yieldTimer += g_systemManagerPtr->GetDeltaTime();
+		m_yieldTimer += DeltaTime;
 	}
 
 	// 死亡処理
-	if ((m_deathTimer -= g_systemManagerPtr->GetDeltaTime()) <= 0.0)
+	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
 		// Nutritionの吐き出し
 		g_chipManagerPtr->addNutrition(getPosition(), m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
