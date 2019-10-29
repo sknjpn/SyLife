@@ -162,7 +162,8 @@ void FieldViewer::update()
 
 void FieldViewer::makeReleaseViewer()
 {
-	//addChildViewer<ReleaseViewer>();
-	//m_releaseViewer = MakeUnique<ReleaseViewer>(m_cellMakingViewer->getCellAsset());
-	//getChildViewer<CellMakingViewer>()->destroy();
+	auto cmv = getChildViewer<CellMakingViewer>();
+	
+	addChildViewer<ReleaseViewer>(cmv->getCellAsset());
+	cmv->destroy();
 }
