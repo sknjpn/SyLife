@@ -14,6 +14,7 @@ class Viewer
 	shared_ptr<Viewer>			m_parentViewer;
 	Array<shared_ptr<Viewer>>	m_childViewers;
 
+	static void UpdateAllViewers();
 public:
 	virtual ~Viewer() = default;
 

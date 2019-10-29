@@ -1,10 +1,15 @@
 ﻿#include "Viewer.h"
 #include "ViewerManager.h"
 
+void Viewer::UpdateAllViewers()
+{
+}
+
 void Viewer::Run()
 {
 	while (System::Update())
 	{
+		UpdateAllViewers();
 	}
 }
 
