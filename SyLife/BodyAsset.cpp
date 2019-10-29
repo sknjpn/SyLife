@@ -1,7 +1,5 @@
 ﻿#include "BodyAsset.h"
 
-#include "ViewerManager.h"
-
 #include "BodyState.h"
 #include "BodyEditor.h"
 #include "PartShapeViewer.h"
