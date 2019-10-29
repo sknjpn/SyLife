@@ -272,6 +272,9 @@
     <ClCompile Include="NeedleAsset.cpp" />
     <ClCompile Include="NeedleEditor.cpp" />
     <ClCompile Include="NeedleState.cpp" />
+    <ClCompile Include="NucleusAsset.cpp" />
+    <ClCompile Include="NucleusEditor.cpp" />
+    <ClCompile Include="NucleusState.cpp" />
     <ClCompile Include="PartAsset.cpp" />
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="PartEditor.cpp" />
@@ -344,6 +347,9 @@
     <ClInclude Include="NeedleAsset.h" />
     <ClInclude Include="NeedleEditor.h" />
     <ClInclude Include="NeedleState.h" />
+    <ClInclude Include="NucleusAsset.h" />
+    <ClInclude Include="NucleusEditor.h" />
+    <ClInclude Include="NucleusState.h" />
     <ClInclude Include="PartAsset.h" />
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartEditor.h" />

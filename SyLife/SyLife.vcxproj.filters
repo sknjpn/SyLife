@@ -548,6 +548,15 @@
     <ClCompile Include="CellMakingButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NucleusState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NucleusAsset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NucleusEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -752,6 +761,15 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CellMakingButton.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NucleusState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NucleusAsset.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NucleusEditor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

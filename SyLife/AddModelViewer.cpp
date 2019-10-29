@@ -6,6 +6,7 @@
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
 #include "ModuleAsset.h"
+#include "NucleusAsset.h"
 #include "WingAsset.h"
 
 void AddModelViewer::update()
@@ -16,6 +17,7 @@ void AddModelViewer::update()
 	drawAssets<BodyAsset>("BodyAsset");
 	drawAssets<EquipmentAsset>("EquipmentAsset");
 	drawAssets<ModuleAsset>("ModuleAsset");
+	drawAssets<NucleusAsset>("NucleusAsset");
 	drawAssets<WingAsset>("WingAsset");
 }
 
