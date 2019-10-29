@@ -57,7 +57,7 @@ void AssemblyViewer::update()
 	}
 
 	// selectedPart
-	if (auto& selectedPart = g_viewerManagerPtr->getViewer<PartPaletteViewer>()->getSelectedPart())
+	if (auto& selectedPart = getParentViewer()->getChildViewer<PartPaletteViewer>()->getSelectedPart())
 	{
 		bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(Cursor::PosF());
 

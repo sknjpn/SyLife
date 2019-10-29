@@ -1,6 +1,6 @@
 ﻿#include "ModuleAsset.h"
 
-#include "ViewerManager.h"
+
 
 #include "ModuleState.h"
 #include "ModuleEditor.h"

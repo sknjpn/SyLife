@@ -7,8 +7,6 @@
 CellStateViewer::CellStateViewer()
 	: m_cellState(nullptr)
 {
-	setPriority(1);
-
 	setViewerRect(Scene::Width() - 300, 450, 200, 400);
 }
 

@@ -1,6 +1,6 @@
 ﻿#include "WaveManager.h"
 
-#include "SystemManager.h"
+
 #include "ChipManager.h"
 
 unique_ptr<WaveManager>	g_waveManagerPtr;

@@ -1,7 +1,7 @@
 ﻿#include "PartAsset.h"
 
 #include "AssetManager.h"
-#include "ViewerManager.h"
+
 
 #include "PartState.h"
 #include "PartEditor.h"

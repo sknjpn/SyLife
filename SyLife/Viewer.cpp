@@ -1,44 +1,46 @@
 ﻿#include "Viewer.h"
-#include "ViewerManager.h"
+
 
 void Viewer::UpdateAllViewers()
 {
 	// Viewerのリセット
-	auto viewers = m_rootViewer->getAllChildViewers();
-	shared_ptr<Viewer> mouseoverViewer;
-	for (auto it = viewers.begin(); it < viewers.end(); ++it)
 	{
-		(*it)->m_isMouseover = false;
-		(*it)->m_drawPos = Vec2::Zero();
+		auto viewers = GetRootViewer()->getAllChildViewers();
+		shared_ptr<Viewer> mouseoverViewer;
+		for (auto it = viewers.begin(); it < viewers.end(); ++it)
+		{
+			(*it)->m_isMouseover = false;
+			(*it)->m_drawPos = Vec2::Zero();
 
-		if ((*it)->m_viewerRect.mouseOver()) mouseoverViewer = *it;
-	}
+			if ((*it)->m_viewerRect.mouseOver()) mouseoverViewer = *it;
+		}
 
-	// mouseOver 適用
-	if (mouseoverViewer) mouseoverViewer->m_isMouseover = true;
+		// mouseOver 適用
+		if (mouseoverViewer) mouseoverViewer->m_isMouseover = true;
 
-	// Viewer 更新
-	for (auto it = viewers.begin(); it < viewers.end(); ++it)
-	{
-		// 消されたならば処理しない
-		if ((*it)->m_isDestroyed) continue;
+		// Viewer 更新
+		for (auto it = viewers.begin(); it < viewers.end(); ++it)
+		{
+			// 消されたならば処理しない
+			if ((*it)->m_isDestroyed) continue;
 
-		auto vp = ScopedViewport2D(Rect((*it)->m_viewerRect));
-		auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_viewerRect.pos));
+			auto vp = ScopedViewport2D(Rect((*it)->m_viewerRect));
+			auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_viewerRect.pos));
 
-		RectF((*it)->m_viewerRect.size).draw((*it)->m_backgroundColor);
+			RectF((*it)->m_viewerRect.size).draw((*it)->m_backgroundColor);
 
-		(*it)->update();
+			(*it)->update();
 
-		(*it)->m_transformer.reset();
+			(*it)->m_transformer.reset();
 
-		// フレーム描画
-		if (KeyF.pressed()) RectF((*it)->m_viewerRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
+			// フレーム描画
+			if (KeyF.pressed()) RectF((*it)->m_viewerRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
+		}
 	}
 
 	// destroyされたViewerの削除
 	{
-		auto viewers = m_rootViewer->getAllChildViewers();
+		auto viewers = GetRootViewer()->getAllChildViewers();
 
 		for (;;)
 		{
@@ -71,7 +73,7 @@ void Viewer::Run()
 	}
 }
 
-const shared_ptr<Viewer>& Viewer::getRootViewer()
+const shared_ptr<Viewer>& Viewer::GetRootViewer()
 {
 	static shared_ptr<Viewer> rootViewer;
 
@@ -90,7 +92,7 @@ Array<shared_ptr<Viewer>> Viewer::getAllChildViewers() const
 {
 	Array<shared_ptr<Viewer>> result;
 
-	result.emplace_back(m_childViewers);
+	result.append(m_childViewers);
 
 	for (const auto& cv : m_childViewers)
 		result.append(cv->getAllChildViewers());

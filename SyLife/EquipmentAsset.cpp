@@ -1,6 +1,6 @@
 ﻿#include "EquipmentAsset.h"
 
-#include "ViewerManager.h"
+
 
 #include "EquipmentState.h"
 #include "EquipmentEditor.h"

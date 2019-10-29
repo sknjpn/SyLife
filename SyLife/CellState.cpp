@@ -1,7 +1,6 @@
 ﻿#include "CellState.h"
 #include "CellAsset.h"
 
-#include "SystemManager.h"
 #include "EggManager.h"
 #include "CellManager.h"
 #include "ChipManager.h"

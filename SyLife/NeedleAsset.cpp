@@ -1,6 +1,6 @@
 ﻿#include "NeedleAsset.h"
 
-#include "ViewerManager.h"
+
 
 #include "NeedleState.h"
 #include "NeedleEditor.h"

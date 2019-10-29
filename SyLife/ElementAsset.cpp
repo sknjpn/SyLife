@@ -1,7 +1,4 @@
 ﻿#include "ElementAsset.h"
-
-#include "ViewerManager.h"
-
 #include "ElementEditor.h"
 
 void ElementAsset::makeViewer()

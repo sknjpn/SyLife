@@ -19,10 +19,8 @@ ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 
 void ReleaseViewer::update()
 {
-	if (isInvisible()) return;
-
-	auto cmv = g_viewerManagerPtr->getViewer<CellMakingViewer>();
-	auto fv = g_viewerManagerPtr->getViewer<FieldViewer>();
+	auto cmv = getParentViewer()->getChildViewer()->getViewer<CellMakingViewer>();
+	auto fv = getParentViewer<FieldViewer>();
 
 	auto t = fv->getCamera().createTransformer();
 	Circle circle(Cursor::PosF(), cmv->m_cellAsset->getRadius() * 2.0);

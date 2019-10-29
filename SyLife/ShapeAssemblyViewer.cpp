@@ -1,15 +1,15 @@
 ﻿#include "ShapeAssemblyViewer.h"
 
-#include "ViewerManager.h"
+
 
 #include "ShapeLayerViewer.h"
 #include "PartAsset.h"
 
 void ShapeAssemblyViewer::update()
 {
-	if (!m_partAsset || isInvisible()) return;
+	if (!m_partAsset) return;
 
-	auto slv = g_viewerManagerPtr->getViewer<ShapeLayerViewer>();
+	auto slv = getParentViewer()->getChildViewer<ShapeLayerViewer>();
 	auto index = slv->getSelectedIndex();
 
 	m_camera.update();
