@@ -53,8 +53,6 @@ void CellMakingViewer::update()
 
 			if (SimpleGUI::Button(U"Release", Vec2(0, 0), 180))
 			{
-				setMode(Mode::Release);
-
 				return;
 			}
 		}
@@ -144,8 +142,6 @@ void CellMakingViewer::update()
 
 			if (SimpleGUI::Button(U"Release", Vec2(0, 0), 180))
 			{
-				setMode(Mode::Release);
-
 				return;
 			}
 		}
