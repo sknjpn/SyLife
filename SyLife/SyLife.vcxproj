@@ -294,7 +294,6 @@
     <ClCompile Include="SynthesizerAsset.cpp" />
     <ClCompile Include="SynthesizerEditor.cpp" />
     <ClCompile Include="SynthesizerState.cpp" />
-    <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="Wave.cpp" />
@@ -364,7 +363,6 @@
     <ClInclude Include="SynthesizerAsset.h" />
     <ClInclude Include="SynthesizerEditor.h" />
     <ClInclude Include="SynthesizerState.h" />
-    <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="Viewer.h" />

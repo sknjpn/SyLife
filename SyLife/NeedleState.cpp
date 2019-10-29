@@ -1,6 +1,5 @@
 ﻿#include "NeedleState.h"
 
-#include "SystemManager.h"
 #include "CellManager.h"
 
 #include "NeedleAsset.h"
@@ -17,7 +16,8 @@ void NeedleState::draw(const CellState& cellState) const
 
 void NeedleState::update(CellState& cellState)
 {
-	m_heat -= g_systemManagerPtr->GetDeltaTime();
+	m_heat -= 1.0 / 60.0;
+
 	if (m_heat < 0)
 	{
 		m_heat = 5.0;

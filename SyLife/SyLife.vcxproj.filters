@@ -365,9 +365,6 @@
     <ClCompile Include="SynthesizerState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SystemManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TitleViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -572,9 +569,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="SynthesizerState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SystemManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="TinyCamera.h">
