@@ -36,6 +36,8 @@ void Viewer::UpdateAllViewers()
 			// フレーム描画
 			if (KeyF.pressed()) RectF((*it)->m_viewerRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
 		}
+
+		//if (mouseoverViewer) mouseoverViewer->m_viewerRect.draw(ColorF(Palette::Red, 0.25));
 	}
 
 	// destroyされたViewerの削除

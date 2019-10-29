@@ -21,7 +21,7 @@ public:
 	{
 		MoveMode,
 		RotateMode,
-	} m_state;
+	} m_state = State::MoveMode;
 
 	TinyCamera	m_camera;
 
