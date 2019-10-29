@@ -38,8 +38,6 @@ class CellMakingViewer :
 public:
 	CellMakingViewer()
 	{
-		setPriority(1);
-
 		// 新しいモデルの登録
 		makeAsset();
 
