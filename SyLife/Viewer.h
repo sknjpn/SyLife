@@ -7,13 +7,13 @@ class Viewer
 
 	bool	m_isRoot = false;
 	bool	m_isDestroyed = false;
-	bool	m_isMouseover = false;
 	Vec2	m_drawPos = Vec2::Zero();
 	RectF	m_viewerRect = RectF(Scene::Size());
 	Color	m_backgroundColor = Color(11, 22, 33, 128);
 	unique_ptr<Transformer2D>	m_transformer;
 	shared_ptr<Viewer>			m_parentViewer;
 	Array<shared_ptr<Viewer>>	m_childViewers;
+	static shared_ptr<Viewer>	g_mouseoveredViewer;
 
 	static void UpdateAllViewers();
 
@@ -87,7 +87,7 @@ public:
 	void	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); }
 
 	// Get
-	bool	isMouseover() const { return m_isMouseover; }
+	bool	isMouseover() const { return shared_from_this() == g_mouseoveredViewer; }
 	const RectF& getViewerRect() const { return m_viewerRect; }
 	const Vec2& getViewerSize() const { return m_viewerRect.size; }
 	const Vec2& getDrawPos() const { return m_drawPos; }

@@ -1,22 +1,19 @@
 ﻿#include "Viewer.h"
 
+shared_ptr<Viewer>	Viewer::g_mouseoveredViewer;
 
 void Viewer::UpdateAllViewers()
 {
 	// Viewerのリセット
 	{
 		auto viewers = GetRootViewer()->getAllChildViewers();
-		shared_ptr<Viewer> mouseoverViewer;
+		g_mouseoveredViewer = nullptr;
 		for (auto it = viewers.begin(); it < viewers.end(); ++it)
 		{
-			(*it)->m_isMouseover = false;
 			(*it)->m_drawPos = Vec2::Zero();
 
-			if ((*it)->m_viewerRect.mouseOver()) mouseoverViewer = *it;
+			if ((*it)->m_viewerRect.mouseOver()) g_mouseoveredViewer = *it;
 		}
-
-		// mouseOver 適用
-		if (mouseoverViewer) mouseoverViewer->m_isMouseover = true;
 
 		// Viewer 更新
 		for (auto it = viewers.begin(); it < viewers.end(); ++it)
@@ -36,8 +33,6 @@ void Viewer::UpdateAllViewers()
 			// フレーム描画
 			if (KeyF.pressed()) RectF((*it)->m_viewerRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
 		}
-
-		//if (mouseoverViewer) mouseoverViewer->m_viewerRect.draw(ColorF(Palette::Red, 0.25));
 	}
 
 	// destroyされたViewerの削除
