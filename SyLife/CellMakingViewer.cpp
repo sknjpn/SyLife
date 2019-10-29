@@ -203,12 +203,6 @@ void CellMakingViewer::setMode(Mode mode)
 	switch (mode)
 	{
 	case CellMakingViewer::Mode::EditParts:
-		setInvisible(false);
-		m_assemblyViewer.setInvisible(false);
-		m_partPaletteViewer.setInvisible(false);
-		m_shapeAssemblyViewer.setInvisible(true);
-		m_shapeLayerViewer.setInvisible(true);
-
 		// BackgroundColorの設定
 		setBackgroundColor(Color(11, 22, 33));
 
@@ -218,12 +212,6 @@ void CellMakingViewer::setMode(Mode mode)
 		break;
 
 	case CellMakingViewer::Mode::EditBodyShapes:
-		setInvisible(false);
-		m_assemblyViewer.setInvisible(true);
-		m_partPaletteViewer.setInvisible(true);
-		m_shapeAssemblyViewer.setInvisible(false);
-		m_shapeLayerViewer.setInvisible(false);
-
 		// BackgroundColorの設定
 		setBackgroundColor(Color(11, 22, 33));
 
