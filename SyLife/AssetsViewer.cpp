@@ -1,7 +1,5 @@
 ﻿#include "AssetsViewer.h"
 
-#include "ViewerManager.h"
-
 #include "AddModelViewer.h"
 #include "AssetEditor.h"
 
