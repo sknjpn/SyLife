@@ -8,11 +8,6 @@ class AddModelViewer
 	: public Viewer
 {
 public:
-	AddModelViewer()
-	{
-		setViewerRect(100, 150, 400, 300);
-	}
-
 	template <typename T>
 	void	addModel()
 	{
@@ -46,5 +41,6 @@ public:
 	}
 
 	void	update() override;
+	void	init() override;
 };
 
