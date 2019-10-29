@@ -18,3 +18,8 @@ void AddModelViewer::update()
 	drawAssets<ModuleAsset>("ModuleAsset");
 	drawAssets<WingAsset>("WingAsset");
 }
+
+void AddModelViewer::init()
+{
+	setViewerRect(100, 150, 400, 300);
+}
