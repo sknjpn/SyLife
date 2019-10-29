@@ -3,6 +3,9 @@
 
 void Viewer::Run()
 {
+	while (System::Update())
+	{
+	}
 }
 
 void Viewer::destroy()
