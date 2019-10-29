@@ -6,12 +6,8 @@
 #include "PartConfig.h"
 #include "BodyAsset.h"
 
-#include "ViewerManager.h"
-
 AssemblyViewer::AssemblyViewer()
 {
-	setPriority(2);
-
 	setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
 	setSize(Vec2(800, 800));
 }
