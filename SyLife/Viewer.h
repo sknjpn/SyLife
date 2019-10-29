@@ -49,6 +49,7 @@ public:
 
 		m_childViewers.emplace_back(cv);
 		cv->m_parentViewer = shared_from_this();
+		cv->init();
 
 		return cv;
 	}
@@ -78,9 +79,9 @@ public:
 	bool	isMouseover() const { return m_isMouseover; }
 	const RectF& getViewerRect() const { return m_viewerRect; }
 	const Vec2& getViewerSize() const { return m_viewerRect.size; }
-	const Vec2		getDrawCenter() const { return m_viewerRect.center(); }
 	const Vec2& getDrawPos() const { return m_drawPos; }
+	const Vec2	getDrawCenter() const { return m_viewerRect.center(); }
 
+	virtual void	init() {}
 	virtual void	update() {}
 };
-
