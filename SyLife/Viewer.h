@@ -19,7 +19,7 @@ public:
 	virtual ~Viewer() = default;
 
 	static void Run();
-	static const shared_ptr<Viewer>& getRootViewer();
+	static const shared_ptr<Viewer>& GetRootViewer();
 
 	const shared_ptr<Viewer>& getParentViewer() const { return m_parentViewer; }
 

@@ -30,7 +30,7 @@ void Main()
 
 	g_systemManagerPtr = make_unique<SystemManager>();
 
-	Viewer::getRootViewer()->addChildViewer<TitleViewer>();
+	Viewer::GetRootViewer()->addChildViewer<TitleViewer>();
 
 	while (System::Update())
 	{
