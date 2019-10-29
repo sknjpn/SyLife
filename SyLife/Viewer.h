@@ -32,8 +32,8 @@ public:
 		throw Error(U"存在しないViewerを参照しました");
 	}
 
-	template <typename T>
-	shared_ptr<T>	addChildViewer(...) { return dynamic_pointer_cast<T>(m_assets.emplace_back(make_shared<T>(...))); }
+	template <typename T, typename... Args>
+	shared_ptr<T>	addChildViewer(Args... args) { return dynamic_pointer_cast<T>(m_assets.emplace_back(make_shared<T>(args))); }
 
 	void	destroy();
 
