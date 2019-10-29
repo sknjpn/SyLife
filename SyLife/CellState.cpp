@@ -142,14 +142,13 @@ void CellState::updateCell()
 
 void CellState::draw()
 {
-	auto t1 = Transformer2D(Mat3x2::Rotate(getRotation()).translated(Vec2(getPosition().x, getPosition().y)));
+	auto t1 = Transformer2D(getMat3x2());
 	auto t2 = Transformer2D(Mat3x2::Scale(min(1.0, m_startTimer + 0.5)));
 
 	// parts
 	for (const auto& p : m_partStates)
 	{
-		auto t3 = Transformer2D(Mat3x2::Rotate(p->getPartConfig()->getRotation())
-			.translated(p->getPartConfig()->getPosition().x, p->getPartConfig()->getPosition().y));
+		auto t3 = Transformer2D(p->getPartConfig()->getMat3x2());
 
 		p->draw(*this);
 	}

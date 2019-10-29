@@ -10,7 +10,7 @@ void CellAsset::draw(double a)
 	// parts
 	for (const auto& pc : m_partConfigs)
 	{
-		auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation()).translated(pc->getPosition()));
+		auto t2 = Transformer2D(pc->getMat3x2());
 
 		pc->getPartAsset()->draw(a);
 	}
