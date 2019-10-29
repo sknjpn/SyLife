@@ -208,18 +208,18 @@ void TitleViewer::update()
 			switch (m_selectedOption)
 			{
 			case Option::LaunchNewGame:
-				delete this;
-				new FieldViewer;
+				getParentViewer()->addChildViewer<FieldViewer>();
+				destroy();
 				return;
 
 			case Option::ContinueGame:
-				delete this;
-				new FieldViewer;
+				getParentViewer()->addChildViewer<FieldViewer>();
+				destroy();
 				return;
 
 			case Option::LaunchEditor:
-				delete this;
-				new EditorViewer;
+				getParentViewer()->addChildViewer<EditorViewer>();
+				destroy();
 				return;
 
 			case Option::Exit:
