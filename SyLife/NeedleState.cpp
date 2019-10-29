@@ -16,7 +16,7 @@ void NeedleState::draw(const CellState& cellState) const
 
 void NeedleState::update(CellState& cellState)
 {
-	m_heat -= 1.0 / 60.0;
+	m_heat -= DeltaTime;
 
 	if (m_heat < 0)
 	{
