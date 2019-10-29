@@ -1,8 +1,6 @@
 ﻿#include "CellAsset.h"
 #include "CellEditor.h"
 
-#include "ViewerManager.h"
-
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "BodyAsset.h"
