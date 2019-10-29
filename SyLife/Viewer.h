@@ -19,6 +19,7 @@ public:
 	virtual ~Viewer() = default;
 
 	static void Run();
+	static const shared_ptr<Viewer>& getRootViewer();
 
 	const shared_ptr<Viewer>& getParentViewer() const { return m_parentViewer; }
 
@@ -30,9 +31,9 @@ public:
 
 		throw Error(U"存在しないViewerを参照しました");
 	}
-	
+
 	template <typename T>
-	shared_ptr<T>	addChildViewer(...){ return dynamic_pointer_cast<T>(m_assets.emplace_back(make_shared<T>(...))); }
+	shared_ptr<T>	addChildViewer(...) { return dynamic_pointer_cast<T>(m_assets.emplace_back(make_shared<T>(...))); }
 
 	void	destroy();
 
@@ -57,10 +58,10 @@ public:
 
 	// Get
 	bool	isMouseover() const { return m_isMouseover; }
-	const RectF&	getViewerRect() const { return m_viewerRect; }
-	const Vec2&		getViewerSize() const { return m_viewerRect.size; }
+	const RectF& getViewerRect() const { return m_viewerRect; }
+	const Vec2& getViewerSize() const { return m_viewerRect.size; }
 	const Vec2		getDrawCenter() const { return m_viewerRect.center(); }
-	const Vec2&		getDrawPos() const { return m_drawPos; }
+	const Vec2& getDrawPos() const { return m_drawPos; }
 
 	virtual void	update() {}
 };

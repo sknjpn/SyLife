@@ -297,7 +297,6 @@
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
-    <ClCompile Include="ViewerManager.cpp" />
     <ClCompile Include="Wave.cpp" />
     <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="WingAsset.cpp" />
@@ -369,7 +368,6 @@
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="Viewer.h" />
-    <ClInclude Include="ViewerManager.h" />
     <ClInclude Include="Wave.h" />
     <ClInclude Include="WaveManager.h" />
     <ClInclude Include="WingAsset.h" />

@@ -371,9 +371,6 @@
     <ClCompile Include="TitleViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ViewerManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Wave.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -587,9 +584,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Viewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewerManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Wave.h">

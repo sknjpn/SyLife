@@ -71,6 +71,13 @@ void Viewer::Run()
 	}
 }
 
+const shared_ptr<Viewer>& Viewer::getRootViewer()
+{
+	static shared_ptr<Viewer> rootViewer;
+
+	return rootViewer;
+}
+
 void Viewer::destroy()
 {
 	m_isDestroyed = true;
