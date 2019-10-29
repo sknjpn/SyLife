@@ -35,7 +35,10 @@ FieldViewer::FieldViewer()
 	setViewerRect(Scene::Size());
 	m_audio.setLoop(true);
 	//m_audio.play();
+}
 
+void FieldViewer::init()
+{
 	addChildViewer<CellMakingButton>();
 	addChildViewer<CellStateViewer>();
 	addChildViewer<StatisticsViewer>();

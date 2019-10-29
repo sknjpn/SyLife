@@ -39,27 +39,23 @@ void Viewer::UpdateAllViewers()
 	}
 
 	// destroyされたViewerの削除
+	for (;;)
 	{
 		auto viewers = GetRootViewer()->getAllChildViewers();
+		bool flag = true;
 
-		for (;;)
+		for (auto& v : viewers)
 		{
-			bool flag = true;
-
-			for (auto& v : viewers)
+			if (v->m_childViewers.isEmpty() && v->m_isDestroyed)
 			{
-				if (v->m_childViewers.isEmpty() && v->m_isDestroyed)
-				{
-					v->m_parentViewer->m_childViewers.remove(v);
+				v->m_parentViewer->m_childViewers.remove(v);
 
-					flag = false;
-				}
+				flag = false;
 			}
-
-			if (flag) break;
 		}
-	}
 
+		if (flag) break;
+	}
 }
 
 void Viewer::Run()
