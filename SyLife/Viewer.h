@@ -33,7 +33,7 @@ public:
 	}
 
 	template <typename T, typename... Args>
-	shared_ptr<T>	addChildViewer(Args... args) { return dynamic_pointer_cast<T>(m_childViewers.emplace_back(make_shared<T>(args))); }
+	shared_ptr<T>	addChildViewer(Args&&... args) { return dynamic_pointer_cast<T>(m_childViewers.emplace_back(make_shared<T>(args...))); }
 
 	void	destroy();
 
