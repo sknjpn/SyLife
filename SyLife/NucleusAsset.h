@@ -13,6 +13,11 @@ public:
 	void makeViewer() override;
 	shared_ptr<PartState>	makeState() override;
 
+	// Get
+	double	getLifespanTime() const { return m_lifespanTime; }
+	double	getBornTime() const { return m_bornTime; }
+	double	getYieldTime() const { return m_yieldTime; }
+
 	void	load(const ptree& pt) override;
 	void	save(ptree& pt) const override;
 };

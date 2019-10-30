@@ -1,0 +1,44 @@
+{
+    "type": "NucleusAsset",
+    "mass": "10",
+    "material": {
+        "nutrition": "1.0",
+        "elements": []
+    },
+    "lifespanTime": "25.0",
+    "yieldTime": "5.0",
+    "bornTime": "10.0",
+    "export": "Carbon",
+    "layers": [
+        {
+            "color": "(255, 0, 38)",
+            "verticles": [
+                {
+                    "x": "6",
+                    "y": "-5"
+                },
+                {
+                    "x": "11",
+                    "y": "5"
+                },
+                {
+                    "x": "2",
+                    "y": "15"
+                },
+                {
+                    "x": "-7",
+                    "y": "6"
+                },
+                {
+                    "x": "-6",
+                    "y": "-5"
+                },
+                {
+                    "x": "0",
+                    "y": "-9"
+                }
+            ]
+        }
+    ],
+    "name": "Organelle C"
+}

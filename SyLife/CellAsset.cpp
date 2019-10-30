@@ -115,9 +115,10 @@ void CellAsset::updateProperties()
 	// maxStorage (生成の必要量の二倍)
 	updateMaxStorage();
 
-	m_lifespanTime = 25.0;
-	m_yieldTime = 5.0;
-	m_bornTime = 10.0;
+	const auto nucleusAsset = getNucleusAsset();
+	m_lifespanTime = nucleusAsset->getLifespanTime();
+	m_yieldTime = nucleusAsset->getYieldTime();
+	m_bornTime = nucleusAsset->getBornTime();
 }
 
 shared_ptr<BodyAsset> CellAsset::getBodyAsset() const
