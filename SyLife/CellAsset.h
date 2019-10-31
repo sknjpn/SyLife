@@ -32,6 +32,8 @@ class CellAsset
 	void	updateMaterial();
 
 public:
+	bool	isValid() const;
+
 	void	makeViewer() override;
 
 	Vec2	getCentroid();

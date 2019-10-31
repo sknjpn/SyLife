@@ -87,6 +87,11 @@ void CellAsset::setCentroidAsOrigin()
 		p->setPosition(p->getPosition() - centroid);
 }
 
+bool CellAsset::isValid() const
+{
+	return ;
+}
+
 void CellAsset::makeViewer()
 {
 	//g_viewerManagerPtr->makeViewer<CellEditor>()->setPartAsset(shared_from_this());
@@ -129,7 +134,7 @@ shared_ptr<BodyAsset> CellAsset::getBodyAsset() const
 			return dynamic_pointer_cast<BodyAsset>(pc->getPartAsset());
 	}
 
-	throw Error(U"BodyAssetが存在しません。");
+	return nullptr;
 }
 
 shared_ptr<NucleusAsset> CellAsset::getNucleusAsset() const
@@ -140,5 +145,5 @@ shared_ptr<NucleusAsset> CellAsset::getNucleusAsset() const
 			return dynamic_pointer_cast<NucleusAsset>(pc->getPartAsset());
 	}
 
-	throw Error(U"NucleusAssetが存在しません。");
+	return nullptr;
 }
