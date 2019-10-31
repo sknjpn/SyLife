@@ -8,6 +8,7 @@
 #include "SynthesizerAsset.h"
 #include "WingAsset.h"
 #include "NeedleAsset.h"
+#include "NucleusAsset.h"
 
 shared_ptr<Asset> AssetManager::makeAsset(const string& type)
 {
@@ -21,6 +22,8 @@ shared_ptr<Asset> AssetManager::makeAsset(const string& type)
 	if (type == "SynthesizerAsset")	return makeAsset<SynthesizerAsset>();
 	if (type == "WingAsset")		return makeAsset<WingAsset>();
 	if (type == "NeedleAsset")		return makeAsset<NeedleAsset>();
+	
+	if (type == "NucleusAsset")		return makeAsset<NucleusAsset>();
 
 	throw Error(U"存在しないタイプのAssetを生成しようとしました\r Type:" + Unicode::Widen(type));
 }
