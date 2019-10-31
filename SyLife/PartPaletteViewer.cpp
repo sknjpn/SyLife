@@ -6,6 +6,7 @@
 
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
+#include "NucleusAsset.h"
 #include "ModuleAsset.h"
 
 PartPaletteViewer::PartPaletteViewer()
@@ -21,6 +22,7 @@ void PartPaletteViewer::drawAssets()
 	Array<shared_ptr<PartAsset>> assets;
 	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
 	for (const auto& m : g_assetManagerPtr->getAssets<ModuleAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
 	for (auto it = assets.begin(); it != assets.end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
