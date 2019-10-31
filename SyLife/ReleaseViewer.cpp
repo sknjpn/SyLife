@@ -54,7 +54,7 @@ void ReleaseViewer::update()
 		c->setVelocity(Vec2::Zero());
 		c->init();
 
-		GetRootViewer()->addChildViewer<CellMakingButton>();
+		getParentViewer()->addChildViewer<CellMakingButton>();
 		destroy();
 	}
 }
