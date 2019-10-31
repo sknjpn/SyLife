@@ -156,13 +156,6 @@ void FieldViewer::update()
 		}
 	}
 
-	// Cell Making
-	if (hasChildViewer<CellMakingButton>() && getChildViewer<CellMakingButton>()->isSelected())
-	{
-		getChildViewer<CellMakingButton>()->destroy();
-		addChildViewer<CellMakingViewer>();
-	}
-
 	// Open Curtain
 	if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
 	else m_audio.setVolume(1.0);
