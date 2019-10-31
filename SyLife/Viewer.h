@@ -30,7 +30,7 @@ public:
 	{
 		if (dynamic_pointer_cast<T>(m_parentViewer) != nullptr) return dynamic_pointer_cast<T>(m_parentViewer);
 
-		throw Error(U"ParentViewerを異なる型として参照しました");
+		return nullptr;
 	}
 
 	template <typename T>
@@ -39,7 +39,7 @@ public:
 		for (auto it = m_childViewers.begin(); it != m_childViewers.end(); ++it)
 			if (dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
 
-		throw Error(U"存在しないViewerを参照しました");
+		return nullptr;
 	}
 
 	template <typename T>
