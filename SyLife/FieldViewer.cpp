@@ -83,6 +83,13 @@ void FieldViewer::update()
 					{
 						selectedCellState = cellState;
 						getChildViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cellState);
+
+						// CellAssetViewerの構築
+						{
+							if (auto cv = getChildViewer<CellAssetViewer>()) cv->destroy();
+							
+							addChildViewer<CellAssetViewer>(cellState->getCellAsset());
+						}
 					}
 				}
 			}
