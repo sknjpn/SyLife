@@ -21,12 +21,6 @@ void CellMakingViewer::update()
 	for (const auto& pc : m_cellAsset->getPartConfigs())
 		pc->getPartAsset()->m_shape.updateProperties();
 
-	// Rect
-	{
-		RectF rect(getViewerSize());
-		rect.rounded(10).draw().drawFrame(5.0, 0.0, Palette::Black);
-	}
-
 	// Release
 	{
 		const RectF rect = Rect(200, 200).stretched(-5);
