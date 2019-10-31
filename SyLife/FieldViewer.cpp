@@ -138,7 +138,7 @@ void FieldViewer::update()
 		}
 
 		{
-			const auto& cs =getChildViewer<CellStateViewer>()->m_cellState;
+			const auto& cs = getChildViewer<CellStateViewer>()->m_cellState;
 			if (cs != nullptr)
 			{
 				Circle(cs->getPosition(), cs->getRadius() * 1.5)
