@@ -16,7 +16,10 @@
 
 void CellMakingViewer::update()
 {
+	// 更新
 	m_cellAsset->updateProperties();
+	for (const auto& pc : m_cellAsset->getPartConfigs())
+		pc->getPartAsset()->m_shape.updateProperties();
 
 	// Release
 	{
