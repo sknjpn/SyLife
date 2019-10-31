@@ -241,6 +241,7 @@
     <ClCompile Include="BodyEditor.cpp" />
     <ClCompile Include="BodyState.cpp" />
     <ClCompile Include="CellAsset.cpp" />
+    <ClCompile Include="CellAssetViewer.cpp" />
     <ClCompile Include="CellEditor.cpp" />
     <ClCompile Include="CellMakingViewer.cpp" />
     <ClCompile Include="CellManager.cpp" />
@@ -315,6 +316,7 @@
     <ClInclude Include="BodyEditor.h" />
     <ClInclude Include="BodyState.h" />
     <ClInclude Include="CellAsset.h" />
+    <ClInclude Include="CellAssetViewer.h" />
     <ClInclude Include="CellEditor.h" />
     <ClInclude Include="CellMakingViewer.h" />
     <ClInclude Include="CellManager.h" />
