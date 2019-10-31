@@ -25,7 +25,7 @@ void CellMakingButton::update()
 	font(U"Cellの作成").drawAt(rect.center(), Palette::Black);
 
 	if (isMouseover() && MouseL.down()) m_isClicked = true;
-	if (isMouseover() && MouseL.up() && m_isClicked) m_isSelected = true;
+	if (isMouseover() && MouseL.up() && m_isClicked) onPushed();
 	if (MouseL.up()) m_isClicked = false;
 }
 

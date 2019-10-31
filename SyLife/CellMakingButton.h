@@ -6,7 +6,6 @@ class CellMakingButton :
 	public Viewer
 {
 	bool	m_isClicked = false;
-	bool	m_isSelected = false;
 
 	void	onPushed();
 
