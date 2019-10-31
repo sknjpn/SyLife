@@ -16,6 +16,8 @@
 
 void CellMakingViewer::update()
 {
+	m_cellAsset->updateProperties();
+
 	// Release
 	{
 		const RectF rect = Rect(200, 200).stretched(-5);

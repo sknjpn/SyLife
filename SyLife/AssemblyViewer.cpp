@@ -83,8 +83,6 @@ void AssemblyViewer::update()
 
 		if (!MouseL.pressed()) getParentViewer()->getChildViewer<PartPaletteViewer>()->clearSelectedPart();
 	}
-
-	m_cellAsset->updateProperties();
 }
 
 void AssemblyViewer::setSize(const Vec2& size)
