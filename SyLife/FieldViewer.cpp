@@ -21,7 +21,6 @@
 #include "CellMakingViewer.h"
 #include "CellStateViewer.h"
 #include "StatisticsViewer.h"
-#include "ReleaseViewer.h"
 
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
