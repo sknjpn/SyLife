@@ -9,7 +9,7 @@ class Viewer
 	bool	m_isDestroyed = false;
 	Vec2	m_drawPos = Vec2::Zero();
 	RectF	m_viewerRect = RectF(Scene::Size());
-	Color	m_backgroundColor = Color(11, 22, 33, 128);
+	Color	m_backgroundColor = Color(0, 0);
 	unique_ptr<Transformer2D>	m_transformer;
 	shared_ptr<Viewer>			m_parentViewer;
 	Array<shared_ptr<Viewer>>	m_childViewers;
