@@ -13,7 +13,5 @@ public:
 	CellMakingButton();
 
 	void	update() override;
-
-	bool	isSelected() const { return m_isSelected; }
 };
 
