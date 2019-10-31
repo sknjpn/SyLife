@@ -89,7 +89,7 @@ void CellAsset::setCentroidAsOrigin()
 
 bool CellAsset::isValid() const
 {
-	return ;
+	return getBodyAsset() && getNucleusAsset();
 }
 
 void CellAsset::makeViewer()
@@ -105,6 +105,8 @@ shared_ptr<PartConfig>& CellAsset::addPartConfig()
 
 void CellAsset::updateProperties()
 {
+	if (!isValid()) return;
+
 	// mass
 	updateMass();
 
