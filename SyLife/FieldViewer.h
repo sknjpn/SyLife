@@ -5,14 +5,6 @@
 #include "TinyCamera.h"
 #include "Curtain.h"
 
-class CellMakingButton;
-class CellMakingViewer;
-class CellStateViewer;
-class StatisticsViewer;
-class ReleaseViewer;
-
-class CellAsset;
-
 class FieldViewer
 	: public Viewer
 {
