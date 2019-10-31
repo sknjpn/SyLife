@@ -1,4 +1,11 @@
 ﻿#include "CellMakingButton.h"
+#include "CellMakingViewer.h"
+
+void CellMakingButton::onPushed()
+{
+	destroy();
+	getParentViewer()->addChildViewer<CellMakingViewer>();
+}
 
 CellMakingButton::CellMakingButton()
 {

@@ -8,6 +8,8 @@ class CellMakingButton :
 	bool	m_isClicked = false;
 	bool	m_isSelected = false;
 
+	void	onPushed();
+
 public:
 	CellMakingButton();
 
