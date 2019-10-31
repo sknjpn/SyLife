@@ -68,9 +68,9 @@ void FieldViewer::update()
 			g_elementManagerPtr->updateElementStates();
 		}
 
-		// Rigidbody Capture
+		// CellState Capture
 		{
-			static shared_ptr<CellState> selectedRigidbody = nullptr;
+			static shared_ptr<CellState> selectedCellState = nullptr;
 
 			if (MouseL.down())
 			{
@@ -80,7 +80,7 @@ void FieldViewer::update()
 
 					if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 					{
-						selectedRigidbody = cellState;
+						selectedCellState = cellState;
 						getChildViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cellState);
 					}
 				}
@@ -88,9 +88,9 @@ void FieldViewer::update()
 
 			if (MouseL.pressed() && isMouseover())
 			{
-				if (selectedRigidbody != nullptr) selectedRigidbody->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
+				if (selectedCellState != nullptr) selectedCellState->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
 			}
-			else selectedRigidbody = nullptr;
+			else selectedCellState = nullptr;
 		}
 
 		// draw
