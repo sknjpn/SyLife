@@ -16,6 +16,7 @@
 #include "ElementState.h"
 #include "ElementAsset.h"
 
+#include "CellAssetViewer.h"
 #include "CellMakingButton.h"
 #include "CellMakingViewer.h"
 #include "CellStateViewer.h"
