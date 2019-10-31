@@ -7,7 +7,6 @@
 #include "BodyAsset.h"
 #include "ElementAsset.h"
 #include "CellAsset.h"
-#include "ReleaseViewer.h"
 
 #include "AssemblyViewer.h"
 #include "ReleaseViewer.h"
