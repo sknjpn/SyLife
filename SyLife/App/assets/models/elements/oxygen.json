@@ -1,9 +1,9 @@
 ﻿{
-    "type":"ElementAsset",
-    "mass": "36",
+    "type": "ElementAsset",
+    "mass": 36,
     "color": "(0, 0, 192)",
     "material": {
-        "nutrition": "1.0",
+        "nutrition": 1.0,
         "elements": []
     },
     "name": "Oxygen"

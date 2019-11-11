@@ -1,9 +1,9 @@
 ﻿{
-    "type":"ElementAsset",
-    "mass": "24",
+    "type": "ElementAsset",
+    "mass": 24,
     "color": "(0, 192, 0)",
     "material": {
-        "nutrition": "1.0",
+        "nutrition": 1.0,
         "elements": []
     },
     "name": "Nitrogen"

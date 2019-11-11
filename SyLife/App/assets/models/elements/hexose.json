@@ -1,8 +1,8 @@
 ﻿{
-    "mass": "120",
+    "mass": 120,
     "color": "(255, 255, 255)",
     "material": {
-        "nutrition":"2.0",
+        "nutrition": 2.0,
         "elements": [
             {
                 "name": "Carbon",

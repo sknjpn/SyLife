@@ -1,9 +1,9 @@
 ﻿{
-    "type":"ElementAsset",
-    "mass": "72",
+    "type": "ElementAsset",
+    "mass": 72,
     "color": "(255, 192, 0)",
     "material": {
-        "nutrition":"1.0",
+        "nutrition": 1.0,
         "elements": [
             {
                 "name": "Carbon",
