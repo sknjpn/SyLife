@@ -20,6 +20,7 @@
 #include "CellMakingButton.h"
 #include "CellMakingViewer.h"
 #include "CellStateViewer.h"
+#include "CellStateCaptureViewer.h"
 #include "StatisticsViewer.h"
 
 FieldViewer::FieldViewer()
@@ -69,35 +70,20 @@ void FieldViewer::update()
 		}
 
 		// CellState Capture
+		if (MouseL.down() && !g_cellManagerPtr->getCellStates().isEmpty())
 		{
-			static shared_ptr<CellState> selectedCellState = nullptr;
-
-			if (MouseL.down())
+			auto index = g_cellManagerPtr->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
+			auto cellState = g_cellManagerPtr->getCellStates()[index];
+			if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 			{
-				for (auto i : g_cellManagerPtr->getCellStateKDTree().knnSearch(1, Cursor::PosF()))
-				{
-					auto& cellState = g_cellManagerPtr->getCellStates()[i];
+				addChildViewer<CellStateCaptureViewer>(cellState);
 
-					if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
-					{
-						selectedCellState = cellState;
-						getChildViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cellState);
+				getChildViewer<CellStateViewer>()->m_cellState = cellState;
 
-						// CellAssetViewerの構築
-						{
-							if (auto cv = getChildViewer<CellAssetViewer>()) cv->destroy();
-							
-							addChildViewer<CellAssetViewer>(cellState->getCellAsset());
-						}
-					}
-				}
+				// CellAssetViewerの構築
+				if (auto cv = getChildViewer<CellAssetViewer>()) cv->destroy();
+				addChildViewer<CellAssetViewer>(cellState->getCellAsset());
 			}
-
-			if (MouseL.pressed() && isMouseover())
-			{
-				if (selectedCellState != nullptr) selectedCellState->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
-			}
-			else selectedCellState = nullptr;
 		}
 
 		// draw

@@ -557,6 +557,9 @@
     <ClCompile Include="CellAssetViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CellStateCaptureViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReleaseViewer.h">
@@ -770,6 +773,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CellAssetViewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellStateCaptureViewer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

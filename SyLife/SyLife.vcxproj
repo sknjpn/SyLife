@@ -246,6 +246,7 @@
     <ClCompile Include="CellMakingViewer.cpp" />
     <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="CellState.cpp" />
+    <ClCompile Include="CellStateCaptureViewer.cpp" />
     <ClCompile Include="CellStateViewer.cpp" />
     <ClCompile Include="Chip.cpp" />
     <ClCompile Include="ChipManager.cpp" />
@@ -321,6 +322,7 @@
     <ClInclude Include="CellMakingViewer.h" />
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="CellState.h" />
+    <ClInclude Include="CellStateCaptureViewer.h" />
     <ClInclude Include="CellStateViewer.h" />
     <ClInclude Include="Chip.h" />
     <ClInclude Include="ChipManager.h" />
