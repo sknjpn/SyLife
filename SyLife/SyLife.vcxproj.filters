@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -344,439 +336,151 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ReleaseViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Storage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SynthesizerAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SynthesizerEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SynthesizerState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WaveManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WingAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WingEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WingState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AddModelViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssemblyViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Asset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager_MakeModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetsViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BodyAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BodyEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BodyState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellStateViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Chip.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ChipManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EggManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EggState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ElementAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ElementEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ElementManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ElementState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EquipmentAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EquipmentEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EquipmentState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NeedleAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NeedleEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NeedleState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartConfig.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartPaletteViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartShapeViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PartState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellMakingViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SlideBar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeLayerViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeAssemblyViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorPicker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StatisticsViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Shape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Viewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellMakingButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NucleusState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NucleusAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NucleusEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellAssetViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CellStateCaptureViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClCompile Include="AddModelViewer.cpp" />
+    <ClCompile Include="AssemblyViewer.cpp" />
+    <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="AssetEditor.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AssetManager_MakeModel.cpp" />
+    <ClCompile Include="AssetsViewer.cpp" />
+    <ClCompile Include="BodyAsset.cpp" />
+    <ClCompile Include="BodyEditor.cpp" />
+    <ClCompile Include="BodyState.cpp" />
+    <ClCompile Include="CellAsset.cpp" />
+    <ClCompile Include="CellAssetViewer.cpp" />
+    <ClCompile Include="CellEditor.cpp" />
+    <ClCompile Include="CellMakingButton.cpp" />
+    <ClCompile Include="CellMakingViewer.cpp" />
+    <ClCompile Include="CellManager.cpp" />
+    <ClCompile Include="CellState.cpp" />
+    <ClCompile Include="CellStateCaptureViewer.cpp" />
+    <ClCompile Include="CellStateViewer.cpp" />
+    <ClCompile Include="Chip.cpp" />
+    <ClCompile Include="ChipManager.cpp" />
+    <ClCompile Include="ColorPicker.cpp" />
+    <ClCompile Include="EditorViewer.cpp" />
+    <ClCompile Include="EggManager.cpp" />
+    <ClCompile Include="EggState.cpp" />
+    <ClCompile Include="ElementAsset.cpp" />
+    <ClCompile Include="ElementEditor.cpp" />
+    <ClCompile Include="ElementManager.cpp" />
+    <ClCompile Include="ElementState.cpp" />
+    <ClCompile Include="EquipmentAsset.cpp" />
+    <ClCompile Include="EquipmentEditor.cpp" />
+    <ClCompile Include="EquipmentState.cpp" />
+    <ClCompile Include="FieldManager.cpp" />
+    <ClCompile Include="FieldViewer.cpp" />
+    <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelEditor.cpp" />
+    <ClCompile Include="ModuleAsset.cpp" />
+    <ClCompile Include="ModuleEditor.cpp" />
+    <ClCompile Include="ModuleState.cpp" />
+    <ClCompile Include="NeedleAsset.cpp" />
+    <ClCompile Include="NeedleEditor.cpp" />
+    <ClCompile Include="NeedleState.cpp" />
+    <ClCompile Include="NucleusAsset.cpp" />
+    <ClCompile Include="NucleusEditor.cpp" />
+    <ClCompile Include="NucleusState.cpp" />
+    <ClCompile Include="PartAsset.cpp" />
+    <ClCompile Include="PartConfig.cpp" />
+    <ClCompile Include="PartEditor.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="PartPaletteViewer.cpp" />
+    <ClCompile Include="PartShapeViewer.cpp" />
+    <ClCompile Include="PartState.cpp" />
+    <ClCompile Include="ReleaseViewer.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeAssemblyViewer.cpp" />
+    <ClCompile Include="ShapeLayerViewer.cpp" />
+    <ClCompile Include="SlideBar.cpp" />
+    <ClCompile Include="StatisticsViewer.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Storage.cpp" />
+    <ClCompile Include="SynthesizerAsset.cpp" />
+    <ClCompile Include="SynthesizerEditor.cpp" />
+    <ClCompile Include="SynthesizerState.cpp" />
+    <ClCompile Include="TitleViewer.cpp" />
+    <ClCompile Include="Viewer.cpp" />
+    <ClCompile Include="WaveManager.cpp" />
+    <ClCompile Include="WingAsset.cpp" />
+    <ClCompile Include="WingEditor.cpp" />
+    <ClCompile Include="WingState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ReleaseViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Storage.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SynthesizerAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SynthesizerEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SynthesizerState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TinyCamera.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Viewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WaveManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WingAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WingEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WingState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AddModelViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssemblyViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Asset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetsViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BodyAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BodyEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BodyState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellStateViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Chip.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ChipManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Curtain.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EditorViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EggManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EggState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ElementAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ElementEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ElementManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ElementState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipmentAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipmentEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipmentState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NeedleAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NeedleEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NeedleState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartConfig.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartPaletteViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartShapeViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PartState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellMakingViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeAssemblyViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeLayerViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SlideBar.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorPicker.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StatisticsViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Layer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellMakingButton.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NucleusState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NucleusAsset.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NucleusEditor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellAssetViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CellStateCaptureViewer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
+    <ClInclude Include="AddModelViewer.h" />
+    <ClInclude Include="AssemblyViewer.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="AssetEditor.h" />
+    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="AssetsViewer.h" />
+    <ClInclude Include="BodyAsset.h" />
+    <ClInclude Include="BodyEditor.h" />
+    <ClInclude Include="BodyState.h" />
+    <ClInclude Include="CellAsset.h" />
+    <ClInclude Include="CellAssetViewer.h" />
+    <ClInclude Include="CellEditor.h" />
+    <ClInclude Include="CellMakingButton.h" />
+    <ClInclude Include="CellMakingViewer.h" />
+    <ClInclude Include="CellManager.h" />
+    <ClInclude Include="CellState.h" />
+    <ClInclude Include="CellStateCaptureViewer.h" />
+    <ClInclude Include="CellStateViewer.h" />
+    <ClInclude Include="Chip.h" />
+    <ClInclude Include="ChipManager.h" />
+    <ClInclude Include="ColorPicker.h" />
+    <ClInclude Include="Curtain.h" />
+    <ClInclude Include="EditorViewer.h" />
+    <ClInclude Include="EggManager.h" />
+    <ClInclude Include="EggState.h" />
+    <ClInclude Include="ElementAsset.h" />
+    <ClInclude Include="ElementEditor.h" />
+    <ClInclude Include="ElementManager.h" />
+    <ClInclude Include="ElementState.h" />
+    <ClInclude Include="EquipmentAsset.h" />
+    <ClInclude Include="EquipmentEditor.h" />
+    <ClInclude Include="EquipmentState.h" />
+    <ClInclude Include="FieldManager.h" />
+    <ClInclude Include="FieldViewer.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelEditor.h" />
+    <ClInclude Include="ModuleAsset.h" />
+    <ClInclude Include="ModuleEditor.h" />
+    <ClInclude Include="ModuleState.h" />
+    <ClInclude Include="NeedleAsset.h" />
+    <ClInclude Include="NeedleEditor.h" />
+    <ClInclude Include="NeedleState.h" />
+    <ClInclude Include="NucleusAsset.h" />
+    <ClInclude Include="NucleusEditor.h" />
+    <ClInclude Include="NucleusState.h" />
+    <ClInclude Include="PartAsset.h" />
+    <ClInclude Include="PartConfig.h" />
+    <ClInclude Include="PartEditor.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="PartPaletteViewer.h" />
+    <ClInclude Include="PartShapeViewer.h" />
+    <ClInclude Include="PartState.h" />
+    <ClInclude Include="ReleaseViewer.h" />
+    <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeAssemblyViewer.h" />
+    <ClInclude Include="ShapeLayerViewer.h" />
+    <ClInclude Include="SlideBar.h" />
+    <ClInclude Include="StatisticsViewer.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Storage.h" />
+    <ClInclude Include="SynthesizerAsset.h" />
+    <ClInclude Include="SynthesizerEditor.h" />
+    <ClInclude Include="SynthesizerState.h" />
+    <ClInclude Include="TinyCamera.h" />
+    <ClInclude Include="TitleViewer.h" />
+    <ClInclude Include="Viewer.h" />
+    <ClInclude Include="WaveManager.h" />
+    <ClInclude Include="WingAsset.h" />
+    <ClInclude Include="WingEditor.h" />
+    <ClInclude Include="WingState.h" />
   </ItemGroup>
 </Project>
