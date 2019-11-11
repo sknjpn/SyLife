@@ -231,7 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddModelViewer.cpp" />
-    <ClCompile Include="AssemblyViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_AssemblyViewer.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="AssetManager.cpp" />
@@ -300,6 +300,7 @@
     <ClCompile Include="SynthesizerEditor.cpp" />
     <ClCompile Include="SynthesizerState.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
+    <ClCompile Include="ToolbarViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="WingAsset.cpp" />
@@ -308,7 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddModelViewer.h" />
-    <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEditor.h" />
     <ClInclude Include="AssetManager.h" />
@@ -374,6 +374,7 @@
     <ClInclude Include="SynthesizerState.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
+    <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="WaveManager.h" />
     <ClInclude Include="WingAsset.h" />
