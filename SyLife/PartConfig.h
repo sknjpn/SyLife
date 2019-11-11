@@ -26,6 +26,6 @@ public:
 
 	Vec2	getCentroid() const;
 
-	void	load(const ptree& pt) override;
+	void	load(const JSONValue& json) override;
 	void	save(ptree& pt) const override;
 };

@@ -17,9 +17,9 @@ shared_ptr<PartState> ModuleAsset::makeState()
 	return make_shared<ModuleState>();
 }
 
-void ModuleAsset::load(const ptree& pt)
+void ModuleAsset::load(const JSONValue& json)
 {
-	PartAsset::load(pt);
+	PartAsset::load(json);
 }
 
 void ModuleAsset::save(ptree& pt) const
@@ -27,5 +27,5 @@ void ModuleAsset::save(ptree& pt) const
 	PartAsset::save(pt);
 
 	// type
-	pt.put("type", "ModuleAsset");
+	//pt.put(U"type", "ModuleAsset");
 }

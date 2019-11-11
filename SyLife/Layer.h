@@ -10,6 +10,6 @@ struct Layer
 
 	RectF	getRect() const;
 
-	void	load(const ptree& pt) override;
+	void	load(const JSONValue& json) override;
 	void	save(ptree& pt) const override;
 };

@@ -31,7 +31,7 @@ void CellAssetViewer::update()
 
 	font(U"CellAsset").draw(Vec2::Zero(), Palette::Black);
 	moveDrawPos(0, d);
-	font(U"Name=" + Unicode::Widen(m_cellAsset->getName())).draw(Vec2::Zero(), Palette::Black);
+	font(U"Name=" + m_cellAsset->getName()).draw(Vec2::Zero(), Palette::Black);
 	moveDrawPos(0, d);
 	font(U"Mass=", m_cellAsset->getMass()).draw(Vec2::Zero(), Palette::Black);
 	moveDrawPos(0, d);
@@ -45,7 +45,7 @@ void CellAssetViewer::update()
 	moveDrawPos(0, d);
 	for (auto it = m_cellAsset->getPartConfigs().begin(); it != m_cellAsset->getPartConfigs().end(); ++it)
 	{
-		font(U"PartName=" + Unicode::Widen((*it)->getPartAsset()->getName())).draw(Vec2::Zero(), Palette::Black);
+		font(U"PartName=" + (*it)->getPartAsset()->getName()).draw(Vec2::Zero(), Palette::Black);
 		moveDrawPos(0, d);
 	}
 }

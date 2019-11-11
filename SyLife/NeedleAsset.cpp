@@ -17,9 +17,9 @@ shared_ptr<PartState> NeedleAsset::makeState()
 	return make_shared<NeedleState>();
 }
 
-void NeedleAsset::load(const ptree& pt)
+void NeedleAsset::load(const JSONValue& json)
 {
-	EquipmentAsset::load(pt);
+	EquipmentAsset::load(json);
 }
 
 void NeedleAsset::save(ptree& pt) const
@@ -27,5 +27,5 @@ void NeedleAsset::save(ptree& pt) const
 	EquipmentAsset::save(pt);
 
 	// type
-	pt.put("type", "NeedleAsset");
+	//pt.put(U"type", "NeedleAsset");
 }

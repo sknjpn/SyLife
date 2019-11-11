@@ -39,7 +39,7 @@ void PartPaletteViewer::drawAssets()
 		}
 
 		// 名前描画
-		font(Unicode::Widen((*it)->getName())).draw(4, 4);
+		font((*it)->getName()).draw(4, 4);
 
 		moveDrawPos(0, m_itemHeight);
 	}

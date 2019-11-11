@@ -67,7 +67,7 @@ Resource(engine/soundfont/GMGSx.sf2.zstdcmp)
 	Resource(example/siv3d-kun.png)		// ok
 	Resource(example/windmill.png)		// ok
 	Resource(assets/a b c.txt)			// error: contains white spaces
-	Resource("example/windmill.png")	// error: contains double quotation marks
+	Resource(U"example/windmill.png")	// error: contains double quotation marks
 
 	//
 	// If your file contains a white space, define the identifier without using Resource() macro.

@@ -15,18 +15,18 @@ shared_ptr<PartState> WingAsset::makeState()
 	return make_shared<WingState>();
 }
 
-void WingAsset::load(const ptree& pt)
+void WingAsset::load(const JSONValue& json)
 {
-	EquipmentAsset::load(pt);
+	EquipmentAsset::load(json);
 
-	m_isRight = pt.get<bool>("isRight");
+	m_isRight = json[U"isRight"].get<bool>();
 }
 
 void WingAsset::save(ptree& pt) const
 {
 	EquipmentAsset::save(pt);
 
-	pt.put("isRight", m_isRight);
+	//pt.put(U"isRight", m_isRight);
 
-	pt.put("type", "WingAsset");
+	//pt.put(U"type", "WingAsset");
 }

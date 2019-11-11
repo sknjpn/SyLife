@@ -17,13 +17,13 @@ void CellAsset::draw(double a)
 	}
 }
 
-void CellAsset::load(const ptree& pt)
+void CellAsset::load(const JSONValue& json)
 {
-	Asset::load(pt);
+	Asset::load(json);
 
 	// parts
-	for (auto part : pt.get_child("parts"))
-		m_partConfigs.emplace_back(make_shared<PartConfig>())->load(part.second);
+	for (const auto& partConfig : json[U"parts"].arrayView())
+		m_partConfigs.emplace_back(make_shared<PartConfig>())->load(partConfig);
 }
 
 void CellAsset::save(ptree& pt) const
@@ -31,19 +31,19 @@ void CellAsset::save(ptree& pt) const
 	Asset::save(pt);
 
 	// parts
-	{
+	/*{
 		ptree parts;
 
 		for (const auto& e : m_partConfigs)
 		{
 			ptree part; e->save(part);
-			parts.push_back(std::make_pair("", part));
+			parts.push_back(std::make_pair(U"", part));
 		}
 
-		pt.add_child("parts", parts);
-	}
+		pt.add_child(U"parts", parts);
+	}*/
 
-	pt.put("type", "CellAsset");
+	//pt.put(U"type", "CellAsset");
 }
 
 Vec2 CellAsset::getCentroid()

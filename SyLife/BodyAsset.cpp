@@ -15,9 +15,9 @@ shared_ptr<PartState> BodyAsset::makeState()
 	return make_shared<BodyState>();
 }
 
-void BodyAsset::load(const ptree& pt)
+void BodyAsset::load(const JSONValue& json)
 {
-	PartAsset::load(pt);
+	PartAsset::load(json);
 }
 
 void BodyAsset::save(ptree& pt) const
@@ -25,5 +25,5 @@ void BodyAsset::save(ptree& pt) const
 	PartAsset::save(pt);
 
 	// type
-	pt.put("type", "BodyAsset");
+	//pt.put(U"type", "BodyAsset");
 }

@@ -1,20 +1,16 @@
 ﻿#include "Asset.h"
 
-void Asset::setFilepath(const string& filepath)
+void Asset::setFilePath(const String& filepath)
 {
-	if (filepath == m_filepath || m_filepath == "")
+	if (filepath == m_filepath || m_filepath == U"")
 	{
-		m_filepath = filepath; 
-		
+		m_filepath = filepath;
+
 		return;
 	}
 
 	// ファイルの削除
-	{
-		const boost::filesystem::path path(getFilepath());
-
-		boost::filesystem::remove(path);
-	}
+	FileSystem::Remove(getFilePath());
 
 	// nameのセット
 	m_filepath = filepath;
@@ -25,15 +21,15 @@ void Asset::setFilepath(const string& filepath)
 
 		save(pt);
 
-		write_json(getFilepath(), pt);
+		write_json(Unicode::Narrow(getFilePath()), pt);
 	}
 }
 
-void Asset::load(const ptree& pt)
+void Asset::load(const JSONValue& json)
 {
-	Model::load(pt);
+	Model::load(json);
 
-	m_name = pt.get<string>("name");
+	// m_name = pt.get<String>(U"name");
 }
 
 void Asset::save(ptree& pt) const
@@ -41,8 +37,8 @@ void Asset::save(ptree& pt) const
 	Model::save(pt);
 
 	// name
-	pt.put("name", m_name);
+	//pt.put(U"name", m_name);
 
 	// type
-	pt.put("type", "Model");
+	//pt.put(U"type", "Model");
 }

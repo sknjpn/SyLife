@@ -8,18 +8,18 @@ Vec2 PartConfig::getCentroid() const
 	return  m_position + m_partAsset->getShape().getCentroid().rotated(m_rotation);
 }
 
-void PartConfig::load(const ptree& pt)
+void PartConfig::load(const JSONValue& json)
 {
-	Model::load(pt);
+	Model::load(json);
 
 	// asset
-	m_partAsset = g_assetManagerPtr->getAsset<PartAsset>(pt.get<string>("asset"));
+	m_partAsset = g_assetManagerPtr->getAsset<PartAsset>(json[U"asset"].getString());
 
 	// position
-	m_position = Vec2(pt.get<double>("position.x"), pt.get<double>("position.y"));
+	m_position = json[U"position"].get<Vec2>();
 
 	// rotation
-	m_rotation = pt.get<double>("rotation");
+	m_rotation = json[U"rotation"].get<double>();
 }
 
 void PartConfig::save(ptree& pt) const
@@ -27,20 +27,20 @@ void PartConfig::save(ptree& pt) const
 	Model::save(pt);
 
 	// asset
-	pt.put("asset", m_partAsset->getName());
+	//pt.put(U"asset", m_partAsset->getName());
 
 	// position
-	{
+	/*{
 		ptree position;
 
-		position.put("x", m_position.x);
-		position.put("y", m_position.y);
+		position.put(U"x", m_position.x);
+		position.put(U"y", m_position.y);
 
-		pt.push_back(std::make_pair("position", position));
-	}
+		pt.push_back(std::make_pair(U"position", position));
+	}*/
 
 	// rotation
-	pt.put("rotation", m_rotation);
+	//pt.put(U"rotation", m_rotation);
 
-	pt.put("type", "PartConfig");
+	//pt.put(U"type", "PartConfig");
 }

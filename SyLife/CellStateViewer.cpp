@@ -45,7 +45,7 @@ void CellStateViewer::update()
 		for (const auto& m : asset->getMaterial().getElementList())
 		{
 			auto t = Transformer2D(Mat3x2::Translate(pos));
-			font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();
+			font(m.first->getName() + U":" + ToString(m.second) + U"U").draw();
 			pos.moveBy(0, 15);
 		}
 		pos.moveBy(0, 32);
@@ -63,7 +63,7 @@ void CellStateViewer::update()
 		for (const auto& m : m_cellState->m_storage.getElementList())
 		{
 			auto t = Transformer2D(Mat3x2::Translate(pos));
-			font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();
+			font(m.first->getName() + U":" + ToString(m.second) + U"U").draw();
 			pos.moveBy(0, 15);
 		}
 		pos.moveBy(-16.0, 0.0);

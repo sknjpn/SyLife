@@ -37,6 +37,6 @@ public:
 	int		numElement(const shared_ptr<ElementAsset>& asset) const;
 
 	// JSON
-	void	load(const ptree& pt) override;
+	void	load(const JSONValue& json) override;
 	void	save(ptree& pt) const override;
 };

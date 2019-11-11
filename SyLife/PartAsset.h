@@ -28,6 +28,6 @@ public:
 	void	draw(double a = 0.5) { m_shape.draw(a); }
 
 	// JSON
-	void	load(const ptree& pt) override;
+	void	load(const JSONValue& json) override;
 	void	save(ptree& pt) const override;
 };

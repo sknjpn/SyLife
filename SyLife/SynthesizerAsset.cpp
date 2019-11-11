@@ -18,12 +18,12 @@ shared_ptr<PartState> SynthesizerAsset::makeState()
 	return make_shared<SynthesizerState>();
 }
 
-void SynthesizerAsset::load(const ptree& pt)
+void SynthesizerAsset::load(const JSONValue& json)
 {
-	ModuleAsset::load(pt);
+	ModuleAsset::load(json);
 
 	// export
-	m_export = g_assetManagerPtr->getAsset<ElementAsset>(pt.get<string>("export"));
+	m_export = g_assetManagerPtr->getAsset<ElementAsset>(json[U"export"].getString());
 }
 
 void SynthesizerAsset::save(ptree& pt) const
@@ -31,7 +31,7 @@ void SynthesizerAsset::save(ptree& pt) const
 	ModuleAsset::save(pt);
 
 	// export
-	pt.put("export", m_export->getName());
+	//pt.put(U"export", m_export->getName());
 
-	pt.put("type", "SynthesizerAsset");
+	//pt.put(U"type", "SynthesizerAsset");
 }

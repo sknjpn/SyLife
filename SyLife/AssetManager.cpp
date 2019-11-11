@@ -7,52 +7,26 @@ unique_ptr<AssetManager>	g_assetManagerPtr;
 
 void AssetManager::init()
 {
+	const auto jsonFiles = FileSystem::DirectoryContents(U"assets/models", true)
+		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; });
 
-	Array<string> filepaths;
-
-	recursive_directory_iterator end;
-	for (recursive_directory_iterator it(boost::filesystem::path("assets/models")); it != end; ++it)
-		if (!is_directory(*it)) filepaths.emplace_back((*it).path().string());
-
-	for (const auto& filepath : filepaths)
+	for (const auto& jsonFile : jsonFiles)
 	{
-		ptree pt;
+		JSONReader json(jsonFile);
 
-		read_json(filepath, pt);
-
-		auto a = makeAsset(pt.get<string>("type"));
-
-		a->setName(pt.get<string>("name"));
-		a->setFilepath(filepath);
+		auto a = makeAsset(json[U"type"].getString());
+		a->setName(json[U"name"].getString());
+		a->setFilePath(jsonFile);
 	}
 
 	for (const auto& m : m_assets)
 	{
-		ptree pt;
+		Logger << m->getName() + U"を読み込み中";
 
-		read_json(m->getFilepath(), pt);
+		JSONReader json(m->getFilePath());
+		m->load(json);
 
-		try
-		{
-			m->load(pt);
-		}
-		catch (boost::property_tree::ptree_bad_path & e)
-		{
-			LOG_ERROR(U"JSONアセットの読み込みに問題が発生しました");
-			LOG_ERROR(U" What:" + Unicode::Widen(string(e.what())));
-			LOG_ERROR(U" Asset:" + Unicode::Widen(pt.get<string>("type")));
-			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->getFilepath()));
-
-			System::Exit();
-		}
-		catch (Error & e)
-		{
-			LOG_ERROR(U" What:" + e.what());
-			LOG_ERROR(U" Asset:" + Unicode::Widen(pt.get<string>("type")));
-			LOG_ERROR(U" Filepath:" + Unicode::Widen(m->getFilepath()));
-
-			System::Exit();
-		}
+		Logger << m->getName() + U"を読み込み成功";
 	}
 
 	// CellAssetの初期化
@@ -60,7 +34,7 @@ void AssetManager::init()
 	for (const auto& ca : cellAssets) ca->updateProperties();
 }
 
-shared_ptr<Asset> AssetManager::getAsset(const string& name) const
+shared_ptr<Asset> AssetManager::getAsset(const String& name) const
 {
 	for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
 		if ((*it)->getName() == name) return dynamic_pointer_cast<Asset>(*it);

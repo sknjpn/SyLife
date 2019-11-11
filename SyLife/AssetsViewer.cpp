@@ -12,11 +12,11 @@
 
 void AssetsViewer::update()
 {
-	drawAssets<CellAsset>("CellAsset");
-	drawAssets<ElementAsset>("ElementAsset");
-	drawAssets<BodyAsset>("BodyAsset");
-	drawAssets<EquipmentAsset>("EquipmentAsset");
-	drawAssets<ModuleAsset>("ModuleAsset");
+	drawAssets<CellAsset>(U"CellAsset");
+	drawAssets<ElementAsset>(U"ElementAsset");
+	drawAssets<BodyAsset>(U"BodyAsset");
+	drawAssets<EquipmentAsset>(U"EquipmentAsset");
+	drawAssets<ModuleAsset>(U"ModuleAsset");
 
 	// AddNewModel
 	{
@@ -35,9 +35,9 @@ void AssetsViewer::update()
 	// save
 	if (KeyControl.pressed() && KeyS.down() && m_selectedAsset != nullptr)
 	{
-		ptree pt;
+		/*ptree pt;
 		m_selectedAsset->save(pt);
-		write_json(m_selectedAsset->getFilepath(), pt);
+		write_json(m_selectedAsset->getFilePath(), pt);*/
 	}
 }
 

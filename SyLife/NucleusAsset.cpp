@@ -15,23 +15,23 @@ shared_ptr<PartState> NucleusAsset::makeState()
 	return make_shared<NucleusState>();
 }
 
-void NucleusAsset::load(const ptree& pt)
+void NucleusAsset::load(const JSONValue& json)
 {
-	PartAsset::load(pt);
+	PartAsset::load(json);
 
-	m_lifespanTime = pt.get<double>("lifespanTime");
-	m_bornTime = pt.get<double>("bornTime");
-	m_yieldTime = pt.get<double>("yieldTime");
+	m_lifespanTime = json[U"lifespanTime"].get<double>();
+	m_bornTime = json[U"bornTime"].get<double>();
+	m_yieldTime = json[U"yieldTime"].get<double>();
 }
 
 void NucleusAsset::save(ptree& pt) const
 {
 	PartAsset::save(pt);
 
-	pt.put("lifespanTime", m_lifespanTime);
-	pt.put("bornTime", m_bornTime);
-	pt.put("yieldTime", m_yieldTime);
+	/*pt.put(U"lifespanTime", m_lifespanTime);
+	pt.put(U"bornTime", m_bornTime);
+	pt.put(U"yieldTime", m_yieldTime);*/
 
 	// type
-	pt.put("type", "NucleusAsset");
+	//pt.put(U"type", "NucleusAsset");
 }

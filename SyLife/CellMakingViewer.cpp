@@ -81,7 +81,7 @@ void CellMakingViewer::update()
 		// Elements
 		for (const auto& e : m_cellAsset->getMaterial().getElementList())
 		{
-			font(Unicode::Widen(e.first->getName()) + U": " + ToString(e.second) + U"U").draw();
+			font(e.first->getName() + U": " + ToString(e.second) + U"U").draw();
 
 			moveDrawPos(0, 16);
 		}

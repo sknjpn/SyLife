@@ -17,9 +17,9 @@ shared_ptr<PartState> EquipmentAsset::makeState()
 	return make_shared<EquipmentState>();
 }
 
-void EquipmentAsset::load(const ptree& pt)
+void EquipmentAsset::load(const JSONValue& json)
 {
-	PartAsset::load(pt);
+	PartAsset::load(json);
 }
 
 void EquipmentAsset::save(ptree& pt) const
@@ -27,5 +27,5 @@ void EquipmentAsset::save(ptree& pt) const
 	PartAsset::save(pt);
 
 	// type
-	pt.put("type", "EquipmentAsset");
+	//pt.put(U"type", "EquipmentAsset");
 }

@@ -74,6 +74,6 @@ public:
 	void	draw(double a = 0.5);
 
 	// JSON
-	void	load(const ptree& pt) override;
+	void	load(const JSONValue& json) override;
 	void	save(ptree& pt) const override;
 };

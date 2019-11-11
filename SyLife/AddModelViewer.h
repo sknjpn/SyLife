@@ -13,7 +13,7 @@ public:
 	{
 		for (int i = 1;; ++i)
 		{
-			string name = "model_" + to_string(i);
+			String name = U"model_" + ToString(i);
 
 			if (!g_assetManagerPtr->hasAsset(name))
 			{
@@ -27,10 +27,10 @@ public:
 	}
 
 	template <typename T>
-	void	drawAssets(const string& name)
+	void	drawAssets(const String& name)
 	{
 		static Font font10(10, Typeface::Bold);
-		auto f = font10(Unicode::Widen(name));
+		auto f = font10(name);
 
 		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();

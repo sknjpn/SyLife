@@ -19,19 +19,19 @@ RectF Layer::getRect() const
 	return result;
 }
 
-void Layer::load(const ptree& pt)
+void Layer::load(const JSONValue& json)
 {
-	Model::load(pt);
+	Model::load(json);
 
 	// color
-	m_color = Parse<Color>(Unicode::Widen(pt.get<string>("color")));
+	m_color = json[U"color"].get<Color>();
 
 	// polygon
 	{
 		Array<Vec2> verticles;
 
-		for (auto v : pt.get_child("verticles"))
-			verticles.emplace_back(v.second.get<double>("x"), v.second.get<double>("y"));
+		for (const auto& v : json[U"verticles"].arrayView())
+			verticles.emplace_back(v.get<Vec2>());
 
 		m_polygon = Polygon(verticles);
 	}
@@ -42,10 +42,10 @@ void Layer::save(ptree& pt) const
 	Model::save(pt);
 
 	// color
-	pt.put<string>("color", Unicode::Narrow(Format(m_color)));
+	//pt.put<String>(U"color", Unicode::Narrow(Format(m_color)));
 
 	// verticles
-	{
+	/*{
 		ptree verticles;
 
 		{
@@ -53,13 +53,13 @@ void Layer::save(ptree& pt) const
 
 			for (const auto& v : m_polygon.vertices())
 			{
-				verticle.put("x", v.x);
-				verticle.put("y", v.y);
+				verticle.put(U"x", v.x);
+				verticle.put(U"y", v.y);
 
-				verticles.push_back(std::make_pair("", verticle));
+				verticles.push_back(std::make_pair(U"", verticle));
 			}
 		}
 
-		pt.add_child("verticles", verticles);
-	}
+		pt.add_child(U"verticles", verticles);
+	}*/
 }
