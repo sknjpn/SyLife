@@ -407,8 +407,9 @@
     <ClCompile Include="WingAsset.cpp" />
     <ClCompile Include="WingEditor.cpp" />
     <ClCompile Include="WingState.cpp" />
-    <ClCompile Include="CellMakingViewer_AssemblyViewer.cpp" />
     <ClCompile Include="ToolbarViewer.cpp" />
+    <ClCompile Include="GUIButton.cpp" />
+    <ClCompile Include="AssemblyViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddModelViewer.h" />
@@ -483,5 +484,7 @@
     <ClInclude Include="WingEditor.h" />
     <ClInclude Include="WingState.h" />
     <ClInclude Include="ToolbarViewer.h" />
+    <ClInclude Include="GUIButton.h" />
+    <ClInclude Include="AssemblyViewer.h" />
   </ItemGroup>
 </Project>

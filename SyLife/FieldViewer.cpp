@@ -22,6 +22,7 @@
 #include "CellStateViewer.h"
 #include "CellStateCaptureViewer.h"
 #include "StatisticsViewer.h"
+#include "GUIButton.h"
 
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
@@ -43,6 +44,8 @@ void FieldViewer::init()
 	addChildViewer<CellMakingButton>();
 	addChildViewer<CellStateViewer>();
 	addChildViewer<StatisticsViewer>();
+	addChildViewer<GUIButton>(U"はじめる", []() { Print << U"Selected"; })->setViewerRect(100, 100, 200, 50);
+	//addChildViewer<GUIButton>([]() { Print << U"Selected"; }, false)->setViewerRect(100, 100, 200, 50);
 }
 
 void FieldViewer::update()

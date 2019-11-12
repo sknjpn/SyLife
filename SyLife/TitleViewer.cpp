@@ -1,6 +1,7 @@
 ﻿#include "TitleViewer.h"
 #include "FieldViewer.h"
 #include "EditorViewer.h"
+#include "GUIButton.h"
 
 TitleViewer::TitleViewer()
 	: m_audio(U"assets/music/神秘の世界.mp3")
@@ -59,6 +60,10 @@ void TitleViewer::drawBubbles()
 		texture.resized(r * 0.6).drawAt(x, y, ColorF(Palette::Lightblue, a));
 		texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
 	}
+}
+
+void TitleViewer::init()
+{
 }
 
 void TitleViewer::update()
