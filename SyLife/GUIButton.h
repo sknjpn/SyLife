@@ -18,7 +18,6 @@ public:
 	GUIButton(const String& text, bool isEnabled = true)
 		: m_text(text)
 		, m_isEnabled(isEnabled)
-		, m_color(getTargetColor())
 	{}
 	GUIButton(const String& text, function<void(void)> functionOnSelected, bool isEnabled = true)
 		: m_text(text) 

@@ -10,6 +10,7 @@ class Viewer
 	Vec2	m_drawPos = Vec2::Zero();
 	RectF	m_viewerRect = RectF(Scene::Size());
 	Color	m_backgroundColor = Color(0, 0);
+	String	m_name;
 	unique_ptr<Transformer2D>	m_transformer;
 	shared_ptr<Viewer>			m_parentViewer;
 	Array<shared_ptr<Viewer>>	m_childViewers;
@@ -38,6 +39,15 @@ public:
 	{
 		for (auto it = m_childViewers.begin(); it != m_childViewers.end(); ++it)
 			if (dynamic_pointer_cast<T>(*it) != nullptr) return dynamic_pointer_cast<T>(*it);
+
+		return nullptr;
+	}
+
+	template <typename T>
+	shared_ptr<T>	getChildViewer(const String& name) const
+	{
+		for (auto it = m_childViewers.begin(); it != m_childViewers.end(); ++it)
+			if (dynamic_pointer_cast<T>(*it) != nullptr && (*it)->m_name == name) return dynamic_pointer_cast<T>(*it);
 
 		return nullptr;
 	}
@@ -86,12 +96,15 @@ public:
 	void	setViewerRect(double w, double h) { m_viewerRect = RectF(w, h); }
 	void	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); }
 
+	shared_ptr<Viewer>	setName(const String& name) { m_name = name; return shared_from_this(); }
+
 	// Get
 	bool	isMouseover() const { return shared_from_this() == g_mouseoveredViewer; }
 	const RectF& getViewerRect() const { return m_viewerRect; }
 	const Vec2& getViewerSize() const { return m_viewerRect.size; }
 	const Vec2& getDrawPos() const { return m_drawPos; }
 	const Vec2	getDrawCenter() const { return m_viewerRect.center(); }
+	const String& getName() const { return m_name; }
 
 	virtual void	init() {}
 	virtual void	update() {}

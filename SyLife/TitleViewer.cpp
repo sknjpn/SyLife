@@ -64,11 +64,15 @@ void TitleViewer::drawBubbles()
 
 void TitleViewer::init()
 {
+	const auto p = RectF(512, 48).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.1));
+	addChildViewer<GUIButton>(U"はじめから", [this]() { m_selectedOption = Option::LaunchNewGame; m_closeCurtain.start(); })->setName(U"はじめから")->setViewerRect(p.movedBy(0, 64));
+	addChildViewer<GUIButton>(U"つづきから", [this]() { m_selectedOption = Option::ContinueGame; m_closeCurtain.start(); })->setName(U"つづきから")->setViewerRect(p.movedBy(0, 128));
+	addChildViewer<GUIButton>(U"エディター", [this]() { m_selectedOption = Option::LaunchEditor; m_closeCurtain.start(); })->setName(U"エディター")->setViewerRect(p.movedBy(0, 192));
+	addChildViewer<GUIButton>(U"終了", [this]() { m_selectedOption = Option::Exit; m_closeCurtain.start(); })->setName(U"終了")->setViewerRect(p.movedBy(0, 256));
 }
 
 void TitleViewer::update()
 {
-
 	// title
 	{
 		auto te = Transformer2D(Mat3x2::Scale(1.4, Scene::Center()));
@@ -93,109 +97,6 @@ void TitleViewer::update()
 
 		drawBubbles();
 	}
-
-	// オプション選択
-	{
-		// draw
-		{
-			static const Font messageFont(48, Typeface::Bold);
-
-			// New Game
-			{
-				auto f = messageFont(U"New Game");
-				auto r = f.region().setCenter(0, 0);
-				auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, -96), true);
-
-				r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-				f.drawAt(Vec2::Zero(), m_selectedOption == Option::LaunchNewGame ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
-
-				if (r.leftClicked())
-				{
-					m_selectedOption = Option::LaunchNewGame;
-					m_closeCurtain.start();
-				}
-			}
-
-			// Continue
-			{
-				auto f = messageFont(U"Continue");
-				auto r = f.region().setCenter(0, 0);
-				auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, -32), true);
-
-				r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-				f.drawAt(Vec2::Zero(), m_selectedOption == Option::ContinueGame ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
-
-				if (r.leftClicked())
-				{
-					m_selectedOption = Option::ContinueGame;
-					m_closeCurtain.start();
-				}
-			}
-
-			// Editor
-			{
-				auto f = messageFont(U"Editor");
-				auto r = f.region().setCenter(0, 0);
-				auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, 32), true);
-
-				r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-				f.drawAt(Vec2::Zero(), m_selectedOption == Option::LaunchEditor ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
-
-				if (r.leftClicked())
-				{
-					m_selectedOption = Option::LaunchEditor;
-					m_closeCurtain.start();
-				}
-			}
-
-			// Exit
-			{
-				auto f = messageFont(U"Exit");
-				auto r = f.region().setCenter(0, 0);
-				auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, 96), true);
-
-				r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-				f.drawAt(Vec2::Zero(), m_selectedOption == Option::Exit ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
-
-				if (r.leftClicked())
-				{
-					m_selectedOption = Option::Exit;
-					m_closeCurtain.start();
-				}
-			}
-		}
-
-		if (!m_closeCurtain.isRunning())
-		{
-			// 下に遷移
-			if (KeyS.down() || KeyDown.down())
-			{
-				switch (m_selectedOption)
-				{
-				case Option::LaunchNewGame:	m_selectedOption = Option::ContinueGame; break;
-				case Option::ContinueGame:	m_selectedOption = Option::LaunchEditor; break;
-				case Option::LaunchEditor:	m_selectedOption = Option::Exit; break;
-				case Option::Exit:			break;
-				}
-			}
-
-			// 上に遷移
-			if (KeyW.down() || KeyUp.down())
-			{
-				switch (m_selectedOption)
-				{
-				case Option::LaunchNewGame:	break;
-				case Option::ContinueGame:	m_selectedOption = Option::LaunchNewGame; break;
-				case Option::LaunchEditor:	m_selectedOption = Option::ContinueGame; break;
-				case Option::Exit:			m_selectedOption = Option::LaunchEditor; break;
-				}
-			}
-
-			// セレクト
-			if (KeyEnter.down()) m_closeCurtain.start();
-		}
-	}
-
 
 	// Open Curtain
 	{

@@ -10,12 +10,13 @@ void GUIButton::update()
 	static const Font font(128, Typeface::Bold);
 
 	const RectF rect(getViewerSize());
-	const double d = rect.h / 8.0;
-	const double frameThickness = rect.h / 16;
+	const double d = rect.h / 3.0;
+	const double frameThickness = rect.h / 12;
 
 	if (m_isEnabled)
 	{
 		m_isSelected = m_isGrabbed && isMouseover() && MouseL.up();
+		if (m_isSelected) m_functionOnSelected();
 
 		if (rect.leftClicked()) m_isGrabbed = true;
 		if (MouseL.up()) m_isGrabbed = false;
