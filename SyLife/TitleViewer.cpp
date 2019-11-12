@@ -77,8 +77,8 @@ void TitleViewer::init()
 	const auto f4 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); };
 	addChildViewer<GUIButton>(U"終了", f4)->setName(U"終了")->setViewerRect(p.movedBy(0, 256));
 
+	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
-	
 }
 
 void TitleViewer::update()

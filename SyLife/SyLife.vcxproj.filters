@@ -433,7 +433,6 @@
     <ClInclude Include="Chip.h" />
     <ClInclude Include="ChipManager.h" />
     <ClInclude Include="ColorPicker.h" />
-    <ClInclude Include="Curtain.h" />
     <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="EggManager.h" />
     <ClInclude Include="EggState.h" />

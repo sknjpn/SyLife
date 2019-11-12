@@ -22,11 +22,12 @@
 #include "CellStateViewer.h"
 #include "CellStateCaptureViewer.h"
 #include "StatisticsViewer.h"
+
 #include "GUIButton.h"
+#include "CurtainViewer.h"
 
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
-	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
 	m_camera.setRestrictedRect(g_chipManagerPtr->getRect().scaledAt(Vec2::Zero(), g_chipManagerPtr->getLength()));
 	m_camera.setMaxScale(4);
@@ -44,8 +45,9 @@ void FieldViewer::init()
 	addChildViewer<CellMakingButton>();
 	addChildViewer<CellStateViewer>();
 	addChildViewer<StatisticsViewer>();
-	addChildViewer<GUIButton>(U"はじめる", []() { Print << U"Selected"; })->setViewerRect(100, 100, 200, 50);
-	//addChildViewer<GUIButton>([]() { Print << U"Selected"; }, false)->setViewerRect(100, 100, 200, 50);
+
+	// OpenCurtain
+	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
 }
 
 void FieldViewer::update()
@@ -143,8 +145,4 @@ void FieldViewer::update()
 			}
 		}
 	}
-
-	// Open Curtain
-	if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
-	else m_audio.setVolume(1.0);
 }

@@ -331,7 +331,6 @@
     <ClInclude Include="ChipManager.h" />
     <ClInclude Include="ColorPicker.h" />
     <ClInclude Include="CellMakingButton.h" />
-    <ClInclude Include="Curtain.h" />
     <ClInclude Include="CurtainViewer.h" />
     <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="EggManager.h" />
