@@ -252,6 +252,7 @@
     <ClCompile Include="ChipManager.cpp" />
     <ClCompile Include="ColorPicker.cpp" />
     <ClCompile Include="CellMakingButton.cpp" />
+    <ClCompile Include="CurtainViewer.cpp" />
     <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="EggManager.cpp" />
     <ClCompile Include="EggState.cpp" />
@@ -331,6 +332,7 @@
     <ClInclude Include="ColorPicker.h" />
     <ClInclude Include="CellMakingButton.h" />
     <ClInclude Include="Curtain.h" />
+    <ClInclude Include="CurtainViewer.h" />
     <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="EggManager.h" />
     <ClInclude Include="EggState.h" />

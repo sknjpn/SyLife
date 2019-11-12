@@ -410,6 +410,7 @@
     <ClCompile Include="ToolbarViewer.cpp" />
     <ClCompile Include="GUIButton.cpp" />
     <ClCompile Include="AssemblyViewer.cpp" />
+    <ClCompile Include="CurtainViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddModelViewer.h" />
@@ -486,5 +487,6 @@
     <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="GUIButton.h" />
     <ClInclude Include="AssemblyViewer.h" />
+    <ClInclude Include="CurtainViewer.h" />
   </ItemGroup>
 </Project>

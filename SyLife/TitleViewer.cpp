@@ -2,11 +2,10 @@
 #include "FieldViewer.h"
 #include "EditorViewer.h"
 #include "GUIButton.h"
+#include "CurtainViewer.h"
 
 TitleViewer::TitleViewer()
 	: m_audio(U"assets/music/神秘の世界.mp3")
-	, m_closeCurtain(Color(0, 0), Color(11, 22, 33), 0.5)
-	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
 	setViewerRect(Scene::Size());
 	m_audio.setLoop(true);
@@ -65,10 +64,21 @@ void TitleViewer::drawBubbles()
 void TitleViewer::init()
 {
 	const auto p = RectF(512, 48).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.1));
-	addChildViewer<GUIButton>(U"はじめから", [this]() { m_selectedOption = Option::LaunchNewGame; m_closeCurtain.start(); })->setName(U"はじめから")->setViewerRect(p.movedBy(0, 64));
-	addChildViewer<GUIButton>(U"つづきから", [this]() { m_selectedOption = Option::ContinueGame; m_closeCurtain.start(); })->setName(U"つづきから")->setViewerRect(p.movedBy(0, 128));
-	addChildViewer<GUIButton>(U"エディター", [this]() { m_selectedOption = Option::LaunchEditor; m_closeCurtain.start(); })->setName(U"エディター")->setViewerRect(p.movedBy(0, 192));
-	addChildViewer<GUIButton>(U"終了", [this]() { m_selectedOption = Option::Exit; m_closeCurtain.start(); })->setName(U"終了")->setViewerRect(p.movedBy(0, 256));
+
+	const auto f1 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<FieldViewer>(); destroy(); }); };
+	addChildViewer<GUIButton>(U"はじめから",  f1)->setName(U"はじめから")->setViewerRect(p.movedBy(0, 64));
+
+	const auto f2 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<FieldViewer>(); destroy(); }); };
+	addChildViewer<GUIButton>(U"つづきから", f2)->setName(U"つづきから")->setViewerRect(p.movedBy(0, 128));
+
+	const auto f3 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };
+	addChildViewer<GUIButton>(U"エディター", f3)->setName(U"エディター")->setViewerRect(p.movedBy(0, 192));
+
+	const auto f4 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); };
+	addChildViewer<GUIButton>(U"終了", f4)->setName(U"終了")->setViewerRect(p.movedBy(0, 256));
+
+	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
+	
 }
 
 void TitleViewer::update()
@@ -96,44 +106,5 @@ void TitleViewer::update()
 		for (int i = 0; i < 3; ++i) UpdateBubbles();
 
 		drawBubbles();
-	}
-
-	// Open Curtain
-	{
-		if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
-		else m_audio.setVolume(1.0);
-	}
-
-	// CloseCurtain
-	if (m_closeCurtain.isRunning())
-	{
-		if (m_closeCurtain.update())
-		{
-			// 自身のインスタンスが削除されるので、returnで処理を飛ばす必要がある。
-
-			switch (m_selectedOption)
-			{
-			case Option::LaunchNewGame:
-				getParentViewer()->addChildViewer<FieldViewer>();
-				destroy();
-				return;
-
-			case Option::ContinueGame:
-				getParentViewer()->addChildViewer<FieldViewer>();
-				destroy();
-				return;
-
-			case Option::LaunchEditor:
-				getParentViewer()->addChildViewer<EditorViewer>();
-				destroy();
-				return;
-
-			case Option::Exit:
-				System::Exit();
-				return;
-			}
-		}
-
-		m_audio.setVolume(m_closeCurtain.getProgress());
 	}
 }
