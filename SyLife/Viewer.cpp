@@ -52,8 +52,8 @@ void Viewer::process()
 		m_drawPos = Vec2::Zero();
 
 		// フレーム描画
-		if (KeyL.pressed())
-			RectF(m_viewerRectInLocal.size).drawFrame(2.0, 0.0, isMouseover() ? Palette::Red : Palette::Green);
+		//if (KeyL.pressed())
+		RectF(m_viewerRectInLocal.size).drawFrame(2.0, 0.0, isMouseover() ? Palette::Red : Palette::Green);
 	}
 
 	// Childの更新

@@ -34,8 +34,12 @@ void CellMakingViewer::PartsAssembler::Workspace::update()
 
 		if (m_state == State::RotateMode)
 		{
-			auto delta = Cursor::PreviousPosF().getAngle(Cursor::PosF());
-			m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
+			if (!Cursor::PreviousPosF().isZero() && !Cursor::PosF().isZero())
+			{
+				const auto delta = Cursor::PreviousPosF().getAngle(Cursor::PosF());
+				
+				m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
+			}
 
 			if (MouseL.up()) 
 			{

@@ -412,6 +412,7 @@
     <ClCompile Include="FieldViewer.cpp" />
     <ClCompile Include="GUIButton.cpp" />
     <ClCompile Include="GUISlider.cpp" />
+    <ClCompile Include="CellMakingViewer_CellInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WingState.h" />

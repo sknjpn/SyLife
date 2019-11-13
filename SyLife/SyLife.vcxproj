@@ -232,6 +232,7 @@
   <ItemGroup>
     <ClCompile Include="AddModelViewer.cpp" />
     <ClCompile Include="CellMakingViewer_BodySculptor.cpp" />
+    <ClCompile Include="CellMakingViewer_CellInfo.cpp" />
     <ClCompile Include="CellMakingViewer_PartsAssembler.cpp" />
     <ClCompile Include="CellMakingViewer_PartsAssembler_Workspace.cpp" />
     <ClCompile Include="Asset.cpp" />

@@ -1,24 +1,57 @@
 ﻿#include "CellMakingViewer.h"
-
 #include "AssetManager.h"
-
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"
 #include "ElementAsset.h"
 #include "CellAsset.h"
-
+#include "GUIButton.h"
 #include "ReleaseViewer.h"
+
+void CellMakingViewer::clearEditor()
+{
+	if (const auto v = getChildViewer<BodySculptor>()) v->destroy();
+	if (const auto v = getChildViewer<PartsAssembler>()) v->destroy();
+}
+
+void CellMakingViewer::openBodySculptor()
+{
+	clearEditor();
+
+	addChildViewer<BodySculptor>();
+}
+
+void CellMakingViewer::openPartsAssembler()
+{
+	clearEditor();
+
+	addChildViewer<PartsAssembler>();
+}
 
 void CellMakingViewer::init()
 {
+	setBackgroundColor(Color(11, 22, 33));
+
 	// 新しいモデルの登録
 	makeAsset();
 
-	setMode(Mode::EditParts);
-
 	// DrawRectの設定
-	setViewerRectInLocal(RectF(1200, 900).setCenter(Scene::CenterF()));
+	setViewerRectInLocal(RectF(1400, 900).setCenter(Scene::CenterF()));
+
+	addChildViewer<GUIButton>(U"ボディ編集", [this]() { openBodySculptor(); })
+		->setViewerRectInLocal(0, 0, 200, 40);
+
+	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
+		->setViewerRectInLocal(0, 40, 200, 40);
+
+	addChildViewer<GUIButton>(U"生き物配置", [this]() { getParentViewer()->addChildViewer<ReleaseViewer>(m_cellAsset); destroy(); })
+		->setViewerRectInLocal(0, 80, 200, 40);
+
+	addChildViewer<GUIButton>(U"閉じる", [this]() { destroy(); })
+		->setViewerRectInLocal(0, 120, 200, 40);
+
+	addChildViewer<CellInfo>()
+		->setViewerRectInLocal(0, 160, 200, 600);
 }
 
 void CellMakingViewer::update()
@@ -27,135 +60,6 @@ void CellMakingViewer::update()
 	m_cellAsset->updateProperties();
 	for (const auto& pc : m_cellAsset->getPartConfigs())
 		pc->getPartAsset()->m_shape.updateProperties();
-
-	// Release
-	{
-		const RectF rect = Rect(200, 200).stretched(-5);
-		const double r = rect.size.x / 2.0;
-		setDrawPos(rect.pos);
-
-		Circle(rect.size / 2.0, r)
-			.draw(Palette::Skyblue)
-			.drawFrame(4.0, Palette::Black);
-
-		// part
-		{
-			auto t1 = Transformer2D(Mat3x2::Translate(-m_cellAsset->getCentroid()).scaled(r / m_cellAsset->getRadius() / 2.0).translated(rect.center()));
-
-			for (const auto& p : m_cellAsset->getPartConfigs())
-			{
-				auto t2 = Transformer2D(p->getMat3x2());
-
-				p->getPartAsset()->getShape().draw(0.5);
-				p->getPartAsset()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
-			}
-		}
-	}
-
-	// Release Button
-	{
-		setDrawPos(5, 210);
-
-		if (SimpleGUI::Button(U"Release", Vec2(0, 0), 180))
-		{
-			getParentViewer()->addChildViewer<ReleaseViewer>(m_cellAsset);
-			destroy();
-			return;
-		}
-	}
-
-	// Close Button
-	{
-		setDrawPos(5, 250);
-
-		if (SimpleGUI::Button(U"Close", Vec2(0, 0), 180))
-		{
-			destroy();
-			return;
-		}
-	}
-
-	// material
-	{
-		setDrawPos(Vec2(0, 330));
-
-		static Font font(13, Typeface::Bold);
-
-		// Nutrition
-		font(U"Nutrition: " + ToString(m_cellAsset->getMaterial().getNutrition())).draw();
-		moveDrawPos(0, 20);
-
-		// Elements
-		for (const auto& e : m_cellAsset->getMaterial().getElementList())
-		{
-			font(e.first->getName() + U": " + ToString(e.second) + U"U").draw();
-
-			moveDrawPos(0, 16);
-		}
-	}
-
-	switch (m_mode)
-	{
-	case CellMakingViewer::Mode::EditParts:
-
-		// Mode Change Button
-	{
-		setDrawPos(5, 290);
-
-		if (SimpleGUI::Button(U"Shape Mode", Vec2(0, 0), 180))
-		{
-			setMode(Mode::EditBodyShapes);
-
-			return;
-		}
-	}
-	break;
-
-	case CellMakingViewer::Mode::EditBodyShapes:
-
-
-		// Mode Change Button
-	{
-		setDrawPos(5, 290);
-
-		if (SimpleGUI::Button(U"Part Mode", Vec2(0, 0), 180))
-		{
-			setMode(Mode::EditParts);
-
-			return;
-		}
-	}
-	break;
-	}
-}
-
-void CellMakingViewer::setMode(Mode mode)
-{
-	m_mode = mode;
-
-	for (auto& cv : getChildViewers()) cv->destroy();
-
-	switch (mode)
-	{
-	case CellMakingViewer::Mode::EditParts:
-		// BackgroundColorの設定
-		setBackgroundColor(Color(11, 22, 33));
-
-		addChildViewer<PartsAssembler::Workspace>();
-		getChildViewer<PartsAssembler::Workspace>()->setCellAsset(m_cellAsset);
-		addChildViewer<PartsAssembler::PartList>();
-		break;
-
-	case CellMakingViewer::Mode::EditBodyShapes:
-		// BackgroundColorの設定
-		setBackgroundColor(Color(11, 22, 33));
-
-		addChildViewer<BodySculptor::LayerLists>();
-		getChildViewer<BodySculptor::LayerLists>()->setPartAsset(m_cellAsset->getBodyAsset());
-		addChildViewer<BodySculptor::Workspace>();
-		getChildViewer<BodySculptor::Workspace>()->setPartAsset(m_cellAsset->getBodyAsset());
-		break;
-	}
 }
 
 void CellMakingViewer::makeAsset()

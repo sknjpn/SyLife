@@ -119,20 +119,25 @@ public:
 		void	update() override;
 	};
 
-private:
-	enum struct Mode
+	class CellInfo
+		: public Viewer
 	{
-		EditParts,
-		EditBodyShapes,
-	} m_mode;
 
+	public:
+		void	init() override;
+		void	update() override;
+	};
+
+private:
 	shared_ptr<CellAsset>	m_cellAsset;
+
+	void	clearEditor();
+	void	openBodySculptor();
+	void	openPartsAssembler();
 
 public:
 	void	init() override;
 	void	update() override;
-
-	void	setMode(Mode mode);
 
 	void	makeAsset();
 
