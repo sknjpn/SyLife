@@ -1,30 +1,30 @@
 ﻿{
   "type": "WingAsset",
   "mass": 20,
-  "isRight": false,
+  "isRight": true,
   "material": {
     "nutrition": 2.0,
     "elements": [
       {
-        "name": "Oxygen",
+        "name": "酸素",
         "size": 1
       }
     ]
   },
   "layers": [
     {
-      "color": "(0, 255, 165)",
+      "color": "(249, 255, 0)",
       "verticles": [
-        "(0, -5)",
-        "(5, 0)",
+        "(40, 5)",
+        "(50, 20)",
+        "(25, 20)",
         "(0, 5)",
-        "(-25, 20)",
-        "(-50, 20)",
-        "(-40, 5)"
+        "(-5, 0)",
+        "(0, -5)"
       ]
     },
     {
-      "color": "(0, 255, 97)",
+      "color": "(0, 255, 164)",
       "verticles": [
         "(5, 0)",
         "(0, 5)",
@@ -33,5 +33,5 @@
       ]
     }
   ],
-  "name": "Wing Left"
+  "name": "小さな羽(右)"
 }

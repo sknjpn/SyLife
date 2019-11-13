@@ -5,15 +5,15 @@
         "nutrition": 2.0,
         "elements": [
             {
-                "name": "Carbon",
+                "name": "炭素",
                 "size": 1
             },
             {
-                "name": "Oxygen",
+                "name": "酸素",
                 "size": 1
             }
         ]
     },
-    "name": "Hexose",
+    "name": "ヘキソース",
     "type": "ElementAsset"
 }

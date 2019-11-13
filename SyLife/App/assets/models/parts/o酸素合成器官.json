@@ -5,12 +5,12 @@
     "nutrition": 1.0,
     "elements": [
       {
-        "name": "Oxygen",
+        "name": "酸素",
         "size": 1
       }
     ]
   },
-  "export": "Oxygen",
+  "export": "酸素",
   "layers": [
     {
       "color": "(255, 0, 38)",
@@ -45,5 +45,5 @@
       ]
     }
   ],
-  "name": "Organelle O"
+  "name": "酸素合成器官"
 }

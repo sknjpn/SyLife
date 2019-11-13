@@ -1,8 +1,8 @@
 ﻿{
   "molecules": [
-    { "name": "Carbon", "size": 2000 },
-    { "name": "Nitrogen", "size": 2000 },
-    { "name": "Oxygen", "size": 2000 }
+    { "name": "炭素", "size": 2000 },
+    { "name": "窒素", "size": 2000 },
+    { "name": "酸素", "size": 2000 }
   ],
   "cells": [
     { "name": "Micro Slag", "size": 0 },

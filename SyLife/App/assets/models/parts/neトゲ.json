@@ -4,11 +4,11 @@
     "nutrition": 1.0,
     "elements": [
       {
-        "name": "Oxygen",
+        "name": "酸素",
         "size": 1
       },
       {
-        "name": "Carbon",
+        "name": "炭素",
         "size": 1
       }
     ]
@@ -35,6 +35,6 @@
       ]
     }
   ],
-  "name": "Needle",
+  "name": "トゲ",
   "type": "NeedleAsset"
 }

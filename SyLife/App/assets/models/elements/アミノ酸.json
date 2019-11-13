@@ -6,18 +6,18 @@
         "nutrition": 1.0,
         "elements": [
             {
-                "name": "Carbon",
+                "name": "炭素",
                 "size": 1
             },
             {
-                "name": "Oxygen",
+                "name": "酸素",
                 "size": 1
             },
             {
-                "name": "Nitrogen",
+                "name": "窒素",
                 "size": 1
             }
         ]
     },
-    "name": "Amino Acid"
+    "name": "アミノ酸"
 }

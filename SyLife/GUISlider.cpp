@@ -19,7 +19,7 @@ void GUISlider::update()
 
 	if (MouseL.up()) m_isGrabbed = false;
 
-	if (m_isGrabbed)
+	if (m_isGrabbed && vh < m_height)
 	{
 		m_grabbedPos += Cursor::DeltaF().y / (getViewerSize().y - Min(vh * (vh / m_height), vh));
 		m_value = Clamp<double>(m_grabbedPos, 0.0, 1.0);

@@ -8,7 +8,7 @@
   "lifespanTime": 25.0,
   "yieldTime": 5.0,
   "bornTime": 10.0,
-  "export": "Carbon",
+  "export": "炭素",
   "layers": [
     {
       "color": "(255, 0, 38)",
@@ -22,5 +22,5 @@
       ]
     }
   ],
-  "name": "Nucleus Small"
+  "name": "小さな核"
 }

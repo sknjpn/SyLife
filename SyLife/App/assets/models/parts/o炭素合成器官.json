@@ -5,12 +5,12 @@
     "nutrition": 1.0,
     "elements": [
       {
-        "name": "Carbon",
+        "name": "炭素",
         "size": 1
       }
     ]
   },
-  "export": "Carbon",
+  "export": "炭素",
   "layers": [
     {
       "color": "(255, 0, 38)",
@@ -45,5 +45,5 @@
       ]
     }
   ],
-  "name": "Organelle C"
+  "name": "炭素合成器官"
 }
