@@ -75,7 +75,7 @@ void FieldViewer::update()
 		}
 
 		// CellState Capture
-		if (MouseL.down() && !g_cellManagerPtr->getCellStates().isEmpty())
+		if (isMouseover() && MouseL.down() && !g_cellManagerPtr->getCellStates().isEmpty())
 		{
 			auto index = g_cellManagerPtr->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
 			auto cellState = g_cellManagerPtr->getCellStates()[index];
@@ -99,7 +99,7 @@ void FieldViewer::update()
 		g_elementManagerPtr->drawElementStates();
 
 		// delete
-		if (MouseR.pressed())
+		if (isMouseover() && MouseR.pressed())
 		{
 			Circle circle(Cursor::PosF(), 256.0);
 			circle.draw(ColorF(Palette::Red, 0.5));

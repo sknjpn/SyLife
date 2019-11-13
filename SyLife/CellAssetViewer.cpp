@@ -6,7 +6,7 @@
 CellAssetViewer::CellAssetViewer(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 {
-	setViewerSize(250, 800);
+	setViewerRectInLocal(Scene::Size().x - 300, 50, 250, 800);
 }
 
 void CellAssetViewer::update()

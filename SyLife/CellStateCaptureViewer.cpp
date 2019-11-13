@@ -16,9 +16,12 @@ void CellStateCaptureViewer::update()
 		return;
 	}
 
-	// CellStateを移動する
-	auto fv = getParentViewer<FieldViewer>();
-	auto cursorPos = fv->getCamera().getGraphics2DMat3x2().transform(Cursor::PosF());
-	auto pos = m_cellState->getPosition().lerp(cursorPos, 0.1);
-	m_cellState->setPosition(pos);
+	if (isMouseover()) getParentViewer<FieldViewer>()->getCamera().update();
+
+	{
+		// CellStateを移動する
+		const auto t = getParentViewer<FieldViewer>()->getCamera().createTransformer();
+		const auto pos = m_cellState->getPosition().lerp(Cursor::PosF(), 0.25);
+		m_cellState->setPosition(pos);
+	}
 }
