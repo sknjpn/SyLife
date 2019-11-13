@@ -1,21 +1,18 @@
-﻿#include "PartPaletteViewer.h"
-
+﻿#include "CellMakingViewer.h"
 #include "AssetManager.h"
-
 #include "PartAsset.h"
-
 #include "BodyAsset.h"
 #include "EquipmentAsset.h"
 #include "NucleusAsset.h"
 #include "ModuleAsset.h"
 
-PartPaletteViewer::PartPaletteViewer()
+CellMakingViewer::PartPaletteViewer::PartPaletteViewer()
 	: m_slideBar(800, 800 / 8.0)
 {
 	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
 }
 
-void PartPaletteViewer::drawAssets()
+void CellMakingViewer::PartPaletteViewer::drawAssets()
 {
 	static Font font(13, Typeface::Bold);
 
@@ -45,7 +42,7 @@ void PartPaletteViewer::drawAssets()
 	}
 }
 
-void	PartPaletteViewer::update()
+void	CellMakingViewer::PartPaletteViewer::update()
 {
 	// Bar
 	{

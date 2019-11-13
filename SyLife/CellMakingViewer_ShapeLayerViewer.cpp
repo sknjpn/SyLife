@@ -1,15 +1,14 @@
-﻿#include "ShapeLayerViewer.h"
-
+﻿#include "CellMakingViewer.h"
 #include "Shape.h"
 #include "PartAsset.h"
 
-ShapeLayerViewer::ShapeLayerViewer()
+CellMakingViewer::ShapeLayerViewer::ShapeLayerViewer()
 	: m_slideBar(800, 800 / 8.0)
 {
 	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
 }
 
-void ShapeLayerViewer::update()
+void CellMakingViewer::ShapeLayerViewer::update()
 {
 	if (!m_partAsset) return;
 
@@ -39,13 +38,13 @@ void ShapeLayerViewer::update()
 	}
 }
 
-void ShapeLayerViewer::setPartAsset(const shared_ptr<PartAsset>& partAsset)
+void CellMakingViewer::ShapeLayerViewer::setPartAsset(const shared_ptr<PartAsset>& partAsset)
 {
 	m_partAsset = partAsset;
 	m_selectedIndex = 0;
 }
 
-void ShapeLayerViewer::drawLayers()
+void CellMakingViewer::ShapeLayerViewer::drawLayers()
 {
 	for (auto it = m_partAsset->m_shape.begin(); it != m_partAsset->m_shape.end(); ++it)
 	{

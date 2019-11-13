@@ -1,11 +1,7 @@
-﻿#include "ShapeAssemblyViewer.h"
-
-
-
-#include "ShapeLayerViewer.h"
+﻿#include "CellMakingViewer.h"
 #include "PartAsset.h"
 
-void ShapeAssemblyViewer::update()
+void CellMakingViewer::ShapeAssemblyViewer::update()
 {
 	if (!m_partAsset) return;
 
@@ -58,7 +54,7 @@ void ShapeAssemblyViewer::update()
 	}
 }
 
-void ShapeAssemblyViewer::setSize(const Vec2& size)
+void CellMakingViewer::ShapeAssemblyViewer::setSize(const Vec2& size)
 {
 	m_size = size;
 
@@ -71,7 +67,7 @@ void ShapeAssemblyViewer::setSize(const Vec2& size)
 	m_camera.setMaxScale(4.0);
 }
 
-void ShapeAssemblyViewer::drawGrid() const
+void CellMakingViewer::ShapeAssemblyViewer::drawGrid() const
 {
 	const int scale = (int)log10(m_camera.getScale());
 	const double thickness = 2.0 / m_camera.getScale();

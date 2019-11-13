@@ -1,18 +1,16 @@
-﻿#include "AssemblyViewer.h"
-
-#include "PartPaletteViewer.h"
+﻿#include "CellMakingViewer.h"
 #include "CellAsset.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "BodyAsset.h"
 
-AssemblyViewer::AssemblyViewer()
+CellMakingViewer::AssemblyViewer::AssemblyViewer()
 {
 	setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
 	setSize(Vec2(800, 800));
 }
 
-void AssemblyViewer::update()
+void CellMakingViewer::AssemblyViewer::update()
 {
 	m_camera.update();
 
@@ -85,7 +83,7 @@ void AssemblyViewer::update()
 	}
 }
 
-void AssemblyViewer::setSize(const Vec2& size)
+void CellMakingViewer::AssemblyViewer::setSize(const Vec2& size)
 {
 	m_size = size;
 
@@ -98,7 +96,7 @@ void AssemblyViewer::setSize(const Vec2& size)
 	m_camera.setMaxScale(4.0);
 }
 
-void AssemblyViewer::drawParts() const
+void CellMakingViewer::AssemblyViewer::drawParts() const
 {
 	for (const auto& p : m_cellAsset->getPartConfigs())
 	{
@@ -116,7 +114,7 @@ void AssemblyViewer::drawParts() const
 	}
 }
 
-void AssemblyViewer::drawGrid() const
+void CellMakingViewer::AssemblyViewer::drawGrid() const
 {
 	const int scale = (int)log10(m_camera.getScale());
 	const double thickness = 2.0 / m_camera.getScale();

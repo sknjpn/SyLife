@@ -386,14 +386,11 @@
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="PartEditor.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="PartPaletteViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="ReleaseViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="ShapeAssemblyViewer.cpp" />
-    <ClCompile Include="ShapeLayerViewer.cpp" />
     <ClCompile Include="SlideBar.cpp" />
     <ClCompile Include="StatisticsViewer.cpp" />
     <ClCompile Include="stdafx.cpp" />
@@ -409,8 +406,11 @@
     <ClCompile Include="WingState.cpp" />
     <ClCompile Include="ToolbarViewer.cpp" />
     <ClCompile Include="GUIButton.cpp" />
-    <ClCompile Include="AssemblyViewer.cpp" />
     <ClCompile Include="CurtainViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_AssemblyViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_PartPaletteViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_ShapeAssemblyViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_ShapeLayerViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddModelViewer.h" />
@@ -461,14 +461,11 @@
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartEditor.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="PartPaletteViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="PartState.h" />
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Shape.h" />
-    <ClInclude Include="ShapeAssemblyViewer.h" />
-    <ClInclude Include="ShapeLayerViewer.h" />
     <ClInclude Include="SlideBar.h" />
     <ClInclude Include="StatisticsViewer.h" />
     <ClInclude Include="stdafx.h" />
@@ -485,7 +482,6 @@
     <ClInclude Include="WingState.h" />
     <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="GUIButton.h" />
-    <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="CurtainViewer.h" />
   </ItemGroup>
 </Project>

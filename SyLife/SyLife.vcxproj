@@ -231,7 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddModelViewer.cpp" />
-    <ClCompile Include="AssemblyViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_AssemblyViewer.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="AssetManager.cpp" />
@@ -283,14 +283,14 @@
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="PartEditor.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="PartPaletteViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_PartPaletteViewer.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="ReleaseViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="ShapeAssemblyViewer.cpp" />
-    <ClCompile Include="ShapeLayerViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_ShapeAssemblyViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_ShapeLayerViewer.cpp" />
     <ClCompile Include="SlideBar.cpp" />
     <ClCompile Include="StatisticsViewer.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -311,7 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddModelViewer.h" />
-    <ClInclude Include="AssemblyViewer.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEditor.h" />
     <ClInclude Include="AssetManager.h" />
@@ -361,13 +360,10 @@
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="PartEditor.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="PartPaletteViewer.h" />
     <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="PartState.h" />
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
-    <ClInclude Include="ShapeAssemblyViewer.h" />
-    <ClInclude Include="ShapeLayerViewer.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SlideBar.h" />
     <ClInclude Include="StatisticsViewer.h" />
