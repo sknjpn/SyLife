@@ -1,41 +1,48 @@
 ﻿#include "CellMakingViewer.h"
 #include "Shape.h"
 #include "PartAsset.h"
+#include "GUISlider.h"
 
-CellMakingViewer::ShapeLayerViewer::ShapeLayerViewer()
-	: m_slideBar(800, 800 / 8.0)
+void CellMakingViewer::ShapeLayerViewer::init()
 {
 	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
+	addChildViewer<GUISlider>(0)->setViewerRect(RectF(200 - 24, 0, 24, 800).movedBy(getViewerRect().pos));
 }
 
 void CellMakingViewer::ShapeLayerViewer::update()
 {
 	if (!m_partAsset) return;
 
-	drawLayers();
+	getChildViewer<GUISlider>()->setHeight((m_partAsset->m_shape.size() + 1) * m_itemHeight);
 
-	// 新規Layer
+	moveDrawPos(0, -getChildViewer<GUISlider>()->getDelta());
 	{
-		static Font font(13, Typeface::Bold);
+		drawLayers();
 
-		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
-		block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
-
-		font(U"Add Layer").drawAt(block.center());
-
-		if (block.leftClicked())
+		// 新規Layer
 		{
-			// 新しいLayerの追加
-			auto& l = m_partAsset->m_shape.emplace_back();
-			l.m_color = Palette::White;
-			l.m_polygon = Circle(10.0).asPolygon();
+			static Font font(13, Typeface::Bold);
 
-			// 選択中のLayerを変更
-			m_selectedIndex = int(m_partAsset->m_shape.size()) - 1;
+			const auto block = RectF(170, m_itemHeight).stretched(-2.0);
+			block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+
+			font(U"Add Layer").drawAt(block.center());
+
+			if (block.leftClicked())
+			{
+				// 新しいLayerの追加
+				auto& l = m_partAsset->m_shape.emplace_back();
+				l.m_color = Palette::White;
+				l.m_polygon = Circle(10.0).asPolygon();
+
+				// 選択中のLayerを変更
+				m_selectedIndex = int(m_partAsset->m_shape.size()) - 1;
+			}
+
+			moveDrawPos(0, m_itemHeight);
 		}
-
-		moveDrawPos(0, m_itemHeight);
 	}
+	moveDrawPos(0, getChildViewer<GUISlider>()->getDelta());
 }
 
 void CellMakingViewer::ShapeLayerViewer::setPartAsset(const shared_ptr<PartAsset>& partAsset)

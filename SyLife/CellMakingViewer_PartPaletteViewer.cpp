@@ -67,6 +67,6 @@ void	CellMakingViewer::PartPaletteViewer::update()
 	getChildViewer<GUISlider>()->setHeight(getList().size() * m_itemHeight);
 
 	moveDrawPos(0, -getChildViewer<GUISlider>()->getDelta());
-
 	drawAssets();
+	moveDrawPos(0, getChildViewer<GUISlider>()->getDelta());
 }

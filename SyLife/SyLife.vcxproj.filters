@@ -391,7 +391,6 @@
     <ClCompile Include="ReleaseViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="SlideBar.cpp" />
     <ClCompile Include="StatisticsViewer.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Storage.cpp" />
@@ -467,7 +466,6 @@
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Shape.h" />
-    <ClInclude Include="SlideBar.h" />
     <ClInclude Include="StatisticsViewer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
