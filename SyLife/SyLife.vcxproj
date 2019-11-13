@@ -231,7 +231,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddModelViewer.cpp" />
-    <ClCompile Include="CellMakingViewer_AssemblyViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_BodySculptor.cpp" />
+    <ClCompile Include="CellMakingViewer_PartsAssembler.cpp" />
+    <ClCompile Include="CellMakingViewer_PartsAssembler_Workspace.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="AssetManager.cpp" />
@@ -251,7 +253,6 @@
     <ClCompile Include="Chip.cpp" />
     <ClCompile Include="ChipManager.cpp" />
     <ClCompile Include="ColorPicker.cpp" />
-    <ClCompile Include="CellMakingButton.cpp" />
     <ClCompile Include="CurtainViewer.cpp" />
     <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="EggManager.cpp" />
@@ -284,14 +285,14 @@
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="PartEditor.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="CellMakingViewer_PartPaletteViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_PartsAssembler_PartList.cpp" />
     <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="ReleaseViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="CellMakingViewer_ShapeAssemblyViewer.cpp" />
-    <ClCompile Include="CellMakingViewer_ShapeLayerViewer.cpp" />
+    <ClCompile Include="CellMakingViewer_BodySculptor_Workspace.cpp" />
+    <ClCompile Include="CellMakingViewer_BodySculptor_LayerLists.cpp" />
     <ClCompile Include="StatisticsViewer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -329,7 +330,6 @@
     <ClInclude Include="Chip.h" />
     <ClInclude Include="ChipManager.h" />
     <ClInclude Include="ColorPicker.h" />
-    <ClInclude Include="CellMakingButton.h" />
     <ClInclude Include="CurtainViewer.h" />
     <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="EggManager.h" />

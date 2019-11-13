@@ -9,7 +9,6 @@
 #include "CellState.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
-#include "CellMakingButton.h"
 
 ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
@@ -54,7 +53,6 @@ void ReleaseViewer::update()
 		c->setVelocity(Vec2::Zero());
 		c->init();
 
-		getParentViewer()->addChildViewer<CellMakingButton>();
 		destroy();
 	}
 }

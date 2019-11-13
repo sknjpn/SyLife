@@ -3,13 +3,13 @@
 #include "PartAsset.h"
 #include "GUISlider.h"
 
-void CellMakingViewer::ShapeLayerViewer::init()
+void CellMakingViewer::BodySculptor::LayerLists::init()
 {
 	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
 	addChildViewer<GUISlider>(0)->setViewerRect(RectF(200 - 24, 0, 24, 800).movedBy(getViewerRect().pos));
 }
 
-void CellMakingViewer::ShapeLayerViewer::update()
+void CellMakingViewer::BodySculptor::LayerLists::update()
 {
 	if (!m_partAsset) return;
 
@@ -45,13 +45,13 @@ void CellMakingViewer::ShapeLayerViewer::update()
 	moveDrawPos(0, getChildViewer<GUISlider>()->getDelta());
 }
 
-void CellMakingViewer::ShapeLayerViewer::setPartAsset(const shared_ptr<PartAsset>& partAsset)
+void CellMakingViewer::BodySculptor::LayerLists::setPartAsset(const shared_ptr<PartAsset>& partAsset)
 {
 	m_partAsset = partAsset;
 	m_selectedIndex = 0;
 }
 
-void CellMakingViewer::ShapeLayerViewer::drawLayers()
+void CellMakingViewer::BodySculptor::LayerLists::drawLayers()
 {
 	for (auto it = m_partAsset->m_shape.begin(); it != m_partAsset->m_shape.end(); ++it)
 	{

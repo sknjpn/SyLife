@@ -4,13 +4,13 @@
 #include "PartConfig.h"
 #include "BodyAsset.h"
 
-CellMakingViewer::AssemblyViewer::AssemblyViewer()
+void CellMakingViewer::PartsAssembler::Workspace::init()
 {
 	setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
 	setSize(Vec2(800, 800));
 }
 
-void CellMakingViewer::AssemblyViewer::update()
+void CellMakingViewer::PartsAssembler::Workspace::update()
 {
 	m_camera.update();
 
@@ -55,7 +55,7 @@ void CellMakingViewer::AssemblyViewer::update()
 	}
 
 	// selectedPart
-	if (auto& selectedPart = getParentViewer()->getChildViewer<PartPaletteViewer>()->getSelectedPart())
+	if (auto& selectedPart = getParentViewer()->getChildViewer<PartList>()->getSelectedPart())
 	{
 		bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(Cursor::PosF());
 
@@ -79,11 +79,11 @@ void CellMakingViewer::AssemblyViewer::update()
 			selectedPart->getShape().getPolygon().movedBy(Cursor::PosF()).draw(ColorF(canSetPart ? Palette::Green : Palette::Red, 0.5));
 		}
 
-		if (!MouseL.pressed()) getParentViewer()->getChildViewer<PartPaletteViewer>()->clearSelectedPart();
+		if (!MouseL.pressed()) getParentViewer()->getChildViewer<PartList>()->clearSelectedPart();
 	}
 }
 
-void CellMakingViewer::AssemblyViewer::setSize(const Vec2& size)
+void CellMakingViewer::PartsAssembler::Workspace::setSize(const Vec2& size)
 {
 	m_size = size;
 
@@ -96,7 +96,7 @@ void CellMakingViewer::AssemblyViewer::setSize(const Vec2& size)
 	m_camera.setMaxScale(4.0);
 }
 
-void CellMakingViewer::AssemblyViewer::drawParts() const
+void CellMakingViewer::PartsAssembler::Workspace::drawParts() const
 {
 	for (const auto& p : m_cellAsset->getPartConfigs())
 	{
@@ -114,7 +114,7 @@ void CellMakingViewer::AssemblyViewer::drawParts() const
 	}
 }
 
-void CellMakingViewer::AssemblyViewer::drawGrid() const
+void CellMakingViewer::PartsAssembler::Workspace::drawGrid() const
 {
 	const int scale = (int)log10(m_camera.getScale());
 	const double thickness = 2.0 / m_camera.getScale();

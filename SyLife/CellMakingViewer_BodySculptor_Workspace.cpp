@@ -1,11 +1,19 @@
 ﻿#include "CellMakingViewer.h"
 #include "PartAsset.h"
 
-void CellMakingViewer::ShapeAssemblyViewer::update()
+void CellMakingViewer::BodySculptor::Workspace::init()
+{
+	setBackgroundColor(Palette::Gray);
+
+	setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
+	setSize(Vec2(800, 800));
+}
+
+void CellMakingViewer::BodySculptor::Workspace::update()
 {
 	if (!m_partAsset) return;
 
-	auto slv = getParentViewer()->getChildViewer<ShapeLayerViewer>();
+	auto slv = getParentViewer()->getChildViewer<LayerLists>();
 	auto index = slv->getSelectedIndex();
 
 	m_camera.update();
@@ -54,7 +62,7 @@ void CellMakingViewer::ShapeAssemblyViewer::update()
 	}
 }
 
-void CellMakingViewer::ShapeAssemblyViewer::setSize(const Vec2& size)
+void CellMakingViewer::BodySculptor::Workspace::setSize(const Vec2& size)
 {
 	m_size = size;
 
@@ -67,7 +75,7 @@ void CellMakingViewer::ShapeAssemblyViewer::setSize(const Vec2& size)
 	m_camera.setMaxScale(4.0);
 }
 
-void CellMakingViewer::ShapeAssemblyViewer::drawGrid() const
+void CellMakingViewer::BodySculptor::Workspace::drawGrid() const
 {
 	const int scale = (int)log10(m_camera.getScale());
 	const double thickness = 2.0 / m_camera.getScale();

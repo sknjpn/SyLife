@@ -7,7 +7,22 @@
 #include "ModuleAsset.h"
 #include "GUISlider.h"
 
-Array<shared_ptr<PartAsset>> CellMakingViewer::PartPaletteViewer::getList() const
+void CellMakingViewer::PartsAssembler::PartList::init()
+{
+	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
+	addChildViewer<GUISlider>(getList().size() * m_itemHeight)->setViewerRect(RectF(200 - 24, 0, 24, 800).movedBy(getViewerRect().pos));
+}
+
+void	CellMakingViewer::PartsAssembler::PartList::update()
+{
+	getChildViewer<GUISlider>()->setHeight(getList().size() * m_itemHeight);
+
+	moveDrawPos(0, -getChildViewer<GUISlider>()->getDelta());
+	drawAssets();
+	moveDrawPos(0, getChildViewer<GUISlider>()->getDelta());
+}
+
+Array<shared_ptr<PartAsset>> CellMakingViewer::PartsAssembler::PartList::getList() const
 {
 	Array<shared_ptr<PartAsset>> assets;
 
@@ -29,7 +44,7 @@ Array<shared_ptr<PartAsset>> CellMakingViewer::PartPaletteViewer::getList() cons
 	return assets;
 }
 
-void CellMakingViewer::PartPaletteViewer::drawAssets()
+void CellMakingViewer::PartsAssembler::PartList::drawAssets()
 {
 	static Font font(13, Typeface::Bold);
 
@@ -54,19 +69,4 @@ void CellMakingViewer::PartPaletteViewer::drawAssets()
 
 		moveDrawPos(0, m_itemHeight);
 	}
-}
-
-void CellMakingViewer::PartPaletteViewer::init()
-{
-	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
-	addChildViewer<GUISlider>(getList().size() * m_itemHeight)->setViewerRect(RectF(200 - 24, 0, 24, 800).movedBy(getViewerRect().pos));
-}
-
-void	CellMakingViewer::PartPaletteViewer::update()
-{
-	getChildViewer<GUISlider>()->setHeight(getList().size() * m_itemHeight);
-
-	moveDrawPos(0, -getChildViewer<GUISlider>()->getDelta());
-	drawAssets();
-	moveDrawPos(0, getChildViewer<GUISlider>()->getDelta());
 }

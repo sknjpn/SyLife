@@ -10,6 +10,14 @@
 
 #include "ReleaseViewer.h"
 
+void CellMakingViewer::init()
+{
+	// 新しいモデルの登録
+	makeAsset();
+
+	setMode(Mode::EditParts);
+}
+
 void CellMakingViewer::update()
 {
 	// 更新
@@ -118,14 +126,6 @@ void CellMakingViewer::update()
 	}
 }
 
-void CellMakingViewer::init()
-{
-	// 新しいモデルの登録
-	makeAsset();
-
-	setMode(Mode::EditParts);
-}
-
 void CellMakingViewer::setMode(Mode mode)
 {
 	m_mode = mode;
@@ -141,9 +141,9 @@ void CellMakingViewer::setMode(Mode mode)
 		// DrawRectの設定
 		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
-		addChildViewer<AssemblyViewer>();
-		getChildViewer<AssemblyViewer>()->setCellAsset(m_cellAsset);
-		addChildViewer<PartPaletteViewer>();
+		addChildViewer<PartsAssembler::Workspace>();
+		getChildViewer<PartsAssembler::Workspace>()->setCellAsset(m_cellAsset);
+		addChildViewer<PartsAssembler::PartList>();
 		break;
 
 	case CellMakingViewer::Mode::EditBodyShapes:
@@ -153,10 +153,10 @@ void CellMakingViewer::setMode(Mode mode)
 		// DrawRectの設定
 		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
-		addChildViewer<ShapeLayerViewer>();
-		getChildViewer<ShapeLayerViewer>()->setPartAsset(m_cellAsset->getBodyAsset());
-		addChildViewer<ShapeAssemblyViewer>();
-		getChildViewer<ShapeAssemblyViewer>()->setPartAsset(m_cellAsset->getBodyAsset());
+		addChildViewer<BodySculptor::LayerLists>();
+		getChildViewer<BodySculptor::LayerLists>()->setPartAsset(m_cellAsset->getBodyAsset());
+		addChildViewer<BodySculptor::Workspace>();
+		getChildViewer<BodySculptor::Workspace>()->setPartAsset(m_cellAsset->getBodyAsset());
 		break;
 	}
 }
