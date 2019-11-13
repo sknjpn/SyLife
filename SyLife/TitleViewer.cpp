@@ -66,16 +66,16 @@ void TitleViewer::init()
 	const auto p = RectF(512, 48).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.1));
 
 	const auto f1 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<FieldViewer>(); destroy(); }); };
-	addChildViewer<GUIButton>(U"はじめから",  f1)->setName(U"はじめから")->setViewerRect(p.movedBy(0, 64));
+	addChildViewer<GUIButton>(U"はじめから",  f1)->setViewerRect(p.movedBy(0, 64));
 
 	const auto f2 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<FieldViewer>(); destroy(); }); };
-	addChildViewer<GUIButton>(U"つづきから", f2)->setName(U"つづきから")->setViewerRect(p.movedBy(0, 128));
+	addChildViewer<GUIButton>(U"つづきから", f2)->setViewerRect(p.movedBy(0, 128));
 
 	const auto f3 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };
-	addChildViewer<GUIButton>(U"エディター", f3)->setName(U"エディター")->setViewerRect(p.movedBy(0, 192));
+	addChildViewer<GUIButton>(U"エディター", f3)->setViewerRect(p.movedBy(0, 192));
 
 	const auto f4 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); };
-	addChildViewer<GUIButton>(U"終了", f4)->setName(U"終了")->setViewerRect(p.movedBy(0, 256));
+	addChildViewer<GUIButton>(U"終了", f4)->setViewerRect(p.movedBy(0, 256));
 
 	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);

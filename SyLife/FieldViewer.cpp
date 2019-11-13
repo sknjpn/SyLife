@@ -42,9 +42,11 @@ FieldViewer::FieldViewer()
 
 void FieldViewer::init()
 {
-	addChildViewer<CellMakingButton>();
 	addChildViewer<CellStateViewer>();
-	addChildViewer<StatisticsViewer>();
+
+	addChildViewer<GUIButton>(U"作成", [this]() { addChildViewer<CellMakingViewer>(); })->setViewerRect(100, 50, 200, 50);
+	addChildViewer<GUIButton>(U"統計", [this]() { addChildViewer<StatisticsViewer>(); })->setViewerRect(100, 100, 200, 50);
+	addChildViewer<GUIButton>(U"図鑑")->setViewerRect(100, 150, 200, 50);
 
 	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
