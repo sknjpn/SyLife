@@ -23,5 +23,5 @@ void AddModelViewer::update()
 
 void AddModelViewer::init()
 {
-	setViewerRect(100, 150, 400, 300);
+	setViewerRectInLocal(100, 150, 400, 300);
 }

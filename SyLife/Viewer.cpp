@@ -6,33 +6,13 @@ void Viewer::UpdateAllViewers()
 {
 	// Viewerのリセット
 	{
-		auto viewers = GetRootViewer()->getAllChildViewers();
+		const auto viewers = GetRootViewer()->getAllChildViewers();
 		g_mouseoveredViewer = nullptr;
 		for (auto it = viewers.begin(); it < viewers.end(); ++it)
-		{
-			(*it)->m_drawPos = Vec2::Zero();
-
-			if ((*it)->m_viewerRect.mouseOver()) g_mouseoveredViewer = *it;
-		}
+			if ((*it)->getViewerRectInWorld().mouseOver()) g_mouseoveredViewer = *it;
 
 		// Viewer 更新
-		for (auto it = viewers.begin(); it < viewers.end(); ++it)
-		{
-			// 消されたならば処理しない
-			if ((*it)->m_isDestroyed) continue;
-
-			auto vp = ScopedViewport2D(Rect((*it)->m_viewerRect));
-			auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate((*it)->m_viewerRect.pos));
-
-			RectF((*it)->m_viewerRect.size).draw((*it)->m_backgroundColor);
-
-			(*it)->update();
-
-			(*it)->m_transformer.reset();
-
-			// フレーム描画
-			if (KeyF.pressed()) RectF((*it)->m_viewerRect.size).drawFrame(1.0, 0.0, ColorF(Palette::Red, 0.5));
-		}
+		Viewer::GetRootViewer()->process();
 	}
 
 	// destroyされたViewerの削除
@@ -52,6 +32,49 @@ void Viewer::UpdateAllViewers()
 		}
 
 		if (flag) break;
+	}
+}
+
+void Viewer::process()
+{
+	if (m_isDestroyed) return;
+
+	// 自身の更新
+	{
+		const auto sv = ScopedViewport2D(Rect(getViewerRectInWorld()));
+		const auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate(getViewerPosInWorld()));
+
+		RectF(m_viewerRectInLocal.size).draw(m_backgroundColor);
+
+		update();
+
+		m_transformer.reset();
+		m_drawPos = Vec2::Zero();
+
+		// フレーム描画
+		if (KeyL.pressed())
+			RectF(m_viewerRectInLocal.size).drawFrame(2.0, 0.0, isMouseover() ? Palette::Red : Palette::Green);
+	}
+
+	// Childの更新
+	// 長さが変わる可能性があるのでintで管理
+	for (int i = 0; i < m_childViewers.size(); ++i)
+	{
+		const auto cv = m_childViewers[i];
+
+		cv->process();
+	}
+}
+
+Vec2 Viewer::getViewerPosInWorld() const
+{
+	if (m_parentViewer)
+	{
+		return m_viewerRectInLocal.pos.movedBy(m_parentViewer->getViewerPosInWorld());
+	}
+	else
+	{
+		return Vec2::Zero();
 	}
 }
 

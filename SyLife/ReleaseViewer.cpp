@@ -13,7 +13,6 @@
 ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 {
-	setViewerRect(Scene::Rect());
 	setBackgroundColor(Color(0, 0));
 }
 

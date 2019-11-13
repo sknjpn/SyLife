@@ -34,7 +34,6 @@ FieldViewer::FieldViewer()
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
 
-	setViewerRect(Scene::Size());
 	m_audio.setLoop(true);
 	//m_audio.play();
 }
@@ -43,9 +42,9 @@ void FieldViewer::init()
 {
 	addChildViewer<CellStateViewer>();
 
-	addChildViewer<GUIButton>(U"作成", [this]() { addChildViewer<CellMakingViewer>(); })->setViewerRect(100, 50, 200, 50);
-	addChildViewer<GUIButton>(U"統計", [this]() { addChildViewer<StatisticsViewer>(); })->setViewerRect(100, 100, 200, 50);
-	addChildViewer<GUIButton>(U"図鑑")->setViewerRect(100, 150, 200, 50);
+	addChildViewer<GUIButton>(U"作成", [this]() { addChildViewer<CellMakingViewer>(); })->setViewerRectInLocal(100, 50, 200, 50);
+	addChildViewer<GUIButton>(U"統計", [this]() { addChildViewer<StatisticsViewer>(); })->setViewerRectInLocal(100, 100, 200, 50);
+	addChildViewer<GUIButton>(U"図鑑")->setViewerRectInLocal(100, 150, 200, 50);
 
 	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);

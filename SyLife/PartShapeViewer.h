@@ -16,11 +16,11 @@ public:
 public:
 	PartShapeViewer()
 	{
-		setViewerRect(0, 0, 600, 600);
+		setViewerRectInLocal(0, 0, 600, 600);
 
 		m_camera.setControlOutOfScreenEnabled(false);
 		m_camera.setRestrictedRect(RectF(-150, -150, 300, 300));
-		m_camera.setScreen(getViewerRect());
+		m_camera.setScreen(getViewerRectInLocal());
 		m_camera.setMaxScale(20.0);
 		m_camera.setTargetCenter(Vec2::Zero());
 		m_camera.setCenter(Vec2::Zero());

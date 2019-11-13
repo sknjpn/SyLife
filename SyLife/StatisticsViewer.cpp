@@ -44,7 +44,7 @@ void StatisticsViewer::update()
 
 void StatisticsViewer::init()
 {
-	setViewerRect(50, 1080 - 150, m_statusesSizeMax, 100);
+	setViewerRectInLocal(50, 1080 - 150, m_statusesSizeMax, 100);
 }
 
 StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)

@@ -5,7 +5,7 @@ void CellMakingViewer::BodySculptor::Workspace::init()
 {
 	setBackgroundColor(Palette::Gray);
 
-	setViewerRect(RectF(800, 800).setCenter(getDrawCenter().movedBy(0, -50)));
+	setViewerRectInLocal(200, 0, 800, 800);
 	setSize(Vec2(800, 800));
 }
 

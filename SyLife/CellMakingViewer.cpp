@@ -16,6 +16,9 @@ void CellMakingViewer::init()
 	makeAsset();
 
 	setMode(Mode::EditParts);
+
+	// DrawRectの設定
+	setViewerRectInLocal(RectF(1200, 900).setCenter(Scene::CenterF()));
 }
 
 void CellMakingViewer::update()
@@ -138,9 +141,6 @@ void CellMakingViewer::setMode(Mode mode)
 		// BackgroundColorの設定
 		setBackgroundColor(Color(11, 22, 33));
 
-		// DrawRectの設定
-		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
-
 		addChildViewer<PartsAssembler::Workspace>();
 		getChildViewer<PartsAssembler::Workspace>()->setCellAsset(m_cellAsset);
 		addChildViewer<PartsAssembler::PartList>();
@@ -149,9 +149,6 @@ void CellMakingViewer::setMode(Mode mode)
 	case CellMakingViewer::Mode::EditBodyShapes:
 		// BackgroundColorの設定
 		setBackgroundColor(Color(11, 22, 33));
-
-		// DrawRectの設定
-		setViewerRect(RectF(1200, 900).setCenter(Scene::CenterF()));
 
 		addChildViewer<BodySculptor::LayerLists>();
 		getChildViewer<BodySculptor::LayerLists>()->setPartAsset(m_cellAsset->getBodyAsset());

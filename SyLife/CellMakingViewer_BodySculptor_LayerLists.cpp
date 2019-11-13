@@ -5,8 +5,8 @@
 
 void CellMakingViewer::BodySculptor::LayerLists::init()
 {
-	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
-	addChildViewer<GUISlider>(0)->setViewerRect(RectF(200 - 24, 0, 24, 800).movedBy(getViewerRect().pos));
+	setViewerRectInLocal(1000, 0, 200, 800);
+	addChildViewer<GUISlider>(0)->setViewerRectInLocal(RectF(200 - 24, 0, 24, 800));
 }
 
 void CellMakingViewer::BodySculptor::LayerLists::update()
