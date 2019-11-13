@@ -6,18 +6,30 @@
 
 void CellMakingViewer::CellInfo::init()
 {
-
+	m_textEditState_name.text = getParentViewer<CellMakingViewer>()->getCellAsset()->getName();
 }
 
 void CellMakingViewer::CellInfo::update()
 {
 	const auto& cellAsset = getParentViewer<CellMakingViewer>()->getCellAsset();
 
+	moveDrawPos(5, 5);
+
+	// Name
+	{
+		static Font font(24);
+
+		//font(cellAsset->getName()).drawAt(Vec2(95, 20));
+
+		SimpleGUI::TextBox(m_textEditState_name, Vec2::Zero(), 190);
+
+		moveDrawPos(0, 40);
+	}
+
 	// Release
 	{
 		const RectF rect = Rect(200, 200).stretched(-5);
 		const double r = rect.size.x / 2.0;
-		setDrawPos(rect.pos);
 
 		Circle(rect.size / 2.0, r)
 			.draw(Palette::Skyblue)
@@ -35,12 +47,12 @@ void CellMakingViewer::CellInfo::update()
 				partConfig->getPartAsset()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
 			}
 		}
+
+		setDrawPos(Vec2(0, 330));
 	}
 
 	// material
 	{
-		setDrawPos(Vec2(0, 330));
-
 		static Font font(13, Typeface::Bold);
 
 		// Nutrition

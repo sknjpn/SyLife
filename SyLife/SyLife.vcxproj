@@ -268,6 +268,7 @@
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldViewer.cpp" />
     <ClCompile Include="GUIButton.cpp" />
+    <ClCompile Include="GUIChecker.cpp" />
     <ClCompile Include="GUISlider.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -291,6 +292,7 @@
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="ReleaseViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="SetupViewer.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="CellMakingViewer_BodySculptor_Workspace.cpp" />
     <ClCompile Include="CellMakingViewer_BodySculptor_LayerLists.cpp" />
@@ -345,6 +347,7 @@
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="GUIButton.h" />
+    <ClInclude Include="GUIChecker.h" />
     <ClInclude Include="GUISlider.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Model.h" />
@@ -366,6 +369,7 @@
     <ClInclude Include="PartState.h" />
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="SetupViewer.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="StatisticsViewer.h" />
     <ClInclude Include="stdafx.h" />

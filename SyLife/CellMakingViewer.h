@@ -122,6 +122,7 @@ public:
 	class CellInfo
 		: public Viewer
 	{
+		TextEditState	m_textEditState_name;
 
 	public:
 		void	init() override;

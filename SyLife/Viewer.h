@@ -18,6 +18,7 @@ class Viewer
 
 	static void UpdateAllViewers();
 	void	process();
+	void	removeDeadViewer();
 
 public:
 	virtual ~Viewer() = default;

@@ -39,19 +39,19 @@ void CellMakingViewer::init()
 	setViewerRectInLocal(RectF(1400, 900).setCenter(Scene::CenterF()));
 
 	addChildViewer<GUIButton>(U"ボディ編集", [this]() { openBodySculptor(); })
-		->setViewerRectInLocal(0, 0, 200, 40);
+		->setViewerRectInLocal(5, 5, 190, 35);
 
 	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
-		->setViewerRectInLocal(0, 40, 200, 40);
+		->setViewerRectInLocal(5, 45, 190, 35);
 
 	addChildViewer<GUIButton>(U"生き物配置", [this]() { getParentViewer()->addChildViewer<ReleaseViewer>(m_cellAsset); destroy(); })
-		->setViewerRectInLocal(0, 80, 200, 40);
+		->setViewerRectInLocal(5, 85, 190, 35);
 
 	addChildViewer<GUIButton>(U"閉じる", [this]() { destroy(); })
-		->setViewerRectInLocal(0, 120, 200, 40);
+		->setViewerRectInLocal(5, 125, 190, 35);
 
 	addChildViewer<CellInfo>()
-		->setViewerRectInLocal(0, 160, 200, 600);
+		->setViewerRectInLocal(0, 165, 200, 595);
 }
 
 void CellMakingViewer::update()
@@ -66,9 +66,18 @@ void CellMakingViewer::makeAsset()
 {
 	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
 
-	auto bodyAsset = g_assetManagerPtr->makeAsset<BodyAsset>();
-	m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
+	// 名前をランダムに設定
 	{
+		TextReader textReader(U"assets/names.txt");
+
+		m_cellAsset->setName(textReader.readAll().split_lines().choice());
+	}
+
+	// Bodyの設定
+	{
+		auto bodyAsset = g_assetManagerPtr->makeAsset<BodyAsset>();
+		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
+
 		bodyAsset->m_mass = 1.0;
 		bodyAsset->m_material.setNutrition(1.0);
 		auto& l = bodyAsset->m_shape.emplace_back();

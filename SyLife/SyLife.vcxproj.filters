@@ -413,6 +413,8 @@
     <ClCompile Include="GUIButton.cpp" />
     <ClCompile Include="GUISlider.cpp" />
     <ClCompile Include="CellMakingViewer_CellInfo.cpp" />
+    <ClCompile Include="SetupViewer.cpp" />
+    <ClCompile Include="GUIChecker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WingState.h" />
@@ -484,5 +486,7 @@
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="GUIButton.h" />
     <ClInclude Include="GUISlider.h" />
+    <ClInclude Include="SetupViewer.h" />
+    <ClInclude Include="GUIChecker.h" />
   </ItemGroup>
 </Project>

@@ -4,35 +4,19 @@ shared_ptr<Viewer>	Viewer::g_mouseoveredViewer;
 
 void Viewer::UpdateAllViewers()
 {
-	// Viewerのリセット
+	// MouseOverの計算
 	{
 		const auto viewers = GetRootViewer()->getAllChildViewers();
 		g_mouseoveredViewer = nullptr;
 		for (auto it = viewers.begin(); it < viewers.end(); ++it)
 			if ((*it)->getViewerRectInWorld().mouseOver()) g_mouseoveredViewer = *it;
-
-		// Viewer 更新
-		Viewer::GetRootViewer()->process();
 	}
+
+	// Viewer 更新
+	Viewer::GetRootViewer()->process();
 
 	// destroyされたViewerの削除
-	for (;;)
-	{
-		auto viewers = GetRootViewer()->getAllChildViewers();
-		bool flag = true;
-
-		for (auto& v : viewers)
-		{
-			if (v->m_childViewers.isEmpty() && v->m_isDestroyed)
-			{
-				v->m_parentViewer->m_childViewers.remove(v);
-
-				flag = false;
-			}
-		}
-
-		if (flag) break;
-	}
+	GetRootViewer()->removeDeadViewer();
 }
 
 void Viewer::process()
@@ -40,6 +24,7 @@ void Viewer::process()
 	if (m_isDestroyed) return;
 
 	// 自身の更新
+	if (!m_isRoot)
 	{
 		const auto sv = ScopedViewport2D(Rect(getViewerRectInWorld()));
 		const auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate(getViewerPosInWorld()));
@@ -64,6 +49,16 @@ void Viewer::process()
 
 		cv->process();
 	}
+}
+
+void Viewer::removeDeadViewer()
+{
+	for (const auto& cv : m_childViewers)
+		cv->removeDeadViewer();
+
+	m_childViewers.remove_if([](const auto& cv) { return cv->m_isDestroyed; });
+
+	if (m_isDestroyed) m_parentViewer = nullptr;
 }
 
 Vec2 Viewer::getViewerPosInWorld() const
@@ -93,11 +88,15 @@ const shared_ptr<Viewer>& Viewer::GetRootViewer()
 {
 	static shared_ptr<Viewer> rootViewer = MakeShared<Viewer>();
 
+	rootViewer->m_isRoot = true;
+
 	return rootViewer;
 }
 
 void Viewer::destroy()
 {
+	if (m_isRoot) return;
+
 	m_isDestroyed = true;
 
 	for (auto& cv : m_childViewers)
