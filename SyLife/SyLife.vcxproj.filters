@@ -411,6 +411,7 @@
     <ClCompile Include="CellMakingViewer_PartPaletteViewer.cpp" />
     <ClCompile Include="CellMakingViewer_ShapeAssemblyViewer.cpp" />
     <ClCompile Include="CellMakingViewer_ShapeLayerViewer.cpp" />
+    <ClCompile Include="GUISlider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddModelViewer.h" />
@@ -483,5 +484,6 @@
     <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="GUIButton.h" />
     <ClInclude Include="CurtainViewer.h" />
+    <ClInclude Include="GUISlider.h" />
   </ItemGroup>
 </Project>

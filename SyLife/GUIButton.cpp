@@ -18,7 +18,7 @@ void GUIButton::update()
 		m_isSelected = m_isGrabbed && isMouseover() && MouseL.up();
 		if (m_isSelected && m_functionOnSelected) m_functionOnSelected();
 
-		if (rect.leftClicked()) m_isGrabbed = true;
+		if (isMouseover() && MouseL.down()) m_isGrabbed = true;
 		if (MouseL.up()) m_isGrabbed = false;
 	}
 

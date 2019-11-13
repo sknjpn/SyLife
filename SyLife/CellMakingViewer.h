@@ -65,18 +65,18 @@ class CellMakingViewer :
 		: public Viewer
 	{
 		double	m_itemHeight = 80;
-		SlideBar	m_slideBar;
 		shared_ptr<PartAsset>	m_selectedPart;
 
-	public:
-		PartPaletteViewer();
+		Array<shared_ptr<PartAsset>>	getList() const;
 
+	public:
 		const shared_ptr<PartAsset>& getSelectedPart() const { return m_selectedPart; }
 
 		void	clearSelectedPart() { m_selectedPart = nullptr; }
 
 		void	drawAssets();
 
+		void	init() override;
 		void	update() override;
 	};
 

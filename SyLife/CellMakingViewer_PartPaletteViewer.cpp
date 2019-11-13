@@ -5,21 +5,35 @@
 #include "EquipmentAsset.h"
 #include "NucleusAsset.h"
 #include "ModuleAsset.h"
+#include "GUISlider.h"
 
-CellMakingViewer::PartPaletteViewer::PartPaletteViewer()
-	: m_slideBar(800, 800 / 8.0)
+Array<shared_ptr<PartAsset>> CellMakingViewer::PartPaletteViewer::getList() const
 {
-	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
+	Array<shared_ptr<PartAsset>> assets;
+
+	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<ModuleAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	
+	return assets;
 }
 
 void CellMakingViewer::PartPaletteViewer::drawAssets()
 {
 	static Font font(13, Typeface::Bold);
 
-	Array<shared_ptr<PartAsset>> assets;
-	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<ModuleAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	const auto assets = getList();
 	for (auto it = assets.begin(); it != assets.end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
@@ -42,20 +56,17 @@ void CellMakingViewer::PartPaletteViewer::drawAssets()
 	}
 }
 
+void CellMakingViewer::PartPaletteViewer::init()
+{
+	setViewerRect(RectF(200, 800).setCenter(getDrawCenter().movedBy(500, -50)));
+	addChildViewer<GUISlider>(getList().size() * m_itemHeight)->setViewerRect(RectF(200 - 24, 0, 24, 800).movedBy(getViewerRect().pos));
+}
+
 void	CellMakingViewer::PartPaletteViewer::update()
 {
-	// Bar
-	{
-		auto t = Transformer2D(Mat3x2::Translate(200 - 30, 0), true);
+	getChildViewer<GUISlider>()->setHeight(getList().size() * m_itemHeight);
 
-		m_slideBar.update();
-	}
+	moveDrawPos(0, -getChildViewer<GUISlider>()->getDelta());
 
-	{
-		const double h = g_assetManagerPtr->getAssets<PartAsset>().size() * m_itemHeight - 800;
-
-		moveDrawPos(0, -h * m_slideBar.getValue());
-
-		drawAssets();
-	}
+	drawAssets();
 }
