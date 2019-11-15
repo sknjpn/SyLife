@@ -231,6 +231,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddModelViewer.cpp" />
+    <ClCompile Include="CellBookViewer.cpp" />
+    <ClCompile Include="CellBookViewer_CellInfo.cpp" />
+    <ClCompile Include="CellBookViewer_CellList.cpp" />
     <ClCompile Include="CellMakingViewer_BodySculptor.cpp" />
     <ClCompile Include="CellMakingViewer_CellInfo.cpp" />
     <ClCompile Include="CellMakingViewer_PartsAssembler.cpp" />
@@ -324,6 +327,7 @@
     <ClInclude Include="BodyState.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellAssetViewer.h" />
+    <ClInclude Include="CellBookViewer.h" />
     <ClInclude Include="CellEditor.h" />
     <ClInclude Include="CellMakingViewer.h" />
     <ClInclude Include="CellManager.h" />

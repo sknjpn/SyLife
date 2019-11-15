@@ -21,6 +21,7 @@
 #include "CellStateViewer.h"
 #include "CellStateCaptureViewer.h"
 #include "StatisticsViewer.h"
+#include "CellBookViewer.h"
 
 #include "GUIButton.h"
 #include "CurtainViewer.h"
@@ -44,7 +45,7 @@ void FieldViewer::init()
 
 	addChildViewer<GUIButton>(U"作成", [this]() { addChildViewer<CellMakingViewer>(); })->setViewerRectInLocal(100, 50, 200, 50);
 	addChildViewer<GUIButton>(U"統計", [this]() { addChildViewer<StatisticsViewer>(); })->setViewerRectInLocal(100, 100, 200, 50);
-	addChildViewer<GUIButton>(U"図鑑")->setViewerRectInLocal(100, 150, 200, 50);
+	addChildViewer<GUIButton>(U"図鑑", [this]() { addChildViewer<CellBookViewer>(); })->setViewerRectInLocal(100, 150, 200, 50);
 
 	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
