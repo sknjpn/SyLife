@@ -5,6 +5,6 @@ void CellBookViewer::CellInfo::init()
 
 }
 
-void CellBookViewer::CellList::update()
+void CellBookViewer::CellInfo::update()
 {
 }
