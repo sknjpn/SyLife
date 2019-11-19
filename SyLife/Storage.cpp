@@ -72,21 +72,20 @@ int Storage::numElement(const shared_ptr<ElementAsset>& asset) const
 	else return (*it).second;
 }
 
-void Storage::load(const ptree& pt)
+void Storage::load(const JSONValue& json)
 {
-	Model::load(pt);
+	Model::load(json);
 
 	// nutrition
-	m_nutrition = pt.get<double>("nutrition");
+	m_nutrition = json[U"nutrition"].get<double>();
 
 	// elements
-	for (auto m : pt.get_child("elements"))
+	for (auto element : json[U"elements"].arrayView())
 	{
-		auto name = m.second.get<string>("name");
+		const auto& asset = g_assetManagerPtr->getAsset<ElementAsset>(element[U"name"].getString());
+		const int size = element[U"size"].get<int>();
 
-		const auto& asset = g_assetManagerPtr->getAsset<ElementAsset>(name);
-
-		emplace_back(asset, m.second.get<int>("size"));
+		emplace_back(asset, size);
 	}
 }
 
@@ -95,21 +94,21 @@ void Storage::save(ptree& pt) const
 	Model::save(pt);
 
 	// nutrition
-	pt.put<double>("nutrition", m_nutrition);
+	//pt.put<double>(U"nutrition", m_nutrition);
 
 	// elements
-	{
+	/*{
 		ptree elements;
 
 		for (const auto& m : *this)
 		{
 			ptree pt2;
-			pt2.put<string>("name", m.first->getName());
-			pt2.put<int>("size", m.second);
+			pt2.put<String>(U"name", m.first->getName());
+			pt2.put<int>(U"size", m.second);
 
-			elements.push_back(std::make_pair("", pt2));
+			elements.push_back(std::make_pair(U"", pt2));
 		}
 
-		pt.add_child("elements", elements);
-	}
+		pt.add_child(U"elements", elements);
+	}*/
 }

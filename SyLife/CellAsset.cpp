@@ -1,29 +1,29 @@
 ﻿#include "CellAsset.h"
 #include "CellEditor.h"
 
-#include "ViewerManager.h"
-
 #include "PartAsset.h"
 #include "PartConfig.h"
+#include "BodyAsset.h"
+#include "NucleusAsset.h"
 
 void CellAsset::draw(double a)
 {
 	// parts
 	for (const auto& pc : m_partConfigs)
 	{
-		auto t2 = Transformer2D(Mat3x2::Rotate(pc->getRotation()).translated(pc->getPosition()));
+		auto t2 = Transformer2D(pc->getMat3x2());
 
 		pc->getPartAsset()->draw(a);
 	}
 }
 
-void CellAsset::load(const ptree& pt)
+void CellAsset::load(const JSONValue& json)
 {
-	Asset::load(pt);
+	Asset::load(json);
 
 	// parts
-	for (auto part : pt.get_child("parts"))
-		m_partConfigs.emplace_back(make_shared<PartConfig>())->load(part.second);
+	for (const auto& partConfig : json[U"parts"].arrayView())
+		m_partConfigs.emplace_back(make_shared<PartConfig>())->load(partConfig);
 }
 
 void CellAsset::save(ptree& pt) const
@@ -31,19 +31,19 @@ void CellAsset::save(ptree& pt) const
 	Asset::save(pt);
 
 	// parts
-	{
+	/*{
 		ptree parts;
 
 		for (const auto& e : m_partConfigs)
 		{
 			ptree part; e->save(part);
-			parts.push_back(std::make_pair("", part));
+			parts.push_back(std::make_pair(U"", part));
 		}
 
-		pt.add_child("parts", parts);
-	}
+		pt.add_child(U"parts", parts);
+	}*/
 
-	pt.put("type", "CellAsset");
+	//pt.put(U"type", "CellAsset");
 }
 
 Vec2 CellAsset::getCentroid()
@@ -87,9 +87,14 @@ void CellAsset::setCentroidAsOrigin()
 		p->setPosition(p->getPosition() - centroid);
 }
 
+bool CellAsset::isValid() const
+{
+	return getBodyAsset() && getNucleusAsset();
+}
+
 void CellAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<CellEditor>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<CellEditor>()->setPartAsset(shared_from_this());
 }
 
 
@@ -100,6 +105,8 @@ shared_ptr<PartConfig>& CellAsset::addPartConfig()
 
 void CellAsset::updateProperties()
 {
+	if (!isValid()) return;
+
 	// mass
 	updateMass();
 
@@ -115,7 +122,30 @@ void CellAsset::updateProperties()
 	// maxStorage (生成の必要量の二倍)
 	updateMaxStorage();
 
-	m_lifespanTime = 25.0;
-	m_yieldTime = 5.0;
-	m_bornTime = 10.0;
+	const auto nucleusAsset = getNucleusAsset();
+	m_lifespanTime = nucleusAsset->getLifespanTime();
+	m_yieldTime = nucleusAsset->getYieldTime();
+	m_bornTime = nucleusAsset->getBornTime();
+}
+
+shared_ptr<BodyAsset> CellAsset::getBodyAsset() const
+{
+	for (const auto& pc : m_partConfigs)
+	{
+		if (dynamic_pointer_cast<BodyAsset>(pc->getPartAsset()))
+			return dynamic_pointer_cast<BodyAsset>(pc->getPartAsset());
+	}
+
+	return nullptr;
+}
+
+shared_ptr<NucleusAsset> CellAsset::getNucleusAsset() const
+{
+	for (const auto& pc : m_partConfigs)
+	{
+		if (dynamic_pointer_cast<NucleusAsset>(pc->getPartAsset()))
+			return dynamic_pointer_cast<NucleusAsset>(pc->getPartAsset());
+	}
+
+	return nullptr;
 }

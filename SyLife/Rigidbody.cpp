@@ -1,10 +1,8 @@
 ﻿#include "Rigidbody.h"
 
-#include "SystemManager.h"
-
 void Rigidbody::addForceInWorld(const Vec2& force, const Vec2& worldPosition)
 {
-	addImpulseInWorld(force * g_systemManagerPtr->GetDeltaTime(), worldPosition);
+	addImpulseInWorld(force * DeltaTime, worldPosition);
 }
 
 void Rigidbody::addImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
@@ -28,7 +26,7 @@ void Rigidbody::addImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition
 void Rigidbody::updateRigidbody()
 {
 	// 回転運動
-	m_rotation += m_angularVelocity * g_systemManagerPtr->GetDeltaTime();
+	m_rotation += m_angularVelocity * DeltaTime;
 
 	// 摩擦抵抗
 	m_angularVelocity *= 0.95;

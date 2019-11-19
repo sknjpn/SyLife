@@ -1,10 +1,6 @@
 ﻿#include "PartShapeViewer.h"
 #include "BodyAsset.h"
 
-void PartShapeViewer::init()
-{
-}
-
 void PartShapeViewer::update()
 {
 	m_camera.update();
@@ -88,7 +84,7 @@ void PartShapeViewer::update()
 	}
 
 	// update
-	if (isMouseOver())
+	if (isMouseover())
 	{
 		// Verticleの配置
 		if (m_verticles.empty() && MouseL.down()) m_verticles.emplace_back(cursor);

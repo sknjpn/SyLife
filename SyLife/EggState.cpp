@@ -1,6 +1,5 @@
 ﻿#include "EggState.h"
 
-#include "SystemManager.h"
 #include "CellManager.h"
 
 #include "CellAsset.h"
@@ -17,7 +16,7 @@ EggState::EggState(const shared_ptr<CellAsset>& cellAsset)
 
 void EggState::updateEgg()
 {
-	m_timer -= g_systemManagerPtr->GetDeltaTime();
+	m_timer -= DeltaTime;
 
 	// 孵化
 	if (m_timer <= 0)
@@ -32,9 +31,8 @@ void EggState::updateEgg()
 
 void EggState::draw()
 {
-	auto t = Transformer2D(Mat3x2::Scale(0.5)
-		.rotated(getRotation())
-		.translated(getPosition().x, getPosition().y));
+	auto t1 = Transformer2D(getMat3x2());
+	auto t2 = Transformer2D(Mat3x2::Scale(0.5));
 
 	Circle(getRadius() * 2.0)
 		.draw(ColorF(Palette::Papayawhip, 0.5))

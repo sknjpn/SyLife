@@ -3,23 +3,21 @@
 #include "Viewer.h"
 
 #include "TinyCamera.h"
-#include "Curtain.h"
-
-class CellAsset;
 
 class FieldViewer
 	: public Viewer
 {
 	TinyCamera	m_camera;
 	Audio		m_audio;
-	Curtain		m_openCurtain;
-	
+
+	void	openCellMakingViewer();
+
 public:
 	FieldViewer();
 
 	void	init() override;
-
 	void	update() override;
 
+	TinyCamera& getCamera() { return m_camera; }
 	const TinyCamera& getCamera() const { return m_camera; }
 };

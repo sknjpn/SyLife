@@ -1,6 +1,6 @@
 ﻿#include "EquipmentAsset.h"
 
-#include "ViewerManager.h"
+
 
 #include "EquipmentState.h"
 #include "EquipmentEditor.h"
@@ -8,8 +8,8 @@
 
 void EquipmentAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<EquipmentEditor>()->setPartAsset(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<EquipmentEditor>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> EquipmentAsset::makeState()
@@ -17,9 +17,9 @@ shared_ptr<PartState> EquipmentAsset::makeState()
 	return make_shared<EquipmentState>();
 }
 
-void EquipmentAsset::load(const ptree& pt)
+void EquipmentAsset::load(const JSONValue& json)
 {
-	PartAsset::load(pt);
+	PartAsset::load(json);
 }
 
 void EquipmentAsset::save(ptree& pt) const
@@ -27,5 +27,5 @@ void EquipmentAsset::save(ptree& pt) const
 	PartAsset::save(pt);
 
 	// type
-	pt.put("type", "EquipmentAsset");
+	//pt.put(U"type", "EquipmentAsset");
 }

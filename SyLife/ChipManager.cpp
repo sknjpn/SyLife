@@ -1,6 +1,5 @@
 ﻿#include "ChipManager.h"
 
-#include "ViewerManager.h"
 #include "WaveManager.h"
 
 #include "Chip.h"
@@ -23,7 +22,6 @@ shared_ptr<Chip> ChipManager::getChip(const Point& point) const
 	if (ap.y < 0) ap.y = 0;
 	if (ap.x >= m_rect.size.x) ap.x = m_rect.size.x - 1;
 	if (ap.y >= m_rect.size.y) ap.y = m_rect.size.y - 1;
-	//Logger << ap;
 	return m_chips[ap];
 }
 
@@ -60,7 +58,7 @@ void ChipManager::drawChips()
 	// 領域の取得
 	Rect rect;
 	{
-		auto cameraRect = g_viewerManagerPtr->getViewer<FieldViewer>()->getCamera().getCameraRect();
+		auto cameraRect = Viewer::GetRootViewer()->getChildViewer<FieldViewer>()->getCamera().getCameraRect();
 
 		rect.pos = getPoint(cameraRect.pos);
 		rect.size = getPoint(cameraRect.br()) - rect.pos;

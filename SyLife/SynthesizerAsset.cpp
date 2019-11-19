@@ -1,6 +1,5 @@
 ﻿#include "SynthesizerAsset.h"
 
-#include "ViewerManager.h"
 #include "AssetManager.h"
 
 #include "SynthesizerEditor.h"
@@ -10,8 +9,8 @@
 
 void SynthesizerAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<SynthesizerEditor>()->setPartAsset(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<SynthesizerEditor>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> SynthesizerAsset::makeState()
@@ -19,12 +18,12 @@ shared_ptr<PartState> SynthesizerAsset::makeState()
 	return make_shared<SynthesizerState>();
 }
 
-void SynthesizerAsset::load(const ptree& pt)
+void SynthesizerAsset::load(const JSONValue& json)
 {
-	ModuleAsset::load(pt);
+	ModuleAsset::load(json);
 
 	// export
-	m_export = g_assetManagerPtr->getAsset<ElementAsset>(pt.get<string>("export"));
+	m_export = g_assetManagerPtr->getAsset<ElementAsset>(json[U"export"].getString());
 }
 
 void SynthesizerAsset::save(ptree& pt) const
@@ -32,7 +31,7 @@ void SynthesizerAsset::save(ptree& pt) const
 	ModuleAsset::save(pt);
 
 	// export
-	pt.put("export", m_export->getName());
+	//pt.put(U"export", m_export->getName());
 
-	pt.put("type", "SynthesizerAsset");
+	//pt.put(U"type", "SynthesizerAsset");
 }

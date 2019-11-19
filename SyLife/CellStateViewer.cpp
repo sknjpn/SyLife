@@ -7,14 +7,12 @@
 CellStateViewer::CellStateViewer()
 	: m_cellState(nullptr)
 {
-	setPriority(1);
-
-	setViewerRect(Scene::Width() - 300, 450, 200, 400);
+	setViewerRectInLocal(Scene::Width() - 300, 450, 200, 400);
 }
 
 void CellStateViewer::update()
 {
-	Rect(getViewerRect().size.asPoint()).draw(Color(11, 22, 33, 192));
+	Rect(getViewerRectInLocal().size.asPoint()).draw(Color(11, 22, 33, 192));
 
 	if (!m_cellState) return;
 	if (m_cellState->isDestroyed())
@@ -30,7 +28,7 @@ void CellStateViewer::update()
 		auto t1 = Transformer2D(Mat3x2::Translate(100, 50));
 		auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_cellAsset->getRadius()));
 
-		m_cellState->m_cellAsset->draw(1.0);
+		m_cellState->m_cellAsset->draw(0.5);
 	}
 
 	Vec2 pos(0, 100);
@@ -47,7 +45,7 @@ void CellStateViewer::update()
 		for (const auto& m : asset->getMaterial().getElementList())
 		{
 			auto t = Transformer2D(Mat3x2::Translate(pos));
-			font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();
+			font(m.first->getName() + U":" + ToString(m.second) + U"U").draw();
 			pos.moveBy(0, 15);
 		}
 		pos.moveBy(0, 32);
@@ -65,7 +63,7 @@ void CellStateViewer::update()
 		for (const auto& m : m_cellState->m_storage.getElementList())
 		{
 			auto t = Transformer2D(Mat3x2::Translate(pos));
-			font(Unicode::Widen(m.first->getName()) + U":" + ToString(m.second) + U"U").draw();
+			font(m.first->getName() + U":" + ToString(m.second) + U"U").draw();
 			pos.moveBy(0, 15);
 		}
 		pos.moveBy(-16.0, 0.0);

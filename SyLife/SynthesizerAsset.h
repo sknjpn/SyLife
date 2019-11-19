@@ -13,6 +13,6 @@ public:
 	void	makeViewer() override;
 	shared_ptr<PartState>	makeState() override;
 
-	void	load(const ptree& pt) override;
+	void	load(const JSONValue& json) override;
 	void	save(ptree& pt) const override;
 };

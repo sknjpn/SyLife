@@ -1,6 +1,4 @@
 ﻿#include "WaveManager.h"
-
-#include "SystemManager.h"
 #include "ChipManager.h"
 
 unique_ptr<WaveManager>	g_waveManagerPtr;
@@ -24,7 +22,7 @@ Vec2 WaveManager::getWaveVelocity(const Vec2& position) const
 
 void WaveManager::updateWave()
 {
-	m_timer += g_systemManagerPtr->GetDeltaTime();
+	m_timer += DeltaTime;
 }
 
 void WaveManager::drawWave() const

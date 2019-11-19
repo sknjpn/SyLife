@@ -7,11 +7,13 @@ class CellAsset;
 class ReleaseViewer
 	: public Viewer
 {
-	const shared_ptr<CellAsset>& getCellAsset() const;
+	shared_ptr<CellAsset>	m_cellAsset;
 
 public:
-	ReleaseViewer();
+	ReleaseViewer(const shared_ptr<CellAsset>& cellAsset);
 
 	void	update() override;
+
+	bool	isReleased() const { return !m_cellAsset; }
 };
 

@@ -7,19 +7,19 @@
 class Asset
 	: public Model
 {
-	string	m_name;
-	string	m_filepath;
+	String	m_name;
+	String	m_filepath;
 
 public:
 	// Set
-	void	setName(const string& name) { m_name = name; }
-	void	setFilepath(const string& filepath);
+	void	setName(const String& name) { m_name = name; }
+	void	setFilePath(const String& filepath);
 
 	// Get
-	const string& getName() const { return m_name; }
-	const string& getFilepath() const { return m_filepath; }
+	const String& getName() const { return m_name; }
+	const String& getFilePath() const { return m_filepath; }
 
 	// JSON
-	void	load(const ptree& pt) override;
+	void	load(const JSONValue& json) override;
 	void	save(ptree& pt) const override;
 };

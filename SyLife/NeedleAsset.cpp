@@ -1,6 +1,6 @@
 ﻿#include "NeedleAsset.h"
 
-#include "ViewerManager.h"
+
 
 #include "NeedleState.h"
 #include "NeedleEditor.h"
@@ -8,8 +8,8 @@
 
 void NeedleAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<NeedleEditor>()->setPartAsset(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<NeedleEditor>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> NeedleAsset::makeState()
@@ -17,9 +17,9 @@ shared_ptr<PartState> NeedleAsset::makeState()
 	return make_shared<NeedleState>();
 }
 
-void NeedleAsset::load(const ptree& pt)
+void NeedleAsset::load(const JSONValue& json)
 {
-	EquipmentAsset::load(pt);
+	EquipmentAsset::load(json);
 }
 
 void NeedleAsset::save(ptree& pt) const
@@ -27,5 +27,5 @@ void NeedleAsset::save(ptree& pt) const
 	EquipmentAsset::save(pt);
 
 	// type
-	pt.put("type", "NeedleAsset");
+	//pt.put(U"type", "NeedleAsset");
 }

@@ -1,7 +1,6 @@
 ﻿#include "CellState.h"
 #include "CellAsset.h"
 
-#include "SystemManager.h"
 #include "EggManager.h"
 #include "CellManager.h"
 #include "ChipManager.h"
@@ -53,7 +52,7 @@ void CellState::updateCell()
 	}
 
 	// Timer
-	m_startTimer += g_systemManagerPtr->GetDeltaTime();
+	m_startTimer += DeltaTime;
 
 	// parts
 	for (const auto& p : m_partStates) p->update(*this);
@@ -99,7 +98,7 @@ void CellState::updateCell()
 	// 分裂処理
 	if (m_yieldTimer > 0)
 	{
-		if ((m_yieldTimer += g_systemManagerPtr->GetDeltaTime()) >= m_cellAsset->getYieldTime())
+		if ((m_yieldTimer += DeltaTime) >= m_cellAsset->getYieldTime())
 		{
 			m_yieldTimer = 0.0;
 			m_storage -= m_cellAsset->getMaterial();
@@ -112,11 +111,11 @@ void CellState::updateCell()
 	}
 	else if (m_storage >= m_cellAsset->getMaterial())
 	{
-		m_yieldTimer += g_systemManagerPtr->GetDeltaTime();
+		m_yieldTimer += DeltaTime;
 	}
 
 	// 死亡処理
-	if ((m_deathTimer -= g_systemManagerPtr->GetDeltaTime()) <= 0.0)
+	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
 		// Nutritionの吐き出し
 		g_chipManagerPtr->addNutrition(getPosition(), m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
@@ -143,14 +142,13 @@ void CellState::updateCell()
 
 void CellState::draw()
 {
-	auto t1 = Transformer2D(Mat3x2::Rotate(getRotation()).translated(Vec2(getPosition().x, getPosition().y)));
+	auto t1 = Transformer2D(getMat3x2());
 	auto t2 = Transformer2D(Mat3x2::Scale(min(1.0, m_startTimer + 0.5)));
 
 	// parts
 	for (const auto& p : m_partStates)
 	{
-		auto t3 = Transformer2D(Mat3x2::Rotate(p->getPartConfig()->getRotation())
-			.translated(p->getPartConfig()->getPosition().x, p->getPartConfig()->getPosition().y));
+		auto t3 = Transformer2D(p->getPartConfig()->getMat3x2());
 
 		p->draw(*this);
 	}

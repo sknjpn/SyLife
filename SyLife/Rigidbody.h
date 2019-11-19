@@ -19,6 +19,8 @@ public:
 	double	getInertia() const { return m_inertia; }
 	double	getAngularVelocity() const { return m_angularVelocity; }
 
+	Mat3x2	getMat3x2() const { return Mat3x2::Rotate(getRotation()).translated(getPosition());}
+
 	// Set
 	void	setRadius(double radius) { m_radius = radius; }
 	void	setRotation(double rotation) { m_rotation = rotation; }

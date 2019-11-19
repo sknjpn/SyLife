@@ -8,19 +8,22 @@
 #include "SynthesizerAsset.h"
 #include "WingAsset.h"
 #include "NeedleAsset.h"
+#include "NucleusAsset.h"
 
-shared_ptr<Asset> AssetManager::makeAsset(const string& type)
+shared_ptr<Asset> AssetManager::makeAsset(const String& type)
 {
-	if (type == "CellAsset")		return makeAsset<CellAsset>();
-	if (type == "ElementAsset")		return makeAsset<ElementAsset>();
+	if (type == U"CellAsset")		return makeAsset<CellAsset>();
+	if (type == U"ElementAsset")		return makeAsset<ElementAsset>();
 
-	if (type == "BodyAsset")		return makeAsset<BodyAsset>();
-	if (type == "EquipmentAsset")	return makeAsset<EquipmentAsset>();
-	if (type == "ModuleAsset")		return makeAsset<ModuleAsset>();
+	if (type == U"BodyAsset")		return makeAsset<BodyAsset>();
+	if (type == U"EquipmentAsset")	return makeAsset<EquipmentAsset>();
+	if (type == U"ModuleAsset")		return makeAsset<ModuleAsset>();
 
-	if (type == "SynthesizerAsset")	return makeAsset<SynthesizerAsset>();
-	if (type == "WingAsset")		return makeAsset<WingAsset>();
-	if (type == "NeedleAsset")		return makeAsset<NeedleAsset>();
+	if (type == U"SynthesizerAsset")	return makeAsset<SynthesizerAsset>();
+	if (type == U"WingAsset")		return makeAsset<WingAsset>();
+	if (type == U"NeedleAsset")		return makeAsset<NeedleAsset>();
+	
+	if (type == U"NucleusAsset")		return makeAsset<NucleusAsset>();
 
-	throw Error(U"存在しないタイプのAssetを生成しようとしました\r Type:" + Unicode::Widen(type));
+	throw Error(U"存在しないタイプのAssetを生成しようとしました\r Type:" + type);
 }

@@ -5,6 +5,8 @@
 #include "Storage.h"
 
 class PartConfig;
+class BodyAsset;
+class NucleusAsset;
 
 class CellAsset
 	: public Asset
@@ -30,6 +32,8 @@ class CellAsset
 	void	updateMaterial();
 
 public:
+	bool	isValid() const;
+
 	void	makeViewer() override;
 
 	Vec2	getCentroid();
@@ -63,10 +67,13 @@ public:
 
 	void	updateProperties();
 
+	shared_ptr<BodyAsset> getBodyAsset() const;
+	shared_ptr<NucleusAsset> getNucleusAsset() const;
+
 	// draw
 	void	draw(double a = 0.5);
 
 	// JSON
-	void	load(const ptree& pt) override;
+	void	load(const JSONValue& json) override;
 	void	save(ptree& pt) const override;
 };

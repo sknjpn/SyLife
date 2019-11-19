@@ -83,15 +83,13 @@ RectF Shape::getRect() const
 	return result;
 }
 
-void Shape::load(const ptree& pt)
+void Shape::load(const JSONValue& json)
 {
-	Model::load(pt);
+	Model::load(json);
 
 	// layers
-	for (auto m : pt.get_child("layers"))
-	{
-		emplace_back().load(m.second);
-	}
+	for (auto layer : json[U"layers"].arrayView())
+		emplace_back().load(layer);
 
 	updateProperties();
 }
@@ -101,7 +99,7 @@ void Shape::save(ptree& pt) const
 	Model::save(pt);
 
 	// layers
-	{
+	/*{
 		ptree layers;
 
 		for (const auto& m : *this)
@@ -109,9 +107,9 @@ void Shape::save(ptree& pt) const
 			ptree pt2;
 			m.save(pt2);
 
-			layers.push_back(std::make_pair("", pt2));
+			layers.push_back(std::make_pair(U"", pt2));
 		}
 
-		pt.add_child("layers", layers);
-	}
+		pt.add_child(U"layers", layers);
+	}*/
 }

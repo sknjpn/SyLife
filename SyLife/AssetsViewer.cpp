@@ -1,7 +1,5 @@
 ﻿#include "AssetsViewer.h"
 
-#include "ViewerManager.h"
-
 #include "AddModelViewer.h"
 #include "AssetEditor.h"
 
@@ -14,11 +12,11 @@
 
 void AssetsViewer::update()
 {
-	drawAssets<CellAsset>("CellAsset");
-	drawAssets<ElementAsset>("ElementAsset");
-	drawAssets<BodyAsset>("BodyAsset");
-	drawAssets<EquipmentAsset>("EquipmentAsset");
-	drawAssets<ModuleAsset>("ModuleAsset");
+	drawAssets<CellAsset>(U"CellAsset");
+	drawAssets<ElementAsset>(U"ElementAsset");
+	drawAssets<BodyAsset>(U"BodyAsset");
+	drawAssets<EquipmentAsset>(U"EquipmentAsset");
+	drawAssets<ModuleAsset>(U"ModuleAsset");
 
 	// AddNewModel
 	{
@@ -29,7 +27,7 @@ void AssetsViewer::update()
 		f.region().draw(ColorF(1.0, f.region().mouseOver() ? 0.5 : 0.0));
 		f.draw();
 
-		if (f.region().leftClicked() && !g_viewerManagerPtr->hasViewer<AddModelViewer>()) g_viewerManagerPtr->makeViewer<AddModelViewer>();
+		//if (f.region().leftClicked() && !g_viewerManagerPtr->hasViewer<AddModelViewer>()) g_viewerManagerPtr->makeViewer<AddModelViewer>();
 
 		moveDrawPos(0, 16);
 	}
@@ -37,16 +35,16 @@ void AssetsViewer::update()
 	// save
 	if (KeyControl.pressed() && KeyS.down() && m_selectedAsset != nullptr)
 	{
-		ptree pt;
+		/*ptree pt;
 		m_selectedAsset->save(pt);
-		write_json(m_selectedAsset->getFilepath(), pt);
+		write_json(m_selectedAsset->getFilePath(), pt);*/
 	}
 }
 
 void AssetsViewer::setSelectedAsset(const shared_ptr<Asset>& asset)
 {
 	// ModelEditorを消す
-	g_viewerManagerPtr->deleteViewer<AssetEditor>();
+	//g_viewerManagerPtr->deleteViewer<AssetEditor>();
 
 	// 対象のViewを追加
 	asset->makeViewer();

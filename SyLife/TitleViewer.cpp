@@ -1,18 +1,17 @@
 ﻿#include "TitleViewer.h"
-
-#include "ViewerManager.h"
-
 #include "FieldViewer.h"
 #include "EditorViewer.h"
+#include "GUIButton.h"
+#include "CurtainViewer.h"
 
 TitleViewer::TitleViewer()
 	: m_audio(U"assets/music/神秘の世界.mp3")
-	, m_closeCurtain(Color(0, 0), Color(11, 22, 33), 0.5)
-	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
-	setViewerRect(Scene::Size());
+	setViewerRectInLocal(Scene::Size());
 	m_audio.setLoop(true);
-	//m_audio.play();
+	m_audio.play();
+
+	for (int i = 0; i < 2000; ++i) UpdateBubbles();
 }
 
 void TitleViewer::UpdateBubbles()
@@ -64,12 +63,26 @@ void TitleViewer::drawBubbles()
 
 void TitleViewer::init()
 {
-	for (int i = 0; i < 2000; ++i) UpdateBubbles();
+	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
+
+	const auto f1 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<FieldViewer>(); destroy(); }); };
+	addChildViewer<GUIButton>(U"はじめから",  f1)->setViewerRectInLocal(p.movedBy(0, 0));
+
+	const auto f2 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<FieldViewer>(); destroy(); }); };
+	addChildViewer<GUIButton>(U"つづきから", f2)->setViewerRectInLocal(p.movedBy(0, 75));
+
+	const auto f3 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };
+	addChildViewer<GUIButton>(U"エディター", f3)->setViewerRectInLocal(p.movedBy(0, 150));
+
+	const auto f4 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); };
+	addChildViewer<GUIButton>(U"終了", f4)->setViewerRectInLocal(p.movedBy(0, 225));
+
+	// OpenCurtain
+	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
 }
 
 void TitleViewer::update()
 {
-
 	// title
 	{
 		auto te = Transformer2D(Mat3x2::Scale(1.4, Scene::Center()));
@@ -93,147 +106,5 @@ void TitleViewer::update()
 		for (int i = 0; i < 3; ++i) UpdateBubbles();
 
 		drawBubbles();
-	}
-
-	// オプション選択
-	{
-		// draw
-		{
-			static const Font messageFont(48, Typeface::Bold);
-
-			// New Game
-			{
-				auto f = messageFont(U"New Game");
-				auto r = f.region().setCenter(0, 0);
-				auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, -96), true);
-
-				r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-				f.drawAt(Vec2::Zero(), m_selectedOption == Option::LaunchNewGame ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
-
-				if (r.leftClicked())
-				{
-					m_selectedOption = Option::LaunchNewGame;
-					m_closeCurtain.start();
-				}
-			}
-
-			// Continue
-			{
-				auto f = messageFont(U"Continue");
-				auto r = f.region().setCenter(0, 0);
-				auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, -32), true);
-
-				r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-				f.drawAt(Vec2::Zero(), m_selectedOption == Option::ContinueGame ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
-
-				if (r.leftClicked())
-				{
-					m_selectedOption = Option::ContinueGame;
-					m_closeCurtain.start();
-				}
-			}
-
-			// Editor
-			{
-				auto f = messageFont(U"Editor");
-				auto r = f.region().setCenter(0, 0);
-				auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, 32), true);
-
-				r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-				f.drawAt(Vec2::Zero(), m_selectedOption == Option::LaunchEditor ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
-
-				if (r.leftClicked())
-				{
-					m_selectedOption = Option::LaunchEditor;
-					m_closeCurtain.start();
-				}
-			}
-
-			// Exit
-			{
-				auto f = messageFont(U"Exit");
-				auto r = f.region().setCenter(0, 0);
-				auto t = Transformer2D(Mat3x2::Translate(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.3)).translated(0, 96), true);
-
-				r.draw(r.mouseOver() ? ColorF(1.0, 0.5) : ColorF(0.0, 0.0));
-				f.drawAt(Vec2::Zero(), m_selectedOption == Option::Exit ? ColorF(1.0, 0.6) : ColorF(1.0, 0.3));
-
-				if (r.leftClicked())
-				{
-					m_selectedOption = Option::Exit;
-					m_closeCurtain.start();
-				}
-			}
-		}
-
-		if (!m_closeCurtain.isRunning())
-		{
-			// 下に遷移
-			if (KeyS.down() || KeyDown.down())
-			{
-				switch (m_selectedOption)
-				{
-				case Option::LaunchNewGame:	m_selectedOption = Option::ContinueGame; break;
-				case Option::ContinueGame:	m_selectedOption = Option::LaunchEditor; break;
-				case Option::LaunchEditor:	m_selectedOption = Option::Exit; break;
-				case Option::Exit:			break;
-				}
-			}
-
-			// 上に遷移
-			if (KeyW.down() || KeyUp.down())
-			{
-				switch (m_selectedOption)
-				{
-				case Option::LaunchNewGame:	break;
-				case Option::ContinueGame:	m_selectedOption = Option::LaunchNewGame; break;
-				case Option::LaunchEditor:	m_selectedOption = Option::ContinueGame; break;
-				case Option::Exit:			m_selectedOption = Option::LaunchEditor; break;
-				}
-			}
-
-			// セレクト
-			if (KeyEnter.down()) m_closeCurtain.start();
-		}
-	}
-
-
-	// Open Curtain
-	{
-		if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
-		else m_audio.setVolume(1.0);
-	}
-
-	// CloseCurtain
-	if (m_closeCurtain.isRunning())
-	{
-		if (m_closeCurtain.update())
-		{
-			// 自身のインスタンスが削除されるので、returnで処理を飛ばす必要がある。
-
-			switch (m_selectedOption)
-			{
-			case Option::LaunchNewGame:
-				g_viewerManagerPtr->clearViewers();
-				g_viewerManagerPtr->makeViewer<FieldViewer>();
-				return;
-
-			case Option::ContinueGame:
-				g_viewerManagerPtr->clearViewers();
-				g_viewerManagerPtr->makeViewer<FieldViewer>();
-				return;
-
-			case Option::LaunchEditor:
-				g_viewerManagerPtr->clearViewers();
-				g_viewerManagerPtr->makeViewer<EditorViewer>();
-				return;
-
-			case Option::Exit:
-				System::Exit();
-				return;
-			}
-		}
-
-		m_audio.setVolume(m_closeCurtain.getProgress());
 	}
 }

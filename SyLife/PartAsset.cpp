@@ -1,7 +1,7 @@
 ﻿#include "PartAsset.h"
 
 #include "AssetManager.h"
-#include "ViewerManager.h"
+
 
 #include "PartState.h"
 #include "PartEditor.h"
@@ -9,8 +9,8 @@
 
 void PartAsset::makeViewer()
 {
-	g_viewerManagerPtr->makeViewer<PartEditor>()->setPartAsset(shared_from_this());
-	g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<PartEditor>()->setPartAsset(shared_from_this());
+	//g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
 }
 
 shared_ptr<PartState> PartAsset::makeState()
@@ -18,18 +18,18 @@ shared_ptr<PartState> PartAsset::makeState()
 	return make_shared<PartState>();
 }
 
-void PartAsset::load(const ptree& pt)
+void PartAsset::load(const JSONValue& json)
 {
-	Asset::load(pt);
+	Asset::load(json);
 
 	// mass
-	m_mass = pt.get<double>("mass");
+	m_mass = json[U"mass"].get<double>();
 
 	// layers
-	m_shape.load(pt);
+	m_shape.load(json);
 
 	// material
-	m_material.load(pt.get_child("material"));
+	m_material.load(json[U"material"]);
 }
 
 void PartAsset::save(ptree& pt) const
@@ -37,19 +37,19 @@ void PartAsset::save(ptree& pt) const
 	Asset::save(pt);
 
 	// mass
-	pt.put<double>("mass", m_mass);
+	//pt.put<double>(U"mass", m_mass);
 
 	// layers
-	m_shape.save(pt);
+	//m_shape.save(pt);
 
 	// material
-	{
+	/*{
 		ptree material;
 
 		m_material.save(material);
 
-		pt.add_child("material", material);
-	}
+		pt.add_child(U"material", material);
+	}*/
 
-	pt.put("type", "PartAsset");
+	//pt.put(U"type", "PartAsset");
 }

@@ -1,0 +1,19 @@
+﻿{
+    "mass": 120,
+    "color": "(255, 255, 255)",
+    "material": {
+        "nutrition": 2.0,
+        "elements": [
+            {
+                "name": "炭素",
+                "size": 1
+            },
+            {
+                "name": "酸素",
+                "size": 1
+            }
+        ]
+    },
+    "name": "ヘキソース",
+    "type": "ElementAsset"
+}

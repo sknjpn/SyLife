@@ -1,18 +1,17 @@
 ﻿#include "Particle.h"
 
-#include "SystemManager.h"
 #include "WaveManager.h"
 #include "FieldManager.h"
 
 void Particle::addForce(const Vec2& force)
 {
-	m_velocity += force / m_mass * g_systemManagerPtr->GetDeltaTime();
+	m_velocity += force / m_mass * DeltaTime;
 }
 
 void Particle::updateParticle()
 {
 	// 並進運動
-	m_position += m_velocity * g_systemManagerPtr->GetDeltaTime();
+	m_position += m_velocity * DeltaTime;
 
 	// 壁
 	if (m_position.x < 0) m_position.x = 0;

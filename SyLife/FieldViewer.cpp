@@ -1,18 +1,11 @@
 ﻿#include "FieldViewer.h"
 
 #include "AssetManager.h"
-#include "ViewerManager.h"
 #include "WaveManager.h"
 #include "EggManager.h"
 #include "ChipManager.h"
 #include "CellManager.h"
 #include "ElementManager.h"
-
-#include "CellMakingViewer.h"
-
-#include "CellStateViewer.h"
-
-#include "StatisticsViewer.h"
 
 #include "Rigidbody.h"
 #include "CellAsset.h"
@@ -23,37 +16,57 @@
 #include "ElementState.h"
 #include "ElementAsset.h"
 
+#include "CellAssetViewer.h"
+#include "CellMakingViewer.h"
+#include "CellStateViewer.h"
+#include "CellStateCaptureViewer.h"
+#include "StatisticsViewer.h"
+#include "CellBookViewer.h"
+
+#include "GUIButton.h"
+#include "CurtainViewer.h"
+
+void FieldViewer::openCellMakingViewer()
+{
+	if (!hasChildViewer<CellMakingViewer>())
+		addChildViewer<CellMakingViewer>();
+}
+
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
-	, m_openCurtain(Color(11, 22, 33), Color(0, 0), 0.5, true)
 {
-	m_camera.setRestrictedRect(g_chipManagerPtr->getRect().scaledAt(Vec2::Zero(),g_chipManagerPtr->getLength()));
+	m_camera.setRestrictedRect(g_chipManagerPtr->getRect().scaledAt(Vec2::Zero(), g_chipManagerPtr->getLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
 
-	setViewerRect(Scene::Size());
 	m_audio.setLoop(true);
-	//m_audio.play();
+	m_audio.play();
 }
 
 void FieldViewer::init()
 {
-	g_viewerManagerPtr->makeViewer<CellMakingViewer>();
-	g_viewerManagerPtr->makeViewer<CellStateViewer>();
-	g_viewerManagerPtr->makeViewer<StatisticsViewer>();
+	addChildViewer<CellStateViewer>();
+
+	addChildViewer<GUIButton>(U"Cell作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 200, 50);
+
+	addChildViewer<StatisticsViewer>();
+
+	// OpenCurtain
+	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
 }
 
 void FieldViewer::update()
 {
+	static int speed = 1;
+
 	{
 		// camera
-		if (isMouseOver()) m_camera.update();
+		if (isMouseover()) m_camera.update();
 		auto t = m_camera.createTransformer();
 
 		// speed
-		static int speed = 1;
 		if (KeyF1.down()) speed = 1;
 		if (KeyF2.down() && speed != 1) speed /= 2;
 		if (KeyF3.down() && speed != 128) speed *= 2;
@@ -67,31 +80,25 @@ void FieldViewer::update()
 			g_eggManagerPtr->updateEggStates();
 			g_chipManagerPtr->updateChips();
 			g_elementManagerPtr->updateElementStates();
+
+			getChildViewer<StatisticsViewer>()->takeLog();
 		}
 
-		// Rigidbody Capture
+		// CellState Capture
+		if (isMouseover() && MouseL.down() && !g_cellManagerPtr->getCellStates().isEmpty())
 		{
-			static shared_ptr<CellState> selectedRigidbody = nullptr;
-
-			if (MouseL.down())
+			auto index = g_cellManagerPtr->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
+			auto cellState = g_cellManagerPtr->getCellStates()[index];
+			if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 			{
-				for (auto i : g_cellManagerPtr->getCellStateKDTree().knnSearch(1, Cursor::PosF()))
-				{
-					auto& cellState = g_cellManagerPtr->getCellStates()[i];
+				addChildViewer<CellStateCaptureViewer>(cellState);
 
-					if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
-					{
-						selectedRigidbody = cellState;
-						g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState = dynamic_pointer_cast<CellState>(cellState);
-					}
-				}
-			}
+				getChildViewer<CellStateViewer>()->m_cellState = cellState;
 
-			if (MouseL.pressed() && isMouseOver())
-			{
-				if (selectedRigidbody != nullptr) selectedRigidbody->setPosition(Vec2(Cursor::PosF().x, Cursor::PosF().y));
+				// CellAssetViewerの構築
+				//if (auto cv = getChildViewer<CellAssetViewer>()) cv->destroy();
+				//addChildViewer<CellAssetViewer>(cellState->getCellAsset());
 			}
-			else selectedRigidbody = nullptr;
 		}
 
 		// draw
@@ -102,7 +109,7 @@ void FieldViewer::update()
 		g_elementManagerPtr->drawElementStates();
 
 		// delete
-		if (MouseR.pressed())
+		if (isMouseover() && MouseR.pressed())
 		{
 			Circle circle(Cursor::PosF(), 256.0);
 			circle.draw(ColorF(Palette::Red, 0.5));
@@ -139,8 +146,7 @@ void FieldViewer::update()
 		}
 
 		{
-			const auto& cs = g_viewerManagerPtr->getViewer<CellStateViewer>()->m_cellState;
-
+			const auto& cs = getChildViewer<CellStateViewer>()->m_cellState;
 			if (cs != nullptr)
 			{
 				Circle(cs->getPosition(), cs->getRadius() * 1.5)
@@ -150,7 +156,9 @@ void FieldViewer::update()
 		}
 	}
 
-	// Open Curtain
-	if (m_openCurtain.isRunning() && m_openCurtain.update()) m_audio.setVolume(m_openCurtain.getProgress());
-	else m_audio.setVolume(1.0);
+	{
+		static Font font(64, Typeface::Bold);
+
+		font(U"x", speed).draw(Scene::Size().x - 200, 25);
+	}
 }
