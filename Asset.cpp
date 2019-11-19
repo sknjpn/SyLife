@@ -29,16 +29,16 @@ void Asset::load(const JSONValue& json)
 {
 	Model::load(json);
 
-	// m_name = pt.get<String>(U"name");
+	m_name = json[U"name"].getString();
 }
 
-void Asset::save(const JSONWriter& json) const
+void Asset::save(JSONWriter& json) const
 {
 	Model::save(json);
 
 	// name
-	//pt.put(U"name", m_name);
+	json.key(U"name").write(m_name);
 
 	// type
-	//pt.put(U"type", "Model");
+	json.key(U"type").write(U"Asset");
 }

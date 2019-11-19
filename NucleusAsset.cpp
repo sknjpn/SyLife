@@ -24,14 +24,15 @@ void NucleusAsset::load(const JSONValue& json)
 	m_yieldTime = json[U"yieldTime"].get<double>();
 }
 
-void NucleusAsset::save(const JSONWriter& json) const
+void NucleusAsset::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 
-	/*pt.put(U"lifespanTime", m_lifespanTime);
-	pt.put(U"bornTime", m_bornTime);
-	pt.put(U"yieldTime", m_yieldTime);*/
+	// time
+	json.key(U"lifespanTime").write(m_lifespanTime);
+	json.key(U"bornTime").write(m_bornTime);
+	json.key(U"yieldTime").write(m_yieldTime);
 
 	// type
-	//pt.put(U"type", "NucleusAsset");
+	json.key(U"type").write(U"NucleusAsset");
 }

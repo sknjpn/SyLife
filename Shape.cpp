@@ -94,22 +94,23 @@ void Shape::load(const JSONValue& json)
 	updateProperties();
 }
 
-void Shape::save(const JSONWriter& json) const
+void Shape::save(JSONWriter& json) const
 {
 	Model::save(json);
 
 	// layers
-	/*{
-		ptree layers;
+	{
+		json.key(U"layers").startArray();
 
-		for (const auto& m : *this)
+		for (const auto& layer : *this)
 		{
-			ptree pt2;
-			m.save(pt2);
+			json.startObject();
 
-			layers.push_back(std::make_pair(U"", pt2));
+			layer.save(json);
+
+			json.endObject();
 		}
 
-		pt.add_child(U"layers", layers);
-	}*/
+		json.endArray();
+	}
 }

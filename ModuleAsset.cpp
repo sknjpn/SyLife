@@ -22,10 +22,10 @@ void ModuleAsset::load(const JSONValue& json)
 	PartAsset::load(json);
 }
 
-void ModuleAsset::save(const JSONWriter& json) const
+void ModuleAsset::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 
 	// type
-	//pt.put(U"type", "ModuleAsset");
+	json.key(U"type").write(U"ModuleAsset");
 }

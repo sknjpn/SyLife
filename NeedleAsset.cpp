@@ -22,10 +22,10 @@ void NeedleAsset::load(const JSONValue& json)
 	EquipmentAsset::load(json);
 }
 
-void NeedleAsset::save(const JSONWriter& json) const
+void NeedleAsset::save(JSONWriter& json) const
 {
 	EquipmentAsset::save(json);
 
 	// type
-	//pt.put(U"type", "NeedleAsset");
+	json.key(U"type").write(U"NeedleAsset");
 }

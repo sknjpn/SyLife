@@ -32,24 +32,24 @@ void PartAsset::load(const JSONValue& json)
 	m_material.load(json[U"material"]);
 }
 
-void PartAsset::save(const JSONWriter& json) const
+void PartAsset::save(JSONWriter& json) const
 {
 	Asset::save(json);
 
 	// mass
-	//pt.put<double>(U"mass", m_mass);
+	json.key(U"mass").write(m_mass);
 
 	// layers
-	//m_shape.save(json);
+	m_shape.save(json);
 
 	// material
-	/*{
-		ptree material;
+	{
+		json.key(U"material").startObject();
 
-		m_material.save(material);
+		m_material.save(json);
 
-		pt.add_child(U"material", material);
-	}*/
+		json.endObject();
+	}
 
-	//pt.put(U"type", "PartAsset");
+	json.key(U"type").write(U"PartAsset");
 }

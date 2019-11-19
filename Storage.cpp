@@ -89,26 +89,27 @@ void Storage::load(const JSONValue& json)
 	}
 }
 
-void Storage::save(const JSONWriter& json) const
+void Storage::save(JSONWriter& json) const
 {
 	Model::save(json);
 
 	// nutrition
-	//pt.put<double>(U"nutrition", m_nutrition);
+	json.key(U"nutrition").write(m_nutrition);
 
 	// elements
-	/*{
-		ptree elements;
+	{
+		json.key(U"elements").startArray();
 
-		for (const auto& m : *this)
+		for (const auto& element : *this)
 		{
-			ptree pt2;
-			pt2.put<String>(U"name", m.first->getName());
-			pt2.put<int>(U"size", m.second);
+			json.startObject();
+		
+			json.key(U"name").write(element.first->getName());
+			json.key(U"size").write(element.second);
 
-			elements.push_back(std::make_pair(U"", pt2));
+			json.endObject();
 		}
 
-		pt.add_child(U"elements", elements);
-	}*/
+		json.endArray();
+	}
 }

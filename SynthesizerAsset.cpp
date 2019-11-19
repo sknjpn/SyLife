@@ -26,12 +26,13 @@ void SynthesizerAsset::load(const JSONValue& json)
 	m_export = g_assetManagerPtr->getAsset<ElementAsset>(json[U"export"].getString());
 }
 
-void SynthesizerAsset::save(const JSONWriter& json) const
+void SynthesizerAsset::save(JSONWriter& json) const
 {
 	ModuleAsset::save(json);
 
 	// export
-	//pt.put(U"export", m_export->getName());
+	json.key(U"export").write(m_export->getName());
 
-	//pt.put(U"type", "SynthesizerAsset");
+	// type
+	json.key(U"type").write(U"Synthesizer");
 }

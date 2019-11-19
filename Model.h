@@ -12,5 +12,5 @@ public:
 
 	// JSON
 	virtual void	load(const JSONValue& json) {}
-	virtual void	save(const JSONWriter& json) const {}
+	virtual void	save(JSONWriter& json) const {}
 };

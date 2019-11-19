@@ -23,24 +23,25 @@ void ElementAsset::load(const JSONValue& json)
 	m_material.load(json[U"material"]);
 }
 
-void ElementAsset::save(const JSONWriter& json) const
+void ElementAsset::save(JSONWriter& json) const
 {
 	Asset::save(json);
 
 	// mass
-	//pt.put<double>(U"mass", m_mass);
+	json.key(U"mass").write(m_mass);
 
 	// color
-	//pt.put<String>(U"color", Unicode::Narrow(Format(m_color)));
+	json.key(U"color").write(m_color);
 
 	// material
-	/*{
-		ptree material;
+	{
+		json.key(U"material").startObject();
 
-		m_material.save(material);
+		m_material.save(json);
+		
+		json.endObject();
+	}
 
-		pt.add_child(U"material", material);
-	}*/
-
-	//pt.put(U"type", "ElementAsset");
+	// type
+	json.key(U"type").write(U"ElementAsset");
 }

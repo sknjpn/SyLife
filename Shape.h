@@ -25,6 +25,6 @@ public:
 	void	draw(double a) const { for (const auto& l : *this) l.m_polygon.draw(ColorF(l.m_color, a)); }
 
 	void	load(const JSONValue& json) override;
-	void	save(const JSONWriter& json) const override;
+	void	save(JSONWriter& json) const override;
 };
 

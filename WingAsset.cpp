@@ -22,11 +22,13 @@ void WingAsset::load(const JSONValue& json)
 	m_isRight = json[U"isRight"].get<bool>();
 }
 
-void WingAsset::save(const JSONWriter& json) const
+void WingAsset::save(JSONWriter& json) const
 {
 	EquipmentAsset::save(json);
 
-	//pt.put(U"isRight", m_isRight);
+	// is right
+	json.key(U"isRight").write(m_isRight);
 
-	//pt.put(U"type", "WingAsset");
+	// type
+	json.key(U"type").write(U"WingAsset");
 }

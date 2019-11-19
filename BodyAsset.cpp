@@ -20,10 +20,10 @@ void BodyAsset::load(const JSONValue& json)
 	PartAsset::load(json);
 }
 
-void BodyAsset::save(const JSONWriter& json) const
+void BodyAsset::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 
 	// type
-	//pt.put(U"type", "BodyAsset");
+	json.key(U"type").write(U"BodyAsset");
 }

@@ -22,25 +22,19 @@ void PartConfig::load(const JSONValue& json)
 	m_rotation = json[U"rotation"].get<double>();
 }
 
-void PartConfig::save(const JSONWriter& json) const
+void PartConfig::save(JSONWriter& json) const
 {
 	Model::save(json);
 
 	// asset
-	//pt.put(U"asset", m_partAsset->getName());
+	json.key(U"asset").write(m_partAsset->getName());
 
 	// position
-	/*{
-		ptree position;
-
-		position.put(U"x", m_position.x);
-		position.put(U"y", m_position.y);
-
-		pt.push_back(std::make_pair(U"position", position));
-	}*/
+	json.key(U"position").write(m_position);
 
 	// rotation
-	//pt.put(U"rotation", m_rotation);
+	json.key(U"rotation").write(m_rotation);
 
-	//pt.put(U"type", "PartConfig");
+	// type
+	json.key(U"type").write(U"PartConfig");
 }

@@ -37,29 +37,13 @@ void Layer::load(const JSONValue& json)
 	}
 }
 
-void Layer::save(const JSONWriter& json) const
+void Layer::save(JSONWriter& json) const
 {
 	Model::save(json);
 
 	// color
-	//pt.put<String>(U"color", Unicode::Narrow(Format(m_color)));
+	json.key(U"color").write(m_color);
 
 	// verticles
-	/*{
-		ptree verticles;
-
-		{
-			ptree verticle;
-
-			for (const auto& v : m_polygon.vertices())
-			{
-				verticle.put(U"x", v.x);
-				verticle.put(U"y", v.y);
-
-				verticles.push_back(std::make_pair(U"", verticle));
-			}
-		}
-
-		pt.add_child(U"verticles", verticles);
-	}*/
+	json.key(U"vertices").writeArray(m_polygon.vertices());
 }

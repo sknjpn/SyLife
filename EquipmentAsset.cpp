@@ -22,10 +22,10 @@ void EquipmentAsset::load(const JSONValue& json)
 	PartAsset::load(json);
 }
 
-void EquipmentAsset::save(const JSONWriter& json) const
+void EquipmentAsset::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 
 	// type
-	//pt.put(U"type", "EquipmentAsset");
+	json.key(U"type").write(U"EquipmentAsset");
 }

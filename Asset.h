@@ -21,5 +21,5 @@ public:
 
 	// JSON
 	void	load(const JSONValue& json) override;
-	void	save(const JSONWriter& json) const override;
+	void	save(JSONWriter& json) const override;
 };

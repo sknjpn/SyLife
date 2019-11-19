@@ -26,24 +26,25 @@ void CellAsset::load(const JSONValue& json)
 		m_partConfigs.emplace_back(make_shared<PartConfig>())->load(partConfig);
 }
 
-void CellAsset::save(const JSONWriter& json) const
+void CellAsset::save(JSONWriter& json) const
 {
 	Asset::save(json);
 
 	// parts
-	/*{
-		ptree parts;
-
-		for (const auto& e : m_partConfigs)
+	json.key(U"parts").startArray();
+	{
+		for (const auto& partConfig : m_partConfigs)
 		{
-			ptree part; e->save(part);
-			parts.push_back(std::make_pair(U"", part));
+			json.startObject();
+
+			partConfig->save(json);
+
+			json.endObject();
 		}
+	}
+	json.endArray();
 
-		pt.add_child(U"parts", parts);
-	}*/
-
-	//pt.put(U"type", "CellAsset");
+	json.key(U"type").write(U"CellAsset");
 }
 
 Vec2 CellAsset::getCentroid()
