@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29102.190
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SyLife", "SyLife\SyLife.vcxproj", "{340BB96B-734D-46C7-A984-7CC899AE3EA4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SyLife", "SyLife.vcxproj", "{FBE28BDF-7AEC-442A-9B64-987DFE24AAF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{340BB96B-734D-46C7-A984-7CC899AE3EA4}.Debug|x64.ActiveCfg = Debug|x64
-		{340BB96B-734D-46C7-A984-7CC899AE3EA4}.Debug|x64.Build.0 = Debug|x64
-		{340BB96B-734D-46C7-A984-7CC899AE3EA4}.Release|x64.ActiveCfg = Release|x64
-		{340BB96B-734D-46C7-A984-7CC899AE3EA4}.Release|x64.Build.0 = Release|x64
+		{FBE28BDF-7AEC-442A-9B64-987DFE24AAF4}.Debug|x64.ActiveCfg = Debug|x64
+		{FBE28BDF-7AEC-442A-9B64-987DFE24AAF4}.Debug|x64.Build.0 = Debug|x64
+		{FBE28BDF-7AEC-442A-9B64-987DFE24AAF4}.Release|x64.ActiveCfg = Release|x64
+		{FBE28BDF-7AEC-442A-9B64-987DFE24AAF4}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B11817C0-0337-4EA2-B697-F0DB25961532}
+		SolutionGuid = {2DF13190-3074-4CBF-831D-DB47D475B072}
 	EndGlobalSection
 EndGlobal
