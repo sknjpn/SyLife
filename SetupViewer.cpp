@@ -7,7 +7,7 @@ void SetupViewer::startGame()
 {
 	// それまでの描画が残らないように修正
 	for (int i = 0; i < 2; ++i)
-		System::Update();
+		if (!System::Update()) break;
 
 	// Window設定
 	if (getChildViewer<GUIChecker>(U"フルスクリーン")->getValue())
