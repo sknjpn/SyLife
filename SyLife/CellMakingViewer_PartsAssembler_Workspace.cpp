@@ -6,20 +6,19 @@
 
 void CellMakingViewer::PartsAssembler::Workspace::init()
 {
+	setBackgroundColor(Palette::Black);
+
 	setViewerRectInLocal(200, 0, 800, 800);
 	setSize(Vec2(800, 800));
 }
 
 void CellMakingViewer::PartsAssembler::Workspace::update()
 {
-	m_camera.update();
+	GridViewer::update();
 
-	const auto t1 = m_camera.createTransformer();
-
-	drawGrid();
+	const auto t1 = getCamera().createTransformer();
 
 	drawParts();
-
 
 	if (m_selectedPartConfig)
 	{
@@ -87,19 +86,6 @@ void CellMakingViewer::PartsAssembler::Workspace::update()
 	}
 }
 
-void CellMakingViewer::PartsAssembler::Workspace::setSize(const Vec2& size)
-{
-	m_size = size;
-
-	setViewerSize(size);
-
-	m_camera.setScreen(RectF(m_size.x, m_size.y));
-	m_camera.setRestrictedRect(RectF(m_size.x, m_size.y).setCenter(Vec2::Zero()));
-	m_camera.setCenter(Vec2::Zero());
-	m_camera.setTargetCenter(Vec2::Zero());
-	m_camera.setMaxScale(4.0);
-}
-
 void CellMakingViewer::PartsAssembler::Workspace::drawParts() const
 {
 	for (const auto& p : m_cellAsset->getPartConfigs())
@@ -115,29 +101,5 @@ void CellMakingViewer::PartsAssembler::Workspace::drawParts() const
 		auto t2 = Transformer2D(m_selectedPartConfig->getMat3x2());
 
 		m_selectedPartConfig->getPartAsset()->getShape().getPolygon().draw(ColorF(1.0, 0.5));
-	}
-}
-
-void CellMakingViewer::PartsAssembler::Workspace::drawGrid() const
-{
-	const int scale = (int)log10(m_camera.getScale());
-	const double thickness = 2.0 / m_camera.getScale();
-	const double interval = pow(10.0, -scale + 1);
-
-	// 縦線
-	{
-		const auto color = ColorF(Palette::White, 0.25);
-
-		for (double x = -m_size.x / 2.0; x <= m_size.x / 2.0; x += interval)
-			Line(x, -m_size.y / 2.0, x, m_size.y / 2.0).draw(thickness, color);
-
-		for (double y = -m_size.y / 2.0; y <= m_size.y / 2.0; y += interval)
-			Line(-m_size.x / 2.0, y, m_size.x / 2.0, y).draw(thickness, color);
-	}
-
-	// XY軸
-	{
-		Line(-m_size.x / 2.0, 0, m_size.x / 2.0, 0).draw(thickness, Palette::Red);
-		Line(0, -m_size.y / 2.0, 0, m_size.y / 2.0).draw(thickness, Palette::Red);
 	}
 }

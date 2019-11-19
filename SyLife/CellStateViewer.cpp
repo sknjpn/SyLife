@@ -28,7 +28,7 @@ void CellStateViewer::update()
 		auto t1 = Transformer2D(Mat3x2::Translate(100, 50));
 		auto t2 = Transformer2D(Mat3x2::Scale(50.0 / m_cellState->m_cellAsset->getRadius()));
 
-		m_cellState->m_cellAsset->draw(1.0);
+		m_cellState->m_cellAsset->draw(0.5);
 	}
 
 	Vec2 pos(0, 100);

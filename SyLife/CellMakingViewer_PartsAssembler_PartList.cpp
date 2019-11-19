@@ -27,18 +27,7 @@ Array<shared_ptr<PartAsset>> CellMakingViewer::PartsAssembler::PartList::getList
 	Array<shared_ptr<PartAsset>> assets;
 
 	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
 	for (const auto& m : g_assetManagerPtr->getAssets<ModuleAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
 	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
 	
 	return assets;
@@ -46,7 +35,7 @@ Array<shared_ptr<PartAsset>> CellMakingViewer::PartsAssembler::PartList::getList
 
 void CellMakingViewer::PartsAssembler::PartList::drawAssets()
 {
-	static Font font(13, Typeface::Bold);
+	static Font font(16, Typeface::Bold);
 
 	const auto assets = getList();
 	for (auto it = assets.begin(); it != assets.end(); ++it)
@@ -65,7 +54,7 @@ void CellMakingViewer::PartsAssembler::PartList::drawAssets()
 		}
 
 		// 名前描画
-		font((*it)->getName()).draw(4, 4);
+		font((*it)->getName()).draw(4, 4, Palette::Black);
 
 		moveDrawPos(0, m_itemHeight);
 	}

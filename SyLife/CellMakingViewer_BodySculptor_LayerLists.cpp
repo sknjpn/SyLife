@@ -5,7 +5,7 @@
 
 void CellMakingViewer::BodySculptor::LayerLists::init()
 {
-	setViewerRectInLocal(1000, 0, 200, 800);
+	setViewerRectInLocal(1000, 0, 200, 1000);
 	addChildViewer<GUISlider>(0)->setViewerRectInLocal(RectF(200 - 24, 0, 24, 800));
 }
 

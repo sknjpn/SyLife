@@ -1,23 +1,21 @@
 ﻿#pragma once
 
 #include "Viewer.h"
-
 #include "TinyCamera.h"
 
-class FieldViewer
+class GridViewer
 	: public Viewer
 {
 	TinyCamera	m_camera;
-	Audio		m_audio;
-
-	void	openCellMakingViewer();
 
 public:
-	FieldViewer();
-
 	void	init() override;
 	void	update() override;
 
-	TinyCamera& getCamera() { return m_camera; }
+	void	setSize(const Vec2& size);
+
+	void	drawGrid() const;
+
 	const TinyCamera& getCamera() const { return m_camera; }
 };
+

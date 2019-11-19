@@ -418,6 +418,10 @@
     <ClCompile Include="CellBookViewer.cpp" />
     <ClCompile Include="CellBookViewer_CellList.cpp" />
     <ClCompile Include="CellBookViewer_CellInfo.cpp" />
+    <ClCompile Include="GridViewer.cpp" />
+    <ClCompile Include="GUIText.cpp" />
+    <ClCompile Include="GUIValuer.cpp" />
+    <ClCompile Include="DraggableViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WingState.h" />
@@ -492,5 +496,9 @@
     <ClInclude Include="SetupViewer.h" />
     <ClInclude Include="GUIChecker.h" />
     <ClInclude Include="CellBookViewer.h" />
+    <ClInclude Include="GridViewer.h" />
+    <ClInclude Include="GUIText.h" />
+    <ClInclude Include="GUIValuer.h" />
+    <ClInclude Include="DraggableViewer.h" />
   </ItemGroup>
 </Project>

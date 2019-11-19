@@ -33,7 +33,7 @@ void CellMakingViewer::CellInfo::update()
 
 		Circle(rect.size / 2.0, r)
 			.draw(Palette::Skyblue)
-			.drawFrame(4.0, Palette::Black);
+			.drawFrame(2.0, 0.0, Palette::Black);
 
 		// part
 		{
@@ -48,23 +48,23 @@ void CellMakingViewer::CellInfo::update()
 			}
 		}
 
-		setDrawPos(Vec2(0, 330));
+		moveDrawPos(0, 200);
 	}
 
 	// material
 	{
-		static Font font(13, Typeface::Bold);
+		static Font font(16, Typeface::Bold);
 
 		// Nutrition
-		font(U"Nutrition: " + ToString(cellAsset->getMaterial().getNutrition())).draw();
+		font(U"Nutrition: " + ToString(cellAsset->getMaterial().getNutrition())).draw(Vec2::Zero(), Palette::Black);
 		moveDrawPos(0, 20);
 
 		// Elements
 		for (const auto& element : cellAsset->getMaterial().getElementList())
 		{
-			font(element.first->getName() + U": " + ToString(element.second) + U"U").draw();
+			font(element.first->getName() + U": " + ToString(element.second) + U"U").draw(Vec2::Zero(), Palette::Black);
 
-			moveDrawPos(0, 16);
+			moveDrawPos(0, 20);
 		}
 	}
 }

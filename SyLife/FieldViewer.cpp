@@ -26,6 +26,12 @@
 #include "GUIButton.h"
 #include "CurtainViewer.h"
 
+void FieldViewer::openCellMakingViewer()
+{
+	if (!hasChildViewer<CellMakingViewer>())
+		addChildViewer<CellMakingViewer>();
+}
+
 FieldViewer::FieldViewer()
 	: m_audio(U"assets/music/シアン.mp3")
 {
@@ -36,16 +42,16 @@ FieldViewer::FieldViewer()
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
 
 	m_audio.setLoop(true);
-	//m_audio.play();
+	m_audio.play();
 }
 
 void FieldViewer::init()
 {
 	addChildViewer<CellStateViewer>();
 
-	addChildViewer<GUIButton>(U"作成", [this]() { addChildViewer<CellMakingViewer>(); })->setViewerRectInLocal(100, 50, 200, 50);
-	addChildViewer<GUIButton>(U"統計", [this]() { addChildViewer<StatisticsViewer>(); })->setViewerRectInLocal(100, 100, 200, 50);
-	addChildViewer<GUIButton>(U"図鑑", [this]() { addChildViewer<CellBookViewer>(); })->setViewerRectInLocal(100, 150, 200, 50);
+	addChildViewer<GUIButton>(U"Cell作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 200, 50);
+
+	addChildViewer<StatisticsViewer>();
 
 	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
@@ -53,13 +59,14 @@ void FieldViewer::init()
 
 void FieldViewer::update()
 {
+	static int speed = 1;
+
 	{
 		// camera
 		if (isMouseover()) m_camera.update();
 		auto t = m_camera.createTransformer();
 
 		// speed
-		static int speed = 1;
 		if (KeyF1.down()) speed = 1;
 		if (KeyF2.down() && speed != 1) speed /= 2;
 		if (KeyF3.down() && speed != 128) speed *= 2;
@@ -73,6 +80,8 @@ void FieldViewer::update()
 			g_eggManagerPtr->updateEggStates();
 			g_chipManagerPtr->updateChips();
 			g_elementManagerPtr->updateElementStates();
+
+			getChildViewer<StatisticsViewer>()->takeLog();
 		}
 
 		// CellState Capture
@@ -87,8 +96,8 @@ void FieldViewer::update()
 				getChildViewer<CellStateViewer>()->m_cellState = cellState;
 
 				// CellAssetViewerの構築
-				if (auto cv = getChildViewer<CellAssetViewer>()) cv->destroy();
-				addChildViewer<CellAssetViewer>(cellState->getCellAsset());
+				//if (auto cv = getChildViewer<CellAssetViewer>()) cv->destroy();
+				//addChildViewer<CellAssetViewer>(cellState->getCellAsset());
 			}
 		}
 
@@ -145,5 +154,11 @@ void FieldViewer::update()
 					.drawFrame(4.0, Palette::Black);
 			}
 		}
+	}
+
+	{
+		static Font font(64, Typeface::Bold);
+
+		font(U"x", speed).draw(Scene::Size().x - 200, 25);
 	}
 }

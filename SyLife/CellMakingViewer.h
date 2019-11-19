@@ -1,7 +1,8 @@
 ﻿#pragma once
 
 #include "Viewer.h"
-#include "TinyCamera.h"
+#include "Layer.h"
+#include "GridViewer.h"
 #include "ColorPicker.h"
 
 class PartAsset;
@@ -11,27 +12,33 @@ class PartConfig;
 class CellMakingViewer
 	: public Viewer
 {
+	shared_ptr<CellAsset>	m_cellAsset;
+
 public:
 	class BodySculptor
 		: public Viewer
 	{
+		bool	m_isSymmetrical;
+		double	m_scale;
+		Polygon	m_stamp;
+
 	public:
 		class Workspace
-			: public Viewer
+			: public GridViewer
 		{
-			double	m_circleRadius = 10.0;
-			Vec2	m_size;
-			TinyCamera	m_camera;
 			shared_ptr<PartAsset>	m_partAsset;
+
+			Polygon	getReversed(const Polygon& polygon) const;
+			Layer& getSelectedLayer();
 
 		public:
 			void	init() override;
 			void	update() override;
 
 			void	setPartAsset(const shared_ptr<PartAsset>& partAsset) { m_partAsset = partAsset; }
-			void	setSize(const Vec2& size);
 
-			void	drawGrid() const;
+			void	attach(const Polygon& polygon);
+			void	detach(const Polygon& polygon);
 		};
 
 	public:
@@ -57,6 +64,9 @@ public:
 	public:
 		void	init() override;
 		void	update() override;
+
+		bool	isSymmetrical() const { return m_isSymmetrical; }
+		Polygon getStamp() const;
 	};
 
 	class PartsAssembler
@@ -64,7 +74,7 @@ public:
 	{
 	public:
 		class Workspace
-			: public Viewer
+			: public GridViewer
 		{
 			shared_ptr<CellAsset> m_cellAsset;
 
@@ -74,12 +84,9 @@ public:
 				RotateMode,
 			} m_state = State::MoveMode;
 
-			TinyCamera	m_camera;
-
 			double	m_mass;
 			double	m_inertia;
 			double	m_radius;
-			Vec2	m_size;
 			bool	m_grabCircle;
 			shared_ptr<PartConfig>	m_selectedPartConfig;
 
@@ -87,10 +94,7 @@ public:
 			void	init() override;
 			void	update() override;
 
-			void	setSize(const Vec2& size);
-
 			void	drawParts() const;
-			void	drawGrid() const;
 
 			void	setCellAsset(const shared_ptr<CellAsset>& cellAsset) { m_cellAsset = cellAsset; }
 		};
@@ -129,9 +133,7 @@ public:
 		void	update() override;
 	};
 
-private:
-	shared_ptr<CellAsset>	m_cellAsset;
-
+public:
 	void	clearEditor();
 	void	openBodySculptor();
 	void	openPartsAssembler();

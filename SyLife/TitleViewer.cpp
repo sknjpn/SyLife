@@ -9,7 +9,7 @@ TitleViewer::TitleViewer()
 {
 	setViewerRectInLocal(Scene::Size());
 	m_audio.setLoop(true);
-	//m_audio.play();
+	m_audio.play();
 
 	for (int i = 0; i < 2000; ++i) UpdateBubbles();
 }

@@ -11,6 +11,8 @@ CellAssetViewer::CellAssetViewer(const shared_ptr<CellAsset>& cellAsset)
 
 void CellAssetViewer::update()
 {
+	DraggableViewer::update();
+
 	// Font
 	static Font font(16, Typeface::Bold);
 	const double d = 20;
@@ -18,7 +20,7 @@ void CellAssetViewer::update()
 	// 背景
 	{
 		RectF rect(getViewerSize());
-		rect.rounded(10).draw(Palette::White).drawFrame(5.0, 0.0, Palette::Black);
+		rect.rounded(10).draw(Palette::Gray).drawFrame(5.0, 0.0, Palette::Black);
 	}
 
 	moveDrawPos(10, 10);
@@ -48,4 +50,8 @@ void CellAssetViewer::update()
 		font(U"PartName=" + (*it)->getPartAsset()->getName()).draw(Vec2::Zero(), Palette::Black);
 		moveDrawPos(0, d);
 	}
+
+	setDrawPos(0, 0);
+	if (isMouseover())
+		RectF(getViewerSize()).rounded(10).draw(ColorF(1.0, 0.25));
 }

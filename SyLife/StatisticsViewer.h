@@ -1,11 +1,11 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "DraggableViewer.h"
 
 class CellAsset;
 
-class StatisticsViewer :
-	public Viewer
+class StatisticsViewer
+	: public DraggableViewer
 {
 	struct Log
 	{
@@ -30,5 +30,7 @@ class StatisticsViewer :
 public:
 	void	update() override;
 	void	init() override;
+
+	void	takeLog();
 };
 

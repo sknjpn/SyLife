@@ -30,13 +30,11 @@ void CellMakingViewer::openPartsAssembler()
 
 void CellMakingViewer::init()
 {
-	setBackgroundColor(Color(11, 22, 33));
-
 	// 新しいモデルの登録
 	makeAsset();
 
 	// DrawRectの設定
-	setViewerRectInLocal(RectF(1400, 900).setCenter(Scene::CenterF()));
+	setViewerRectInLocal(RectF(1400, 800).setCenter(Scene::CenterF()));
 
 	addChildViewer<GUIButton>(U"ボディ編集", [this]() { openBodySculptor(); })
 		->setViewerRectInLocal(5, 5, 190, 35);
@@ -45,6 +43,7 @@ void CellMakingViewer::init()
 		->setViewerRectInLocal(5, 45, 190, 35);
 
 	addChildViewer<GUIButton>(U"生き物配置", [this]() { getParentViewer()->addChildViewer<ReleaseViewer>(m_cellAsset); destroy(); })
+		->setName(U"生き物配置")
 		->setViewerRectInLocal(5, 85, 190, 35);
 
 	addChildViewer<GUIButton>(U"閉じる", [this]() { destroy(); })
@@ -52,14 +51,22 @@ void CellMakingViewer::init()
 
 	addChildViewer<CellInfo>()
 		->setViewerRectInLocal(0, 165, 200, 595);
+
+	openBodySculptor();
+
+	getChildViewer<GUIButton>(U"生き物配置")->setIsEnabled(false);
 }
 
 void CellMakingViewer::update()
 {
+	RectF(getViewerSize()).rounded(16.0).draw(Palette::Gray).drawFrame(2,0, Palette::Black);
+
 	// 更新
 	m_cellAsset->updateProperties();
 	for (const auto& pc : m_cellAsset->getPartConfigs())
 		pc->getPartAsset()->m_shape.updateProperties();
+
+	getChildViewer<GUIButton>(U"生き物配置")->setIsEnabled(m_cellAsset->isValid());
 }
 
 void CellMakingViewer::makeAsset()

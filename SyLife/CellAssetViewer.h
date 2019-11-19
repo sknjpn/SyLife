@@ -1,11 +1,11 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "DraggableViewer.h"
 
 class CellAsset;
 
 class CellAssetViewer
-	: public Viewer
+	: public DraggableViewer
 {
 	shared_ptr<CellAsset>	m_cellAsset;
 
