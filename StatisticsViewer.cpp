@@ -28,7 +28,7 @@ void StatisticsViewer::update()
 		{
 			auto& l = m_logs[i];
 
-			moveDrawPos(m_statusesSizeMax - l.m_statuses.size(), 0.0);
+			moveDrawPos(double(m_statusesSizeMax - l.m_statuses.size()), 0.0);
 			
 			for (int j = 0; j < l.m_statuses.size() - 1; ++j)
 			{
@@ -37,7 +37,7 @@ void StatisticsViewer::update()
 				Line(p0, p1).draw(HSV(i * 60));
 			}
 
-			moveDrawPos(l.m_statuses.size() - m_statusesSizeMax, 0.0);
+			moveDrawPos(double(l.m_statuses.size() - m_statusesSizeMax), 0.0);
 		}
 	}
 
