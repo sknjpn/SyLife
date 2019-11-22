@@ -27,7 +27,7 @@ Layer& CellMakingViewer::BodySculptor::Workspace::getSelectedLayer()
 {
 	const auto slv = getParentViewer()->getChildViewer<LayerLists>();
 
-	return m_partAsset->m_shape[slv->getSelectedIndex()];
+	return m_partAsset->getShape()[slv->getSelectedIndex()];
 }
 
 void CellMakingViewer::BodySculptor::Workspace::init()
@@ -44,7 +44,7 @@ void CellMakingViewer::BodySculptor::Workspace::update()
 
 	const auto t1 = getCamera().createTransformer();
 
-	m_partAsset->m_shape.updateProperties();
+	m_partAsset->getShape().updateProperties();
 
 	// Part
 	m_partAsset->getShape().draw(0.5);
@@ -80,8 +80,8 @@ void CellMakingViewer::BodySculptor::Workspace::update()
 		}
 
 		double k = 0.01;
-		m_partAsset->m_mass = m_partAsset->m_shape[0].m_polygon.area() * k;
-		m_partAsset->m_material.setNutrition(m_partAsset->m_mass);
+		m_partAsset->setMass( m_partAsset->getShape()[0].m_polygon.area() * k);
+		m_partAsset->getMaterial().setNutrition(m_partAsset->getMass());
 	}
 
 	// 左右対称

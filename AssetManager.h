@@ -40,6 +40,9 @@ public:
 
 		return tAssets;
 	}
+
+
+	const Array<shared_ptr<Asset>>& getAssets() const { return m_assets; }
 };
 
 extern unique_ptr<AssetManager>	g_assetManagerPtr;

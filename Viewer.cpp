@@ -9,7 +9,7 @@ void Viewer::UpdateAllViewers()
 		const auto viewers = GetRootViewer()->getAllChildViewers();
 		g_mouseoveredViewer = nullptr;
 		for (auto it = viewers.begin(); it < viewers.end(); ++it)
-			if ((*it)->getViewerRectInWorld().mouseOver()) g_mouseoveredViewer = *it;
+			if ((*it)->getViewport() && (*it)->getViewport().value().mouseOver()) g_mouseoveredViewer = *it;
 	}
 
 	// Viewer 更新
@@ -26,8 +26,20 @@ void Viewer::process()
 	// 自身の更新
 	if (!m_isRoot)
 	{
-		const auto sv = ScopedViewport2D(Rect(getViewerRectInWorld()));
-		const auto t = Transformer2D(Mat3x2::Identity(), Mat3x2::Translate(getViewerPosInWorld()));
+		ScopedViewport2D sv;
+		Transformer2D t;
+
+		if (getViewport())
+		{
+			const auto delta = getViewerPosInWorld() - getViewport().value().pos;
+
+			sv = getViewport() ? ScopedViewport2D(getViewport()) : ScopedViewport2D(Rect());
+			t = Transformer2D(Mat3x2::Translate(delta), Mat3x2::Translate(getViewerPosInWorld() + delta));
+		}
+		else
+		{
+			sv = ScopedViewport2D(Rect());
+		}
 
 		RectF(m_viewerRectInLocal.size).draw(m_backgroundColor);
 
@@ -44,11 +56,7 @@ void Viewer::process()
 	// Childの更新
 	// 長さが変わる可能性があるのでintで管理
 	for (int i = 0; i < m_childViewers.size(); ++i)
-	{
-		const auto cv = m_childViewers[i];
-
-		cv->process();
-	}
+		m_childViewers[i]->process();
 }
 
 void Viewer::removeDeadViewer()
@@ -59,6 +67,49 @@ void Viewer::removeDeadViewer()
 	m_childViewers.remove_if([](const auto& cv) { return cv->m_isDestroyed; });
 
 	if (m_isDestroyed) m_parentViewer = nullptr;
+}
+
+Optional<Rect> Viewer::getViewport() const
+{
+	auto tRect = Rect(getViewerRectInWorld());
+
+	if (!m_parentViewer) return tRect;
+	if (!m_parentViewer->getViewport()) return none;
+
+	auto pRect = m_parentViewer->getViewport().value();
+
+	if (pRect.contains(tRect)) return tRect;
+	if (!pRect.intersects(tRect)) return none;
+
+	if (tRect.tl().x < pRect.tl().x)
+	{
+		tRect.size.x -= (pRect.tl().x - tRect.tl().x);
+		tRect.pos.x += (pRect.tl().x - tRect.tl().x);
+	}
+
+	if (tRect.tl().y < pRect.tl().y)
+	{
+		tRect.size.y -= (pRect.tl().y - tRect.tl().y);
+		tRect.pos.y += (pRect.tl().y - tRect.tl().y);
+	}
+
+	if (pRect.br().x < tRect.br().x)
+		tRect.size.x -= tRect.br().x - pRect.br().x;
+
+	if (pRect.br().y < tRect.br().y)
+		tRect.size.y -= tRect.br().y - pRect.br().y;
+
+	return tRect;
+}
+
+bool Viewer::isMouseover() const
+{
+	if (shared_from_this() == g_mouseoveredViewer) return true;
+
+	for (const auto& cv : m_childViewers)
+		if (cv->isMouseover()) return true;
+
+	return false;
 }
 
 Vec2 Viewer::getViewerPosInWorld() const

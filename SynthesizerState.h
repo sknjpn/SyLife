@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "ModuleState.h"
+#include "PartState.h"
 
 class SynthesizerState
-	: public ModuleState
+	: public PartState
 {
 	double	m_timer = 0.0;
 

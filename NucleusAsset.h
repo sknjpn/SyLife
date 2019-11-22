@@ -10,7 +10,25 @@ class NucleusAsset
 	double	m_yieldTime;	// 生むのにかかる時間
 
 public:
-	void makeViewer() override;
+	class Editor
+		: public AssetEditor
+	{
+		shared_ptr<NucleusAsset>	m_nucleusAsset;
+
+	public:
+		Editor(const shared_ptr<NucleusAsset>& nucleusAsset)
+			: m_nucleusAsset(nucleusAsset)
+		{}
+
+		void	init() override;
+		void	update() override;
+	};
+
+public:
+	// Editor
+	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<NucleusAsset>(shared_from_this())); }
+
+	// State
 	shared_ptr<PartState>	makeState() override;
 
 	// Get

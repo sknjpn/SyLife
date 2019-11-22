@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "EquipmentState.h"
+#include "PartState.h"
 
 class WingState
-	: public EquipmentState
+	: public PartState
 {
 	int		m_timer = 0;
 	double	m_v = 0.0;

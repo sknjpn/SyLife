@@ -1,21 +1,16 @@
 ﻿#include "PartAsset.h"
-
 #include "AssetManager.h"
-
-
 #include "PartState.h"
-#include "PartEditor.h"
 #include "PartShapeViewer.h"
 
-void PartAsset::makeViewer()
+void PartAsset::drawIcon() const
 {
-	//g_viewerManagerPtr->makeViewer<PartEditor>()->setPartAsset(shared_from_this());
-	//g_viewerManagerPtr->makeViewer<PartShapeViewer>()->setPartAsset(shared_from_this());
-}
+	auto rect = m_shape.getPolygon().boundingRect();
+	rect = RectF(1.0, 1.0).scaled(Max(rect.size.x, rect.size.y)).setCenter(rect.center());
 
-shared_ptr<PartState> PartAsset::makeState()
-{
-	return make_shared<PartState>();
+	const auto t = Transformer2D(Mat3x2::Translate(-rect.pos).scaled(1.0 / rect.size.x));
+
+	m_shape.draw(0.5);
 }
 
 void PartAsset::load(const JSONValue& json)

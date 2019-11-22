@@ -13,7 +13,7 @@ void CellMakingViewer::BodySculptor::LayerLists::update()
 {
 	if (!m_partAsset) return;
 
-	getChildViewer<GUISlider>()->setHeight((m_partAsset->m_shape.size() + 1) * m_itemHeight);
+	getChildViewer<GUISlider>()->setHeight((m_partAsset->getShape().size() + 1) * m_itemHeight);
 
 	moveDrawPos(0, -getChildViewer<GUISlider>()->getDelta());
 	{
@@ -31,12 +31,12 @@ void CellMakingViewer::BodySculptor::LayerLists::update()
 			if (block.leftClicked())
 			{
 				// 新しいLayerの追加
-				auto& l = m_partAsset->m_shape.emplace_back();
+				auto& l = m_partAsset->getShape().emplace_back();
 				l.m_color = Palette::White;
 				l.m_polygon = Circle(10.0).asPolygon();
 
 				// 選択中のLayerを変更
-				m_selectedIndex = int(m_partAsset->m_shape.size()) - 1;
+				m_selectedIndex = int(m_partAsset->getShape().size()) - 1;
 			}
 
 			moveDrawPos(0, m_itemHeight);
@@ -53,11 +53,11 @@ void CellMakingViewer::BodySculptor::LayerLists::setPartAsset(const shared_ptr<P
 
 void CellMakingViewer::BodySculptor::LayerLists::drawLayers()
 {
-	for (auto it = m_partAsset->m_shape.begin(); it != m_partAsset->m_shape.end(); ++it)
+	for (auto it = m_partAsset->getShape().begin(); it != m_partAsset->getShape().end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
-		block.draw((distance(m_partAsset->m_shape.begin(), it) == m_selectedIndex) ? ColorF(Palette::Blue, 0.5) : ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
-		if (block.leftClicked()) m_selectedIndex = int(it - m_partAsset->m_shape.begin());
+		block.draw((distance(m_partAsset->getShape().begin(), it) == m_selectedIndex) ? ColorF(Palette::Blue, 0.5) : ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+		if (block.leftClicked()) m_selectedIndex = int(it - m_partAsset->getShape().begin());
 
 		// ColorPicker
 		it->m_color = m_colorPicker.update(it->m_color);

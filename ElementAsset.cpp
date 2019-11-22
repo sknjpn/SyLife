@@ -1,9 +1,10 @@
 ﻿#include "ElementAsset.h"
-#include "ElementEditor.h"
 
-void ElementAsset::makeViewer()
+void ElementAsset::drawIcon() const
 {
-	//g_viewerManagerPtr->makeViewer<ElementEditor>()->setPartAsset(shared_from_this());
+	static Texture particle(U"assets/image/particle.png", TextureDesc::Mipped);
+
+	particle.resized(1.0, 1.0).drawAt(0.5, 0.5, m_color);
 }
 
 void ElementAsset::load(const JSONValue& json)

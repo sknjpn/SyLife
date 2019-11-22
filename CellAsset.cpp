@@ -1,6 +1,4 @@
 ﻿#include "CellAsset.h"
-#include "CellEditor.h"
-
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "BodyAsset.h"
@@ -92,12 +90,6 @@ bool CellAsset::isValid() const
 {
 	return getBodyAsset() && getNucleusAsset();
 }
-
-void CellAsset::makeViewer()
-{
-	//g_viewerManagerPtr->makeViewer<CellEditor>()->setPartAsset(shared_from_this());
-}
-
 
 shared_ptr<PartConfig>& CellAsset::addPartConfig()
 {

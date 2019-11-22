@@ -26,7 +26,7 @@ void SetupViewer::startGame()
 		// 通常のWindow
 		Window::Resize(1920, 1080);
 		Window::SetStyle(WindowStyle::Sizable);
-		Window::Maximize();
+		//Window::Maximize();
 	}
 
 	getParentViewer()->addChildViewer<TitleViewer>();

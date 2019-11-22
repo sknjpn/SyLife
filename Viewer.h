@@ -79,6 +79,17 @@ public:
 
 	const Array<shared_ptr<Viewer>>& getChildViewers() const { return m_childViewers; }
 
+	template <typename T>
+	Array<shared_ptr<T>>	getChildViewers() const
+	{
+		Array<shared_ptr<T>> tChildViewers;
+
+		for (auto it = m_childViewers.begin(); it != m_childViewers.end(); ++it)
+			if (dynamic_pointer_cast<T>(*it) != nullptr) tChildViewers.emplace_back(dynamic_pointer_cast<T>(*it));
+
+		return tChildViewers;
+	}
+
 	// 再帰的
 	Array<shared_ptr<Viewer>>	getAllChildViewers() const;
 
@@ -100,9 +111,11 @@ public:
 
 	shared_ptr<Viewer>	setName(const String& name) { m_name = name; return shared_from_this(); }
 
+	Optional<Rect>	getViewport() const;
+
 	// Get
-	bool	isMouseover() const { return shared_from_this() == g_mouseoveredViewer; }
-	RectF	getViewerRectInWorld() const { return RectF(getViewerPosInWorld(), m_viewerRectInLocal.size); }
+	bool	isMouseover() const;
+	RectF	getViewerRectInWorld() const { return m_isRoot ? RectF(Scene::Rect()) : RectF(getViewerPosInWorld(), m_viewerRectInLocal.size); }
 	Vec2	getViewerPosInWorld() const;
 	const RectF& getViewerRectInLocal() const { return m_viewerRectInLocal; }
 	const Vec2& getViewerPosInLocal() const { return m_viewerRectInLocal.pos; }

@@ -64,7 +64,7 @@ void CellMakingViewer::update()
 	// 更新
 	m_cellAsset->updateProperties();
 	for (const auto& pc : m_cellAsset->getPartConfigs())
-		pc->getPartAsset()->m_shape.updateProperties();
+		pc->getPartAsset()->getShape().updateProperties();
 
 	getChildViewer<GUIButton>(U"生き物配置")->setIsEnabled(m_cellAsset->isValid());
 }
@@ -85,9 +85,9 @@ void CellMakingViewer::makeAsset()
 		auto bodyAsset = g_assetManagerPtr->makeAsset<BodyAsset>();
 		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 
-		bodyAsset->m_mass = 1.0;
-		bodyAsset->m_material.setNutrition(1.0);
-		auto& l = bodyAsset->m_shape.emplace_back();
+		bodyAsset->setMass(1.0);
+		bodyAsset->getMaterial().setNutrition(1.0);
+		auto& l = bodyAsset->getShape().emplace_back();
 		l.m_color = Palette::White;
 		l.m_polygon = Circle(10.0).asPolygon();
 	}

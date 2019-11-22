@@ -1,6 +1,18 @@
 ﻿#include "PartShapeViewer.h"
 #include "BodyAsset.h"
 
+void PartShapeViewer::init()
+{
+	setViewerRectInLocal(0, 0, 600, 600);
+
+	m_camera.setControlOutOfScreenEnabled(false);
+	m_camera.setRestrictedRect(RectF(-150, -150, 300, 300));
+	m_camera.setScreen(getViewerRectInLocal());
+	m_camera.setMaxScale(20.0);
+	m_camera.setTargetCenter(Vec2::Zero());
+	m_camera.setCenter(Vec2::Zero());
+}
+
 void PartShapeViewer::update()
 {
 	m_camera.update();
@@ -37,7 +49,7 @@ void PartShapeViewer::update()
 	}
 
 	// ShapeModels
-	for (const auto& l : getPartAsset<PartAsset>()->getShape())
+	for (const auto& l : m_partAsset->getShape())
 	{
 		// Face
 		l.m_polygon.draw(ColorF(l.m_color, 0.5));

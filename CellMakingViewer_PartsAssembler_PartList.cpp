@@ -2,9 +2,7 @@
 #include "AssetManager.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"
-#include "EquipmentAsset.h"
 #include "NucleusAsset.h"
-#include "ModuleAsset.h"
 #include "GUISlider.h"
 
 void CellMakingViewer::PartsAssembler::PartList::init()
@@ -26,9 +24,7 @@ Array<shared_ptr<PartAsset>> CellMakingViewer::PartsAssembler::PartList::getList
 {
 	Array<shared_ptr<PartAsset>> assets;
 
-	for (const auto& m : g_assetManagerPtr->getAssets<EquipmentAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<ModuleAsset>()) assets.emplace_back(m);
-	for (const auto& m : g_assetManagerPtr->getAssets<NucleusAsset>()) assets.emplace_back(m);
+	for (const auto& m : g_assetManagerPtr->getAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<BodyAsset>(pa) ? true : false; })) assets.emplace_back(m);
 	
 	return assets;
 }

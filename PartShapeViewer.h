@@ -1,10 +1,12 @@
 ﻿#pragma once
 
-#include "ModelEditor.h"
+#include "Viewer.h"
 #include "TinyCamera.h"
 
+class PartAsset;
+
 class PartShapeViewer
-	: public ModelEditor
+	: public Viewer
 {
 public:
 	Array<Vec2>	m_verticles;
@@ -13,19 +15,14 @@ public:
 
 	TinyCamera	m_camera;
 
+	shared_ptr<PartAsset>	m_partAsset;
+
 public:
-	PartShapeViewer()
-	{
-		setViewerRectInLocal(0, 0, 600, 600);
+	PartShapeViewer(const shared_ptr<PartAsset>& partAsset)
+		: m_partAsset(partAsset)
+	{}
 
-		m_camera.setControlOutOfScreenEnabled(false);
-		m_camera.setRestrictedRect(RectF(-150, -150, 300, 300));
-		m_camera.setScreen(getViewerRectInLocal());
-		m_camera.setMaxScale(20.0);
-		m_camera.setTargetCenter(Vec2::Zero());
-		m_camera.setCenter(Vec2::Zero());
-	}
-
+	void	init() override;
 	void	update() override;
 };
 

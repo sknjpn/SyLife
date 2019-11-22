@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "EquipmentState.h"
+#include "PartState.h"
 
 class NeedleState
-	: public EquipmentState
+	: public PartState
 {
 	double	m_heat = 0.0;
 
