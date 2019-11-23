@@ -1,7 +1,6 @@
 ﻿#include "FieldViewer.h"
 
 #include "AssetManager.h"
-#include "WaveManager.h"
 #include "EggManager.h"
 #include "ChipManager.h"
 #include "CellManager.h"
@@ -28,14 +27,14 @@
 
 void FieldViewer::openCellMakingViewer()
 {
-	if (!hasChildViewer<CellMakingViewer>())
-		addChildViewer<CellMakingViewer>();
+	if (!hasChildViewer<CellMakingViewer>()) addChildViewer<CellMakingViewer>();
 }
 
-FieldViewer::FieldViewer()
-	: m_audio(U"assets/music/シアン.mp3")
+void FieldViewer::init()
 {
-	m_camera.setRestrictedRect(g_chipManagerPtr->getRect().scaledAt(Vec2::Zero(), g_chipManagerPtr->getLength()));
+	m_audio = Audio(U"assets/music/シアン.mp3");
+
+	m_camera.setRestrictedRect(Rect(g_chipManagerPtr->getChipSize()).scaledAt(Vec2::Zero(), g_chipManagerPtr->getChipLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
@@ -43,10 +42,7 @@ FieldViewer::FieldViewer()
 
 	m_audio.setLoop(true);
 	m_audio.play();
-}
 
-void FieldViewer::init()
-{
 	addChildViewer<CellStateViewer>();
 
 	addChildViewer<GUIButton>(U"Cell作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 200, 50);
@@ -75,7 +71,6 @@ void FieldViewer::update()
 		// update
 		for (int i = 0; i < speed; ++i)
 		{
-			g_waveManagerPtr->updateWave();
 			g_cellManagerPtr->updateCellStates();
 			g_eggManagerPtr->updateEggStates();
 			g_chipManagerPtr->updateChips();
@@ -103,10 +98,9 @@ void FieldViewer::update()
 
 		// draw
 		g_chipManagerPtr->drawChips();
-		g_waveManagerPtr->drawWave();
+		g_elementManagerPtr->drawElementStates();
 		g_eggManagerPtr->drawEggStates();
 		g_cellManagerPtr->drawCellStates();
-		g_elementManagerPtr->drawElementStates();
 
 		// delete
 		if (isMouseover() && MouseR.pressed())

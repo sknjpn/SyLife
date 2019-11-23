@@ -4,11 +4,10 @@ void CellMakingViewer::PartsAssembler::init()
 {
 	setViewerRectInLocal(200, 0, 1200, 800);
 
-	const auto ca = getParentViewer<CellMakingViewer>()->getCellAsset();
-	const auto& w = addChildViewer<Workspace>();
-	const auto& pl = addChildViewer<PartList>();
+	addChildViewer<Workspace>()
+		->setCellAsset(getParentViewer<CellMakingViewer>()->getCellAsset());
 
-	w->setCellAsset(ca);
+	addChildViewer<PartList>();
 }
 
 void CellMakingViewer::PartsAssembler::update()

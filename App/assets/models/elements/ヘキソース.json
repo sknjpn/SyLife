@@ -1,5 +1,7 @@
 ﻿{
-    "mass": 120,
+    "name": "ヘキソース",
+    "type": "ElementAsset",
+    "radius": 6,
     "color": "(255, 255, 255)",
     "material": {
         "nutrition": 2.0,
@@ -13,7 +15,5 @@
                 "size": 1
             }
         ]
-    },
-    "name": "ヘキソース",
-    "type": "ElementAsset"
+    }
 }

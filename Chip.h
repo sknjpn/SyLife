@@ -6,23 +6,28 @@ class Chip
 {
 	friend class ChipManager;
 
-	double m_nutrition;
+	double	m_nutrition;
+	Point	m_point;
+	Vec2	m_waveVelocity;
 
-	shared_ptr<Chip>	m_l;
-	shared_ptr<Chip>	m_u;
-	shared_ptr<Chip>	m_r;
-	shared_ptr<Chip>	m_d;
-	Vec2	m_center;
-	RectF	m_rect;
+	double	m_sendRate[3][3];	// 周囲のマスに送る比率
+	shared_ptr<Chip>	m_nearChips[3][3];
 
 public:
-	Chip(const RectF& rect)
-		: m_center(rect.center())
-		, m_rect(rect)
+	Chip(const Point& point)
+		: m_point(point)
 		, m_nutrition(0.0)
 	{}
 
-	Vec2	getCentroid() const { return m_center; }
+	void	init();
+	void	update();
+	void	draw();
+
+	RectF	getRegion() const;
+
+	const Vec2& getWaveVelocity() const { return m_waveVelocity; }
+
+	Vec2	getCentroid() const;
 	double	getNutrition() const { return m_nutrition; }
 
 	void	setNutrition(double nutrition) { m_nutrition = nutrition; }

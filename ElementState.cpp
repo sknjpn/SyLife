@@ -23,20 +23,17 @@ void ElementState::updateElement()
 			g_elementManagerPtr->addElementState(e.first, getPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
 
 		destroy();
+
 		return;
 	}
-
-	// if (RandomBool(0.01)) destroy();
 }
 
 void ElementState::draw()
 {
 	static Texture particle(U"assets/image/particle.png", TextureDesc::Mipped);
 
-	particle.resized(m_elementAsset->getRadius() * 2.0, m_elementAsset->getRadius() * 2.0).drawAt(getPosition(), m_elementAsset->getColor());
-	/*
-	Circle(GetPosition().x, GetPosition().y, GetRadius())
-		.draw(ColorF(m_elementAsset->GetColor(), 0.5));
-		//.drawFrame(1.0, ColorF(1.0, 0.5));
-		*/
+	//particle.resized(m_elementAsset->getRadius() * 2.0, m_elementAsset->getRadius() * 2.0).drawAt(getPosition(), m_elementAsset->getColor());
+	
+	Circle(getPosition(), getRadius())
+		.draw(ColorF(m_elementAsset->getColor(), 1.0));
 }

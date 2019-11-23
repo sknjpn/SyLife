@@ -1,7 +1,6 @@
 ﻿#include "Particle.h"
-
-#include "WaveManager.h"
-#include "FieldManager.h"
+#include "ChipManager.h"
+#include "Chip.h"
 
 void Particle::addForce(const Vec2& force)
 {
@@ -16,17 +15,14 @@ void Particle::updateParticle()
 	// 壁
 	if (m_position.x < 0) m_position.x = 0;
 	if (m_position.y < 0) m_position.y = 0;
-	if (m_position.x > g_fieldManagerPtr->getSize().x) m_position.x = g_fieldManagerPtr->getSize().x;
-	if (m_position.y > g_fieldManagerPtr->getSize().y) m_position.y = g_fieldManagerPtr->getSize().y;
+	if (m_position.x > g_chipManagerPtr->getFieldSize().x) m_position.x = g_chipManagerPtr->getFieldSize().x;
+	if (m_position.y > g_chipManagerPtr->getFieldSize().y) m_position.y = g_chipManagerPtr->getFieldSize().y;
 
-	if (KeyO.pressed())
+	// 水流
 	{
-		m_velocity *= 0.95;
-	}
-	else
-	{
-		// 摩擦抵抗
-		auto waveVelocity = g_waveManagerPtr->getWaveVelocity(m_position);
+		const double scale = 100.0;
+		const auto waveVelocity = scale * g_chipManagerPtr->getChip(m_position)->getWaveVelocity();
+
 		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.95;
 	}
 }

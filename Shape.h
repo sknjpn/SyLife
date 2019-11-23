@@ -20,7 +20,7 @@ public:
 	double	getRadius() const { return Sqrt(2 * getInertia(1.0)); }
 	Vec2	getCentroid() const { return m_polygon.centroid(); }
 
-	RectF	getRect() const;
+	RectF	getChipSize() const;
 
 	void	draw(double a) const { for (const auto& l : *this) l.m_polygon.draw(ColorF(l.m_color, a)); }
 

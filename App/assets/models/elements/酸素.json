@@ -1,10 +1,10 @@
 ﻿{
+    "name": "酸素",
     "type": "ElementAsset",
-    "mass": 36,
-    "color": "(0, 0, 192)",
+    "radius": 4,
+    "color": "(0, 128, 255)",
     "material": {
         "nutrition": 1.0,
         "elements": []
-    },
-    "name": "酸素"
+    }
 }

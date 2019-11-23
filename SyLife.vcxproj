@@ -254,7 +254,6 @@
     <ClInclude Include="ElementAsset.h" />
     <ClInclude Include="ElementManager.h" />
     <ClInclude Include="ElementState.h" />
-    <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldViewer.h" />
     <ClInclude Include="GridViewer.h" />
     <ClInclude Include="GUIAssetLinker.h" />
@@ -289,9 +288,10 @@
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="Viewer.h" />
-    <ClInclude Include="WaveManager.h" />
     <ClInclude Include="WingAsset.h" />
     <ClInclude Include="WingState.h" />
+    <ClInclude Include="WorldGenerateViewer.h" />
+    <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
@@ -333,7 +333,6 @@
     <ClCompile Include="ElementAsset_Editor.cpp" />
     <ClCompile Include="ElementManager.cpp" />
     <ClCompile Include="ElementState.cpp" />
-    <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldViewer.cpp" />
     <ClCompile Include="GridViewer.cpp" />
     <ClCompile Include="GUIAssetLinker.cpp" />
@@ -377,10 +376,11 @@
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="ToolbarViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
-    <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="WingAsset.cpp" />
     <ClCompile Include="WingAsset_Editor.cpp" />
     <ClCompile Include="WingState.cpp" />
+    <ClCompile Include="WorldGenerateViewer.cpp" />
+    <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

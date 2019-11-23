@@ -8,8 +8,6 @@ struct Layer
 	Polygon	m_polygon;
 	Color	m_color;
 
-	RectF	getRect() const;
-
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
 };

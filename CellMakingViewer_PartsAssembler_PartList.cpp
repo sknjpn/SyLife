@@ -42,7 +42,7 @@ void CellMakingViewer::PartsAssembler::PartList::drawAssets()
 
 		// パーツ描画
 		{
-			RectF rect = (*it)->getShape().getRect();
+			RectF rect = (*it)->getShape().getChipSize();
 			auto scale = Min((m_itemHeight - 20) / rect.w, (m_itemHeight - 20) / rect.h);
 			auto t = Transformer2D(Mat3x2::Translate(-rect.center()).scaled(scale).translated(Vec2(170 - m_itemHeight / 2.0, m_itemHeight / 2.0)));
 

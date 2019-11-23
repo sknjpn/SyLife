@@ -13,8 +13,6 @@ class FieldViewer
 	void	openCellMakingViewer();
 
 public:
-	FieldViewer();
-
 	void	init() override;
 	void	update() override;
 

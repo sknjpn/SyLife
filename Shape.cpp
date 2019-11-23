@@ -64,7 +64,7 @@ double Shape::getInertia(double mass) const
 	return inertia;
 }
 
-RectF Shape::getRect() const
+RectF Shape::getChipSize() const
 {
 	if (m_polygon.isEmpty()) return RectF();
 

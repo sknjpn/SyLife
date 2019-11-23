@@ -11,14 +11,11 @@ void ElementAsset::load(const JSONValue& json)
 {
 	Asset::load(json);
 
-	// mass
-	m_mass = json[U"Mass"].get<double>();
+	// radius
+	m_radius = json[U"radius"].get<double>();
 
 	// color
 	m_color = json[U"color"].get<Color>();
-
-	// radius
-	m_radius = sqrt(m_mass);
 
 	// material
 	m_material.load(json[U"material"]);

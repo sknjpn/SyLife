@@ -5,24 +5,31 @@ class Chip;
 class ChipManager
 {
 	Grid<shared_ptr<Chip>> m_chips;
-	Rect	m_rect;
-	double	m_length;
+	Size	m_chipSize;
+	double	m_chipLength;
+
+	bool	m_drawWaveEnabled = false;
+
+	// 求まるもの
+	Vec2	m_fieldSize;
 
 public:
 	ChipManager();
 
-	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_length), int(position.y / m_length)); }
+	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_chipLength), int(position.y / m_chipLength)); }
 
 	shared_ptr<Chip> getChip(const Point& point) const;
 	shared_ptr<Chip> getChip(const Vec2& position) const { return getChip(getPoint(position)); }
+
+	void	generateWave();
 
 	void	init();
 	void	drawChips();
 	void	updateChips();
 
-	double	getLength() const { return m_length; }
-	const Rect& getRect() const { return m_rect; }
-	const Point& getSize() const { return m_rect.size; }
+	double	getChipLength() const { return m_chipLength; }
+	const Size& getChipSize() const { return m_chipSize; }
+	const Vec2& getFieldSize() const { return m_fieldSize; }
 
 	double	getNutrition(const Vec2& position) const;
 	void	addNutrition(const Vec2& position, double nutrition);
