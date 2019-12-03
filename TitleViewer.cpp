@@ -1,11 +1,12 @@
 ﻿#include "TitleViewer.h"
-#include "FieldViewer.h"
 #include "EditorViewer.h"
 #include "GUIButton.h"
 #include "CurtainViewer.h"
+#include "WorldGenerateViewer.h"
+#include "WorldLoadViewer.h"
 
 TitleViewer::TitleViewer()
-	: m_audio(U"assets/music/神秘の世界.mp3")
+	: m_audio(U"resources/music/神秘の世界.mp3")
 {
 	setViewerRectInLocal(Scene::Size());
 	m_audio.setLoop(true);
@@ -39,7 +40,7 @@ void TitleViewer::UpdateBubbles()
 
 void TitleViewer::drawBubbles()
 {
-	static Texture texture(U"assets/image/particle.png", TextureDesc::Mipped);
+	static Texture texture(U"resources/image/particle.png", TextureDesc::Mipped);
 
 	ScopedRenderStates2D blend(BlendState::Additive);
 
@@ -65,10 +66,10 @@ void TitleViewer::init()
 {
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
-	const auto f1 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<FieldViewer>(); destroy(); }); };
+	const auto f1 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<WorldGenerateViewer>(); destroy(); }); };
 	addChildViewer<GUIButton>(U"はじめから",  f1)->setViewerRectInLocal(p.movedBy(0, 0));
 
-	const auto f2 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<FieldViewer>(); destroy(); }); };
+	const auto f2 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<WorldLoadViewer>(); destroy(); }); };
 	addChildViewer<GUIButton>(U"つづきから", f2)->setViewerRectInLocal(p.movedBy(0, 75));
 
 	const auto f3 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };

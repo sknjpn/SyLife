@@ -1,6 +1,6 @@
 ﻿#include "SynthesizerAsset.h"
 #include "SynthesizerState.h"
-#include "AssetManager.h"
+#include "World.h"
 #include "ElementAsset.h"
 #include "PartShapeViewer.h"
 
@@ -14,7 +14,7 @@ void SynthesizerAsset::load(const JSONValue& json)
 	PartAsset::load(json);
 
 	// export
-	m_export = g_assetManagerPtr->getAsset<ElementAsset>(json[U"export"].getString());
+	m_export = World::GetInstance()->getAssets().getAsset<ElementAsset>(json[U"export"].getString());
 }
 
 void SynthesizerAsset::save(JSONWriter& json) const
@@ -23,7 +23,4 @@ void SynthesizerAsset::save(JSONWriter& json) const
 
 	// export
 	json.key(U"export").write(m_export->getName());
-
-	// type
-	json.key(U"type").write(U"SynthesizerAsset");
 }

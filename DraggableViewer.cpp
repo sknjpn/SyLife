@@ -1,5 +1,4 @@
-﻿#include "stdafx.h"
-#include "DraggableViewer.h"
+﻿#include "DraggableViewer.h"
 
 void DraggableViewer::update()
 {

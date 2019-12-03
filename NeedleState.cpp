@@ -1,11 +1,12 @@
 ﻿#include "NeedleState.h"
 
-#include "CellManager.h"
+
 
 #include "NeedleAsset.h"
 #include "PartConfig.h"
 #include "CellState.h"
 #include "CellAsset.h"
+#include "World.h"
 
 void NeedleState::draw(const CellState& cellState) const
 {
@@ -25,9 +26,9 @@ void NeedleState::update(CellState& cellState)
 		auto p = cellState.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up().rotated(getPartConfig()->getRotation()) * 50.0);
 
 
-		for (auto i : g_cellManagerPtr->getCellStateKDTree().knnSearch(1, p))
+		for (auto i : World::GetInstance()->getField().getCellStateKDTree().knnSearch(1, p))
 		{
-			auto& t = g_cellManagerPtr->getCellStates()[i];
+			auto& t = World::GetInstance()->getField().getCellStates()[i];
 
 			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_cellAsset != cellState.m_cellAsset)
 			{

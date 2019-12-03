@@ -1,8 +1,6 @@
 ﻿#include "Storage.h"
-
 #include "ElementAsset.h"
-
-#include "AssetManager.h"
+#include "World.h"
 
 bool Storage::operator>=(const Storage& s) const
 {
@@ -44,6 +42,16 @@ Storage& Storage::operator-=(const Storage& s) noexcept
 	return *this;
 }
 
+double Storage::getNutritionRecursive() const
+{
+	double sum = m_nutrition;
+
+	for (const auto& m : *this)
+		sum += m.first->getMaterial().getNutritionRecursive();
+
+	return sum;
+}
+
 void Storage::addElement(const shared_ptr<ElementAsset>& asset, int size)
 {
 	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
@@ -82,7 +90,7 @@ void Storage::load(const JSONValue& json)
 	// elements
 	for (auto element : json[U"elements"].arrayView())
 	{
-		const auto& asset = g_assetManagerPtr->getAsset<ElementAsset>(element[U"name"].getString());
+		const auto& asset = World::GetInstance()->getAssets().getAsset<ElementAsset>(element[U"name"].getString());
 		const int size = element[U"size"].get<int>();
 
 		emplace_back(asset, size);

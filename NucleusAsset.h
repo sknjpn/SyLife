@@ -36,6 +36,10 @@ public:
 	double	getBornTime() const { return m_bornTime; }
 	double	getYieldTime() const { return m_yieldTime; }
 
+	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
+	
+	// TypeName
+	String	getTypeName() override { return U"NucleusAsset"; }
 };

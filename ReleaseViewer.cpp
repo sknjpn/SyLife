@@ -1,8 +1,5 @@
 ﻿#include "ReleaseViewer.h"
-
-#include "CellManager.h"
-#include "AssetManager.h"
-
+#include "World.h"
 #include "FieldViewer.h"
 #include "CellMakingViewer.h"
 #include "CellAsset.h"
@@ -47,7 +44,7 @@ void ReleaseViewer::update()
 		m_cellAsset->setCentroidAsOrigin();
 
 		// 新規Cell
-		const auto& c = g_cellManagerPtr->addCellState(m_cellAsset);
+		const auto& c = World::GetInstance()->getField().addCellState(m_cellAsset);
 		c->setPosition(Cursor::PosF());
 		c->setVelocity(Vec2::Zero());
 		c->init();

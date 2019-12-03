@@ -26,6 +26,7 @@ public:
 
 public:
 	CellState(const shared_ptr<CellAsset>& cellAsset);
+	CellState(const JSONValue& json) { load(json); }
 
 	const shared_ptr<CellAsset>&	getCellAsset() const { return m_cellAsset; }
 
@@ -34,6 +35,8 @@ public:
 
 	void	takeNutrition();
 	void	takeElement(const shared_ptr<ElementState>& elementState);
-
-	bool	isPregnant();
+	
+	// JSON
+	void	load(const JSONValue& json) override;
+	void	save(JSONWriter& json) const override;
 };

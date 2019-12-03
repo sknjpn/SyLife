@@ -1,5 +1,4 @@
 ﻿#include "CellBookViewer.h"
-#include "AssetManager.h"
 #include "CellAsset.h"
 
 void CellBookViewer::init()
@@ -12,5 +11,5 @@ void CellBookViewer::init()
 
 void CellBookViewer::update()
 {
-	const auto cells = g_assetManagerPtr->getAssets<CellAsset>();
+
 }

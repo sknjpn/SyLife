@@ -1,9 +1,12 @@
 ﻿#pragma once
 
+#include "State.h"
+
 class Particle
+	: public State
 {
 	bool	m_isDestroyed = false;
-	double	m_mass = 0.0;
+	double	m_mass = 1.0;
 	Vec2	m_position = Vec2(0.0, 0.0);
 	Vec2	m_velocity = Vec2(0.0, 0.0);
 
@@ -26,4 +29,8 @@ public:
 	void	addImpulse(const Vec2& force) { m_velocity += force / m_mass; }
 	
 	void	updateParticle();
+
+	// JSON
+	void	load(const JSONValue& json) override;
+	void	save(JSONWriter& json) const override;
 };

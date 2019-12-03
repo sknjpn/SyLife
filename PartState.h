@@ -1,9 +1,12 @@
 ﻿#pragma once
 
+#include "State.h"
+
 class PartConfig;
 class CellState;
 
 class PartState
+	: public State
 {
 	shared_ptr<PartConfig>	m_partConfig;
 

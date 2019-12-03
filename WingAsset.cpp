@@ -20,7 +20,4 @@ void WingAsset::save(JSONWriter& json) const
 
 	// is right
 	json.key(U"isRight").write(m_isRight);
-
-	// type
-	json.key(U"type").write(U"WingAsset");
 }

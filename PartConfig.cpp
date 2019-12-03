@@ -1,7 +1,7 @@
 ﻿#include "PartConfig.h"
 #include "PartAsset.h"
+#include "World.h"
 
-#include "AssetManager.h"
 
 Vec2 PartConfig::getCentroid() const
 {
@@ -13,7 +13,7 @@ void PartConfig::load(const JSONValue& json)
 	Model::load(json);
 
 	// asset
-	m_partAsset = g_assetManagerPtr->getAsset<PartAsset>(json[U"asset"].getString());
+	m_partAsset = World::GetInstance()->getAssets().getAsset<PartAsset>(json[U"asset"].getString());
 
 	// position
 	m_position = json[U"position"].get<Vec2>();
@@ -34,7 +34,4 @@ void PartConfig::save(JSONWriter& json) const
 
 	// rotation
 	json.key(U"rotation").write(m_rotation);
-
-	// type
-	json.key(U"type").write(U"PartConfig");
 }

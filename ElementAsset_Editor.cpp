@@ -23,9 +23,9 @@ void ElementAsset::Editor::init()
 		->setViewerRectInLocal(10, 250, 170, 130);
 
 	addChildViewer<GUIText>(U"素材")
-		->setViewerRectInLocal(10, 410, 100, 40);
+		->setViewerRectInLocal(100, 410, 100, 40);
 	addChildViewer<Storage::Editor>([this](const Storage& storage) { m_elementAsset->m_material = storage; }, m_elementAsset->m_material)
-		->setViewerRectInLocal(10, 450, 250, 400);
+		->setViewerRectInLocal(100, 450, 250, 400);
 }
 
 void ElementAsset::Editor::update()

@@ -41,8 +41,6 @@ void CellAsset::save(JSONWriter& json) const
 		}
 	}
 	json.endArray();
-
-	json.key(U"type").write(U"CellAsset");
 }
 
 Vec2 CellAsset::getCentroid()

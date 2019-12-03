@@ -30,4 +30,7 @@ public:
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
+	
+	// TypeName
+	String	getTypeName() override { return U"BodyAsset"; }
 };

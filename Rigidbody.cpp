@@ -31,3 +31,23 @@ void Rigidbody::updateRigidbody()
 	// 摩擦抵抗
 	m_angularVelocity *= 0.95;
 }
+
+void Rigidbody::load(const JSONValue& json)
+{
+	Particle::load(json);
+
+	m_radius = json[U"radius"].get<double>();
+	m_rotation = json[U"rotation"].get<double>();
+	m_inertia = json[U"inertia"].get<double>();
+	m_angularVelocity = json[U"angularVelocity"].get<double>();
+}
+
+void Rigidbody::save(JSONWriter& json) const
+{
+	Particle::save(json);
+
+	json.key(U"radius").write(m_radius);
+	json.key(U"rotation").write(m_rotation);
+	json.key(U"inertia").write(m_inertia);
+	json.key(U"angularVelocity").write(m_angularVelocity);
+}

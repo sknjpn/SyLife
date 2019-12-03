@@ -14,7 +14,4 @@ void BodyAsset::load(const JSONValue& json)
 void BodyAsset::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
-
-	// type
-	json.key(U"type").write(U"BodyAsset");
 }

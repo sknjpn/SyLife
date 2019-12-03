@@ -72,6 +72,6 @@ Resource(engine/soundfont/GMGSx.sf2.zstdcmp)
 	//
 	// If your file contains a white space, define the identifier without using Resource() macro.
 	//
-	MYIDENTIFIER_1 FILE "assets/a b c.txt"
+	MYIDENTIFIER_1 FILE "resources/a b c.txt"
 	MYIDENTIFIER_2 FILE "level 1/map.dat"
 */

@@ -1,6 +1,6 @@
 ﻿#include "EditorViewer.h"
-#include "AssetManager.h"
 #include "GUISlider.h"
+#include "World.h"
 
 void EditorViewer::AssetList::init()
 {
@@ -9,7 +9,7 @@ void EditorViewer::AssetList::init()
 
 	// Itemの追加
 	{
-		const auto assets = g_assetManagerPtr->getAssets();
+		const auto assets = World::GetInstance()->getAssets().getAssets();
 
 		for (const auto& asset : assets)
 		{
@@ -20,7 +20,7 @@ void EditorViewer::AssetList::init()
 		addChildViewer<Item>(nullptr);
 	}
 
-	addChildViewer<GUISlider>((getChildViewers<Item>().size() + 1) * 170)
+	addChildViewer<GUISlider>(double(getChildViewers<Item>().size() + 1) * 170)
 		->setViewerRectInLocal(170, 0, 30, Scene::Size().y);
 
 	// Itemの位置調整
@@ -40,5 +40,5 @@ void EditorViewer::AssetList::updateItemRects() const
 	Size size(170, 170);
 
 	for (auto it = items.begin(); it != items.end(); ++it)
-		(*it)->setViewerRectInLocal(0, (it - items.begin()) * size.y - getChildViewer<GUISlider>()->getDelta(), size.x, size.y);
+		(*it)->setViewerRectInLocal(0, double(it - items.begin()) * size.y - getChildViewer<GUISlider>()->getDelta(), size.x, size.y);
 }

@@ -12,9 +12,11 @@ class Asset
 	String	m_filepath;
 
 public:
+	Asset();
+
 	// Set
 	void	setName(const String& name) { m_name = name; }
-	void	setFilePath(const String& filepath);
+	void	setFilePath(const String& filepath) { m_filepath = filepath; }
 
 	// Get
 	const String& getName() const { return m_name; }
@@ -28,4 +30,7 @@ public:
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
+	
+	// TypeName
+	virtual String	getTypeName() { return U"Asset"; }
 };

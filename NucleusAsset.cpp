@@ -24,7 +24,4 @@ void NucleusAsset::save(JSONWriter& json) const
 	json.key(U"lifespanTime").write(m_lifespanTime);
 	json.key(U"bornTime").write(m_bornTime);
 	json.key(U"yieldTime").write(m_yieldTime);
-
-	// type
-	json.key(U"type").write(U"NucleusAsset");
 }

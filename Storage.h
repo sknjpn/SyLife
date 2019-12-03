@@ -63,6 +63,8 @@ public:
 	void	addNutrition(double nutrition) { m_nutrition += nutrition; }
 	void	pullNutrition(double nutrition) { m_nutrition -= nutrition; }
 
+	double	getNutritionRecursive() const;
+
 	// element
 	const Array<pair<shared_ptr<ElementAsset>, int>>& getElementList() const { return *this; }
 	void	addElement(const shared_ptr<ElementAsset>& asset, int size = 1);

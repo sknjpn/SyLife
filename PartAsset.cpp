@@ -1,5 +1,5 @@
 ﻿#include "PartAsset.h"
-#include "AssetManager.h"
+
 #include "PartState.h"
 #include "PartShapeViewer.h"
 
@@ -45,6 +45,4 @@ void PartAsset::save(JSONWriter& json) const
 
 		json.endObject();
 	}
-
-	json.key(U"type").write(U"PartAsset");
 }

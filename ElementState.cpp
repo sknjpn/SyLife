@@ -1,15 +1,11 @@
 ﻿#include "ElementState.h"
-
-#include "ChipManager.h"
-#include "ElementManager.h"
-
 #include "ElementAsset.h"
+#include "World.h"
 
-void ElementState::setElementAsset(const shared_ptr<ElementAsset>& elementAsset)
+ElementState::ElementState(const shared_ptr<ElementAsset>& asset)
+	: m_elementAsset(asset)
 {
-	m_elementAsset = elementAsset;
-	setRadius(elementAsset->getRadius());
-	setMass(elementAsset->getMass());
+	setRadius(asset->getRadius());
 }
 
 void ElementState::updateElement()
@@ -17,10 +13,7 @@ void ElementState::updateElement()
 	// 分解
 	if (RandomBool(0.01))
 	{
-		g_chipManagerPtr->addNutrition(getPosition(), m_elementAsset->getMaterial().getNutrition());
-
-		for(const auto& e : m_elementAsset->getMaterial().getElementList())
-			g_elementManagerPtr->addElementState(e.first, getPosition() + Vec2(20.0, 0.0).rotated(rand() / 360.0));
+		World::GetInstance()->getField().getChip(getPosition())->addNutrition(m_elementAsset->getMaterial().getNutritionRecursive());
 
 		destroy();
 
@@ -30,10 +23,27 @@ void ElementState::updateElement()
 
 void ElementState::draw()
 {
-	static Texture particle(U"assets/image/particle.png", TextureDesc::Mipped);
+	static Texture particle(U"resources/image/particle.png", TextureDesc::Mipped);
 
 	//particle.resized(m_elementAsset->getRadius() * 2.0, m_elementAsset->getRadius() * 2.0).drawAt(getPosition(), m_elementAsset->getColor());
-	
+
 	Circle(getPosition(), getRadius())
 		.draw(ColorF(m_elementAsset->getColor(), 1.0));
+}
+
+void ElementState::load(const JSONValue& json)
+{
+	Rigidbody::load(json);
+
+	const auto assetName = json[U"elementAsset"].getString();
+	m_elementAsset = World::GetInstance()->getAssets().getAsset<ElementAsset>(assetName);
+	
+	setRadius(m_elementAsset->getRadius());
+}
+
+void ElementState::save(JSONWriter& json) const
+{
+	Rigidbody::save(json);
+
+	json.key(U"elementAsset").write(m_elementAsset->getName());
 }

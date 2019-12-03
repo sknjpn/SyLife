@@ -10,12 +10,16 @@ class ElementState
 	shared_ptr<ElementAsset>	m_elementAsset;
 
 public:
+	ElementState(const shared_ptr<ElementAsset>& asset);
+	ElementState(const JSONValue& json) { load(json); }
+
 	// Get
 	const shared_ptr<ElementAsset>& getPartAsset() const { return m_elementAsset; }
 
-	// Set
-	void	setElementAsset(const shared_ptr<ElementAsset>& elementAsset);
-
 	void	updateElement();
 	void	draw();
+
+	// JSON
+	void	load(const JSONValue& json) override;
+	void	save(JSONWriter& json) const override;
 };

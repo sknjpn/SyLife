@@ -5,6 +5,8 @@
 class WorldGenerateViewer :
 	public Viewer
 {
+	String	m_name;
+
 	void	generateWorld();
 
 public:

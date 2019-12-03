@@ -1,12 +1,8 @@
 ﻿#include "StatisticsViewer.h"
-
 #include "CellState.h"
 #include "CellAsset.h"
-#include "CellManager.h"
-
-#include "EggManager.h"
 #include "EggState.h"
-#include "AssetManager.h"
+#include "World.h"
 
 void StatisticsViewer::update()
 {
@@ -58,7 +54,7 @@ void StatisticsViewer::takeLog()
 	else return;
 
 	// Logの追加
-	auto cas = g_assetManagerPtr->getAssets<CellAsset>();
+	auto cas = World::GetInstance()->getAssets().getAssets<CellAsset>();
 	for (auto& ca : cas)
 		if (m_logs.all([&ca](const auto& l) { return l.m_cellAsset != ca; }))
 			m_logs.emplace_back(ca);
@@ -73,6 +69,6 @@ void StatisticsViewer::takeLog()
 
 StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)
 {
-	m_num = int(g_cellManagerPtr->getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; }));
-	m_num = int(g_eggManagerPtr->getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; }));
+	m_num = int(World::GetInstance()->getField().getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; }));
+	m_num = int(World::GetInstance()->getField().getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; }));
 }

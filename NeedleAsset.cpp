@@ -15,7 +15,4 @@ void NeedleAsset::load(const JSONValue& json)
 void NeedleAsset::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
-
-	// type
-	json.key(U"type").write(U"NeedleAsset");
 }

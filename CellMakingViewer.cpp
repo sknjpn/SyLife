@@ -1,5 +1,4 @@
 ﻿#include "CellMakingViewer.h"
-#include "AssetManager.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"
@@ -7,6 +6,8 @@
 #include "CellAsset.h"
 #include "GUIButton.h"
 #include "ReleaseViewer.h"
+#include "World.h"
+#include "FieldViewer.h"
 
 void CellMakingViewer::clearEditor()
 {
@@ -42,7 +43,7 @@ void CellMakingViewer::init()
 	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
 		->setViewerRectInLocal(5, 45, 190, 35);
 
-	addChildViewer<GUIButton>(U"生き物配置", [this]() { getParentViewer()->addChildViewer<ReleaseViewer>(m_cellAsset); destroy(); })
+	addChildViewer<GUIButton>(U"生き物配置", [this]() { getParentViewer()->getChildViewer<FieldViewer>()->addChildViewer<ReleaseViewer>(m_cellAsset); destroy(); })
 		->setName(U"生き物配置")
 		->setViewerRectInLocal(5, 85, 190, 35);
 
@@ -71,18 +72,20 @@ void CellMakingViewer::update()
 
 void CellMakingViewer::makeAsset()
 {
-	m_cellAsset = g_assetManagerPtr->makeAsset<CellAsset>();
+	m_cellAsset = World::GetInstance()->getAssets().makeAsset<CellAsset>();
+
+	Logger << m_cellAsset->getName();
 
 	// 名前をランダムに設定
 	{
-		TextReader textReader(U"assets/names.txt");
+		TextReader textReader(U"resources/names.txt");
 
 		m_cellAsset->setName(textReader.readAll().split_lines().choice());
 	}
 
 	// Bodyの設定
 	{
-		auto bodyAsset = g_assetManagerPtr->makeAsset<BodyAsset>();
+		auto bodyAsset = World::GetInstance()->getAssets().makeAsset<BodyAsset>();
 		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 
 		bodyAsset->setMass(1.0);

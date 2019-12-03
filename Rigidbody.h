@@ -5,9 +5,9 @@
 class Rigidbody
 	: public Particle
 {
-	double	m_radius = 0.0;
+	double	m_radius = 1.0;
 	double	m_rotation = 0.0;
-	double	m_inertia = 0.0;
+	double	m_inertia = 1.0;
 	double	m_angularVelocity = 0.0;
 
 public:
@@ -42,4 +42,8 @@ public:
 	void	addImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition);
 
 	void	updateRigidbody();
+
+	// JSON
+	void	load(const JSONValue& json) override;
+	void	save(JSONWriter& json) const override;
 };

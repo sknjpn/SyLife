@@ -2,7 +2,7 @@
 
 void ElementAsset::drawIcon() const
 {
-	static Texture particle(U"assets/image/particle.png", TextureDesc::Mipped);
+	static Texture particle(U"resources/image/particle.png", TextureDesc::Mipped);
 
 	particle.resized(1.0, 1.0).drawAt(0.5, 0.5, m_color);
 }
@@ -25,8 +25,8 @@ void ElementAsset::save(JSONWriter& json) const
 {
 	Asset::save(json);
 
-	// mass
-	json.key(U"mass").write(m_mass);
+	// radius
+	json.key(U"radius").write(m_radius);
 
 	// color
 	json.key(U"color").write(m_color);
@@ -34,12 +34,9 @@ void ElementAsset::save(JSONWriter& json) const
 	// material
 	{
 		json.key(U"material").startObject();
-
+		
 		m_material.save(json);
 		
 		json.endObject();
 	}
-
-	// type
-	json.key(U"type").write(U"ElementAsset");
 }

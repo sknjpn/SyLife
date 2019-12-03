@@ -1,27 +1,23 @@
 ﻿#include "Asset.h"
+#include "World.h"
+#include "Assets.h"
 
-void Asset::setFilePath(const String& filepath)
+Asset::Asset()
 {
-	if (filepath == m_filepath || m_filepath == U"")
+	// 一意な名前とパスの作成
+	for (int i = 0;; ++i)
 	{
-		m_filepath = filepath;
+		const String name = Format(U"Asset ", i);
+		const FilePath filepath = Format(U"asset_", i, U".json");
 
-		return;
-	}
+		if (!World::GetInstance()->getAssets().hasAsset(name) &&
+			!FileSystem::Exists(World::GetInstance()->getAssetsSaveDirectory() + filepath))
+		{
+			m_name = name;
+			m_filepath = filepath;
 
-	// ファイルの削除
-	FileSystem::Remove(getFilePath());
-
-	// nameのセット
-	m_filepath = filepath;
-
-	// 新規ファイルの作成
-	{
-		JSONWriter json;
-
-		save(json);
-
-		json.write(getFilePath());
+			break;
+		}
 	}
 }
 
@@ -38,7 +34,4 @@ void Asset::save(JSONWriter& json) const
 
 	// name
 	json.key(U"name").write(m_name);
-
-	// type
-	json.key(U"type").write(U"Asset");
 }

@@ -1,10 +1,5 @@
 ﻿#include "FieldViewer.h"
-
-#include "AssetManager.h"
-#include "EggManager.h"
-#include "ChipManager.h"
-#include "CellManager.h"
-#include "ElementManager.h"
+#include "World.h"
 
 #include "Rigidbody.h"
 #include "CellAsset.h"
@@ -32,9 +27,9 @@ void FieldViewer::openCellMakingViewer()
 
 void FieldViewer::init()
 {
-	m_audio = Audio(U"assets/music/シアン.mp3");
+	m_audio = Audio(U"resources/music/シアン.mp3");
 
-	m_camera.setRestrictedRect(Rect(g_chipManagerPtr->getChipSize()).scaledAt(Vec2::Zero(), g_chipManagerPtr->getChipLength()));
+	m_camera.setRestrictedRect(Rect(World::GetInstance()->getField().getChipSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getField().getChipLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
@@ -42,15 +37,6 @@ void FieldViewer::init()
 
 	m_audio.setLoop(true);
 	m_audio.play();
-
-	addChildViewer<CellStateViewer>();
-
-	addChildViewer<GUIButton>(U"Cell作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 200, 50);
-
-	addChildViewer<StatisticsViewer>();
-
-	// OpenCurtain
-	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
 }
 
 void FieldViewer::update()
@@ -71,24 +57,23 @@ void FieldViewer::update()
 		// update
 		for (int i = 0; i < speed; ++i)
 		{
-			g_cellManagerPtr->updateCellStates();
-			g_eggManagerPtr->updateEggStates();
-			g_chipManagerPtr->updateChips();
-			g_elementManagerPtr->updateElementStates();
+			World::GetInstance()->getField().update();
 
-			getChildViewer<StatisticsViewer>()->takeLog();
+			getParentViewer()->
+				getChildViewer<StatisticsViewer>()->takeLog();
 		}
 
 		// CellState Capture
-		if (isMouseover() && MouseL.down() && !g_cellManagerPtr->getCellStates().isEmpty())
+		if (isMouseover() && MouseL.down() && !World::GetInstance()->getField().getCellStates().isEmpty())
 		{
-			auto index = g_cellManagerPtr->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
-			auto cellState = g_cellManagerPtr->getCellStates()[index];
+			auto index = World::GetInstance()->getField().getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
+			auto cellState = World::GetInstance()->getField().getCellStates()[index];
 			if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 			{
 				addChildViewer<CellStateCaptureViewer>(cellState);
 
-				getChildViewer<CellStateViewer>()->m_cellState = cellState;
+				getParentViewer()->
+					getChildViewer<CellStateViewer>()->m_cellState = cellState;
 
 				// CellAssetViewerの構築
 				//if (auto cv = getChildViewer<CellAssetViewer>()) cv->destroy();
@@ -97,10 +82,7 @@ void FieldViewer::update()
 		}
 
 		// draw
-		g_chipManagerPtr->drawChips();
-		g_elementManagerPtr->drawElementStates();
-		g_eggManagerPtr->drawEggStates();
-		g_cellManagerPtr->drawCellStates();
+		World::GetInstance()->getField().draw();
 
 		// delete
 		if (isMouseover() && MouseR.pressed())
@@ -108,17 +90,17 @@ void FieldViewer::update()
 			Circle circle(Cursor::PosF(), 256.0);
 			circle.draw(ColorF(Palette::Red, 0.5));
 
-			for (const auto& c : g_cellManagerPtr->getCellStates())
+			for (const auto& c : World::GetInstance()->getField().getCellStates())
 				if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
-			for (const auto& e : g_eggManagerPtr->getEggStates())
+			for (const auto& e : World::GetInstance()->getField().getEggStates())
 			{
 				if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
 				{
 					e->destroy();
 
 					// Nutritionの吐き出し
-					g_chipManagerPtr->addNutrition(e->getPosition(), e->getCellAsset()->getMaterial().getNutrition());
+					World::GetInstance()->getField().getChip(e->getPosition())->addNutrition(e->getCellAsset()->getMaterial().getNutrition());
 
 					// ElementStateの吐き出し
 					auto s = e->getCellAsset()->getMaterial();
@@ -130,7 +112,7 @@ void FieldViewer::update()
 							auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 							// 吐き出されたElementState
-							const auto& ms = g_elementManagerPtr->addElementState(m.first);
+							const auto& ms = World::GetInstance()->getField().addElementState(m.first);
 							ms->setPosition(e->getPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
 							ms->setVelocity(v * 0.1);
 						}
@@ -140,7 +122,7 @@ void FieldViewer::update()
 		}
 
 		{
-			const auto& cs = getChildViewer<CellStateViewer>()->m_cellState;
+			const auto& cs = getParentViewer()->getChildViewer<CellStateViewer>()->m_cellState;
 			if (cs != nullptr)
 			{
 				Circle(cs->getPosition(), cs->getRadius() * 1.5)

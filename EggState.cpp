@@ -1,9 +1,7 @@
 ﻿#include "EggState.h"
-
-#include "CellManager.h"
-
 #include "CellAsset.h"
 #include "CellState.h"
+#include "World.h"
 
 EggState::EggState(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
@@ -23,7 +21,7 @@ void EggState::updateEgg()
 	{
 		destroy();
 
-		const auto& c = g_cellManagerPtr->addCellState(getCellAsset());
+		const auto& c = World::GetInstance()->getField().addCellState(getCellAsset());
 		c->setPosition(getPosition());
 		c->setRotation(getRotation());
 	}
@@ -39,4 +37,19 @@ void EggState::draw()
 		.drawFrame(1.0, ColorF(1.0, 0.5));
 
 	m_cellAsset->draw(min(2.0, 10.0 - m_timer) * 0.25);
+}
+
+void EggState::load(const JSONValue& json)
+{
+	Rigidbody::load(json);
+
+	const auto assetName = json[U"cellAsset"].getString();
+	m_cellAsset = World::GetInstance()->getAssets().getAsset<CellAsset>(assetName);
+}
+
+void EggState::save(JSONWriter& json) const
+{
+	Rigidbody::save(json);
+
+	json.key(U"cellAsset").write(m_cellAsset->getName());
 }

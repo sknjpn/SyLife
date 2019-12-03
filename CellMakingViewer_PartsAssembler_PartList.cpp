@@ -1,5 +1,5 @@
 ﻿#include "CellMakingViewer.h"
-#include "AssetManager.h"
+#include "World.h"
 #include "PartAsset.h"
 #include "BodyAsset.h"
 #include "NucleusAsset.h"
@@ -24,7 +24,7 @@ Array<shared_ptr<PartAsset>> CellMakingViewer::PartsAssembler::PartList::getList
 {
 	Array<shared_ptr<PartAsset>> assets;
 
-	for (const auto& m : g_assetManagerPtr->getAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<BodyAsset>(pa) ? true : false; })) assets.emplace_back(m);
+	for (const auto& m : World::GetInstance()->getAssets().getAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<BodyAsset>(pa) ? true : false; })) assets.emplace_back(m);
 	
 	return assets;
 }

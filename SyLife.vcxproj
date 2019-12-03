@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{fbe28bdf-7aec-442a-9b64-987dfe24aaf4}</ProjectGuid>
+    <ProjectGuid>{6b4a3256-295f-4453-9fcc-4103bcc74810}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SyLife</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -44,8 +44,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_2B)\include;$(SIV3D_0_4_2B)\include\ThirdParty;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SIV3D_0_4_2B)\lib\Windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SIV3D_0_4_2)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\Intermediate\</IntDir>
     <TargetName>$(ProjectName)(debug)</TargetName>
@@ -53,8 +53,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_2B)\include;$(SIV3D_0_4_2B)\include\ThirdParty;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SIV3D_0_4_2B)\lib\Windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SIV3D_0_4_2)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\Intermediate\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
@@ -230,74 +230,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asset.h" />
-    <ClInclude Include="AssetEditor.h" />
-    <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="BodyAsset.h" />
-    <ClInclude Include="BodyState.h" />
-    <ClInclude Include="CellAsset.h" />
-    <ClInclude Include="CellAssetViewer.h" />
-    <ClInclude Include="CellBookViewer.h" />
-    <ClInclude Include="CellMakingViewer.h" />
-    <ClInclude Include="CellManager.h" />
-    <ClInclude Include="CellState.h" />
-    <ClInclude Include="CellStateCaptureViewer.h" />
-    <ClInclude Include="CellStateViewer.h" />
-    <ClInclude Include="Chip.h" />
-    <ClInclude Include="ChipManager.h" />
-    <ClInclude Include="ColorPicker.h" />
-    <ClInclude Include="CurtainViewer.h" />
-    <ClInclude Include="DraggableViewer.h" />
-    <ClInclude Include="EditorViewer.h" />
-    <ClInclude Include="EggManager.h" />
-    <ClInclude Include="EggState.h" />
-    <ClInclude Include="ElementAsset.h" />
-    <ClInclude Include="ElementManager.h" />
-    <ClInclude Include="ElementState.h" />
-    <ClInclude Include="FieldViewer.h" />
-    <ClInclude Include="GridViewer.h" />
-    <ClInclude Include="GUIAssetLinker.h" />
-    <ClInclude Include="GUIButton.h" />
-    <ClInclude Include="GUIChecker.h" />
-    <ClInclude Include="GUIColorPicker.h" />
-    <ClInclude Include="GUISlider.h" />
-    <ClInclude Include="GUIText.h" />
-    <ClInclude Include="GUITextBox.h" />
-    <ClInclude Include="GUIValuer.h" />
-    <ClInclude Include="Layer.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="NeedleAsset.h" />
-    <ClInclude Include="NeedleState.h" />
-    <ClInclude Include="NucleusAsset.h" />
-    <ClInclude Include="NucleusState.h" />
-    <ClInclude Include="PartAsset.h" />
-    <ClInclude Include="PartConfig.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="PartShapeViewer.h" />
-    <ClInclude Include="PartState.h" />
-    <ClInclude Include="ReleaseViewer.h" />
-    <ClInclude Include="Rigidbody.h" />
-    <ClInclude Include="SetupViewer.h" />
-    <ClInclude Include="Shape.h" />
-    <ClInclude Include="StatisticsViewer.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Storage.h" />
-    <ClInclude Include="SynthesizerAsset.h" />
-    <ClInclude Include="SynthesizerState.h" />
-    <ClInclude Include="TinyCamera.h" />
-    <ClInclude Include="TitleViewer.h" />
-    <ClInclude Include="ToolbarViewer.h" />
-    <ClInclude Include="Viewer.h" />
-    <ClInclude Include="WingAsset.h" />
-    <ClInclude Include="WingState.h" />
-    <ClInclude Include="WorldGenerateViewer.h" />
-    <ClInclude Include="WorldManager.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetEditor.cpp" />
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AssetManager_MakeModel.cpp" />
+    <ClCompile Include="Assets.cpp" />
+    <ClCompile Include="Assets_makeModel.cpp" />
     <ClCompile Include="BodyAsset.cpp" />
     <ClCompile Include="BodyAsset_Editor.cpp" />
     <ClCompile Include="BodyState.cpp" />
@@ -315,24 +251,21 @@
     <ClCompile Include="CellMakingViewer_PartsAssembler.cpp" />
     <ClCompile Include="CellMakingViewer_PartsAssembler_PartList.cpp" />
     <ClCompile Include="CellMakingViewer_PartsAssembler_Workspace.cpp" />
-    <ClCompile Include="CellManager.cpp" />
     <ClCompile Include="CellState.cpp" />
     <ClCompile Include="CellStateCaptureViewer.cpp" />
     <ClCompile Include="CellStateViewer.cpp" />
-    <ClCompile Include="Chip.cpp" />
-    <ClCompile Include="ChipManager.cpp" />
+    <ClCompile Include="ChipState.cpp" />
     <ClCompile Include="ColorPicker.cpp" />
     <ClCompile Include="CurtainViewer.cpp" />
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="EditorViewer_AssetList.cpp" />
     <ClCompile Include="EditorViewer_AssetList_Item.cpp" />
-    <ClCompile Include="EggManager.cpp" />
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="ElementAsset.cpp" />
     <ClCompile Include="ElementAsset_Editor.cpp" />
-    <ClCompile Include="ElementManager.cpp" />
     <ClCompile Include="ElementState.cpp" />
+    <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldViewer.cpp" />
     <ClCompile Include="GridViewer.cpp" />
     <ClCompile Include="GUIAssetLinker.cpp" />
@@ -346,6 +279,7 @@
     <ClCompile Include="GUIValuer.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainViewer.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="NeedleAsset.cpp" />
     <ClCompile Include="NeedleAsset_Editor.cpp" />
@@ -362,10 +296,11 @@
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="SetupViewer.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="StatisticsViewer.cpp" />
     <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="Storage_Editor.cpp" />
@@ -379,8 +314,73 @@
     <ClCompile Include="WingAsset.cpp" />
     <ClCompile Include="WingAsset_Editor.cpp" />
     <ClCompile Include="WingState.cpp" />
+    <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldGenerateViewer.cpp" />
-    <ClCompile Include="WorldManager.cpp" />
+    <ClCompile Include="WorldLoadViewer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="AssetEditor.h" />
+    <ClInclude Include="Assets.h" />
+    <ClInclude Include="BodyAsset.h" />
+    <ClInclude Include="BodyState.h" />
+    <ClInclude Include="CellAsset.h" />
+    <ClInclude Include="CellAssetViewer.h" />
+    <ClInclude Include="CellBookViewer.h" />
+    <ClInclude Include="CellMakingViewer.h" />
+    <ClInclude Include="CellState.h" />
+    <ClInclude Include="CellStateCaptureViewer.h" />
+    <ClInclude Include="CellStateViewer.h" />
+    <ClInclude Include="ChipState.h" />
+    <ClInclude Include="ColorPicker.h" />
+    <ClInclude Include="CurtainViewer.h" />
+    <ClInclude Include="DraggableViewer.h" />
+    <ClInclude Include="EditorViewer.h" />
+    <ClInclude Include="EggState.h" />
+    <ClInclude Include="ElementAsset.h" />
+    <ClInclude Include="ElementState.h" />
+    <ClInclude Include="Field.h" />
+    <ClInclude Include="FieldViewer.h" />
+    <ClInclude Include="GridViewer.h" />
+    <ClInclude Include="GUIAssetLinker.h" />
+    <ClInclude Include="GUIButton.h" />
+    <ClInclude Include="GUIChecker.h" />
+    <ClInclude Include="GUIColorPicker.h" />
+    <ClInclude Include="GUISlider.h" />
+    <ClInclude Include="GUIText.h" />
+    <ClInclude Include="GUITextBox.h" />
+    <ClInclude Include="GUIValuer.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="MainViewer.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="NeedleAsset.h" />
+    <ClInclude Include="NeedleState.h" />
+    <ClInclude Include="NucleusAsset.h" />
+    <ClInclude Include="NucleusState.h" />
+    <ClInclude Include="PartAsset.h" />
+    <ClInclude Include="PartConfig.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="PartShapeViewer.h" />
+    <ClInclude Include="PartState.h" />
+    <ClInclude Include="ReleaseViewer.h" />
+    <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="SetupViewer.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StatisticsViewer.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Storage.h" />
+    <ClInclude Include="SynthesizerAsset.h" />
+    <ClInclude Include="SynthesizerState.h" />
+    <ClInclude Include="TinyCamera.h" />
+    <ClInclude Include="TitleViewer.h" />
+    <ClInclude Include="ToolbarViewer.h" />
+    <ClInclude Include="Viewer.h" />
+    <ClInclude Include="WingAsset.h" />
+    <ClInclude Include="WingState.h" />
+    <ClInclude Include="World.h" />
+    <ClInclude Include="WorldGenerateViewer.h" />
+    <ClInclude Include="WorldLoadViewer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

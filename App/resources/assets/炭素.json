@@ -1,0 +1,10 @@
+﻿{
+  "type": "ElementAsset",
+  "name": "炭素",
+  "radius": 3.0,
+  "color": "(128, 192, 255, 255)",
+  "material": {
+    "nutrition": 1.0,
+    "elements": []
+  }
+}
