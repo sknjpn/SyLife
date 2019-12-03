@@ -3,7 +3,7 @@
 
 void SoundMixerViewer::init()
 {
-	setViewerRect(120, 600, 320, 240);
+	setViewerRectInLocal(120, 600, 320, 240);
 }
 
 void SoundMixerViewer::update()

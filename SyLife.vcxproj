@@ -296,6 +296,9 @@
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="SetupViewer.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="SoundMixerViewer.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StatisticsViewer.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -366,6 +369,9 @@
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="SetupViewer.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="Sound.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="SoundMixerViewer.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StatisticsViewer.h" />
     <ClInclude Include="stdafx.h" />

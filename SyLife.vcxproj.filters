@@ -438,6 +438,9 @@
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="WingAsset.cpp" />
     <ClCompile Include="WingAsset_Editor.cpp" />
+    <ClCompile Include="SoundMixerViewer.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
@@ -502,5 +505,8 @@
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldGenerateViewer.h" />
     <ClInclude Include="WorldLoadViewer.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="SoundMixerViewer.h" />
+    <ClInclude Include="Sound.h" />
   </ItemGroup>
 </Project>
