@@ -2,6 +2,7 @@
 #include "CellAsset.h"
 #include "CellState.h"
 #include "World.h"
+#include "Assets.h"
 
 EggState::EggState(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)

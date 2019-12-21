@@ -3,6 +3,7 @@
 #include "CellAsset.h"
 #include "EggState.h"
 #include "World.h"
+#include "Assets.h"
 
 void StatisticsViewer::update()
 {

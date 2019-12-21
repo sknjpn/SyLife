@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Field.h"
-#include "Assets.h"
 
 class World
 {

@@ -6,7 +6,7 @@
 #include "CellAsset.h"
 #include "GUIButton.h"
 #include "ReleaseViewer.h"
-#include "World.h"
+#include "Assets.h"
 #include "FieldViewer.h"
 
 void CellMakingViewer::clearEditor()

@@ -1,9 +1,9 @@
 ﻿#include "CellMakingViewer.h"
-#include "World.h"
 #include "PartAsset.h"
 #include "PartAsset_Body.h"
 #include "PartAsset_Nucleus.h"
 #include "GUISlider.h"
+#include "Assets.h"
 
 void CellMakingViewer::PartsAssembler::PartList::init()
 {

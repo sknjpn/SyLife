@@ -66,6 +66,7 @@ void Assets::Load(const FilePath& directory)
 {
 	// すでに読み込んでいるものを消去する意味もある
 	g_instance = MakeUnique<Assets>();
+	g_instance->m_directory = directory;
 
 	g_instance->load(directory);
 }

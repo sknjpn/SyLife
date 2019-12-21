@@ -1,6 +1,6 @@
 ﻿#include "PartAsset_Synthesizer.h"
 #include "PartState_Synthesizer.h"
-#include "World.h"
+#include "Assets.h"
 #include "ElementAsset.h"
 #include "PartShapeViewer.h"
 

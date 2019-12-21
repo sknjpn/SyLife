@@ -1,5 +1,6 @@
 ﻿#include "CellState.h"
 #include "CellAsset.h"
+#include "Assets.h"
 #include "World.h"
 #include "PartAsset.h"
 #include "PartConfig.h"

@@ -5,6 +5,8 @@
 class Assets
 	: Array<shared_ptr<Asset>>
 {
+	String	m_directory;
+
 	static unique_ptr<Assets>	g_instance;
 
 	void	save(const FilePath& directory) const;
@@ -74,4 +76,6 @@ public:
 	static void	Remove(const shared_ptr<Asset>& asset) { g_instance->remove(asset); }
 
 	static void	Clear() { g_instance->clear(); }
+
+	static const FilePath& GetDirectory() { return g_instance->m_directory; }
 };

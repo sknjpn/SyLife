@@ -1,6 +1,7 @@
 ﻿#include "ElementState.h"
 #include "ElementAsset.h"
 #include "World.h"
+#include "Assets.h"
 
 ElementState::ElementState(const shared_ptr<ElementAsset>& asset)
 	: m_elementAsset(asset)

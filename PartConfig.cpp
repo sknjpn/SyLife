@@ -1,6 +1,6 @@
 ﻿#include "PartConfig.h"
 #include "PartAsset.h"
-#include "World.h"
+#include "Assets.h"
 
 
 Vec2 PartConfig::getCentroid() const
