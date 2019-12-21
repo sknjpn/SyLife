@@ -1,5 +1,5 @@
 ﻿{
-  "type": "NucleusAsset",
+  "type": "PartAsset_Nucleus",
   "name": "小さな核",
   "mass": 10.0,
   "layers": [

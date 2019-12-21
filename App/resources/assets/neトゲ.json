@@ -1,5 +1,5 @@
 ﻿{
-  "type": "NeedleAsset",
+  "type": "PartAsset_Needle",
   "name": "トゲ",
   "mass": 30.0,
   "layers": [

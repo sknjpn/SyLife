@@ -1,5 +1,5 @@
 ﻿{
-  "type": "WingAsset",
+  "type": "PartAsset_Wing",
   "name": "小さな羽(左)",
   "mass": 20.0,
   "layers": [
