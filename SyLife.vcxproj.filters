@@ -441,6 +441,7 @@
     <ClCompile Include="PartState_Nucleus.cpp" />
     <ClCompile Include="PartState_Synthesizer.cpp" />
     <ClCompile Include="PartState_Wing.cpp" />
+    <ClCompile Include="SpeedControllerViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
@@ -508,5 +509,6 @@
     <ClInclude Include="PartState_Nucleus.h" />
     <ClInclude Include="PartState_Synthesizer.h" />
     <ClInclude Include="PartState_Wing.h" />
+    <ClInclude Include="SpeedControllerViewer.h" />
   </ItemGroup>
 </Project>
