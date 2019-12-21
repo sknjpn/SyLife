@@ -1,0 +1,10 @@
+﻿{
+  "type": "ElementAsset",
+  "name": "窒素",
+  "radius": 5.0,
+  "color": "(0, 192, 0, 255)",
+  "material": {
+    "nutrition": 1.0,
+    "elements": []
+  }
+}
