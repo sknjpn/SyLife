@@ -83,6 +83,8 @@ public:
 				MoveMode,
 				RotateMode,
 			} m_state = State::MoveMode;
+			Vec2	m_prePosition;
+			double	m_preRotation;
 
 			double	m_mass;
 			double	m_inertia;
@@ -97,6 +99,9 @@ public:
 			void	drawParts() const;
 
 			void	setCellAsset(const shared_ptr<CellAsset>& cellAsset) { m_cellAsset = cellAsset; }
+
+			void	setMoveMode();
+			void	setRotateMode();
 		};
 
 		class PartList
