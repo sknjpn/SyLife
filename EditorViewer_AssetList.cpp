@@ -1,6 +1,6 @@
 ﻿#include "EditorViewer.h"
 #include "GUISlider.h"
-#include "World.h"
+#include "Assets.h"
 
 void EditorViewer::AssetList::init()
 {
@@ -9,9 +9,7 @@ void EditorViewer::AssetList::init()
 
 	// Itemの追加
 	{
-		const auto assets = World::GetInstance()->getAssets().getAssets();
-
-		for (const auto& asset : assets)
+		for (const auto& asset : Assets::GetAssets())
 		{
 			addChildViewer<Item>(asset);
 		}

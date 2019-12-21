@@ -14,7 +14,7 @@ void PartAsset_Synthesizer::load(const JSONValue& json)
 	PartAsset::load(json);
 
 	// export
-	m_export = World::GetInstance()->getAssets().getAsset<ElementAsset>(json[U"export"].getString());
+	m_export = Assets::GetAsset<ElementAsset>(json[U"export"].getString());
 }
 
 void PartAsset_Synthesizer::save(JSONWriter& json) const

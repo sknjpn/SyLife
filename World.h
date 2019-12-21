@@ -8,7 +8,6 @@ class World
 	String		m_name;
 	FilePath	m_filePath;
 	Field		m_field;
-	Assets		m_assets;
 
 	static unique_ptr<World>	g_instance;
 
@@ -22,8 +21,6 @@ public:
 
 	const Field& getField() const { return m_field; }
 	Field& getField() { return m_field; }
-	const Assets& getAssets() const { return m_assets; }
-	Assets& getAssets() { return m_assets; }
 
 	void	setName(const String& name) { m_name = name; }
 	void	setFilePath(const FilePath& filePath) { m_filePath = filePath; }

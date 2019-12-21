@@ -54,7 +54,7 @@ void StatisticsViewer::takeLog()
 	else return;
 
 	// Logの追加
-	auto cas = World::GetInstance()->getAssets().getAssets<CellAsset>();
+	auto cas = Assets::GetAssets<CellAsset>();
 	for (auto& ca : cas)
 		if (m_logs.all([&ca](const auto& l) { return l.m_cellAsset != ca; }))
 			m_logs.emplace_back(ca);

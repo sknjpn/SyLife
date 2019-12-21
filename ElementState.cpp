@@ -36,7 +36,7 @@ void ElementState::load(const JSONValue& json)
 	Rigidbody::load(json);
 
 	const auto assetName = json[U"elementAsset"].getString();
-	m_elementAsset = World::GetInstance()->getAssets().getAsset<ElementAsset>(assetName);
+	m_elementAsset = Assets::GetAsset<ElementAsset>(assetName);
 	
 	setRadius(m_elementAsset->getRadius());
 }

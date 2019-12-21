@@ -3,23 +3,9 @@
 
 #include "CellAsset.h"
 
-shared_ptr<Asset> Assets::getAsset(const String& name) const
-{
-	for (auto it = begin(); it != end(); ++it)
-		if ((*it)->getName() == name) return dynamic_pointer_cast<Asset>(*it);
+unique_ptr<Assets>	Assets::g_instance;
 
-	throw Error(U"存在しない名前のモデルを参照しました name:" + name);
-}
-
-bool Assets::hasAsset(const String& name) const
-{
-	for (auto it = begin(); it != end(); ++it)
-		if ((*it)->getName() == name) return true;
-
-	return false;
-}
-
-void Assets::save(const FilePath& directory)
+void Assets::save(const FilePath& directory) const
 {
 	for (const auto& asset : *this)
 	{
@@ -69,4 +55,33 @@ void Assets::load(const FilePath& directory)
 
 		for (const auto& ca : cellAssets) ca->updateProperties();
 	}
+}
+
+void Assets::Save(const FilePath& directory)
+{
+	g_instance->save(directory);
+}
+
+void Assets::Load(const FilePath& directory)
+{
+	// すでに読み込んでいるものを消去する意味もある
+	g_instance = MakeUnique<Assets>();
+
+	g_instance->load(directory);
+}
+
+shared_ptr<Asset> Assets::getAsset(const String& name) const
+{
+	for (auto it = begin(); it != end(); ++it)
+		if ((*it)->getName() == name) return dynamic_pointer_cast<Asset>(*it);
+
+	throw Error(U"存在しない名前のモデルを参照しました name:" + name);
+}
+
+bool Assets::hasAsset(const String& name) const
+{
+	for (auto it = begin(); it != end(); ++it)
+		if ((*it)->getName() == name) return true;
+
+	return false;
 }

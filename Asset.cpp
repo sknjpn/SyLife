@@ -10,7 +10,7 @@ Asset::Asset()
 		const String name = Format(U"Asset ", i);
 		const FilePath filepath = Format(U"asset_", i, U".json");
 
-		if (!World::GetInstance()->getAssets().hasAsset(name) &&
+		if (!Assets::HasAsset(name) &&
 			!FileSystem::Exists(World::GetInstance()->getAssetsSaveDirectory() + filepath))
 		{
 			m_name = name;

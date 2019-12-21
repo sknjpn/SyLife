@@ -90,7 +90,7 @@ void Storage::load(const JSONValue& json)
 	// elements
 	for (auto element : json[U"elements"].arrayView())
 	{
-		const auto& asset = World::GetInstance()->getAssets().getAsset<ElementAsset>(element[U"name"].getString());
+		const auto& asset = Assets::GetAsset<ElementAsset>(element[U"name"].getString());
 		const int size = element[U"size"].get<int>();
 
 		emplace_back(asset, size);

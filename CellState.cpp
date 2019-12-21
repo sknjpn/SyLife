@@ -186,7 +186,7 @@ void CellState::load(const JSONValue& json)
 
 	m_storage.load(json[U"storage"]);
 
-	m_cellAsset = World::GetInstance()->getAssets().getAsset<CellAsset>(json[U"cellAsset"].getString());
+	m_cellAsset = Assets::GetAsset<CellAsset>(json[U"cellAsset"].getString());
 
 	// parts
 	for (const auto& pc : m_cellAsset->getPartConfigs())

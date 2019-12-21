@@ -13,7 +13,7 @@ void PartConfig::load(const JSONValue& json)
 	Model::load(json);
 
 	// asset
-	m_partAsset = World::GetInstance()->getAssets().getAsset<PartAsset>(json[U"asset"].getString());
+	m_partAsset = Assets::GetAsset<PartAsset>(json[U"asset"].getString());
 
 	// position
 	m_position = json[U"position"].get<Vec2>();
