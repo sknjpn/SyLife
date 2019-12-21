@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Asset.h"
-
 #include "Storage.h"
 
 class PartConfig;

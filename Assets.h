@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class Asset;
+#include "Asset.h"
 
 class Assets
 	: Array<shared_ptr<Asset>>
