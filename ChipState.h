@@ -36,7 +36,7 @@ public:
 	void	addNutrition(double nutrition) { m_nutrition += nutrition; }
 	void	pullNutrition(double nutrition) { m_nutrition -= nutrition; }
 
-	Color	getColor() const { return Math::Lerp(Color(0, 0), Palette::Palegreen, Min(m_nutrition / 20.0, 1.0)); }
+	Color	getColor() const { return Math::Lerp(Color(0, 0), Palette::Palegreen, Min(m_nutrition / 100.0, 1.0)); }
 	void	sendTo(const shared_ptr<ChipState>& chip, double value);
 
 	// JSON

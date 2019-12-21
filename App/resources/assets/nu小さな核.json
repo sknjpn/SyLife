@@ -19,8 +19,13 @@
     }
   ],
   "material": {
-    "nutrition": 1.0,
-    "elements": []
+    "nutrition": 20.0,
+    "elements": [
+      {
+        "name": "酸素",
+        "size": 1
+      }
+    ]
   },
   "lifespanTime": 25.0,
   "bornTime": 10.0,

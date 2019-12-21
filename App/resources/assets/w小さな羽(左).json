@@ -31,7 +31,7 @@
     }
   ],
   "material": {
-    "nutrition": 2.0,
+    "nutrition": 15.0,
     "elements": [
       {
         "name": "酸素",

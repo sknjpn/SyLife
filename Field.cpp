@@ -78,10 +78,13 @@ void Field::draw()
 
 	for (const auto& chip : m_chips)
 		chip->draw();
+
 	for (const auto& e : getElementStates())
 		if (!e->isDestroyed()) e->draw();
+
 	for (const auto& e : getEggStates())
 		if (!e->isDestroyed()) e->draw();
+
 	for (const auto& c : m_cellStates)
 		if (!c->isDestroyed()) c->draw();
 }
@@ -257,7 +260,7 @@ void Field::init()
 		for (auto point : step(size))
 		{
 			m_chips[point] = MakeShared<ChipState>(point);
-			m_chips[point]->setNutrition(10.0);
+			m_chips[point]->setNutrition(50.0);
 		}
 	}
 
