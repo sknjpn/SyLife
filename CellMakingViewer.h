@@ -24,7 +24,7 @@ public:
 
 	public:
 		class Workspace
-			: public GridViewer
+			: public Viewer
 		{
 			shared_ptr<PartAsset>	m_partAsset;
 
@@ -74,7 +74,7 @@ public:
 	{
 	public:
 		class Workspace
-			: public GridViewer
+			: public Viewer
 		{
 			shared_ptr<CellAsset> m_cellAsset;
 

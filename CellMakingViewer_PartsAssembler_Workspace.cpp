@@ -9,14 +9,11 @@ void CellMakingViewer::PartsAssembler::Workspace::init()
 	setBackgroundColor(Palette::Black);
 
 	setViewerRectInLocal(200, 0, 800, 800);
-	setSize(Vec2(800, 800));
 }
 
 void CellMakingViewer::PartsAssembler::Workspace::update()
 {
-	GridViewer::update();
-
-	const auto t1 = getCamera().createTransformer();
+	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), true);
 
 	drawParts();
 

@@ -34,15 +34,12 @@ void CellMakingViewer::BodySculptor::Workspace::init()
 {
 	setBackgroundColor(Palette::Black);
 
-	setSize(Vec2(800, 800));
-	setViewerPosInLocal(200, 0);
+	setViewerRectInLocal(200, 0, 800, 800);
 }
 
 void CellMakingViewer::BodySculptor::Workspace::update()
 {
-	GridViewer::update();
-
-	const auto t1 = getCamera().createTransformer();
+	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), true);
 
 	m_partAsset->getShape().updateProperties();
 
