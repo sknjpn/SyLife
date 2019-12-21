@@ -354,7 +354,6 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WingState.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldGenerateViewer.cpp" />
     <ClCompile Include="WorldLoadViewer.cpp" />
@@ -362,9 +361,6 @@
     <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Assets_makeModel.cpp" />
-    <ClCompile Include="BodyAsset.cpp" />
-    <ClCompile Include="BodyAsset_Editor.cpp" />
-    <ClCompile Include="BodyState.cpp" />
     <ClCompile Include="CellAsset.cpp" />
     <ClCompile Include="CellAsset_Editor.cpp" />
     <ClCompile Include="CellAssetViewer.cpp" />
@@ -409,12 +405,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainViewer.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="NeedleAsset.cpp" />
-    <ClCompile Include="NeedleAsset_Editor.cpp" />
-    <ClCompile Include="NeedleState.cpp" />
-    <ClCompile Include="NucleusAsset.cpp" />
-    <ClCompile Include="NucleusAsset_Editor.cpp" />
-    <ClCompile Include="NucleusState.cpp" />
     <ClCompile Include="PartAsset.cpp" />
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -430,24 +420,32 @@
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="Storage_Editor.cpp" />
     <ClCompile Include="Storage_Editor_Element.cpp" />
-    <ClCompile Include="SynthesizerAsset.cpp" />
-    <ClCompile Include="SynthesizerAsset_Editor.cpp" />
-    <ClCompile Include="SynthesizerState.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="ToolbarViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
-    <ClCompile Include="WingAsset.cpp" />
-    <ClCompile Include="WingAsset_Editor.cpp" />
     <ClCompile Include="SoundMixerViewer.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="PartAsset_Wing.cpp" />
+    <ClCompile Include="PartAsset_Wing_Editor.cpp" />
+    <ClCompile Include="PartState_Wing.cpp" />
+    <ClCompile Include="PartAsset_Needle.cpp" />
+    <ClCompile Include="PartAsset_Needle_Editor.cpp" />
+    <ClCompile Include="PartState_Needle.cpp" />
+    <ClCompile Include="PartState_Body.cpp" />
+    <ClCompile Include="PartAsset_Body.cpp" />
+    <ClCompile Include="PartAsset_Body_Editor.cpp" />
+    <ClCompile Include="PartAsset_Nucleus.cpp" />
+    <ClCompile Include="PartAsset_Nucleus_Editor.cpp" />
+    <ClCompile Include="PartState_Nucleus.cpp" />
+    <ClCompile Include="PartAsset_Synthesizer.cpp" />
+    <ClCompile Include="PartAsset_Synthesizer_Editor.cpp" />
+    <ClCompile Include="PartState_Synthesizer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEditor.h" />
     <ClInclude Include="Assets.h" />
-    <ClInclude Include="BodyAsset.h" />
-    <ClInclude Include="BodyState.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellAssetViewer.h" />
     <ClInclude Include="CellBookViewer.h" />
@@ -477,10 +475,6 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MainViewer.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="NeedleAsset.h" />
-    <ClInclude Include="NeedleState.h" />
-    <ClInclude Include="NucleusAsset.h" />
-    <ClInclude Include="NucleusState.h" />
     <ClInclude Include="PartAsset.h" />
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="Particle.h" />
@@ -494,19 +488,25 @@
     <ClInclude Include="StatisticsViewer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
-    <ClInclude Include="SynthesizerAsset.h" />
-    <ClInclude Include="SynthesizerState.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="Viewer.h" />
-    <ClInclude Include="WingAsset.h" />
-    <ClInclude Include="WingState.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldGenerateViewer.h" />
     <ClInclude Include="WorldLoadViewer.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SoundMixerViewer.h" />
     <ClInclude Include="Sound.h" />
+    <ClInclude Include="PartAsset_Wing.h" />
+    <ClInclude Include="PartState_Wing.h" />
+    <ClInclude Include="PartAsset_Needle.h" />
+    <ClInclude Include="PartState_Needle.h" />
+    <ClInclude Include="PartState_Body.h" />
+    <ClInclude Include="PartAsset_Body.h" />
+    <ClInclude Include="PartAsset_Nucleus.h" />
+    <ClInclude Include="PartState_Nucleus.h" />
+    <ClInclude Include="PartAsset_Synthesizer.h" />
+    <ClInclude Include="PartState_Synthesizer.h" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 #include "CellAsset.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
-#include "BodyAsset.h"
+#include "PartAsset_Body.h"
 
 void CellMakingViewer::PartsAssembler::Workspace::init()
 {

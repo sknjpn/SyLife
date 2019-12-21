@@ -1,13 +1,13 @@
-﻿#include "NucleusAsset.h"
-#include "NucleusState.h"
+﻿#include "PartAsset_Nucleus.h"
+#include "PartState_Nucleus.h"
 #include "PartShapeViewer.h"
 
-shared_ptr<PartState> NucleusAsset::makeState()
+shared_ptr<PartState> PartAsset_Nucleus::makeState()
 {
-	return make_shared<NucleusState>();
+	return make_shared<PartState_Nucleus>();
 }
 
-void NucleusAsset::load(const JSONValue& json)
+void PartAsset_Nucleus::load(const JSONValue& json)
 {
 	PartAsset::load(json);
 
@@ -16,7 +16,7 @@ void NucleusAsset::load(const JSONValue& json)
 	m_yieldTime = json[U"yieldTime"].get<double>();
 }
 
-void NucleusAsset::save(JSONWriter& json) const
+void PartAsset_Nucleus::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 

@@ -2,7 +2,7 @@
 
 #include "PartState.h"
 
-class NucleusState
+class PartState_Nucleus
 	: public PartState
 {
 public:

@@ -1,21 +1,21 @@
-﻿#include "NeedleState.h"
+﻿#include "PartState_Needle.h"
 
 
 
-#include "NeedleAsset.h"
+#include "PartAsset_Needle.h"
 #include "PartConfig.h"
 #include "CellState.h"
 #include "CellAsset.h"
 #include "World.h"
 
-void NeedleState::draw(const CellState& cellState) const
+void PartState_Needle::draw(const CellState& cellState) const
 {
 	auto t = Transformer2D(Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
 
 	getPartConfig()->getPartAsset()->draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
 }
 
-void NeedleState::update(CellState& cellState)
+void PartState_Needle::update(CellState& cellState)
 {
 	m_heat -= DeltaTime;
 

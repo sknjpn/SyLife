@@ -1,8 +1,8 @@
 ﻿#include "CellAsset.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
-#include "BodyAsset.h"
-#include "NucleusAsset.h"
+#include "PartAsset_Body.h"
+#include "PartAsset_Nucleus.h"
 
 void CellAsset::draw(double a)
 {
@@ -119,23 +119,23 @@ void CellAsset::updateProperties()
 	m_bornTime = nucleusAsset->getBornTime();
 }
 
-shared_ptr<BodyAsset> CellAsset::getBodyAsset() const
+shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
 {
 	for (const auto& pc : m_partConfigs)
 	{
-		if (dynamic_pointer_cast<BodyAsset>(pc->getPartAsset()))
-			return dynamic_pointer_cast<BodyAsset>(pc->getPartAsset());
+		if (dynamic_pointer_cast<PartAsset_Body>(pc->getPartAsset()))
+			return dynamic_pointer_cast<PartAsset_Body>(pc->getPartAsset());
 	}
 
 	return nullptr;
 }
 
-shared_ptr<NucleusAsset> CellAsset::getNucleusAsset() const
+shared_ptr<PartAsset_Nucleus> CellAsset::getNucleusAsset() const
 {
 	for (const auto& pc : m_partConfigs)
 	{
-		if (dynamic_pointer_cast<NucleusAsset>(pc->getPartAsset()))
-			return dynamic_pointer_cast<NucleusAsset>(pc->getPartAsset());
+		if (dynamic_pointer_cast<PartAsset_Nucleus>(pc->getPartAsset()))
+			return dynamic_pointer_cast<PartAsset_Nucleus>(pc->getPartAsset());
 	}
 
 	return nullptr;

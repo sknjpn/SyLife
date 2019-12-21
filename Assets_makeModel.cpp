@@ -2,11 +2,11 @@
 
 #include "CellAsset.h"
 #include "ElementAsset.h"
-#include "BodyAsset.h"
-#include "SynthesizerAsset.h"
-#include "WingAsset.h"
-#include "NeedleAsset.h"
-#include "NucleusAsset.h"
+#include "PartAsset_Body.h"
+#include "PartAsset_Synthesizer.h"
+#include "PartAsset_Wing.h"
+#include "PartAsset_Needle.h"
+#include "PartAsset_Nucleus.h"
 
 shared_ptr<Asset> Assets::makeAsset(const String& type)
 {
@@ -14,11 +14,11 @@ shared_ptr<Asset> Assets::makeAsset(const String& type)
 
 	if (type == U"ElementAsset")		return makeAsset<ElementAsset>();
 
-	if (type == U"BodyAsset")			return makeAsset<BodyAsset>();
-	if (type == U"SynthesizerAsset")	return makeAsset<SynthesizerAsset>();
-	if (type == U"WingAsset")			return makeAsset<WingAsset>();
-	if (type == U"NeedleAsset")			return makeAsset<NeedleAsset>();
-	if (type == U"NucleusAsset")		return makeAsset<NucleusAsset>();
+	if (type == U"PartAsset_Body")			return makeAsset<PartAsset_Body>();
+	if (type == U"PartAsset_Synthesizer")	return makeAsset<PartAsset_Synthesizer>();
+	if (type == U"WingAsset")			return makeAsset<PartAsset_Wing>();
+	if (type == U"PartAsset_Needle")			return makeAsset<PartAsset_Needle>();
+	if (type == U"PartAsset_Nucleus")		return makeAsset<PartAsset_Nucleus>();
 
 	throw Error(U"存在しないタイプのAssetを生成しようとしました\r Type:" + type);
 }

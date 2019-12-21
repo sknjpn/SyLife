@@ -1,7 +1,7 @@
 ﻿#include "CellMakingViewer.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
-#include "BodyAsset.h"
+#include "PartAsset_Body.h"
 #include "ElementAsset.h"
 #include "CellAsset.h"
 #include "GUIButton.h"
@@ -85,7 +85,7 @@ void CellMakingViewer::makeAsset()
 
 	// Bodyの設定
 	{
-		auto bodyAsset = World::GetInstance()->getAssets().makeAsset<BodyAsset>();
+		auto bodyAsset = World::GetInstance()->getAssets().makeAsset<PartAsset_Body>();
 		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 
 		bodyAsset->setMass(1.0);

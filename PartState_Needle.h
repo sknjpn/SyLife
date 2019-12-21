@@ -2,7 +2,7 @@
 
 #include "PartState.h"
 
-class NeedleState
+class PartState_Needle
 	: public PartState
 {
 	double	m_heat = 0.0;

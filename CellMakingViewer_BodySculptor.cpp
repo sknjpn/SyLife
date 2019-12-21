@@ -1,6 +1,6 @@
 ﻿#include "CellMakingViewer.h"
 #include "CellAsset.h"
-#include "BodyAsset.h"
+#include "PartAsset_Body.h"
 #include "GUIChecker.h"
 #include "GUIButton.h"
 #include "GUIText.h"

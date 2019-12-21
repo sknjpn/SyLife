@@ -2,7 +2,7 @@
 
 #include "PartAsset.h"
 
-class NucleusAsset
+class PartAsset_Nucleus
 	: public PartAsset
 {
 	double	m_lifespanTime;	// 寿命
@@ -13,10 +13,10 @@ public:
 	class Editor
 		: public AssetEditor
 	{
-		shared_ptr<NucleusAsset>	m_nucleusAsset;
+		shared_ptr<PartAsset_Nucleus>	m_nucleusAsset;
 
 	public:
-		Editor(const shared_ptr<NucleusAsset>& nucleusAsset)
+		Editor(const shared_ptr<PartAsset_Nucleus>& nucleusAsset)
 			: m_nucleusAsset(nucleusAsset)
 		{}
 
@@ -26,7 +26,7 @@ public:
 
 public:
 	// Editor
-	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<NucleusAsset>(shared_from_this())); }
+	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<PartAsset_Nucleus>(shared_from_this())); }
 
 	// State
 	shared_ptr<PartState>	makeState() override;
@@ -41,5 +41,5 @@ public:
 	void	save(JSONWriter& json) const override;
 	
 	// TypeName
-	String	getTypeName() override { return U"NucleusAsset"; }
+	String	getTypeName() override { return U"PartAsset_Nucleus"; }
 };

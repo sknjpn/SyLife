@@ -2,18 +2,18 @@
 
 #include "PartAsset.h"
 
-class NeedleAsset
+class PartAsset_Body
 	: public PartAsset
 {
 public:
 	class Editor
 		: public AssetEditor
 	{
-		shared_ptr<NeedleAsset>	m_needleAsset;
+		shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 	public:
-		Editor(const shared_ptr<NeedleAsset>& needleAsset)
-			: m_needleAsset(needleAsset)
+		Editor(const shared_ptr<PartAsset_Body>& bodyAsset)
+			: m_bodyAsset(bodyAsset)
 		{}
 
 		void	init() override;
@@ -22,7 +22,7 @@ public:
 
 public:
 	// Editor
-	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<NeedleAsset>(shared_from_this())); }
+	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<PartAsset_Body>(shared_from_this())); }
 
 	// State
 	shared_ptr<PartState>	makeState() override;
@@ -32,5 +32,5 @@ public:
 	void	save(JSONWriter& json) const override;
 	
 	// TypeName
-	String	getTypeName() override { return U"NeedleAsset"; }
+	String	getTypeName() override { return U"PartAsset_Body"; }
 };

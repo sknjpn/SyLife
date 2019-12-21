@@ -2,7 +2,7 @@
 
 #include "PartAsset.h"
 
-class WingAsset
+class PartAsset_Wing
 	: public PartAsset
 {
 	bool	m_isRight = false;
@@ -11,10 +11,10 @@ public:
 	class Editor
 		: public AssetEditor
 	{
-		shared_ptr<WingAsset> m_wingAsset;
+		shared_ptr<PartAsset_Wing> m_wingAsset;
 
 	public:
-		Editor(const shared_ptr<WingAsset>& wingAsset)
+		Editor(const shared_ptr<PartAsset_Wing>& wingAsset)
 			: m_wingAsset(wingAsset)
 		{}
 
@@ -23,7 +23,7 @@ public:
 	};
 
 public:
-	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<WingAsset>(shared_from_this())); }
+	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<PartAsset_Wing>(shared_from_this())); }
 
 	shared_ptr<PartState>	makeState() override;
 

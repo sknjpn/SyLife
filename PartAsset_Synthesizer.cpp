@@ -1,15 +1,15 @@
-﻿#include "SynthesizerAsset.h"
-#include "SynthesizerState.h"
+﻿#include "PartAsset_Synthesizer.h"
+#include "PartState_Synthesizer.h"
 #include "World.h"
 #include "ElementAsset.h"
 #include "PartShapeViewer.h"
 
-shared_ptr<PartState> SynthesizerAsset::makeState()
+shared_ptr<PartState> PartAsset_Synthesizer::makeState()
 {
-	return make_shared<SynthesizerState>();
+	return make_shared<PartState_Synthesizer>();
 }
 
-void SynthesizerAsset::load(const JSONValue& json)
+void PartAsset_Synthesizer::load(const JSONValue& json)
 {
 	PartAsset::load(json);
 
@@ -17,7 +17,7 @@ void SynthesizerAsset::load(const JSONValue& json)
 	m_export = World::GetInstance()->getAssets().getAsset<ElementAsset>(json[U"export"].getString());
 }
 
-void SynthesizerAsset::save(JSONWriter& json) const
+void PartAsset_Synthesizer::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 
