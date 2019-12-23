@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "stdafx.h"
+
 class ColorPicker
 {
 	Texture	m_circleTexture;

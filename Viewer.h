@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "stdafx.h"
+
 class Viewer
 	: public enable_shared_from_this<Viewer>
 {
