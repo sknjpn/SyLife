@@ -47,7 +47,13 @@ void CellMakingViewer::BodySculptor::Workspace::update()
 	m_partAsset->getShape().draw(0.5);
 	m_partAsset->getShape().getPolygon().drawFrame(1.0, Palette::Black);
 
-	const Polygon stamp = getParentViewer<BodySculptor>()->getStamp().movedBy(Cursor::PosF());
+	auto p1 = Cursor::PreviousPosF();
+	auto p2 = Cursor::PosF();
+	auto r = getParentViewer<BodySculptor>()->getStampRadius();
+
+	auto stamp = (p1 == p2 ? Polygon() : Polygon({ p1 + (p1 - p2).setLength(r).rotated(-Math::HalfPi), p1 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(-Math::HalfPi) }));
+	stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PosF()));
+	stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PreviousPosF()));
 
 	// Mouse
 	{
@@ -65,19 +71,27 @@ void CellMakingViewer::BodySculptor::Workspace::update()
 	if (isMouseover())
 	{
 		if (MouseL.pressed())
-			attach(stamp);
-
-		if (MouseR.pressed())
 		{
-			detach(stamp);
+			switch (getParentViewer<BodySculptor>()->getState())
+			{
+			case BodySculptor::State::Put:
+				attach(stamp);
+				break;
 
-			// 左右対称
-			if (getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue())
-				detach(getReversed(stamp));
+			case BodySculptor::State::Shave:
+			{
+				detach(stamp);
+
+				if (getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue())
+					detach(getReversed(stamp));
+
+			}
+			break;
+			}
 		}
 
 		double k = 0.01;
-		m_partAsset->setMass( m_partAsset->getShape()[0].m_polygon.area() * k);
+		m_partAsset->setMass(m_partAsset->getShape()[0].m_polygon.area() * k);
 		m_partAsset->getMaterial().setNutrition(m_partAsset->getMass());
 	}
 

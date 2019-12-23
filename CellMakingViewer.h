@@ -20,7 +20,12 @@ public:
 	{
 		bool	m_isSymmetrical;
 		double	m_scale;
-		Polygon	m_stamp;
+
+		enum struct State
+		{
+			Put,
+			Shave,
+		} m_state;
 
 	public:
 		class Workspace
@@ -61,12 +66,15 @@ public:
 			int		getSelectedIndex() const { return m_selectedIndex; }
 		};
 
+		void	setState(State state);
+
 	public:
 		void	init() override;
 		void	update() override;
 
 		bool	isSymmetrical() const { return m_isSymmetrical; }
-		Polygon getStamp() const;
+		State	getState() const { return m_state; }
+		double	getStampRadius() const;
 	};
 
 	class PartsAssembler
