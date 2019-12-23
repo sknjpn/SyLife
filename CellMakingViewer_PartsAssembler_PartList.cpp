@@ -1,9 +1,9 @@
 ﻿#include "CellMakingViewer.h"
-#include "World.h"
 #include "PartAsset.h"
 #include "PartAsset_Body.h"
 #include "PartAsset_Nucleus.h"
 #include "GUISlider.h"
+#include "Assets.h"
 
 void CellMakingViewer::PartsAssembler::PartList::init()
 {
@@ -24,7 +24,7 @@ Array<shared_ptr<PartAsset>> CellMakingViewer::PartsAssembler::PartList::getList
 {
 	Array<shared_ptr<PartAsset>> assets;
 
-	for (const auto& m : World::GetInstance()->getAssets().getAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<PartAsset_Body>(pa) ? true : false; })) assets.emplace_back(m);
+	for (const auto& m : Assets::GetAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<PartAsset_Body>(pa) ? true : false; })) assets.emplace_back(m);
 	
 	return assets;
 }

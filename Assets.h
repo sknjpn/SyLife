@@ -5,15 +5,19 @@
 class Assets
 	: Array<shared_ptr<Asset>>
 {
-public:
-	Assets() { reserve(1024); }
+	String	m_directory;
+
+	static unique_ptr<Assets>	g_instance;
+
+	void	save(const FilePath& directory) const;
+	void	load(const FilePath& directory);
 
 	// Make
 	template <typename T>
 	shared_ptr<T>		makeAsset() { return dynamic_pointer_cast<T>(emplace_back(make_shared<T>())); }
 
 	shared_ptr<Asset>	makeAsset(const String& type);
-	
+
 	// Get
 	template <typename T>
 	shared_ptr<T>		getAsset(const String& name) const
@@ -38,16 +42,40 @@ public:
 
 		return tAssets;
 	}
-	
+
 	// Has
 	bool	hasAsset(const String& name) const;
 
-	// Load
-	void	save(const FilePath& directory);
-	void	load(const FilePath& directory);
+public:
+	Assets() { reserve(1024); }
+
+	static void	Save(const FilePath& directory);
+	static void	Load(const FilePath& directory);
+
+	// Make
+	template <typename T>
+	static shared_ptr<T>		MakeAsset() { return dynamic_pointer_cast<T>(g_instance->emplace_back(make_shared<T>())); }
+
+	static shared_ptr<Asset>	MakeAsset(const String& type) { return g_instance->makeAsset(type); }
+
+	// Get
+	template <typename T>
+	static shared_ptr<T>		GetAsset(const String& name) { return g_instance->getAsset<T>(name); }
+
+	static shared_ptr<Asset>	GetAsset(const String& name) { return g_instance->getAsset(name); }
+
+	static const Array<shared_ptr<Asset>>& GetAssets() { return *g_instance; }
+
+	template <typename T>
+	static Array<shared_ptr<T>>	GetAssets() { return g_instance->getAssets<T>(); }
+
+	// Has
+	static bool	HasAsset(const String& name) { return g_instance->hasAsset(name); }
 
 	// Remove
-	void	remove(const shared_ptr<Asset>& asset) { remove(asset); }
+	static void	Remove(const shared_ptr<Asset>& asset) { g_instance->remove(asset); }
 
-	void	clear() { Array<shared_ptr<Asset>>::clear(); }
+	static void	Clear() { g_instance->clear(); }
+
+	static const FilePath& GetDirectory() { return g_instance->m_directory; }
 };

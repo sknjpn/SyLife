@@ -1,4 +1,5 @@
 ﻿#include "World.h"
+#include "Assets.h"
 
 unique_ptr<World>	World::g_instance;
 
@@ -55,7 +56,7 @@ void World::save()
 
 	// Assets
 	{
-		m_assets.save(m_filePath + U"assets/");
+		Assets::Save(m_filePath + U"assets/");
 	}
 
 	// Field
@@ -77,8 +78,7 @@ void World::load()
 
 	// Assets
 	{
-		m_assets.clear();
-		m_assets.load(m_filePath + U"assets/");
+		Assets::Load(m_filePath + U"assets/");
 	}
 
 	// Field
@@ -99,7 +99,6 @@ void World::make()
 
 	// Assetsのロード
 	{
-		m_assets.clear();
-		m_assets.load(m_filePath + U"assets/");
+		Assets::Load(m_filePath + U"assets/");
 	}
 }

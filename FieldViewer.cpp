@@ -15,6 +15,7 @@
 #include "CellStateViewer.h"
 #include "CellStateCaptureViewer.h"
 #include "StatisticsViewer.h"
+#include "SpeedControllerViewer.h"
 #include "CellBookViewer.h"
 
 #include "GUIButton.h"
@@ -41,26 +42,33 @@ void FieldViewer::init()
 
 void FieldViewer::update()
 {
-	static int speed = 1;
+	Window::SetTitle(Cursor::PosF());
+	if (Cursor::Pos().x < 32) { Rect(32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
+	if (Cursor::Pos().y < 32) { Rect(Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveU(); }
+	if (Cursor::Pos().x > Scene::Size().x) { Rect(Scene::Size().x - 32, 0, 32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
+	if (Cursor::Pos().y > Scene::Size().y) { Rect(0, Scene::Size().y - 32, Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveD(); }
 
 	{
 		// camera
-		if (isMouseover()) m_camera.update();
+		if (isMouseover() || !Scene::Rect().contains(Cursor::Pos())) m_camera.update();
 		auto t = m_camera.createTransformer();
 
-		// speed
-		if (KeyF1.down()) speed = 1;
-		if (KeyF2.down() && speed != 1) speed /= 2;
-		if (KeyF3.down() && speed != 128) speed *= 2;
-		if (KeyF4.down()) speed = 128;
-
 		// update
-		for (int i = 0; i < speed; ++i)
 		{
-			World::GetInstance()->getField().update();
+			auto maxConut = getParentViewer()->getChildViewer<SpeedControllerViewer>()->isHighSpeed() ? 100 : 1;
+			Stopwatch sw(true);
+			int i = 0;
+			for (; i < maxConut; ++i)
+			{
+				World::GetInstance()->getField().update();
 
-			getParentViewer()->
-				getChildViewer<StatisticsViewer>()->takeLog();
+				getParentViewer()->
+					getChildViewer<StatisticsViewer>()->takeLog();
+
+				// 60FPSを保つ動作
+				if (sw.ms() > 15) break;
+			}
+			getParentViewer()->getChildViewer<SpeedControllerViewer>()->setUpdateCount(i);
 		}
 
 		// CellState Capture
@@ -132,9 +140,7 @@ void FieldViewer::update()
 		}
 	}
 
-	{
-		static Font font(64, Typeface::Bold);
-
-		font(U"x", speed).draw(Scene::Size().x - 200, 25);
-	}
+	// HighSpeed
+	if (getParentViewer()->getChildViewer<SpeedControllerViewer>()->isHighSpeed())
+		RectF(getViewerSize()).draw(ColorF(Palette::Red, 0.1)).drawFrame(8.0, 0.0, ColorF(Palette::Red, 0.5));
 }

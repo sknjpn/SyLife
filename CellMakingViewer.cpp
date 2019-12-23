@@ -6,7 +6,7 @@
 #include "CellAsset.h"
 #include "GUIButton.h"
 #include "ReleaseViewer.h"
-#include "World.h"
+#include "Assets.h"
 #include "FieldViewer.h"
 
 void CellMakingViewer::clearEditor()
@@ -72,7 +72,7 @@ void CellMakingViewer::update()
 
 void CellMakingViewer::makeAsset()
 {
-	m_cellAsset = World::GetInstance()->getAssets().makeAsset<CellAsset>();
+	m_cellAsset = Assets::MakeAsset<CellAsset>();
 
 	Logger << m_cellAsset->getName();
 
@@ -85,7 +85,7 @@ void CellMakingViewer::makeAsset()
 
 	// Bodyの設定
 	{
-		auto bodyAsset = World::GetInstance()->getAssets().makeAsset<PartAsset_Body>();
+		auto bodyAsset = Assets::MakeAsset<PartAsset_Body>();
 		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 
 		bodyAsset->setMass(1.0);

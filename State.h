@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "stdafx.h"
+
 // シミュレーションの状態を決めるもの
 class State
 {

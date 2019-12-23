@@ -2,6 +2,7 @@
 #include "CellAsset.h"
 #include "CellState.h"
 #include "World.h"
+#include "Assets.h"
 
 EggState::EggState(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
@@ -44,7 +45,7 @@ void EggState::load(const JSONValue& json)
 	Rigidbody::load(json);
 
 	const auto assetName = json[U"cellAsset"].getString();
-	m_cellAsset = World::GetInstance()->getAssets().getAsset<CellAsset>(assetName);
+	m_cellAsset = Assets::GetAsset<CellAsset>(assetName);
 }
 
 void EggState::save(JSONWriter& json) const

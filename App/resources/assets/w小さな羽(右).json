@@ -1,5 +1,5 @@
 ﻿{
-  "type": "WingAsset",
+  "type": "PartAsset_Wing",
   "name": "小さな羽(右)",
   "mass": 20.0,
   "layers": [
@@ -31,7 +31,7 @@
     }
   ],
   "material": {
-    "nutrition": 2.0,
+    "nutrition": 15.0,
     "elements": [
       {
         "name": "酸素",

@@ -50,10 +50,11 @@ HSV ColorPicker::update(const HSV& hsv)
 			.drawFrame(1.0, Palette::Black);
 
 		auto d = Cursor::PosF() - Vec2(length / 2.0, length / 2.0);
-		if (d.length() < length / 2 && MouseL.pressed())
+		if (Circle(Vec2(32, 32), 32).leftClicked()) m_circleSelected = true;
+		if (m_circleSelected)
 		{
 			result.h = ToDegrees(atan2(d.y, d.x));
-			result.s = d.length() / (length / 2);
+			result.s = Min(1.0, d.length() / (length / 2));
 		}
 	}
 
@@ -68,8 +69,15 @@ HSV ColorPicker::update(const HSV& hsv)
 			.draw()
 			.drawFrame(1.0, Palette::Black);
 
-		if (RectF(length / 8 + 8, length).leftPressed())
-			result.v = 1.0 - Cursor::PosF().y / length;
+		if (Rect(8, 64).leftClicked()) m_barSelected = true;
+		if (m_barSelected)
+			result.v = Clamp<double>(1.0 - Cursor::PosF().y / length, 0.05, 1.0);	// 完全に0にするとSも0になるので注意
+	}
+
+	if (MouseL.up())
+	{
+		m_barSelected = false;
+		m_circleSelected = false;
 	}
 
 	return result;

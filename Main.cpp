@@ -10,6 +10,4 @@ void Main()
 
 	Viewer::GetRootViewer()->addChildViewer<SetupViewer>();
 	Viewer::Run();
-
-	World::GetInstance()->save();
 }

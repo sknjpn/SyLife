@@ -1,5 +1,5 @@
 ﻿{
-  "type": "SynthesizerAsset",
+  "type": "PartAsset_Synthesizer",
   "name": "炭素合成器官",
   "mass": 10.0,
   "layers": [
@@ -46,7 +46,7 @@
     }
   ],
   "material": {
-    "nutrition": 1.0,
+    "nutrition": 10.0,
     "elements": [
       {
         "name": "炭素",

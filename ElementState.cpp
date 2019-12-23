@@ -1,6 +1,7 @@
 ﻿#include "ElementState.h"
 #include "ElementAsset.h"
 #include "World.h"
+#include "Assets.h"
 
 ElementState::ElementState(const shared_ptr<ElementAsset>& asset)
 	: m_elementAsset(asset)
@@ -36,7 +37,7 @@ void ElementState::load(const JSONValue& json)
 	Rigidbody::load(json);
 
 	const auto assetName = json[U"elementAsset"].getString();
-	m_elementAsset = World::GetInstance()->getAssets().getAsset<ElementAsset>(assetName);
+	m_elementAsset = Assets::GetAsset<ElementAsset>(assetName);
 	
 	setRadius(m_elementAsset->getRadius());
 }

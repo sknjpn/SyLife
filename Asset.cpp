@@ -1,5 +1,4 @@
 ﻿#include "Asset.h"
-#include "World.h"
 #include "Assets.h"
 
 Asset::Asset()
@@ -10,8 +9,7 @@ Asset::Asset()
 		const String name = Format(U"Asset ", i);
 		const FilePath filepath = Format(U"asset_", i, U".json");
 
-		if (!World::GetInstance()->getAssets().hasAsset(name) &&
-			!FileSystem::Exists(World::GetInstance()->getAssetsSaveDirectory() + filepath))
+		if (!Assets::HasAsset(name) && !FileSystem::Exists(Assets::GetDirectory() + filepath))
 		{
 			m_name = name;
 			m_filepath = filepath;

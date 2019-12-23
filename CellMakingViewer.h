@@ -20,11 +20,16 @@ public:
 	{
 		bool	m_isSymmetrical;
 		double	m_scale;
-		Polygon	m_stamp;
+
+		enum struct State
+		{
+			Put,
+			Shave,
+		} m_state;
 
 	public:
 		class Workspace
-			: public GridViewer
+			: public Viewer
 		{
 			shared_ptr<PartAsset>	m_partAsset;
 
@@ -61,12 +66,15 @@ public:
 			int		getSelectedIndex() const { return m_selectedIndex; }
 		};
 
+		void	setState(State state);
+
 	public:
 		void	init() override;
 		void	update() override;
 
 		bool	isSymmetrical() const { return m_isSymmetrical; }
-		Polygon getStamp() const;
+		State	getState() const { return m_state; }
+		double	getStampRadius() const;
 	};
 
 	class PartsAssembler
@@ -74,7 +82,7 @@ public:
 	{
 	public:
 		class Workspace
-			: public GridViewer
+			: public Viewer
 		{
 			shared_ptr<CellAsset> m_cellAsset;
 
@@ -83,6 +91,8 @@ public:
 				MoveMode,
 				RotateMode,
 			} m_state = State::MoveMode;
+			Vec2	m_prePosition;
+			double	m_preRotation;
 
 			double	m_mass;
 			double	m_inertia;
@@ -97,6 +107,9 @@ public:
 			void	drawParts() const;
 
 			void	setCellAsset(const shared_ptr<CellAsset>& cellAsset) { m_cellAsset = cellAsset; }
+
+			void	setMoveMode();
+			void	setRotateMode();
 		};
 
 		class PartList

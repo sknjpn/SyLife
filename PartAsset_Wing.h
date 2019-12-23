@@ -35,5 +35,5 @@ public:
 	void	save(JSONWriter& json) const override;
 	
 	// TypeName
-	String	getTypeName() override { return U"WingAsset"; }
+	String	getTypeName() override { return U"PartAsset_Wing"; }
 };
