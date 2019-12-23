@@ -74,10 +74,10 @@ class TinyCamera
 	// 移動に対するコントロール条件
 	std::array<std::function<bool()>, 4> m_controls =
 	{
-		[]() { return KeyW.pressed() || Cursor::Pos().y <= 0; },
-		[]() { return KeyA.pressed() || Cursor::Pos().x <= 0; },
-		[]() { return KeyS.pressed() || Cursor::Pos().y >= Scene::Height() - 1; },
-		[]() { return KeyD.pressed() || Cursor::Pos().x >= Scene::Width() - 1; },
+		[]() { return KeyW.pressed(); },
+		[]() { return KeyA.pressed(); },
+		[]() { return KeyS.pressed(); },
+		[]() { return KeyD.pressed(); },
 	};
 
 	// 最小最大の拡大率
@@ -105,7 +105,6 @@ class TinyCamera
 		if (m_controls[2]()) { m_targetCenter.y += m_movingSensitivity * m_screen.h / m_targetScale; }
 		if (m_controls[3]()) { m_targetCenter.x += m_movingSensitivity * m_screen.w / m_targetScale; }
 	}
-
 
 	void follow()
 	{
@@ -221,4 +220,9 @@ public:
 	void	setControlOutOfScreenEnabled(bool enabled) noexcept { m_controlOutOfScreenEnabled = enabled; }
 
 	RectF	getTargetCameraRect() const { return RectF(m_screen.size / m_targetScale).setCenter(m_targetCenter); }
+
+	void moveU() { m_targetCenter.y -= m_movingSensitivity * m_screen.h / m_targetScale; restrictTargetRect(); }
+	void moveL() { m_targetCenter.x -= m_movingSensitivity * m_screen.w / m_targetScale; restrictTargetRect(); }
+	void moveD() { m_targetCenter.y += m_movingSensitivity * m_screen.h / m_targetScale; restrictTargetRect(); }
+	void moveR() { m_targetCenter.x += m_movingSensitivity * m_screen.w / m_targetScale; restrictTargetRect(); }
 };

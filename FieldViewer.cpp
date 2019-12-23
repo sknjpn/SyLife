@@ -42,9 +42,15 @@ void FieldViewer::init()
 
 void FieldViewer::update()
 {
+	Window::SetTitle(Cursor::PosF());
+	if (Cursor::Pos().x < 32) { Rect(32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
+	if (Cursor::Pos().y < 32) { Rect(Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveU(); }
+	if (Cursor::Pos().x > Scene::Size().x) { Rect(Scene::Size().x - 32, 0, 32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
+	if (Cursor::Pos().y > Scene::Size().y) { Rect(0, Scene::Size().y - 32, Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveD(); }
+
 	{
 		// camera
-		if (isMouseover()) m_camera.update();
+		if (isMouseover() || !Scene::Rect().contains(Cursor::Pos())) m_camera.update();
 		auto t = m_camera.createTransformer();
 
 		// update
