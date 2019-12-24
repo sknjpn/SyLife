@@ -29,7 +29,7 @@ void FieldViewer::openCellMakingViewer()
 
 void FieldViewer::init()
 {
-	m_audio = Audio(U"resources/music/シアン.mp3");
+	m_audio = Audio(U"resources/music/syan.mp3");
 
 	m_camera.setRestrictedRect(Rect(World::GetInstance()->getField().getChipSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getField().getChipLength()));
 	m_camera.setMaxScale(4);
