@@ -6,7 +6,7 @@
 #include "WorldLoadViewer.h"
 
 TitleViewer::TitleViewer()
-	: m_audio(U"resources/music/神秘の世界.mp3")
+	: m_audio(U"resources/music/world.mp3")
 {
 	setViewerRectInLocal(Scene::Size());
 	m_audio.setLoop(true);

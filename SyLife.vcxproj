@@ -234,6 +234,7 @@
     <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Assets_makeModel.cpp" />
+    <ClCompile Include="MagnifyingViewer.cpp" />
     <ClCompile Include="PartAsset_Body.cpp" />
     <ClCompile Include="PartAsset_Body_Editor.cpp" />
     <ClCompile Include="PartState_Body.cpp" />
@@ -326,6 +327,7 @@
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEditor.h" />
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="MagnifyingViewer.h" />
     <ClInclude Include="PartAsset_Body.h" />
     <ClInclude Include="PartState_Body.h" />
     <ClInclude Include="CellAsset.h" />

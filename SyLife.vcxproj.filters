@@ -442,6 +442,7 @@
     <ClCompile Include="PartState_Synthesizer.cpp" />
     <ClCompile Include="PartState_Wing.cpp" />
     <ClCompile Include="SpeedControllerViewer.cpp" />
+    <ClCompile Include="MagnifyingViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
@@ -510,5 +511,6 @@
     <ClInclude Include="PartState_Synthesizer.h" />
     <ClInclude Include="PartState_Wing.h" />
     <ClInclude Include="SpeedControllerViewer.h" />
+    <ClInclude Include="MagnifyingViewer.h" />
   </ItemGroup>
 </Project>

@@ -17,6 +17,7 @@
 #include "StatisticsViewer.h"
 #include "SpeedControllerViewer.h"
 #include "CellBookViewer.h"
+#include "MagnifyingViewer.h"
 
 #include "GUIButton.h"
 #include "CurtainViewer.h"
@@ -28,7 +29,7 @@ void FieldViewer::openCellMakingViewer()
 
 void FieldViewer::init()
 {
-	m_audio = Audio(U"resources/music/シアン.mp3");
+	m_audio = Audio(U"resources/music/syan.mp3");
 
 	m_camera.setRestrictedRect(Rect(World::GetInstance()->getField().getChipSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getField().getChipLength()));
 	m_camera.setMaxScale(4);
@@ -38,6 +39,9 @@ void FieldViewer::init()
 
 	m_audio.setLoop(true);
 	m_audio.play();
+
+	addChildViewer<MagnifyingViewer>()
+		->setViewerPosInLocal(Scene::Size().x / 2.0 - 40, 20);
 }
 
 void FieldViewer::update()
