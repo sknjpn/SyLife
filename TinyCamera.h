@@ -225,4 +225,25 @@ public:
 	void moveL() { m_targetCenter.x -= m_movingSensitivity * m_screen.w / m_targetScale; restrictTargetRect(); }
 	void moveD() { m_targetCenter.y += m_movingSensitivity * m_screen.h / m_targetScale; restrictTargetRect(); }
 	void moveR() { m_targetCenter.x += m_movingSensitivity * m_screen.w / m_targetScale; restrictTargetRect(); }
+
+	void zoomIn(double d= 10)
+	{
+		const auto delta = 1.0 + m_scalingSensitivity * (-d);
+		const auto cursorPos = (Cursor::PosF() - m_screen.center()) / m_targetScale + m_targetCenter;
+
+		m_targetScale /= delta;
+		m_targetCenter = (m_targetCenter - cursorPos) * delta + cursorPos;
+
+		restrictTargetScale();
+	}
+	void zoomOut(double d = 10)
+	{
+		const auto delta = 1.0 + m_scalingSensitivity * d;
+		const auto cursorPos = (Cursor::PosF() - m_screen.center()) / m_targetScale + m_targetCenter;
+
+		m_targetScale /= delta;
+		m_targetCenter = (m_targetCenter - cursorPos) * delta + cursorPos;
+
+		restrictTargetScale();
+	}
 };
