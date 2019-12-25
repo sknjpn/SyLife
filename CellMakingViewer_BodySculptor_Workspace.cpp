@@ -57,15 +57,10 @@ void CellMakingViewer::BodySculptor::Workspace::update()
 
 	// Mouse
 	{
+		stamp.draw(ColorF(getSelectedLayer().m_color, 0.5));
+
 		if (getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue())
-		{
-			stamp.draw(ColorF(getSelectedLayer().m_color, 0.5));
 			getReversed(stamp).draw(ColorF(getSelectedLayer().m_color, 0.5));
-		}
-		else
-		{
-			stamp.draw(ColorF(getSelectedLayer().m_color, 0.5));
-		}
 	}
 
 	if (isMouseover())
