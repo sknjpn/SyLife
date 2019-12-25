@@ -355,8 +355,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="WorldGenerateViewer.cpp" />
-    <ClCompile Include="WorldLoadViewer.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="Assets.cpp" />
@@ -484,8 +482,6 @@
     <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="WorldGenerateViewer.h" />
-    <ClInclude Include="WorldLoadViewer.h" />
     <ClInclude Include="PartAsset_Body.h" />
     <ClInclude Include="PartAsset_Needle.h" />
     <ClInclude Include="PartAsset_Nucleus.h" />

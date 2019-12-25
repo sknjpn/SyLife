@@ -312,8 +312,6 @@
     <ClCompile Include="PartAsset_Wing_Editor.cpp" />
     <ClCompile Include="PartState_Wing.cpp" />
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="WorldGenerateViewer.cpp" />
-    <ClCompile Include="WorldLoadViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
@@ -375,8 +373,6 @@
     <ClInclude Include="PartAsset_Wing.h" />
     <ClInclude Include="PartState_Wing.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="WorldGenerateViewer.h" />
-    <ClInclude Include="WorldLoadViewer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,4 @@
-﻿#include "WorldGenerateViewer.h"
+﻿#include "MainViewer.h"
 #include "World.h"
 
 void Main()
@@ -8,6 +8,19 @@ void Main()
 	Window::SetStyle(WindowStyle::Sizable);
 	Window::Maximize();
 
-	Viewer::GetRootViewer()->addChildViewer<WorldGenerateViewer>();
+	// world生成
+	if (FileSystem::Exists(U"world/"))
+	{
+		World::Load(U"world/");
+	}
+	else
+	{
+		World::Make();
+		World::GetInstance()->setName(U"New World");
+	}
+
+	Viewer::GetRootViewer()->addChildViewer<MainViewer>();
 	Viewer::Run();
+
+	World::GetInstance()->save();
 }

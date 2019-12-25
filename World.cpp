@@ -8,12 +8,7 @@ void World::Make()
 	g_instance = MakeUnique<World>();
 
 	// FilePathの設定
-	for (int i = 1; ; ++i)
-	{
-		g_instance->m_filePath = Format(U"worlds/world_", i, U"/");
-
-		if (!FileSystem::Exists(g_instance->m_filePath)) break;
-	}
+	g_instance->m_filePath = U"world/";
 
 	g_instance->make();
 
@@ -28,7 +23,7 @@ void World::Load(const FilePath& filepath)
 	g_instance = MakeUnique<World>();
 
 	g_instance->m_filePath = filepath;
-	
+
 	g_instance->load();
 }
 
