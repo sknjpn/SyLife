@@ -1,7 +1,7 @@
-﻿#include "CellMakingViewer.h"
+﻿#include "MainViewer.h"
 #include "GUIButton.h"
 
-void CellMakingViewer::PartsAssembler::init()
+void MainViewer::CellMakingViewer::PartsAssembler::init()
 {
 	setViewerRectInLocal(200, 0, 1200, 800);
 
@@ -20,7 +20,7 @@ void CellMakingViewer::PartsAssembler::init()
 
 }
 
-void CellMakingViewer::PartsAssembler::update()
+void MainViewer::CellMakingViewer::PartsAssembler::update()
 {
 
 }

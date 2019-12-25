@@ -1,4 +1,4 @@
-﻿#include "CellMakingViewer.h"
+﻿#include "MainViewer.h"
 #include "CellAsset.h"
 #include "PartAsset_Body.h"
 #include "GUIChecker.h"
@@ -6,7 +6,7 @@
 #include "GUIText.h"
 #include "GUIValuer.h"
 
-void CellMakingViewer::BodySculptor::setState(State state)
+void MainViewer::CellMakingViewer::BodySculptor::setState(State state)
 {
 	m_state = state;
 
@@ -25,7 +25,7 @@ void CellMakingViewer::BodySculptor::setState(State state)
 	}
 }
 
-void CellMakingViewer::BodySculptor::init()
+void MainViewer::CellMakingViewer::BodySculptor::init()
 {
 	setViewerRectInLocal(200, 0, 1200, 1100);
 
@@ -71,11 +71,11 @@ void CellMakingViewer::BodySculptor::init()
 	setState(State::Put);
 }
 
-void CellMakingViewer::BodySculptor::update()
+void MainViewer::CellMakingViewer::BodySculptor::update()
 {
 }
 
-double CellMakingViewer::BodySculptor::getStampRadius() const
+double MainViewer::CellMakingViewer::BodySculptor::getStampRadius() const
 {
 	return getChildViewer<GUIValuer>(U"スタンプサイズ")->getValue() * 100.0;
 }

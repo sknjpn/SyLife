@@ -1,35 +1,33 @@
-﻿#include "CellMakingViewer.h"
+﻿#include "MainViewer.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "PartAsset_Body.h"
 #include "ElementAsset.h"
 #include "CellAsset.h"
 #include "GUIButton.h"
-#include "ReleaseViewer.h"
 #include "Assets.h"
-#include "FieldViewer.h"
 
-void CellMakingViewer::clearEditor()
+void MainViewer::CellMakingViewer::clearEditor()
 {
 	if (const auto v = getChildViewer<BodySculptor>()) v->destroy();
 	if (const auto v = getChildViewer<PartsAssembler>()) v->destroy();
 }
 
-void CellMakingViewer::openBodySculptor()
+void MainViewer::CellMakingViewer::openBodySculptor()
 {
 	clearEditor();
 
 	addChildViewer<BodySculptor>();
 }
 
-void CellMakingViewer::openPartsAssembler()
+void MainViewer::CellMakingViewer::openPartsAssembler()
 {
 	clearEditor();
 
 	addChildViewer<PartsAssembler>();
 }
 
-void CellMakingViewer::init()
+void MainViewer::CellMakingViewer::init()
 {
 	// 新しいモデルの登録
 	makeAsset();
@@ -43,7 +41,7 @@ void CellMakingViewer::init()
 	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
 		->setViewerRectInLocal(5, 45, 190, 35);
 
-	addChildViewer<GUIButton>(U"生き物配置", [this]() { getParentViewer()->getChildViewer<FieldViewer>()->addChildViewer<ReleaseViewer>(m_cellAsset); destroy(); })
+	addChildViewer<GUIButton>(U"生き物配置", [this]() { getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset); destroy(); })
 		->setName(U"生き物配置")
 		->setViewerRectInLocal(5, 85, 190, 35);
 
@@ -58,7 +56,7 @@ void CellMakingViewer::init()
 	getChildViewer<GUIButton>(U"生き物配置")->setIsEnabled(false);
 }
 
-void CellMakingViewer::update()
+void MainViewer::CellMakingViewer::update()
 {
 	RectF(getViewerSize()).rounded(16.0).draw(Palette::Gray).drawFrame(2,0, Palette::Black);
 
@@ -70,7 +68,7 @@ void CellMakingViewer::update()
 	getChildViewer<GUIButton>(U"生き物配置")->setIsEnabled(m_cellAsset->isValid());
 }
 
-void CellMakingViewer::makeAsset()
+void MainViewer::CellMakingViewer::makeAsset()
 {
 	m_cellAsset = Assets::MakeAsset<CellAsset>();
 

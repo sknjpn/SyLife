@@ -1,17 +1,17 @@
-﻿#include "CellMakingViewer.h"
+﻿#include "MainViewer.h"
 #include "PartAsset.h"
 #include "PartAsset_Body.h"
 #include "PartAsset_Nucleus.h"
 #include "GUISlider.h"
 #include "Assets.h"
 
-void CellMakingViewer::PartsAssembler::PartList::init()
+void MainViewer::CellMakingViewer::PartsAssembler::PartList::init()
 {
 	setViewerRectInLocal(1000, 0, 200, 800);
 	addChildViewer<GUISlider>(getList().size() * m_itemHeight)->setViewerRectInLocal(RectF(200 - 24, 0, 24, 800));
 }
 
-void	CellMakingViewer::PartsAssembler::PartList::update()
+void	MainViewer::CellMakingViewer::PartsAssembler::PartList::update()
 {
 	getChildViewer<GUISlider>()->setHeight(getList().size() * m_itemHeight);
 
@@ -20,7 +20,7 @@ void	CellMakingViewer::PartsAssembler::PartList::update()
 	moveDrawPos(0, getChildViewer<GUISlider>()->getDelta());
 }
 
-Array<shared_ptr<PartAsset>> CellMakingViewer::PartsAssembler::PartList::getList() const
+Array<shared_ptr<PartAsset>> MainViewer::CellMakingViewer::PartsAssembler::PartList::getList() const
 {
 	Array<shared_ptr<PartAsset>> assets;
 
@@ -29,7 +29,7 @@ Array<shared_ptr<PartAsset>> CellMakingViewer::PartsAssembler::PartList::getList
 	return assets;
 }
 
-void CellMakingViewer::PartsAssembler::PartList::drawAssets()
+void MainViewer::CellMakingViewer::PartsAssembler::PartList::drawAssets()
 {
 	static Font font(16, Typeface::Bold);
 

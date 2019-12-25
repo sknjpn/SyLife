@@ -1,15 +1,15 @@
-﻿#include "CellMakingViewer.h"
+﻿#include "MainViewer.h"
 #include "Shape.h"
 #include "PartAsset.h"
 #include "GUISlider.h"
 
-void CellMakingViewer::BodySculptor::LayerLists::init()
+void MainViewer::CellMakingViewer::BodySculptor::LayerLists::init()
 {
 	setViewerRectInLocal(1000, 0, 200, 1000);
 	addChildViewer<GUISlider>(0)->setViewerRectInLocal(RectF(200 - 24, 0, 24, 800));
 }
 
-void CellMakingViewer::BodySculptor::LayerLists::update()
+void MainViewer::CellMakingViewer::BodySculptor::LayerLists::update()
 {
 	if (!m_partAsset) return;
 
@@ -45,13 +45,13 @@ void CellMakingViewer::BodySculptor::LayerLists::update()
 	moveDrawPos(0, getChildViewer<GUISlider>()->getDelta());
 }
 
-void CellMakingViewer::BodySculptor::LayerLists::setPartAsset(const shared_ptr<PartAsset>& partAsset)
+void MainViewer::CellMakingViewer::BodySculptor::LayerLists::setPartAsset(const shared_ptr<PartAsset>& partAsset)
 {
 	m_partAsset = partAsset;
 	m_selectedIndex = 0;
 }
 
-void CellMakingViewer::BodySculptor::LayerLists::drawLayers()
+void MainViewer::CellMakingViewer::BodySculptor::LayerLists::drawLayers()
 {
 	for (auto it = m_partAsset->getShape().begin(); it != m_partAsset->getShape().end(); ++it)
 	{

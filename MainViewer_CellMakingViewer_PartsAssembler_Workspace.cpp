@@ -1,18 +1,18 @@
-﻿#include "CellMakingViewer.h"
+﻿#include "MainViewer.h"
 #include "CellAsset.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartAsset_Body.h"
 #include "GUIButton.h"
 
-void CellMakingViewer::PartsAssembler::Workspace::init()
+void MainViewer::CellMakingViewer::PartsAssembler::Workspace::init()
 {
 	setBackgroundColor(Palette::Black);
 
 	setViewerRectInLocal(200, 0, 800, 800);
 }
 
-void CellMakingViewer::PartsAssembler::Workspace::update()
+void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 {
 	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), true);
 
@@ -104,7 +104,7 @@ void CellMakingViewer::PartsAssembler::Workspace::update()
 	}
 }
 
-void CellMakingViewer::PartsAssembler::Workspace::drawParts() const
+void MainViewer::CellMakingViewer::PartsAssembler::Workspace::drawParts() const
 {
 	for (const auto& partConfig : m_cellAsset->getPartConfigs())
 	{
@@ -126,14 +126,14 @@ void CellMakingViewer::PartsAssembler::Workspace::drawParts() const
 	}
 }
 
-void	CellMakingViewer::PartsAssembler::Workspace::setMoveMode()
+void	MainViewer::CellMakingViewer::PartsAssembler::Workspace::setMoveMode()
 {
 	m_state = State::MoveMode;
 	getParentViewer()->getChildViewer<GUIButton>(U"移動モード")->setIsEnabled(false);
 	getParentViewer()->getChildViewer<GUIButton>(U"回転モード")->setIsEnabled(true);
 }
 
-void	CellMakingViewer::PartsAssembler::Workspace::setRotateMode()
+void	MainViewer::CellMakingViewer::PartsAssembler::Workspace::setRotateMode()
 {
 	m_state = State::RotateMode;
 	getParentViewer()->getChildViewer<GUIButton>(U"移動モード")->setIsEnabled(true);

@@ -1,6 +1,6 @@
-﻿#include "ColorPicker.h"
+﻿#include "MainViewer.h"
 
-ColorPicker::ColorPicker()
+MainViewer::CellMakingViewer::BodySculptor::LayerLists::ColorPicker::ColorPicker()
 {
 	const int length = 64;
 
@@ -32,7 +32,7 @@ ColorPicker::ColorPicker()
 	}
 }
 
-HSV ColorPicker::update(const HSV& hsv)
+HSV MainViewer::CellMakingViewer::BodySculptor::LayerLists::ColorPicker::update(const HSV& hsv)
 {
 	HSV result = hsv;
 

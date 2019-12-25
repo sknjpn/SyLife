@@ -1,14 +1,13 @@
-﻿#include "FieldViewer.h"
+﻿#include "MainViewer.h"
 #include "CellState.h"
-#include "CellStateCaptureViewer.h"
 
-CellStateCaptureViewer::CellStateCaptureViewer(const shared_ptr<CellState>& cellState)
+MainViewer::FieldViewer::CellStateCaptureViewer::CellStateCaptureViewer(const shared_ptr<CellState>& cellState)
 	: m_cellState(cellState)
 {
 	
 }
 
-void CellStateCaptureViewer::update()
+void MainViewer::FieldViewer::CellStateCaptureViewer::update()
 {
 	if (MouseL.up() || m_cellState->isDestroyed())
 	{

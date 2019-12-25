@@ -1,10 +1,10 @@
-﻿#include "CellMakingViewer.h"
+﻿#include "MainViewer.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "CellAsset.h"
 #include "GUIChecker.h"
 
-Polygon CellMakingViewer::BodySculptor::Workspace::getReversed(const Polygon& polygon) const
+Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getReversed(const Polygon& polygon) const
 {
 	auto outer = polygon.outer();
 	for (auto& point : outer) point.x *= -1;
@@ -23,21 +23,21 @@ Polygon CellMakingViewer::BodySculptor::Workspace::getReversed(const Polygon& po
 	return Polygon(outer, inners);
 }
 
-Layer& CellMakingViewer::BodySculptor::Workspace::getSelectedLayer()
+Layer& MainViewer::CellMakingViewer::BodySculptor::Workspace::getSelectedLayer()
 {
 	const auto slv = getParentViewer()->getChildViewer<LayerLists>();
 
 	return m_partAsset->getShape()[slv->getSelectedIndex()];
 }
 
-void CellMakingViewer::BodySculptor::Workspace::init()
+void MainViewer::CellMakingViewer::BodySculptor::Workspace::init()
 {
 	setBackgroundColor(Palette::Black);
 
 	setViewerRectInLocal(200, 0, 800, 800);
 }
 
-void CellMakingViewer::BodySculptor::Workspace::update()
+void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 {
 	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), true);
 
@@ -101,7 +101,7 @@ void CellMakingViewer::BodySculptor::Workspace::update()
 
 	// パーツの描画
 	{
-		const auto cellAsset = getParentViewer<BodySculptor>()->getParentViewer<CellMakingViewer>()->getCellAsset();
+		const auto cellAsset = getParentViewer<BodySculptor>()->getParentViewer<MainViewer::CellMakingViewer>()->getCellAsset();
 
 		for (const auto& p : cellAsset->getPartConfigs())
 		{
@@ -116,12 +116,12 @@ void CellMakingViewer::BodySculptor::Workspace::update()
 	}
 }
 
-void CellMakingViewer::BodySculptor::Workspace::attach(const Polygon& polygon)
+void MainViewer::CellMakingViewer::BodySculptor::Workspace::attach(const Polygon& polygon)
 {
 	getSelectedLayer().m_polygon.append(polygon);
 }
 
-void CellMakingViewer::BodySculptor::Workspace::detach(const Polygon& polygon)
+void MainViewer::CellMakingViewer::BodySculptor::Workspace::detach(const Polygon& polygon)
 {
 	const auto polygons = Geometry2D::Subtract(getSelectedLayer().m_polygon, polygon);
 

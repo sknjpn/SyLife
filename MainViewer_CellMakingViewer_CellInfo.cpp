@@ -1,15 +1,15 @@
-﻿#include "CellMakingViewer.h"
+﻿#include "MainViewer.h"
 #include "CellAsset.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "ElementAsset.h"
 
-void CellMakingViewer::CellInfo::init()
+void MainViewer::CellMakingViewer::CellInfo::init()
 {
 	m_textEditState_name.text = getParentViewer<CellMakingViewer>()->getCellAsset()->getName();
 }
 
-void CellMakingViewer::CellInfo::update()
+void MainViewer::CellMakingViewer::CellInfo::update()
 {
 	const auto& cellAsset = getParentViewer<CellMakingViewer>()->getCellAsset();
 

@@ -1,12 +1,11 @@
-﻿#include "MagnifyingViewer.h"
-#include "FieldViewer.h"
+﻿#include "MainViewer.h"
 
-void MagnifyingViewer::init()
+void MainViewer::CommandPalette::MagnifyingViewer::init()
 {
 	setViewerSize(80, 40);
 }
 
-void MagnifyingViewer::update()
+void MainViewer::CommandPalette::MagnifyingViewer::update()
 {
 	Rect r(0, 0, 40, 40);
 	Rect l(40, 0, 40, 40);

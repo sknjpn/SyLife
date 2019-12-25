@@ -1,16 +1,15 @@
-﻿#include "CellStateViewer.h"
-
+﻿#include "MainViewer.h"
 #include "CellAsset.h"
 #include "CellState.h"
 #include "ElementAsset.h"
 
-CellStateViewer::CellStateViewer()
+MainViewer::CellStateViewer::CellStateViewer()
 	: m_cellState(nullptr)
 {
 	setViewerRectInLocal(Scene::Width() - 300, 450, 200, 400);
 }
 
-void CellStateViewer::update()
+void MainViewer::CellStateViewer::update()
 {
 	Rect(getViewerRectInLocal().size.asPoint()).draw(Color(11, 22, 33, 192));
 

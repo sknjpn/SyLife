@@ -1,19 +1,17 @@
-﻿#include "ReleaseViewer.h"
+﻿#include "MainViewer.h"
 #include "World.h"
-#include "FieldViewer.h"
-#include "CellMakingViewer.h"
 #include "CellAsset.h"
 #include "CellState.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
 
-ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
+MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 {
 	setBackgroundColor(Color(0, 0));
 }
 
-void ReleaseViewer::update()
+void MainViewer::FieldViewer::ReleaseViewer::update()
 {
 	auto fv = getParentViewer<FieldViewer>();
 

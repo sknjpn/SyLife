@@ -1,11 +1,11 @@
-﻿#include "StatisticsViewer.h"
+﻿#include "MainViewer.h"
 #include "CellState.h"
 #include "CellAsset.h"
 #include "EggState.h"
 #include "World.h"
 #include "Assets.h"
 
-void StatisticsViewer::update()
+void MainViewer::StatisticsViewer::update()
 {
 	DraggableViewer::update();
 
@@ -43,12 +43,12 @@ void StatisticsViewer::update()
 		RectF(getViewerSize()).rounded(16).draw(ColorF(1.0, 0.25));
 }
 
-void StatisticsViewer::init()
+void MainViewer::StatisticsViewer::init()
 {
 	setViewerRectInLocal(50, 1080 - 150, m_statusesSizeMax + 40, 140);
 }
 
-void StatisticsViewer::takeLog()
+void MainViewer::StatisticsViewer::takeLog()
 {
 	static int count = 0;
 	if (++count == 16) count = 0;
@@ -68,7 +68,7 @@ void StatisticsViewer::takeLog()
 	}
 }
 
-StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)
+MainViewer::StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)
 {
 	m_num = int(World::GetInstance()->getField().getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; }));
 	m_num = int(World::GetInstance()->getField().getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; }));

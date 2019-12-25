@@ -1,12 +1,12 @@
-﻿#include "SpeedControllerViewer.h"
+﻿#include "MainViewer.h"
 
-void SpeedControllerViewer::init()
+void MainViewer::CommandPalette::SpeedControllerViewer::init()
 {
 	setViewerSize(200, 40);
 	setViewerPosInLocal(getParentViewer()->getViewerSize().x - 220, 20);
 }
 
-void SpeedControllerViewer::update()
+void MainViewer::CommandPalette::SpeedControllerViewer::update()
 {
 	auto region = RectF(200, 40);
 

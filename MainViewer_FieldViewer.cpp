@@ -1,4 +1,4 @@
-﻿#include "FieldViewer.h"
+﻿#include "MainViewer.h"
 #include "World.h"
 
 #include "Rigidbody.h"
@@ -10,24 +10,14 @@
 #include "ElementState.h"
 #include "ElementAsset.h"
 
-#include "CellAssetViewer.h"
-#include "CellMakingViewer.h"
-#include "CellStateViewer.h"
-#include "CellStateCaptureViewer.h"
-#include "StatisticsViewer.h"
-#include "SpeedControllerViewer.h"
-#include "CellBookViewer.h"
-#include "MagnifyingViewer.h"
-
 #include "GUIButton.h"
-#include "CurtainViewer.h"
 
-void FieldViewer::openCellMakingViewer()
+void MainViewer::FieldViewer::openCellMakingViewer()
 {
 	if (!hasChildViewer<CellMakingViewer>()) addChildViewer<CellMakingViewer>();
 }
 
-void FieldViewer::init()
+void MainViewer::FieldViewer::init()
 {
 	m_camera.setRestrictedRect(Rect(World::GetInstance()->getField().getChipSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getField().getChipLength()));
 	m_camera.setMaxScale(4);
@@ -35,11 +25,10 @@ void FieldViewer::init()
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
 
-	addChildViewer<MagnifyingViewer>()
-		->setViewerPosInLocal(Scene::Size().x / 2.0 - 40, 20);
+	addChildViewer<CellStateViewer>();
 }
 
-void FieldViewer::update()
+void MainViewer::FieldViewer::update()
 {
 	Window::SetTitle(Cursor::PosF());
 	if (Cursor::Pos().x < 32) { Rect(32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
@@ -54,7 +43,7 @@ void FieldViewer::update()
 
 		// update
 		{
-			auto maxConut = getParentViewer()->getChildViewer<SpeedControllerViewer>()->isHighSpeed() ? 100 : 1;
+			auto maxConut = 1;// getParentViewer()->getChildViewer<SpeedControllerViewer>()->isHighSpeed() ? 100 : 1;
 			Stopwatch sw(true);
 			int i = 0;
 			for (; i < maxConut; ++i)
@@ -67,7 +56,7 @@ void FieldViewer::update()
 				// 60FPSを保つ動作
 				if (sw.ms() > 15) break;
 			}
-			getParentViewer()->getChildViewer<SpeedControllerViewer>()->setUpdateCount(i);
+			//getParentViewer()->getChildViewer<SpeedControllerViewer>()->setUpdateCount(i);
 		}
 
 		// CellState Capture
@@ -79,12 +68,7 @@ void FieldViewer::update()
 			{
 				addChildViewer<CellStateCaptureViewer>(cellState);
 
-				getParentViewer()->
-					getChildViewer<CellStateViewer>()->m_cellState = cellState;
-
-				// CellAssetViewerの構築
-				//if (auto cv = getChildViewer<CellAssetViewer>()) cv->destroy();
-				//addChildViewer<CellAssetViewer>(cellState->getCellAsset());
+				getParentViewer()->getChildViewer<CellStateViewer>()->m_cellState = cellState;
 			}
 		}
 
@@ -129,7 +113,7 @@ void FieldViewer::update()
 		}
 
 		{
-			const auto& cs = getParentViewer()->getChildViewer<CellStateViewer>()->m_cellState;
+			const auto& cs = getChildViewer<CellStateViewer>()->m_cellState;
 			if (cs != nullptr)
 			{
 				Circle(cs->getPosition(), cs->getRadius() * 1.5)
@@ -140,6 +124,6 @@ void FieldViewer::update()
 	}
 
 	// HighSpeed
-	if (getParentViewer()->getChildViewer<SpeedControllerViewer>()->isHighSpeed())
-		RectF(getViewerSize()).draw(ColorF(Palette::Red, 0.1)).drawFrame(8.0, 0.0, ColorF(Palette::Red, 0.5));
+	//if (getParentViewer()->getChildViewer<SpeedControllerViewer>()->isHighSpeed())
+	//	RectF(getViewerSize()).draw(ColorF(Palette::Red, 0.1)).drawFrame(8.0, 0.0, ColorF(Palette::Red, 0.5));
 }
