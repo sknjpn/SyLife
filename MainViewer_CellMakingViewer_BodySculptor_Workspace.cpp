@@ -47,52 +47,56 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 	m_partAsset->getShape().draw(0.5);
 	m_partAsset->getShape().getPolygon().drawFrame(1.0, Palette::Black);
 
-	auto p1 = Cursor::PreviousPosF();
-	auto p2 = Cursor::PosF();
-	auto r = getParentViewer<BodySculptor>()->getStampRadius();
-
-	auto stamp = (p1 == p2 ? Polygon() : Polygon({ p1 + (p1 - p2).setLength(r).rotated(-Math::HalfPi), p1 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(-Math::HalfPi) }));
-	stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PosF()));
-	stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PreviousPosF()));
-
-	// Mouse
+	// タッチパネル用に押し下げた瞬間は処理しない
+	if (MouseL.pressed() && !MouseL.down())
 	{
-		if (getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue())
-		{
-			stamp.draw(ColorF(getSelectedLayer().m_color, 0.5));
-			getReversed(stamp).draw(ColorF(getSelectedLayer().m_color, 0.5));
-		}
-		else
-		{
-			stamp.draw(ColorF(getSelectedLayer().m_color, 0.5));
-		}
-	}
+		auto p1 = Cursor::PreviousPosF();
+		auto p2 = Cursor::PosF();
+		auto r = getParentViewer<BodySculptor>()->getStampRadius();
 
-	if (isMouseover())
-	{
-		if (MouseL.pressed())
+		auto stamp = (p1 == p2 ? Polygon() : Polygon({ p1 + (p1 - p2).setLength(r).rotated(-Math::HalfPi), p1 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(-Math::HalfPi) }));
+		stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PosF()));
+		stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PreviousPosF()));
+
+		// Mouse
 		{
-			switch (getParentViewer<BodySculptor>()->getState())
+			if (getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue())
 			{
-			case BodySculptor::State::Put:
-				attach(stamp);
+				stamp.draw(ColorF(getSelectedLayer().m_color, 0.5));
+				getReversed(stamp).draw(ColorF(getSelectedLayer().m_color, 0.5));
+			}
+			else
+			{
+				stamp.draw(ColorF(getSelectedLayer().m_color, 0.5));
+			}
+		}
+
+		if (isMouseover())
+		{
+			if (MouseL.pressed())
+			{
+				switch (getParentViewer<BodySculptor>()->getState())
+				{
+				case BodySculptor::State::Put:
+					attach(stamp);
+					break;
+
+				case BodySculptor::State::Shave:
+				{
+					detach(stamp);
+
+					if (getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue())
+						detach(getReversed(stamp));
+
+				}
 				break;
-
-			case BodySculptor::State::Shave:
-			{
-				detach(stamp);
-
-				if (getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue())
-					detach(getReversed(stamp));
-
+				}
 			}
-			break;
-			}
+
+			double k = 0.01;
+			m_partAsset->setMass(m_partAsset->getShape()[0].m_polygon.area() * k);
+			m_partAsset->getMaterial().setNutrition(m_partAsset->getMass());
 		}
-
-		double k = 0.01;
-		m_partAsset->setMass(m_partAsset->getShape()[0].m_polygon.area() * k);
-		m_partAsset->getMaterial().setNutrition(m_partAsset->getMass());
 	}
 
 	// 左右対称
