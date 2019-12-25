@@ -292,7 +292,6 @@
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="ReleaseViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
-    <ClCompile Include="SetupViewer.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="SpeedControllerViewer.cpp" />
     <ClCompile Include="State.cpp" />
@@ -362,7 +361,6 @@
     <ClInclude Include="PartState.h" />
     <ClInclude Include="ReleaseViewer.h" />
     <ClInclude Include="Rigidbody.h" />
-    <ClInclude Include="SetupViewer.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SpeedControllerViewer.h" />
     <ClInclude Include="State.h" />
