@@ -40,7 +40,7 @@ void MainViewer::FieldViewer::update()
 
 	{
 		// camera
-		if (isMouseover() || !Scene::Rect().contains(Cursor::Pos())) m_camera.update();
+		m_camera.update();
 		auto t = m_camera.createTransformer();
 
 		// update

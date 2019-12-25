@@ -17,11 +17,11 @@ void MainViewer::CommandPalette::MagnifyingViewer::update()
 	font(U"+").drawAt(20, 20);
 	font(U"-").drawAt(60, 20);
 
-	if (r.leftClicked())
+	if (r.leftPressed())
 	{
 		getParentViewer()->getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomIn();
 	}
-	if (l.leftClicked())
+	if (l.leftPressed())
 	{
 		getParentViewer()->getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomOut();
 	}

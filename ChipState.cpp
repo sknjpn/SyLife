@@ -22,7 +22,7 @@ void ChipState::draw()
 {
 	getRegion().draw(getColor());
 
-	Line(getCentroid(), getCentroid().movedBy(getWaveVelocity() * World::GetInstance()->getField().getChipLength())).drawArrow(20.0, Vec2(20.0, 20.0), ColorF(1.0, 0.2));
+	//Line(getCentroid(), getCentroid().movedBy(getWaveVelocity() * World::GetInstance()->getField().getChipLength())).drawArrow(20.0, Vec2(20.0, 20.0), ColorF(1.0, 0.2));
 }
 
 RectF ChipState::getRegion() const
