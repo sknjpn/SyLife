@@ -92,6 +92,9 @@
     <Filter Include="State">
       <UniqueIdentifier>{aa98abb1-ad82-4b21-abfc-2aa3e78ff4b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{e52e91a6-c002-407f-ae66-34a977dda222}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -360,25 +363,11 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Storage.cpp" />
-    <ClCompile Include="Storage_Editor.cpp" />
-    <ClCompile Include="Storage_Editor_Element.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="Field.cpp" />
-    <ClCompile Include="GUIAssetLinker.cpp" />
-    <ClCompile Include="GUIAssetLinker_Dragger.cpp" />
-    <ClCompile Include="GUIButton.cpp" />
-    <ClCompile Include="GUIChecker.cpp" />
-    <ClCompile Include="GUIColorPicker.cpp" />
-    <ClCompile Include="GUISlider.cpp" />
-    <ClCompile Include="GUIText.cpp" />
-    <ClCompile Include="GUITextBox.cpp" />
-    <ClCompile Include="GUIValuer.cpp" />
-    <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainViewer.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer.cpp" />
@@ -398,20 +387,6 @@
     <ClCompile Include="MainViewer_FieldViewer_CellStateCaptureViewer.cpp" />
     <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp" />
     <ClCompile Include="MainViewer_StatisticsViewer.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="PartAsset.cpp" />
-    <ClCompile Include="PartAsset_Body.cpp" />
-    <ClCompile Include="PartAsset_Body_Editor.cpp" />
-    <ClCompile Include="PartAsset_Needle.cpp" />
-    <ClCompile Include="PartAsset_Needle_Editor.cpp" />
-    <ClCompile Include="PartAsset_Nucleus.cpp" />
-    <ClCompile Include="PartAsset_Nucleus_Editor.cpp" />
-    <ClCompile Include="PartAsset_Synthesizer.cpp" />
-    <ClCompile Include="PartAsset_Synthesizer_Editor.cpp" />
-    <ClCompile Include="PartAsset_Wing.cpp" />
-    <ClCompile Include="PartAsset_Wing_Editor.cpp" />
-    <ClCompile Include="PartConfig.cpp" />
-    <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="Asset.cpp">
       <Filter>Model</Filter>
     </ClCompile>
@@ -475,32 +450,96 @@
     <ClCompile Include="ElementState.cpp">
       <Filter>State</Filter>
     </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Body.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Body_Editor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Needle.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Needle_Editor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Nucleus.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Nucleus_Editor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Synthesizer.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Synthesizer_Editor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Wing.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset_Wing_Editor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage_Editor.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage_Editor_Element.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartConfig.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PartShapeViewer.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIAssetLinker.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIAssetLinker_Dragger.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIButton.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIChecker.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIColorPicker.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUISlider.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIText.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUITextBox.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIValuer.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />
     <ClInclude Include="Field.h" />
-    <ClInclude Include="GUIAssetLinker.h" />
-    <ClInclude Include="GUIButton.h" />
-    <ClInclude Include="GUIChecker.h" />
-    <ClInclude Include="GUIColorPicker.h" />
-    <ClInclude Include="GUISlider.h" />
-    <ClInclude Include="GUIText.h" />
-    <ClInclude Include="GUITextBox.h" />
-    <ClInclude Include="GUIValuer.h" />
-    <ClInclude Include="Layer.h" />
     <ClInclude Include="MainViewer.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="PartAsset.h" />
-    <ClInclude Include="PartAsset_Body.h" />
-    <ClInclude Include="PartAsset_Needle.h" />
-    <ClInclude Include="PartAsset_Nucleus.h" />
-    <ClInclude Include="PartAsset_Synthesizer.h" />
-    <ClInclude Include="PartAsset_Wing.h" />
-    <ClInclude Include="PartConfig.h" />
-    <ClInclude Include="PartShapeViewer.h" />
-    <ClInclude Include="Shape.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Storage.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="World.h" />
@@ -557,6 +596,66 @@
     </ClInclude>
     <ClInclude Include="ElementState.h">
       <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset_Body.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset_Needle.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset_Nucleus.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset_Synthesizer.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset_Wing.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PartConfig.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PartShapeViewer.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIAssetLinker.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIButton.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIChecker.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIColorPicker.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUISlider.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIText.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUITextBox.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIValuer.h">
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

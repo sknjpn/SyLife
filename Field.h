@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-class CellState;
-class ElementState;
-class EggState;
-class ChipState;
+#include "CellState.h"
+#include "ElementState.h"
+#include "EggState.h"
+#include "ChipState.h"
 
 class CellAsset;
 class ElementAsset;
