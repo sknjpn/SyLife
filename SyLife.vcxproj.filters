@@ -423,9 +423,6 @@
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="ToolbarViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
-    <ClCompile Include="SoundMixerViewer.cpp" />
-    <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="PartAsset_Body.cpp" />
     <ClCompile Include="PartAsset_Body_Editor.cpp" />
     <ClCompile Include="PartAsset_Needle.cpp" />
@@ -497,9 +494,6 @@
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldGenerateViewer.h" />
     <ClInclude Include="WorldLoadViewer.h" />
-    <ClInclude Include="SoundManager.h" />
-    <ClInclude Include="SoundMixerViewer.h" />
-    <ClInclude Include="Sound.h" />
     <ClInclude Include="PartAsset_Body.h" />
     <ClInclude Include="PartAsset_Needle.h" />
     <ClInclude Include="PartAsset_Nucleus.h" />
