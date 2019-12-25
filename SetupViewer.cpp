@@ -1,7 +1,7 @@
 ﻿#include "SetupViewer.h"
 #include "GUIButton.h"
 #include "GUIChecker.h"
-#include "TitleViewer.h"
+#include "WorldGenerateViewer.h"
 
 void SetupViewer::startGame()
 {
@@ -29,7 +29,7 @@ void SetupViewer::startGame()
 		//Window::Maximize();
 	}
 
-	getParentViewer()->addChildViewer<TitleViewer>();
+	getParentViewer()->addChildViewer<WorldGenerateViewer>();
 	destroy();
 }
 

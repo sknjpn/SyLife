@@ -420,7 +420,6 @@
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="Storage_Editor.cpp" />
     <ClCompile Include="Storage_Editor_Element.cpp" />
-    <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="ToolbarViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="PartAsset_Body.cpp" />
@@ -488,7 +487,6 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="TinyCamera.h" />
-    <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="World.h" />

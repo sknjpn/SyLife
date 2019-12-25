@@ -310,7 +310,6 @@
     <ClCompile Include="PartAsset_Synthesizer.cpp" />
     <ClCompile Include="PartAsset_Synthesizer_Editor.cpp" />
     <ClCompile Include="PartState_Synthesizer.cpp" />
-    <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="ToolbarViewer.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="PartAsset_Wing.cpp" />
@@ -377,7 +376,6 @@
     <ClInclude Include="PartAsset_Synthesizer.h" />
     <ClInclude Include="PartState_Synthesizer.h" />
     <ClInclude Include="TinyCamera.h" />
-    <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="ToolbarViewer.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="PartAsset_Wing.h" />
