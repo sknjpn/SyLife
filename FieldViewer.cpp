@@ -29,16 +29,11 @@ void FieldViewer::openCellMakingViewer()
 
 void FieldViewer::init()
 {
-	m_audio = Audio(U"resources/music/syan.mp3");
-
 	m_camera.setRestrictedRect(Rect(World::GetInstance()->getField().getChipSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getField().getChipLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
-
-	m_audio.setLoop(true);
-	m_audio.play();
 
 	addChildViewer<MagnifyingViewer>()
 		->setViewerPosInLocal(Scene::Size().x / 2.0 - 40, 20);

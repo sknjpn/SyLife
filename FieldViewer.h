@@ -8,7 +8,6 @@ class FieldViewer
 	: public Viewer
 {
 	TinyCamera	m_camera;
-	Audio		m_audio;
 
 	void	openCellMakingViewer();
 
