@@ -44,6 +44,9 @@ class MainViewer : public Viewer
 		void	openCellMakingViewer();
 
 	public:
+		bool	m_isHighSpeed = false;
+		int		m_frameCount = 0;
+
 		void	init() override;
 		void	update() override;
 
@@ -145,32 +148,33 @@ class MainViewer : public Viewer
 		public:
 			class LayerLists : public Viewer
 			{
-				class ColorPicker
+				class Item : public Viewer
 				{
 					Texture	m_circleTexture;
 					Texture	m_barTexture;
 					bool	m_circleSelected = false;
 					bool	m_barSelected = false;
+					HSV		m_hsv = Palette::White;
+					bool	m_isSelected = false;
+					shared_ptr<PartAsset>	m_partAsset;
 
 				public:
-					ColorPicker();
+					Item(const shared_ptr<PartAsset>& partAsset);
 
-					HSV	update(const HSV& hsv);
+					void	setSelected(bool isSelected) { m_isSelected = isSelected; }
+					void	update() override;
+					const HSV& getHSV() const { return m_hsv; }
 				};
 
-				int		m_selectedIndex = 0;
-				double	m_itemHeight = 80;
-				ColorPicker	m_colorPicker;
+				double	m_itemHeight = 100;
 				shared_ptr<PartAsset>	m_partAsset;
+				int		m_selectedIndex;
 
 			public:
 				void	init() override;
 				void	update() override;
 
 				void	setPartAsset(const shared_ptr<PartAsset>& partAsset);
-
-				void	drawLayers();
-
 				int		getSelectedIndex() const { return m_selectedIndex; }
 			};
 

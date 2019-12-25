@@ -1,8 +1,10 @@
 ﻿#include "MainViewer.h"
+#include "Layer.h"
 
-MainViewer::CellMakingViewer::BodySculptor::LayerLists::ColorPicker::ColorPicker()
+MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::Item(const shared_ptr<PartAsset>& partAsset)
+	: m_partAsset(partAsset)
 {
-	const int length = 64;
+	const int length = 80;
 
 	// Circle
 	{
@@ -22,7 +24,7 @@ MainViewer::CellMakingViewer::BodySculptor::LayerLists::ColorPicker::ColorPicker
 
 	// Bar
 	{
-		const Size size(length / 8, length);
+		const Size size(length / 4, length);
 		Image image(size);
 		for (auto p : step(size))
 		{
@@ -32,20 +34,24 @@ MainViewer::CellMakingViewer::BodySculptor::LayerLists::ColorPicker::ColorPicker
 	}
 }
 
-HSV MainViewer::CellMakingViewer::BodySculptor::LayerLists::ColorPicker::update(const HSV& hsv)
+void MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::update()
 {
-	HSV result = hsv;
-
 	const int length = 64;
+
+	// BackGround
+	{
+		const auto block = RectF(getViewerSize()).stretched(-2.0);
+		block.draw(m_isSelected ? ColorF(Palette::Blue, 0.5) : ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+	}
 
 	// Circle
 	{
-		auto t = Transformer2D(Mat3x2::Translate(8, 8), true);
+		auto t = Transformer2D(Mat3x2::Translate(10, 10), true);
 
 		m_circleTexture.draw();
 
 		RectF(Vec2(10, 10))
-			.setCenter(Vec2(hsv.s * length / 2.0, 0.0).rotated(ToRadians(hsv.h)))
+			.setCenter(Vec2(m_hsv.s * length / 2.0, 0.0).rotated(ToRadians(m_hsv.h)))
 			.movedBy(length / 2, length / 2)
 			.drawFrame(1.0, Palette::Black);
 
@@ -53,25 +59,24 @@ HSV MainViewer::CellMakingViewer::BodySculptor::LayerLists::ColorPicker::update(
 		if (Circle(Vec2(32, 32), 32).leftClicked()) m_circleSelected = true;
 		if (m_circleSelected)
 		{
-			result.h = ToDegrees(atan2(d.y, d.x));
-			result.s = Min(1.0, d.length() / (length / 2));
+			m_hsv.h = ToDegrees(atan2(d.y, d.x));
+			m_hsv.s = Min(1.0, d.length() / (length / 2));
 		}
 	}
 
 	// Bar
 	{
-		auto t = Transformer2D(Mat3x2::Translate(76, 8), true);
+		auto t = Transformer2D(Mat3x2::Translate(120, 10), true);
 
 		m_barTexture.draw();
 
 		Triangle(Vec2(0, 0), Vec2(8, -4), Vec2(8, 4))
-			.movedBy(length / 8, (1.0 - hsv.v) * length)
+			.movedBy(length / 4, (1.0 - m_hsv.v) * length)
 			.draw()
 			.drawFrame(1.0, Palette::Black);
 
-		if (Rect(8, 64).leftClicked()) m_barSelected = true;
-		if (m_barSelected)
-			result.v = Clamp<double>(1.0 - Cursor::PosF().y / length, 0.05, 1.0);	// 完全に0にするとSも0になるので注意
+		if (Rect(length / 4, length).leftClicked()) m_barSelected = true;
+		if (m_barSelected) m_hsv.v = Clamp<double>(1.0 - Cursor::PosF().y / length, 0.0, 1.0);	// 完全に0にするとSも0になるので注意
 	}
 
 	if (MouseL.up())
@@ -79,6 +84,4 @@ HSV MainViewer::CellMakingViewer::BodySculptor::LayerLists::ColorPicker::update(
 		m_barSelected = false;
 		m_circleSelected = false;
 	}
-
-	return result;
 }

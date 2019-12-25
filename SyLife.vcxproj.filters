@@ -373,7 +373,6 @@
     <ClCompile Include="MainViewer_CellMakingViewer.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_LayerLists.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_LayerLists_ColorPicker.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_CellInfo.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler.cpp" />
@@ -534,6 +533,7 @@
     <ClCompile Include="GUIValuer.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_LayerLists_Item.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />

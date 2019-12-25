@@ -19,10 +19,10 @@ void MainViewer::CommandPalette::MagnifyingViewer::update()
 
 	if (r.leftClicked())
 	{
-		getParentViewer<FieldViewer>()->getCamera().zoomIn();
+		getParentViewer()->getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomIn();
 	}
 	if (l.leftClicked())
 	{
-		getParentViewer<FieldViewer>()->getCamera().zoomOut();
+		getParentViewer()->getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomOut();
 	}
 }

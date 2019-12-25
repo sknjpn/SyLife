@@ -45,7 +45,7 @@ void MainViewer::FieldViewer::update()
 
 		// update
 		{
-			auto maxConut = 1;// getParentViewer()->getChildViewer<SpeedControllerViewer>()->isHighSpeed() ? 100 : 1;
+			auto maxConut = m_isHighSpeed ? 100 : 1;
 			Stopwatch sw(true);
 			int i = 0;
 			for (; i < maxConut; ++i)
@@ -58,7 +58,7 @@ void MainViewer::FieldViewer::update()
 				// 60FPSを保つ動作
 				if (sw.ms() > 15) break;
 			}
-			//getParentViewer()->getChildViewer<SpeedControllerViewer>()->setUpdateCount(i);
+			m_frameCount = i;
 		}
 
 		// CellState Capture
@@ -126,6 +126,6 @@ void MainViewer::FieldViewer::update()
 	}
 
 	// HighSpeed
-	//if (getParentViewer()->getChildViewer<SpeedControllerViewer>()->isHighSpeed())
-	//	RectF(getViewerSize()).draw(ColorF(Palette::Red, 0.1)).drawFrame(8.0, 0.0, ColorF(Palette::Red, 0.5));
+	if (m_isHighSpeed)
+		RectF(getViewerSize()).draw(ColorF(Palette::Red, 0.1)).drawFrame(8.0, 0.0, ColorF(Palette::Red, 0.5));
 }
