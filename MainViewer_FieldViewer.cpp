@@ -24,8 +24,6 @@ void MainViewer::FieldViewer::init()
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
-
-	addChildViewer<CellStateViewer>();
 }
 
 void MainViewer::FieldViewer::update()
@@ -69,8 +67,6 @@ void MainViewer::FieldViewer::update()
 			if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 			{
 				addChildViewer<CellStateCaptureViewer>(cellState);
-
-				getParentViewer()->getChildViewer<CellStateViewer>()->m_cellState = cellState;
 			}
 		}
 
@@ -111,16 +107,6 @@ void MainViewer::FieldViewer::update()
 						}
 					}
 				}
-			}
-		}
-
-		{
-			const auto& cs = getChildViewer<CellStateViewer>()->m_cellState;
-			if (cs != nullptr)
-			{
-				Circle(cs->getPosition(), cs->getRadius() * 1.5)
-					.draw(ColorF(1.0, 0.25))
-					.drawFrame(4.0, Palette::Black);
 			}
 		}
 	}

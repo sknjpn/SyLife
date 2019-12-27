@@ -56,17 +56,6 @@ class MainViewer : public Viewer
 		const TinyCamera& getCamera() const { return m_camera; }
 	};
 
-	class CellStateViewer : public Viewer
-	{
-	public:
-		shared_ptr<CellState>	m_cellState;
-
-	public:
-		CellStateViewer();
-
-		void	update() override;
-	};
-
 	class CommandPalette : public Viewer
 	{
 		class MagnifyingViewer

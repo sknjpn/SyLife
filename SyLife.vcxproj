@@ -262,7 +262,6 @@
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp" />
-    <ClCompile Include="MainViewer_CellStateViewer.cpp" />
     <ClCompile Include="MainViewer_CommandPalette.cpp" />
     <ClCompile Include="MainViewer_CommandPalette_MagnifyingViewer.cpp" />
     <ClCompile Include="MainViewer_CommandPalette_SpeedControllerViewer.cpp" />
@@ -293,8 +292,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
-    <ClCompile Include="Storage_Editor.cpp" />
-    <ClCompile Include="Storage_Editor_Element.cpp" />
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
