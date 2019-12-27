@@ -1,6 +1,5 @@
 ﻿#include "CellState.h"
 #include "CellAsset.h"
-#include "Assets.h"
 #include "World.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
@@ -189,7 +188,7 @@ void CellState::load(Deserializer<ByteArray>& reader)
 	{
 		String cellAssetName;
 		reader >> cellAssetName;
-		m_cellAsset = Assets::GetAsset<CellAsset>(cellAssetName);
+		m_cellAsset = World::GetAsset<CellAsset>(cellAssetName);
 	}
 
 	// parts

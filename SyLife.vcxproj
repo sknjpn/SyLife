@@ -231,8 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
-    <ClCompile Include="Assets.cpp" />
-    <ClCompile Include="Assets_makeModel.cpp" />
+    <ClCompile Include="World_makeModel.cpp" />
     <ClCompile Include="CellAsset.cpp" />
     <ClCompile Include="CellState.cpp" />
     <ClCompile Include="TileState.cpp" />
@@ -296,7 +295,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
-    <ClInclude Include="Assets.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
     <ClInclude Include="TileState.h" />

@@ -1,5 +1,6 @@
 ﻿#include "World.h"
-#include "Assets.h"
+#include "Asset.h"
+#include "CellAsset.h"
 
 unique_ptr<World>	World::g_instance;
 
@@ -51,12 +52,59 @@ void World::save()
 
 	// Assets
 	{
-		Assets::Save(m_filePath + U"assets/");
+		for (const auto& asset : m_assets)
+		{
+			JSONWriter json;
+			json.startObject();
+
+			json.key(U"type").writeString(asset->getTypeName());
+
+			asset->save(json);
+
+			json.endObject();
+
+			json.save(m_filePath + U"assets/" + asset->getName() + U".json");
+		}
 	}
 
 	// Field
 	{
 		m_field.save(m_filePath + U"field/");
+	}
+}
+
+void World::loadAssets()
+{
+	// JSONのパスを取得
+	const auto jsonFiles = FileSystem::DirectoryContents(m_filePath + U"assets/", true)
+		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; });
+
+	// 名前の読み込み(リンクがあるため、Loadの前に名前の登録を行う)
+	for (const auto& jsonFile : jsonFiles)
+	{
+		JSONReader json(jsonFile);
+
+		auto a = makeAsset(json[U"type"].getString());
+		a->setName(json[U"name"].getString());
+		a->setFilePath(FileSystem::RelativePath(jsonFile, m_filePath + U"assets/"));
+	}
+
+	// 読み込み
+	for (const auto& m : m_assets)
+	{
+		Logger << m->getName() + U"を読み込み中";
+
+		JSONReader json(m_filePath + U"assets/" + m->getFilePath());
+		m->load(json);
+
+		Logger << m->getName() + U"を読み込み成功";
+	}
+
+	// CellAssetの初期化
+	{
+		const auto cellAssets = getAssets<CellAsset>();
+
+		for (const auto& ca : cellAssets) ca->updateProperties();
 	}
 }
 
@@ -72,9 +120,7 @@ void World::load()
 	}
 
 	// Assets
-	{
-		Assets::Load(m_filePath + U"assets/");
-	}
+	loadAssets();
 
 	// Field
 	{
@@ -93,7 +139,21 @@ void World::make()
 	FileSystem::Copy(U"resources/assets/", m_filePath + U"assets/", CopyOption::OverwriteExisting);
 
 	// Assetsのロード
-	{
-		Assets::Load(m_filePath + U"assets/");
-	}
+	loadAssets();
+}
+
+shared_ptr<Asset> World::getAsset(const String& name) const
+{
+	for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
+		if ((*it)->getName() == name) return dynamic_pointer_cast<Asset>(*it);
+
+	throw Error(U"存在しない名前のモデルを参照しました name:" + name);
+}
+
+bool World::hasAsset(const String& name) const
+{
+	for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
+		if ((*it)->getName() == name) return true;
+
+	return false;
 }

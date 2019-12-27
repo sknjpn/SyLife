@@ -1,7 +1,6 @@
 ﻿#include "ElementState.h"
 #include "ElementAsset.h"
 #include "World.h"
-#include "Assets.h"
 
 ElementState::ElementState(const shared_ptr<ElementAsset>& asset)
 	: m_elementAsset(asset)
@@ -39,7 +38,7 @@ void ElementState::load(Deserializer<ByteArray>& reader)
 	{
 		String elementAssetName;
 		reader >> elementAssetName;
-		m_elementAsset = Assets::GetAsset<ElementAsset>(elementAssetName);
+		m_elementAsset = World::GetAsset<ElementAsset>(elementAssetName);
 	}
 
 	setRadius(m_elementAsset->getRadius());
