@@ -19,7 +19,7 @@ void MainViewer::FieldViewer::openCellMakingViewer()
 
 void MainViewer::FieldViewer::init()
 {
-	m_camera.setRestrictedRect(Rect(World::GetInstance()->getField().getChipSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getField().getChipLength()));
+	m_camera.setRestrictedRect(Rect(World::GetInstance()->getField().getTileSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getField().getTileLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
@@ -89,7 +89,7 @@ void MainViewer::FieldViewer::update()
 					e->destroy();
 
 					// Nutritionの吐き出し
-					World::GetInstance()->getField().getChip(e->getPosition())->addNutrition(e->getCellAsset()->getMaterial().getNutrition());
+					World::GetInstance()->getField().getTile(e->getPosition())->addNutrition(e->getCellAsset()->getMaterial().getNutrition());
 
 					// ElementStateの吐き出し
 					auto s = e->getCellAsset()->getMaterial();

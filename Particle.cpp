@@ -21,7 +21,7 @@ void Particle::updateParticle()
 	// 水流
 	{
 		const double scale = 100.0;
-		const auto waveVelocity = scale * World::GetInstance()->getField().getChip(m_position)->getWaveVelocity();
+		const auto waveVelocity = scale * World::GetInstance()->getField().getTile(m_position)->getWaveVelocity();
 
 		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.95;
 	}

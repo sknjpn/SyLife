@@ -111,7 +111,7 @@ void CellState::updateCell()
 	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
 		// Nutritionの吐き出し
-		World::GetInstance()->getField().getChip(getPosition())->addNutrition(m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
+		World::GetInstance()->getField().getTile(getPosition())->addNutrition(m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
 
 		// ElementStateの吐き出し
 		auto s = m_storage + m_cellAsset->getMaterial();
@@ -160,10 +160,10 @@ void CellState::draw()
 void CellState::takeNutrition()
 {
 	const double space = m_cellAsset->getMaxStorage().getNutrition() - m_storage.getNutrition();
-	const double amount = World::GetInstance()->getField().getChip(getPosition())->getNutrition();
+	const double amount = World::GetInstance()->getField().getTile(getPosition())->getNutrition();
 	const double value = Min(space, amount);
 
-	World::GetInstance()->getField().getChip(getPosition())->pullNutrition(value);
+	World::GetInstance()->getField().getTile(getPosition())->pullNutrition(value);
 	m_storage.addNutrition(value);
 }
 

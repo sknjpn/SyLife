@@ -13,7 +13,7 @@ void ElementState::updateElement()
 	// 分解
 	if (RandomBool(0.01))
 	{
-		World::GetInstance()->getField().getChip(getPosition())->addNutrition(m_elementAsset->getMaterial().getNutritionRecursive());
+		World::GetInstance()->getField().getTile(getPosition())->addNutrition(m_elementAsset->getMaterial().getNutritionRecursive());
 
 		destroy();
 
