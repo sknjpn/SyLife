@@ -2,7 +2,6 @@
 #include "CellAsset.h"
 #include "CellState.h"
 #include "World.h"
-#include "Assets.h"
 
 EggState::EggState(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
@@ -22,7 +21,7 @@ void EggState::updateEgg()
 	{
 		destroy();
 
-		const auto& c = World::GetInstance()->getField().addCellState(getCellAsset());
+		const auto& c = World::GetInstance()->addCellState(getCellAsset());
 		c->setPosition(getPosition());
 		c->setRotation(getRotation());
 	}
@@ -47,7 +46,7 @@ void EggState::load(Deserializer<ByteArray>& reader)
 	{
 		String cellAssetName;
 		reader >> cellAssetName;
-		m_cellAsset = Assets::GetAsset<CellAsset>(cellAssetName);
+		m_cellAsset = World::GetAsset<CellAsset>(cellAssetName);
 	}
 }
 

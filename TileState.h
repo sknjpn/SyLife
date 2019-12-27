@@ -9,7 +9,7 @@ class TileState
 	Vec2	m_waveVelocity;
 
 	double	m_sendRate[3][3];	// 周囲のマスに送る比率
-	shared_ptr<TileState>	m_nearChips[3][3];
+	shared_ptr<TileState>	m_nearTiles[3][3];
 
 public:
 	TileState(const Point& point)
@@ -35,7 +35,7 @@ public:
 	void	pullNutrition(double nutrition) { m_nutrition -= nutrition; }
 
 	Color	getColor() const { return Math::Lerp(Color(0, 0), Palette::Palegreen, Min(m_nutrition / 100.0, 1.0)); }
-	void	sendTo(const shared_ptr<TileState>& chip, double value);
+	void	sendTo(const shared_ptr<TileState>& tile, double value);
 
 	void	load(Deserializer<ByteArray>& reader);
 	void	save(Serializer<MemoryWriter>& writer) const;

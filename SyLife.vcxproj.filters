@@ -450,9 +450,6 @@
     <ClCompile Include="Asset.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Assets.cpp">
-      <Filter>Engine\Util</Filter>
-    </ClCompile>
     <ClCompile Include="Layer.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
@@ -465,14 +462,8 @@
     <ClCompile Include="Storage.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Field.cpp">
-      <Filter>Engine\Util</Filter>
-    </ClCompile>
     <ClCompile Include="World.cpp">
       <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="Assets_makeModel.cpp">
-      <Filter>Engine\Util</Filter>
     </ClCompile>
     <ClCompile Include="CellAsset.cpp">
       <Filter>Engine\World</Filter>
@@ -502,6 +493,9 @@
       <Filter>Engine\World</Filter>
     </ClCompile>
     <ClCompile Include="TileState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World_makeModel.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
   </ItemGroup>
@@ -568,9 +562,6 @@
     <ClInclude Include="Asset.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Assets.h">
-      <Filter>Engine\Util</Filter>
-    </ClInclude>
     <ClInclude Include="Layer.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
@@ -581,9 +572,6 @@
       <Filter>Engine\Util</Filter>
     </ClInclude>
     <ClInclude Include="Storage.h">
-      <Filter>Engine\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Field.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
     <ClInclude Include="World.h">

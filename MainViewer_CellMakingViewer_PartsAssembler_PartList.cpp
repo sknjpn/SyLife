@@ -3,7 +3,7 @@
 #include "PartAsset_Body.h"
 #include "PartAsset_Nucleus.h"
 #include "GUISlider.h"
-#include "Assets.h"
+#include "World.h"
 
 void MainViewer::CellMakingViewer::PartsAssembler::PartList::init()
 {
@@ -24,7 +24,7 @@ Array<shared_ptr<PartAsset>> MainViewer::CellMakingViewer::PartsAssembler::PartL
 {
 	Array<shared_ptr<PartAsset>> assets;
 
-	for (const auto& m : Assets::GetAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<PartAsset_Body>(pa) ? true : false; })) assets.emplace_back(m);
+	for (const auto& m : World::GetAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<PartAsset_Body>(pa) ? true : false; })) assets.emplace_back(m);
 	
 	return assets;
 }
@@ -42,7 +42,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::PartList::drawAssets()
 
 		// パーツ描画
 		{
-			RectF rect = (*it)->getShape().getChipSize();
+			RectF rect = (*it)->getShape().getTileSize();
 			auto scale = Min((m_itemHeight - 20) / rect.w, (m_itemHeight - 20) / rect.h);
 			auto t = Transformer2D(Mat3x2::Translate(-rect.center()).scaled(scale).translated(Vec2(170 - m_itemHeight / 2.0, m_itemHeight / 2.0)));
 

@@ -1,7 +1,7 @@
 ﻿#include "ElementState.h"
 #include "ElementAsset.h"
+#include "TileState.h"
 #include "World.h"
-#include "Assets.h"
 
 ElementState::ElementState(const shared_ptr<ElementAsset>& asset)
 	: m_elementAsset(asset)
@@ -14,7 +14,7 @@ void ElementState::updateElement()
 	// 分解
 	if (RandomBool(0.01))
 	{
-		World::GetInstance()->getField().getChip(getPosition())->addNutrition(m_elementAsset->getMaterial().getNutritionRecursive());
+		World::GetInstance()->getTile(getPosition())->addNutrition(m_elementAsset->getMaterial().getNutritionRecursive());
 
 		destroy();
 
@@ -39,7 +39,7 @@ void ElementState::load(Deserializer<ByteArray>& reader)
 	{
 		String elementAssetName;
 		reader >> elementAssetName;
-		m_elementAsset = Assets::GetAsset<ElementAsset>(elementAssetName);
+		m_elementAsset = World::GetAsset<ElementAsset>(elementAssetName);
 	}
 
 	setRadius(m_elementAsset->getRadius());

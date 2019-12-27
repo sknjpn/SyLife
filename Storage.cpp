@@ -1,6 +1,6 @@
 ﻿#include "Storage.h"
 #include "ElementAsset.h"
-#include "Assets.h"
+#include "World.h"
 
 bool Storage::operator>=(const Storage& s) const
 {
@@ -88,7 +88,7 @@ void Storage::load(const JSONValue& json)
 	// elements
 	for (auto element : json[U"elements"].arrayView())
 	{
-		const auto& asset = Assets::GetAsset<ElementAsset>(element[U"name"].getString());
+		const auto& asset = World::GetAsset<ElementAsset>(element[U"name"].getString());
 		const int size = element[U"size"].get<int>();
 
 		emplace_back(asset, size);
@@ -137,7 +137,7 @@ void Storage::load(Deserializer<ByteArray>& reader)
 			reader >> elementAssetName;
 			reader >> elementSize;
 
-			emplace_back(Assets::GetAsset<ElementAsset>(elementAssetName), elementSize);
+			emplace_back(World::GetAsset<ElementAsset>(elementAssetName), elementSize);
 		}
 	}
 }
