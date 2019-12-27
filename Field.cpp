@@ -5,11 +5,11 @@ Field::Field()
 	: m_cellStateKDTree(m_cellStates)
 	, m_eggStateKDTree(m_eggStates)
 	, m_elementStateKDTree(m_elementStates)
-	, m_chipSize(80, 45)
-	, m_chipLength(100)
-	, m_chips(m_chipSize)
+	, m_tileSize(80, 45)
+	, m_tileLength(100)
+	, m_tiles(m_tileSize)
 {
-	m_fieldSize = m_chipSize * m_chipLength;
+	m_fieldSize = m_tileSize * m_tileLength;
 	m_cellStates.reserve(0xFFFF);
 	m_elementStates.reserve(0xFFFF);
 	m_eggStates.reserve(0xFFFF);
@@ -62,11 +62,11 @@ void Field::update()
 		m_elementStateKDTree.rebuildIndex();
 	}
 
-	// Chip
+	// Tile
 	{
-		for (const auto& chip : m_chips)
+		for (const auto& tile : m_tiles)
 		{
-			chip->update();
+			tile->update();
 		}
 	}
 }
@@ -76,8 +76,8 @@ void Field::draw()
 	static bool showWave = false;
 	if (KeyP.down()) showWave = !showWave;
 
-	for (const auto& chip : m_chips)
-		chip->draw();
+	for (const auto& tile : m_tiles)
+		tile->draw();
 
 	for (const auto& e : getElementStates())
 		if (!e->isDestroyed()) e->draw();
@@ -89,16 +89,16 @@ void Field::draw()
 		if (!c->isDestroyed()) c->draw();
 }
 
-shared_ptr<TileState> Field::getChip(const Point& point) const
+shared_ptr<TileState> Field::getTile(const Point& point) const
 {
 	Point ap = point;
 
 	if (ap.x < 0) ap.x = 0;
 	if (ap.y < 0) ap.y = 0;
-	if (ap.x >= m_chipSize.x) ap.x = m_chipSize.x - 1;
-	if (ap.y >= m_chipSize.y) ap.y = m_chipSize.y - 1;
+	if (ap.x >= m_tileSize.x) ap.x = m_tileSize.x - 1;
+	if (ap.y >= m_tileSize.y) ap.y = m_tileSize.y - 1;
 
-	return m_chips[ap];
+	return m_tiles[ap];
 }
 
 void Field::save(const FilePath& directory)
@@ -118,42 +118,42 @@ void Field::load(const FilePath& directory)
 	load(reader);
 }
 
-void Field::generateWave(const Size& chipSize)
+void Field::generateWave(const Size& tileSize)
 {
-	m_chipSize = chipSize;
-	m_chips.resize(chipSize);
+	m_tileSize = tileSize;
+	m_tiles.resize(tileSize);
 
 	const PerlinNoise perlinNoiseX(Random(0xFFFFFFFF));
 	const PerlinNoise perlinNoiseY(Random(0xFFFFFFFF));
 	const auto interval = 500.0;
 
-	for (auto& chip : m_chips)
+	for (auto& tile : m_tiles)
 	{
 		//外的圧力比
-		const double rx = (chip->getPoint().x - m_chipSize.x / 2.0) / (m_chipSize.x / 2.0);
-		const double ry = (chip->getPoint().y - m_chipSize.y / 2.0) / (m_chipSize.y / 2.0);
+		const double rx = (tile->getPoint().x - m_tileSize.x / 2.0) / (m_tileSize.x / 2.0);
+		const double ry = (tile->getPoint().y - m_tileSize.y / 2.0) / (m_tileSize.y / 2.0);
 
-		const auto wx = perlinNoiseX.noise(chip->getCentroid().x / interval, chip->getCentroid().y / interval);
-		const auto wy = perlinNoiseY.noise(chip->getCentroid().x / interval, chip->getCentroid().y / interval);
+		const auto wx = perlinNoiseX.noise(tile->getCentroid().x / interval, tile->getCentroid().y / interval);
+		const auto wy = perlinNoiseY.noise(tile->getCentroid().x / interval, tile->getCentroid().y / interval);
 
 		// 最大の長さを1とする
-		chip->setWaveVelocity(Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))), Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) / Math::Sqrt2);
+		tile->setWaveVelocity(Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))), Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) / Math::Sqrt2);
 	}
 }
 
 void Field::init()
 {
-	// Chips
+	// Tiles
 	{
-		const Size size = m_chipSize;
+		const Size size = m_tileSize;
 
-		m_chipSize = size;
-		m_chips.resize(size);
+		m_tileSize = size;
+		m_tiles.resize(size);
 
 		for (auto point : step(size))
 		{
-			m_chips[point] = MakeShared<TileState>(point);
-			m_chips[point]->setNutrition(50.0);
+			m_tiles[point] = MakeShared<TileState>(point);
+			m_tiles[point]->setNutrition(50.0);
 		}
 	}
 
@@ -189,12 +189,12 @@ void Field::load(Deserializer<ByteArray>& reader)
 	{
 		Size tileStateSize;
 		reader >> tileStateSize;
-		m_chips.resize(tileStateSize);
+		m_tiles.resize(tileStateSize);
 
-		for (auto p : step(m_chips.size()))
-			m_chips.at(p) = MakeShared<TileState>(p);
+		for (auto p : step(m_tiles.size()))
+			m_tiles.at(p) = MakeShared<TileState>(p);
 
-		for (const auto& tileState : m_chips) 
+		for (const auto& tileState : m_tiles) 
 			tileState->load(reader);
 	}
 }
@@ -217,8 +217,8 @@ void Field::save(Serializer<MemoryWriter>& writer) const
 	for (const auto& elementState : m_elementStates)
 		elementState->save(writer);
 
-	// Chips
-	writer << m_chipSize;
-	for (const auto& tileState : m_chips)
+	// Tiles
+	writer << m_tileSize;
+	for (const auto& tileState : m_tiles)
 		tileState->save(writer);
 }

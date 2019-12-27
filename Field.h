@@ -31,10 +31,10 @@ class Field
 	KDTree<ParticleAdapter<EggState>>		m_eggStateKDTree;
 	KDTree<ParticleAdapter<ElementState>>	m_elementStateKDTree;
 
-	// Chip
-	Grid<shared_ptr<TileState>> m_chips;
-	Size	m_chipSize;
-	double	m_chipLength;
+	// Tile
+	Grid<shared_ptr<TileState>> m_tiles;
+	Size	m_tileSize;
+	double	m_tileLength;
 
 	Vec2	m_fieldSize;
 
@@ -56,18 +56,18 @@ public:
 	const shared_ptr<EggState>& addEggState(const shared_ptr<CellAsset>& asset) { return m_eggStates.emplace_back(make_shared<EggState>(asset));}
 	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementAsset>& asset) { return m_elementStates.emplace_back(make_shared<ElementState>(asset)); }
 
-	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_chipLength), int(position.y / m_chipLength)); }
-	shared_ptr<TileState> getChip(const Point& point) const;
-	shared_ptr<TileState> getChip(const Vec2& position) const { return getChip(getPoint(position)); }
-	const Grid<shared_ptr<TileState>>& getChips() const { return m_chips; }
-	double	getChipLength() const { return m_chipLength; }
-	const Size& getChipSize() const { return m_chipSize; }
+	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_tileLength), int(position.y / m_tileLength)); }
+	shared_ptr<TileState> getTile(const Point& point) const;
+	shared_ptr<TileState> getTile(const Vec2& position) const { return getTile(getPoint(position)); }
+	const Grid<shared_ptr<TileState>>& getTiles() const { return m_tiles; }
+	double	getTileLength() const { return m_tileLength; }
+	const Size& getTileSize() const { return m_tileSize; }
 	const Vec2& getFieldSize() const { return m_fieldSize; }
 
 	void	save(const FilePath& directory);
 	void	load(const FilePath& directory);
 
-	void	generateWave(const Size& chipSize);
+	void	generateWave(const Size& tileSize);
 
 	void	init();
 
