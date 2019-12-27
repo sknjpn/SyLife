@@ -31,24 +31,6 @@ class CellAsset
 	void	updateMaterial();
 
 public:
-	class Editor
-		: public AssetEditor
-	{
-		shared_ptr<CellAsset> m_cellAsset;
-
-	public:
-		Editor(const shared_ptr<CellAsset>& cellAsset)
-			: m_cellAsset(cellAsset)
-		{}
-
-		void	init() override;
-		void	update() override;
-	};
-
-public:
-	// Editor
-	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<CellAsset>(shared_from_this())); }
-
 	bool	isValid() const;
 
 	Vec2	getCentroid();

@@ -1,6 +1,5 @@
 ﻿#include "PartAsset_Wing.h"
 #include "PartState_Wing.h"
-#include "PartShapeViewer.h"
 
 shared_ptr<PartState> PartAsset_Wing::makeState()
 {

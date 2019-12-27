@@ -231,17 +231,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
-    <ClCompile Include="AssetEditor.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Assets_makeModel.cpp" />
     <ClCompile Include="CellAsset.cpp" />
-    <ClCompile Include="CellAsset_Editor.cpp" />
     <ClCompile Include="CellState.cpp" />
     <ClCompile Include="ChipState.cpp" />
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="ElementAsset.cpp" />
-    <ClCompile Include="ElementAsset_Editor.cpp" />
     <ClCompile Include="ElementState.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GUIAssetLinker.cpp" />
@@ -276,18 +273,12 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="PartAsset.cpp" />
     <ClCompile Include="PartAsset_Body.cpp" />
-    <ClCompile Include="PartAsset_Body_Editor.cpp" />
     <ClCompile Include="PartAsset_Needle.cpp" />
-    <ClCompile Include="PartAsset_Needle_Editor.cpp" />
     <ClCompile Include="PartAsset_Nucleus.cpp" />
-    <ClCompile Include="PartAsset_Nucleus_Editor.cpp" />
     <ClCompile Include="PartAsset_Synthesizer.cpp" />
-    <ClCompile Include="PartAsset_Synthesizer_Editor.cpp" />
     <ClCompile Include="PartAsset_Wing.cpp" />
-    <ClCompile Include="PartAsset_Wing_Editor.cpp" />
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="PartShapeViewer.cpp" />
     <ClCompile Include="PartState.cpp" />
     <ClCompile Include="PartState_Body.cpp" />
     <ClCompile Include="PartState_Needle.cpp" />
@@ -309,7 +300,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
-    <ClInclude Include="AssetEditor.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
@@ -338,7 +328,6 @@
     <ClInclude Include="PartAsset_Wing.h" />
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="PartShapeViewer.h" />
     <ClInclude Include="PartState.h" />
     <ClInclude Include="PartState_Body.h" />
     <ClInclude Include="PartState_Needle.h" />

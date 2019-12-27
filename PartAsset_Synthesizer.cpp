@@ -2,7 +2,6 @@
 #include "PartState_Synthesizer.h"
 #include "Assets.h"
 #include "ElementAsset.h"
-#include "PartShapeViewer.h"
 
 shared_ptr<PartState> PartAsset_Synthesizer::makeState()
 {

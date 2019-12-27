@@ -1,7 +1,6 @@
 ﻿#include "PartAsset.h"
 
 #include "PartState.h"
-#include "PartShapeViewer.h"
 
 void PartAsset::drawIcon() const
 {

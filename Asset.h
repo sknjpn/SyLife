@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Model.h"
-#include "AssetEditor.h"
+
 
 // AssetManagerに登録可能なModel
 // JSONファイルに対応している
@@ -21,8 +21,6 @@ public:
 	// Get
 	const String& getName() const { return m_name; }
 	const String& getFilePath() const { return m_filepath; }
-
-	virtual void	makeEditor(const shared_ptr<Viewer>& parent) = 0;
 
 	// Icon
 	virtual void	drawIcon() const {}

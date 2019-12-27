@@ -1,6 +1,5 @@
 ﻿#include "PartAsset_Needle.h"
 #include "PartState_Needle.h"
-#include "PartShapeViewer.h"
 
 shared_ptr<PartState> PartAsset_Needle::makeState()
 {
