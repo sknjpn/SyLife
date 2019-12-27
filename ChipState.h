@@ -3,7 +3,7 @@
 #include "State.h"
 #include "Storage.h"
 
-class ChipState
+class TileState
 	: public State
 {
 	double	m_nutrition;
@@ -11,10 +11,10 @@ class ChipState
 	Vec2	m_waveVelocity;
 
 	double	m_sendRate[3][3];	// 周囲のマスに送る比率
-	shared_ptr<ChipState>	m_nearChips[3][3];
+	shared_ptr<TileState>	m_nearChips[3][3];
 
 public:
-	ChipState(const Point& point)
+	TileState(const Point& point)
 		: m_point(point)
 		, m_nutrition(0.0)
 	{}
@@ -37,7 +37,7 @@ public:
 	void	pullNutrition(double nutrition) { m_nutrition -= nutrition; }
 
 	Color	getColor() const { return Math::Lerp(Color(0, 0), Palette::Palegreen, Min(m_nutrition / 100.0, 1.0)); }
-	void	sendTo(const shared_ptr<ChipState>& chip, double value);
+	void	sendTo(const shared_ptr<TileState>& chip, double value);
 
 	// JSON
 	void	load(const JSONValue& json) override;

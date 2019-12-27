@@ -89,7 +89,7 @@ void Field::draw()
 		if (!c->isDestroyed()) c->draw();
 }
 
-shared_ptr<ChipState> Field::getChip(const Point& point) const
+shared_ptr<TileState> Field::getChip(const Point& point) const
 {
 	Point ap = point;
 
@@ -204,7 +204,7 @@ void Field::load(const FilePath& directory)
 			m_chips.resize(m_chipSize);
 
 			for (auto point : step(m_chipSize))
-				m_chips[point] = MakeShared<ChipState>(point);
+				m_chips[point] = MakeShared<TileState>(point);
 		}
 
 		// 読み込み
@@ -259,7 +259,7 @@ void Field::init()
 
 		for (auto point : step(size))
 		{
-			m_chips[point] = MakeShared<ChipState>(point);
+			m_chips[point] = MakeShared<TileState>(point);
 			m_chips[point]->setNutrition(50.0);
 		}
 	}

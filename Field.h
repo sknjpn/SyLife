@@ -32,7 +32,7 @@ class Field
 	KDTree<ParticleAdapter<ElementState>>	m_elementStateKDTree;
 
 	// Chip
-	Grid<shared_ptr<ChipState>> m_chips;
+	Grid<shared_ptr<TileState>> m_chips;
 	Size	m_chipSize;
 	double	m_chipLength;
 
@@ -57,9 +57,9 @@ public:
 	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementAsset>& asset) { return m_elementStates.emplace_back(make_shared<ElementState>(asset)); }
 
 	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_chipLength), int(position.y / m_chipLength)); }
-	shared_ptr<ChipState> getChip(const Point& point) const;
-	shared_ptr<ChipState> getChip(const Vec2& position) const { return getChip(getPoint(position)); }
-	const Grid<shared_ptr<ChipState>>& getChips() const { return m_chips; }
+	shared_ptr<TileState> getChip(const Point& point) const;
+	shared_ptr<TileState> getChip(const Vec2& position) const { return getChip(getPoint(position)); }
+	const Grid<shared_ptr<TileState>>& getChips() const { return m_chips; }
 	double	getChipLength() const { return m_chipLength; }
 	const Size& getChipSize() const { return m_chipSize; }
 	const Vec2& getFieldSize() const { return m_fieldSize; }
