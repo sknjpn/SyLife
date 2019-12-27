@@ -114,14 +114,19 @@ void TileState::sendTo(const shared_ptr<TileState>& chip, double value)
 	m_nutrition -= value;
 }
 
-void TileState::load(const JSONValue& json)
+void TileState::load(Deserializer<ByteArray>& reader)
 {
-	setWaveVelocity(json[U"waveVelocity"].get<Vec2>());
-	m_nutrition = json[U"nutrition"].get<double>();
+	{
+		Vec2 waveVelocity;
+		reader >> waveVelocity;
+		setWaveVelocity(waveVelocity);
+	}
+
+	reader >> m_nutrition;
 }
 
-void TileState::save(JSONWriter& json) const
+void TileState::save(Serializer<MemoryWriter>& writer) const
 {
-	json.key(U"waveVelocity").write(m_waveVelocity);
-	json.key(U"nutrition").write(m_nutrition);
+	writer << m_waveVelocity;
+	writer << m_nutrition;
 }

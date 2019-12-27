@@ -286,7 +286,6 @@
     <ClCompile Include="PartState_Wing.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="State.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -333,7 +332,6 @@
     <ClInclude Include="PartState_Wing.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Shape.h" />
-    <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="TinyCamera.h" />

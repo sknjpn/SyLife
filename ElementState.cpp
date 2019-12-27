@@ -32,19 +32,22 @@ void ElementState::draw()
 		.draw(ColorF(m_elementAsset->getColor(), 1.0));
 }
 
-void ElementState::load(const JSONValue& json)
+void ElementState::load(Deserializer<ByteArray>& reader)
 {
-	Rigidbody::load(json);
+	Rigidbody::load(reader);
 
-	const auto assetName = json[U"elementAsset"].getString();
-	m_elementAsset = Assets::GetAsset<ElementAsset>(assetName);
-	
+	{
+		String elementAssetName;
+		reader >> elementAssetName;
+		m_elementAsset = Assets::GetAsset<ElementAsset>(elementAssetName);
+	}
+
 	setRadius(m_elementAsset->getRadius());
 }
 
-void ElementState::save(JSONWriter& json) const
+void ElementState::save(Serializer<MemoryWriter>& writer) const
 {
-	Rigidbody::save(json);
+	Rigidbody::save(writer);
 
-	json.key(U"elementAsset").write(m_elementAsset->getName());
+	writer << m_elementAsset->getName();
 }

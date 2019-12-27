@@ -103,126 +103,19 @@ shared_ptr<TileState> Field::getChip(const Point& point) const
 
 void Field::save(const FilePath& directory)
 {
-	JSONWriter json;
+	Serializer<MemoryWriter> writer;
 
-	json.startObject();
+	save(writer);
 
-	// Cells
-	{
-		json.key(U"cells").startArray();
-		for (const auto& cellState : m_cellStates)
-		{
-			json.startObject();
-
-			cellState->save(json);
-
-			json.endObject();
-		}
-		json.endArray();
-	}
-
-	// Eggs
-	{
-		json.key(U"eggs").startArray();
-		for (const auto& eggState : m_eggStates)
-		{
-			json.startObject();
-
-			eggState->save(json);
-
-			json.endObject();
-		}
-		json.endArray();
-	}
-
-	// Elements
-	{
-		json.key(U"elements").startArray();
-		for (const auto& elementState : m_elementStates)
-		{
-			json.startObject();
-
-			elementState->save(json);
-
-			json.endObject();
-		}
-		json.endArray();
-	}
-
-	// Chips
-	{
-		json.key(U"chipSize").write(m_chipSize);
-
-		json.key(U"chips").startArray();
-		for (int y = 0; y < m_chipSize.y; ++y)
-		{
-			json.startArray();
-			for (int x = 0; x < m_chipSize.x; ++x)
-			{
-				json.startObject();
-
-				const auto& chip = m_chips.at(y, x);
-
-				chip->save(json);
-
-				json.endObject();
-			}
-			json.endArray();
-		}
-		json.endArray();
-	}
-
-	json.endObject();
-	json.save(directory + U"field.json");
+	BinaryWriter binWriter(directory + U"field");
+	binWriter.write(writer.getWriter().data(), writer.getWriter().size());
 }
 
 void Field::load(const FilePath& directory)
 {
-	JSONReader json(directory + U"field.json");
+	Deserializer<ByteArray> reader(directory + U"field");
 
-	// Cells
-	m_cellStates.clear();
-	for (auto cell : json[U"cells"].arrayView())
-		m_cellStates.emplace_back(MakeShared<CellState>(cell));
-
-	// Eggs
-	m_eggStates.clear();
-	for (auto egg : json[U"eggs"].arrayView())
-		m_eggStates.emplace_back(MakeShared<EggState>(egg));
-
-	// Elements
-	m_elementStates.clear();
-	for (auto element : json[U"elements"].arrayView())
-		m_elementStates.emplace_back(MakeShared<ElementState>(element));
-
-	// Chips
-	{
-		m_chipSize = json[U"chipSize"].get<Size>();
-
-		// サイズ設定と初期化
-		{
-			m_chips.resize(m_chipSize);
-
-			for (auto point : step(m_chipSize))
-				m_chips[point] = MakeShared<TileState>(point);
-		}
-
-		// 読み込み
-		int y = 0;
-		for (auto row : json[U"chips"].arrayView())
-		{
-			int x = 0;
-
-			for (auto chip : row.arrayView())
-			{
-				m_chips.at(y, x)->load(chip);
-
-				++x;
-			}
-
-			++y;
-		}
-	}
+	load(reader);
 }
 
 void Field::generateWave(const Size& chipSize)
@@ -265,4 +158,67 @@ void Field::init()
 	}
 
 	generateWave(Size(80, 45));
+}
+
+void Field::load(Deserializer<ByteArray>& reader)
+{
+	{
+		int cellStateSize;
+		reader >> cellStateSize;
+		m_cellStates.resize(cellStateSize);
+
+		for (auto& cellState : m_cellStates) cellState = MakeShared<CellState>(reader);
+	}
+
+	{
+		int eggStateSize;
+		reader >> eggStateSize;
+		m_eggStates.resize(eggStateSize);
+
+		for (auto& eggState : m_eggStates) eggState = MakeShared<EggState>(reader);
+	}
+
+	{
+		int elementStateSize;
+		reader >> elementStateSize;
+		m_elementStates.resize(elementStateSize);
+
+		for (auto& elementState : m_elementStates) elementState = MakeShared<ElementState>(reader);
+	}
+
+	{
+		Size tileStateSize;
+		reader >> tileStateSize;
+		m_chips.resize(tileStateSize);
+
+		for (auto p : step(m_chips.size()))
+			m_chips.at(p) = MakeShared<TileState>(p);
+
+		for (const auto& tileState : m_chips) 
+			tileState->load(reader);
+	}
+}
+
+void Field::save(Serializer<MemoryWriter>& writer) const
+{
+
+	// Cells
+	writer << int(m_cellStates.size());
+	for (const auto& cellState : m_cellStates)
+		cellState->save(writer);
+
+	// Eggs
+	writer << int(m_eggStates.size());
+	for (const auto& eggState : m_eggStates)
+		eggState->save(writer);
+
+	// Elements
+	writer << int(m_elementStates.size());
+	for (const auto& elementState : m_elementStates)
+		elementState->save(writer);
+
+	// Chips
+	writer << m_chipSize;
+	for (const auto& tileState : m_chips)
+		tileState->save(writer);
 }

@@ -27,30 +27,16 @@ void Particle::updateParticle()
 	}
 }
 
-void Particle::load(const JSONValue& json)
-{
-	m_mass = json[U"mass"].get<double>();
-	m_position = json[U"position"].get<Vec2>();
-	m_velocity = json[U"velocity"].get<Vec2>();
-}
-
-void Particle::save(JSONWriter& json) const
-{
-	json.key(U"mass").write(m_mass);
-	json.key(U"position").write(m_position);
-	json.key(U"velocity").write(m_velocity);
-}
-
 void Particle::load(Deserializer<ByteArray>& reader)
 {
-	m_mass = json[U"mass"].get<double>();
-	m_position = json[U"position"].get<Vec2>();
-	m_velocity = json[U"velocity"].get<Vec2>();
+	reader >> m_mass;
+	reader >> m_position;
+	reader >> m_velocity;
 }
 
 void Particle::save(Serializer<MemoryWriter>& writer) const
 {
-	json.key(U"mass").write(m_mass);
-	json.key(U"position").write(m_position);
-	json.key(U"velocity").write(m_velocity);
+	writer << m_mass;
+	writer << m_position;
+	writer << m_velocity;
 }

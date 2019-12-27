@@ -71,4 +71,6 @@ public:
 
 	void	init();
 
+	void	load(Deserializer<ByteArray>& reader);
+	void	save(Serializer<MemoryWriter>& writer) const;
 };

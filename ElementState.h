@@ -11,7 +11,7 @@ class ElementState
 
 public:
 	ElementState(const shared_ptr<ElementAsset>& asset);
-	ElementState(const JSONValue& json) { load(json); }
+	ElementState(Deserializer<ByteArray>& reader) { load(reader); }
 
 	// Get
 	const shared_ptr<ElementAsset>& getPartAsset() const { return m_elementAsset; }
@@ -19,7 +19,6 @@ public:
 	void	updateElement();
 	void	draw();
 
-	// JSON
-	void	load(const JSONValue& json) override;
-	void	save(JSONWriter& json) const override;
+	void	load(Deserializer<ByteArray>& reader);
+	void	save(Serializer<MemoryWriter>& writer) const;
 };

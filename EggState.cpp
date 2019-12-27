@@ -40,17 +40,20 @@ void EggState::draw()
 	m_cellAsset->draw(min(2.0, 10.0 - m_timer) * 0.25);
 }
 
-void EggState::load(const JSONValue& json)
+void EggState::load(Deserializer<ByteArray>& reader)
 {
-	Rigidbody::load(json);
+	Rigidbody::load(reader);
 
-	const auto assetName = json[U"cellAsset"].getString();
-	m_cellAsset = Assets::GetAsset<CellAsset>(assetName);
+	{
+		String cellAssetName;
+		reader >> cellAssetName;
+		m_cellAsset = Assets::GetAsset<CellAsset>(cellAssetName);
+	}
 }
 
-void EggState::save(JSONWriter& json) const
+void EggState::save(Serializer<MemoryWriter>& writer) const
 {
-	Rigidbody::save(json);
+	Rigidbody::save(writer);
 
-	json.key(U"cellAsset").write(m_cellAsset->getName());
+	writer << m_cellAsset->getName();
 }

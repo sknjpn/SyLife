@@ -86,12 +86,6 @@
     <Filter Include="Resource Files\example\font\LogoTypeGothic">
       <UniqueIdentifier>{b3586a98-5569-49e1-b9d6-cd80cf76ce9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Model">
-      <UniqueIdentifier>{1c5e6d7c-42f7-4a14-a8be-7c8ddb4fa8be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="State">
-      <UniqueIdentifier>{aa98abb1-ad82-4b21-abfc-2aa3e78ff4b5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{e52e91a6-c002-407f-ae66-34a977dda222}</UniqueIdentifier>
     </Filter>
@@ -423,9 +417,6 @@
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>Engine\Util</Filter>
-    </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
@@ -545,9 +536,6 @@
       <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
-      <Filter>Engine\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">

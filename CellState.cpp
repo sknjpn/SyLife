@@ -175,26 +175,29 @@ void CellState::takeElement(const shared_ptr<ElementState>& elementState)
 	elementState->destroy();
 }
 
-void CellState::load(const JSONValue& json)
+void CellState::load(Deserializer<ByteArray>& reader)
 {
-	Rigidbody::load(json);
+	Rigidbody::load(reader);
 
-	m_startTimer = json[U"startTimer"].get<double>();
-	m_deathTimer = json[U"deathTimer"].get<double>();
-	m_yieldTimer = json[U"yieldTimer"].get<double>();
+	reader >> m_startTimer;
+	reader >> m_deathTimer;
+	reader >> m_yieldTimer;
+	reader >> m_hitpoint;
+	
+	m_storage.load(reader);
 
-	m_hitpoint = json[U"hitpoint"].get<double>();
-
-	m_storage.load(json[U"storage"]);
-
-	m_cellAsset = Assets::GetAsset<CellAsset>(json[U"cellAsset"].getString());
+	{
+		String cellAssetName;
+		reader >> cellAssetName;
+		m_cellAsset = Assets::GetAsset<CellAsset>(cellAssetName);
+	}
 
 	// parts
 	for (const auto& pc : m_cellAsset->getPartConfigs())
 	{
 		const auto partState = m_partStates.emplace_back(pc->getPartAsset()->makeState());
 		partState->setPartConfig(pc);
-		partState->load(json);
+		partState->load(reader);
 	}
 
 	// 設定
@@ -203,32 +206,19 @@ void CellState::load(const JSONValue& json)
 	setInertia(m_cellAsset->getInertia());
 }
 
-void CellState::save(JSONWriter& json) const
+void CellState::save(Serializer<MemoryWriter>& writer) const
 {
-	Rigidbody::save(json);
+	Rigidbody::save(writer);
 
-	json.key(U"startTimer").write(m_startTimer);
-	json.key(U"deathTimer").write(m_deathTimer);
-	json.key(U"yieldTimer").write(m_yieldTimer);
+	writer << m_startTimer;
+	writer << m_deathTimer;
+	writer << m_yieldTimer;
+	writer << m_hitpoint;
 
-	json.key(U"hitpoint").write(m_hitpoint);
+	m_storage.save(writer);
+	
+	writer << m_cellAsset->getName();
 
-	json.key(U"storage").startObject();
-	m_storage.save(json);
-	json.endObject();
-
-	json.key(U"cellAsset").write(m_cellAsset->getName());
-
-	json.key(U"partStates").startArray();
-	for(const auto& partState : m_partStates)
-	{
-		json.startObject();
-		partState->save(json);
-		json.endObject();
-	}
-	json.endArray();
-}
-
-void CellState::load(Deserializer<ByteArray>& reader)
-{
+	for (const auto& partState : m_partStates)
+		partState->save(writer);
 }

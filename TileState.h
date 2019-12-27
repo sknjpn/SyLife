@@ -1,10 +1,8 @@
 ﻿#pragma once
 
-#include "State.h"
 #include "Storage.h"
 
 class TileState
-	: public State
 {
 	double	m_nutrition;
 	Point	m_point;
@@ -39,8 +37,7 @@ public:
 	Color	getColor() const { return Math::Lerp(Color(0, 0), Palette::Palegreen, Min(m_nutrition / 100.0, 1.0)); }
 	void	sendTo(const shared_ptr<TileState>& chip, double value);
 
-	// JSON
-	void	load(const JSONValue& json) override;
-	void	save(JSONWriter& json) const override;
+	void	load(Deserializer<ByteArray>& reader);
+	void	save(Serializer<MemoryWriter>& writer) const;
 };
 
