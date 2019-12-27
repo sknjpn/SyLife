@@ -1,0 +1,46 @@
+﻿{
+  "type": "PartAsset_Needle",
+  "name": "Needle",
+  "mass": 30.0,
+  "layers": [
+    {
+      "color": "(128, 0, 128, 255)",
+      "polygon": {
+        "outer": [
+          "(-5, 0)",
+          "(0, -5)",
+          "(5, 0)",
+          "(0, 5)"
+        ],
+        "holes": []
+      }
+    },
+    {
+      "color": "(255, 0, 0, 255)",
+      "polygon": {
+        "outer": [
+          "(-4, 0)",
+          "(-1, -30)",
+          "(0, -50)",
+          "(1, -30)",
+          "(4, 0)",
+          "(0, 2)"
+        ],
+        "holes": []
+      }
+    }
+  ],
+  "material": {
+    "nutrition": 20.0,
+    "elements": [
+      {
+        "name": "Oxgen",
+        "size": 1
+      },
+      {
+        "name": "Carbon",
+        "size": 1
+      }
+    ]
+  }
+}

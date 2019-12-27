@@ -5,7 +5,7 @@ Field::Field()
 	: m_cellStateKDTree(m_cellStates)
 	, m_eggStateKDTree(m_eggStates)
 	, m_elementStateKDTree(m_elementStates)
-	, m_chipSize(80, 45)
+	, m_chipSize(64, 36)
 	, m_chipLength(100)
 	, m_chips(m_chipSize)
 {
@@ -260,9 +260,9 @@ void Field::init()
 		for (auto point : step(size))
 		{
 			m_chips[point] = MakeShared<ChipState>(point);
-			m_chips[point]->setNutrition(50.0);
+			m_chips[point]->setNutrition(40.0);
 		}
 	}
 
-	generateWave(Size(80, 45));
+	generateWave(Size(64, 36));
 }

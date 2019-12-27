@@ -19,5 +19,6 @@ void PartAsset_Wing::save(JSONWriter& json) const
 	PartAsset::save(json);
 
 	// is right
-	json.key(U"isRight").write(m_isRight);
+	json.key(U"isRight").writeBool(m_isRight);
+	
 }
