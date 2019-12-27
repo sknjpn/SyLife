@@ -14,7 +14,7 @@ void ProteinState::updateProtein()
 	// 分解
 	if (RandomBool(0.01))
 	{
-		World::GetInstance()->getTile(getPosition())->addNutrition(m_proteinAsset->getMaterial().getNutritionRecursive());
+		World::GetInstance()->getTile(getPosition())->addElement(m_proteinAsset->getMaterial().getElementRecursive());
 
 		destroy();
 

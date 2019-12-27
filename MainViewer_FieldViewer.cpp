@@ -89,8 +89,8 @@ void MainViewer::FieldViewer::update()
 				{
 					e->destroy();
 
-					// Nutritionの吐き出し
-					World::GetInstance()->getTile(e->getPosition())->addNutrition(e->getCellAsset()->getMaterial().getNutrition());
+					// Elementの吐き出し
+					World::GetInstance()->getTile(e->getPosition())->addElement(e->getCellAsset()->getMaterial().getElement());
 
 					// ProteinStateの吐き出し
 					auto s = e->getCellAsset()->getMaterial();

@@ -4,7 +4,7 @@
 
 bool Storage::operator>=(const Storage& s) const
 {
-	if (m_nutrition < s.m_nutrition) return false;
+	if (m_element < s.m_element) return false;
 
 	for (const auto& m : s)
 		if (numProtein(m.first) < m.second) return false;
@@ -14,7 +14,7 @@ bool Storage::operator>=(const Storage& s) const
 
 bool Storage::operator<=(const Storage& s) const
 {
-	if (s.m_nutrition > m_nutrition) return false;
+	if (s.m_element > m_element) return false;
 
 	for (const auto& m : *this)
 		if (m.second > s.numProtein(m.first)) return false;
@@ -24,7 +24,7 @@ bool Storage::operator<=(const Storage& s) const
 
 Storage& Storage::operator+=(const Storage& s) noexcept
 {
-	m_nutrition += s.m_nutrition;
+	m_element += s.m_element;
 
 	for (const auto& m : s)
 		addProtein(m.first, m.second);
@@ -34,7 +34,7 @@ Storage& Storage::operator+=(const Storage& s) noexcept
 
 Storage& Storage::operator-=(const Storage& s) noexcept
 {
-	m_nutrition -= s.m_nutrition;
+	m_element -= s.m_element;
 
 	for (const auto& m : s)
 		pullProtein(m.first, m.second);
@@ -42,12 +42,12 @@ Storage& Storage::operator-=(const Storage& s) noexcept
 	return *this;
 }
 
-double Storage::getNutritionRecursive() const
+double Storage::getElementRecursive() const
 {
-	double sum = m_nutrition;
+	double sum = m_element;
 
 	for (const auto& m : *this)
-		sum += m.first->getMaterial().getNutritionRecursive();
+		sum += m.first->getMaterial().getElementRecursive();
 
 	return sum;
 }
@@ -82,8 +82,8 @@ int Storage::numProtein(const shared_ptr<ProteinAsset>& asset) const
 
 void Storage::load(const JSONValue& json)
 {
-	// nutrition
-	m_nutrition = json[U"nutrition"].get<double>();
+	// element
+	m_element = json[U"element"].get<double>();
 
 	// proteins
 	for (auto protein : json[U"proteins"].arrayView())
@@ -97,8 +97,8 @@ void Storage::load(const JSONValue& json)
 
 void Storage::save(JSONWriter& json) const
 {
-	// nutrition
-	json.key(U"nutrition").write(m_nutrition);
+	// element
+	json.key(U"element").write(m_element);
 
 	// proteins
 	{
@@ -120,8 +120,8 @@ void Storage::save(JSONWriter& json) const
 
 void Storage::load(Deserializer<ByteArray>& reader)
 {
-	// nutrition
-	reader >> m_nutrition;
+	// element
+	reader >> m_element;
 
 
 	// proteins
@@ -144,8 +144,8 @@ void Storage::load(Deserializer<ByteArray>& reader)
 
 void Storage::save(Serializer<MemoryWriter>& writer) const
 {
-	// nutrition
-	writer << m_nutrition;
+	// element
+	writer << m_element;
 
 	// proteins
 	{

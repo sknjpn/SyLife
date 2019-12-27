@@ -33,7 +33,7 @@ public:
 	void	updateCell();
 	void	draw();
 
-	void	takeNutrition();
+	void	takeElement();
 	void	takeProtein(const shared_ptr<ProteinState>& proteinState);
 
 	void	load(Deserializer<ByteArray>& reader);

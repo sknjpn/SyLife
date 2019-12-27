@@ -51,8 +51,8 @@ void CellState::updateCell()
 	// parts
 	for (const auto& p : m_partStates) p->update(*this);
 
-	// Nutritionの取り込み
-	takeNutrition();
+	// Elementの取り込み
+	takeElement();
 
 	// 接触したProteinStateの取り込み
 	for (auto i : World::GetInstance()->getProteinStateKDTree().knnSearch(1, getPosition()))
@@ -111,8 +111,8 @@ void CellState::updateCell()
 	// 死亡処理
 	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
-		// Nutritionの吐き出し
-		World::GetInstance()->getTile(getPosition())->addNutrition(m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
+		// Elementの吐き出し
+		World::GetInstance()->getTile(getPosition())->addElement(m_storage.getElement() + m_cellAsset->getMaterial().getElement());
 
 		// ProteinStateの吐き出し
 		auto s = m_storage + m_cellAsset->getMaterial();
@@ -158,14 +158,14 @@ void CellState::draw()
 	}
 }
 
-void CellState::takeNutrition()
+void CellState::takeElement()
 {
-	const double space = m_cellAsset->getMaxStorage().getNutrition() - m_storage.getNutrition();
-	const double amount = World::GetInstance()->getTile(getPosition())->getNutrition();
+	const double space = m_cellAsset->getMaxStorage().getElement() - m_storage.getElement();
+	const double amount = World::GetInstance()->getTile(getPosition())->getElement();
 	const double value = Min(space, amount);
 
-	World::GetInstance()->getTile(getPosition())->pullNutrition(value);
-	m_storage.addNutrition(value);
+	World::GetInstance()->getTile(getPosition())->pullElement(value);
+	m_storage.addElement(value);
 }
 
 void CellState::takeProtein(const shared_ptr<ProteinState>& proteinState)

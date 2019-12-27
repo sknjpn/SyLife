@@ -55,8 +55,8 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 	{
 		static Font font(16, Typeface::Bold);
 
-		// Nutrition
-		font(U"Nutrition: " + ToString(cellAsset->getMaterial().getNutrition())).draw(Vec2::Zero(), Palette::Black);
+		// Element
+		font(U"Element: " + ToString(cellAsset->getMaterial().getElement())).draw(Vec2::Zero(), Palette::Black);
 		moveDrawPos(0, 20);
 
 		// Proteins

@@ -164,7 +164,7 @@ void World::initField()
 		for (auto point : step(size))
 		{
 			m_tiles[point] = MakeShared<TileState>(point);
-			m_tiles[point]->setNutrition(50.0);
+			m_tiles[point]->setElement(50.0);
 		}
 	}
 

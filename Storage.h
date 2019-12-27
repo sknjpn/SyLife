@@ -9,11 +9,11 @@ class Storage
 	: public Model
 	, private Array<pair<shared_ptr<ProteinAsset>, int>>
 {
-	double m_nutrition;
+	double m_element;
 
 public:
 	Storage()
-		: m_nutrition(0.0)
+		: m_element(0.0)
 	{}
 
 	// operator
@@ -26,12 +26,12 @@ public:
 
 	bool	contain(const Storage& s) const;
 
-	double	getNutrition() const { return m_nutrition; }
-	void	setNutrition(double nutrition) { m_nutrition = nutrition; }
-	void	addNutrition(double nutrition) { m_nutrition += nutrition; }
-	void	pullNutrition(double nutrition) { m_nutrition -= nutrition; }
+	double	getElement() const { return m_element; }
+	void	setElement(double element) { m_element = element; }
+	void	addElement(double element) { m_element += element; }
+	void	pullElement(double element) { m_element -= element; }
 
-	double	getNutritionRecursive() const;
+	double	getElementRecursive() const;
 
 	// protein
 	const Array<pair<shared_ptr<ProteinAsset>, int>>& getProteinList() const { return *this; }
