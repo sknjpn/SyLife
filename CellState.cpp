@@ -4,6 +4,7 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartState.h"
+#include "TileState.h"
 
 #include "ElementAsset.h"
 #include "ElementState.h"
@@ -30,10 +31,10 @@ void CellState::updateCell()
 {
 	// 衝突処理
 	{
-		auto result = World::GetInstance()->getField().getCellStateKDTree().knnSearch(2, getPosition());
+		auto result = World::GetInstance()->getCellStateKDTree().knnSearch(2, getPosition());
 		if (result.size() == 2)
 		{
-			auto& t = World::GetInstance()->getField().getCellStates()[result[1]];
+			auto& t = World::GetInstance()->getCellStates()[result[1]];
 
 			if (t->getPosition() != getPosition() && (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length()) > 0)
 			{
@@ -54,9 +55,9 @@ void CellState::updateCell()
 	takeNutrition();
 
 	// 接触したElementStateの取り込み
-	for (auto i : World::GetInstance()->getField().getElementStateKDTree().knnSearch(1, getPosition()))
+	for (auto i : World::GetInstance()->getElementStateKDTree().knnSearch(1, getPosition()))
 	{
-		auto& m = World::GetInstance()->getField().getElementStates()[i];
+		auto& m = World::GetInstance()->getElementStates()[i];
 
 		if (!m->isDestroyed() &&
 			(m->getPosition() - getPosition()).length() - getRadius() < 0.0 &&
@@ -96,7 +97,7 @@ void CellState::updateCell()
 			m_yieldTimer = 0.0;
 			m_storage -= m_cellAsset->getMaterial();
 
-			const auto& e = World::GetInstance()->getField().addEggState(m_cellAsset);
+			const auto& e = World::GetInstance()->addEggState(m_cellAsset);
 			e->setPosition(getPosition());
 			e->setRotation(Random(Math::TwoPi));
 			e->setVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
@@ -111,7 +112,7 @@ void CellState::updateCell()
 	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
 		// Nutritionの吐き出し
-		World::GetInstance()->getField().getTile(getPosition())->addNutrition(m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
+		World::GetInstance()->getTile(getPosition())->addNutrition(m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
 
 		// ElementStateの吐き出し
 		auto s = m_storage + m_cellAsset->getMaterial();
@@ -123,7 +124,7 @@ void CellState::updateCell()
 				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 				// 吐き出されたElementState
-				const auto& ms = World::GetInstance()->getField().addElementState(m.first);
+				const auto& ms = World::GetInstance()->addElementState(m.first);
 				ms->setPosition(getPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
 				ms->setVelocity(v * 0.1);
 			}
@@ -160,10 +161,10 @@ void CellState::draw()
 void CellState::takeNutrition()
 {
 	const double space = m_cellAsset->getMaxStorage().getNutrition() - m_storage.getNutrition();
-	const double amount = World::GetInstance()->getField().getTile(getPosition())->getNutrition();
+	const double amount = World::GetInstance()->getTile(getPosition())->getNutrition();
 	const double value = Min(space, amount);
 
-	World::GetInstance()->getField().getTile(getPosition())->pullNutrition(value);
+	World::GetInstance()->getTile(getPosition())->pullNutrition(value);
 	m_storage.addNutrition(value);
 }
 

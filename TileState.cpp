@@ -22,12 +22,12 @@ void TileState::draw()
 {
 	getRegion().draw(getColor());
 
-	//Line(getCentroid(), getCentroid().movedBy(getWaveVelocity() * World::GetInstance()->getField().getTileLength())).drawArrow(20.0, Vec2(20.0, 20.0), ColorF(1.0, 0.2));
+	//Line(getCentroid(), getCentroid().movedBy(getWaveVelocity() * World::GetInstance()->getTileLength())).drawArrow(20.0, Vec2(20.0, 20.0), ColorF(1.0, 0.2));
 }
 
 RectF TileState::getRegion() const
 {
-	return RectF(m_point * World::GetInstance()->getField().getTileLength(), World::GetInstance()->getField().getTileLength(), World::GetInstance()->getField().getTileLength());
+	return RectF(m_point * World::GetInstance()->getTileLength(), World::GetInstance()->getTileLength(), World::GetInstance()->getTileLength());
 }
 
 void TileState::setWaveVelocity(const Vec2& waveVelocity)
@@ -37,9 +37,9 @@ void TileState::setWaveVelocity(const Vec2& waveVelocity)
 	// 周囲のTileの登録
 	for (const auto point : step(m_point.movedBy(-1, -1), Size(3, 3)))
 	{
-		if (point == m_point || point.x < 0 || point.y < 0 || point.x >= World::GetInstance()->getField().getTileSize().x || point.y >= World::GetInstance()->getField().getTileSize().y) continue;
+		if (point == m_point || point.x < 0 || point.y < 0 || point.x >= World::GetInstance()->getTileSize().x || point.y >= World::GetInstance()->getTileSize().y) continue;
 
-		m_nearTiles[point.x - m_point.x + 1][point.y - m_point.y + 1] = World::GetInstance()->getField().getTile(point);
+		m_nearTiles[point.x - m_point.x + 1][point.y - m_point.y + 1] = World::GetInstance()->getTile(point);
 	}
 
 	// SendRateの計算
@@ -105,7 +105,7 @@ void TileState::setWaveVelocity(const Vec2& waveVelocity)
 
 Vec2 TileState::getCentroid() const
 {
-	return Vec2(m_point * World::GetInstance()->getField().getTileLength()).movedBy(World::GetInstance()->getField().getTileLength() / 2.0, World::GetInstance()->getField().getTileLength() / 2.0);
+	return Vec2(m_point * World::GetInstance()->getTileLength()).movedBy(World::GetInstance()->getTileLength() / 2.0, World::GetInstance()->getTileLength() / 2.0);
 }
 
 void TileState::sendTo(const shared_ptr<TileState>& tile, double value)

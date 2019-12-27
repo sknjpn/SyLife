@@ -70,6 +70,6 @@ void MainViewer::StatisticsViewer::takeLog()
 
 MainViewer::StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)
 {
-	m_num = int(World::GetInstance()->getField().getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; }));
-	m_num = int(World::GetInstance()->getField().getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; }));
+	m_num = int(World::GetInstance()->getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; }));
+	m_num = int(World::GetInstance()->getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; }));
 }

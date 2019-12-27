@@ -1,5 +1,6 @@
 ﻿#include "ElementState.h"
 #include "ElementAsset.h"
+#include "TileState.h"
 #include "World.h"
 
 ElementState::ElementState(const shared_ptr<ElementAsset>& asset)
@@ -13,7 +14,7 @@ void ElementState::updateElement()
 	// 分解
 	if (RandomBool(0.01))
 	{
-		World::GetInstance()->getField().getTile(getPosition())->addNutrition(m_elementAsset->getMaterial().getNutritionRecursive());
+		World::GetInstance()->getTile(getPosition())->addNutrition(m_elementAsset->getMaterial().getNutritionRecursive());
 
 		destroy();
 

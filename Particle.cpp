@@ -15,13 +15,13 @@ void Particle::updateParticle()
 	// 壁
 	if (m_position.x < 0) m_position.x = 0;
 	if (m_position.y < 0) m_position.y = 0;
-	if (m_position.x > World::GetInstance()->getField().getFieldSize().x) m_position.x = World::GetInstance()->getField().getFieldSize().x;
-	if (m_position.y > World::GetInstance()->getField().getFieldSize().y) m_position.y = World::GetInstance()->getField().getFieldSize().y;
+	if (m_position.x > World::GetInstance()->getFieldSize().x) m_position.x = World::GetInstance()->getFieldSize().x;
+	if (m_position.y > World::GetInstance()->getFieldSize().y) m_position.y = World::GetInstance()->getFieldSize().y;
 
 	// 水流
 	{
 		const double scale = 100.0;
-		const auto waveVelocity = scale * World::GetInstance()->getField().getTile(m_position)->getWaveVelocity();
+		const auto waveVelocity = scale * World::GetInstance()->getTile(m_position)->getWaveVelocity();
 
 		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.95;
 	}

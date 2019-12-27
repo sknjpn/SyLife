@@ -21,7 +21,7 @@ void EggState::updateEgg()
 	{
 		destroy();
 
-		const auto& c = World::GetInstance()->getField().addCellState(getCellAsset());
+		const auto& c = World::GetInstance()->addCellState(getCellAsset());
 		c->setPosition(getPosition());
 		c->setRotation(getRotation());
 	}

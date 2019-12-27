@@ -239,7 +239,6 @@
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="ElementAsset.cpp" />
     <ClCompile Include="ElementState.cpp" />
-    <ClCompile Include="Field.cpp" />
     <ClCompile Include="GUIAssetLinker.cpp" />
     <ClCompile Include="GUIAssetLinker_Dragger.cpp" />
     <ClCompile Include="GUIButton.cpp" />
@@ -302,7 +301,6 @@
     <ClInclude Include="EggState.h" />
     <ClInclude Include="ElementAsset.h" />
     <ClInclude Include="ElementState.h" />
-    <ClInclude Include="Field.h" />
     <ClInclude Include="GUIAssetLinker.h" />
     <ClInclude Include="GUIButton.h" />
     <ClInclude Include="GUIChecker.h" />

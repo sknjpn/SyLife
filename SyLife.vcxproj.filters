@@ -462,9 +462,6 @@
     <ClCompile Include="Storage.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Field.cpp">
-      <Filter>Engine\Util</Filter>
-    </ClCompile>
     <ClCompile Include="World.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
@@ -575,9 +572,6 @@
       <Filter>Engine\Util</Filter>
     </ClInclude>
     <ClInclude Include="Storage.h">
-      <Filter>Engine\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Field.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
     <ClInclude Include="World.h">
