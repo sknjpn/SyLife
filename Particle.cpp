@@ -1,5 +1,5 @@
 ﻿#include "Particle.h"
-#include "ChipState.h"
+#include "TileState.h"
 #include "World.h"
 
 void Particle::addForce(const Vec2& force)
@@ -35,6 +35,20 @@ void Particle::load(const JSONValue& json)
 }
 
 void Particle::save(JSONWriter& json) const
+{
+	json.key(U"mass").write(m_mass);
+	json.key(U"position").write(m_position);
+	json.key(U"velocity").write(m_velocity);
+}
+
+void Particle::load(Deserializer<ByteArray>& reader)
+{
+	m_mass = json[U"mass"].get<double>();
+	m_position = json[U"position"].get<Vec2>();
+	m_velocity = json[U"velocity"].get<Vec2>();
+}
+
+void Particle::save(Serializer<MemoryWriter>& writer) const
 {
 	json.key(U"mass").write(m_mass);
 	json.key(U"position").write(m_position);

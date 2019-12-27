@@ -228,3 +228,7 @@ void CellState::save(JSONWriter& json) const
 	}
 	json.endArray();
 }
+
+void CellState::load(Deserializer<ByteArray>& reader)
+{
+}

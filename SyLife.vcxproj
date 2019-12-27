@@ -235,7 +235,7 @@
     <ClCompile Include="Assets_makeModel.cpp" />
     <ClCompile Include="CellAsset.cpp" />
     <ClCompile Include="CellState.cpp" />
-    <ClCompile Include="ChipState.cpp" />
+    <ClCompile Include="TileState.cpp" />
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="ElementAsset.cpp" />
@@ -300,7 +300,7 @@
     <ClInclude Include="Assets.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
-    <ClInclude Include="ChipState.h" />
+    <ClInclude Include="TileState.h" />
     <ClInclude Include="DraggableViewer.h" />
     <ClInclude Include="EggState.h" />
     <ClInclude Include="ElementAsset.h" />

@@ -1,5 +1,5 @@
 ﻿#include "Field.h"
-#include "ChipState.h"
+#include "TileState.h"
 
 Field::Field()
 	: m_cellStateKDTree(m_cellStates)

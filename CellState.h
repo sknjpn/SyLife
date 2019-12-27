@@ -28,15 +28,17 @@ public:
 	CellState(const shared_ptr<CellAsset>& cellAsset);
 	CellState(const JSONValue& json) { load(json); }
 
-	const shared_ptr<CellAsset>&	getCellAsset() const { return m_cellAsset; }
+	const shared_ptr<CellAsset>& getCellAsset() const { return m_cellAsset; }
 
 	void	updateCell();
 	void	draw();
 
 	void	takeNutrition();
 	void	takeElement(const shared_ptr<ElementState>& elementState);
-	
+
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
+	void	load(Deserializer<ByteArray>& reader);
+	void	save(Serializer<MemoryWriter>& writer) const;
 };

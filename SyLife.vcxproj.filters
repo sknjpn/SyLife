@@ -432,9 +432,6 @@
     <ClCompile Include="CellState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="ChipState.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
     <ClCompile Include="EggState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
@@ -513,6 +510,9 @@
     <ClCompile Include="PartConfig.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
+    <ClCompile Include="TileState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />
@@ -552,12 +552,6 @@
     </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Engine\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="CellState.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="ChipState.h">
-      <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="EggState.h">
       <Filter>Engine\World</Filter>
@@ -632,6 +626,12 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="PartConfig.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="CellState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="TileState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
   </ItemGroup>

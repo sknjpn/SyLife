@@ -33,4 +33,6 @@ public:
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
+	void	load(Deserializer<ByteArray>& reader);
+	void	save(Serializer<MemoryWriter>& writer) const;
 };
