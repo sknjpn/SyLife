@@ -5,7 +5,7 @@
 #include "EggState.h"
 #include "TileState.h"
 #include "PartState.h"
-#include "ElementState.h"
+#include "ProteinState.h"
 
 unique_ptr<World>	World::g_instance;
 
@@ -64,20 +64,20 @@ void World::update()
 		m_eggStateKDTree.rebuildIndex();
 	}
 
-	// Element
+	// Protein
 	{
-		for (const auto& elementState : getElementStates())
+		for (const auto& proteinState : getProteinStates())
 		{
-			if (elementState->isDestroyed()) continue;
+			if (proteinState->isDestroyed()) continue;
 
-			elementState->updateParticle();
-			elementState->updateElement();
+			proteinState->updateParticle();
+			proteinState->updateProtein();
 		}
 
-		// 存在しないElementの削除
-		m_elementStates.remove_if([](const auto& elementState) { return elementState->isDestroyed(); });
+		// 存在しないProteinの削除
+		m_proteinStates.remove_if([](const auto& proteinState) { return proteinState->isDestroyed(); });
 
-		m_elementStateKDTree.rebuildIndex();
+		m_proteinStateKDTree.rebuildIndex();
 	}
 
 	// Tile
@@ -137,10 +137,10 @@ void World::save()
 		for (const auto& eggState : m_eggStates)
 			eggState->save(writer);
 
-		// Elements
-		writer << int(m_elementStates.size());
-		for (const auto& elementState : m_elementStates)
-			elementState->save(writer);
+		// Proteins
+		writer << int(m_proteinStates.size());
+		for (const auto& proteinState : m_proteinStates)
+			proteinState->save(writer);
 
 		// Tiles
 		writer << m_tileSize;
@@ -241,11 +241,11 @@ void World::load()
 		}
 
 		{
-			int elementStateSize;
-			reader >> elementStateSize;
-			m_elementStates.resize(elementStateSize);
+			int proteinStateSize;
+			reader >> proteinStateSize;
+			m_proteinStates.resize(proteinStateSize);
 
-			for (auto& elementState : m_elementStates) elementState = MakeShared<ElementState>(reader);
+			for (auto& proteinState : m_proteinStates) proteinState = MakeShared<ProteinState>(reader);
 		}
 
 		{
@@ -294,14 +294,14 @@ bool World::hasAsset(const String& name) const
 World::World()
 	: m_cellStateKDTree(m_cellStates)
 	, m_eggStateKDTree(m_eggStates)
-	, m_elementStateKDTree(m_elementStates)
+	, m_proteinStateKDTree(m_proteinStates)
 	, m_tileSize(80, 45)
 	, m_tileLength(100)
 	, m_tiles(m_tileSize)
 {
 	m_fieldSize = m_tileSize * m_tileLength;
 	m_cellStates.reserve(0xFFFF);
-	m_elementStates.reserve(0xFFFF);
+	m_proteinStates.reserve(0xFFFF);
 	m_eggStates.reserve(0xFFFF);
 }
 
@@ -313,7 +313,7 @@ void World::draw()
 	for (const auto& tile : m_tiles)
 		tile->draw();
 
-	for (const auto& e : getElementStates())
+	for (const auto& e : getProteinStates())
 		if (!e->isDestroyed()) e->draw();
 
 	for (const auto& e : getEggStates())
@@ -333,9 +333,9 @@ const shared_ptr<EggState>& World::addEggState(const shared_ptr<CellAsset>& asse
 	return m_eggStates.emplace_back(make_shared<EggState>(asset));
 }
 
-const shared_ptr<ElementState>& World::addElementState(const shared_ptr<ElementAsset>& asset)
+const shared_ptr<ProteinState>& World::addProteinState(const shared_ptr<ProteinAsset>& asset)
 {
-	return m_elementStates.emplace_back(make_shared<ElementState>(asset));
+	return m_proteinStates.emplace_back(make_shared<ProteinState>(asset));
 }
 
 shared_ptr<TileState> World::getTile(const Point& point) const

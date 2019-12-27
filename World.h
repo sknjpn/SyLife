@@ -5,13 +5,13 @@ class EggState;
 class CellState;
 class PartState;
 class TileState;
-class ElementState;
+class ProteinState;
 
 // Asset
 class Asset;
 class CellAsset;
 class PartAsset;
-class ElementAsset;
+class ProteinAsset;
 class PartConfig;
 
 template <typename T>
@@ -32,10 +32,10 @@ class World
 	// State
 	Array<shared_ptr<CellState>>	m_cellStates;
 	Array<shared_ptr<EggState>>		m_eggStates;
-	Array<shared_ptr<ElementState>>	m_elementStates;
+	Array<shared_ptr<ProteinState>>	m_proteinStates;
 	KDTree<ParticleAdapter<CellState>>		m_cellStateKDTree;
 	KDTree<ParticleAdapter<EggState>>		m_eggStateKDTree;
-	KDTree<ParticleAdapter<ElementState>>	m_elementStateKDTree;
+	KDTree<ParticleAdapter<ProteinState>>	m_proteinStateKDTree;
 	// Tile
 	Grid<shared_ptr<TileState>> m_tiles;
 
@@ -87,13 +87,13 @@ public:
 	// Field
 	const Array<shared_ptr<CellState>>& getCellStates() const { return m_cellStates; }
 	const Array<shared_ptr<EggState>>& getEggStates() const { return m_eggStates; }
-	const Array<shared_ptr<ElementState>>& getElementStates() const { return m_elementStates; }
+	const Array<shared_ptr<ProteinState>>& getProteinStates() const { return m_proteinStates; }
 	const KDTree<ParticleAdapter<CellState>>& getCellStateKDTree() const { return m_cellStateKDTree; }
 	const KDTree<ParticleAdapter<EggState>>& getEggStateKDTree() const { return m_eggStateKDTree; }
-	const KDTree<ParticleAdapter<ElementState>>& getElementStateKDTree() const { return m_elementStateKDTree; }
+	const KDTree<ParticleAdapter<ProteinState>>& getProteinStateKDTree() const { return m_proteinStateKDTree; }
 	const shared_ptr<CellState>& addCellState(const shared_ptr<CellAsset>& asset);
 	const shared_ptr<EggState>& addEggState(const shared_ptr<CellAsset>& asset);
-	const shared_ptr<ElementState>& addElementState(const shared_ptr<ElementAsset>& asset);
+	const shared_ptr<ProteinState>& addProteinState(const shared_ptr<ProteinAsset>& asset);
 	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_tileLength), int(position.y / m_tileLength)); }
 	shared_ptr<TileState> getTile(const Point& point) const;
 	shared_ptr<TileState> getTile(const Vec2& position) const { return getTile(getPoint(position)); }

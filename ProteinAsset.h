@@ -4,7 +4,7 @@
 
 #include "Storage.h"
 
-class ElementAsset
+class ProteinAsset
 	: public Asset
 {
 	double	m_radius;
@@ -25,5 +25,5 @@ public:
 	void	save(JSONWriter& json) const override;
 	
 	// TypeName
-	String	getTypeName() override { return U"ElementAsset"; }
+	String	getTypeName() override { return U"ProteinAsset"; }
 };

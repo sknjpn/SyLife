@@ -2,7 +2,7 @@
 #include "CellAsset.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
-#include "ElementAsset.h"
+#include "ProteinAsset.h"
 
 void MainViewer::CellMakingViewer::CellInfo::init()
 {
@@ -59,10 +59,10 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 		font(U"Nutrition: " + ToString(cellAsset->getMaterial().getNutrition())).draw(Vec2::Zero(), Palette::Black);
 		moveDrawPos(0, 20);
 
-		// Elements
-		for (const auto& element : cellAsset->getMaterial().getElementList())
+		// Proteins
+		for (const auto& protein : cellAsset->getMaterial().getProteinList())
 		{
-			font(element.first->getName() + U": " + ToString(element.second) + U"U").draw(Vec2::Zero(), Palette::Black);
+			font(protein.first->getName() + U": " + ToString(protein.second) + U"U").draw(Vec2::Zero(), Palette::Black);
 
 			moveDrawPos(0, 20);
 		}

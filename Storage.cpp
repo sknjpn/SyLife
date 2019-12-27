@@ -1,5 +1,5 @@
 ﻿#include "Storage.h"
-#include "ElementAsset.h"
+#include "ProteinAsset.h"
 #include "World.h"
 
 bool Storage::operator>=(const Storage& s) const
@@ -7,7 +7,7 @@ bool Storage::operator>=(const Storage& s) const
 	if (m_nutrition < s.m_nutrition) return false;
 
 	for (const auto& m : s)
-		if (numElement(m.first) < m.second) return false;
+		if (numProtein(m.first) < m.second) return false;
 
 	return true;
 }
@@ -17,7 +17,7 @@ bool Storage::operator<=(const Storage& s) const
 	if (s.m_nutrition > m_nutrition) return false;
 
 	for (const auto& m : *this)
-		if (m.second > s.numElement(m.first)) return false;
+		if (m.second > s.numProtein(m.first)) return false;
 
 	return true;
 }
@@ -27,7 +27,7 @@ Storage& Storage::operator+=(const Storage& s) noexcept
 	m_nutrition += s.m_nutrition;
 
 	for (const auto& m : s)
-		addElement(m.first, m.second);
+		addProtein(m.first, m.second);
 
 	return *this;
 }
@@ -37,7 +37,7 @@ Storage& Storage::operator-=(const Storage& s) noexcept
 	m_nutrition -= s.m_nutrition;
 
 	for (const auto& m : s)
-		pullElement(m.first, m.second);
+		pullProtein(m.first, m.second);
 
 	return *this;
 }
@@ -52,7 +52,7 @@ double Storage::getNutritionRecursive() const
 	return sum;
 }
 
-void Storage::addElement(const shared_ptr<ElementAsset>& asset, int size)
+void Storage::addProtein(const shared_ptr<ProteinAsset>& asset, int size)
 {
 	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 
@@ -60,19 +60,19 @@ void Storage::addElement(const shared_ptr<ElementAsset>& asset, int size)
 	else (*it).second += size;
 }
 
-void Storage::pullElement(const shared_ptr<ElementAsset>& asset, int size)
+void Storage::pullProtein(const shared_ptr<ProteinAsset>& asset, int size)
 {
 	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 
-	if (it == end()) throw Error(U"全く存在しないElementの削除を試みました");
+	if (it == end()) throw Error(U"全く存在しないProteinの削除を試みました");
 	else
 	{
-		if (((*it).second -= size) < 0) throw Error(U"存在しない量のElementの削除を試みました");
+		if (((*it).second -= size) < 0) throw Error(U"存在しない量のProteinの削除を試みました");
 		else if ((*it).second == 0) erase(it);
 	}
 }
 
-int Storage::numElement(const shared_ptr<ElementAsset>& asset) const
+int Storage::numProtein(const shared_ptr<ProteinAsset>& asset) const
 {
 	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 
@@ -85,11 +85,11 @@ void Storage::load(const JSONValue& json)
 	// nutrition
 	m_nutrition = json[U"nutrition"].get<double>();
 
-	// elements
-	for (auto element : json[U"elements"].arrayView())
+	// proteins
+	for (auto protein : json[U"proteins"].arrayView())
 	{
-		const auto& asset = World::GetAsset<ElementAsset>(element[U"name"].getString());
-		const int size = element[U"size"].get<int>();
+		const auto& asset = World::GetAsset<ProteinAsset>(protein[U"name"].getString());
+		const int size = protein[U"size"].get<int>();
 
 		emplace_back(asset, size);
 	}
@@ -100,16 +100,16 @@ void Storage::save(JSONWriter& json) const
 	// nutrition
 	json.key(U"nutrition").write(m_nutrition);
 
-	// elements
+	// proteins
 	{
-		json.key(U"elements").startArray();
+		json.key(U"proteins").startArray();
 
-		for (const auto& element : *this)
+		for (const auto& protein : *this)
 		{
 			json.startObject();
 		
-			json.key(U"name").write(element.first->getName());
-			json.key(U"size").write(element.second);
+			json.key(U"name").write(protein.first->getName());
+			json.key(U"size").write(protein.second);
 
 			json.endObject();
 		}
@@ -124,20 +124,20 @@ void Storage::load(Deserializer<ByteArray>& reader)
 	reader >> m_nutrition;
 
 
-	// elements
+	// proteins
 	{
 		int storageSize;
 		reader >> storageSize;
 	
 		for (int i = 0; i < storageSize; ++i)
 		{
-			String elementAssetName;
-			int elementSize;
+			String proteinAssetName;
+			int proteinSize;
 
-			reader >> elementAssetName;
-			reader >> elementSize;
+			reader >> proteinAssetName;
+			reader >> proteinSize;
 
-			emplace_back(World::GetAsset<ElementAsset>(elementAssetName), elementSize);
+			emplace_back(World::GetAsset<ProteinAsset>(proteinAssetName), proteinSize);
 		}
 	}
 }
@@ -147,14 +147,14 @@ void Storage::save(Serializer<MemoryWriter>& writer) const
 	// nutrition
 	writer << m_nutrition;
 
-	// elements
+	// proteins
 	{
 		writer << int(size());
 
-		for (const auto& element : *this)
+		for (const auto& protein : *this)
 		{
-			writer << element.first->getName();
-			writer << element.second;
+			writer << protein.first->getName();
+			writer << protein.second;
 		}
 	}
 }

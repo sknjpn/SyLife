@@ -3,11 +3,11 @@
 #include "Model.h"
 #include "Viewer.h"
 
-class ElementAsset;
+class ProteinAsset;
 
 class Storage
 	: public Model
-	, private Array<pair<shared_ptr<ElementAsset>, int>>
+	, private Array<pair<shared_ptr<ProteinAsset>, int>>
 {
 	double m_nutrition;
 
@@ -33,11 +33,11 @@ public:
 
 	double	getNutritionRecursive() const;
 
-	// element
-	const Array<pair<shared_ptr<ElementAsset>, int>>& getElementList() const { return *this; }
-	void	addElement(const shared_ptr<ElementAsset>& asset, int size = 1);
-	void	pullElement(const shared_ptr<ElementAsset>& asset, int size = 1);
-	int		numElement(const shared_ptr<ElementAsset>& asset) const;
+	// protein
+	const Array<pair<shared_ptr<ProteinAsset>, int>>& getProteinList() const { return *this; }
+	void	addProtein(const shared_ptr<ProteinAsset>& asset, int size = 1);
+	void	pullProtein(const shared_ptr<ProteinAsset>& asset, int size = 1);
+	int		numProtein(const shared_ptr<ProteinAsset>& asset) const;
 
 	// JSON
 	void	load(const JSONValue& json) override;

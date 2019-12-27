@@ -2,7 +2,7 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "PartAsset_Body.h"
-#include "ElementAsset.h"
+#include "ProteinAsset.h"
 #include "CellAsset.h"
 #include "GUIButton.h"
 #include "World.h"
