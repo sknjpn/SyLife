@@ -36,7 +36,7 @@ MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::Item(const shared_
 
 void MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::update()
 {
-	const int length = 64;
+	const int length = 80;
 
 	// BackGround
 	{
