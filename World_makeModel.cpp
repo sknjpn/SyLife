@@ -1,7 +1,7 @@
 ﻿#include "World.h"
 
 #include "CellAsset.h"
-#include "ElementAsset.h"
+#include "ProteinAsset.h"
 #include "PartAsset_Body.h"
 #include "PartAsset_Synthesizer.h"
 #include "PartAsset_Wing.h"
@@ -12,7 +12,7 @@ shared_ptr<Asset> World::makeAsset(const String& type)
 {
 	if (type == U"CellAsset")			return makeAsset<CellAsset>();
 
-	if (type == U"ElementAsset")		return makeAsset<ElementAsset>();
+	if (type == U"ProteinAsset")		return makeAsset<ProteinAsset>();
 
 	if (type == U"PartAsset_Body")			return makeAsset<PartAsset_Body>();
 	if (type == U"PartAsset_Synthesizer")	return makeAsset<PartAsset_Synthesizer>();

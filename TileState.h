@@ -4,7 +4,7 @@
 
 class TileState
 {
-	double	m_nutrition;
+	double	m_element;
 	Point	m_point;
 	Vec2	m_waveVelocity;
 
@@ -14,7 +14,7 @@ class TileState
 public:
 	TileState(const Point& point)
 		: m_point(point)
-		, m_nutrition(0.0)
+		, m_element(0.0)
 	{}
 
 	void	update();
@@ -28,13 +28,13 @@ public:
 	void	setWaveVelocity(const Vec2& waveVelocity);
 
 	Vec2	getCentroid() const;
-	double	getNutrition() const { return m_nutrition; }
+	double	getElement() const { return m_element; }
 
-	void	setNutrition(double nutrition) { m_nutrition = nutrition; }
-	void	addNutrition(double nutrition) { m_nutrition += nutrition; }
-	void	pullNutrition(double nutrition) { m_nutrition -= nutrition; }
+	void	setElement(double element) { m_element = element; }
+	void	addElement(double element) { m_element += element; }
+	void	pullElement(double element) { m_element -= element; }
 
-	Color	getColor() const { return Math::Lerp(Color(0, 0), Palette::Palegreen, Min(m_nutrition / 100.0, 1.0)); }
+	Color	getColor() const { return Math::Lerp(Color(0, 0), Palette::Palegreen, Min(m_element / 100.0, 1.0)); }
 	void	sendTo(const shared_ptr<TileState>& tile, double value);
 
 	void	load(Deserializer<ByteArray>& reader);

@@ -2,7 +2,7 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "PartAsset_Body.h"
-#include "ElementAsset.h"
+#include "ProteinAsset.h"
 #include "CellAsset.h"
 #include "GUIButton.h"
 #include "World.h"
@@ -87,7 +87,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 
 		bodyAsset->setMass(1.0);
-		bodyAsset->getMaterial().setNutrition(1.0);
+		bodyAsset->getMaterial().setElement(1.0);
 		auto& l = bodyAsset->getShape().emplace_back();
 		l.m_color = Palette::White;
 		l.m_polygon = Circle(10.0).asPolygon();

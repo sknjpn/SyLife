@@ -1,13 +1,13 @@
-﻿#include "ElementAsset.h"
+﻿#include "ProteinAsset.h"
 
-void ElementAsset::drawIcon() const
+void ProteinAsset::drawIcon() const
 {
 	static Texture particle(U"resources/image/particle.png", TextureDesc::Mipped);
 
 	particle.resized(1.0, 1.0).drawAt(0.5, 0.5, m_color);
 }
 
-void ElementAsset::load(const JSONValue& json)
+void ProteinAsset::load(const JSONValue& json)
 {
 	Asset::load(json);
 
@@ -21,7 +21,7 @@ void ElementAsset::load(const JSONValue& json)
 	m_material.load(json[U"material"]);
 }
 
-void ElementAsset::save(JSONWriter& json) const
+void ProteinAsset::save(JSONWriter& json) const
 {
 	Asset::save(json);
 

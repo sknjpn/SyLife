@@ -6,7 +6,7 @@
 
 class CellAsset;
 class PartState;
-class ElementState;
+class ProteinState;
 
 class CellState
 	: public Rigidbody
@@ -33,8 +33,8 @@ public:
 	void	updateCell();
 	void	draw();
 
-	void	takeNutrition();
-	void	takeElement(const shared_ptr<ElementState>& elementState);
+	void	takeElement();
+	void	takeProtein(const shared_ptr<ProteinState>& proteinState);
 
 	void	load(Deserializer<ByteArray>& reader);
 	void	save(Serializer<MemoryWriter>& writer) const;

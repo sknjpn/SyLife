@@ -6,8 +6,8 @@
 #include "PartState.h"
 #include "TileState.h"
 
-#include "ElementAsset.h"
-#include "ElementState.h"
+#include "ProteinAsset.h"
+#include "ProteinState.h"
 
 #include "EggState.h"
 
@@ -51,33 +51,33 @@ void CellState::updateCell()
 	// parts
 	for (const auto& p : m_partStates) p->update(*this);
 
-	// Nutritionの取り込み
-	takeNutrition();
+	// Elementの取り込み
+	takeElement();
 
-	// 接触したElementStateの取り込み
-	for (auto i : World::GetInstance()->getElementStateKDTree().knnSearch(1, getPosition()))
+	// 接触したProteinStateの取り込み
+	for (auto i : World::GetInstance()->getProteinStateKDTree().knnSearch(1, getPosition()))
 	{
-		auto& m = World::GetInstance()->getElementStates()[i];
+		auto& m = World::GetInstance()->getProteinStates()[i];
 
 		if (!m->isDestroyed() &&
 			(m->getPosition() - getPosition()).length() - getRadius() < 0.0 &&
-			m_cellAsset->getMaxStorage().numElement(m->getPartAsset()) > m_storage.numElement(m->getPartAsset()))
+			m_cellAsset->getMaxStorage().numProtein(m->getPartAsset()) > m_storage.numProtein(m->getPartAsset()))
 		{
-			takeElement(m);
+			takeProtein(m);
 		}
 	}
 
-	// 余剰のElementStateの投棄
+	// 余剰のProteinStateの投棄
 	/*
 	for (;;)
 	{
 		bool flag = true;
 
-		for (const auto& m : m_storage.GetElements())
+		for (const auto& m : m_storage.GetProteins())
 		{
 			if (2 * m_asset->getMaterial().Num(m.first) < m_storage.Num(m.first))
 			{
-				ExpireElement(m.first);
+				ExpireProtein(m.first);
 
 				flag = false;
 
@@ -111,20 +111,20 @@ void CellState::updateCell()
 	// 死亡処理
 	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
-		// Nutritionの吐き出し
-		World::GetInstance()->getTile(getPosition())->addNutrition(m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
+		// Elementの吐き出し
+		World::GetInstance()->getTile(getPosition())->addElement(m_storage.getElement() + m_cellAsset->getMaterial().getElement());
 
-		// ElementStateの吐き出し
+		// ProteinStateの吐き出し
 		auto s = m_storage + m_cellAsset->getMaterial();
-		for (const auto& m : s.getElementList())
+		for (const auto& m : s.getProteinList())
 		{
 			for (int i = 0; i < m.second; i++)
 			{
 				// 吐き出す方向
 				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
-				// 吐き出されたElementState
-				const auto& ms = World::GetInstance()->addElementState(m.first);
+				// 吐き出されたProteinState
+				const auto& ms = World::GetInstance()->addProteinState(m.first);
 				ms->setPosition(getPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
 				ms->setVelocity(v * 0.1);
 			}
@@ -158,21 +158,21 @@ void CellState::draw()
 	}
 }
 
-void CellState::takeNutrition()
+void CellState::takeElement()
 {
-	const double space = m_cellAsset->getMaxStorage().getNutrition() - m_storage.getNutrition();
-	const double amount = World::GetInstance()->getTile(getPosition())->getNutrition();
+	const double space = m_cellAsset->getMaxStorage().getElement() - m_storage.getElement();
+	const double amount = World::GetInstance()->getTile(getPosition())->getElement();
 	const double value = Min(space, amount);
 
-	World::GetInstance()->getTile(getPosition())->pullNutrition(value);
-	m_storage.addNutrition(value);
+	World::GetInstance()->getTile(getPosition())->pullElement(value);
+	m_storage.addElement(value);
 }
 
-void CellState::takeElement(const shared_ptr<ElementState>& elementState)
+void CellState::takeProtein(const shared_ptr<ProteinState>& proteinState)
 {
-	m_storage.addElement(elementState->getPartAsset());
+	m_storage.addProtein(proteinState->getPartAsset());
 
-	elementState->destroy();
+	proteinState->destroy();
 }
 
 void CellState::load(Deserializer<ByteArray>& reader)

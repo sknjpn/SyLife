@@ -6,15 +6,15 @@ void TileState::update()
 	// 平滑化
 	{
 		// 周囲
-		const double value = m_nutrition;
+		const double value = m_element;
 		for (auto p : step(Size(3, 3)))
 		{
 			if (!m_nearTiles[p.x][p.y]) continue;
 
-			m_nearTiles[p.x][p.y]->m_nutrition += value * m_sendRate[p.x][p.y];
+			m_nearTiles[p.x][p.y]->m_element += value * m_sendRate[p.x][p.y];
 		}
 
-		m_nutrition = value * m_sendRate[1][1];
+		m_element = value * m_sendRate[1][1];
 	}
 }
 
@@ -110,8 +110,8 @@ Vec2 TileState::getCentroid() const
 
 void TileState::sendTo(const shared_ptr<TileState>& tile, double value)
 {
-	tile->m_nutrition += value;
-	m_nutrition -= value;
+	tile->m_element += value;
+	m_element -= value;
 }
 
 void TileState::load(Deserializer<ByteArray>& reader)
@@ -122,11 +122,11 @@ void TileState::load(Deserializer<ByteArray>& reader)
 		setWaveVelocity(waveVelocity);
 	}
 
-	reader >> m_nutrition;
+	reader >> m_element;
 }
 
 void TileState::save(Serializer<MemoryWriter>& writer) const
 {
 	writer << m_waveVelocity;
-	writer << m_nutrition;
+	writer << m_element;
 }

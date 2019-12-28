@@ -95,7 +95,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 
 			double k = 0.01;
 			m_partAsset->setMass(m_partAsset->getShape()[0].m_polygon.area() * k);
-			m_partAsset->getMaterial().setNutrition(m_partAsset->getMass());
+			m_partAsset->getMaterial().setElement(m_partAsset->getMass());
 		}
 	}
 

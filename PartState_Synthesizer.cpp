@@ -6,7 +6,7 @@
 #include "PartConfig.h"
 #include "CellState.h"
 #include "CellAsset.h"
-#include "ElementAsset.h"
+#include "ProteinAsset.h"
 
 
 void PartState_Synthesizer::draw(const CellState& cellState) const
@@ -21,11 +21,11 @@ void PartState_Synthesizer::update(CellState& cellState)
 	auto asset = dynamic_pointer_cast<PartAsset_Synthesizer>(getPartConfig()->getPartAsset());
 	if (m_timer > 2.0 &&
 		cellState.m_storage >= asset->getExport()->getMaterial() &&
-		cellState.m_cellAsset->getMaxStorage().numElement(asset->getExport()) > cellState.m_storage.numElement(asset->getExport()))
+		cellState.m_cellAsset->getMaxStorage().numProtein(asset->getExport()) > cellState.m_storage.numProtein(asset->getExport()))
 	{
 		m_timer = 0.0;
 
 		cellState.m_storage -= asset->getExport()->getMaterial();
-		cellState.m_storage.addElement(asset->getExport());
+		cellState.m_storage.addProtein(asset->getExport());
 	}
 }

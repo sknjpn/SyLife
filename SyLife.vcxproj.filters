@@ -426,9 +426,6 @@
     <ClCompile Include="EggState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="ElementState.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
     <ClCompile Include="PartState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
@@ -468,9 +465,6 @@
     <ClCompile Include="CellAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="ElementAsset.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
     <ClCompile Include="PartAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
@@ -496,6 +490,12 @@
       <Filter>Engine\World</Filter>
     </ClCompile>
     <ClCompile Include="World_makeModel.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="ProteinAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="ProteinState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
   </ItemGroup>
@@ -538,9 +538,6 @@
     <ClInclude Include="EggState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="ElementState.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
     <ClInclude Include="PartState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
@@ -580,9 +577,6 @@
     <ClInclude Include="CellAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="ElementAsset.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
     <ClInclude Include="PartAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
@@ -608,6 +602,12 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="TileState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="ProteinState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="ProteinAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
   </ItemGroup>
