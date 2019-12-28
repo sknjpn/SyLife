@@ -1,0 +1,19 @@
+﻿{
+  "type": "ElementAsset",
+  "name": "Hexose",
+  "radius": 6.0,
+  "color": "(255, 255, 255, 255)",
+  "material": {
+    "nutrition": 2.0,
+    "elements": [
+      {
+        "name": "Carbon",
+        "size": 1
+      },
+      {
+        "name": "Oxgen",
+        "size": 1
+      }
+    ]
+  }
+}
