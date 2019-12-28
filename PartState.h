@@ -1,12 +1,9 @@
 ﻿#pragma once
 
-#include "State.h"
-
 class PartConfig;
 class CellState;
 
 class PartState
-	: public State
 {
 	shared_ptr<PartConfig>	m_partConfig;
 
@@ -21,4 +18,7 @@ public:
 
 	virtual void	draw(const CellState& cellState) const;
 	virtual void	update(CellState& cellState);
+
+	virtual void	load(Deserializer<ByteArray>& reader) {}
+	virtual void	save(Serializer<MemoryWriter>& writer) const {}
 };

@@ -10,8 +10,6 @@ void MainViewer::init()
 {
 	addChildViewer<FieldViewer>();
 
-	addChildViewer<CellStateViewer>();
-
 	addChildViewer<GUIButton>(U"Cell作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 200, 50);
 
 	addChildViewer<StatisticsViewer>();

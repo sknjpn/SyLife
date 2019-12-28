@@ -5,7 +5,7 @@
 #include "ElementAsset.h"
 #include "CellAsset.h"
 #include "GUIButton.h"
-#include "Assets.h"
+#include "World.h"
 
 void MainViewer::CellMakingViewer::clearEditor()
 {
@@ -70,7 +70,7 @@ void MainViewer::CellMakingViewer::update()
 
 void MainViewer::CellMakingViewer::makeAsset()
 {
-	m_cellAsset = Assets::MakeAsset<CellAsset>();
+	m_cellAsset = World::MakeAsset<CellAsset>();
 
 	Logger << m_cellAsset->getName();
 
@@ -83,7 +83,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 
 	// Bodyの設定
 	{
-		auto bodyAsset = Assets::MakeAsset<PartAsset_Body>();
+		auto bodyAsset = World::MakeAsset<PartAsset_Body>();
 		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 
 		bodyAsset->setMass(1.0);

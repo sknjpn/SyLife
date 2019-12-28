@@ -1,4 +1,4 @@
-﻿#include "Assets.h"
+﻿#include "World.h"
 
 #include "CellAsset.h"
 #include "ElementAsset.h"
@@ -8,7 +8,7 @@
 #include "PartAsset_Needle.h"
 #include "PartAsset_Nucleus.h"
 
-shared_ptr<Asset> Assets::makeAsset(const String& type)
+shared_ptr<Asset> World::makeAsset(const String& type)
 {
 	if (type == U"CellAsset")			return makeAsset<CellAsset>();
 

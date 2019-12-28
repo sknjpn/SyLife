@@ -1,10 +1,10 @@
 ﻿#include "CellState.h"
 #include "CellAsset.h"
-#include "Assets.h"
 #include "World.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartState.h"
+#include "TileState.h"
 
 #include "ElementAsset.h"
 #include "ElementState.h"
@@ -31,10 +31,10 @@ void CellState::updateCell()
 {
 	// 衝突処理
 	{
-		auto result = World::GetInstance()->getField().getCellStateKDTree().knnSearch(2, getPosition());
+		auto result = World::GetInstance()->getCellStateKDTree().knnSearch(2, getPosition());
 		if (result.size() == 2)
 		{
-			auto& t = World::GetInstance()->getField().getCellStates()[result[1]];
+			auto& t = World::GetInstance()->getCellStates()[result[1]];
 
 			if (t->getPosition() != getPosition() && (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length()) > 0)
 			{
@@ -55,9 +55,9 @@ void CellState::updateCell()
 	takeNutrition();
 
 	// 接触したElementStateの取り込み
-	for (auto i : World::GetInstance()->getField().getElementStateKDTree().knnSearch(1, getPosition()))
+	for (auto i : World::GetInstance()->getElementStateKDTree().knnSearch(1, getPosition()))
 	{
-		auto& m = World::GetInstance()->getField().getElementStates()[i];
+		auto& m = World::GetInstance()->getElementStates()[i];
 
 		if (!m->isDestroyed() &&
 			(m->getPosition() - getPosition()).length() - getRadius() < 0.0 &&
@@ -97,7 +97,7 @@ void CellState::updateCell()
 			m_yieldTimer = 0.0;
 			m_storage -= m_cellAsset->getMaterial();
 
-			const auto& e = World::GetInstance()->getField().addEggState(m_cellAsset);
+			const auto& e = World::GetInstance()->addEggState(m_cellAsset);
 			e->setPosition(getPosition());
 			e->setRotation(Random(Math::TwoPi));
 			e->setVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
@@ -112,7 +112,7 @@ void CellState::updateCell()
 	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
 		// Nutritionの吐き出し
-		World::GetInstance()->getField().getChip(getPosition())->addNutrition(m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
+		World::GetInstance()->getTile(getPosition())->addNutrition(m_storage.getNutrition() + m_cellAsset->getMaterial().getNutrition());
 
 		// ElementStateの吐き出し
 		auto s = m_storage + m_cellAsset->getMaterial();
@@ -124,7 +124,7 @@ void CellState::updateCell()
 				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 				// 吐き出されたElementState
-				const auto& ms = World::GetInstance()->getField().addElementState(m.first);
+				const auto& ms = World::GetInstance()->addElementState(m.first);
 				ms->setPosition(getPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
 				ms->setVelocity(v * 0.1);
 			}
@@ -161,10 +161,10 @@ void CellState::draw()
 void CellState::takeNutrition()
 {
 	const double space = m_cellAsset->getMaxStorage().getNutrition() - m_storage.getNutrition();
-	const double amount = World::GetInstance()->getField().getChip(getPosition())->getNutrition();
+	const double amount = World::GetInstance()->getTile(getPosition())->getNutrition();
 	const double value = Min(space, amount);
 
-	World::GetInstance()->getField().getChip(getPosition())->pullNutrition(value);
+	World::GetInstance()->getTile(getPosition())->pullNutrition(value);
 	m_storage.addNutrition(value);
 }
 
@@ -175,26 +175,29 @@ void CellState::takeElement(const shared_ptr<ElementState>& elementState)
 	elementState->destroy();
 }
 
-void CellState::load(const JSONValue& json)
+void CellState::load(Deserializer<ByteArray>& reader)
 {
-	Rigidbody::load(json);
+	Rigidbody::load(reader);
 
-	m_startTimer = json[U"startTimer"].get<double>();
-	m_deathTimer = json[U"deathTimer"].get<double>();
-	m_yieldTimer = json[U"yieldTimer"].get<double>();
+	reader >> m_startTimer;
+	reader >> m_deathTimer;
+	reader >> m_yieldTimer;
+	reader >> m_hitpoint;
+	
+	m_storage.load(reader);
 
-	m_hitpoint = json[U"hitpoint"].get<double>();
-
-	m_storage.load(json[U"storage"]);
-
-	m_cellAsset = Assets::GetAsset<CellAsset>(json[U"cellAsset"].getString());
+	{
+		String cellAssetName;
+		reader >> cellAssetName;
+		m_cellAsset = World::GetAsset<CellAsset>(cellAssetName);
+	}
 
 	// parts
 	for (const auto& pc : m_cellAsset->getPartConfigs())
 	{
 		const auto partState = m_partStates.emplace_back(pc->getPartAsset()->makeState());
 		partState->setPartConfig(pc);
-		partState->load(json);
+		partState->load(reader);
 	}
 
 	// 設定
@@ -203,28 +206,19 @@ void CellState::load(const JSONValue& json)
 	setInertia(m_cellAsset->getInertia());
 }
 
-void CellState::save(JSONWriter& json) const
+void CellState::save(Serializer<MemoryWriter>& writer) const
 {
-	Rigidbody::save(json);
+	Rigidbody::save(writer);
 
-	json.key(U"startTimer").write(m_startTimer);
-	json.key(U"deathTimer").write(m_deathTimer);
-	json.key(U"yieldTimer").write(m_yieldTimer);
+	writer << m_startTimer;
+	writer << m_deathTimer;
+	writer << m_yieldTimer;
+	writer << m_hitpoint;
 
-	json.key(U"hitpoint").write(m_hitpoint);
+	m_storage.save(writer);
+	
+	writer << m_cellAsset->getName();
 
-	json.key(U"storage").startObject();
-	m_storage.save(json);
-	json.endObject();
-
-	json.key(U"cellAsset").write(m_cellAsset->getName());
-
-	json.key(U"partStates").startArray();
-	for(const auto& partState : m_partStates)
-	{
-		json.startObject();
-		partState->save(json);
-		json.endObject();
-	}
-	json.endArray();
+	for (const auto& partState : m_partStates)
+		partState->save(writer);
 }

@@ -11,24 +11,7 @@ class ElementAsset
 	Color	m_color;
 	Storage	m_material;
 
-	class Editor
-		: public AssetEditor
-	{
-		shared_ptr<ElementAsset>	m_elementAsset;
-
-	public:
-		Editor(const shared_ptr<ElementAsset>& elementAsset)
-			: m_elementAsset(elementAsset)
-		{}
-
-		void	init() override;
-		void	update() override;
-	};
-
 public:
-	// Editor
-	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<ElementAsset>(shared_from_this())); }
-
 	// Get
 	double	getRadius() const { return m_radius; }
 	const Color& getColor() const { return m_color; }

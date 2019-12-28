@@ -7,6 +7,7 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "EggState.h"
+#include "TileState.h"
 #include "ElementState.h"
 #include "ElementAsset.h"
 
@@ -19,13 +20,11 @@ void MainViewer::FieldViewer::openCellMakingViewer()
 
 void MainViewer::FieldViewer::init()
 {
-	m_camera.setRestrictedRect(Rect(World::GetInstance()->getField().getChipSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getField().getChipLength()));
+	m_camera.setRestrictedRect(Rect(World::GetInstance()->getTileSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getTileLength()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
 	m_camera.setTargetCenter(m_camera.getRestrictedRect()->center());
-
-	addChildViewer<CellStateViewer>();
 }
 
 void MainViewer::FieldViewer::update()
@@ -50,7 +49,7 @@ void MainViewer::FieldViewer::update()
 			int i = 0;
 			for (; i < maxConut; ++i)
 			{
-				World::GetInstance()->getField().update();
+				World::GetInstance()->update();
 
 				getParentViewer()->
 					getChildViewer<StatisticsViewer>()->takeLog();
@@ -62,20 +61,18 @@ void MainViewer::FieldViewer::update()
 		}
 
 		// CellState Capture
-		if (isMouseover() && MouseL.down() && !World::GetInstance()->getField().getCellStates().isEmpty())
+		if (isMouseover() && MouseL.down() && !World::GetInstance()->getCellStates().isEmpty())
 		{
-			auto index = World::GetInstance()->getField().getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
-			auto cellState = World::GetInstance()->getField().getCellStates()[index];
+			auto index = World::GetInstance()->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
+			auto cellState = World::GetInstance()->getCellStates()[index];
 			if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 			{
 				addChildViewer<CellStateCaptureViewer>(cellState);
-
-				getParentViewer()->getChildViewer<CellStateViewer>()->m_cellState = cellState;
 			}
 		}
 
 		// draw
-		World::GetInstance()->getField().draw();
+		World::GetInstance()->draw();
 
 		// delete
 		if (isMouseover() && MouseR.pressed())
@@ -83,17 +80,17 @@ void MainViewer::FieldViewer::update()
 			Circle circle(Cursor::PosF(), 256.0);
 			circle.draw(ColorF(Palette::Red, 0.5));
 
-			for (const auto& c : World::GetInstance()->getField().getCellStates())
+			for (const auto& c : World::GetInstance()->getCellStates())
 				if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
-			for (const auto& e : World::GetInstance()->getField().getEggStates())
+			for (const auto& e : World::GetInstance()->getEggStates())
 			{
 				if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
 				{
 					e->destroy();
 
 					// Nutritionの吐き出し
-					World::GetInstance()->getField().getChip(e->getPosition())->addNutrition(e->getCellAsset()->getMaterial().getNutrition());
+					World::GetInstance()->getTile(e->getPosition())->addNutrition(e->getCellAsset()->getMaterial().getNutrition());
 
 					// ElementStateの吐き出し
 					auto s = e->getCellAsset()->getMaterial();
@@ -105,22 +102,12 @@ void MainViewer::FieldViewer::update()
 							auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
 
 							// 吐き出されたElementState
-							const auto& ms = World::GetInstance()->getField().addElementState(m.first);
+							const auto& ms = World::GetInstance()->addElementState(m.first);
 							ms->setPosition(e->getPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
 							ms->setVelocity(v * 0.1);
 						}
 					}
 				}
-			}
-		}
-
-		{
-			const auto& cs = getChildViewer<CellStateViewer>()->m_cellState;
-			if (cs != nullptr)
-			{
-				Circle(cs->getPosition(), cs->getRadius() * 1.5)
-					.draw(ColorF(1.0, 0.25))
-					.drawFrame(4.0, Palette::Black);
 			}
 		}
 	}

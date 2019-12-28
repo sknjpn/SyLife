@@ -1,6 +1,5 @@
 ﻿#include "PartAsset_Wing.h"
 #include "PartState_Wing.h"
-#include "PartShapeViewer.h"
 
 shared_ptr<PartState> PartAsset_Wing::makeState()
 {
@@ -20,5 +19,4 @@ void PartAsset_Wing::save(JSONWriter& json) const
 
 	// is right
 	json.key(U"isRight").writeBool(m_isRight);
-	
 }

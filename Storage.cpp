@@ -1,6 +1,6 @@
 ﻿#include "Storage.h"
 #include "ElementAsset.h"
-#include "Assets.h"
+#include "World.h"
 
 bool Storage::operator>=(const Storage& s) const
 {
@@ -82,15 +82,13 @@ int Storage::numElement(const shared_ptr<ElementAsset>& asset) const
 
 void Storage::load(const JSONValue& json)
 {
-	Model::load(json);
-
 	// nutrition
 	m_nutrition = json[U"nutrition"].get<double>();
 
 	// elements
 	for (auto element : json[U"elements"].arrayView())
 	{
-		const auto& asset = Assets::GetAsset<ElementAsset>(element[U"name"].getString());
+		const auto& asset = World::GetAsset<ElementAsset>(element[U"name"].getString());
 		const int size = element[U"size"].get<int>();
 
 		emplace_back(asset, size);
@@ -99,8 +97,6 @@ void Storage::load(const JSONValue& json)
 
 void Storage::save(JSONWriter& json) const
 {
-	Model::save(json);
-
 	// nutrition
 	json.key(U"nutrition").write(m_nutrition);
 
@@ -119,5 +115,46 @@ void Storage::save(JSONWriter& json) const
 		}
 
 		json.endArray();
+	}
+}
+
+void Storage::load(Deserializer<ByteArray>& reader)
+{
+	// nutrition
+	reader >> m_nutrition;
+
+
+	// elements
+	{
+		int storageSize;
+		reader >> storageSize;
+	
+		for (int i = 0; i < storageSize; ++i)
+		{
+			String elementAssetName;
+			int elementSize;
+
+			reader >> elementAssetName;
+			reader >> elementSize;
+
+			emplace_back(World::GetAsset<ElementAsset>(elementAssetName), elementSize);
+		}
+	}
+}
+
+void Storage::save(Serializer<MemoryWriter>& writer) const
+{
+	// nutrition
+	writer << m_nutrition;
+
+	// elements
+	{
+		writer << int(size());
+
+		for (const auto& element : *this)
+		{
+			writer << element.first->getName();
+			writer << element.second;
+		}
 	}
 }

@@ -12,14 +12,13 @@ class EggState
 
 public:
 	EggState(const shared_ptr<CellAsset>& cellAsset);
-	EggState(const JSONValue& json) { load(json); }
+	EggState(Deserializer<ByteArray>& reader) { load(reader); }
 
 	const shared_ptr<CellAsset>&	getCellAsset() const { return m_cellAsset; }
 
 	void	updateEgg();
 	void	draw();
 
-	// JSON
-	void	load(const JSONValue& json);
-	void	save(JSONWriter& json) const;
+	void	load(Deserializer<ByteArray>& reader);
+	void	save(Serializer<MemoryWriter>& writer) const;
 };

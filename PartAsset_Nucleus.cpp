@@ -1,6 +1,5 @@
 ﻿#include "PartAsset_Nucleus.h"
 #include "PartState_Nucleus.h"
-#include "PartShapeViewer.h"
 
 shared_ptr<PartState> PartAsset_Nucleus::makeState()
 {

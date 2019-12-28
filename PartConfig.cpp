@@ -1,6 +1,6 @@
 ﻿#include "PartConfig.h"
 #include "PartAsset.h"
-#include "Assets.h"
+#include "World.h"
 
 
 Vec2 PartConfig::getCentroid() const
@@ -13,7 +13,7 @@ void PartConfig::load(const JSONValue& json)
 	Model::load(json);
 
 	// asset
-	m_partAsset = Assets::GetAsset<PartAsset>(json[U"asset"].getString());
+	m_partAsset = World::GetAsset<PartAsset>(json[U"asset"].getString());
 
 	// position
 	m_position = json[U"position"].get<Vec2>();

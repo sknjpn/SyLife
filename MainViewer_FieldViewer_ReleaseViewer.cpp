@@ -42,7 +42,7 @@ void MainViewer::FieldViewer::ReleaseViewer::update()
 		m_cellAsset->setCentroidAsOrigin();
 
 		// 新規Cell
-		const auto& c = World::GetInstance()->getField().addCellState(m_cellAsset);
+		const auto& c = World::GetInstance()->addCellState(m_cellAsset);
 		c->setPosition(Cursor::PosF());
 		c->setVelocity(Vec2::Zero());
 		c->init();

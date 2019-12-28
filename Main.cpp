@@ -4,8 +4,8 @@
 void Main()
 {
 	Window::SetTitle(U"SyLife");
-	Window::Resize(1920, 1080);
 	Window::SetStyle(WindowStyle::Sizable);
+	Scene::Resize(1920, 1080);
 	Window::Maximize();
 	Window::SetFullscreen(true);
 	// world生成
