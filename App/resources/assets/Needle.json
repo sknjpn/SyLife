@@ -1,6 +1,6 @@
 ﻿{
   "type": "PartAsset_Needle",
-  "name": "トゲ",
+  "name": "Needle",
   "mass": 30.0,
   "layers": [
     {
@@ -32,13 +32,13 @@
   ],
   "material": {
     "nutrition": 20.0,
-    "elements": [
+    "Proteins": [
       {
-        "name": "酸素",
+        "name": "Oxgen",
         "size": 1
       },
       {
-        "name": "炭素",
+        "name": "Carbon",
         "size": 1
       }
     ]

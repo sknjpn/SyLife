@@ -1,21 +1,21 @@
 ﻿{
-  "type": "ElementAsset",
-  "name": "アミノ酸",
+  "type": "ProteinAsset",
+  "name": "Amino_Acid",
   "radius": 8.0,
   "color": "(255, 192, 0, 255)",
   "material": {
     "nutrition": 1.0,
-    "elements": [
+    "Proteins": [
       {
-        "name": "炭素",
+        "name": "Carbon",
         "size": 1
       },
       {
-        "name": "酸素",
+        "name": "Oxgen",
         "size": 1
       },
       {
-        "name": "窒素",
+        "name": "Nitrogen",
         "size": 1
       }
     ]

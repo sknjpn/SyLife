@@ -1,11 +1,11 @@
 ﻿{
-  "type": "ElementAsset",
+  "type": "ProteinAsset",
   "name": "Amino_Acid",
   "radius": 8.0,
   "color": "(255, 192, 0, 255)",
   "material": {
     "nutrition": 1.0,
-    "elements": [
+    "Proteins": [
       {
         "name": "Carbon",
         "size": 1

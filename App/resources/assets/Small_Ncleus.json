@@ -1,6 +1,6 @@
 ﻿{
   "type": "PartAsset_Nucleus",
-  "name": "小さな核",
+  "name": "Small_Nucleus",
   "mass": 10.0,
   "layers": [
     {
@@ -20,9 +20,9 @@
   ],
   "material": {
     "nutrition": 20.0,
-    "elements": [
+    "Proteins": [
       {
-        "name": "酸素",
+        "name": "Oxgen",
         "size": 1
       }
     ]

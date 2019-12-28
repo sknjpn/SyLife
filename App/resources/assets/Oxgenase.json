@@ -1,6 +1,6 @@
 ﻿{
   "type": "PartAsset_Synthesizer",
-  "name": "炭素合成器官",
+  "name": "Oxgenase",
   "mass": 10.0,
   "layers": [
     {
@@ -18,7 +18,7 @@
       }
     },
     {
-      "color": "(128, 192, 255, 255)",
+      "color": "(0, 0, 192, 255)",
       "polygon": {
         "outer": [
           "(9, 5)",
@@ -31,7 +31,7 @@
       }
     },
     {
-      "color": "(128, 192, 255, 255)",
+      "color": "(0, 0, 192, 255)",
       "polygon": {
         "outer": [
           "(-1, 1)",
@@ -47,12 +47,12 @@
   ],
   "material": {
     "nutrition": 10.0,
-    "elements": [
+    "Proteins": [
       {
-        "name": "炭素",
+        "name": "Oxgen",
         "size": 1
       }
     ]
   },
-  "export": "炭素"
+  "export": "Oxgen"
 }
