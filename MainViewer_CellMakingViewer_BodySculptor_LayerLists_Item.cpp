@@ -76,7 +76,7 @@ void MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::update()
 			.drawFrame(1.0, Palette::Black);
 
 		if (Rect(length / 4, length).leftClicked()) m_barSelected = true;
-		if (m_barSelected) m_hsv.v = Clamp<double>(1.0 - Cursor::PosF().y / length, 0.0, 1.0);	// 完全に0にするとSも0になるので注意
+		if (m_barSelected) m_hsv.v = Clamp<double>(1.0 - Cursor::PosF().y / length, 0.0, 1.0);
 	}
 
 	if (MouseL.up())
