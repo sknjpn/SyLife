@@ -5,7 +5,7 @@
   "color": "(255, 255, 255, 255)",
   "material": {
     "nutrition": 2.0,
-    "Proteins": [
+    "proteins": [
       {
         "name": "Carbon",
         "size": 1

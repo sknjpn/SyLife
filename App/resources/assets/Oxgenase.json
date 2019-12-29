@@ -47,7 +47,7 @@
   ],
   "material": {
     "nutrition": 10.0,
-    "Proteins": [
+    "proteins": [
       {
         "name": "Oxgen",
         "size": 1
