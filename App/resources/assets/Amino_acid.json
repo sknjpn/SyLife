@@ -4,7 +4,7 @@
   "radius": 8.0,
   "color": "(255, 192, 0, 255)",
   "material": {
-    "nutrition": 1.0,
+    "element": 1.0,
     "proteins": [
       {
         "name": "Carbon",

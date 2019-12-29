@@ -31,7 +31,7 @@
     }
   ],
   "material": {
-    "nutrition": 15.0,
+    "element": 15.0,
     "proteins": [
       {
         "name": "Oxgen",

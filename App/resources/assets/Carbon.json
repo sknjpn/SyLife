@@ -4,7 +4,7 @@
   "radius": 3.0,
   "color": "(128, 192, 255, 255)",
   "material": {
-    "nutrition": 15.0,
+    "element": 15.0,
     "proteins": []
   }
 }
