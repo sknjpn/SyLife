@@ -1,6 +1,7 @@
 ﻿#include "MainViewer.h"
 #include "Shape.h"
 #include "PartAsset.h"
+#include "PartAsset_Body.h"
 #include "GUISlider.h"
 
 void MainViewer::CellMakingViewer::BodySculptor::LayerLists::init()
@@ -8,18 +9,22 @@ void MainViewer::CellMakingViewer::BodySculptor::LayerLists::init()
 	setViewerRectInLocal(1000, 0, 200, 1000);
 	addChildViewer<GUISlider>(0)->setViewerRectInLocal(RectF(200 - 24, 0, 24, 800));
 
-	const auto& item = addChildViewer<Item>(m_partAsset);
-	item->setSelected(true);
-	item->setViewerSize(170, m_itemHeight);
+	for (int i = 0; i < m_bodyAsset->getShape().size(); ++i)
+	{
+		const auto& item = addChildViewer<Item>(m_bodyAsset);
+		item->setViewerSize(170, m_itemHeight);
+		item->setHSV(m_bodyAsset->getShape()[i].m_color);
+	}
+	getChildViewers<Item>().back()->setSelected(true);
 
 	m_selectedIndex = 0;
 }
 
 void MainViewer::CellMakingViewer::BodySculptor::LayerLists::update()
 {
-	if (!m_partAsset) return;
+	if (!m_bodyAsset) return;
 
-	getChildViewer<GUISlider>()->setHeight((m_partAsset->getShape().size() + 1) * m_itemHeight);
+	getChildViewer<GUISlider>()->setHeight((m_bodyAsset->getShape().size() + 1) * m_itemHeight);
 
 	const auto delta = -getChildViewer<GUISlider>()->getDelta();
 
@@ -29,7 +34,7 @@ void MainViewer::CellMakingViewer::BodySculptor::LayerLists::update()
 		const auto& item = getChildViewers<Item>()[i];
 
 		item->setViewerPosInLocal(0, delta + m_itemHeight * i);
-		m_partAsset->getShape()[i].m_color = item->getHSV();
+		m_bodyAsset->getShape()[i].m_color = item->getHSV();
 
 		if (item->isMouseover() && MouseL.down())
 		{
@@ -53,22 +58,17 @@ void MainViewer::CellMakingViewer::BodySculptor::LayerLists::update()
 		if (block.leftClicked())
 		{
 			// 新しいLayerの追加
-			auto& layer = m_partAsset->getShape().emplace_back();
+			auto& layer = m_bodyAsset->getShape().emplace_back();
 			layer.m_color = Palette::White;
 			layer.m_polygon = Circle(10.0).asPolygon();
 
 			for (const auto& item : getChildViewers<Item>()) item->setSelected(false);
 
-			const auto& item = addChildViewer<Item>(m_partAsset);
+			const auto& item = addChildViewer<Item>(m_bodyAsset);
 			item->setSelected(true);
 			item->setViewerSize(170, m_itemHeight);
 
 			m_selectedIndex = getChildViewers<Item>().size() - 1;
 		}
 	}
-}
-
-void MainViewer::CellMakingViewer::BodySculptor::LayerLists::setPartAsset(const shared_ptr<PartAsset>& partAsset)
-{
-	m_partAsset = partAsset;
 }

@@ -7,6 +7,7 @@
 
 struct Layer;
 class PartAsset;
+class PartAsset_Body;
 class CellAsset;
 class CellState;
 class PartConfig;
@@ -119,16 +120,18 @@ class MainViewer : public Viewer
 		{
 			class Workspace : public Viewer
 			{
-				shared_ptr<PartAsset>	m_partAsset;
+				shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 				Polygon	getReversed(const Polygon& polygon) const;
 				Layer& getSelectedLayer();
 
 			public:
+				Workspace(const shared_ptr<PartAsset_Body>& bodyAsset)
+					: m_bodyAsset(bodyAsset)
+				{}
+
 				void	init() override;
 				void	update() override;
-
-				void	setPartAsset(const shared_ptr<PartAsset>& partAsset) { m_partAsset = partAsset; }
 
 				void	attach(const Polygon& polygon);
 				void	detach(const Polygon& polygon);
@@ -145,25 +148,29 @@ class MainViewer : public Viewer
 					bool	m_barSelected = false;
 					HSV		m_hsv = Palette::White;
 					bool	m_isSelected = false;
-					shared_ptr<PartAsset>	m_partAsset;
+					shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 				public:
-					Item(const shared_ptr<PartAsset>& partAsset);
+					Item(const shared_ptr<PartAsset_Body>& bodyAsset);
 
 					void	setSelected(bool isSelected) { m_isSelected = isSelected; }
+					void	setHSV(const HSV& hsv) { m_hsv = hsv; }
 					void	update() override;
 					const HSV& getHSV() const { return m_hsv; }
 				};
 
 				double	m_itemHeight = 100;
-				shared_ptr<PartAsset>	m_partAsset;
 				int		m_selectedIndex;
+				shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 			public:
+				LayerLists(const shared_ptr<PartAsset_Body>& bodyAsset)
+					: m_bodyAsset(bodyAsset)
+				{}
+
 				void	init() override;
 				void	update() override;
 
-				void	setPartAsset(const shared_ptr<PartAsset>& partAsset);
 				int		getSelectedIndex() const { return m_selectedIndex; }
 			};
 

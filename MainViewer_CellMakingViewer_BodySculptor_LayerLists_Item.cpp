@@ -1,8 +1,8 @@
 ﻿#include "MainViewer.h"
 #include "Layer.h"
 
-MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::Item(const shared_ptr<PartAsset>& partAsset)
-	: m_partAsset(partAsset)
+MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::Item(const shared_ptr<PartAsset_Body>& bodyAsset)
+	: m_bodyAsset(bodyAsset)
 {
 	const int length = 80;
 
@@ -56,7 +56,7 @@ void MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::update()
 			.drawFrame(1.0, Palette::Black);
 
 		auto d = Cursor::PosF() - Vec2(length / 2.0, length / 2.0);
-		if (Circle(Vec2(32, 32), 32).leftClicked()) m_circleSelected = true;
+		if (Circle(Vec2(length / 2, length / 2), length / 2).leftClicked()) m_circleSelected = true;
 		if (m_circleSelected)
 		{
 			m_hsv.h = ToDegrees(atan2(d.y, d.x));

@@ -3,6 +3,7 @@
 #include "PartConfig.h"
 #include "CellAsset.h"
 #include "GUIChecker.h"
+#include "PartAsset_Body.h"
 
 Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getReversed(const Polygon& polygon) const
 {
@@ -27,7 +28,7 @@ Layer& MainViewer::CellMakingViewer::BodySculptor::Workspace::getSelectedLayer()
 {
 	const auto slv = getParentViewer()->getChildViewer<LayerLists>();
 
-	return m_partAsset->getShape()[slv->getSelectedIndex()];
+	return m_bodyAsset->getShape()[slv->getSelectedIndex()];
 }
 
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::init()
@@ -41,11 +42,11 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 {
 	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), true);
 
-	m_partAsset->getShape().updateProperties();
+	m_bodyAsset->getShape().updateProperties();
 
 	// Part
-	m_partAsset->getShape().draw(0.5);
-	m_partAsset->getShape().getPolygon().drawFrame(1.0, Palette::Black);
+	m_bodyAsset->getShape().draw(0.5);
+	m_bodyAsset->getShape().getPolygon().drawFrame(1.0, Palette::Black);
 
 	// タッチパネル用に押し下げた瞬間は処理しない
 	if (MouseL.pressed() && !MouseL.down())
@@ -94,8 +95,8 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 			}
 
 			double k = 0.01;
-			m_partAsset->setMass(m_partAsset->getShape()[0].m_polygon.area() * k);
-			m_partAsset->getMaterial().setElement(m_partAsset->getMass());
+			m_bodyAsset->setMass(m_bodyAsset->getShape()[0].m_polygon.area() * k);
+			m_bodyAsset->getMaterial().setElement(m_bodyAsset->getMass());
 		}
 	}
 
@@ -110,7 +111,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 		for (const auto& p : cellAsset->getPartConfigs())
 		{
 			// 二度も同じものを描画しない
-			if (p->getPartAsset() == m_partAsset) continue;
+			if (p->getPartAsset() == m_bodyAsset) continue;
 
 			auto t2 = Transformer2D(p->getMat3x2());
 

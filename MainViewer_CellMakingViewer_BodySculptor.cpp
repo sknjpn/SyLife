@@ -29,12 +29,9 @@ void MainViewer::CellMakingViewer::BodySculptor::init()
 {
 	setViewerRectInLocal(200, 0, 1200, 1100);
 
-	const auto ba = getParentViewer<CellMakingViewer>()->getCellAsset()->getBodyAsset();
-	const auto& ll = addChildViewer<LayerLists>();
-	const auto& w = addChildViewer<Workspace>();
-
-	ll->setPartAsset(ba);
-	w->setPartAsset(ba);
+	const auto bodyAsset = getParentViewer<CellMakingViewer>()->getCellAsset()->getBodyAsset();
+	const auto& ll = addChildViewer<LayerLists>(bodyAsset);
+	const auto& w = addChildViewer<Workspace>(bodyAsset);
 
 	// 左右対象の設定
 	{
