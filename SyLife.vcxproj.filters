@@ -495,9 +495,6 @@
     <ClCompile Include="ProteinAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="ProteinState.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />
@@ -602,9 +599,6 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="TileState.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="ProteinState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="ProteinAsset.h">

@@ -5,7 +5,6 @@
 #include "EggState.h"
 #include "TileState.h"
 #include "PartState.h"
-#include "ProteinState.h"
 
 unique_ptr<World>	World::g_instance;
 
@@ -64,22 +63,6 @@ void World::update()
 		m_eggStateKDTree.rebuildIndex();
 	}
 
-	// Protein
-	{
-		for (const auto& proteinState : getProteinStates())
-		{
-			if (proteinState->isDestroyed()) continue;
-
-			proteinState->updateParticle();
-			proteinState->updateProtein();
-		}
-
-		// 存在しないProteinの削除
-		m_proteinStates.remove_if([](const auto& proteinState) { return proteinState->isDestroyed(); });
-
-		m_proteinStateKDTree.rebuildIndex();
-	}
-
 	// Tile
 	{
 		for (const auto& tile : m_tiles)
@@ -136,11 +119,6 @@ void World::save()
 		writer << int(m_eggStates.size());
 		for (const auto& eggState : m_eggStates)
 			eggState->save(writer);
-
-		// Proteins
-		writer << int(m_proteinStates.size());
-		for (const auto& proteinState : m_proteinStates)
-			proteinState->save(writer);
 
 		// Tiles
 		writer << m_tileSize;
@@ -241,14 +219,6 @@ void World::load()
 		}
 
 		{
-			int proteinStateSize;
-			reader >> proteinStateSize;
-			m_proteinStates.resize(proteinStateSize);
-
-			for (auto& proteinState : m_proteinStates) proteinState = MakeShared<ProteinState>(reader);
-		}
-
-		{
 			Size tileStateSize;
 			reader >> tileStateSize;
 			m_tiles.resize(tileStateSize);
@@ -294,14 +264,12 @@ bool World::hasAsset(const String& name) const
 World::World()
 	: m_cellStateKDTree(m_cellStates)
 	, m_eggStateKDTree(m_eggStates)
-	, m_proteinStateKDTree(m_proteinStates)
 	, m_tileSize(80, 45)
 	, m_tileLength(100)
 	, m_tiles(m_tileSize)
 {
 	m_fieldSize = m_tileSize * m_tileLength;
 	m_cellStates.reserve(0xFFFF);
-	m_proteinStates.reserve(0xFFFF);
 	m_eggStates.reserve(0xFFFF);
 }
 
@@ -312,9 +280,6 @@ void World::draw()
 
 	for (const auto& tile : m_tiles)
 		tile->draw();
-
-	for (const auto& e : getProteinStates())
-		if (!e->isDestroyed()) e->draw();
 
 	for (const auto& e : getEggStates())
 		if (!e->isDestroyed()) e->draw();
@@ -331,11 +296,6 @@ const shared_ptr<CellState>& World::addCellState(const shared_ptr<CellAsset>& as
 const shared_ptr<EggState>& World::addEggState(const shared_ptr<CellAsset>& asset)
 {
 	return m_eggStates.emplace_back(make_shared<EggState>(asset));
-}
-
-const shared_ptr<ProteinState>& World::addProteinState(const shared_ptr<ProteinAsset>& asset)
-{
-	return m_proteinStates.emplace_back(make_shared<ProteinState>(asset));
 }
 
 shared_ptr<TileState> World::getTile(const Point& point) const
@@ -372,4 +332,3 @@ void World::generateWave(const Size& tileSize)
 		tile->setWaveVelocity(Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))), Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) / Math::Sqrt2);
 	}
 }
-

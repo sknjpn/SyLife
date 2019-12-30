@@ -238,7 +238,6 @@
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="ProteinAsset.cpp" />
-    <ClCompile Include="ProteinState.cpp" />
     <ClCompile Include="GUIAssetLinker.cpp" />
     <ClCompile Include="GUIAssetLinker_Dragger.cpp" />
     <ClCompile Include="GUIButton.cpp" />
@@ -300,7 +299,6 @@
     <ClInclude Include="DraggableViewer.h" />
     <ClInclude Include="EggState.h" />
     <ClInclude Include="ProteinAsset.h" />
-    <ClInclude Include="ProteinState.h" />
     <ClInclude Include="GUIAssetLinker.h" />
     <ClInclude Include="GUIButton.h" />
     <ClInclude Include="GUIChecker.h" />

@@ -5,10 +5,7 @@
 #include "PartConfig.h"
 #include "PartState.h"
 #include "TileState.h"
-
 #include "ProteinAsset.h"
-#include "ProteinState.h"
-
 #include "EggState.h"
 
 CellState::CellState(const shared_ptr<CellAsset>& cellAsset)
@@ -54,41 +51,6 @@ void CellState::updateCell()
 	// Elementの取り込み
 	takeElement();
 
-	// 接触したProteinStateの取り込み
-	for (auto i : World::GetInstance()->getProteinStateKDTree().knnSearch(1, getPosition()))
-	{
-		auto& m = World::GetInstance()->getProteinStates()[i];
-
-		if (!m->isDestroyed() &&
-			(m->getPosition() - getPosition()).length() - getRadius() < 0.0 &&
-			m_cellAsset->getMaxStorage().numProtein(m->getPartAsset()) > m_storage.numProtein(m->getPartAsset()))
-		{
-			takeProtein(m);
-		}
-	}
-
-	// 余剰のProteinStateの投棄
-	/*
-	for (;;)
-	{
-		bool flag = true;
-
-		for (const auto& m : m_storage.GetProteins())
-		{
-			if (2 * m_asset->getMaterial().Num(m.first) < m_storage.Num(m.first))
-			{
-				ExpireProtein(m.first);
-
-				flag = false;
-
-				break;
-			}
-		}
-
-		if (flag) break;
-	}
-	*/
-
 	// 分裂処理
 	if (m_yieldTimer > 0)
 	{
@@ -112,23 +74,7 @@ void CellState::updateCell()
 	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
 		// Elementの吐き出し
-		World::GetInstance()->getTile(getPosition())->addElement(m_storage.getElement() + m_cellAsset->getMaterial().getElement());
-
-		// ProteinStateの吐き出し
-		auto s = m_storage + m_cellAsset->getMaterial();
-		for (const auto& m : s.getProteinList())
-		{
-			for (int i = 0; i < m.second; i++)
-			{
-				// 吐き出す方向
-				auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
-
-				// 吐き出されたProteinState
-				const auto& ms = World::GetInstance()->addProteinState(m.first);
-				ms->setPosition(getPosition() + v * (getRadius() + m.first->getRadius()) * Random(1.0));
-				ms->setVelocity(v * 0.1);
-			}
-		}
+		World::GetInstance()->getTile(getPosition())->addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
 
 		destroy();
 	}
@@ -166,13 +112,6 @@ void CellState::takeElement()
 
 	World::GetInstance()->getTile(getPosition())->pullElement(value);
 	m_storage.addElement(value);
-}
-
-void CellState::takeProtein(const shared_ptr<ProteinState>& proteinState)
-{
-	m_storage.addProtein(proteinState->getPartAsset());
-
-	proteinState->destroy();
 }
 
 void CellState::load(Deserializer<ByteArray>& reader)

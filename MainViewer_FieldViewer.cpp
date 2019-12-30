@@ -8,7 +8,6 @@
 #include "PartConfig.h"
 #include "EggState.h"
 #include "TileState.h"
-#include "ProteinState.h"
 #include "ProteinAsset.h"
 
 #include "GUIButton.h"
@@ -90,23 +89,7 @@ void MainViewer::FieldViewer::update()
 					e->destroy();
 
 					// Elementの吐き出し
-					World::GetInstance()->getTile(e->getPosition())->addElement(e->getCellAsset()->getMaterial().getElement());
-
-					// ProteinStateの吐き出し
-					auto s = e->getCellAsset()->getMaterial();
-					for (const auto& m : s.getProteinList())
-					{
-						for (int i = 0; i < m.second; i++)
-						{
-							// 吐き出す方向
-							auto v = Vec2(1.0, 0.0).rotated(rand() / 3600.0);
-
-							// 吐き出されたProteinState
-							const auto& ms = World::GetInstance()->addProteinState(m.first);
-							ms->setPosition(e->getPosition() + v * (e->getRadius() + m.first->getRadius()) * Random(1.0));
-							ms->setVelocity(v * 0.1);
-						}
-					}
+					World::GetInstance()->getTile(e->getPosition())->addElement(e->getCellAsset()->getMaterial().getElementRecursive());
 				}
 			}
 		}

@@ -47,7 +47,7 @@ double Storage::getElementRecursive() const
 	double sum = m_element;
 
 	for (const auto& m : *this)
-		sum += m.first->getMaterial().getElementRecursive();
+		sum += m.first->getMaterial().getElementRecursive() * m.second;
 
 	return sum;
 }
