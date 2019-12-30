@@ -1,24 +1,24 @@
 ﻿{
   "type": "PartAsset_Wing",
-  "name": "Small_Wing(left)",
-  "mass": 20.0,
+  "name": "Big_Wing(left)",
+  "mass": 40.0,
   "layers": [
     {
-      "color": "(249, 255, 0, 255)",
+      "color": "(0, 255, 249, 255)",
       "polygon": {
         "outer": [
           "(0, -5)",
           "(5, 0)",
           "(0, 5)",
-          "(-25, 20)",
-          "(-50, 20)",
-          "(-40, 5)"
+          "(-40, 30)",
+          "(-80, 30)",
+          "(-70, 5)"
         ],
         "holes": []
       }
     },
     {
-      "color": "(0, 255 , 164, 255)",
+      "color": "(255, 0, 164, 255)",
       "polygon": {
         "outer": [
           "(5, 0)",
@@ -31,14 +31,14 @@
     }
   ],
   "material": {
-    "element": 15.0,
+    "element": 30.0,
     "proteins": [
       {
         "name": "Oxygen",
-        "size": 1
+        "size": 2
       }
     ]
   },
   "isRight": false,
-  "strength": 5000
+  "strength": 10000
 }
