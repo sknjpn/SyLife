@@ -26,7 +26,7 @@ void PartState_Needle::update(CellState& cellState)
 		auto p = cellState.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up().rotated(getPartConfig()->getRotation()) * 50.0);
 
 
-		for (auto i : World::GetInstance()->getCellStateKDTree().knnSearch(1, p))
+		for (auto i : World::GetInstance()->getCellStateKDTree().knnSearch(2, p))
 		{
 			auto& t = World::GetInstance()->getCellStates()[i];
 
