@@ -495,6 +495,12 @@
     <ClCompile Include="ProteinAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
+    <ClCompile Include="PartAsset_Eye.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="PartState_Eye.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />
@@ -602,6 +608,12 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="ProteinAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset_Eye.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PartState_Eye.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
   </ItemGroup>

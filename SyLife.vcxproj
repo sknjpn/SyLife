@@ -231,6 +231,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="PartAsset_Eye.cpp" />
+    <ClCompile Include="PartState_Eye.cpp" />
     <ClCompile Include="World_makeModel.cpp" />
     <ClCompile Include="CellAsset.cpp" />
     <ClCompile Include="CellState.cpp" />
@@ -295,6 +297,8 @@
     <ClInclude Include="Asset.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
+    <ClInclude Include="PartAsset_Eye.h" />
+    <ClInclude Include="PartState_Eye.h" />
     <ClInclude Include="TileState.h" />
     <ClInclude Include="DraggableViewer.h" />
     <ClInclude Include="EggState.h" />
