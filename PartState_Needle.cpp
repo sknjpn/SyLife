@@ -44,3 +44,13 @@ void PartState_Needle::update(CellState& cellState)
 		}
 	}
 }
+
+void PartState_Needle::load(Deserializer<ByteArray>& reader)
+{
+	reader >> m_heat;
+}
+
+void PartState_Needle::save(Serializer<MemoryWriter>& writer) const
+{
+	writer << m_heat;
+}
