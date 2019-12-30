@@ -1,0 +1,36 @@
+﻿{
+  "type": "CellAsset",
+  "name": "アスピディスカ",
+  "parts": [
+    {
+      "asset": "aspidisca_body",
+      "position": "(6.19484, 1.40922)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Nucleus",
+      "position": "(-10.76591, -16.33586)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Oxygenase",
+      "position": "(19.03798, -11.82606)",
+      "rotation": 0.503591751129526
+    },
+    {
+      "asset": "Carbonase",
+      "position": "(4.52819, -25.74763)",
+      "rotation": 0.30302128678036657
+    },
+    {
+      "asset": "Small_Wing(left)",
+      "position": "(-20.96202, -5.1594)",
+      "rotation": -0.4123674835537775
+    },
+    {
+      "asset": "Small_Wing(right)",
+      "position": "(21.19484, 5.62492)",
+      "rotation": 1.036931760392563
+    }
+  ]
+}
