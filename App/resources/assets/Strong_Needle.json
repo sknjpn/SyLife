@@ -1,0 +1,47 @@
+﻿{
+  "type": "PartAsset_Needle",
+  "name": "Strong_Needle",
+  "mass": 50.0,
+  "layers": [
+    {
+      "color": "(0, 128, 128, 255)",
+      "polygon": {
+        "outer": [
+          "(-5, 0)",
+          "(0, -5)",
+          "(5, 0)",
+          "(0, 5)"
+        ],
+        "holes": []
+      }
+    },
+    {
+      "color": "(0 , 255, 0, 255)",
+      "polygon": {
+        "outer": [
+          "(-4, 0)",
+          "(-1, -40)",
+          "(0, -80)",
+          "(1, -40)",
+          "(4, 0)",
+          "(0, 2)"
+        ],
+        "holes": []
+      }
+    }
+  ],
+  "material": {
+    "element": 40.0,
+    "proteins": [
+      {
+        "name": "Oxygen",
+        "size": 2
+      },
+      {
+        "name": "Carbon",
+        "size": 2
+      }
+    ]
+  },
+  "damage": 3000
+}
