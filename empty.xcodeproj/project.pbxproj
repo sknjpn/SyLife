@@ -1,0 +1,985 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C1778A31CE0B65500BB8AD0 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C1778A21CE0B65500BB8AD0 /* icon.icns */; };
+		2C34116722D8ACA4002ADA30 /* libogg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C34116622D8ACA4002ADA30 /* libogg.a */; };
+		2C34116B22D8ACAF002ADA30 /* libvorbisenc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C34116822D8ACAF002ADA30 /* libvorbisenc.a */; };
+		2C34116C22D8ACAF002ADA30 /* libvorbisfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C34116922D8ACAF002ADA30 /* libvorbisfile.a */; };
+		2C34116D22D8ACAF002ADA30 /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C34116A22D8ACAF002ADA30 /* libvorbis.a */; };
+		2C6906B42298123A00A427D0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906B32298123A00A427D0 /* AudioToolbox.framework */; };
+		2C6906B62298124100A427D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906B52298124100A427D0 /* Foundation.framework */; };
+		2C6906B82298124A00A427D0 /* libSiv3D.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906B72298124A00A427D0 /* libSiv3D.a */; };
+		2C6906BA2298126400A427D0 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906B92298126400A427D0 /* libfreetype.a */; };
+		2C6906BC229812F800A427D0 /* libangelscript.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906BB229812F800A427D0 /* libangelscript.a */; };
+		2C6906BE229812FB00A427D0 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906BD229812FB00A427D0 /* libboost_filesystem.a */; };
+		2C6906C02298130000A427D0 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906BF2298130000A427D0 /* libGLEW.a */; };
+		2C6906C22298130400A427D0 /* libharfbuzz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906C12298130400A427D0 /* libharfbuzz.a */; };
+		2C6906C42298130800A427D0 /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906C32298130800A427D0 /* libturbojpeg.a */; };
+		2C6906C62298130C00A427D0 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906C52298130C00A427D0 /* libpng.a */; };
+		2C6906C82298131100A427D0 /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906C72298131100A427D0 /* libwebp.a */; };
+		2C6906CF2298131500A427D0 /* libopencv_imgcodecs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906C92298131500A427D0 /* libopencv_imgcodecs.a */; };
+		2C6906D02298131500A427D0 /* libopencv_photo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906CA2298131500A427D0 /* libopencv_photo.a */; };
+		2C6906D12298131500A427D0 /* libopencv_videoio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906CB2298131500A427D0 /* libopencv_videoio.a */; };
+		2C6906D22298131500A427D0 /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906CC2298131500A427D0 /* libopencv_objdetect.a */; };
+		2C6906D32298131500A427D0 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906CD2298131500A427D0 /* libopencv_core.a */; };
+		2C6906D42298131500A427D0 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906CE2298131500A427D0 /* libopencv_imgproc.a */; };
+		2C6906D62298131800A427D0 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906D52298131800A427D0 /* libz.a */; };
+		2C6906D82298140F00A427D0 /* engine in Resources */ = {isa = PBXBuildFile; fileRef = 2C6906D72298140F00A427D0 /* engine */; };
+		2CE5C856237FDE3900082EEC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE5C855237FDE3900082EEC /* AVFoundation.framework */; };
+		2CE5C858237FDE4600082EEC /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE5C857237FDE4600082EEC /* CoreAudio.framework */; };
+		2CE5C85A237FDE5100082EEC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE5C859237FDE5100082EEC /* CoreMedia.framework */; };
+		2CE5C85B237FDE6000082EEC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6906B12298123200A427D0 /* OpenAL.framework */; };
+		2CEACB67233A61C900C6EE98 /* libgif.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEACB65233A61C900C6EE98 /* libgif.a */; };
+		2CEACB68233A61C900C6EE98 /* libutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEACB66233A61C900C6EE98 /* libutil.a */; };
+		34B5AAF223B9CB10007CA246 /* GUIColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA5D23B9CB07007CA246 /* GUIColorPicker.cpp */; };
+		34B5AAF323B9CB10007CA246 /* GUISlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA5E23B9CB07007CA246 /* GUISlider.cpp */; };
+		34B5AAF423B9CB10007CA246 /* PartAsset_Synthesizer_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA5F23B9CB07007CA246 /* PartAsset_Synthesizer_Editor.cpp */; };
+		34B5AAF523B9CB10007CA246 /* PartState_Synthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA6023B9CB07007CA246 /* PartState_Synthesizer.cpp */; };
+		34B5AAF623B9CB10007CA246 /* SpeedControllerViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA6423B9CB08007CA246 /* SpeedControllerViewer.cpp */; };
+		34B5AAF723B9CB10007CA246 /* Storage_Editor_Element.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA6623B9CB08007CA246 /* Storage_Editor_Element.cpp */; };
+		34B5AAF823B9CB10007CA246 /* ElementAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA6723B9CB08007CA246 /* ElementAsset.cpp */; };
+		34B5AAF923B9CB10007CA246 /* ReleaseViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA6823B9CB08007CA246 /* ReleaseViewer.cpp */; };
+		34B5AAFA23B9CB10007CA246 /* ColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA6923B9CB08007CA246 /* ColorPicker.cpp */; };
+		34B5AAFB23B9CB10007CA246 /* PartAsset_Needle_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA6B23B9CB08007CA246 /* PartAsset_Needle_Editor.cpp */; };
+		34B5AAFC23B9CB10007CA246 /* ElementAsset_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA6D23B9CB08007CA246 /* ElementAsset_Editor.cpp */; };
+		34B5AAFD23B9CB10007CA246 /* WorldLoadViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7023B9CB08007CA246 /* WorldLoadViewer.cpp */; };
+		34B5AAFE23B9CB10007CA246 /* DraggableViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7123B9CB08007CA246 /* DraggableViewer.cpp */; };
+		34B5AAFF23B9CB10007CA246 /* ToolbarViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7223B9CB08007CA246 /* ToolbarViewer.cpp */; };
+		34B5AB0023B9CB10007CA246 /* CellMakingViewer_PartsAssembler_Workspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7323B9CB09007CA246 /* CellMakingViewer_PartsAssembler_Workspace.cpp */; };
+		34B5AB0123B9CB10007CA246 /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7423B9CB09007CA246 /* Sound.cpp */; };
+		34B5AB0223B9CB10007CA246 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7523B9CB09007CA246 /* stdafx.cpp */; };
+		34B5AB0323B9CB10007CA246 /* GUIAssetLinker_Dragger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7623B9CB09007CA246 /* GUIAssetLinker_Dragger.cpp */; };
+		34B5AB0423B9CB10007CA246 /* ElementState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7C23B9CB09007CA246 /* ElementState.cpp */; };
+		34B5AB0523B9CB10007CA246 /* StatisticsViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7D23B9CB09007CA246 /* StatisticsViewer.cpp */; };
+		34B5AB0623B9CB10007CA246 /* PartConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA7F23B9CB09007CA246 /* PartConfig.cpp */; };
+		34B5AB0723B9CB10007CA246 /* CellBookViewer_CellInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA8023B9CB09007CA246 /* CellBookViewer_CellInfo.cpp */; };
+		34B5AB0823B9CB10007CA246 /* CellState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA8123B9CB09007CA246 /* CellState.cpp */; };
+		34B5AB0923B9CB10007CA246 /* CellAssetViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA8223B9CB09007CA246 /* CellAssetViewer.cpp */; };
+		34B5AB0A23B9CB10007CA246 /* SoundMixerViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA8723B9CB0A007CA246 /* SoundMixerViewer.cpp */; };
+		34B5AB0B23B9CB10007CA246 /* PartAsset_Nucleus_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA8823B9CB0A007CA246 /* PartAsset_Nucleus_Editor.cpp */; };
+		34B5AB0C23B9CB10007CA246 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA8B23B9CB0A007CA246 /* Model.cpp */; };
+		34B5AB0D23B9CB10007CA246 /* PartAsset_Needle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA8F23B9CB0A007CA246 /* PartAsset_Needle.cpp */; };
+		34B5AB0E23B9CB10007CA246 /* SetupViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9123B9CB0A007CA246 /* SetupViewer.cpp */; };
+		34B5AB0F23B9CB10007CA246 /* PartState_Wing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9423B9CB0A007CA246 /* PartState_Wing.cpp */; };
+		34B5AB1023B9CB10007CA246 /* CellAsset_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9723B9CB0A007CA246 /* CellAsset_Editor.cpp */; };
+		34B5AB1123B9CB10007CA246 /* GUIValuer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9823B9CB0B007CA246 /* GUIValuer.cpp */; };
+		34B5AB1223B9CB10007CA246 /* CellAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9923B9CB0B007CA246 /* CellAsset.cpp */; };
+		34B5AB1323B9CB10007CA246 /* MainViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9A23B9CB0B007CA246 /* MainViewer.cpp */; };
+		34B5AB1423B9CB10007CA246 /* CellMakingViewer_PartsAssembler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9B23B9CB0B007CA246 /* CellMakingViewer_PartsAssembler.cpp */; };
+		34B5AB1523B9CB10007CA246 /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9C23B9CB0B007CA246 /* Shape.cpp */; };
+		34B5AB1623B9CB10007CA246 /* PartState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9D23B9CB0B007CA246 /* PartState.cpp */; };
+		34B5AB1723B9CB10007CA246 /* CellMakingViewer_PartsAssembler_PartList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AA9F23B9CB0B007CA246 /* CellMakingViewer_PartsAssembler_PartList.cpp */; };
+		34B5AB1823B9CB10007CA246 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAA023B9CB0B007CA246 /* Layer.cpp */; };
+		34B5AB1923B9CB10007CA246 /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAA123B9CB0B007CA246 /* Field.cpp */; };
+		34B5AB1A23B9CB10007CA246 /* PartAsset_Wing_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAA223B9CB0B007CA246 /* PartAsset_Wing_Editor.cpp */; };
+		34B5AB1B23B9CB10007CA246 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAA323B9CB0B007CA246 /* World.cpp */; };
+		34B5AB1C23B9CB10007CA246 /* EditorViewer_AssetList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAA423B9CB0B007CA246 /* EditorViewer_AssetList.cpp */; };
+		34B5AB1D23B9CB10007CA246 /* Viewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAA623B9CB0B007CA246 /* Viewer.cpp */; };
+		34B5AB1E23B9CB10007CA246 /* PartState_Needle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAA723B9CB0B007CA246 /* PartState_Needle.cpp */; };
+		34B5AB1F23B9CB10007CA246 /* Assets_makeModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAA923B9CB0B007CA246 /* Assets_makeModel.cpp */; };
+		34B5AB2023B9CB10007CA246 /* PartState_Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAAB23B9CB0C007CA246 /* PartState_Body.cpp */; };
+		34B5AB2123B9CB10007CA246 /* GUIChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAAD23B9CB0C007CA246 /* GUIChecker.cpp */; };
+		34B5AB2223B9CB10007CA246 /* CellStateViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAAF23B9CB0C007CA246 /* CellStateViewer.cpp */; };
+		34B5AB2323B9CB10007CA246 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAB023B9CB0C007CA246 /* State.cpp */; };
+		34B5AB2423B9CB10007CA246 /* Assets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAB123B9CB0C007CA246 /* Assets.cpp */; };
+		34B5AB2523B9CB10007CA246 /* Rigidbody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAB223B9CB0C007CA246 /* Rigidbody.cpp */; };
+		34B5AB2623B9CB10007CA246 /* FieldViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAB323B9CB0C007CA246 /* FieldViewer.cpp */; };
+		34B5AB2723B9CB10007CA246 /* GUITextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAB423B9CB0C007CA246 /* GUITextBox.cpp */; };
+		34B5AB2823B9CB10007CA246 /* CurtainViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAB623B9CB0C007CA246 /* CurtainViewer.cpp */; };
+		34B5AB2923B9CB10007CA246 /* PartState_Nucleus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAB923B9CB0C007CA246 /* PartState_Nucleus.cpp */; };
+		34B5AB2A23B9CB10007CA246 /* CellBookViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AABA23B9CB0C007CA246 /* CellBookViewer.cpp */; };
+		34B5AB2B23B9CB10007CA246 /* TitleViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AABB23B9CB0C007CA246 /* TitleViewer.cpp */; };
+		34B5AB2C23B9CB10007CA246 /* AssetEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AABF23B9CB0D007CA246 /* AssetEditor.cpp */; };
+		34B5AB2D23B9CB10007CA246 /* Storage_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAC023B9CB0D007CA246 /* Storage_Editor.cpp */; };
+		34B5AB2E23B9CB10007CA246 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAC123B9CB0D007CA246 /* Main.cpp */; };
+		34B5AB2F23B9CB10007CA246 /* EditorViewer_AssetList_Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAC323B9CB0D007CA246 /* EditorViewer_AssetList_Item.cpp */; };
+		34B5AB3023B9CB10007CA246 /* WorldGenerateViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAC523B9CB0D007CA246 /* WorldGenerateViewer.cpp */; };
+		34B5AB3123B9CB10007CA246 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAC623B9CB0D007CA246 /* SoundManager.cpp */; };
+		34B5AB3223B9CB10007CA246 /* CellMakingViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAC723B9CB0D007CA246 /* CellMakingViewer.cpp */; };
+		34B5AB3323B9CB10007CA246 /* MagnifyingViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAC823B9CB0D007CA246 /* MagnifyingViewer.cpp */; };
+		34B5AB3423B9CB10007CA246 /* CellMakingViewer_BodySculptor_Workspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AACB23B9CB0D007CA246 /* CellMakingViewer_BodySculptor_Workspace.cpp */; };
+		34B5AB3523B9CB10007CA246 /* PartAsset_Body_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AACC23B9CB0D007CA246 /* PartAsset_Body_Editor.cpp */; };
+		34B5AB3623B9CB10007CA246 /* GUIButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AACF23B9CB0E007CA246 /* GUIButton.cpp */; };
+		34B5AB3723B9CB10007CA246 /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAD023B9CB0E007CA246 /* Asset.cpp */; };
+		34B5AB3823B9CB10007CA246 /* GUIAssetLinker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAD123B9CB0E007CA246 /* GUIAssetLinker.cpp */; };
+		34B5AB3923B9CB10007CA246 /* CellMakingViewer_BodySculptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAD223B9CB0E007CA246 /* CellMakingViewer_BodySculptor.cpp */; };
+		34B5AB3A23B9CB10007CA246 /* PartAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAD323B9CB0E007CA246 /* PartAsset.cpp */; };
+		34B5AB3B23B9CB10007CA246 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAD623B9CB0E007CA246 /* Particle.cpp */; };
+		34B5AB3C23B9CB10007CA246 /* PartAsset_Wing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAD823B9CB0E007CA246 /* PartAsset_Wing.cpp */; };
+		34B5AB3D23B9CB10007CA246 /* PartShapeViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AADA23B9CB0E007CA246 /* PartShapeViewer.cpp */; };
+		34B5AB3E23B9CB10007CA246 /* Storage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AADB23B9CB0E007CA246 /* Storage.cpp */; };
+		34B5AB3F23B9CB10007CA246 /* CellMakingViewer_BodySculptor_LayerLists.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AADD23B9CB0E007CA246 /* CellMakingViewer_BodySculptor_LayerLists.cpp */; };
+		34B5AB4023B9CB10007CA246 /* GUIText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AADE23B9CB0E007CA246 /* GUIText.cpp */; };
+		34B5AB4123B9CB10007CA246 /* CellMakingViewer_CellInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAE023B9CB0F007CA246 /* CellMakingViewer_CellInfo.cpp */; };
+		34B5AB4223B9CB10007CA246 /* GridViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAE223B9CB0F007CA246 /* GridViewer.cpp */; };
+		34B5AB4323B9CB10007CA246 /* EditorViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAE323B9CB0F007CA246 /* EditorViewer.cpp */; };
+		34B5AB4423B9CB10007CA246 /* PartAsset_Nucleus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAE423B9CB0F007CA246 /* PartAsset_Nucleus.cpp */; };
+		34B5AB4523B9CB10007CA246 /* PartAsset_Synthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAE623B9CB0F007CA246 /* PartAsset_Synthesizer.cpp */; };
+		34B5AB4623B9CB10007CA246 /* PartAsset_Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAEC23B9CB0F007CA246 /* PartAsset_Body.cpp */; };
+		34B5AB4723B9CB10007CA246 /* EggState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAED23B9CB0F007CA246 /* EggState.cpp */; };
+		34B5AB4823B9CB10007CA246 /* CellBookViewer_CellList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAEF23B9CB10007CA246 /* CellBookViewer_CellList.cpp */; };
+		34B5AB4923B9CB10007CA246 /* CellStateCaptureViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAF023B9CB10007CA246 /* CellStateCaptureViewer.cpp */; };
+		34B5AB4A23B9CB10007CA246 /* ChipState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AAF123B9CB10007CA246 /* ChipState.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2C1778841CE0A9EA00BB8AD0 /* empty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = empty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C1778921CE0A9EA00BB8AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C1778A21CE0B65500BB8AD0 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		2C34116622D8ACA4002ADA30 /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libogg.a; path = ../../lib/macOS/libogg/libogg.a; sourceTree = "<group>"; };
+		2C34116822D8ACAF002ADA30 /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisenc.a; path = ../../lib/macOS/libvorbis/libvorbisenc.a; sourceTree = "<group>"; };
+		2C34116922D8ACAF002ADA30 /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisfile.a; path = ../../lib/macOS/libvorbis/libvorbisfile.a; sourceTree = "<group>"; };
+		2C34116A22D8ACAF002ADA30 /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = ../../lib/macOS/libvorbis/libvorbis.a; sourceTree = "<group>"; };
+		2C6906B12298123200A427D0 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		2C6906B32298123A00A427D0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2C6906B52298124100A427D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2C6906B72298124A00A427D0 /* libSiv3D.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSiv3D.a; path = ../../lib/macOS/libSiv3D.a; sourceTree = "<group>"; };
+		2C6906B92298126400A427D0 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = ../../lib/macOS/freetype/libfreetype.a; sourceTree = "<group>"; };
+		2C6906BB229812F800A427D0 /* libangelscript.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libangelscript.a; path = ../../lib/macOS/angelscript/libangelscript.a; sourceTree = "<group>"; };
+		2C6906BD229812FB00A427D0 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../lib/macOS/boost/libboost_filesystem.a; sourceTree = "<group>"; };
+		2C6906BF2298130000A427D0 /* libGLEW.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGLEW.a; path = ../../lib/macOS/glew/libGLEW.a; sourceTree = "<group>"; };
+		2C6906C12298130400A427D0 /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libharfbuzz.a; path = ../../lib/macOS/harfbuzz/libharfbuzz.a; sourceTree = "<group>"; };
+		2C6906C32298130800A427D0 /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libturbojpeg.a; path = "../../lib/macOS/libjpeg-turbo/libturbojpeg.a"; sourceTree = "<group>"; };
+		2C6906C52298130C00A427D0 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = ../../lib/macOS/libpng/libpng.a; sourceTree = "<group>"; };
+		2C6906C72298131100A427D0 /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = ../../lib/macOS/libwebp/libwebp.a; sourceTree = "<group>"; };
+		2C6906C92298131500A427D0 /* libopencv_imgcodecs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgcodecs.a; path = ../../lib/macOS/opencv/libopencv_imgcodecs.a; sourceTree = "<group>"; };
+		2C6906CA2298131500A427D0 /* libopencv_photo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_photo.a; path = ../../lib/macOS/opencv/libopencv_photo.a; sourceTree = "<group>"; };
+		2C6906CB2298131500A427D0 /* libopencv_videoio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_videoio.a; path = ../../lib/macOS/opencv/libopencv_videoio.a; sourceTree = "<group>"; };
+		2C6906CC2298131500A427D0 /* libopencv_objdetect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_objdetect.a; path = ../../lib/macOS/opencv/libopencv_objdetect.a; sourceTree = "<group>"; };
+		2C6906CD2298131500A427D0 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_core.a; path = ../../lib/macOS/opencv/libopencv_core.a; sourceTree = "<group>"; };
+		2C6906CE2298131500A427D0 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = ../../lib/macOS/opencv/libopencv_imgproc.a; sourceTree = "<group>"; };
+		2C6906D52298131800A427D0 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = ../../lib/macOS/zlib/libz.a; sourceTree = "<group>"; };
+		2C6906D72298140F00A427D0 /* engine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = engine; path = App/engine; sourceTree = "<group>"; };
+		2CE5C855237FDE3900082EEC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2CE5C857237FDE4600082EEC /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		2CE5C859237FDE5100082EEC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2CEACB65233A61C900C6EE98 /* libgif.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgif.a; path = ../../lib/macOS/libgif/libgif.a; sourceTree = "<group>"; };
+		2CEACB66233A61C900C6EE98 /* libutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libutil.a; path = ../../lib/macOS/libgif/libutil.a; sourceTree = "<group>"; };
+		34B5AA5623B9CB07007CA246 /* PartAsset_Synthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartAsset_Synthesizer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA5723B9CB07007CA246 /* GUIText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIText.h; sourceTree = SOURCE_ROOT; };
+		34B5AA5823B9CB07007CA246 /* DraggableViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA5923B9CB07007CA246 /* WorldLoadViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldLoadViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA5A23B9CB07007CA246 /* GUIColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIColorPicker.h; sourceTree = SOURCE_ROOT; };
+		34B5AA5B23B9CB07007CA246 /* CellAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellAsset.h; sourceTree = SOURCE_ROOT; };
+		34B5AA5C23B9CB07007CA246 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shape.h; sourceTree = SOURCE_ROOT; };
+		34B5AA5D23B9CB07007CA246 /* GUIColorPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIColorPicker.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA5E23B9CB07007CA246 /* GUISlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUISlider.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA5F23B9CB07007CA246 /* PartAsset_Synthesizer_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Synthesizer_Editor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6023B9CB07007CA246 /* PartState_Synthesizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartState_Synthesizer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6123B9CB08007CA246 /* PartState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartState.h; sourceTree = SOURCE_ROOT; };
+		34B5AA6223B9CB08007CA246 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = SOURCE_ROOT; };
+		34B5AA6323B9CB08007CA246 /* CellMakingViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellMakingViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA6423B9CB08007CA246 /* SpeedControllerViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpeedControllerViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6523B9CB08007CA246 /* PartState_Needle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartState_Needle.h; sourceTree = SOURCE_ROOT; };
+		34B5AA6623B9CB08007CA246 /* Storage_Editor_Element.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Storage_Editor_Element.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6723B9CB08007CA246 /* ElementAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementAsset.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6823B9CB08007CA246 /* ReleaseViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReleaseViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6923B9CB08007CA246 /* ColorPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorPicker.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6A23B9CB08007CA246 /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = SOURCE_ROOT; };
+		34B5AA6B23B9CB08007CA246 /* PartAsset_Needle_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Needle_Editor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6C23B9CB08007CA246 /* ElementAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementAsset.h; sourceTree = SOURCE_ROOT; };
+		34B5AA6D23B9CB08007CA246 /* ElementAsset_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementAsset_Editor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA6E23B9CB08007CA246 /* EggState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EggState.h; sourceTree = SOURCE_ROOT; };
+		34B5AA6F23B9CB08007CA246 /* PartAsset_Wing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartAsset_Wing.h; sourceTree = SOURCE_ROOT; };
+		34B5AA7023B9CB08007CA246 /* WorldLoadViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldLoadViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7123B9CB08007CA246 /* DraggableViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DraggableViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7223B9CB08007CA246 /* ToolbarViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolbarViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7323B9CB09007CA246 /* CellMakingViewer_PartsAssembler_Workspace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellMakingViewer_PartsAssembler_Workspace.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7423B9CB09007CA246 /* Sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7523B9CB09007CA246 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7623B9CB09007CA246 /* GUIAssetLinker_Dragger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIAssetLinker_Dragger.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7723B9CB09007CA246 /* ChipState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipState.h; sourceTree = SOURCE_ROOT; };
+		34B5AA7823B9CB09007CA246 /* CellStateViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellStateViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA7923B9CB09007CA246 /* PartAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartAsset.h; sourceTree = SOURCE_ROOT; };
+		34B5AA7A23B9CB09007CA246 /* PartConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartConfig.h; sourceTree = SOURCE_ROOT; };
+		34B5AA7B23B9CB09007CA246 /* StatisticsViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA7C23B9CB09007CA246 /* ElementState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementState.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7D23B9CB09007CA246 /* StatisticsViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatisticsViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA7E23B9CB09007CA246 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = SOURCE_ROOT; };
+		34B5AA7F23B9CB09007CA246 /* PartConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartConfig.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA8023B9CB09007CA246 /* CellBookViewer_CellInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBookViewer_CellInfo.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA8123B9CB09007CA246 /* CellState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellState.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA8223B9CB09007CA246 /* CellAssetViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellAssetViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA8323B9CB09007CA246 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8423B9CB09007CA246 /* PartShapeViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartShapeViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8523B9CB09007CA246 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8623B9CB0A007CA246 /* GUIAssetLinker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIAssetLinker.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8723B9CB0A007CA246 /* SoundMixerViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundMixerViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA8823B9CB0A007CA246 /* PartAsset_Nucleus_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Nucleus_Editor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA8923B9CB0A007CA246 /* CellStateCaptureViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellStateCaptureViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8A23B9CB0A007CA246 /* ColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPicker.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8B23B9CB0A007CA246 /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA8C23B9CB0A007CA246 /* MainViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8D23B9CB0A007CA246 /* EditorViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8E23B9CB0A007CA246 /* GUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUISlider.h; sourceTree = SOURCE_ROOT; };
+		34B5AA8F23B9CB0A007CA246 /* PartAsset_Needle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Needle.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9023B9CB0A007CA246 /* PartState_Body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartState_Body.h; sourceTree = SOURCE_ROOT; };
+		34B5AA9123B9CB0A007CA246 /* SetupViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SetupViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9223B9CB0A007CA246 /* PartState_Wing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartState_Wing.h; sourceTree = SOURCE_ROOT; };
+		34B5AA9323B9CB0A007CA246 /* GridViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA9423B9CB0A007CA246 /* PartState_Wing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartState_Wing.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9523B9CB0A007CA246 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = SOURCE_ROOT; };
+		34B5AA9623B9CB0A007CA246 /* TinyCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyCamera.h; sourceTree = SOURCE_ROOT; };
+		34B5AA9723B9CB0A007CA246 /* CellAsset_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellAsset_Editor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9823B9CB0B007CA246 /* GUIValuer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIValuer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9923B9CB0B007CA246 /* CellAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellAsset.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9A23B9CB0B007CA246 /* MainViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9B23B9CB0B007CA246 /* CellMakingViewer_PartsAssembler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellMakingViewer_PartsAssembler.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9C23B9CB0B007CA246 /* Shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9D23B9CB0B007CA246 /* PartState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartState.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AA9E23B9CB0B007CA246 /* GUIValuer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIValuer.h; sourceTree = SOURCE_ROOT; };
+		34B5AA9F23B9CB0B007CA246 /* CellMakingViewer_PartsAssembler_PartList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellMakingViewer_PartsAssembler_PartList.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAA023B9CB0B007CA246 /* Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAA123B9CB0B007CA246 /* Field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Field.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAA223B9CB0B007CA246 /* PartAsset_Wing_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Wing_Editor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAA323B9CB0B007CA246 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAA423B9CB0B007CA246 /* EditorViewer_AssetList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditorViewer_AssetList.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAA523B9CB0B007CA246 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = SOURCE_ROOT; };
+		34B5AAA623B9CB0B007CA246 /* Viewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAA723B9CB0B007CA246 /* PartState_Needle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartState_Needle.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAA823B9CB0B007CA246 /* MagnifyingViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnifyingViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAA923B9CB0B007CA246 /* Assets_makeModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assets_makeModel.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAAA23B9CB0C007CA246 /* CellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellState.h; sourceTree = SOURCE_ROOT; };
+		34B5AAAB23B9CB0C007CA246 /* PartState_Body.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartState_Body.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAAC23B9CB0C007CA246 /* ElementState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementState.h; sourceTree = SOURCE_ROOT; };
+		34B5AAAD23B9CB0C007CA246 /* GUIChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIChecker.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAAE23B9CB0C007CA246 /* GUITextBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUITextBox.h; sourceTree = SOURCE_ROOT; };
+		34B5AAAF23B9CB0C007CA246 /* CellStateViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellStateViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAB023B9CB0C007CA246 /* State.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAB123B9CB0C007CA246 /* Assets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assets.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAB223B9CB0C007CA246 /* Rigidbody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rigidbody.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAB323B9CB0C007CA246 /* FieldViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FieldViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAB423B9CB0C007CA246 /* GUITextBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUITextBox.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAB523B9CB0C007CA246 /* Rigidbody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rigidbody.h; sourceTree = SOURCE_ROOT; };
+		34B5AAB623B9CB0C007CA246 /* CurtainViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CurtainViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAB723B9CB0C007CA246 /* PartAsset_Body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartAsset_Body.h; sourceTree = SOURCE_ROOT; };
+		34B5AAB823B9CB0C007CA246 /* Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAB923B9CB0C007CA246 /* PartState_Nucleus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartState_Nucleus.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AABA23B9CB0C007CA246 /* CellBookViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBookViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AABB23B9CB0C007CA246 /* TitleViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AABC23B9CB0C007CA246 /* TitleViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AABD23B9CB0D007CA246 /* Viewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AABE23B9CB0D007CA246 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = SOURCE_ROOT; };
+		34B5AABF23B9CB0D007CA246 /* AssetEditor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetEditor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAC023B9CB0D007CA246 /* Storage_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Storage_Editor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAC123B9CB0D007CA246 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAC223B9CB0D007CA246 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = SOURCE_ROOT; };
+		34B5AAC323B9CB0D007CA246 /* EditorViewer_AssetList_Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditorViewer_AssetList_Item.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAC423B9CB0D007CA246 /* SpeedControllerViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeedControllerViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAC523B9CB0D007CA246 /* WorldGenerateViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldGenerateViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAC623B9CB0D007CA246 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAC723B9CB0D007CA246 /* CellMakingViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellMakingViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAC823B9CB0D007CA246 /* MagnifyingViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagnifyingViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAC923B9CB0D007CA246 /* AssetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetEditor.h; sourceTree = SOURCE_ROOT; };
+		34B5AACA23B9CB0D007CA246 /* PartAsset_Nucleus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartAsset_Nucleus.h; sourceTree = SOURCE_ROOT; };
+		34B5AACB23B9CB0D007CA246 /* CellMakingViewer_BodySculptor_Workspace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellMakingViewer_BodySculptor_Workspace.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AACC23B9CB0D007CA246 /* PartAsset_Body_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Body_Editor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AACD23B9CB0D007CA246 /* Assets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assets.h; sourceTree = SOURCE_ROOT; };
+		34B5AACE23B9CB0E007CA246 /* PartState_Synthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartState_Synthesizer.h; sourceTree = SOURCE_ROOT; };
+		34B5AACF23B9CB0E007CA246 /* GUIButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIButton.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAD023B9CB0E007CA246 /* Asset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asset.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAD123B9CB0E007CA246 /* GUIAssetLinker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIAssetLinker.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAD223B9CB0E007CA246 /* CellMakingViewer_BodySculptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellMakingViewer_BodySculptor.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAD323B9CB0E007CA246 /* PartAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAD423B9CB0E007CA246 /* SoundMixerViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundMixerViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAD523B9CB0E007CA246 /* PartState_Nucleus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartState_Nucleus.h; sourceTree = SOURCE_ROOT; };
+		34B5AAD623B9CB0E007CA246 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAD723B9CB0E007CA246 /* ToolbarViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAD823B9CB0E007CA246 /* PartAsset_Wing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Wing.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAD923B9CB0E007CA246 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = SOURCE_ROOT; };
+		34B5AADA23B9CB0E007CA246 /* PartShapeViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartShapeViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AADB23B9CB0E007CA246 /* Storage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Storage.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AADC23B9CB0E007CA246 /* GUIChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIChecker.h; sourceTree = SOURCE_ROOT; };
+		34B5AADD23B9CB0E007CA246 /* CellMakingViewer_BodySculptor_LayerLists.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellMakingViewer_BodySculptor_LayerLists.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AADE23B9CB0E007CA246 /* GUIText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIText.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AADF23B9CB0E007CA246 /* ReleaseViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAE023B9CB0F007CA246 /* CellMakingViewer_CellInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellMakingViewer_CellInfo.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAE123B9CB0F007CA246 /* CellBookViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellBookViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAE223B9CB0F007CA246 /* GridViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAE323B9CB0F007CA246 /* EditorViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditorViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAE423B9CB0F007CA246 /* PartAsset_Nucleus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Nucleus.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAE523B9CB0F007CA246 /* CurtainViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurtainViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAE623B9CB0F007CA246 /* PartAsset_Synthesizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Synthesizer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAE723B9CB0F007CA246 /* GUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIButton.h; sourceTree = SOURCE_ROOT; };
+		34B5AAE823B9CB0F007CA246 /* CellAssetViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellAssetViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAE923B9CB0F007CA246 /* SetupViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAEA23B9CB0F007CA246 /* FieldViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAEB23B9CB0F007CA246 /* PartAsset_Needle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartAsset_Needle.h; sourceTree = SOURCE_ROOT; };
+		34B5AAEC23B9CB0F007CA246 /* PartAsset_Body.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Body.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAED23B9CB0F007CA246 /* EggState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EggState.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAEE23B9CB10007CA246 /* WorldGenerateViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldGenerateViewer.h; sourceTree = SOURCE_ROOT; };
+		34B5AAEF23B9CB10007CA246 /* CellBookViewer_CellList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBookViewer_CellList.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAF023B9CB10007CA246 /* CellStateCaptureViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellStateCaptureViewer.cpp; sourceTree = SOURCE_ROOT; };
+		34B5AAF123B9CB10007CA246 /* ChipState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChipState.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C1778811CE0A9EA00BB8AD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CE5C858237FDE4600082EEC /* CoreAudio.framework in Frameworks */,
+				2C6906B42298123A00A427D0 /* AudioToolbox.framework in Frameworks */,
+				2C6906B62298124100A427D0 /* Foundation.framework in Frameworks */,
+				2C6906B82298124A00A427D0 /* libSiv3D.a in Frameworks */,
+				2C6906BC229812F800A427D0 /* libangelscript.a in Frameworks */,
+				2C6906BE229812FB00A427D0 /* libboost_filesystem.a in Frameworks */,
+				2C6906BA2298126400A427D0 /* libfreetype.a in Frameworks */,
+				2CE5C85B237FDE6000082EEC /* OpenAL.framework in Frameworks */,
+				2CEACB67233A61C900C6EE98 /* libgif.a in Frameworks */,
+				2C6906C02298130000A427D0 /* libGLEW.a in Frameworks */,
+				2C6906C22298130400A427D0 /* libharfbuzz.a in Frameworks */,
+				2C6906C42298130800A427D0 /* libturbojpeg.a in Frameworks */,
+				2C34116722D8ACA4002ADA30 /* libogg.a in Frameworks */,
+				2CE5C856237FDE3900082EEC /* AVFoundation.framework in Frameworks */,
+				2C6906C62298130C00A427D0 /* libpng.a in Frameworks */,
+				2C34116D22D8ACAF002ADA30 /* libvorbis.a in Frameworks */,
+				2C34116B22D8ACAF002ADA30 /* libvorbisenc.a in Frameworks */,
+				2C34116C22D8ACAF002ADA30 /* libvorbisfile.a in Frameworks */,
+				2C6906C82298131100A427D0 /* libwebp.a in Frameworks */,
+				2C6906CF2298131500A427D0 /* libopencv_imgcodecs.a in Frameworks */,
+				2CE5C85A237FDE5100082EEC /* CoreMedia.framework in Frameworks */,
+				2C6906D02298131500A427D0 /* libopencv_photo.a in Frameworks */,
+				2C6906D12298131500A427D0 /* libopencv_videoio.a in Frameworks */,
+				2C6906D22298131500A427D0 /* libopencv_objdetect.a in Frameworks */,
+				2C6906D32298131500A427D0 /* libopencv_core.a in Frameworks */,
+				2C6906D42298131500A427D0 /* libopencv_imgproc.a in Frameworks */,
+				2CEACB68233A61C900C6EE98 /* libutil.a in Frameworks */,
+				2C6906D62298131800A427D0 /* libz.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C1778791CE0A9D800BB8AD0 = {
+			isa = PBXGroup;
+			children = (
+				2C6906D72298140F00A427D0 /* engine */,
+				2C1778921CE0A9EA00BB8AD0 /* Info.plist */,
+				2C1778A21CE0B65500BB8AD0 /* icon.icns */,
+				2C1778981CE0AA7C00BB8AD0 /* src */,
+				2C1778851CE0A9EA00BB8AD0 /* Products */,
+				2CC7F9861F45930A0071A239 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2C1778851CE0A9EA00BB8AD0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C1778841CE0A9EA00BB8AD0 /* empty.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C1778981CE0AA7C00BB8AD0 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				34B5AAD023B9CB0E007CA246 /* Asset.cpp */,
+				34B5AA6A23B9CB08007CA246 /* Asset.h */,
+				34B5AABF23B9CB0D007CA246 /* AssetEditor.cpp */,
+				34B5AAC923B9CB0D007CA246 /* AssetEditor.h */,
+				34B5AAA923B9CB0B007CA246 /* Assets_makeModel.cpp */,
+				34B5AAB123B9CB0C007CA246 /* Assets.cpp */,
+				34B5AACD23B9CB0D007CA246 /* Assets.h */,
+				34B5AA9723B9CB0A007CA246 /* CellAsset_Editor.cpp */,
+				34B5AA9923B9CB0B007CA246 /* CellAsset.cpp */,
+				34B5AA5B23B9CB07007CA246 /* CellAsset.h */,
+				34B5AA8223B9CB09007CA246 /* CellAssetViewer.cpp */,
+				34B5AAE823B9CB0F007CA246 /* CellAssetViewer.h */,
+				34B5AA8023B9CB09007CA246 /* CellBookViewer_CellInfo.cpp */,
+				34B5AAEF23B9CB10007CA246 /* CellBookViewer_CellList.cpp */,
+				34B5AABA23B9CB0C007CA246 /* CellBookViewer.cpp */,
+				34B5AAE123B9CB0F007CA246 /* CellBookViewer.h */,
+				34B5AADD23B9CB0E007CA246 /* CellMakingViewer_BodySculptor_LayerLists.cpp */,
+				34B5AACB23B9CB0D007CA246 /* CellMakingViewer_BodySculptor_Workspace.cpp */,
+				34B5AAD223B9CB0E007CA246 /* CellMakingViewer_BodySculptor.cpp */,
+				34B5AAE023B9CB0F007CA246 /* CellMakingViewer_CellInfo.cpp */,
+				34B5AA9F23B9CB0B007CA246 /* CellMakingViewer_PartsAssembler_PartList.cpp */,
+				34B5AA7323B9CB09007CA246 /* CellMakingViewer_PartsAssembler_Workspace.cpp */,
+				34B5AA9B23B9CB0B007CA246 /* CellMakingViewer_PartsAssembler.cpp */,
+				34B5AAC723B9CB0D007CA246 /* CellMakingViewer.cpp */,
+				34B5AA6323B9CB08007CA246 /* CellMakingViewer.h */,
+				34B5AA8123B9CB09007CA246 /* CellState.cpp */,
+				34B5AAAA23B9CB0C007CA246 /* CellState.h */,
+				34B5AAF023B9CB10007CA246 /* CellStateCaptureViewer.cpp */,
+				34B5AA8923B9CB0A007CA246 /* CellStateCaptureViewer.h */,
+				34B5AAAF23B9CB0C007CA246 /* CellStateViewer.cpp */,
+				34B5AA7823B9CB09007CA246 /* CellStateViewer.h */,
+				34B5AAF123B9CB10007CA246 /* ChipState.cpp */,
+				34B5AA7723B9CB09007CA246 /* ChipState.h */,
+				34B5AA6923B9CB08007CA246 /* ColorPicker.cpp */,
+				34B5AA8A23B9CB0A007CA246 /* ColorPicker.h */,
+				34B5AAB623B9CB0C007CA246 /* CurtainViewer.cpp */,
+				34B5AAE523B9CB0F007CA246 /* CurtainViewer.h */,
+				34B5AA7123B9CB08007CA246 /* DraggableViewer.cpp */,
+				34B5AA5823B9CB07007CA246 /* DraggableViewer.h */,
+				34B5AAC323B9CB0D007CA246 /* EditorViewer_AssetList_Item.cpp */,
+				34B5AAA423B9CB0B007CA246 /* EditorViewer_AssetList.cpp */,
+				34B5AAE323B9CB0F007CA246 /* EditorViewer.cpp */,
+				34B5AA8D23B9CB0A007CA246 /* EditorViewer.h */,
+				34B5AAED23B9CB0F007CA246 /* EggState.cpp */,
+				34B5AA6E23B9CB08007CA246 /* EggState.h */,
+				34B5AA6D23B9CB08007CA246 /* ElementAsset_Editor.cpp */,
+				34B5AA6723B9CB08007CA246 /* ElementAsset.cpp */,
+				34B5AA6C23B9CB08007CA246 /* ElementAsset.h */,
+				34B5AA7C23B9CB09007CA246 /* ElementState.cpp */,
+				34B5AAAC23B9CB0C007CA246 /* ElementState.h */,
+				34B5AAA123B9CB0B007CA246 /* Field.cpp */,
+				34B5AAC223B9CB0D007CA246 /* Field.h */,
+				34B5AAB323B9CB0C007CA246 /* FieldViewer.cpp */,
+				34B5AAEA23B9CB0F007CA246 /* FieldViewer.h */,
+				34B5AAE223B9CB0F007CA246 /* GridViewer.cpp */,
+				34B5AA9323B9CB0A007CA246 /* GridViewer.h */,
+				34B5AA7623B9CB09007CA246 /* GUIAssetLinker_Dragger.cpp */,
+				34B5AAD123B9CB0E007CA246 /* GUIAssetLinker.cpp */,
+				34B5AA8623B9CB0A007CA246 /* GUIAssetLinker.h */,
+				34B5AACF23B9CB0E007CA246 /* GUIButton.cpp */,
+				34B5AAE723B9CB0F007CA246 /* GUIButton.h */,
+				34B5AAAD23B9CB0C007CA246 /* GUIChecker.cpp */,
+				34B5AADC23B9CB0E007CA246 /* GUIChecker.h */,
+				34B5AA5D23B9CB07007CA246 /* GUIColorPicker.cpp */,
+				34B5AA5A23B9CB07007CA246 /* GUIColorPicker.h */,
+				34B5AA5E23B9CB07007CA246 /* GUISlider.cpp */,
+				34B5AA8E23B9CB0A007CA246 /* GUISlider.h */,
+				34B5AADE23B9CB0E007CA246 /* GUIText.cpp */,
+				34B5AA5723B9CB07007CA246 /* GUIText.h */,
+				34B5AAB423B9CB0C007CA246 /* GUITextBox.cpp */,
+				34B5AAAE23B9CB0C007CA246 /* GUITextBox.h */,
+				34B5AA9823B9CB0B007CA246 /* GUIValuer.cpp */,
+				34B5AA9E23B9CB0B007CA246 /* GUIValuer.h */,
+				34B5AAA023B9CB0B007CA246 /* Layer.cpp */,
+				34B5AAB823B9CB0C007CA246 /* Layer.h */,
+				34B5AAC823B9CB0D007CA246 /* MagnifyingViewer.cpp */,
+				34B5AAA823B9CB0B007CA246 /* MagnifyingViewer.h */,
+				34B5AAC123B9CB0D007CA246 /* Main.cpp */,
+				34B5AA9A23B9CB0B007CA246 /* MainViewer.cpp */,
+				34B5AA8C23B9CB0A007CA246 /* MainViewer.h */,
+				34B5AA8B23B9CB0A007CA246 /* Model.cpp */,
+				34B5AAD923B9CB0E007CA246 /* Model.h */,
+				34B5AACC23B9CB0D007CA246 /* PartAsset_Body_Editor.cpp */,
+				34B5AAEC23B9CB0F007CA246 /* PartAsset_Body.cpp */,
+				34B5AAB723B9CB0C007CA246 /* PartAsset_Body.h */,
+				34B5AA6B23B9CB08007CA246 /* PartAsset_Needle_Editor.cpp */,
+				34B5AA8F23B9CB0A007CA246 /* PartAsset_Needle.cpp */,
+				34B5AAEB23B9CB0F007CA246 /* PartAsset_Needle.h */,
+				34B5AA8823B9CB0A007CA246 /* PartAsset_Nucleus_Editor.cpp */,
+				34B5AAE423B9CB0F007CA246 /* PartAsset_Nucleus.cpp */,
+				34B5AACA23B9CB0D007CA246 /* PartAsset_Nucleus.h */,
+				34B5AA5F23B9CB07007CA246 /* PartAsset_Synthesizer_Editor.cpp */,
+				34B5AAE623B9CB0F007CA246 /* PartAsset_Synthesizer.cpp */,
+				34B5AA5623B9CB07007CA246 /* PartAsset_Synthesizer.h */,
+				34B5AAA223B9CB0B007CA246 /* PartAsset_Wing_Editor.cpp */,
+				34B5AAD823B9CB0E007CA246 /* PartAsset_Wing.cpp */,
+				34B5AA6F23B9CB08007CA246 /* PartAsset_Wing.h */,
+				34B5AAD323B9CB0E007CA246 /* PartAsset.cpp */,
+				34B5AA7923B9CB09007CA246 /* PartAsset.h */,
+				34B5AA7F23B9CB09007CA246 /* PartConfig.cpp */,
+				34B5AA7A23B9CB09007CA246 /* PartConfig.h */,
+				34B5AAD623B9CB0E007CA246 /* Particle.cpp */,
+				34B5AA7E23B9CB09007CA246 /* Particle.h */,
+				34B5AADA23B9CB0E007CA246 /* PartShapeViewer.cpp */,
+				34B5AA8423B9CB09007CA246 /* PartShapeViewer.h */,
+				34B5AAAB23B9CB0C007CA246 /* PartState_Body.cpp */,
+				34B5AA9023B9CB0A007CA246 /* PartState_Body.h */,
+				34B5AAA723B9CB0B007CA246 /* PartState_Needle.cpp */,
+				34B5AA6523B9CB08007CA246 /* PartState_Needle.h */,
+				34B5AAB923B9CB0C007CA246 /* PartState_Nucleus.cpp */,
+				34B5AAD523B9CB0E007CA246 /* PartState_Nucleus.h */,
+				34B5AA6023B9CB07007CA246 /* PartState_Synthesizer.cpp */,
+				34B5AACE23B9CB0E007CA246 /* PartState_Synthesizer.h */,
+				34B5AA9423B9CB0A007CA246 /* PartState_Wing.cpp */,
+				34B5AA9223B9CB0A007CA246 /* PartState_Wing.h */,
+				34B5AA9D23B9CB0B007CA246 /* PartState.cpp */,
+				34B5AA6123B9CB08007CA246 /* PartState.h */,
+				34B5AA6823B9CB08007CA246 /* ReleaseViewer.cpp */,
+				34B5AADF23B9CB0E007CA246 /* ReleaseViewer.h */,
+				34B5AAB223B9CB0C007CA246 /* Rigidbody.cpp */,
+				34B5AAB523B9CB0C007CA246 /* Rigidbody.h */,
+				34B5AA9123B9CB0A007CA246 /* SetupViewer.cpp */,
+				34B5AAE923B9CB0F007CA246 /* SetupViewer.h */,
+				34B5AA9C23B9CB0B007CA246 /* Shape.cpp */,
+				34B5AA5C23B9CB07007CA246 /* Shape.h */,
+				34B5AA7423B9CB09007CA246 /* Sound.cpp */,
+				34B5AA9523B9CB0A007CA246 /* Sound.h */,
+				34B5AAC623B9CB0D007CA246 /* SoundManager.cpp */,
+				34B5AAA523B9CB0B007CA246 /* SoundManager.h */,
+				34B5AA8723B9CB0A007CA246 /* SoundMixerViewer.cpp */,
+				34B5AAD423B9CB0E007CA246 /* SoundMixerViewer.h */,
+				34B5AA6423B9CB08007CA246 /* SpeedControllerViewer.cpp */,
+				34B5AAC423B9CB0D007CA246 /* SpeedControllerViewer.h */,
+				34B5AAB023B9CB0C007CA246 /* State.cpp */,
+				34B5AA8323B9CB09007CA246 /* State.h */,
+				34B5AA7D23B9CB09007CA246 /* StatisticsViewer.cpp */,
+				34B5AA7B23B9CB09007CA246 /* StatisticsViewer.h */,
+				34B5AA7523B9CB09007CA246 /* stdafx.cpp */,
+				34B5AABE23B9CB0D007CA246 /* stdafx.h */,
+				34B5AA6623B9CB08007CA246 /* Storage_Editor_Element.cpp */,
+				34B5AAC023B9CB0D007CA246 /* Storage_Editor.cpp */,
+				34B5AADB23B9CB0E007CA246 /* Storage.cpp */,
+				34B5AA8523B9CB09007CA246 /* Storage.h */,
+				34B5AA9623B9CB0A007CA246 /* TinyCamera.h */,
+				34B5AABB23B9CB0C007CA246 /* TitleViewer.cpp */,
+				34B5AABC23B9CB0C007CA246 /* TitleViewer.h */,
+				34B5AA7223B9CB08007CA246 /* ToolbarViewer.cpp */,
+				34B5AAD723B9CB0E007CA246 /* ToolbarViewer.h */,
+				34B5AAA623B9CB0B007CA246 /* Viewer.cpp */,
+				34B5AABD23B9CB0D007CA246 /* Viewer.h */,
+				34B5AAA323B9CB0B007CA246 /* World.cpp */,
+				34B5AA6223B9CB08007CA246 /* World.h */,
+				34B5AAC523B9CB0D007CA246 /* WorldGenerateViewer.cpp */,
+				34B5AAEE23B9CB10007CA246 /* WorldGenerateViewer.h */,
+				34B5AA7023B9CB08007CA246 /* WorldLoadViewer.cpp */,
+				34B5AA5923B9CB07007CA246 /* WorldLoadViewer.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		2CC7F9861F45930A0071A239 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CE5C859237FDE5100082EEC /* CoreMedia.framework */,
+				2CE5C857237FDE4600082EEC /* CoreAudio.framework */,
+				2CE5C855237FDE3900082EEC /* AVFoundation.framework */,
+				2CEACB65233A61C900C6EE98 /* libgif.a */,
+				2CEACB66233A61C900C6EE98 /* libutil.a */,
+				2C34116A22D8ACAF002ADA30 /* libvorbis.a */,
+				2C34116822D8ACAF002ADA30 /* libvorbisenc.a */,
+				2C34116922D8ACAF002ADA30 /* libvorbisfile.a */,
+				2C34116622D8ACA4002ADA30 /* libogg.a */,
+				2C6906D52298131800A427D0 /* libz.a */,
+				2C6906CD2298131500A427D0 /* libopencv_core.a */,
+				2C6906C92298131500A427D0 /* libopencv_imgcodecs.a */,
+				2C6906CE2298131500A427D0 /* libopencv_imgproc.a */,
+				2C6906CC2298131500A427D0 /* libopencv_objdetect.a */,
+				2C6906CA2298131500A427D0 /* libopencv_photo.a */,
+				2C6906CB2298131500A427D0 /* libopencv_videoio.a */,
+				2C6906C72298131100A427D0 /* libwebp.a */,
+				2C6906C52298130C00A427D0 /* libpng.a */,
+				2C6906C32298130800A427D0 /* libturbojpeg.a */,
+				2C6906C12298130400A427D0 /* libharfbuzz.a */,
+				2C6906BF2298130000A427D0 /* libGLEW.a */,
+				2C6906BD229812FB00A427D0 /* libboost_filesystem.a */,
+				2C6906BB229812F800A427D0 /* libangelscript.a */,
+				2C6906B92298126400A427D0 /* libfreetype.a */,
+				2C6906B72298124A00A427D0 /* libSiv3D.a */,
+				2C6906B52298124100A427D0 /* Foundation.framework */,
+				2C6906B32298123A00A427D0 /* AudioToolbox.framework */,
+				2C6906B12298123200A427D0 /* OpenAL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C1778831CE0A9EA00BB8AD0 /* empty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C1778931CE0A9EA00BB8AD0 /* Build configuration list for PBXNativeTarget "empty" */;
+			buildPhases = (
+				2C1778801CE0A9EA00BB8AD0 /* Sources */,
+				2C1778811CE0A9EA00BB8AD0 /* Frameworks */,
+				2C1778821CE0A9EA00BB8AD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = empty;
+			productName = empty;
+			productReference = 2C1778841CE0A9EA00BB8AD0 /* empty.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C17787A1CE0A9D800BB8AD0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+					2C1778831CE0A9EA00BB8AD0 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 2C17787D1CE0A9D800BB8AD0 /* Build configuration list for PBXProject "empty" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C1778791CE0A9D800BB8AD0;
+			productRefGroup = 2C1778851CE0A9EA00BB8AD0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C1778831CE0A9EA00BB8AD0 /* empty */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C1778821CE0A9EA00BB8AD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C6906D82298140F00A427D0 /* engine in Resources */,
+				2C1778A31CE0B65500BB8AD0 /* icon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C1778801CE0A9EA00BB8AD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34B5AB1623B9CB10007CA246 /* PartState.cpp in Sources */,
+				34B5AAF723B9CB10007CA246 /* Storage_Editor_Element.cpp in Sources */,
+				34B5AB1D23B9CB10007CA246 /* Viewer.cpp in Sources */,
+				34B5AB0A23B9CB10007CA246 /* SoundMixerViewer.cpp in Sources */,
+				34B5AAF923B9CB10007CA246 /* ReleaseViewer.cpp in Sources */,
+				34B5AB1323B9CB10007CA246 /* MainViewer.cpp in Sources */,
+				34B5AAFF23B9CB10007CA246 /* ToolbarViewer.cpp in Sources */,
+				34B5AB3923B9CB10007CA246 /* CellMakingViewer_BodySculptor.cpp in Sources */,
+				34B5AB1C23B9CB10007CA246 /* EditorViewer_AssetList.cpp in Sources */,
+				34B5AB1A23B9CB10007CA246 /* PartAsset_Wing_Editor.cpp in Sources */,
+				34B5AB0B23B9CB10007CA246 /* PartAsset_Nucleus_Editor.cpp in Sources */,
+				34B5AB2C23B9CB10007CA246 /* AssetEditor.cpp in Sources */,
+				34B5AB2923B9CB10007CA246 /* PartState_Nucleus.cpp in Sources */,
+				34B5AB3823B9CB10007CA246 /* GUIAssetLinker.cpp in Sources */,
+				34B5AAF323B9CB10007CA246 /* GUISlider.cpp in Sources */,
+				34B5AAF823B9CB10007CA246 /* ElementAsset.cpp in Sources */,
+				34B5AB4623B9CB10007CA246 /* PartAsset_Body.cpp in Sources */,
+				34B5AAF423B9CB10007CA246 /* PartAsset_Synthesizer_Editor.cpp in Sources */,
+				34B5AB3323B9CB10007CA246 /* MagnifyingViewer.cpp in Sources */,
+				34B5AB2E23B9CB10007CA246 /* Main.cpp in Sources */,
+				34B5AB0923B9CB10007CA246 /* CellAssetViewer.cpp in Sources */,
+				34B5AB2523B9CB10007CA246 /* Rigidbody.cpp in Sources */,
+				34B5AAF523B9CB10007CA246 /* PartState_Synthesizer.cpp in Sources */,
+				34B5AB2A23B9CB10007CA246 /* CellBookViewer.cpp in Sources */,
+				34B5AB1023B9CB10007CA246 /* CellAsset_Editor.cpp in Sources */,
+				34B5AB0C23B9CB10007CA246 /* Model.cpp in Sources */,
+				34B5AB2F23B9CB10007CA246 /* EditorViewer_AssetList_Item.cpp in Sources */,
+				34B5AB0623B9CB10007CA246 /* PartConfig.cpp in Sources */,
+				34B5AAFE23B9CB10007CA246 /* DraggableViewer.cpp in Sources */,
+				34B5AB4923B9CB10007CA246 /* CellStateCaptureViewer.cpp in Sources */,
+				34B5AB1423B9CB10007CA246 /* CellMakingViewer_PartsAssembler.cpp in Sources */,
+				34B5AB0223B9CB10007CA246 /* stdafx.cpp in Sources */,
+				34B5AB3B23B9CB10007CA246 /* Particle.cpp in Sources */,
+				34B5AB0E23B9CB10007CA246 /* SetupViewer.cpp in Sources */,
+				34B5AB4A23B9CB10007CA246 /* ChipState.cpp in Sources */,
+				34B5AAF223B9CB10007CA246 /* GUIColorPicker.cpp in Sources */,
+				34B5AB3623B9CB10007CA246 /* GUIButton.cpp in Sources */,
+				34B5AB4823B9CB10007CA246 /* CellBookViewer_CellList.cpp in Sources */,
+				34B5AB1223B9CB10007CA246 /* CellAsset.cpp in Sources */,
+				34B5AB2823B9CB10007CA246 /* CurtainViewer.cpp in Sources */,
+				34B5AB2223B9CB10007CA246 /* CellStateViewer.cpp in Sources */,
+				34B5AB2323B9CB10007CA246 /* State.cpp in Sources */,
+				34B5AAFC23B9CB10007CA246 /* ElementAsset_Editor.cpp in Sources */,
+				34B5AB4523B9CB10007CA246 /* PartAsset_Synthesizer.cpp in Sources */,
+				34B5AB0723B9CB10007CA246 /* CellBookViewer_CellInfo.cpp in Sources */,
+				34B5AB0D23B9CB10007CA246 /* PartAsset_Needle.cpp in Sources */,
+				34B5AB2423B9CB10007CA246 /* Assets.cpp in Sources */,
+				34B5AB4323B9CB10007CA246 /* EditorViewer.cpp in Sources */,
+				34B5AAF623B9CB10007CA246 /* SpeedControllerViewer.cpp in Sources */,
+				34B5AB0F23B9CB10007CA246 /* PartState_Wing.cpp in Sources */,
+				34B5AB2623B9CB10007CA246 /* FieldViewer.cpp in Sources */,
+				34B5AB3C23B9CB10007CA246 /* PartAsset_Wing.cpp in Sources */,
+				34B5AB4223B9CB10007CA246 /* GridViewer.cpp in Sources */,
+				34B5AB0023B9CB10007CA246 /* CellMakingViewer_PartsAssembler_Workspace.cpp in Sources */,
+				34B5AB2D23B9CB10007CA246 /* Storage_Editor.cpp in Sources */,
+				34B5AAFA23B9CB10007CA246 /* ColorPicker.cpp in Sources */,
+				34B5AB2723B9CB10007CA246 /* GUITextBox.cpp in Sources */,
+				34B5AB3023B9CB10007CA246 /* WorldGenerateViewer.cpp in Sources */,
+				34B5AB1B23B9CB10007CA246 /* World.cpp in Sources */,
+				34B5AB3423B9CB10007CA246 /* CellMakingViewer_BodySculptor_Workspace.cpp in Sources */,
+				34B5AB4023B9CB10007CA246 /* GUIText.cpp in Sources */,
+				34B5AB3D23B9CB10007CA246 /* PartShapeViewer.cpp in Sources */,
+				34B5AB4723B9CB10007CA246 /* EggState.cpp in Sources */,
+				34B5AB1523B9CB10007CA246 /* Shape.cpp in Sources */,
+				34B5AB3A23B9CB10007CA246 /* PartAsset.cpp in Sources */,
+				34B5AB3F23B9CB10007CA246 /* CellMakingViewer_BodySculptor_LayerLists.cpp in Sources */,
+				34B5AB0123B9CB10007CA246 /* Sound.cpp in Sources */,
+				34B5AB2B23B9CB10007CA246 /* TitleViewer.cpp in Sources */,
+				34B5AB3723B9CB10007CA246 /* Asset.cpp in Sources */,
+				34B5AB3523B9CB10007CA246 /* PartAsset_Body_Editor.cpp in Sources */,
+				34B5AB1F23B9CB10007CA246 /* Assets_makeModel.cpp in Sources */,
+				34B5AB0423B9CB10007CA246 /* ElementState.cpp in Sources */,
+				34B5AB4123B9CB10007CA246 /* CellMakingViewer_CellInfo.cpp in Sources */,
+				34B5AB3223B9CB10007CA246 /* CellMakingViewer.cpp in Sources */,
+				34B5AB1123B9CB10007CA246 /* GUIValuer.cpp in Sources */,
+				34B5AB1E23B9CB10007CA246 /* PartState_Needle.cpp in Sources */,
+				34B5AB3123B9CB10007CA246 /* SoundManager.cpp in Sources */,
+				34B5AB1923B9CB10007CA246 /* Field.cpp in Sources */,
+				34B5AB2023B9CB10007CA246 /* PartState_Body.cpp in Sources */,
+				34B5AB3E23B9CB10007CA246 /* Storage.cpp in Sources */,
+				34B5AB4423B9CB10007CA246 /* PartAsset_Nucleus.cpp in Sources */,
+				34B5AB0323B9CB10007CA246 /* GUIAssetLinker_Dragger.cpp in Sources */,
+				34B5AAFB23B9CB10007CA246 /* PartAsset_Needle_Editor.cpp in Sources */,
+				34B5AAFD23B9CB10007CA246 /* WorldLoadViewer.cpp in Sources */,
+				34B5AB0523B9CB10007CA246 /* StatisticsViewer.cpp in Sources */,
+				34B5AB0823B9CB10007CA246 /* CellState.cpp in Sources */,
+				34B5AB1723B9CB10007CA246 /* CellMakingViewer_PartsAssembler_PartList.cpp in Sources */,
+				34B5AB1823B9CB10007CA246 /* Layer.cpp in Sources */,
+				34B5AB2123B9CB10007CA246 /* GUIChecker.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2C17787E1CE0A9D800BB8AD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-std=c++1z",
+				);
+			};
+			name = Debug;
+		};
+		2C17787F1CE0A9D800BB8AD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-std=c++1z",
+				);
+			};
+			name = Release;
+		};
+		2C1778941CE0A9EA00BB8AD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/App/";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../include,
+					../../include/ThirdParty,
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					../../lib/macOS,
+					../../lib/macOS/angelscript,
+					../../lib/macOS/boost,
+					../../lib/macOS/freetype,
+					../../lib/macOS/glew,
+					../../lib/macOS/harfbuzz,
+					../../lib/macOS/libgif,
+					"../../lib/macOS/libjpeg-turbo",
+					../../lib/macOS/libogg,
+					../../lib/macOS/libpng,
+					../../lib/macOS/libwebp,
+					../../lib/macOS/libvorbis,
+					../../lib/macOS/opencv,
+					../../lib/macOS/zlib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-fvisibility=hidden",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = siv3d.empty;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2C1778951CE0A9EA00BB8AD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/App/";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../include,
+					../../include/ThirdParty,
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					../../lib/macOS,
+					../../lib/macOS/angelscript,
+					../../lib/macOS/boost,
+					../../lib/macOS/freetype,
+					../../lib/macOS/glew,
+					../../lib/macOS/harfbuzz,
+					../../lib/macOS/libgif,
+					"../../lib/macOS/libjpeg-turbo",
+					../../lib/macOS/libogg,
+					../../lib/macOS/libpng,
+					../../lib/macOS/libwebp,
+					../../lib/macOS/libvorbis,
+					../../lib/macOS/opencv,
+					../../lib/macOS/zlib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-fvisibility=hidden",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = siv3d.empty;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C17787D1CE0A9D800BB8AD0 /* Build configuration list for PBXProject "empty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C17787E1CE0A9D800BB8AD0 /* Debug */,
+				2C17787F1CE0A9D800BB8AD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C1778931CE0A9EA00BB8AD0 /* Build configuration list for PBXNativeTarget "empty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C1778941CE0A9EA00BB8AD0 /* Debug */,
+				2C1778951CE0A9EA00BB8AD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C17787A1CE0A9D800BB8AD0 /* Project object */;
+}
