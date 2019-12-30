@@ -49,7 +49,7 @@ class World
 
 	static unique_ptr<World>	g_instance;
 
-	void	loadAssets();
+	void	loadAssets(const FilePath& directory);
 
 	void	load();
 	void	make();

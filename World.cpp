@@ -91,7 +91,7 @@ void World::save()
 
 	// Assets
 	{
-		for (const auto& asset : m_assets)
+		for (const auto& asset : m_assets.filter([](const auto& asset) {return asset->getIsUserAsset(); }))
 		{
 			if (asset->getTypeName() != U"CellAsset" && asset->getTypeName() != U"PartAsset_Body") continue;
 
@@ -151,13 +151,11 @@ void World::initField()
 	generateWave(Size(80, 45));
 }
 
-void World::loadAssets()
+void World::loadAssets(const FilePath& directory)
 {
 	// JSONのパスを取得
-	auto jsonFiles = FileSystem::DirectoryContents(m_filePath + U"assets/", true)
+	const auto jsonFiles = FileSystem::DirectoryContents(directory, true)
 		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; });
-	jsonFiles.append(FileSystem::DirectoryContents(U"resources/assets/", true)
-		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; }));
 
 	// 名前の読み込み(リンクがあるため、Loadの前に名前の登録を行う)
 	for (const auto& jsonFile : jsonFiles)
@@ -200,7 +198,9 @@ void World::load()
 	}
 
 	// Assets
-	loadAssets();
+	loadAssets(U"resources/assets/");
+	for (const auto& asset : m_assets) asset->setIsUserAsset(false);
+	loadAssets(m_filePath + U"assets/");
 
 	// Field
 	{
@@ -243,7 +243,9 @@ void World::make()
 	FileSystem::CreateDirectories(m_filePath + U"assets/");
 
 	// Assetsのロード
-	loadAssets();
+	loadAssets(U"resources/assets/");
+	for (const auto& asset : m_assets) asset->setIsUserAsset(false);
+	loadAssets(m_filePath + U"assets/");
 }
 
 shared_ptr<Asset> World::getAsset(const String& name) const
