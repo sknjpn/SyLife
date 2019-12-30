@@ -1,6 +1,6 @@
 ﻿{
   "type": "ProteinAsset",
-  "name": "Oxgen",
+  "name": "Oxygen",
   "radius": 4.0,
   "color": "(0, 128, 255, 255)",
   "material": {

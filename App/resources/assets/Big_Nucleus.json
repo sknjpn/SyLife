@@ -22,7 +22,11 @@
     "element": 25.0,
     "proteins": [
       {
-        "name": "Oxgen",
+        "name": "Oxygen",
+        "size": 2
+      },
+      {
+        "name": "Carbon",
         "size": 2
       }
     ]

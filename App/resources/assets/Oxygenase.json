@@ -1,6 +1,6 @@
 ﻿{
   "type": "PartAsset_Synthesizer",
-  "name": "Oxgenase",
+  "name": "Oxygenase",
   "mass": 10.0,
   "layers": [
     {
@@ -49,10 +49,10 @@
     "element": 10.0,
     "proteins": [
       {
-        "name": "Oxgen",
+        "name": "Oxygen",
         "size": 1
       }
     ]
   },
-  "export": "Oxgen"
+  "export": "Oxygen"
 }

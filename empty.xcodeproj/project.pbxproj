@@ -85,7 +85,6 @@
 		34B5ABDC23B9D150007CA246 /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AB9A23B9D14F007CA246 /* Shape.cpp */; };
 		34B5ABDD23B9D150007CA246 /* MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AB9C23B9D14F007CA246 /* MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp */; };
 		34B5ABDE23B9D150007CA246 /* EggState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AB9D23B9D14F007CA246 /* EggState.cpp */; };
-		34B5ABDF23B9D150007CA246 /* ProteinState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5AB9E23B9D150007CA246 /* ProteinState.cpp */; };
 		34B5ABE023B9D150007CA246 /* PartAsset_Synthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5ABA023B9D150007CA246 /* PartAsset_Synthesizer.cpp */; };
 		34B5ABE123B9D150007CA246 /* PartState_Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5ABA323B9D150007CA246 /* PartState_Body.cpp */; };
 		34B5ABE223B9D150007CA246 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5ABA423B9D150007CA246 /* Layer.cpp */; };
@@ -202,7 +201,6 @@
 		34B5AB9123B9D14F007CA246 /* CellState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellState.cpp; sourceTree = SOURCE_ROOT; };
 		34B5AB9223B9D14F007CA246 /* PartState_Synthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartState_Synthesizer.h; sourceTree = SOURCE_ROOT; };
 		34B5AB9323B9D14F007CA246 /* MainViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer.cpp; sourceTree = SOURCE_ROOT; };
-		34B5AB9423B9D14F007CA246 /* ProteinState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProteinState.h; sourceTree = SOURCE_ROOT; };
 		34B5AB9523B9D14F007CA246 /* Rigidbody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rigidbody.cpp; sourceTree = SOURCE_ROOT; };
 		34B5AB9623B9D14F007CA246 /* EggState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EggState.h; sourceTree = SOURCE_ROOT; };
 		34B5AB9723B9D14F007CA246 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = SOURCE_ROOT; };
@@ -212,7 +210,6 @@
 		34B5AB9B23B9D14F007CA246 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = SOURCE_ROOT; };
 		34B5AB9C23B9D14F007CA246 /* MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp; sourceTree = SOURCE_ROOT; };
 		34B5AB9D23B9D14F007CA246 /* EggState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EggState.cpp; sourceTree = SOURCE_ROOT; };
-		34B5AB9E23B9D150007CA246 /* ProteinState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProteinState.cpp; sourceTree = SOURCE_ROOT; };
 		34B5AB9F23B9D150007CA246 /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = SOURCE_ROOT; };
 		34B5ABA023B9D150007CA246 /* PartAsset_Synthesizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Synthesizer.cpp; sourceTree = SOURCE_ROOT; };
 		34B5ABA123B9D150007CA246 /* MainViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewer.h; sourceTree = SOURCE_ROOT; };
@@ -372,8 +369,6 @@
 				34B5AB8423B9D14E007CA246 /* PartState.h */,
 				34B5AB6F23B9D14D007CA246 /* ProteinAsset.cpp */,
 				34B5AB8123B9D14E007CA246 /* ProteinAsset.h */,
-				34B5AB9E23B9D150007CA246 /* ProteinState.cpp */,
-				34B5AB9423B9D14F007CA246 /* ProteinState.h */,
 				34B5AB9523B9D14F007CA246 /* Rigidbody.cpp */,
 				34B5AB4F23B9D14C007CA246 /* Rigidbody.h */,
 				34B5AB9A23B9D14F007CA246 /* Shape.cpp */,
@@ -501,7 +496,6 @@
 				34B5ABD823B9D150007CA246 /* MainViewer_CellMakingViewer_BodySculptor.cpp in Sources */,
 				34B5ABB623B9D150007CA246 /* Model.cpp in Sources */,
 				34B5ABB823B9D150007CA246 /* MainViewer_CommandPalette_MagnifyingViewer.cpp in Sources */,
-				34B5ABDF23B9D150007CA246 /* ProteinState.cpp in Sources */,
 				34B5ABAE23B9D150007CA246 /* MainViewer_FieldViewer_ReleaseViewer.cpp in Sources */,
 				34B5ABAF23B9D150007CA246 /* MainViewer_CellMakingViewer_BodySculptor_LayerLists.cpp in Sources */,
 				34B5ABB023B9D150007CA246 /* CellAsset.cpp in Sources */,
