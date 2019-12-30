@@ -6,6 +6,7 @@ class PartAsset_Synthesizer
 	: public PartAsset
 {
 	shared_ptr<ProteinAsset>	m_export;
+	double	m_productTime;
 
 public:
 	// State
@@ -13,6 +14,7 @@ public:
 
 	// Get
 	const shared_ptr<ProteinAsset>& getExport() const { return m_export; }
+	double	getProductTime() const { return m_productTime; }
 
 	// JSON
 	void	load(const JSONValue& json) override;
