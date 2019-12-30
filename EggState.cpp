@@ -48,6 +48,8 @@ void EggState::load(Deserializer<ByteArray>& reader)
 		reader >> cellAssetName;
 		m_cellAsset = World::GetAsset<CellAsset>(cellAssetName);
 	}
+
+	reader >> m_timer;
 }
 
 void EggState::save(Serializer<MemoryWriter>& writer) const
@@ -55,4 +57,5 @@ void EggState::save(Serializer<MemoryWriter>& writer) const
 	Rigidbody::save(writer);
 
 	writer << m_cellAsset->getName();
+	writer << m_timer;
 }
