@@ -153,6 +153,8 @@ void World::initField()
 
 void World::loadAssets(const FilePath& directory)
 {
+	Array<shared_ptr<Asset>> assets;
+
 	// JSONのパスを取得
 	const auto jsonFiles = FileSystem::DirectoryContents(directory, true)
 		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; });
@@ -162,13 +164,13 @@ void World::loadAssets(const FilePath& directory)
 	{
 		JSONReader json(jsonFile);
 
-		auto a = makeAsset(json[U"type"].getString());
-		a->setName(json[U"name"].getString());
-		a->setFilePath(FileSystem::RelativePath(jsonFile, m_filePath + U"assets/"));
+		const auto asset = assets.emplace_back(makeAsset(json[U"type"].getString()));
+		asset->setName(json[U"name"].getString());
+		asset->setFilePath(FileSystem::RelativePath(jsonFile, m_filePath + U"assets/"));
 	}
 
 	// 読み込み
-	for (const auto& m : m_assets)
+	for (const auto& m : assets)
 	{
 		Logger << m->getName() + U"を読み込み中";
 
