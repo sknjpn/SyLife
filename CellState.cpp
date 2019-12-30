@@ -13,7 +13,7 @@ CellState::CellState(const shared_ptr<CellAsset>& cellAsset)
 	, m_startTimer(0.0)
 	, m_deathTimer(cellAsset->getLifespanTime())
 	, m_yieldTimer(0.0)
-	, m_hitpoint(100.0)
+	, m_hitpoint(cellAsset->getMaxHitPoint())
 {
 	setMass(m_cellAsset->getMass());
 	setRadius(m_cellAsset->getRadius());
@@ -71,7 +71,7 @@ void CellState::updateCell()
 	}
 
 	// 死亡処理
-	if ((m_deathTimer -= DeltaTime) <= 0.0)
+	if ((m_deathTimer -= DeltaTime) <= 0.0 || m_hitpoint <= 0)
 	{
 		// Elementの吐き出し
 		World::GetInstance()->getTile(getPosition())->addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
@@ -112,6 +112,18 @@ void CellState::takeElement()
 
 	World::GetInstance()->getTile(getPosition())->pullElement(value);
 	m_storage.addElement(value);
+}
+
+double CellState::getHitPointRate() const
+{
+	return m_hitpoint / m_cellAsset->getMaxHitPoint();
+}
+
+bool CellState::addDamage(double damage)
+{
+	m_hitpoint -= damage;
+
+	return m_hitpoint < 0;
 }
 
 void CellState::load(Deserializer<ByteArray>& reader)

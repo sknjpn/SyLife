@@ -24,6 +24,8 @@ class CellAsset
 	double	m_bornTime;		// 生まれるまでの時間
 	double	m_yieldTime;	// 生むのにかかる時間
 
+	double	m_maxHitPoint;
+
 	void	updateMass();
 	void	updateRadius() { m_radius = sqrt(2 * m_inertia / m_mass); }
 	void	updateInertia();
@@ -47,6 +49,7 @@ public:
 	double	getLifespanTime() const { return m_lifespanTime; }
 	double	getBornTime() const { return m_bornTime; }
 	double	getYieldTime() const { return m_yieldTime; }
+	double	getMaxHitPoint() const { return m_maxHitPoint; }
 
 	// Add
 	shared_ptr<PartConfig>& addPartConfig();

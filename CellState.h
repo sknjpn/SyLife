@@ -34,6 +34,11 @@ public:
 
 	void	takeElement();
 
+	double	getHitPointRate() const;
+
+	// もし倒したらtrueを返す
+	bool	addDamage(double damage);
+
 	void	load(Deserializer<ByteArray>& reader);
 	void	save(Serializer<MemoryWriter>& writer) const;
 };

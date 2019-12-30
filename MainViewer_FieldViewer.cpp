@@ -33,8 +33,8 @@ void MainViewer::FieldViewer::update()
 	// エッジスクロール
 	if (MouseL.pressed() && Cursor::Pos().x < 32) { Rect(32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
 	if (MouseL.pressed() && Cursor::Pos().y < 32) { Rect(Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveU(); }
-	if (MouseL.pressed() && Cursor::Pos().x > Scene::Size().x -32) { Rect(Scene::Size().x - 32, 0, 32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
-	if (MouseL.pressed() && Cursor::Pos().y > Scene::Size().y -32) { Rect(0, Scene::Size().y - 32, Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveD(); }
+	if (MouseL.pressed() && Cursor::Pos().x > Scene::Size().x - 32) { Rect(Scene::Size().x - 32, 0, 32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
+	if (MouseL.pressed() && Cursor::Pos().y > Scene::Size().y - 32) { Rect(0, Scene::Size().y - 32, Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveD(); }
 
 	{
 		// camera
@@ -72,6 +72,20 @@ void MainViewer::FieldViewer::update()
 
 		// draw
 		World::GetInstance()->draw();
+
+		// HitPoint
+		if (KeyH.pressed())
+		{
+			for (const auto& cellState : World::GetInstance()->getCellStates())
+			{
+				auto pos = cellState->getPosition().movedBy(0, -cellState->getRadius());
+				auto halfLength = cellState->getRadius();
+				auto rate = cellState->getHitPointRate();
+				auto d = halfLength / 8;
+				Line(-halfLength, 0, halfLength, 0).movedBy(pos).draw(d, Palette::Red);
+				Line(-halfLength, 0, -halfLength + (halfLength * 2) * rate, 0).movedBy(pos).draw(d, Palette::Green);
+			}
+		}
 
 		// delete
 		if (isMouseover() && MouseR.pressed())

@@ -117,6 +117,8 @@ void CellAsset::updateProperties()
 	m_lifespanTime = nucleusAsset->getLifespanTime();
 	m_yieldTime = nucleusAsset->getYieldTime();
 	m_bornTime = nucleusAsset->getBornTime();
+
+	m_maxHitPoint = getBodyAsset()->getShape().getPolygon().area();
 }
 
 shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const

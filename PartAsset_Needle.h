@@ -5,6 +5,8 @@
 class PartAsset_Needle
 	: public PartAsset
 {
+	double	m_damage;
+
 public:
 	// State
 	shared_ptr<PartState>	makeState() override;
@@ -13,6 +15,8 @@ public:
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
 	
+	double	getDamage() const { return m_damage; }
+
 	// TypeName
 	String	getTypeName() override { return U"PartAsset_Needle"; }
 };
