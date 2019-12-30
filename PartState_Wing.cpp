@@ -44,3 +44,19 @@ void PartState_Wing::flap(CellState& cellState)
 	auto centroid = getPartConfig()->getPartAsset()->getShape().getCentroid().rotated(getPartConfig()->getRotation());
 	cellState.addImpulseInLocal(Vec2::Up().rotated(getPartConfig()->getRotation()) * strength, getPartConfig()->getPosition() + centroid);
 }
+
+void PartState_Wing::load(Deserializer<ByteArray>& reader)
+{
+	reader >> m_timer;
+	reader >> m_v;
+	reader >> m_p;
+	reader >> m_counter;
+}
+
+void PartState_Wing::save(Serializer<MemoryWriter>& writer) const
+{
+	writer << m_timer;
+	writer << m_v;
+	writer << m_p;
+	writer << m_counter;
+}

@@ -20,4 +20,7 @@ public:
 	void	update(CellState& cellState) override;
 
 	void	flap(CellState& cellState);
+
+	virtual void	load(Deserializer<ByteArray>& reader);
+	virtual void	save(Serializer<MemoryWriter>& writer) const;
 };
