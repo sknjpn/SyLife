@@ -27,6 +27,14 @@ void MainViewer::CellMakingViewer::openPartsAssembler()
 	addChildViewer<PartsAssembler>();
 }
 
+void MainViewer::CellMakingViewer::release()
+{
+	getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
+	getParentViewer()->getChildViewer<CellBook>()->addItem(m_cellAsset);
+
+	destroy();
+}
+
 void MainViewer::CellMakingViewer::init()
 {
 	// 新しいモデルの登録
@@ -41,7 +49,7 @@ void MainViewer::CellMakingViewer::init()
 	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
 		->setViewerRectInLocal(5, 45, 190, 35);
 
-	addChildViewer<GUIButton>(U"生き物配置", [this]() { getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset); destroy(); })
+	addChildViewer<GUIButton>(U"生き物配置", [this]() { release(); }, false)
 		->setName(U"生き物配置")
 		->setViewerRectInLocal(5, 85, 190, 35);
 
@@ -52,8 +60,6 @@ void MainViewer::CellMakingViewer::init()
 		->setViewerRectInLocal(0, 165, 200, 595);
 
 	openBodySculptor();
-
-	getChildViewer<GUIButton>(U"生き物配置")->setIsEnabled(false);
 }
 
 void MainViewer::CellMakingViewer::update()

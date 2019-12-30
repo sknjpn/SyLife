@@ -14,6 +14,26 @@ class PartConfig;
 
 class MainViewer : public Viewer
 {
+	class CellBook : public Viewer
+	{
+		class Item : public Viewer
+		{
+			shared_ptr<CellAsset> m_cellAsset;
+
+		public:
+			Item(const shared_ptr<CellAsset>& cellAsset);
+
+			void	init() override;
+			void	update() override;
+		};
+
+	public:
+		void	addItem(const shared_ptr<CellAsset>& cellAsset);
+
+		void	init() override;
+		void	update() override;
+	};
+
 	class FieldViewer : public Viewer
 	{
 		class CellStateCaptureViewer
@@ -268,6 +288,7 @@ class MainViewer : public Viewer
 		void	clearEditor();
 		void	openBodySculptor();
 		void	openPartsAssembler();
+		void	release();
 
 	public:
 		void	init() override;

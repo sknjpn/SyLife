@@ -12,6 +12,8 @@ void MainViewer::init()
 
 	addChildViewer<GUIButton>(U"Cell作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 200, 50);
 
+	addChildViewer<CellBook>();
+
 	addChildViewer<StatisticsViewer>();
 
 	addChildViewer<CommandPalette>();

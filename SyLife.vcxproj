@@ -231,6 +231,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="MainViewer_CellBook.cpp" />
+    <ClCompile Include="MainViewer_CellBook_Item.cpp" />
     <ClCompile Include="PartAsset_Eye.cpp" />
     <ClCompile Include="PartState_Eye.cpp" />
     <ClCompile Include="World_makeModel.cpp" />
