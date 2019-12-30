@@ -2,7 +2,6 @@
 
 #include "Model.h"
 
-
 // AssetManagerに登録可能なModel
 // JSONファイルに対応している
 class Asset

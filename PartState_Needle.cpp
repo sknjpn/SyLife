@@ -1,7 +1,4 @@
 ﻿#include "PartState_Needle.h"
-
-
-
 #include "PartAsset_Needle.h"
 #include "PartConfig.h"
 #include "CellState.h"
