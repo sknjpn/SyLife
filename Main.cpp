@@ -1,4 +1,4 @@
-﻿#include "MainViewer.h"
+#include "MainViewer.h"
 #include "World.h"
 
 void Main()
@@ -7,7 +7,7 @@ void Main()
 	Window::SetStyle(WindowStyle::Sizable);
 	Scene::Resize(1920, 1080);
 	Window::Maximize();
-	Window::SetFullscreen(true);
+	//Window::SetFullscreen(true);
 	// world生成
 	if (FileSystem::Exists(U"world/"))
 	{
@@ -22,5 +22,5 @@ void Main()
 	Viewer::GetRootViewer()->addChildViewer<MainViewer>();
 	Viewer::Run();
 
-	World::GetInstance()->save();
+	//World::GetInstance()->save();
 }
