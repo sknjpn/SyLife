@@ -39,5 +39,6 @@
       }
     ]
   },
-  "isRight": true
+  "isRight": true,
+  "strength": 5000,
 }
