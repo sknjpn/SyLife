@@ -34,7 +34,7 @@ void PartState_Needle::update(CellState& cellState)
 
 			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_cellAsset != cellState.m_cellAsset)
 			{
-				if (t->addDamage(dynamic_pointer_cast<PartAsset_Needle>(getPartConfig()->getPartAsset())->getDamage()))
+				if (t->addDamage(m_partAsset_Needle->getDamage()))
 				{
 					t->destroy();
 					cellState.m_storage += t->m_storage;

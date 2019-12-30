@@ -12,7 +12,7 @@ PartState_Wing::PartState_Wing(const shared_ptr<PartConfig>& partConfig)
 
 void PartState_Wing::draw(const CellState& cellState) const
 {
-	auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<PartAsset_Wing>(getPartConfig()->getPartAsset())->getIsRight() ? m_p : -m_p));
+	auto t = Transformer2D(Mat3x2::Rotate(m_partAsset_Wing->getIsRight() ? m_p : -m_p));
 
 	getPartConfig()->getPartAsset()->draw();
 }
@@ -40,7 +40,7 @@ void PartState_Wing::update(CellState& cellState)
 
 void PartState_Wing::flap(CellState& cellState)
 {
-	const double strength = dynamic_pointer_cast<PartAsset_Wing>(getPartConfig()->getPartAsset())->getStrength();
+	const double strength = m_partAsset_Wing->getStrength();
 	auto centroid = getPartConfig()->getPartAsset()->getShape().getCentroid().rotated(getPartConfig()->getRotation());
 	cellState.addImpulseInLocal(Vec2::Up().rotated(getPartConfig()->getRotation()) * strength, getPartConfig()->getPosition() + centroid);
 }
