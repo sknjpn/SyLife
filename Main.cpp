@@ -1,4 +1,4 @@
-#include "MainViewer.h"
+﻿#include "MainViewer.h"
 #include "World.h"
 
 void Main()
@@ -22,5 +22,5 @@ void Main()
 	Viewer::GetRootViewer()->addChildViewer<MainViewer>();
 	Viewer::Run();
 
-	//World::GetInstance()->save();
+	World::GetInstance()->save();
 }

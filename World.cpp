@@ -93,6 +93,8 @@ void World::save()
 	{
 		for (const auto& asset : m_assets)
 		{
+			if (asset->getTypeName() != U"CellAsset" && asset->getTypeName() != U"PartAsset_Body") continue;
+
 			JSONWriter json;
 			json.startObject();
 
@@ -152,8 +154,10 @@ void World::initField()
 void World::loadAssets()
 {
 	// JSONのパスを取得
-	const auto jsonFiles = FileSystem::DirectoryContents(m_filePath + U"assets/", true)
+	auto jsonFiles = FileSystem::DirectoryContents(m_filePath + U"assets/", true)
 		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; });
+	jsonFiles.append(FileSystem::DirectoryContents(U"resources/assets/", true)
+		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; }));
 
 	// 名前の読み込み(リンクがあるため、Loadの前に名前の登録を行う)
 	for (const auto& jsonFile : jsonFiles)
@@ -237,9 +241,6 @@ void World::make()
 	// ディレクトリの作成
 	FileSystem::CreateDirectories(m_filePath);
 	FileSystem::CreateDirectories(m_filePath + U"assets/");
-
-	// アセットのコピー
-	FileSystem::Copy(U"resources/assets/", m_filePath + U"assets/", CopyOption::OverwriteExisting);
 
 	// Assetsのロード
 	loadAssets();
