@@ -33,3 +33,13 @@ void PartState_Synthesizer::update(CellState& cellState)
 		cellState.m_storage.addProtein(m_partAsset_Synthesizer->getExport());
 	}
 }
+
+void PartState_Synthesizer::load(Deserializer<ByteArray>& reader)
+{
+	reader >> m_timer;
+}
+
+void PartState_Synthesizer::save(Serializer<MemoryWriter>& writer) const
+{
+	writer << m_timer;
+}

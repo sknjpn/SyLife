@@ -15,4 +15,7 @@ public:
 
 	void	draw(const CellState& cellState) const override;
 	void	update(CellState& cellState) override;
+
+	virtual void	load(Deserializer<ByteArray>& reader);
+	virtual void	save(Serializer<MemoryWriter>& writer) const;
 };
