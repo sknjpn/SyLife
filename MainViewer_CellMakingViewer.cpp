@@ -62,8 +62,8 @@ void MainViewer::CellMakingViewer::update()
 
 	// 更新
 	m_cellAsset->updateProperties();
-	for (const auto& pc : m_cellAsset->getPartConfigs())
-		pc->getPartAsset()->getShape().updateProperties();
+	for (const auto& partConfig : m_cellAsset->getPartConfigs())
+		partConfig->getPartAsset()->getShape().updateProperties();
 
 	getChildViewer<GUIButton>(U"生き物配置")->setIsEnabled(m_cellAsset->isValid());
 }

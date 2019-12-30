@@ -10,7 +10,7 @@ class PartAsset_Synthesizer
 
 public:
 	// State
-	shared_ptr<PartState>	makeState() override;
+	shared_ptr<PartState>	makePartState(const shared_ptr<PartConfig>& partConfig) const override;
 
 	// Get
 	const shared_ptr<ProteinAsset>& getExport() const { return m_export; }

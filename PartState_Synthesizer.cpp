@@ -9,6 +9,11 @@
 #include "ProteinAsset.h"
 
 
+PartState_Synthesizer::PartState_Synthesizer(const shared_ptr<PartConfig>& partConfig)
+	: PartState(partConfig)
+	, m_partAsset_Synthesizer(dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+{}
+
 void PartState_Synthesizer::draw(const CellState& cellState) const
 {
 	getPartConfig()->getPartAsset()->draw(min(m_timer / 2.0, 1.0) * 0.75 + 0.25);

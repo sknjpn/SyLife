@@ -3,9 +3,9 @@
 #include "World.h"
 #include "ProteinAsset.h"
 
-shared_ptr<PartState> PartAsset_Synthesizer::makeState()
+shared_ptr<PartState> PartAsset_Synthesizer::makePartState(const shared_ptr<PartConfig>& partConfig) const
 {
-	return make_shared<PartState_Synthesizer>();
+	return make_shared<PartState_Synthesizer>(partConfig);
 }
 
 void PartAsset_Synthesizer::load(const JSONValue& json)

@@ -5,6 +5,11 @@
 #include "CellAsset.h"
 #include "World.h"
 
+PartState_Needle::PartState_Needle(const shared_ptr<PartConfig>& partConfig)
+	: PartState(partConfig)
+	, m_partAsset_Needle(dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+{}
+
 void PartState_Needle::draw(const CellState& cellState) const
 {
 	auto t = Transformer2D(Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));

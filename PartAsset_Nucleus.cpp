@@ -1,9 +1,9 @@
 ﻿#include "PartAsset_Nucleus.h"
 #include "PartState_Nucleus.h"
 
-shared_ptr<PartState> PartAsset_Nucleus::makeState()
+shared_ptr<PartState> PartAsset_Nucleus::makePartState(const shared_ptr<PartConfig>& partConfig) const
 {
-	return make_shared<PartState_Nucleus>();
+	return make_shared<PartState_Nucleus>(partConfig);
 }
 
 void PartAsset_Nucleus::load(const JSONValue& json)

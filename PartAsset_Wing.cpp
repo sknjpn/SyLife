@@ -1,9 +1,9 @@
 ﻿#include "PartAsset_Wing.h"
 #include "PartState_Wing.h"
 
-shared_ptr<PartState> PartAsset_Wing::makeState()
+shared_ptr<PartState> PartAsset_Wing::makePartState(const shared_ptr<PartConfig>& partConfig) const
 {
-	return make_shared<PartState_Wing>();
+	return make_shared<PartState_Wing>(partConfig);
 }
 
 void PartAsset_Wing::load(const JSONValue& json)

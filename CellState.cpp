@@ -20,8 +20,8 @@ CellState::CellState(const shared_ptr<CellAsset>& cellAsset)
 	setInertia(m_cellAsset->getInertia());
 
 	// parts
-	for (const auto& pc : m_cellAsset->getPartConfigs())
-		m_partStates.emplace_back(pc->getPartAsset()->makeState())->setPartConfig(pc);
+	for (const auto& partConfig : m_cellAsset->getPartConfigs())
+		m_partStates.emplace_back(partConfig->getPartAsset()->makePartState(partConfig));
 }
 
 void CellState::updateCell()
@@ -144,10 +144,9 @@ void CellState::load(Deserializer<ByteArray>& reader)
 	}
 
 	// parts
-	for (const auto& pc : m_cellAsset->getPartConfigs())
+	for (const auto& partConfig : m_cellAsset->getPartConfigs())
 	{
-		const auto partState = m_partStates.emplace_back(pc->getPartAsset()->makeState());
-		partState->setPartConfig(pc);
+		const auto partState = m_partStates.emplace_back(partConfig->getPartAsset()->makePartState(partConfig));
 		partState->load(reader);
 	}
 

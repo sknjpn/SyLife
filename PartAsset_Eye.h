@@ -9,7 +9,7 @@ class PartAsset_Eye
 
 public:
 	// State
-	shared_ptr<PartState>	makeState() override;
+	shared_ptr<PartState>	makePartState(const shared_ptr<PartConfig>& partConfig) const override;
 
 	// JSON
 	void	load(const JSONValue& json) override;

@@ -60,15 +60,15 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 	}
 	else if (MouseL.down() && isMouseover())
 	{
-		for (const auto& pc : m_cellAsset->getPartConfigs())
+		for (const auto& partConfig : m_cellAsset->getPartConfigs())
 		{
-			if (dynamic_pointer_cast<PartAsset_Body>(pc->getPartAsset())) continue;
+			if (dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) continue;
 
-			auto t = Transformer2D(pc->getMat3x2(), true);
+			auto t = Transformer2D(partConfig->getMat3x2(), true);
 
-			if (pc->getPartAsset()->getShape().getPolygon().mouseOver())
+			if (partConfig->getPartAsset()->getShape().getPolygon().mouseOver())
 			{
-				m_selectedPartConfig = pc;
+				m_selectedPartConfig = partConfig;
 				m_prePosition = m_selectedPartConfig->getPosition();
 				m_preRotation = m_selectedPartConfig->getRotation();
 			}

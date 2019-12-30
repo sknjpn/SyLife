@@ -1,9 +1,9 @@
 ﻿#include "PartAsset_Needle.h"
 #include "PartState_Needle.h"
 
-shared_ptr<PartState> PartAsset_Needle::makeState()
+shared_ptr<PartState> PartAsset_Needle::makePartState(const shared_ptr<PartConfig>& partConfig) const
 {
-	return make_shared<PartState_Needle>();
+	return make_shared<PartState_Needle>(partConfig);
 }
 
 void PartAsset_Needle::load(const JSONValue& json)

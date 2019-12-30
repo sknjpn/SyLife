@@ -11,7 +11,7 @@ class PartAsset_Nucleus
 
 public:
 	// State
-	shared_ptr<PartState>	makeState() override;
+	shared_ptr<PartState>	makePartState(const shared_ptr<PartConfig>& partConfig) const override;
 
 	// Get
 	double	getLifespanTime() const { return m_lifespanTime; }

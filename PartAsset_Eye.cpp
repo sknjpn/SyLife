@@ -1,9 +1,9 @@
 ﻿#include "PartAsset_Eye.h"
 #include "PartState_Eye.h"
 
-shared_ptr<PartState> PartAsset_Eye::makeState()
+shared_ptr<PartState> PartAsset_Eye::makePartState(const shared_ptr<PartConfig>& partConfig) const
 {
-	return make_shared<PartState_Eye>();
+	return make_shared<PartState_Eye>(partConfig);
 }
 
 void PartAsset_Eye::load(const JSONValue& json)

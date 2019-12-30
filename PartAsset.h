@@ -6,6 +6,7 @@
 #include "Shape.h"
 
 class PartState;
+class PartConfig;
 
 class PartAsset
 	: public Asset
@@ -27,7 +28,7 @@ public:
 	void	setMass(double mass) { m_mass = mass; }
 
 	// State
-	virtual shared_ptr<PartState>	makeState() = 0;
+	virtual shared_ptr<PartState>	makePartState(const shared_ptr<PartConfig>& partConfig) const = 0;
 
 	// Draw
 	void	draw(double a = 0.5) { m_shape.draw(a); }
