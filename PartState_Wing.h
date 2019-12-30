@@ -21,6 +21,6 @@ public:
 
 	void	flap(CellState& cellState);
 
-	virtual void	load(Deserializer<ByteArray>& reader);
-	virtual void	save(Serializer<MemoryWriter>& writer) const;
+	void	load(Deserializer<ByteArray>& reader) override;
+	void	save(Serializer<MemoryWriter>& writer) const override;
 };
