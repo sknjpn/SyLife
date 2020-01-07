@@ -5,9 +5,14 @@
 
 #include "CellState.h"
 
+PartState_Wing::PartState_Wing(const shared_ptr<PartConfig>& partConfig)
+	: PartState(partConfig)
+	, m_partAsset_Wing(dynamic_pointer_cast<PartAsset_Wing>(partConfig->getPartAsset()))
+{}
+
 void PartState_Wing::draw(const CellState& cellState) const
 {
-	auto t = Transformer2D(Mat3x2::Rotate(dynamic_pointer_cast<PartAsset_Wing>(getPartConfig()->getPartAsset())->getIsRight() ? m_p : -m_p));
+	auto t = Transformer2D(Mat3x2::Rotate(m_partAsset_Wing->getIsRight() ? m_p : -m_p));
 
 	getPartConfig()->getPartAsset()->draw();
 }
@@ -35,6 +40,23 @@ void PartState_Wing::update(CellState& cellState)
 
 void PartState_Wing::flap(CellState& cellState)
 {
+	const double strength = m_partAsset_Wing->getStrength();
 	auto centroid = getPartConfig()->getPartAsset()->getShape().getCentroid().rotated(getPartConfig()->getRotation());
-	cellState.addImpulseInLocal(Vec2::Up().rotated(getPartConfig()->getRotation()) * 5000.0, getPartConfig()->getPosition() + centroid);
+	cellState.addImpulseInLocal(Vec2::Up().rotated(getPartConfig()->getRotation()) * strength, getPartConfig()->getPosition() + centroid);
+}
+
+void PartState_Wing::load(Deserializer<ByteArray>& reader)
+{
+	reader >> m_timer;
+	reader >> m_v;
+	reader >> m_p;
+	reader >> m_counter;
+}
+
+void PartState_Wing::save(Serializer<MemoryWriter>& writer) const
+{
+	writer << m_timer;
+	writer << m_v;
+	writer << m_p;
+	writer << m_counter;
 }

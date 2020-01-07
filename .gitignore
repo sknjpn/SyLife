@@ -265,3 +265,6 @@ Intermediate/
 *_log.html
 
 worlds/
+world/
+AS_DEBUG/
+empty.app/

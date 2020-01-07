@@ -1,26 +1,25 @@
 ﻿#include "PartAsset_Synthesizer.h"
 #include "PartState_Synthesizer.h"
-#include "Assets.h"
-#include "ElementAsset.h"
-#include "PartShapeViewer.h"
+#include "World.h"
+#include "ProteinAsset.h"
 
-shared_ptr<PartState> PartAsset_Synthesizer::makeState()
+shared_ptr<PartState> PartAsset_Synthesizer::makePartState(const shared_ptr<PartConfig>& partConfig) const
 {
-	return make_shared<PartState_Synthesizer>();
+	return make_shared<PartState_Synthesizer>(partConfig);
 }
 
 void PartAsset_Synthesizer::load(const JSONValue& json)
 {
 	PartAsset::load(json);
 
-	// export
-	m_export = Assets::GetAsset<ElementAsset>(json[U"export"].getString());
+	m_export = World::GetAsset<ProteinAsset>(json[U"export"].getString());
+	m_productTime = json[U"productTime"].get<double>();
 }
 
 void PartAsset_Synthesizer::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 
-	// export
 	json.key(U"export").write(m_export->getName());
+	json.key(U"productTime").writeDouble(m_productTime);
 }

@@ -7,11 +7,11 @@
 void CellAsset::draw(double a)
 {
 	// parts
-	for (const auto& pc : m_partConfigs)
+	for (const auto& partConfig : m_partConfigs)
 	{
-		auto t2 = Transformer2D(pc->getMat3x2());
+		auto t2 = Transformer2D(partConfig->getMat3x2());
 
-		pc->getPartAsset()->draw(a);
+		partConfig->getPartAsset()->draw(a);
 	}
 }
 
@@ -57,9 +57,9 @@ void CellAsset::updateInertia()
 {
 	auto centroid = getCentroid();
 
-	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [&centroid](double acc, const auto& pc) {
-		auto id = (pc->getCentroid() - centroid).lengthSq() * pc->getPartAsset()->getMass();
-		auto is = pc->getPartAsset()->getShape().getInertia(pc->getPartAsset()->getMass());
+	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [&centroid](double acc, const auto& partConfig) {
+		auto id = (partConfig->getCentroid() - centroid).lengthSq() * partConfig->getPartAsset()->getMass();
+		auto is = partConfig->getPartAsset()->getShape().getInertia(partConfig->getPartAsset()->getMass());
 		
 		return acc + id + is;
 		});
@@ -117,14 +117,16 @@ void CellAsset::updateProperties()
 	m_lifespanTime = nucleusAsset->getLifespanTime();
 	m_yieldTime = nucleusAsset->getYieldTime();
 	m_bornTime = nucleusAsset->getBornTime();
+
+	m_maxHitPoint = getBodyAsset()->getShape().getPolygon().area();
 }
 
 shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
 {
-	for (const auto& pc : m_partConfigs)
+	for (const auto& partConfig : m_partConfigs)
 	{
-		if (dynamic_pointer_cast<PartAsset_Body>(pc->getPartAsset()))
-			return dynamic_pointer_cast<PartAsset_Body>(pc->getPartAsset());
+		if (dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset()))
+			return dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset());
 	}
 
 	return nullptr;
@@ -132,10 +134,10 @@ shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
 
 shared_ptr<PartAsset_Nucleus> CellAsset::getNucleusAsset() const
 {
-	for (const auto& pc : m_partConfigs)
+	for (const auto& partConfig : m_partConfigs)
 	{
-		if (dynamic_pointer_cast<PartAsset_Nucleus>(pc->getPartAsset()))
-			return dynamic_pointer_cast<PartAsset_Nucleus>(pc->getPartAsset());
+		if (dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset()))
+			return dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset());
 	}
 
 	return nullptr;

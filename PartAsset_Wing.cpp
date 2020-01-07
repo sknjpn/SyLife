@@ -1,10 +1,9 @@
 ﻿#include "PartAsset_Wing.h"
 #include "PartState_Wing.h"
-#include "PartShapeViewer.h"
 
-shared_ptr<PartState> PartAsset_Wing::makeState()
+shared_ptr<PartState> PartAsset_Wing::makePartState(const shared_ptr<PartConfig>& partConfig) const
 {
-	return make_shared<PartState_Wing>();
+	return make_shared<PartState_Wing>(partConfig);
 }
 
 void PartAsset_Wing::load(const JSONValue& json)
@@ -12,12 +11,13 @@ void PartAsset_Wing::load(const JSONValue& json)
 	PartAsset::load(json);
 
 	m_isRight = json[U"isRight"].get<bool>();
+	m_strength = json[U"strength"].get<double>();
 }
 
 void PartAsset_Wing::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 
-	// is right
-	json.key(U"isRight").write(m_isRight);
+	json.key(U"isRight").writeBool(m_isRight);
+	json.key(U"strength").writeDouble(m_strength);
 }

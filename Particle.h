@@ -1,9 +1,8 @@
-﻿#pragma once
+#pragma once
 
-#include "State.h"
+#include "stdafx.h"
 
 class Particle
-	: public State
 {
 	bool	m_isDestroyed = false;
 	double	m_mass = 1.0;
@@ -30,7 +29,6 @@ public:
 	
 	void	updateParticle();
 
-	// JSON
-	void	load(const JSONValue& json) override;
-	void	save(JSONWriter& json) const override;
+	void	load(Deserializer<ByteArray>& reader);
+	void	save(Serializer<MemoryWriter>& writer) const;
 };

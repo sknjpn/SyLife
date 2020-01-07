@@ -1,0 +1,10 @@
+﻿{
+  "type": "ProteinAsset",
+  "name": "Carbon",
+  "radius": 3.0,
+  "color": "(128, 192, 255, 255)",
+  "material": {
+    "element": 15.0,
+    "proteins": []
+  }
+}

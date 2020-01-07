@@ -1,4 +1,4 @@
-﻿#include "TitleViewer.h"
+﻿/*#include "TitleViewer.h"
 #include "EditorViewer.h"
 #include "GUIButton.h"
 #include "CurtainViewer.h"
@@ -67,7 +67,7 @@ void TitleViewer::init()
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
 	const auto f1 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<WorldGenerateViewer>(); destroy(); }); };
-	addChildViewer<GUIButton>(U"はじめから",  f1)->setViewerRectInLocal(p.movedBy(0, 0));
+	addChildViewer<GUIButton>(U"はじめから", f1)->setViewerRectInLocal(p.movedBy(0, 0));
 
 	const auto f2 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<WorldLoadViewer>(); destroy(); }); };
 	addChildViewer<GUIButton>(U"つづきから", f2)->setViewerRectInLocal(p.movedBy(0, 75));
@@ -109,3 +109,4 @@ void TitleViewer::update()
 		drawBubbles();
 	}
 }
+*/

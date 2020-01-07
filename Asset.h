@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Model.h"
-#include "AssetEditor.h"
 
 // AssetManagerに登録可能なModel
 // JSONファイルに対応している
@@ -10,6 +9,7 @@ class Asset
 {
 	String	m_name;
 	String	m_filepath;
+	bool	m_isUserAsset =true;
 
 public:
 	Asset();
@@ -17,12 +17,12 @@ public:
 	// Set
 	void	setName(const String& name) { m_name = name; }
 	void	setFilePath(const String& filepath) { m_filepath = filepath; }
+	void	setIsUserAsset(bool isUserAsset) { m_isUserAsset = isUserAsset; }
 
 	// Get
 	const String& getName() const { return m_name; }
 	const String& getFilePath() const { return m_filepath; }
-
-	virtual void	makeEditor(const shared_ptr<Viewer>& parent) = 0;
+	bool	getIsUserAsset() const { return m_isUserAsset; }
 
 	// Icon
 	virtual void	drawIcon() const {}

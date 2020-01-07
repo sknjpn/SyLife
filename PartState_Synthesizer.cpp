@@ -6,8 +6,13 @@
 #include "PartConfig.h"
 #include "CellState.h"
 #include "CellAsset.h"
-#include "ElementAsset.h"
+#include "ProteinAsset.h"
 
+
+PartState_Synthesizer::PartState_Synthesizer(const shared_ptr<PartConfig>& partConfig)
+	: PartState(partConfig)
+	, m_partAsset_Synthesizer(dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+{}
 
 void PartState_Synthesizer::draw(const CellState& cellState) const
 {
@@ -18,14 +23,23 @@ void PartState_Synthesizer::update(CellState& cellState)
 {
 	m_timer += DeltaTime;
 
-	auto asset = dynamic_pointer_cast<PartAsset_Synthesizer>(getPartConfig()->getPartAsset());
-	if (m_timer > 2.0 &&
-		cellState.m_storage >= asset->getExport()->getMaterial() &&
-		cellState.m_cellAsset->getMaxStorage().numElement(asset->getExport()) > cellState.m_storage.numElement(asset->getExport()))
+	if (m_timer > m_partAsset_Synthesizer->getProductTime() &&
+		cellState.m_storage >= m_partAsset_Synthesizer->getExport()->getMaterial() &&
+		cellState.m_cellAsset->getMaxStorage().numProtein(m_partAsset_Synthesizer->getExport()) > cellState.m_storage.numProtein(m_partAsset_Synthesizer->getExport()))
 	{
 		m_timer = 0.0;
 
-		cellState.m_storage -= asset->getExport()->getMaterial();
-		cellState.m_storage.addElement(asset->getExport());
+		cellState.m_storage -= m_partAsset_Synthesizer->getExport()->getMaterial();
+		cellState.m_storage.addProtein(m_partAsset_Synthesizer->getExport());
 	}
+}
+
+void PartState_Synthesizer::load(Deserializer<ByteArray>& reader)
+{
+	reader >> m_timer;
+}
+
+void PartState_Synthesizer::save(Serializer<MemoryWriter>& writer) const
+{
+	writer << m_timer;
 }

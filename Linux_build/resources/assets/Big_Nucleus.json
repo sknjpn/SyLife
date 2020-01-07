@@ -1,0 +1,33 @@
+﻿{
+  "type": "PartAsset_Nucleus",
+  "name": "Big_Nucleus",
+  "mass": 40.0,
+  "layers": [
+    {
+      "color": "(0, 38, 255, 255)",
+      "polygon": {
+        "outer": [
+          "(9, -8)",
+          "(14, 8)",
+          "(5, 20)",
+          "(-10, 9)",
+          "(-13, -13)",
+          "(0, -12)"
+        ],
+        "holes": []
+      }
+    }
+  ],
+  "material": {
+    "nutrition": 25.0,
+    "Proteins": [
+      {
+        "name": "Oxgen",
+        "size": 2
+      }
+    ]
+  },
+  "lifespanTime": 40.0,
+  "bornTime": 25.0,
+  "yieldTime": 5.0
+}

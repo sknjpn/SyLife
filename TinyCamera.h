@@ -64,7 +64,7 @@ class TinyCamera
 	double		m_scalingSensitivity = 0.1;
 
 	// 移動の速度 (dot per frame)
-	double		m_movingSensitivity = 0.02;
+	double		m_movingSensitivity = 0.01;
 
 	// 画面外でもコントロールを有効にする
 	bool		m_controlOutOfScreenEnabled = false;
@@ -213,7 +213,7 @@ public:
 	void	setFollowingSpeed(double followingSpeed) noexcept { m_followingSpeed = followingSpeed; }
 	void	setMagnifyingSensitivity(double scalingSensitivity) noexcept { m_scalingSensitivity = scalingSensitivity; }
 	void	setMovingSensitivity(double movingSensitivity) noexcept { m_movingSensitivity = movingSensitivity; }
-	void	setControls(const std::array<std::function<bool()>, 4> & controls) noexcept { m_controls = controls; }
+	void	setControls(const std::array<std::function<bool()>, 4>& controls) noexcept { m_controls = controls; }
 
 	void	setTargetCenter(const Vec2& targetCenter) noexcept { m_targetCenter = targetCenter; }
 	void	setTargetScale(double targetScale) noexcept { m_targetScale = targetScale; }
@@ -226,20 +226,20 @@ public:
 	void moveD() { m_targetCenter.y += m_movingSensitivity * m_screen.h / m_targetScale; restrictTargetRect(); }
 	void moveR() { m_targetCenter.x += m_movingSensitivity * m_screen.w / m_targetScale; restrictTargetRect(); }
 
-	void zoomIn(double d= 10)
+	void zoomIn(double d = 0.2)
 	{
 		const auto delta = 1.0 + m_scalingSensitivity * (-d);
-		const auto cursorPos = (Cursor::PosF() - m_screen.center()) / m_targetScale + m_targetCenter;
+		const auto cursorPos = Vec2::Zero() / m_targetScale + m_targetCenter;
 
 		m_targetScale /= delta;
 		m_targetCenter = (m_targetCenter - cursorPos) * delta + cursorPos;
 
 		restrictTargetScale();
 	}
-	void zoomOut(double d = 10)
+	void zoomOut(double d = 0.2)
 	{
 		const auto delta = 1.0 + m_scalingSensitivity * d;
-		const auto cursorPos = (Cursor::PosF() - m_screen.center()) / m_targetScale + m_targetCenter;
+		const auto cursorPos = Vec2::Zero() / m_targetScale + m_targetCenter;
 
 		m_targetScale /= delta;
 		m_targetCenter = (m_targetCenter - cursorPos) * delta + cursorPos;

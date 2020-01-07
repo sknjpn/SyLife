@@ -32,22 +32,22 @@ void Rigidbody::updateRigidbody()
 	m_angularVelocity *= 0.95;
 }
 
-void Rigidbody::load(const JSONValue& json)
+void Rigidbody::load(Deserializer<ByteArray>& reader)
 {
-	Particle::load(json);
+	Particle::load(reader);
 
-	m_radius = json[U"radius"].get<double>();
-	m_rotation = json[U"rotation"].get<double>();
-	m_inertia = json[U"inertia"].get<double>();
-	m_angularVelocity = json[U"angularVelocity"].get<double>();
+	reader >> m_radius;
+	reader >> m_rotation;
+	reader >> m_inertia;
+	reader >> m_angularVelocity;
 }
 
-void Rigidbody::save(JSONWriter& json) const
+void Rigidbody::save(Serializer<MemoryWriter>& writer) const
 {
-	Particle::save(json);
+	Particle::save(writer);
 
-	json.key(U"radius").write(m_radius);
-	json.key(U"rotation").write(m_rotation);
-	json.key(U"inertia").write(m_inertia);
-	json.key(U"angularVelocity").write(m_angularVelocity);
+	writer << m_radius;
+	writer << m_rotation;
+	writer << m_inertia;
+	writer << m_angularVelocity;
 }

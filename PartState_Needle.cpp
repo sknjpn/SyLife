@@ -1,12 +1,14 @@
 ﻿#include "PartState_Needle.h"
-
-
-
 #include "PartAsset_Needle.h"
 #include "PartConfig.h"
 #include "CellState.h"
 #include "CellAsset.h"
 #include "World.h"
+
+PartState_Needle::PartState_Needle(const shared_ptr<PartConfig>& partConfig)
+	: PartState(partConfig)
+	, m_partAsset_Needle(dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+{}
 
 void PartState_Needle::draw(const CellState& cellState) const
 {
@@ -26,16 +28,29 @@ void PartState_Needle::update(CellState& cellState)
 		auto p = cellState.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up().rotated(getPartConfig()->getRotation()) * 50.0);
 
 
-		for (auto i : World::GetInstance()->getField().getCellStateKDTree().knnSearch(1, p))
+		for (auto i : World::GetInstance()->getCellStateKDTree().knnSearch(2, p))
 		{
-			auto& t = World::GetInstance()->getField().getCellStates()[i];
+			auto& t = World::GetInstance()->getCellStates()[i];
 
 			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_cellAsset != cellState.m_cellAsset)
 			{
-				t->destroy();
-				cellState.m_storage += t->m_storage;
-				cellState.m_storage += t->m_cellAsset->getMaterial();
+				if (t->addDamage(m_partAsset_Needle->getDamage()))
+				{
+					t->destroy();
+					cellState.m_storage += t->m_storage;
+					cellState.m_storage += t->m_cellAsset->getMaterial();
+				}
 			}
 		}
 	}
+}
+
+void PartState_Needle::load(Deserializer<ByteArray>& reader)
+{
+	reader >> m_heat;
+}
+
+void PartState_Needle::save(Serializer<MemoryWriter>& writer) const
+{
+	writer << m_heat;
 }

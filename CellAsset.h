@@ -24,6 +24,8 @@ class CellAsset
 	double	m_bornTime;		// 生まれるまでの時間
 	double	m_yieldTime;	// 生むのにかかる時間
 
+	double	m_maxHitPoint;
+
 	void	updateMass();
 	void	updateRadius() { m_radius = sqrt(2 * m_inertia / m_mass); }
 	void	updateInertia();
@@ -31,24 +33,6 @@ class CellAsset
 	void	updateMaterial();
 
 public:
-	class Editor
-		: public AssetEditor
-	{
-		shared_ptr<CellAsset> m_cellAsset;
-
-	public:
-		Editor(const shared_ptr<CellAsset>& cellAsset)
-			: m_cellAsset(cellAsset)
-		{}
-
-		void	init() override;
-		void	update() override;
-	};
-
-public:
-	// Editor
-	void	makeEditor(const shared_ptr<Viewer>& parent) { parent->addChildViewer<Editor>(dynamic_pointer_cast<CellAsset>(shared_from_this())); }
-
 	bool	isValid() const;
 
 	Vec2	getCentroid();
@@ -65,6 +49,7 @@ public:
 	double	getLifespanTime() const { return m_lifespanTime; }
 	double	getBornTime() const { return m_bornTime; }
 	double	getYieldTime() const { return m_yieldTime; }
+	double	getMaxHitPoint() const { return m_maxHitPoint; }
 
 	// Add
 	shared_ptr<PartConfig>& addPartConfig();
