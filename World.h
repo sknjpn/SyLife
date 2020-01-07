@@ -35,6 +35,8 @@ class World
 	Size	m_tileSize;
 	double	m_tileLength;
 
+	DynamicTexture	m_tileTexture;
+
 	// State
 	Grid<shared_ptr<TileState>>		m_tiles;
 	Array<shared_ptr<CellState>>	m_cellStates;

@@ -283,8 +283,21 @@ void World::draw()
 	static bool showWave = false;
 	if (KeyP.down()) showWave = !showWave;
 
-	for (const auto& tile : m_tiles)
-		tile->draw();
+	// Tiles
+	{
+		Image image(m_tiles.size());
+
+		for (auto p : step(m_tiles.size()))
+			image[p].r = Min(255, int(m_tiles[p]->getElement() * 2.5));
+
+		m_tileTexture.fill(image);
+
+		const ScopedRenderStates2D state(SamplerState::ClampLinear);
+		static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
+		const ScopedCustomShader2D shader(ps);
+		
+		m_tileTexture.scaled(m_tileLength).draw();
+	}
 
 	for (const auto& e : getEggStates())
 		if (!e->isDestroyed()) e->draw();
