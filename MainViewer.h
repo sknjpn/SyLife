@@ -79,26 +79,10 @@ class MainViewer : public Viewer
 
 	class CommandPalette : public Viewer
 	{
-		class MagnifyingViewer
-			: public Viewer
-		{
-		public:
-			void init() override;
-			void update() override;
-		};
-
-		class SpeedControllerViewer : public Viewer
-		{
-			bool	m_isHighSpeed = false;
-			int		m_updateCount = 0;
-
-		public:
-			void init() override;
-			void update() override;
-
-			bool isHighSpeed() const { return m_isHighSpeed; }
-			void setUpdateCount(int updateCount) { m_updateCount = updateCount; }
-		};
+		Texture	m_textureZoomIn = Texture(Icon(0xf00e, 50));
+		Texture	m_textureZoomOut = Texture(Icon(0xf010, 50));
+		Texture	m_textureFast = Texture(Icon(0xf050, 50));
+		Texture	m_texturePoison = Texture(Icon(0xf714, 50));
 
 	public:
 		void init() override;
