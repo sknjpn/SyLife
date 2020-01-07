@@ -7,7 +7,7 @@ void Main()
 	Window::SetStyle(WindowStyle::Sizable);
 	Scene::Resize(1920, 1080);
 	Window::Maximize();
-	Window::SetFullscreen(true);
+	//Window::SetFullscreen(true);
 	// world生成
 	if (FileSystem::Exists(U"world/"))
 	{
