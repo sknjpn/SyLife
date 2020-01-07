@@ -235,6 +235,7 @@
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
     <ClCompile Include="PartAsset_Eye.cpp" />
     <ClCompile Include="PartState_Eye.cpp" />
+    <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="World_makeModel.cpp" />
     <ClCompile Include="CellAsset.cpp" />
     <ClCompile Include="CellState.cpp" />
@@ -335,6 +336,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="TinyCamera.h" />
+    <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="Viewer.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

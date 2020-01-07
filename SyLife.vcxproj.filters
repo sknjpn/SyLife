@@ -503,6 +503,7 @@
     </ClCompile>
     <ClCompile Include="MainViewer_CellBook.cpp" />
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
+    <ClCompile Include="TitleViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />
@@ -618,5 +619,6 @@
     <ClInclude Include="PartState_Eye.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
+    <ClInclude Include="TitleViewer.h" />
   </ItemGroup>
 </Project>
