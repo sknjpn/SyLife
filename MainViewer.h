@@ -66,6 +66,7 @@ class MainViewer : public Viewer
 
 	public:
 		bool	m_isHighSpeed = false;
+		bool	m_isPoisonEnabled = false;
 		int		m_frameCount = 0;
 
 		void	init() override;

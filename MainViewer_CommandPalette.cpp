@@ -15,7 +15,7 @@ void MainViewer::CommandPalette::update()
 	for (int i = 0; i < 4; ++i)
 	{
 		const auto rect = RectF(60, 60).rounded(5);
-		const auto colorTex = rect.leftPressed() ? Palette::Orange : Palette::Gray;
+		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
 
 		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
 
@@ -39,14 +39,18 @@ void MainViewer::CommandPalette::update()
 		{
 			auto& isHighSpeed = getParentViewer()->getChildViewer<FieldViewer>()->m_isHighSpeed;
 
-			m_textureFast.drawAt(rect.center(), isHighSpeed ? Palette::Orange : Palette::Gray);
+			m_textureFast.drawAt(rect.center(), isHighSpeed ? Palette::Red : Palette::Gray);
 
 			if (rect.leftClicked()) isHighSpeed = !isHighSpeed;
 		}
 		break;
 		case 3:
 		{
-			m_texturePoison.drawAt(rect.center(), colorTex);
+			auto& isPoisonEnabled = getParentViewer()->getChildViewer<FieldViewer>()->m_isPoisonEnabled;
+
+			m_texturePoison.drawAt(rect.center(), isPoisonEnabled ? Palette::Red : Palette::Gray);
+
+			if (rect.leftClicked()) isPoisonEnabled = !isPoisonEnabled;
 		}
 		break;
 		}
