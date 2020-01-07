@@ -24,13 +24,20 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 	{
 		if (m_state == State::MoveMode)
 		{
-			bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(m_selectedPartConfig->getPosition());
 
-			if (!canSetPart)
+			if (getChildViewer<TrashBox>()->isMouseover())
 			{
-				m_selectedPartConfig->setPosition(m_prePosition);
+				m_cellAsset->removePartConfig(m_selectedPartConfig);
+			}
+			else
+			{
+				bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(m_selectedPartConfig->getPosition());
+
+				if (canSetPart) m_selectedPartConfig->setPosition(m_selectedPartConfig->getPosition() + m_deltaPosition);
 			}
 		}
+
+		if (m_state == State::RotateMode) m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + m_deltaRotation);
 
 		m_selectedPartConfig = nullptr;
 	}
@@ -39,13 +46,19 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 	{
 		if (m_state == State::MoveMode)
 		{
-			Vec2 position = m_selectedPartConfig->getPosition() + Cursor::DeltaF();
-			m_selectedPartConfig->setPosition(position);
+			if (getChildViewer<TrashBox>()->isMouseover())
+			{
+				getChildViewer<TrashBox>()->select();
+			}
+			else
+			{
+				m_deltaPosition += Cursor::DeltaF();
 
-			if (MouseL.down()) m_state = State::RotateMode;
+				const auto position = m_selectedPartConfig->getPosition() + m_deltaPosition;
 
-			bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(position);
-			m_selectedPartConfig->getPartAsset()->getShape().getPolygon().movedBy(position).draw(ColorF(canSetPart ? Palette::Green : Palette::Red, 0.5));
+				bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(position);
+				m_selectedPartConfig->getPartAsset()->getShape().getPolygon().movedBy(position).draw(ColorF(canSetPart ? Palette::Green : Palette::Red, 0.5));
+			}
 		}
 
 		if (m_state == State::RotateMode)
@@ -54,9 +67,9 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 
 			if (!Cursor::PreviousPosF().isZero() && !Cursor::PosF().isZero())
 			{
-				const auto delta = Cursor::PreviousPosF().getAngle(Cursor::PosF());
+				m_deltaRotation += Cursor::PreviousPosF().getAngle(Cursor::PosF());
 
-				m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
+				//m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
 			}
 		}
 	}
@@ -71,8 +84,8 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 			if (partConfig->getPartAsset()->getShape().getPolygon().mouseOver())
 			{
 				m_selectedPartConfig = partConfig;
-				m_prePosition = m_selectedPartConfig->getPosition();
-				m_preRotation = m_selectedPartConfig->getRotation();
+				m_deltaPosition = Vec2::Zero();
+				m_deltaRotation = 0.0;
 			}
 		}
 	}

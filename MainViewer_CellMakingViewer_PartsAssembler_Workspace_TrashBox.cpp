@@ -9,5 +9,5 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::TrashBox::update()
 {
 	RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);
 
-	m_textureTrashBox.drawAt(getViewerSize() / 2.0, ColorF(0.5));
+	m_textureTrashBox.drawAt(getViewerSize() / 2.0,m_isSelected ? ColorF(Palette::Orange) : ColorF(0.5));
 }

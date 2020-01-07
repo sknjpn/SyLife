@@ -222,9 +222,12 @@ class MainViewer : public Viewer
 			{
 				class TrashBox : public Viewer
 				{
+					bool	m_isSelected = false;
 					Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 80));
 
 				public:
+					void	select() { m_isSelected = true; }
+
 					void	init() override;
 					void	update() override;
 				};
@@ -238,8 +241,8 @@ class MainViewer : public Viewer
 				shared_ptr<CellAsset> m_cellAsset;
 
 				State	m_state = State::MoveMode;
-				Vec2	m_prePosition;
-				double	m_preRotation;
+				Vec2	m_deltaPosition = Vec2::Zero();
+				double	m_deltaRotation = 0;
 
 				double	m_mass;
 				double	m_inertia;
