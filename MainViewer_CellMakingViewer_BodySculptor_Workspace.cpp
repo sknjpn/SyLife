@@ -36,6 +36,8 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::init()
 	setBackgroundColor(Palette::Black);
 
 	setViewerRectInLocal(200, 0, 800, 800);
+
+	addChildViewer<TrashBox>();
 }
 
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
