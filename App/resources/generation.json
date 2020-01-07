@@ -1,7 +1,6 @@
 ﻿{
-  "tileSize": "(64, 36)",
+  "tileSize": "(48, 27)",
   "tileLength": 100.0,
-  "WaveVelocityMax": 10.0,
-  "waveInterval": 400.0,
-  "NutritionPerTile": 50.0
+  "waveInterval": 500.0,
+  "elementPerTile": 50.0
 }

@@ -37,6 +37,10 @@ class World
 
 	DynamicTexture	m_tileTexture;
 
+	double	m_waveInterval;
+	double	m_elementPerTile;
+	double	m_waveVelocityMax;
+
 	// State
 	Grid<shared_ptr<TileState>>		m_tiles;
 	Array<shared_ptr<CellState>>	m_cellStates;
@@ -98,7 +102,7 @@ public:
 	double	getTileLength() const { return m_tileLength; }
 	const Size& getTileSize() const { return m_tileSize; }
 	const Vec2& getFieldSize() const { return m_fieldSize; }
-	void	generateWave(const Size& tileSize);
+	void	generateWave();
 
 	// Assets
 	template <typename T>
