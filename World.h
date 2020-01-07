@@ -30,17 +30,17 @@ struct ParticleAdapter
 
 class World
 {
+	Vec2	m_fieldSize;
+
+	Size	m_tileSize;
+	double	m_tileLength;
+
 	// State
 	Grid<shared_ptr<TileState>>		m_tiles;
 	Array<shared_ptr<CellState>>	m_cellStates;
 	Array<shared_ptr<EggState>>		m_eggStates;
 	KDTree<ParticleAdapter<CellState>>		m_cellStateKDTree;
 	KDTree<ParticleAdapter<EggState>>		m_eggStateKDTree;
-
-	Size	m_tileSize;
-	double	m_tileLength;
-
-	Vec2	m_fieldSize;
 
 	String		m_name;
 	FilePath	m_filePath;
