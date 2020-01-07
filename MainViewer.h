@@ -254,8 +254,6 @@ class MainViewer : public Viewer
 				void	init() override;
 				void	update() override;
 
-				void	drawParts() const;
-
 				void	setCellAsset(const shared_ptr<CellAsset>& cellAsset) { m_cellAsset = cellAsset; }
 
 				void	setMoveMode();
