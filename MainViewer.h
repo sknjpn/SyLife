@@ -140,15 +140,6 @@ class MainViewer : public Viewer
 		{
 			class Workspace : public Viewer
 			{
-				class TrashBox : public Viewer
-				{
-					Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 80));
-
-				public:
-					void	init() override;
-					void	update() override;
-				};
-				
 				shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 				Polygon	getReversed(const Polygon& polygon) const;
@@ -229,6 +220,15 @@ class MainViewer : public Viewer
 		public:
 			class Workspace : public Viewer
 			{
+				class TrashBox : public Viewer
+				{
+					Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 80));
+
+				public:
+					void	init() override;
+					void	update() override;
+				};
+
 				enum struct State
 				{
 					MoveMode,

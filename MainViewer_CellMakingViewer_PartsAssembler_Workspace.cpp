@@ -10,6 +10,8 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::init()
 	setBackgroundColor(Palette::Black);
 
 	setViewerRectInLocal(200, 0, 800, 800);
+
+	addChildViewer<TrashBox>();
 }
 
 void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()

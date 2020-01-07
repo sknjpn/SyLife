@@ -1,11 +1,11 @@
 ﻿#include "MainViewer.h"
 
-void MainViewer::CellMakingViewer::BodySculptor::Workspace::TrashBox::init()
+void MainViewer::CellMakingViewer::PartsAssembler::Workspace::TrashBox::init()
 {
 	setViewerRectInLocal(800 - 110, 800 - 110, 100, 100);
 }
 
-void MainViewer::CellMakingViewer::BodySculptor::Workspace::TrashBox::update()
+void MainViewer::CellMakingViewer::PartsAssembler::Workspace::TrashBox::update()
 {
 	RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);
 
