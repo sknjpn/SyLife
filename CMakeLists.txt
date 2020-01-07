@@ -18,6 +18,7 @@ elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 endif()
 
 set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../App/)
 
 pkg_check_modules(OPENCV4 REQUIRED opencv4)
 link_directories(
