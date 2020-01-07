@@ -35,19 +35,10 @@ include_directories(
 
 set(SOURCE_FILES
 Asset.cpp
-AssetEditor.cpp
-Assets.cpp
-Assets_makeModel.cpp
 CellAsset.cpp
-CellAsset_Editor.cpp
 CellState.cpp
-ChipState.cpp
 DraggableViewer.cpp
 EggState.cpp
-ElementAsset.cpp
-ElementAsset_Editor.cpp
-ElementState.cpp
-Field.cpp
 GUIAssetLinker.cpp
 GUIAssetLinker_Dragger.cpp
 GUIButton.cpp
@@ -59,6 +50,8 @@ GUIText.cpp
 GUIValuer.cpp
 Layer.cpp
 Main.cpp
+MainViewer_CellBook.cpp
+MainViewer_CellBook_Item.cpp
 MainViewer_CellMakingViewer_BodySculptor.cpp
 MainViewer_CellMakingViewer_BodySculptor_LayerLists.cpp
 MainViewer_CellMakingViewer_BodySculptor_LayerLists_Item.cpp
@@ -68,7 +61,6 @@ MainViewer_CellMakingViewer.cpp
 MainViewer_CellMakingViewer_PartsAssembler.cpp
 MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp
 MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp
-MainViewer_CellStateViewer.cpp
 MainViewer_CommandPalette.cpp
 MainViewer_CommandPalette_MagnifyingViewer.cpp
 MainViewer_CommandPalette_SpeedControllerViewer.cpp
@@ -79,34 +71,31 @@ MainViewer_FieldViewer_ReleaseViewer.cpp
 MainViewer_StatisticsViewer.cpp
 Model.cpp
 PartAsset_Body.cpp
-PartAsset_Body_Editor.cpp
 PartAsset.cpp
+PartAsset_Eye.cpp
 PartAsset_Needle.cpp
-PartAsset_Needle_Editor.cpp
 PartAsset_Nucleus.cpp
-PartAsset_Nucleus_Editor.cpp
 PartAsset_Synthesizer.cpp
-PartAsset_Synthesizer_Editor.cpp
 PartAsset_Wing.cpp
-PartAsset_Wing_Editor.cpp
 PartConfig.cpp
 Particle.cpp
-PartShapeViewer.cpp
 PartState_Body.cpp
 PartState.cpp
+PartState_Eye.cpp
 PartState_Needle.cpp
 PartState_Nucleus.cpp
 PartState_Synthesizer.cpp
 PartState_Wing.cpp
+ProteinAsset.cpp
 Rigidbody.cpp
 Shape.cpp
-State.cpp
 stdafx.cpp
 Storage.cpp
-Storage_Editor.cpp
-Storage_Editor_Element.cpp
+TileState.cpp
+TitleViewer.cpp
 Viewer.cpp
 World.cpp
+World_makeModel.cpp
 )
 add_executable(Siv3D_App ${SOURCE_FILES})
 
