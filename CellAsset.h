@@ -39,6 +39,8 @@ public:
 
 	void	setCentroidAsOrigin();
 
+	void	removePartConfig(const shared_ptr<PartConfig>& partConfig) { m_partConfigs.remove(partConfig); }
+
 	// Get
 	const Storage& getMaterial() const { return m_material; }
 	const Storage& getMaxStorage() const { return m_maxStorage; }

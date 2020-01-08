@@ -87,8 +87,8 @@ void MainViewer::FieldViewer::update()
 			}
 		}
 
-		// delete
-		if (isMouseover() && MouseR.pressed())
+		// poison
+		if (isMouseover() && MouseL.pressed() && m_isPoisonEnabled)
 		{
 			Circle circle(Cursor::PosF(), 256.0);
 			circle.draw(ColorF(Palette::Red, 0.5));

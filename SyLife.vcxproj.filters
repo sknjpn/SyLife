@@ -380,8 +380,6 @@
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp" />
     <ClCompile Include="MainViewer_CommandPalette.cpp" />
-    <ClCompile Include="MainViewer_CommandPalette_MagnifyingViewer.cpp" />
-    <ClCompile Include="MainViewer_CommandPalette_SpeedControllerViewer.cpp" />
     <ClCompile Include="MainViewer_FieldViewer.cpp" />
     <ClCompile Include="MainViewer_FieldViewer_CellStateCaptureViewer.cpp" />
     <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp" />
@@ -504,6 +502,7 @@
     <ClCompile Include="MainViewer_CellBook.cpp" />
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
+    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />

@@ -269,3 +269,6 @@ world/
 AS_DEBUG/
 empty.app/
 build/
+Siv3D_App
+.DS_Store
+SyLife.app/

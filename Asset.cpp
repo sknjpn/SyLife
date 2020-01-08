@@ -6,7 +6,7 @@ Asset::Asset()
 	// 一意な名前とパスの作成
 	for (int i = 0;; ++i)
 	{
-		const String name = Format(U"Asset ", i);
+		const String name = Format(U"asset_", i);
 		const FilePath filepath = Format(U"asset_", i, U".json");
 
 		if (!World::HasAsset(name) && !FileSystem::Exists(World::GetDirectory() + U"assets/" + filepath))

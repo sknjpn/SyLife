@@ -1,4 +1,4 @@
-﻿#include "World.h"
+#include "World.h"
 #include "Asset.h"
 #include "CellAsset.h"
 #include "CellState.h"
@@ -135,20 +135,13 @@ void World::save()
 void World::initField()
 {
 	// Tiles
+	for (auto point : step(m_tileSize))
 	{
-		const Size size = m_tileSize;
-
-		m_tileSize = size;
-		m_tiles.resize(size);
-
-		for (auto point : step(size))
-		{
-			m_tiles[point] = MakeShared<TileState>(point);
-			m_tiles[point]->setElement(50.0);
-		}
+		m_tiles[point] = MakeShared<TileState>(point);
+		m_tiles[point]->setElement(m_elementPerTile);
 	}
 
-	generateWave(Size(80, 45));
+	generateWave();
 }
 
 void World::loadAssets(const FilePath& directory)
@@ -156,17 +149,17 @@ void World::loadAssets(const FilePath& directory)
 	Array<shared_ptr<Asset>> assets;
 
 	// JSONのパスを取得
-	const auto jsonFiles = FileSystem::DirectoryContents(directory, true)
+    auto jsonFiles = FileSystem::DirectoryContents(directory, true)
 		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; });
 
 	// 名前の読み込み(リンクがあるため、Loadの前に名前の登録を行う)
-	for (const auto& jsonFile : jsonFiles)
+	for (auto& jsonFile : jsonFiles)
 	{
 		JSONReader json(jsonFile);
 
 		const auto asset = assets.emplace_back(makeAsset(json[U"type"].getString()));
 		asset->setName(json[U"name"].getString());
-		asset->setFilePath(FileSystem::RelativePath(jsonFile, m_filePath + U"assets/"));
+		asset->setFilePath(jsonFile);
 	}
 
 	// 読み込み
@@ -174,7 +167,7 @@ void World::loadAssets(const FilePath& directory)
 	{
 		Logger << m->getName() + U"を読み込み中";
 
-		JSONReader json(m_filePath + U"assets/" + m->getFilePath());
+		JSONReader json(m->getFilePath());
 		m->load(json);
 
 		Logger << m->getName() + U"を読み込み成功";
@@ -269,10 +262,15 @@ bool World::hasAsset(const String& name) const
 World::World()
 	: m_cellStateKDTree(m_cellStates)
 	, m_eggStateKDTree(m_eggStates)
-	, m_tileSize(80, 45)
-	, m_tileLength(100)
-	, m_tiles(m_tileSize)
 {
+	JSONReader json(U"resources/generation.json");
+	m_tileSize = json[U"tileSize"].get<Size>();
+	m_tileLength = json[U"tileLength"].get<double>();
+	m_tiles.resize(m_tileSize);
+	m_waveInterval = json[U"waveInterval"].get<double>();
+	m_elementPerTile = json[U"elementPerTile"].get<double>();
+	m_waveVelocityMax = json[U"waveVelocityMax"].get<double>();
+
 	m_fieldSize = m_tileSize * m_tileLength;
 	m_cellStates.reserve(0xFFFF);
 	m_eggStates.reserve(0xFFFF);
@@ -283,8 +281,21 @@ void World::draw()
 	static bool showWave = false;
 	if (KeyP.down()) showWave = !showWave;
 
-	for (const auto& tile : m_tiles)
-		tile->draw();
+	// Tiles
+	{
+		Image image(m_tiles.size());
+
+		for (auto p : step(m_tiles.size()))
+			image[p].r = Min(255, int(m_tiles[p]->getElement() * 2.5));
+
+		m_tileTexture.fill(image);
+
+		const ScopedRenderStates2D state(SamplerState::ClampLinear);
+		static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
+		const ScopedCustomShader2D shader(ps);
+
+		m_tileTexture.scaled(m_tileLength).draw();
+	}
 
 	for (const auto& e : getEggStates())
 		if (!e->isDestroyed()) e->draw();
@@ -315,14 +326,10 @@ shared_ptr<TileState> World::getTile(const Point& point) const
 	return m_tiles[ap];
 }
 
-void World::generateWave(const Size& tileSize)
+void World::generateWave()
 {
-	m_tileSize = tileSize;
-	m_tiles.resize(tileSize);
-
 	const PerlinNoise perlinNoiseX(Random(0xFFFFFFFF));
 	const PerlinNoise perlinNoiseY(Random(0xFFFFFFFF));
-	const auto interval = 500.0;
 
 	for (auto& tile : m_tiles)
 	{
@@ -330,8 +337,8 @@ void World::generateWave(const Size& tileSize)
 		const double rx = (tile->getPoint().x - m_tileSize.x / 2.0) / (m_tileSize.x / 2.0);
 		const double ry = (tile->getPoint().y - m_tileSize.y / 2.0) / (m_tileSize.y / 2.0);
 
-		const auto wx = perlinNoiseX.noise(tile->getCentroid().x / interval, tile->getCentroid().y / interval);
-		const auto wy = perlinNoiseY.noise(tile->getCentroid().x / interval, tile->getCentroid().y / interval);
+		const auto wx = perlinNoiseX.noise(tile->getCentroid().x / m_waveInterval, tile->getCentroid().y / m_waveInterval);
+		const auto wy = perlinNoiseY.noise(tile->getCentroid().x / m_waveInterval, tile->getCentroid().y / m_waveInterval);
 
 		// 最大の長さを1とする
 		tile->setWaveVelocity(Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))), Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) / Math::Sqrt2);

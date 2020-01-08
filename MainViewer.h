@@ -66,6 +66,7 @@ class MainViewer : public Viewer
 
 	public:
 		bool	m_isHighSpeed = false;
+		bool	m_isPoisonEnabled = false;
 		int		m_frameCount = 0;
 
 		void	init() override;
@@ -79,26 +80,10 @@ class MainViewer : public Viewer
 
 	class CommandPalette : public Viewer
 	{
-		class MagnifyingViewer
-			: public Viewer
-		{
-		public:
-			void init() override;
-			void update() override;
-		};
-
-		class SpeedControllerViewer : public Viewer
-		{
-			bool	m_isHighSpeed = false;
-			int		m_updateCount = 0;
-
-		public:
-			void init() override;
-			void update() override;
-
-			bool isHighSpeed() const { return m_isHighSpeed; }
-			void setUpdateCount(int updateCount) { m_updateCount = updateCount; }
-		};
+		Texture	m_textureZoomIn = Texture(Icon(0xf00e, 50));
+		Texture	m_textureZoomOut = Texture(Icon(0xf010, 50));
+		Texture	m_textureFast = Texture(Icon(0xf050, 50));
+		Texture	m_texturePoison = Texture(Icon(0xf714, 50));
 
 	public:
 		void init() override;
@@ -220,6 +205,18 @@ class MainViewer : public Viewer
 		public:
 			class Workspace : public Viewer
 			{
+				class TrashBox : public Viewer
+				{
+					bool	m_isSelected = false;
+					Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 80));
+
+				public:
+					void	select() { m_isSelected = true; }
+
+					void	init() override;
+					void	update() override;
+				};
+
 				enum struct State
 				{
 					MoveMode,
@@ -229,8 +226,8 @@ class MainViewer : public Viewer
 				shared_ptr<CellAsset> m_cellAsset;
 
 				State	m_state = State::MoveMode;
-				Vec2	m_prePosition;
-				double	m_preRotation;
+				Vec2	m_deltaPosition = Vec2::Zero();
+				double	m_deltaRotation = 0;
 
 				double	m_mass;
 				double	m_inertia;
@@ -241,8 +238,6 @@ class MainViewer : public Viewer
 			public:
 				void	init() override;
 				void	update() override;
-
-				void	drawParts() const;
 
 				void	setCellAsset(const shared_ptr<CellAsset>& cellAsset) { m_cellAsset = cellAsset; }
 

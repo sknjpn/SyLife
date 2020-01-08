@@ -10,55 +10,83 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::init()
 	setBackgroundColor(Palette::Black);
 
 	setViewerRectInLocal(200, 0, 800, 800);
+
+	addChildViewer<TrashBox>();
 }
 
 void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 {
 	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), true);
 
-	drawParts();
+	// 描画
+	for (const auto& partConfig : m_cellAsset->getPartConfigs())
+	{
+		{
+			auto t2 = Transformer2D(partConfig->getMat3x2());
 
+			partConfig->getPartAsset()->getShape().draw(0.5);
+			partConfig->getPartAsset()->getShape().getPolygon().drawFrame(1.0, Palette::Black);
+		}
+
+		// 回転の中心
+		if (m_state == State::RotateMode && !dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) Circle(partConfig->getPosition(), 2.0).draw(Palette::Yellow).drawFrame(1.0, Palette::Black);
+	}
+
+	// 描画
+	if (m_selectedPartConfig)
+	{
+		auto t2 = Transformer2D(Mat3x2::Rotate(m_selectedPartConfig->getRotation() + m_deltaRotation).translated(m_selectedPartConfig->getPosition() + m_deltaPosition));
+
+		if (m_state == State::MoveMode && getChildViewer<TrashBox>()->isMouseover()) getChildViewer<TrashBox>()->select();
+		else
+		{
+			bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(m_selectedPartConfig->getPosition() + m_deltaPosition);
+
+			auto color = canSetPart ? Palette::Green : Palette::Red;
+
+			m_selectedPartConfig->getPartAsset()->getShape().draw(0.5);
+			m_selectedPartConfig->getPartAsset()->getShape().getPolygon().draw(ColorF(color, 0.5));
+		}
+	}
+
+	// 適用
 	if (MouseL.up() && m_selectedPartConfig)
 	{
 		if (m_state == State::MoveMode)
 		{
-			bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(m_selectedPartConfig->getPosition());
 
-			if (!canSetPart)
+			if (getChildViewer<TrashBox>()->isMouseover())
 			{
-				m_selectedPartConfig->setPosition(m_prePosition);
+				m_cellAsset->removePartConfig(m_selectedPartConfig);
+			}
+			else
+			{
+				bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(m_selectedPartConfig->getPosition() + m_deltaPosition);
+
+				if (canSetPart) m_selectedPartConfig->setPosition(m_selectedPartConfig->getPosition() + m_deltaPosition);
 			}
 		}
+
+		if (m_state == State::RotateMode) m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + m_deltaRotation);
 
 		m_selectedPartConfig = nullptr;
 	}
 
+	// 移動
 	if (m_selectedPartConfig)
 	{
-		if (m_state == State::MoveMode)
-		{
-			Vec2 position = m_selectedPartConfig->getPosition() + Cursor::DeltaF();
-			m_selectedPartConfig->setPosition(position);
-
-			if (MouseL.down()) m_state = State::RotateMode;
-
-			bool canSetPart = m_cellAsset->getBodyAsset()->getShape().getPolygon().contains(position);
-			m_selectedPartConfig->getPartAsset()->getShape().getPolygon().movedBy(position).draw(ColorF(canSetPart ? Palette::Green : Palette::Red, 0.5));
-		}
+		if (m_state == State::MoveMode) m_deltaPosition += Cursor::DeltaF();
 
 		if (m_state == State::RotateMode)
 		{
-			auto t = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
+			const auto t = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
 
-			if (!Cursor::PreviousPosF().isZero() && !Cursor::PosF().isZero())
-			{
-				const auto delta = Cursor::PreviousPosF().getAngle(Cursor::PosF());
-
-				m_selectedPartConfig->setRotation(m_selectedPartConfig->getRotation() + delta);
-			}
+			if (!Cursor::PreviousPosF().isZero() && !Cursor::PosF().isZero()) m_deltaRotation += Cursor::PreviousPosF().getAngle(Cursor::PosF());
 		}
 	}
-	else if (MouseL.down() && isMouseover())
+
+	// 選択
+	if (!m_selectedPartConfig && MouseL.down() && isMouseover())
 	{
 		for (const auto& partConfig : m_cellAsset->getPartConfigs())
 		{
@@ -69,8 +97,8 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 			if (partConfig->getPartAsset()->getShape().getPolygon().mouseOver())
 			{
 				m_selectedPartConfig = partConfig;
-				m_prePosition = m_selectedPartConfig->getPosition();
-				m_preRotation = m_selectedPartConfig->getRotation();
+				m_deltaPosition = Vec2::Zero();
+				m_deltaRotation = 0.0;
 			}
 		}
 	}
@@ -101,28 +129,6 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 		}
 
 		if (!MouseL.pressed()) getParentViewer()->getChildViewer<PartList>()->clearSelectedPart();
-	}
-}
-
-void MainViewer::CellMakingViewer::PartsAssembler::Workspace::drawParts() const
-{
-	for (const auto& partConfig : m_cellAsset->getPartConfigs())
-	{
-		{
-			auto t2 = Transformer2D(partConfig->getMat3x2());
-
-			partConfig->getPartAsset()->getShape().draw(0.5);
-			partConfig->getPartAsset()->getShape().getPolygon().drawFrame(1.0, Palette::Black);
-		}
-
-		if (m_state == State::RotateMode && !dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) Circle(partConfig->getPosition(), 2.0).draw(Palette::Yellow).drawFrame(1.0, Palette::Black);
-	}
-
-	if (m_selectedPartConfig)
-	{
-		auto t2 = Transformer2D(m_selectedPartConfig->getMat3x2());
-
-		m_selectedPartConfig->getPartAsset()->getShape().getPolygon().draw(ColorF(1.0, 0.5));
 	}
 }
 
