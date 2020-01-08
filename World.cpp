@@ -1,4 +1,4 @@
-﻿#include "World.h"
+#include "World.h"
 #include "Asset.h"
 #include "CellAsset.h"
 #include "CellState.h"
@@ -149,17 +149,17 @@ void World::loadAssets(const FilePath& directory)
 	Array<shared_ptr<Asset>> assets;
 
 	// JSONのパスを取得
-	const auto jsonFiles = FileSystem::DirectoryContents(directory, true)
+    auto jsonFiles = FileSystem::DirectoryContents(directory, true)
 		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; });
 
 	// 名前の読み込み(リンクがあるため、Loadの前に名前の登録を行う)
-	for (const auto& jsonFile : jsonFiles)
+	for (auto& jsonFile : jsonFiles)
 	{
 		JSONReader json(jsonFile);
 
 		const auto asset = assets.emplace_back(makeAsset(json[U"type"].getString()));
 		asset->setName(json[U"name"].getString());
-		asset->setFilePath(FileSystem::RelativePath(jsonFile, m_filePath + U"assets/"));
+		asset->setFilePath(jsonFile);
 	}
 
 	// 読み込み
@@ -167,7 +167,7 @@ void World::loadAssets(const FilePath& directory)
 	{
 		Logger << m->getName() + U"を読み込み中";
 
-		JSONReader json(m_filePath + U"assets/" + m->getFilePath());
+		JSONReader json(m->getFilePath());
 		m->load(json);
 
 		Logger << m->getName() + U"を読み込み成功";
