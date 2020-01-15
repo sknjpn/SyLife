@@ -74,7 +74,7 @@ void CellState::updateCell()
 	if ((m_deathTimer -= DeltaTime) <= 0.0 || m_hitpoint <= 0)
 	{
 		// Elementの吐き出し
-		World::GetInstance()->getTile(getPosition())->addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
+		World::GetInstance()->getTile(getPosition()).addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
 
 		destroy();
 	}
@@ -107,10 +107,10 @@ void CellState::draw()
 void CellState::takeElement()
 {
 	const double space = m_cellAsset->getMaxStorage().getElement() - m_storage.getElement();
-	const double amount = World::GetInstance()->getTile(getPosition())->getElement();
+	const double amount = World::GetInstance()->getTile(getPosition()).getElement();
 	const double value = Min(space, amount);
 
-	World::GetInstance()->getTile(getPosition())->pullElement(value);
+	World::GetInstance()->getTile(getPosition()).pullElement(value);
 	m_storage.addElement(value);
 }
 

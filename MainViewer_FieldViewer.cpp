@@ -19,7 +19,7 @@ void MainViewer::FieldViewer::openCellMakingViewer()
 
 void MainViewer::FieldViewer::init()
 {
-	m_camera.setRestrictedRect(Rect(World::GetInstance()->getTileSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getTileLength()));
+	m_camera.setRestrictedRect(RectF(World::GetInstance()->getFieldSize()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
@@ -103,7 +103,7 @@ void MainViewer::FieldViewer::update()
 					e->destroy();
 
 					// Elementの吐き出し
-					World::GetInstance()->getTile(e->getPosition())->addElement(e->getCellAsset()->getMaterial().getElementRecursive());
+					World::GetInstance()->getTile(e->getPosition()).addElement(e->getCellAsset()->getMaterial().getElementRecursive());
 				}
 			}
 		}
