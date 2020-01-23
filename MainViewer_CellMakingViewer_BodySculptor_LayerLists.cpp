@@ -53,7 +53,7 @@ void MainViewer::CellMakingViewer::BodySculptor::LayerLists::update()
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
 		block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
 
-		font(U"Layerの追加").drawAt(block.center(), Palette::Black);
+		font(U"レイヤーの追加").drawAt(block.center(), Palette::Black);
 
 		if (block.leftClicked())
 		{
