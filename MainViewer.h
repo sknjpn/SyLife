@@ -14,7 +14,7 @@ class PartConfig;
 
 class MainViewer : public Viewer
 {
-	class CellAssetViewer : public Viewer
+	class CellAssetViewer : public DraggableViewer
 	{
 		shared_ptr<CellAsset>	m_cellAsset;
 
@@ -25,7 +25,7 @@ class MainViewer : public Viewer
 		void	update() override;
 	};
 
-	class CellStateViewer : public Viewer
+	class CellStateViewer : public DraggableViewer
 	{
 		shared_ptr<CellState>	m_cellState;
 
