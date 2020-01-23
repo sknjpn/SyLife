@@ -6,14 +6,14 @@ class PartAsset_Wing
 	: public PartAsset
 {
 	bool	m_isRight;
-	int		m_penetrating;
+	double	m_strength;
 
 public:
 	shared_ptr<PartState>	makePartState(const shared_ptr<PartConfig>& partConfig) const override;
 
 	// Get
 	bool	getIsRight() const { return m_isRight; }
-	double	getPenetrating() const { return m_penetrating; }
+	double	getStrength() const { return m_strength; }
 
 	// JSON
 	void	load(const JSONValue& json) override;

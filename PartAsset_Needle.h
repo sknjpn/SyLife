@@ -5,7 +5,7 @@
 class PartAsset_Needle
 	: public PartAsset
 {
-	double	m_damage;
+	int		m_penetrating;
 
 public:
 	// State
@@ -14,8 +14,8 @@ public:
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
-	
-	double	getDamage() const { return m_damage; }
+
+	double	getPenetrating() const { return m_penetrating; }
 
 	// TypeName
 	String	getTypeName() override { return U"PartAsset_Needle"; }
