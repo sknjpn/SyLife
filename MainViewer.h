@@ -84,6 +84,7 @@ class MainViewer : public Viewer
 		Texture	m_textureZoomOut = Texture(Icon(0xf010, 50));
 		Texture	m_textureFast = Texture(Icon(0xf050, 50));
 		Texture	m_texturePoison = Texture(Icon(0xf714, 50));
+		Texture m_textureAddElement = Texture(Icon(0xf613, 50));
 
 	public:
 		void init() override;
