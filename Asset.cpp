@@ -24,6 +24,7 @@ void Asset::load(const JSONValue& json)
 	Model::load(json);
 
 	m_name = json[U"name"].getString();
+	m_nameJP = json[U"nameJP"].getString();
 }
 
 void Asset::save(JSONWriter& json) const
@@ -32,4 +33,5 @@ void Asset::save(JSONWriter& json) const
 
 	// name
 	json.key(U"name").write(m_name);
+	json.key(U"nameJP").write(m_nameJP);
 }
