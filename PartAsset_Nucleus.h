@@ -8,6 +8,7 @@ class PartAsset_Nucleus
 	double	m_lifespanTime;	// 寿命
 	double	m_bornTime;		// 生まれるまでの時間
 	double	m_yieldTime;	// 生むのにかかる時間
+	int		m_armor;
 
 public:
 	// State
@@ -17,6 +18,7 @@ public:
 	double	getLifespanTime() const { return m_lifespanTime; }
 	double	getBornTime() const { return m_bornTime; }
 	double	getYieldTime() const { return m_yieldTime; }
+	int		getArmor() const { return m_armor; }
 
 	// JSON
 	void	load(const JSONValue& json) override;
