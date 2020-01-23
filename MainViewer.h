@@ -14,6 +14,28 @@ class PartConfig;
 
 class MainViewer : public Viewer
 {
+	class CellAssetViewer : public Viewer
+	{
+		shared_ptr<CellAsset>	m_cellAsset;
+
+	public:
+		CellAssetViewer(const shared_ptr<CellAsset>& cellAsset);
+
+		void	init() override;
+		void	update() override;
+	};
+
+	class CellStateViewer : public Viewer
+	{
+		shared_ptr<CellState>	m_cellState;
+
+	public:
+		CellStateViewer(const shared_ptr<CellState>& cellState);
+
+		void	init() override;
+		void	update() override;
+	};
+
 	class CellBook : public Viewer
 	{
 		class Item : public Viewer
