@@ -23,7 +23,8 @@ layout(location = 0) out vec4 FragColor;
 		
 void main()
 {
-	float level = int(texture(Texture0, UV).r * 10.0) / 10.0;
+	float t = 8.0;
+	float level = min(int(texture(Texture0, UV).r * t) / t, 1.0 - 1.0 / t);
 
 	FragColor = vec4(vec3(0.593, 0.980, 0.593) * level, 1.0);
 }
