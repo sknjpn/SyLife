@@ -39,11 +39,11 @@ void MainViewer::CellAssetViewer::update()
 
 		rect = rect.stretched(-5);
 
-		double max1 = getMax(rect, scale, [](const auto& status) {return status.m_numCell; });
-		double max2 = getMax(rect, scale, [](const auto& status) {return status.m_numEgg; });
+		double max1 = getMax(rect, scale, [](const auto& status) { return status.m_numCell; });
+		double max2 = getMax(rect, scale, [](const auto& status) { return status.m_numEgg; });
 
-		drawGraph(rect, Palette::Green, Max(max1, max2), scale, [](const auto& status) {return status.m_numEgg; });
-		drawGraph(rect, Palette::Red, Max(max1, max2), scale, [](const auto& status) {return status.m_numCell; });
+		drawGraph(rect, Palette::Green, Max(max1, max2), scale, [](const auto& status) { return status.m_numEgg; });
+		drawGraph(rect, Palette::Red, Max(max1, max2), scale, [](const auto& status) { return status.m_numCell; });
 	}
 
 	// アイコン
