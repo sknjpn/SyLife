@@ -13,6 +13,7 @@ void MainViewer::CommandPalette::update()
 	moveDrawPos(5, 5);
 
 	const auto rect = RectF(60, 60).rounded(5);
+	const auto fv = getParentViewer()->getChildViewer<FieldViewer>();
 
 	// Zoom In
 	{
@@ -21,7 +22,7 @@ void MainViewer::CommandPalette::update()
 
 		m_textureZoomIn.drawAt(rect.center(), colorTex);
 
-		if (rect.leftPressed()) getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomIn();
+		if (rect.leftPressed()) fv->getCamera().zoomIn();
 
 		moveDrawPos(65, 0);
 	}
@@ -33,7 +34,7 @@ void MainViewer::CommandPalette::update()
 
 		m_textureZoomOut.drawAt(rect.center(), colorTex);
 
-		if (rect.leftPressed()) getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomOut();
+		if (rect.leftPressed()) fv->getCamera().zoomOut();
 
 		moveDrawPos(65, 0);
 	}
@@ -43,7 +44,7 @@ void MainViewer::CommandPalette::update()
 		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
 		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
 
-		auto& isHighSpeed = getParentViewer()->getChildViewer<FieldViewer>()->m_isHighSpeed;
+		auto& isHighSpeed = fv->m_isHighSpeed;
 
 		m_textureFast.drawAt(rect.center(), isHighSpeed ? Palette::Red : Palette::Gray);
 
@@ -57,11 +58,15 @@ void MainViewer::CommandPalette::update()
 		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
 		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
 
-		auto& isPoisonEnabled = getParentViewer()->getChildViewer<FieldViewer>()->m_isPoisonEnabled;
+		const bool isPoisonEnabled = fv->m_handAction == FieldViewer::HandAction::Poison;
 
 		m_texturePoison.drawAt(rect.center(), isPoisonEnabled ? Palette::Red : Palette::Gray);
 
-		if (rect.leftClicked()) isPoisonEnabled = !isPoisonEnabled;
+		if (rect.leftClicked())
+		{
+			if (isPoisonEnabled) fv->m_handAction = FieldViewer::HandAction::None;
+			else fv->m_handAction = FieldViewer::HandAction::Poison;
+		}
 
 		moveDrawPos(65, 0);
 	}

@@ -87,25 +87,38 @@ void MainViewer::FieldViewer::update()
 			}
 		}
 
-		// poison
-		if (isMouseover() && MouseL.pressed() && m_isPoisonEnabled)
+
+		switch (m_handAction)
 		{
-			Circle circle(Cursor::PosF(), 256.0);
-			circle.draw(ColorF(Palette::Red, 0.5));
-
-			for (const auto& c : World::GetInstance()->getCellStates())
-				if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
-
-			for (const auto& e : World::GetInstance()->getEggStates())
+		case MainViewer::FieldViewer::HandAction::None:
+			break;
+		case MainViewer::FieldViewer::HandAction::AddElement:
+			break;
+		case MainViewer::FieldViewer::HandAction::Poison:
+			if (isMouseover() && MouseL.pressed())
 			{
-				if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
-				{
-					e->destroy();
+				Circle circle(Cursor::PosF(), 256.0);
+				circle.draw(ColorF(Palette::Red, 0.5));
 
-					// Elementの吐き出し
-					World::GetInstance()->getTile(e->getPosition()).addElement(e->getCellAsset()->getMaterial().getElementRecursive());
+				for (const auto& c : World::GetInstance()->getCellStates())
+					if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+
+				for (const auto& e : World::GetInstance()->getEggStates())
+				{
+					if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
+					{
+						e->destroy();
+
+						// Elementの吐き出し
+						World::GetInstance()->getTile(e->getPosition()).addElement(e->getCellAsset()->getMaterial().getElementRecursive());
+					}
 				}
 			}
+			break;
+		case MainViewer::FieldViewer::HandAction::Trash:
+			break;
+		default:
+			break;
 		}
 	}
 

@@ -65,14 +65,20 @@ class MainViewer : public Viewer
 		void	openCellMakingViewer();
 
 	public:
+		enum class HandAction {
+			None,
+			AddElement,
+			Poison,
+			Trash,
+		} m_handAction;
+
 		bool	m_isHighSpeed = false;
-		bool	m_isPoisonEnabled = false;
 		int		m_frameCount = 0;
 
 		void	init() override;
 		void	update() override;
 
-		void	release(const shared_ptr<CellAsset>& cellAsset) { addChildViewer<ReleaseViewer>(cellAsset); }
+		void	release(const shared_ptr<CellAsset>& cellAsset) { addChildViewer<ReleaseViewer>(cellAsset); m_handAction = HandAction::None; }
 
 		TinyCamera& getCamera() { return m_camera; }
 		const TinyCamera& getCamera() const { return m_camera; }
