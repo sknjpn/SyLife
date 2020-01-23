@@ -17,12 +17,18 @@ void MainViewer::CellMakingViewer::openBodySculptor()
 {
 	clearEditor();
 
+	getChildViewer<GUIButton>(U"EditBody")->setIsEnabled(false);
+	getChildViewer<GUIButton>(U"EditPart")->setIsEnabled(true);
+
 	addChildViewer<BodySculptor>();
 }
 
 void MainViewer::CellMakingViewer::openPartsAssembler()
 {
 	clearEditor();
+	
+	getChildViewer<GUIButton>(U"EditBody")->setIsEnabled(true);
+	getChildViewer<GUIButton>(U"EditPart")->setIsEnabled(false);
 
 	addChildViewer<PartsAssembler>();
 }
@@ -44,9 +50,11 @@ void MainViewer::CellMakingViewer::init()
 	setViewerRectInLocal(RectF(1400, 800).setCenter(Scene::CenterF()));
 
 	addChildViewer<GUIButton>(U"ボディ編集", [this]() { openBodySculptor(); })
+		->setName(U"EditBody")
 		->setViewerRectInLocal(5, 5, 190, 35);
 
 	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
+		->setName(U"EditPart")
 		->setViewerRectInLocal(5, 45, 190, 35);
 
 	addChildViewer<GUIButton>(U"生き物配置", [this]() { release(); }, false)
