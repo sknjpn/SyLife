@@ -7,6 +7,7 @@
 #include "PartConfig.h"
 #include "GUIText.h"
 #include "GUITextBox.h"
+#include "GUIButton.h"
 
 MainViewer::CellAssetViewer::CellAssetViewer(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
@@ -21,6 +22,10 @@ void MainViewer::CellAssetViewer::init()
 	// name
 	addChildViewer<GUIText>(m_cellAsset->getNameJP(), Font(24, Typeface::Heavy), GUIText::Mode::DrawLeftCenter)
 		->setViewerRectInLocal(5, 5, 400, 40);
+
+	// close
+	addChildViewer<GUIButton>(U"✖", [this]() { destroy(); })
+		->setViewerRectInLocal(450, 5, 40, 40);
 }
 
 void MainViewer::CellAssetViewer::update()
