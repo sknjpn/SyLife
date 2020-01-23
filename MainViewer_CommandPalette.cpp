@@ -12,48 +12,56 @@ void MainViewer::CommandPalette::update()
 
 	moveDrawPos(5, 5);
 
-	for (int i = 0; i < 4; ++i)
-	{
-		const auto rect = RectF(60, 60).rounded(5);
-		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+	const auto rect = RectF(60, 60).rounded(5);
 
+	// Zoom In
+	{
+		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
 		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
 
-		switch (i)
-		{
-		case 0:
-		{
-			m_textureZoomIn.drawAt(rect.center(), colorTex);
+		m_textureZoomIn.drawAt(rect.center(), colorTex);
 
-			if (rect.leftPressed()) getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomIn();
-		}
-		break;
-		case 1:
-		{
-			m_textureZoomOut.drawAt(rect.center(), colorTex);
+		if (rect.leftPressed()) getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomIn();
 
-			if (rect.leftPressed()) getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomOut();
-		}
-		break;
-		case 2:
-		{
-			auto& isHighSpeed = getParentViewer()->getChildViewer<FieldViewer>()->m_isHighSpeed;
+		moveDrawPos(65, 0);
+	}
 
-			m_textureFast.drawAt(rect.center(), isHighSpeed ? Palette::Red : Palette::Gray);
+	// Zoom Out
+	{
+		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
 
-			if (rect.leftClicked()) isHighSpeed = !isHighSpeed;
-		}
-		break;
-		case 3:
-		{
-			auto& isPoisonEnabled = getParentViewer()->getChildViewer<FieldViewer>()->m_isPoisonEnabled;
+		m_textureZoomOut.drawAt(rect.center(), colorTex);
 
-			m_texturePoison.drawAt(rect.center(), isPoisonEnabled ? Palette::Red : Palette::Gray);
+		if (rect.leftPressed()) getParentViewer()->getChildViewer<FieldViewer>()->getCamera().zoomOut();
 
-			if (rect.leftClicked()) isPoisonEnabled = !isPoisonEnabled;
-		}
-		break;
-		}
+		moveDrawPos(65, 0);
+	}
+
+	// Fast Mode
+	{
+		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
+
+		auto& isHighSpeed = getParentViewer()->getChildViewer<FieldViewer>()->m_isHighSpeed;
+
+		m_textureFast.drawAt(rect.center(), isHighSpeed ? Palette::Red : Palette::Gray);
+
+		if (rect.leftClicked()) isHighSpeed = !isHighSpeed;
+
+		moveDrawPos(65, 0);
+	}
+
+	// Poison
+	{
+		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
+
+		auto& isPoisonEnabled = getParentViewer()->getChildViewer<FieldViewer>()->m_isPoisonEnabled;
+
+		m_texturePoison.drawAt(rect.center(), isPoisonEnabled ? Palette::Red : Palette::Gray);
+
+		if (rect.leftClicked()) isPoisonEnabled = !isPoisonEnabled;
 
 		moveDrawPos(65, 0);
 	}
