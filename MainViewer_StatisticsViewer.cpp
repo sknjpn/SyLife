@@ -65,7 +65,7 @@ void MainViewer::StatisticsViewer::takeLog()
 	auto cas = World::GetAssets<CellAsset>();
 	for (auto& ca : cas)
 		if (m_logs.all([&ca](const auto& l) { return l.m_cellAsset != ca; }))
-			m_logs.emplace_back(ca);
+			m_logs.emplace_back(ca).m_statuses.resize(m_statusesSizeMax);
 
 	// Logの更新
 	for (auto& l : m_logs)

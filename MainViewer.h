@@ -105,9 +105,10 @@ class MainViewer : public Viewer
 		{
 			struct Status
 			{
-				int		m_numCell;
-				int		m_numEgg;
+				int		m_numCell = 0;
+				int		m_numEgg = 0;
 
+				Status() { }
 				Status(const shared_ptr<CellAsset>& cellAsset);
 			};
 
