@@ -60,21 +60,6 @@ void MainViewer::FieldViewer::update()
 		// draw
 		World::GetInstance()->draw();
 
-		// HitPoint
-		if (KeyH.pressed())
-		{
-			for (const auto& cellState : World::GetInstance()->getCellStates())
-			{
-				auto pos = cellState->getPosition().movedBy(0, -cellState->getRadius());
-				auto halfLength = cellState->getRadius();
-				auto rate = cellState->getHitPointRate();
-				auto d = halfLength / 8;
-				Line(-halfLength, 0, halfLength, 0).movedBy(pos).draw(d, Palette::Red);
-				Line(-halfLength, 0, -halfLength + (halfLength * 2) * rate, 0).movedBy(pos).draw(d, Palette::Green);
-			}
-		}
-
-
 		switch (m_handAction)
 		{
 		case MainViewer::FieldViewer::HandAction::None:
