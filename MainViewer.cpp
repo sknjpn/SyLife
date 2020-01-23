@@ -10,7 +10,7 @@ void MainViewer::init()
 {
 	addChildViewer<FieldViewer>();
 
-	addChildViewer<GUIButton>(U"Cell作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 200, 50);
+	addChildViewer<GUIButton>(U"生き物作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(10, 50, 250, 50);
 
 	addChildViewer<CellBook>();
 
