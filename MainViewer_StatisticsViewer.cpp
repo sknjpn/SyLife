@@ -66,10 +66,6 @@ void MainViewer::StatisticsViewer::takeLog()
 		l.m_statuses.emplace_back(l.m_cellAsset);
 		while (l.m_statuses.size() > m_statusesSizeMax) l.m_statuses.pop_front();
 	}
-
-	// 増えすぎたLogの削除
-	while (m_logs.size() > getViewerSize().x - 40)
-		m_logs.pop_front();
 }
 
 MainViewer::StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)
