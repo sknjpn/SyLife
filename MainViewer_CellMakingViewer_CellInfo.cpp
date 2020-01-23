@@ -55,16 +55,43 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 	{
 		static Font font(16, Typeface::Bold);
 
-		// Element
-		font(U"Element: " + ToString(cellAsset->getMaterial().getElement())).draw(Vec2::Zero(), Palette::Black);
-		moveDrawPos(0, 20);
-
 		// Proteins
-		for (const auto& protein : cellAsset->getMaterial().getProteinList())
+		font(U"この生き物を作るのに必要なもの").draw();
+		moveDrawPos(0, 20);
 		{
-			font(protein.first->getName() + U": " + ToString(protein.second) + U"U").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(8, 0);
 
-			moveDrawPos(0, 20);
+			font(U"エレメント(緑色で広がっているもの)").draw();
+			{
+				moveDrawPos(8, 0);
+				moveDrawPos(0, 20);
+				font(ToString(int(cellAsset->getMaterial().getElement())) + U"個").draw();
+				moveDrawPos(0, 30);
+				moveDrawPos(-8, 0);
+			}
+
+			font(U"プロテイン(合成器官で出来るもの)").draw();
+			{
+				moveDrawPos(8, 0);
+				for (const auto& protein : cellAsset->getMaterial().getProteinList())
+				{
+					font(protein.first->getName() + U": " + ToString(protein.second) + U"個").draw(Vec2::Zero(), Palette::Black);
+					moveDrawPos(0, 20);
+				}
+				moveDrawPos(0, 10);
+				moveDrawPos(-8, 0);
+			}
+
+			moveDrawPos(-8, 0);
 		}
+
+		font(U"この生き物が作れるプロテイン").draw();
+
+		font(U"この生き物の特性(核で決まる)").draw();
+		font(U"寿命").draw();
+		font(U"増殖までの時間").draw();
+		font(U"硬さ").draw();
+		font(U"攻撃力").draw();
+		font(U"移動力").draw();
 	}
 }
