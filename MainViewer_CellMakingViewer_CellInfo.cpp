@@ -14,13 +14,15 @@ void MainViewer::CellMakingViewer::CellInfo::init()
 
 void MainViewer::CellMakingViewer::CellInfo::update()
 {
+	RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);
+
 	const auto& cellAsset = getParentViewer<CellMakingViewer>()->getCellAsset();
 
 	moveDrawPos(5, 5);
 
 	// Name
 	{
-		SimpleGUI::TextBox(m_textEditState_name, Vec2::Zero(), 290);
+		SimpleGUI::TextBox(m_textEditState_name, Vec2::Zero(), 280);
 
 		moveDrawPos(0, 40);
 	}

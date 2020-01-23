@@ -66,7 +66,7 @@ void MainViewer::CellMakingViewer::init()
 		->setViewerRectInLocal(5, 125, 290, 35);
 
 	addChildViewer<CellInfo>()
-		->setViewerRectInLocal(0, 165, 300, 595);
+		->setViewerRectInLocal(5, 165, 290, 595);
 
 	openBodySculptor();
 }
