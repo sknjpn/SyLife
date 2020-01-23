@@ -15,7 +15,7 @@ public:
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
 
-	double	getPenetrating() const { return m_penetrating; }
+	int	getPenetrating() const { return m_penetrating; }
 
 	// TypeName
 	String	getTypeName() override { return U"PartAsset_Needle"; }

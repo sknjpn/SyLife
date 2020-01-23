@@ -3,6 +3,9 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "ProteinAsset.h"
+#include "PartAsset_Synthesizer.h"
+#include "PartAsset_Nucleus.h"
+#include "PartAsset_Needle.h"
 
 void MainViewer::CellMakingViewer::CellInfo::init()
 {
@@ -36,7 +39,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 			moveDrawPos(0, 20);
 			{
 				moveDrawPos(8, 0);
-				font(ToString(int(cellAsset->getMaterial().getElement())) + U"個").draw(Vec2::Zero(), Palette::Black);
+				font(ToString(int(cellAsset->getMaterial().getElement())) + U"mL").draw(Vec2::Zero(), Palette::Black);
 				moveDrawPos(0, 30);
 				moveDrawPos(-8, 0);
 			}
@@ -59,18 +62,51 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 
 		font(U"この生き物が作れるプロテイン").draw(Vec2::Zero(), Palette::Black);
 		moveDrawPos(0, 20);
+		{
+			moveDrawPos(8, 0);
 
-		font(U"この生き物の特性(核で決まる)").draw(Vec2::Zero(), Palette::Black);
+			for (const auto& partConfig : cellAsset->getPartConfigs())
+			{
+				if (auto synthesizer = dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+				{
+					font(synthesizer->getExport()->getNameJP()).draw(Vec2::Zero(), Palette::Black);
+					moveDrawPos(0, 20);
+				}
+			}
+			moveDrawPos(0, 10);
+
+			moveDrawPos(-8, 0);
+		}
+
+		font(U"この生き物の特性").draw(Vec2::Zero(), Palette::Black);
 		moveDrawPos(0, 20);
-		font(U"寿命").draw(Vec2::Zero(), Palette::Black);
-		moveDrawPos(0, 20);
-		font(U"増殖までの時間").draw(Vec2::Zero(), Palette::Black);
-		moveDrawPos(0, 20);
-		font(U"硬さ").draw(Vec2::Zero(), Palette::Black);
-		moveDrawPos(0, 20);
-		font(U"攻撃力").draw(Vec2::Zero(), Palette::Black);
-		moveDrawPos(0, 20);
-		font(U"移動力").draw(Vec2::Zero(), Palette::Black);
-		moveDrawPos(0, 20);
+		{
+			moveDrawPos(8, 0);
+
+			font(U"孵化までの時間", int(cellAsset->getNucleusAsset()->getBornTime()), U"秒").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+
+			font(U"産卵までの時間", int(cellAsset->getNucleusAsset()->getYieldTime()), U"秒").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+
+			font(U"寿命:", int(cellAsset->getNucleusAsset()->getLifespanTime()), U"秒").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+
+			font(U"硬さ:", int(cellAsset->getNucleusAsset()->getArmor())).draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+
+			{
+				int penetrating = 0;
+
+				for (const auto& partConfig : cellAsset->getPartConfigs())
+					if (auto needle = dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+						penetrating = Max(penetrating, needle->getPenetrating());
+
+				font(U"トゲの貫通力:", penetrating).draw(Vec2::Zero(), Palette::Black);
+				moveDrawPos(0, 20);
+			}
+
+			moveDrawPos(-8, 0);
+		}
 	}
 }
