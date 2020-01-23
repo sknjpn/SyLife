@@ -48,6 +48,8 @@ void MainViewer::CellAssetViewer::update()
 
 	// 性能
 	{
+		setDrawPos(210, 140);
+
 		static Font font(16, Typeface::Default);
 
 		// Proteins
