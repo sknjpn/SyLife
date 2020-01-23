@@ -15,6 +15,7 @@ MainViewer::CellAssetViewer::CellAssetViewer(const shared_ptr<CellAsset>& cellAs
 
 void MainViewer::CellAssetViewer::init()
 {
+	setName(m_cellAsset->getName());
 	setViewerSize(500, 600);
 
 	// name
