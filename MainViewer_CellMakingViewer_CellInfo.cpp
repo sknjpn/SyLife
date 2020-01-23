@@ -17,18 +17,14 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 
 	// Name
 	{
-		static Font font(24);
-
-		//font(cellAsset->getName()).drawAt(Vec2(95, 20));
-
-		SimpleGUI::TextBox(m_textEditState_name, Vec2::Zero(), 190);
+		SimpleGUI::TextBox(m_textEditState_name, Vec2::Zero(), 290);
 
 		moveDrawPos(0, 40);
 	}
 
 	// Release
 	{
-		const RectF rect = Rect(200, 200).stretched(-5);
+		const RectF rect = Rect(300, 300).stretched(-5);
 		const double r = rect.size.x / 2.0;
 
 		Circle(rect.size / 2.0, r)
@@ -48,7 +44,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 			}
 		}
 
-		moveDrawPos(0, 200);
+		moveDrawPos(0, 300);
 	}
 
 	// material

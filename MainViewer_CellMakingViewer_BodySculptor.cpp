@@ -27,7 +27,7 @@ void MainViewer::CellMakingViewer::BodySculptor::setState(State state)
 
 void MainViewer::CellMakingViewer::BodySculptor::init()
 {
-	setViewerRectInLocal(200, 0, 1200, 1100);
+	setViewerRectInLocal(300, 0, 1200, 1100);
 
 	const auto bodyAsset = getParentViewer<CellMakingViewer>()->getCellAsset()->getBodyAsset();
 	addChildViewer<LayerLists>(bodyAsset);

@@ -3,7 +3,7 @@
 
 void MainViewer::CellMakingViewer::PartsAssembler::init()
 {
-	setViewerRectInLocal(200, 0, 1200, 800);
+	setViewerRectInLocal(300, 0, 1200, 800);
 
 	addChildViewer<Workspace>()
 		->setCellAsset(getParentViewer<CellMakingViewer>()->getCellAsset());

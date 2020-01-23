@@ -48,25 +48,25 @@ void MainViewer::CellMakingViewer::init()
 	makeAsset();
 
 	// DrawRectの設定
-	setViewerRectInLocal(RectF(1400, 800).setCenter(Scene::CenterF()));
+	setViewerRectInLocal(RectF(1500, 800).setCenter(Scene::CenterF()));
 
 	addChildViewer<GUIButton>(U"ボディ編集", [this]() { openBodySculptor(); })
 		->setName(U"EditBody")
-		->setViewerRectInLocal(5, 5, 190, 35);
+		->setViewerRectInLocal(5, 5, 290, 35);
 
 	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
 		->setName(U"EditPart")
-		->setViewerRectInLocal(5, 45, 190, 35);
+		->setViewerRectInLocal(5, 45, 290, 35);
 
 	addChildViewer<GUIButton>(U"生き物配置", [this]() { release(); }, false)
 		->setName(U"生き物配置")
-		->setViewerRectInLocal(5, 85, 190, 35);
+		->setViewerRectInLocal(5, 85, 290, 35);
 
 	addChildViewer<GUIButton>(U"閉じる", [this]() { destroy(); })
-		->setViewerRectInLocal(5, 125, 190, 35);
+		->setViewerRectInLocal(5, 125, 290, 35);
 
 	addChildViewer<CellInfo>()
-		->setViewerRectInLocal(0, 165, 200, 595);
+		->setViewerRectInLocal(0, 165, 300, 595);
 
 	openBodySculptor();
 }
