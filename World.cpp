@@ -315,8 +315,8 @@ void World::initTiles()
 		const double area = rect.area();
 
 		// 初期化
-		for (auto p : step(Size(3, 3)))
-			tile.m_sendRate[p.x][p.y] = 0.0;
+		for (auto point : step(Size(3, 3)))
+			tile.m_sendRate[point.x][point.y] = 0.0;
 
 		// 周囲
 		if (rect.tl().x < 0.0) tile.m_sendRate[0][1] = (-rect.tl().x) * (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)) / area;
