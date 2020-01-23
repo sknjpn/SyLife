@@ -16,7 +16,7 @@ void PartAsset::load(const JSONValue& json)
 {
 	Asset::load(json);
 
-	m_nameJP = json[U"name"].getString();
+	m_nameJP = json[U"nameJP"].getString();
 
 	// mass
 	m_mass = json[U"mass"].get<double>();

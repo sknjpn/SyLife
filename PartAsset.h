@@ -20,6 +20,7 @@ protected:
 
 public:
 	// Get
+	const String& getNameJP() const { return m_nameJP; }
 	double	getMass() const { return m_mass; }
 	const Storage& getMaterial() const { return m_material; }
 	const Shape& getShape() const { return m_shape; }

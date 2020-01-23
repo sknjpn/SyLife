@@ -50,7 +50,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::PartList::drawAssets()
 		}
 
 		// 名前描画
-		font((*it)->getName()).draw(4, 4, Palette::Black);
+		font((*it)->getNameJP()).draw(4, 4, Palette::Black);
 
 		moveDrawPos(0, m_itemHeight);
 	}
