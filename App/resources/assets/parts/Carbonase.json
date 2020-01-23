@@ -1,6 +1,7 @@
 ﻿{
   "type": "PartAsset_Synthesizer",
   "name": "Carbonase",
+  "nameJP": "炭素合成器官",
   "mass": 10.0,
   "layers": [
     {

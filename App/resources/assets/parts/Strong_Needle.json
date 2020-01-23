@@ -1,6 +1,7 @@
 ﻿{
   "type": "PartAsset_Needle",
   "name": "Strong_Needle",
+  "nameJP": "強いトゲ",
   "mass": 50.0,
   "layers": [
     {

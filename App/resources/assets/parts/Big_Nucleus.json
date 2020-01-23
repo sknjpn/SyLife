@@ -1,6 +1,7 @@
 ﻿{
   "type": "PartAsset_Nucleus",
   "name": "Big_Nucleus",
+  "nameJP": "大きな核",
   "mass": 40.0,
   "layers": [
     {

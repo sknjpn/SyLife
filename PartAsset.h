@@ -16,8 +16,11 @@ protected:
 	Storage	m_material;
 	Shape	m_shape;
 
+	String	m_nameJP;
+
 public:
 	// Get
+	const String& getNameJP() const { return m_nameJP; }
 	double	getMass() const { return m_mass; }
 	const Storage& getMaterial() const { return m_material; }
 	const Shape& getShape() const { return m_shape; }

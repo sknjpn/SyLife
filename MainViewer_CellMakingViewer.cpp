@@ -2,6 +2,7 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "PartAsset_Body.h"
+#include "PartAsset_Nucleus.h"
 #include "ProteinAsset.h"
 #include "CellAsset.h"
 #include "GUIButton.h"
@@ -17,12 +18,18 @@ void MainViewer::CellMakingViewer::openBodySculptor()
 {
 	clearEditor();
 
+	getChildViewer<GUIButton>(U"EditBody")->setIsEnabled(false);
+	getChildViewer<GUIButton>(U"EditPart")->setIsEnabled(true);
+
 	addChildViewer<BodySculptor>();
 }
 
 void MainViewer::CellMakingViewer::openPartsAssembler()
 {
 	clearEditor();
+
+	getChildViewer<GUIButton>(U"EditBody")->setIsEnabled(true);
+	getChildViewer<GUIButton>(U"EditPart")->setIsEnabled(false);
 
 	addChildViewer<PartsAssembler>();
 }
@@ -44,9 +51,11 @@ void MainViewer::CellMakingViewer::init()
 	setViewerRectInLocal(RectF(1400, 800).setCenter(Scene::CenterF()));
 
 	addChildViewer<GUIButton>(U"ボディ編集", [this]() { openBodySculptor(); })
+		->setName(U"EditBody")
 		->setViewerRectInLocal(5, 5, 190, 35);
 
 	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
+		->setName(U"EditPart")
 		->setViewerRectInLocal(5, 45, 190, 35);
 
 	addChildViewer<GUIButton>(U"生き物配置", [this]() { release(); }, false)
@@ -64,7 +73,7 @@ void MainViewer::CellMakingViewer::init()
 
 void MainViewer::CellMakingViewer::update()
 {
-	RectF(getViewerSize()).rounded(16.0).draw(Palette::Gray).drawFrame(2,0, Palette::Black);
+	RectF(getViewerSize()).rounded(16.0).draw(Palette::Gray).drawFrame(2, 0, Palette::Black);
 
 	// 更新
 	m_cellAsset->updateProperties();
@@ -96,7 +105,14 @@ void MainViewer::CellMakingViewer::makeAsset()
 		bodyAsset->getMaterial().setElement(1.0);
 		auto& l = bodyAsset->getShape().emplace_back();
 		l.m_color = Palette::White;
-		l.m_polygon = Circle(10.0).asPolygon();
+		l.m_polygon = Circle(15.0).asPolygon();
+	}
+
+	// Nucleusの設定
+	{
+		auto nucleusAsset = World::GetAssets<PartAsset_Nucleus>().back();
+
+		m_cellAsset->addPartConfig()->setPartAsset(nucleusAsset);
 	}
 
 	m_cellAsset->updateProperties();
