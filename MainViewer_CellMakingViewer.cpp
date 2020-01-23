@@ -93,7 +93,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 	{
 		TextReader textReader(U"resources/names.txt");
 
-		m_cellAsset->setName(textReader.readAll().split_lines().choice());
+		m_cellAsset->setNameJP(textReader.readAll().split_lines().choice());
 	}
 
 	// Bodyの設定
