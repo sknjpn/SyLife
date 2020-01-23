@@ -28,8 +28,6 @@ void MainViewer::FieldViewer::init()
 
 void MainViewer::FieldViewer::update()
 {
-	Window::SetTitle(Cursor::PosF());
-
 	// エッジスクロール
 	if (MouseL.pressed() && Cursor::Pos().x < 32) { Rect(32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
 	if (MouseL.pressed() && Cursor::Pos().y < 32) { Rect(Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveU(); }
