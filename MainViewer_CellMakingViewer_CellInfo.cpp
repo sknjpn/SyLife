@@ -24,7 +24,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 
 	// material
 	{
-		static Font font(16, Typeface::Bold);
+		static Font font(16, Typeface::Default);
 
 		// Proteins
 		font(U"この生き物を作るのに必要なもの").draw(Vec2::Zero(), Palette::Black);
