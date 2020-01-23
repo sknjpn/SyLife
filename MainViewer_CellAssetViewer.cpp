@@ -15,7 +15,7 @@ MainViewer::CellAssetViewer::CellAssetViewer(const shared_ptr<CellAsset>& cellAs
 
 void MainViewer::CellAssetViewer::init()
 {
-	setViewerSize(800, 600);
+	setViewerSize(500, 600);
 
 	// name
 	addChildViewer<GUIText>(m_cellAsset->getNameJP(), Font(24, Typeface::Heavy), GUIText::Mode::DrawLeftCenter)
@@ -24,13 +24,15 @@ void MainViewer::CellAssetViewer::init()
 
 void MainViewer::CellAssetViewer::update()
 {
+	DraggableViewer::update();
+
 	RectF(getViewerSize()).rounded(5.0).draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
 
 	// 数の推移
 	{
-		setDrawPos(5, 50);
+		setDrawPos(10, 50);
 
-		RectF(790, 80).draw(Color(11, 22, 33)).drawFrame(1.0, 0.0, Palette::Black);
+		RectF(480, 80).draw(Color(11, 22, 33)).drawFrame(1.0, 0.0, Palette::Black);
 	}
 
 	// アイコン
