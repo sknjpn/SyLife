@@ -41,11 +41,11 @@ void MainViewer::CellMakingViewer::BodySculptor::init()
 			->setName(U"左右対称")
 			->setViewerRectInLocal(5, 5, 30, 30);
 
-		addChildViewer<GUIText>(U"左右対称")
-			->setViewerRectInLocal(35, 5, 165, 30);
+		addChildViewer<GUIText>(U"左右対称", Font(18, Typeface::Bold), GUIText::Mode::DrawLeftCenter)
+			->setViewerRectInLocal(40, 5, 165, 30);
 
 
-		addChildViewer<GUIText>(U"スタンプ種類")
+		addChildViewer<GUIText>(U"スタンプ種類", Font(18, Typeface::Bold), GUIText::Mode::DrawLeftCenter)
 			->setViewerRectInLocal(5, 50, 165, 30);
 
 		addChildViewer<GUIButton>(U"付けるスタンプ", [this]() { setState(State::Put); })
@@ -57,7 +57,7 @@ void MainViewer::CellMakingViewer::BodySculptor::init()
 			->setViewerRectInLocal(5, 120, 190, 30);
 
 
-		addChildViewer<GUIText>(U"スタンプサイズ")
+		addChildViewer<GUIText>(U"スタンプサイズ", Font(18, Typeface::Bold), GUIText::Mode::DrawLeftCenter)
 			->setViewerRectInLocal(5, 170, 165, 30);
 
 		addChildViewer<GUIValuer>(0.1)
