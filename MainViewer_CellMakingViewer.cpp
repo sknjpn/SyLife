@@ -105,7 +105,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 		bodyAsset->getMaterial().setElement(1.0);
 		auto& l = bodyAsset->getShape().emplace_back();
 		l.m_color = Palette::White;
-		l.m_polygon = Circle(15.0).asPolygon();
+		l.m_polygon = Circle(15.0).asPolygon().simplified(0.5);
 	}
 
 	// Nucleusの設定
