@@ -1,6 +1,7 @@
 ﻿{
   "type": "CellAsset",
   "name": "aspidisca",
+  "nameJP": "アスピディスカ",
   "parts": [
     {
       "asset": "aspidisca_body",

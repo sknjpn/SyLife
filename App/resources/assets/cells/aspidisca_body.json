@@ -1,6 +1,7 @@
 ﻿{
   "type": "PartAsset_Body",
   "name": "aspidisca_body",
+  "nameJP": "アスピディスカのボディ",
   "mass": 30.971972320113566,
   "layers": [
     {
