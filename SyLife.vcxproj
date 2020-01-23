@@ -231,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="CellAsset_Log.cpp" />
     <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
     <ClCompile Include="MainViewer_CellBook.cpp" />
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />

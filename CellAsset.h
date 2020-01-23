@@ -70,4 +70,24 @@ public:
 
 	// TypeName
 	String	getTypeName() override { return U"CellAsset"; }
+
+	class Log
+	{
+	public:
+		class Status
+		{
+		public:
+			int	m_numCell;
+			int m_numEgg;
+
+			Status(int numCell, int numEgg)
+				: m_numCell(numCell)
+				, m_numEgg(numEgg)
+			{}
+		};
+
+		Array<Status> m_statuses;
+
+		void update(const shared_ptr<CellAsset>& cellAsset);
+	} m_log;
 };

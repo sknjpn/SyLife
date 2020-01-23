@@ -48,6 +48,8 @@ void World::update()
 
 		m_cellStates.remove_if([](const auto& cellState) { return cellState->isDestroyed(); });
 		m_cellStateKDTree.rebuildIndex();
+
+		World::GetAssets<CellAsset>().each([](const auto& cellAsset) { cellAsset->m_log.update(cellAsset); });
 	}
 
 	// Egg

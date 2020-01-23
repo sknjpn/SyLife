@@ -505,6 +505,9 @@
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
     <ClCompile Include="MainViewer_CellStateViewer.cpp" />
     <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
+    <ClCompile Include="CellAsset_Log.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />
