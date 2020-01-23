@@ -10,7 +10,7 @@ void PartAsset_Needle::load(const JSONValue& json)
 {
 	PartAsset::load(json);
 
-	m_penetrating = json[U"penetrating"].get<double>();
+	m_penetrating = json[U"penetrating"].get<int>();
 }
 
 void PartAsset_Needle::save(JSONWriter& json) const
