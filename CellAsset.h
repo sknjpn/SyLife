@@ -56,17 +56,6 @@ public:
 	// Add
 	shared_ptr<PartConfig>& addPartConfig();
 
-	template <typename T>
-	Array<shared_ptr<T>>	getPartConfigs() const
-	{
-		Array<shared_ptr<T>> tModels;
-
-		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
-			if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
-
-		return tModels;
-	}
-
 	void	updateProperties();
 
 	shared_ptr<PartAsset_Body> getBodyAsset() const;
