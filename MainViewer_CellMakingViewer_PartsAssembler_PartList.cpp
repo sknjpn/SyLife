@@ -1,8 +1,10 @@
 ﻿#include "MainViewer.h"
+#include "PartConfig.h"
 #include "PartAsset.h"
 #include "PartAsset_Body.h"
 #include "PartAsset_Nucleus.h"
 #include "GUISlider.h"
+#include "CellAsset.h"
 #include "World.h"
 
 void MainViewer::CellMakingViewer::PartsAssembler::PartList::init()
@@ -25,7 +27,7 @@ Array<shared_ptr<PartAsset>> MainViewer::CellMakingViewer::PartsAssembler::PartL
 	Array<shared_ptr<PartAsset>> assets;
 
 	for (const auto& m : World::GetAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<PartAsset_Body>(pa) ? true : false; })) assets.emplace_back(m);
-	
+
 	return assets;
 }
 
@@ -37,8 +39,35 @@ void MainViewer::CellMakingViewer::PartsAssembler::PartList::drawAssets()
 	for (auto it = assets.begin(); it != assets.end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
-		block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
-		if (block.leftClicked()) m_selectedPart = *it;
+		const bool isNucleus = dynamic_pointer_cast<PartAsset_Nucleus>(*it) != nullptr;
+
+		if (isNucleus)
+		{
+			block.draw(ColorF(Palette::Yellow, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+
+			if (block.leftClicked())
+			{
+				auto cellAsset = getParentViewer()->getParentViewer<CellMakingViewer>()->getCellAsset();
+
+				for (const auto& pc : cellAsset->getPartConfigs())
+				{
+					if (dynamic_pointer_cast<PartAsset_Nucleus>(pc->getPartAsset()) != nullptr)
+					{
+						cellAsset->removePartConfig(pc);
+
+						break;
+					}
+				}
+
+				cellAsset->addPartConfig()->setPartAsset(*it);
+			}
+		}
+		else
+		{
+			block.draw(ColorF(1.0, block.mouseOver() ? 0.5 : 0.25)).drawFrame(1.0, Palette::White);
+
+			if (block.leftClicked()) m_selectedPart = *it;
+		}
 
 		// パーツ描画
 		{
