@@ -4,6 +4,7 @@
 #include "GUITextBox.h"
 
 MainViewer::CellAssetViewer::CellAssetViewer(const shared_ptr<CellAsset>& cellAsset)
+	: m_cellAsset(cellAsset)
 {
 }
 
