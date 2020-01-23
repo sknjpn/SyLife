@@ -32,7 +32,18 @@ void MainViewer::CellAssetViewer::update()
 	{
 		setDrawPos(10, 50);
 
-		RectF(480, 80).draw(Color(11, 22, 33)).drawFrame(1.0, 0.0, Palette::Black);
+		RectF rect(480, 80);
+		const int scale = 60;
+
+		rect.draw(Color(11, 22, 33)).drawFrame(1.0, 0.0, Palette::Black);
+
+		rect = rect.stretched(-5);
+
+		double max1 = getMax(rect, scale, [](const auto& status) {return status.m_numCell; });
+		double max2 = getMax(rect, scale, [](const auto& status) {return status.m_numEgg; });
+
+		drawGraph(rect, Palette::Green, Max(max1, max2), scale, [](const auto& status) {return status.m_numEgg; });
+		drawGraph(rect, Palette::Red, Max(max1, max2), scale, [](const auto& status) {return status.m_numCell; });
 	}
 
 	// アイコン
@@ -133,5 +144,35 @@ void MainViewer::CellAssetViewer::update()
 
 			moveDrawPos(-8, 0);
 		}
+	}
+}
+
+double MainViewer::CellAssetViewer::getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> function) const
+{
+	double max = 0.0;
+
+	// 最大値
+	for (int i = 0; i < rect.w; ++i)
+	{
+		if (m_cellAsset->m_log.m_statuses.size() < (i + 1) * scale) break;
+
+		max = Max(max, function(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)));
+	}
+
+	return max;
+}
+
+void MainViewer::CellAssetViewer::drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> function) const
+{
+	auto t = Transformer2D(Mat3x2::Translate(rect.pos));
+
+	// 描画
+	for (int i = 0; i < rect.w - 1; ++i)
+	{
+		if (m_cellAsset->m_log.m_statuses.size() < (i + 2) * scale) break;
+
+		double v1 = rect.h * (1.0 - function(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)) / max);
+		double v2 = rect.h * (1.0 - function(*(m_cellAsset->m_log.m_statuses.end() - (i + 2) * scale)) / max);
+		Line(rect.w - i, v1, rect.w - i - 1, v2).draw(2.0, color);
 	}
 }

@@ -2,6 +2,7 @@
 
 #include "Viewer.h"
 #include "DraggableViewer.h"
+#include "CellAsset.h"
 
 #include "TinyCamera.h"
 
@@ -23,6 +24,9 @@ class MainViewer : public Viewer
 
 		void	init() override;
 		void	update() override;
+		
+		double	getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> function) const;
+		void	drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> function) const;
 	};
 
 	class CellStateViewer : public DraggableViewer
