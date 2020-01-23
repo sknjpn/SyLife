@@ -43,5 +43,5 @@
       }
     ]
   },
-  "damage": 1000
+  "penetrating": 1
 }
