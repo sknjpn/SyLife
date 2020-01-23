@@ -2,7 +2,7 @@
 
 void MainViewer::CommandPalette::init()
 {
-	setViewerSize(65 * 4 + 5, 65 * 2 + 5);
+	setViewerSize(65 * 4 + 5, 65 * 2 + 10);
 	setViewerPosInLocal(Scene::Size().x - getViewerSize().x - 20, 20);
 }
 
@@ -55,7 +55,9 @@ void MainViewer::CommandPalette::update()
 
 	// Mode
 	{
-		setDrawPos(5, 70);
+		setDrawPos(5, 75);
+
+		RectF(65 * 4 - 5, 65 - 5).stretched(5).rounded(5).draw(ColorF(0.75)).drawFrame(2.0, 0.0, Palette::Black);
 
 		// Hand
 		{
