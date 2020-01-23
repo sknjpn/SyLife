@@ -3,6 +3,7 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartAsset_Body.h"
+#include "PartAsset_Nucleus.h"
 #include "GUIButton.h"
 
 void MainViewer::CellMakingViewer::PartsAssembler::Workspace::init()
@@ -91,6 +92,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 		for (const auto& partConfig : m_cellAsset->getPartConfigs())
 		{
 			if (dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) continue;
+			if (dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset())) continue;
 
 			auto t = Transformer2D(partConfig->getMat3x2(), true);
 
