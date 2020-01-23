@@ -57,17 +57,6 @@ void MainViewer::FieldViewer::update()
 			m_frameCount = i;
 		}
 
-		// CellState Capture
-		if (isMouseover() && MouseL.down() && !World::GetInstance()->getCellStates().isEmpty())
-		{
-			auto index = World::GetInstance()->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
-			auto cellState = World::GetInstance()->getCellStates()[index];
-			if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
-			{
-				addChildViewer<CellStateCaptureViewer>(cellState);
-			}
-		}
-
 		// draw
 		World::GetInstance()->draw();
 
@@ -89,14 +78,37 @@ void MainViewer::FieldViewer::update()
 		switch (m_handAction)
 		{
 		case MainViewer::FieldViewer::HandAction::None:
+			if (isMouseover() && MouseL.down() && !World::GetInstance()->getCellStates().isEmpty())
+			{
+				auto index = World::GetInstance()->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
+				auto cellState = World::GetInstance()->getCellStates()[index];
+				if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
+				{
+					addChildViewer<CellStateCaptureViewer>(cellState);
+				}
+			}
 			break;
 		case MainViewer::FieldViewer::HandAction::AddElement:
+			if (isMouseover() && MouseL.pressed())
+			{
+				Circle circle(Cursor::PosF(), 256.0);
+				circle.draw(ColorF(Palette::Green, 0.75));
+
+				for (auto p : step(World::GetInstance()->getTiles().size()))
+				{
+					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
+					if (distance < 256.0)
+					{
+						World::GetInstance()->getTile(p).addElement(Math::Lerp(0.0, 10.0, 1.0 - distance / 256.0));
+					}
+				}
+			}
 			break;
 		case MainViewer::FieldViewer::HandAction::Poison:
 			if (isMouseover() && MouseL.pressed())
 			{
 				Circle circle(Cursor::PosF(), 256.0);
-				circle.draw(ColorF(Palette::Red, 0.5));
+				circle.draw(ColorF(Palette::Purple, 0.75));
 
 				for (const auto& c : World::GetInstance()->getCellStates())
 					if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
@@ -114,6 +126,26 @@ void MainViewer::FieldViewer::update()
 			}
 			break;
 		case MainViewer::FieldViewer::HandAction::Trash:
+			if (isMouseover() && MouseL.pressed())
+			{
+				for (auto p : step(World::GetInstance()->getTiles().size()))
+				{
+					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
+					if (distance < 256.0)
+					{
+						World::GetInstance()->getTile(p).setElement(0.0);
+					}
+				}
+
+				Circle circle(Cursor::PosF(), 256.0);
+				circle.draw(ColorF(Palette::Red, 0.75));
+
+				for (const auto& c : World::GetInstance()->getCellStates())
+					if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+
+				for (const auto& e : World::GetInstance()->getEggStates())
+					if (Circle(e->getPosition(), e->getRadius()).intersects(circle)) e->destroy();
+			}
 			break;
 		default:
 			break;
