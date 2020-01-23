@@ -2,7 +2,7 @@
 
 void MainViewer::CommandPalette::init()
 {
-	setViewerSize(65 * 4 + 5, 70);
+	setViewerSize(65 * 4 + 5, 65 * 2 + 5);
 	setViewerPosInLocal(Scene::Size().x - getViewerSize().x - 20, 20);
 }
 
@@ -53,21 +53,56 @@ void MainViewer::CommandPalette::update()
 		moveDrawPos(65, 0);
 	}
 
-	// Poison
+	// Mode
 	{
-		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
+		setDrawPos(5, 70);
 
-		const bool isPoisonEnabled = fv->m_handAction == FieldViewer::HandAction::Poison;
-
-		m_texturePoison.drawAt(rect.center(), isPoisonEnabled ? Palette::Red : Palette::Gray);
-
-		if (rect.leftClicked())
+		// Hand
 		{
-			if (isPoisonEnabled) fv->m_handAction = FieldViewer::HandAction::None;
-			else fv->m_handAction = FieldViewer::HandAction::Poison;
+			const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+			rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
+
+			m_textureHand.drawAt(rect.center(), fv->m_handAction == FieldViewer::HandAction::None ? Palette::Red : Palette::Gray);
+
+			if (rect.leftClicked()) fv->m_handAction = FieldViewer::HandAction::None;
+
+			moveDrawPos(65, 0);
 		}
 
-		moveDrawPos(65, 0);
+		// AddElement
+		{
+			const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+			rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
+
+			m_textureAddElement.drawAt(rect.center(), fv->m_handAction == FieldViewer::HandAction::AddElement ? Palette::Red : Palette::Gray);
+
+			if (rect.leftClicked()) fv->m_handAction = FieldViewer::HandAction::AddElement;
+
+			moveDrawPos(65, 0);
+		}
+
+		// Poison
+		{
+			const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+			rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
+
+			m_texturePoison.drawAt(rect.center(), fv->m_handAction == FieldViewer::HandAction::Poison ? Palette::Red : Palette::Gray);
+
+			if (rect.leftClicked()) fv->m_handAction = FieldViewer::HandAction::Poison;
+
+			moveDrawPos(65, 0);
+		}
+
+		// Trash
+		{
+			const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+			rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
+
+			m_textureTrashBox.drawAt(rect.center(), fv->m_handAction == FieldViewer::HandAction::Trash ? Palette::Red : Palette::Gray);
+
+			if (rect.leftClicked()) fv->m_handAction = FieldViewer::HandAction::Trash;
+
+			moveDrawPos(65, 0);
+		}
 	}
 }
