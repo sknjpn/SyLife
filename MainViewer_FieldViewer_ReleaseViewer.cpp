@@ -1,4 +1,4 @@
-﻿#include "MainViewer.h"
+﻿	#include "MainViewer.h"
 #include "World.h"
 #include "CellAsset.h"
 #include "CellState.h"
@@ -16,11 +16,10 @@ void MainViewer::FieldViewer::ReleaseViewer::update()
 	auto fv = getParentViewer<FieldViewer>();
 
 	auto t = fv->getCamera().createTransformer();
-	Circle circle(Cursor::PosF(), m_cellAsset->getRadius() * 2.0);
 
-	circle
-		.draw(circle.mouseOver() ? Palette::Orange : Palette::Skyblue)
-		.drawFrame(4.0, Palette::Black);
+	Circle(Cursor::PosF(), m_cellAsset->getRadius() * 2.0)
+		.draw(ColorF(Palette::Orange, 0.5))
+		.drawFrame(3.0, Palette::Black);
 
 	// part
 	{

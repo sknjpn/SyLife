@@ -19,7 +19,7 @@ void MainViewer::FieldViewer::openCellMakingViewer()
 
 void MainViewer::FieldViewer::init()
 {
-	m_camera.setRestrictedRect(Rect(World::GetInstance()->getTileSize()).scaledAt(Vec2::Zero(), World::GetInstance()->getTileLength()));
+	m_camera.setRestrictedRect(RectF(World::GetInstance()->getFieldSize()));
 	m_camera.setMaxScale(4);
 	m_camera.setMinScale(0.1);
 	m_camera.setCenter(m_camera.getRestrictedRect()->center());
@@ -28,8 +28,6 @@ void MainViewer::FieldViewer::init()
 
 void MainViewer::FieldViewer::update()
 {
-	Window::SetTitle(Cursor::PosF());
-
 	// エッジスクロール
 	if (MouseL.pressed() && Cursor::Pos().x < 32) { Rect(32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
 	if (MouseL.pressed() && Cursor::Pos().y < 32) { Rect(Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveU(); }
@@ -59,53 +57,83 @@ void MainViewer::FieldViewer::update()
 			m_frameCount = i;
 		}
 
-		// CellState Capture
-		if (isMouseover() && MouseL.down() && !World::GetInstance()->getCellStates().isEmpty())
-		{
-			auto index = World::GetInstance()->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
-			auto cellState = World::GetInstance()->getCellStates()[index];
-			if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
-			{
-				addChildViewer<CellStateCaptureViewer>(cellState);
-			}
-		}
-
 		// draw
 		World::GetInstance()->draw();
 
-		// HitPoint
-		if (KeyH.pressed())
+		switch (m_handAction)
 		{
-			for (const auto& cellState : World::GetInstance()->getCellStates())
+		case MainViewer::FieldViewer::HandAction::None:
+			if (isMouseover() && MouseL.down() && !World::GetInstance()->getCellStates().isEmpty())
 			{
-				auto pos = cellState->getPosition().movedBy(0, -cellState->getRadius());
-				auto halfLength = cellState->getRadius();
-				auto rate = cellState->getHitPointRate();
-				auto d = halfLength / 8;
-				Line(-halfLength, 0, halfLength, 0).movedBy(pos).draw(d, Palette::Red);
-				Line(-halfLength, 0, -halfLength + (halfLength * 2) * rate, 0).movedBy(pos).draw(d, Palette::Green);
-			}
-		}
-
-		// poison
-		if (isMouseover() && MouseL.pressed() && m_isPoisonEnabled)
-		{
-			Circle circle(Cursor::PosF(), 256.0);
-			circle.draw(ColorF(Palette::Red, 0.5));
-
-			for (const auto& c : World::GetInstance()->getCellStates())
-				if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
-
-			for (const auto& e : World::GetInstance()->getEggStates())
-			{
-				if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
+				auto index = World::GetInstance()->getCellStateKDTree().knnSearch(1, Cursor::PosF()).front();
+				auto cellState = World::GetInstance()->getCellStates()[index];
+				if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 				{
-					e->destroy();
-
-					// Elementの吐き出し
-					World::GetInstance()->getTile(e->getPosition())->addElement(e->getCellAsset()->getMaterial().getElementRecursive());
+					addChildViewer<CellStateCaptureViewer>(cellState);
 				}
 			}
+			break;
+		case MainViewer::FieldViewer::HandAction::AddElement:
+			if (isMouseover() && MouseL.pressed())
+			{
+				Circle circle(Cursor::PosF(), 256.0);
+				circle.draw(ColorF(Palette::Green, 0.75));
+
+				for (auto p : step(World::GetInstance()->getTiles().size()))
+				{
+					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
+					if (distance < 256.0)
+					{
+						World::GetInstance()->getTile(p).addElement(Math::Lerp(0.0, 10.0, 1.0 - distance / 256.0));
+					}
+				}
+			}
+			break;
+		case MainViewer::FieldViewer::HandAction::Poison:
+			if (isMouseover() && MouseL.pressed())
+			{
+				Circle circle(Cursor::PosF(), 256.0);
+				circle.draw(ColorF(Palette::Purple, 0.75));
+
+				for (const auto& c : World::GetInstance()->getCellStates())
+					if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+
+				for (const auto& e : World::GetInstance()->getEggStates())
+				{
+					if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
+					{
+						e->destroy();
+
+						// Elementの吐き出し
+						World::GetInstance()->getTile(e->getPosition()).addElement(e->getCellAsset()->getMaterial().getElementRecursive());
+					}
+				}
+			}
+			break;
+		case MainViewer::FieldViewer::HandAction::Trash:
+			if (isMouseover() && MouseL.pressed())
+			{
+				for (auto p : step(World::GetInstance()->getTiles().size()))
+				{
+					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
+					if (distance < 256.0)
+					{
+						World::GetInstance()->getTile(p).setElement(0.0);
+					}
+				}
+
+				Circle circle(Cursor::PosF(), 256.0);
+				circle.draw(ColorF(Palette::Red, 0.75));
+
+				for (const auto& c : World::GetInstance()->getCellStates())
+					if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
+
+				for (const auto& e : World::GetInstance()->getEggStates())
+					if (Circle(e->getPosition(), e->getRadius()).intersects(circle)) e->destroy();
+			}
+			break;
+		default:
+			break;
 		}
 	}
 

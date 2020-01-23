@@ -5,6 +5,7 @@
 #include "EggState.h"
 #include "TileState.h"
 #include "PartState.h"
+#include <thread>
 
 unique_ptr<World>	World::g_instance;
 
@@ -64,12 +65,7 @@ void World::update()
 	}
 
 	// Tile
-	{
-		for (const auto& tile : m_tiles)
-		{
-			tile->update();
-		}
-	}
+	updateTiles();
 }
 
 void World::save()
@@ -123,9 +119,9 @@ void World::save()
 			eggState->save(writer);
 
 		// Tiles
-		writer << m_tileSize;
+		writer << m_tiles.size();
 		for (const auto& tileState : m_tiles)
-			tileState->save(writer);
+			tileState.save(writer);
 
 		BinaryWriter binWriter(m_filePath + U"field");
 		binWriter.write(writer.getWriter().data(), writer.getWriter().size());
@@ -135,13 +131,12 @@ void World::save()
 void World::initField()
 {
 	// Tiles
-	for (auto point : step(m_tileSize))
-	{
-		m_tiles[point] = MakeShared<TileState>(point);
-		m_tiles[point]->setElement(m_elementPerTile);
-	}
+	for (auto& tile : m_tiles)
+		tile.m_element = m_elementPerTile;
 
 	generateWave();
+
+	initTiles();
 }
 
 void World::loadAssets(const FilePath& directory)
@@ -149,7 +144,7 @@ void World::loadAssets(const FilePath& directory)
 	Array<shared_ptr<Asset>> assets;
 
 	// JSONのパスを取得
-    auto jsonFiles = FileSystem::DirectoryContents(directory, true)
+	auto jsonFiles = FileSystem::DirectoryContents(directory, true)
 		.removed_if([](const auto& dc) { return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json"; });
 
 	// 名前の読み込み(リンクがあるため、Loadの前に名前の登録を行う)
@@ -221,12 +216,12 @@ void World::load()
 			Size tileStateSize;
 			reader >> tileStateSize;
 			m_tiles.resize(tileStateSize);
+			m_tiles_swap.resize(tileStateSize);
 
-			for (auto p : step(m_tiles.size()))
-				m_tiles.at(p) = MakeShared<TileState>(p);
+			for (auto& tileState : m_tiles)
+				tileState.load(reader);
 
-			for (const auto& tileState : m_tiles)
-				tileState->load(reader);
+			initTiles();
 		}
 	}
 }
@@ -259,19 +254,137 @@ bool World::hasAsset(const String& name) const
 	return false;
 }
 
+void World::updateTiles()
+{
+	// Tileの本体からswapにコピー
+	std::memcpy(&m_tiles_swap[0][0], &m_tiles[0][0], m_tiles.size_bytes());
+
+	// SwapのElementリセット
+	for (auto& tile_swap : m_tiles_swap)
+		tile_swap.m_element = 0;
+
+	Array<ConcurrentTask<void>> tasks;
+
+	for (int i = 0; i < m_tileGroups.size(); ++i)
+		//World::updateTileGroup(i);
+		tasks.emplace_back(&World::updateTileGroup, this, i);
+
+	for (auto& t : tasks)
+		while (!t.is_done());
+
+	// Tileのswapから本体にコピー
+	std::memcpy(&m_tiles[0][0], &m_tiles_swap[0][0], m_tiles.size_bytes());
+}
+
+void World::updateTileGroup(int groupIndex)
+{
+	const int xMax = m_tiles.size().x - 1;
+	const int yMax = m_tiles.size().y - 1;
+
+	for (const auto& p : m_tileGroups[groupIndex])
+	{
+		for (int x = 0; x < 3; ++x)
+		{
+			if (p.x == 0 && x == 0) continue;
+			if (p.x == xMax && x == 2) continue;
+
+			for (int y = 0; y < 3; ++y)
+			{
+				if (p.y == 0 && y == 0) continue;
+				if (p.y == yMax && y == 2) continue;
+
+				const auto& fromTile = m_tiles[p.y + y - 1][p.x + x - 1];
+				const auto sendRate = fromTile.m_sendRate[2 - x][2 - y];
+
+				m_tiles_swap[p].addElement(fromTile.getElement() * sendRate);
+			}
+		}
+	}
+}
+
+void World::initTiles()
+{
+	// SendRateの計算
+	for (auto p : step(m_tiles.size()))
+	{
+		auto& tile = m_tiles[p];
+		const Vec2 d = tile.m_waveVelocity * 0.015;
+		const double l = 0.01;
+		const double w = 1.0 + l * 2;
+		const RectF rect = RectF(-l, -l, w, w).movedBy(d);
+		const double area = rect.area();
+
+		// 初期化
+		for (auto p : step(Size(3, 3)))
+			tile.m_sendRate[p.x][p.y] = 0.0;
+
+		// 周囲
+		if (rect.tl().x < 0.0) tile.m_sendRate[0][1] = (-rect.tl().x) * (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)) / area;
+		if (rect.tl().y < 0.0) tile.m_sendRate[1][0] = (-rect.tl().y) * (Min(rect.br().x, 1.0) - Max(rect.tl().x, 0.0)) / area;
+		if (rect.br().x > 1.0) tile.m_sendRate[2][1] = (rect.br().x - 1) * (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)) / area;
+		if (rect.br().y > 1.0) tile.m_sendRate[1][2] = (rect.br().y - 1) * (Min(rect.br().x, 1.0) - Max(rect.tl().x, 0.0)) / area;
+		if (rect.tl().x < 0.0 && rect.tl().y < 0.0) tile.m_sendRate[0][0] = (-rect.tl().x) * (-rect.tl().y) / area;
+		if (rect.tl().x < 0.0 && rect.br().y > 1.0) tile.m_sendRate[0][2] = (-rect.tl().x) * (rect.br().y - 1.0) / area;
+		if (rect.br().x > 1.0 && rect.tl().y < 0.0) tile.m_sendRate[2][0] = (rect.br().x - 1.0) * (-rect.tl().y) / area;
+		if (rect.br().x > 1.0 && rect.br().y > 1.0) tile.m_sendRate[2][2] = (rect.br().x - 1.0) * (rect.br().y - 1.0) / area;
+
+		// 中心
+		tile.m_sendRate[1][1] = 1.0 - tile.m_sendRate[0][0] - tile.m_sendRate[1][0] - tile.m_sendRate[2][0] - tile.m_sendRate[0][1] - tile.m_sendRate[2][1] - tile.m_sendRate[0][2] - tile.m_sendRate[1][2] - tile.m_sendRate[2][2];
+
+		// 存在しないところの分を移動
+		if (p.x == 0)
+		{
+			for (int i = 0; i < 3; ++i)
+			{
+				tile.m_sendRate[1][i] += tile.m_sendRate[0][i];
+				tile.m_sendRate[0][i] = 0;
+			}
+		}
+		if (p.y == 0)
+		{
+			for (int i = 0; i < 3; ++i)
+			{
+				tile.m_sendRate[i][1] += tile.m_sendRate[i][0];
+				tile.m_sendRate[i][0] = 0;
+			}
+		}
+		if (p.x == m_tiles.size().x - 1)
+		{
+			for (int i = 0; i < 3; ++i)
+			{
+				tile.m_sendRate[1][i] += tile.m_sendRate[2][i];
+				tile.m_sendRate[2][i] = 0;
+			}
+		}
+		if (p.y == m_tiles.size().y - 1)
+		{
+			for (int i = 0; i < 3; ++i)
+			{
+				tile.m_sendRate[i][1] += tile.m_sendRate[i][2];
+				tile.m_sendRate[i][2] = 0;
+			}
+		}
+	}
+}
+
 World::World()
 	: m_cellStateKDTree(m_cellStates)
 	, m_eggStateKDTree(m_eggStates)
 {
 	JSONReader json(U"resources/generation.json");
-	m_tileSize = json[U"tileSize"].get<Size>();
 	m_tileLength = json[U"tileLength"].get<double>();
-	m_tiles.resize(m_tileSize);
+	m_tiles.resize(json[U"tileSize"].get<Size>());
+	m_tiles_swap.resize(json[U"tileSize"].get<Size>());
+	m_tileGroups.resize(Max(int(std::thread::hardware_concurrency()), 1));
+
+	for (auto p : step(m_tiles.size()))
+		m_tileGroups[(p.y * m_tiles.size().x + p.x) % m_tileGroups.size()].emplace_back(p);
+
 	m_waveInterval = json[U"waveInterval"].get<double>();
 	m_elementPerTile = json[U"elementPerTile"].get<double>();
 	m_waveVelocityMax = json[U"waveVelocityMax"].get<double>();
 
-	m_fieldSize = m_tileSize * m_tileLength;
+	m_fieldSize = m_tiles.size() * m_tileLength;
 	m_cellStates.reserve(0xFFFF);
 	m_eggStates.reserve(0xFFFF);
 }
@@ -286,7 +399,7 @@ void World::draw()
 		Image image(m_tiles.size());
 
 		for (auto p : step(m_tiles.size()))
-			image[p].r = Min(255, int(m_tiles[p]->getElement() * 2.5));
+			image[p].r = Min(255, int(m_tiles[p].getElement() * 2.5));
 
 		m_tileTexture.fill(image);
 
@@ -314,33 +427,23 @@ const shared_ptr<EggState>& World::addEggState(const shared_ptr<CellAsset>& asse
 	return m_eggStates.emplace_back(make_shared<EggState>(asset));
 }
 
-shared_ptr<TileState> World::getTile(const Point& point) const
-{
-	Point ap = point;
-
-	if (ap.x < 0) ap.x = 0;
-	if (ap.y < 0) ap.y = 0;
-	if (ap.x >= m_tileSize.x) ap.x = m_tileSize.x - 1;
-	if (ap.y >= m_tileSize.y) ap.y = m_tileSize.y - 1;
-
-	return m_tiles[ap];
-}
-
 void World::generateWave()
 {
 	const PerlinNoise perlinNoiseX(Random(0xFFFFFFFF));
 	const PerlinNoise perlinNoiseY(Random(0xFFFFFFFF));
 
-	for (auto& tile : m_tiles)
+	for (auto p : step(m_tiles.size()))
 	{
-		//外的圧力比
-		const double rx = (tile->getPoint().x - m_tileSize.x / 2.0) / (m_tileSize.x / 2.0);
-		const double ry = (tile->getPoint().y - m_tileSize.y / 2.0) / (m_tileSize.y / 2.0);
+		auto& tile = m_tiles[p];
 
-		const auto wx = perlinNoiseX.noise(tile->getCentroid().x / m_waveInterval, tile->getCentroid().y / m_waveInterval);
-		const auto wy = perlinNoiseY.noise(tile->getCentroid().x / m_waveInterval, tile->getCentroid().y / m_waveInterval);
+		//外的圧力比
+		const double rx = (p.x - m_tiles.size().x / 2.0) / (m_tiles.size().x / 2.0);
+		const double ry = (p.y - m_tiles.size().y / 2.0) / (m_tiles.size().y / 2.0);
+
+		const auto wx = perlinNoiseX.noise(m_tileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / m_waveInterval, m_tileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / m_waveInterval);
+		const auto wy = perlinNoiseY.noise(m_tileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / m_waveInterval, m_tileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / m_waveInterval);
 
 		// 最大の長さを1とする
-		tile->setWaveVelocity(Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))), Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) / Math::Sqrt2);
+		tile.m_waveVelocity = Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))), Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) / Math::Sqrt2;
 	}
 }

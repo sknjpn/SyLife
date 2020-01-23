@@ -29,5 +29,6 @@
   },
   "lifespanTime": 25.0,
   "bornTime": 10.0,
-  "yieldTime": 5.0
+  "yieldTime": 5.0,
+  "armor": 1
 }

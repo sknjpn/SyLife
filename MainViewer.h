@@ -65,14 +65,20 @@ class MainViewer : public Viewer
 		void	openCellMakingViewer();
 
 	public:
+		enum class HandAction {
+			None,
+			AddElement,
+			Poison,
+			Trash,
+		} m_handAction;
+
 		bool	m_isHighSpeed = false;
-		bool	m_isPoisonEnabled = false;
 		int		m_frameCount = 0;
 
 		void	init() override;
 		void	update() override;
 
-		void	release(const shared_ptr<CellAsset>& cellAsset) { addChildViewer<ReleaseViewer>(cellAsset); }
+		void	release(const shared_ptr<CellAsset>& cellAsset) { addChildViewer<ReleaseViewer>(cellAsset); m_handAction = HandAction::None; }
 
 		TinyCamera& getCamera() { return m_camera; }
 		const TinyCamera& getCamera() const { return m_camera; }
@@ -83,7 +89,10 @@ class MainViewer : public Viewer
 		Texture	m_textureZoomIn = Texture(Icon(0xf00e, 50));
 		Texture	m_textureZoomOut = Texture(Icon(0xf010, 50));
 		Texture	m_textureFast = Texture(Icon(0xf050, 50));
+		Texture	m_textureHand = Texture(Icon(0xf25a, 50));
 		Texture	m_texturePoison = Texture(Icon(0xf714, 50));
+		Texture m_textureAddElement = Texture(Icon(0xf613, 50));
+		Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 50));
 
 	public:
 		void init() override;

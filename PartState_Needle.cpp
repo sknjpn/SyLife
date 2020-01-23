@@ -3,6 +3,7 @@
 #include "PartConfig.h"
 #include "CellState.h"
 #include "CellAsset.h"
+#include "PartAsset_Nucleus.h"
 #include "World.h"
 
 PartState_Needle::PartState_Needle(const shared_ptr<PartConfig>& partConfig)
@@ -34,7 +35,8 @@ void PartState_Needle::update(CellState& cellState)
 
 			if (!t->isDestroyed() && t->getRadius() > (t->getPosition() - p).length() && t->m_cellAsset != cellState.m_cellAsset)
 			{
-				if (t->addDamage(m_partAsset_Needle->getDamage()))
+				// armor判定
+				if (t->getCellAsset()->getNucleusAsset()->getArmor() <= m_partAsset_Needle->getPenetrating())
 				{
 					t->destroy();
 					cellState.m_storage += t->m_storage;

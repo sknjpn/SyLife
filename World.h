@@ -1,12 +1,11 @@
 ﻿#pragma once
 
-#include "stdafx.h"
+#include "TileState.h"
 
 // State
 class EggState;
 class CellState;
 class PartState;
-class TileState;
 
 // Asset
 class Asset;
@@ -32,7 +31,6 @@ class World
 {
 	Vec2	m_fieldSize;
 
-	Size	m_tileSize;
 	double	m_tileLength;
 
 	DynamicTexture	m_tileTexture;
@@ -42,7 +40,10 @@ class World
 	double	m_waveVelocityMax;
 
 	// State
-	Grid<shared_ptr<TileState>>		m_tiles;
+	Grid<TileState>		m_tiles;
+	Grid<TileState>		m_tiles_swap;
+	Array<Array<Point>>	m_tileGroups;
+
 	Array<shared_ptr<CellState>>	m_cellStates;
 	Array<shared_ptr<EggState>>		m_eggStates;
 	KDTree<ParticleAdapter<CellState>>		m_cellStateKDTree;
@@ -85,6 +86,10 @@ class World
 	}
 	bool	hasAsset(const String& name) const;
 
+	void	updateTiles();
+	void	updateTileGroup(int groupIndex);
+	void	initTiles();
+
 public:
 	World();
 
@@ -95,12 +100,12 @@ public:
 	const KDTree<ParticleAdapter<EggState>>& getEggStateKDTree() const { return m_eggStateKDTree; }
 	const shared_ptr<CellState>& addCellState(const shared_ptr<CellAsset>& asset);
 	const shared_ptr<EggState>& addEggState(const shared_ptr<CellAsset>& asset);
-	Point	getPoint(const Vec2& position) const { return Point(int(position.x / m_tileLength), int(position.y / m_tileLength)); }
-	shared_ptr<TileState> getTile(const Point& point) const;
-	shared_ptr<TileState> getTile(const Vec2& position) const { return getTile(getPoint(position)); }
-	const Grid<shared_ptr<TileState>>& getTiles() const { return m_tiles; }
+	TileState& getTile(const Point& point) { return m_tiles[point]; }
+	const TileState& getTile(const Point& point) const { return m_tiles[point]; }
+	TileState& getTile(const Vec2& position) { return m_tiles[(position / m_tileLength).asPoint()]; }
+	const TileState& getTile(const Vec2& position) const { return m_tiles[(position / m_tileLength).asPoint()]; }
+	const Grid<TileState>& getTiles() const { return m_tiles; }
 	double	getTileLength() const { return m_tileLength; }
-	const Size& getTileSize() const { return m_tileSize; }
 	const Vec2& getFieldSize() const { return m_fieldSize; }
 	void	generateWave();
 
