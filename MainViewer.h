@@ -92,7 +92,7 @@ class MainViewer : public Viewer
 		Texture	m_textureHand = Texture(Icon(0xf25a, 50));
 		Texture	m_texturePoison = Texture(Icon(0xf714, 50));
 		Texture m_textureAddElement = Texture(Icon(0xf613, 50));
-		Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 80));
+		Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 50));
 
 	public:
 		void init() override;
