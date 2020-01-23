@@ -1,6 +1,7 @@
 ﻿{
   "type": "ProteinAsset",
   "name": "Oxygen",
+  "nameJP": "酸素",
   "radius": 4.0,
   "color": "(0, 128, 255, 255)",
   "material": {

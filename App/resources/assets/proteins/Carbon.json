@@ -1,6 +1,7 @@
 ﻿{
   "type": "ProteinAsset",
   "name": "Carbon",
+  "nameJP": "炭素",
   "radius": 3.0,
   "color": "(128, 192, 255, 255)",
   "material": {
