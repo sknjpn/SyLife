@@ -70,7 +70,9 @@ void MainViewer::FieldViewer::update()
 				if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 				{
 					addChildViewer<CellStateCaptureViewer>(cellState);
-					getParentViewer<MainViewer>()->addChildViewer<CellAssetViewer>(cellState->getCellAsset());
+
+					if (!getParentViewer<MainViewer>()->hasChildViewer(cellState->getCellAsset()->getName()))
+						getParentViewer<MainViewer>()->addChildViewer<CellAssetViewer>(cellState->getCellAsset());
 				}
 			}
 			break;
