@@ -65,6 +65,14 @@ public:
 		return false;
 	}
 
+	bool	hasChildViewer(const String& name) const
+	{
+		for (auto it = m_childViewers.begin(); it != m_childViewers.end(); ++it)
+			if ((*it)->m_name == name) return true;
+
+		return false;
+	}
+
 	template <typename T, typename... Args>
 	shared_ptr<T>	addChildViewer(Args&&... args)
 	{
