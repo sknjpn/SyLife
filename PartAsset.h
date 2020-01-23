@@ -16,6 +16,8 @@ protected:
 	Storage	m_material;
 	Shape	m_shape;
 
+	String	m_nameJP;
+
 public:
 	// Get
 	double	getMass() const { return m_mass; }

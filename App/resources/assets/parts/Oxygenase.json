@@ -1,6 +1,7 @@
 ﻿{
   "type": "PartAsset_Synthesizer",
   "name": "Oxygenase",
+  "nameJP": "酸素合成器官",
   "mass": 10.0,
   "layers": [
     {

@@ -1,6 +1,7 @@
 ﻿{
   "type": "PartAsset_Wing",
   "name": "Small_Wing(right)",
+  "nameJP": "小さな羽（右）",
   "mass": 20.0,
   "layers": [
     {

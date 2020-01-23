@@ -1,6 +1,7 @@
 ﻿{
   "type": "PartAsset_Wing",
   "name": "Big_Wing(right)",
+  "nameJP": "大きな羽(右)",
   "mass": 40.0,
   "layers": [
     {
@@ -40,5 +41,5 @@
     ]
   },
   "isRight": true,
-  "strength": 10000,
+  "strength": 10000
 }

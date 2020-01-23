@@ -16,6 +16,8 @@ void PartAsset::load(const JSONValue& json)
 {
 	Asset::load(json);
 
+	m_nameJP = json[U"name"].getString();
+
 	// mass
 	m_mass = json[U"mass"].get<double>();
 
@@ -29,6 +31,8 @@ void PartAsset::load(const JSONValue& json)
 void PartAsset::save(JSONWriter& json) const
 {
 	Asset::save(json);
+
+	json.key(U"nameJP").write(m_nameJP);
 
 	// mass
 	json.key(U"mass").write(m_mass);
