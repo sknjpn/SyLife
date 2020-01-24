@@ -1,4 +1,5 @@
 ﻿#include "MainViewer.h"
+#include "GUIMusicBox.h"
 #include "GUIButton.h"
 
 void MainViewer::openCellMakingViewer()
@@ -17,6 +18,8 @@ void MainViewer::init()
 	addChildViewer<StatisticsViewer>();
 
 	addChildViewer<CommandPalette>();
+
+	addChildViewer<GUIMusicBox>(U"resources/music/かみさまのゆりかご.mp3", 1.0);
 }
 
 void MainViewer::update()
