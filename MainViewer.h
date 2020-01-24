@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 #include "DraggableViewer.h"
 #include "CellAsset.h"
 
@@ -13,7 +13,7 @@ class CellAsset;
 class CellState;
 class PartConfig;
 
-class MainViewer : public Viewer
+class MainViewer : public EasyViewer
 {
 	class CellAssetViewer : public DraggableViewer
 	{
@@ -40,9 +40,9 @@ class MainViewer : public Viewer
 		void	update() override;
 	};
 
-	class CellBook : public Viewer
+	class CellBook : public EasyViewer
 	{
-		class Item : public Viewer
+		class Item : public EasyViewer
 		{
 			shared_ptr<CellAsset> m_cellAsset;
 
@@ -60,10 +60,10 @@ class MainViewer : public Viewer
 		void	update() override;
 	};
 
-	class FieldViewer : public Viewer
+	class FieldViewer : public EasyViewer
 	{
 		class CellStateCaptureViewer
-			: public Viewer
+			: public EasyViewer
 		{
 			shared_ptr<CellState> m_cellState;
 
@@ -74,7 +74,7 @@ class MainViewer : public Viewer
 		};
 
 		class ReleaseViewer
-			: public Viewer
+			: public EasyViewer
 		{
 			shared_ptr<CellAsset>	m_cellAsset;
 
@@ -110,7 +110,7 @@ class MainViewer : public Viewer
 		const TinyCamera& getCamera() const { return m_camera; }
 	};
 
-	class CommandPalette : public Viewer
+	class CommandPalette : public EasyViewer
 	{
 		Texture	m_textureZoomIn = Texture(Icon(0xf00e, 50));
 		Texture	m_textureZoomOut = Texture(Icon(0xf010, 50));
@@ -156,11 +156,11 @@ class MainViewer : public Viewer
 		void	takeLog();
 	};
 
-	class CellMakingViewer : public Viewer
+	class CellMakingViewer : public EasyViewer
 	{
-		class BodySculptor : public Viewer
+		class BodySculptor : public EasyViewer
 		{
-			class Workspace : public Viewer
+			class Workspace : public EasyViewer
 			{
 				shared_ptr<PartAsset_Body>	m_bodyAsset;
 
@@ -180,9 +180,9 @@ class MainViewer : public Viewer
 			};
 
 		public:
-			class LayerLists : public Viewer
+			class LayerLists : public EasyViewer
 			{
-				class Item : public Viewer
+				class Item : public EasyViewer
 				{
 					Texture	m_circleTexture;
 					Texture	m_barTexture;
@@ -237,12 +237,12 @@ class MainViewer : public Viewer
 			double	getStampRadius() const;
 		};
 
-		class PartsAssembler : public Viewer
+		class PartsAssembler : public EasyViewer
 		{
 		public:
-			class Workspace : public Viewer
+			class Workspace : public EasyViewer
 			{
-				class TrashBox : public Viewer
+				class TrashBox : public EasyViewer
 				{
 					bool	m_isSelected = false;
 					Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 80));
@@ -282,7 +282,7 @@ class MainViewer : public Viewer
 				void	setRotateMode();
 			};
 
-			class PartList : public Viewer
+			class PartList : public EasyViewer
 			{
 				double	m_itemHeight = 80;
 				shared_ptr<PartAsset>	m_selectedPart;
@@ -305,7 +305,7 @@ class MainViewer : public Viewer
 			void	update() override;
 		};
 
-		class CellInfo : public Viewer
+		class CellInfo : public EasyViewer
 		{
 			TextEditState	m_textEditState_name;
 

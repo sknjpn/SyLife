@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class GUIText :
-	public Viewer
+	public EasyViewer
 {
 public:
 	String	m_text;

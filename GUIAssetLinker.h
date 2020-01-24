@@ -1,18 +1,18 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class Asset;
 
 class GUIAssetLinker 
-	: public Viewer
+	: public EasyViewer
 {
 	shared_ptr<Asset>	m_asset;
 	function<void(const shared_ptr<Asset>&)>	m_functionOnChanged;
 	
 public:
 	class Dragger
-		: public Viewer
+		: public EasyViewer
 	{
 		shared_ptr<Asset>	m_asset;
 

@@ -367,7 +367,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainViewer.cpp" />
@@ -514,7 +513,6 @@
     <ClInclude Include="MainViewer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TinyCamera.h" />
-    <ClInclude Include="Viewer.h" />
     <ClInclude Include="GUIAssetLinker.h">
       <Filter>GUI</Filter>
     </ClInclude>
@@ -624,5 +622,6 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="TitleViewer.h" />
+    <ClInclude Include="EasyViewer.h" />
   </ItemGroup>
 </Project>

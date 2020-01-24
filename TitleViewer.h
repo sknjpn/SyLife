@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class TitleViewer
-	: public Viewer
+	: public EasyViewer
 {
 	class Bubble
 	{

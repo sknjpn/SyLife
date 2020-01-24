@@ -295,7 +295,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
-    <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -339,7 +338,7 @@
     <ClInclude Include="Storage.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
-    <ClInclude Include="Viewer.h" />
+    <ClInclude Include="EasyViewer.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

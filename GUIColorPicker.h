@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class GUIColorPicker :
-	public Viewer
+	public EasyViewer
 {
 	HSV		m_color;
 	bool	m_isGrabbed = false;

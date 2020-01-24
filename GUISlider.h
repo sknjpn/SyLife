@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class GUISlider
-	: public Viewer
+	: public EasyViewer
 {
 	bool	m_isGrabbed = false;
 	double	m_grabbedPos;

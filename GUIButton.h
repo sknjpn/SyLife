@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class GUIButton :
-	public Viewer
+	public EasyViewer
 {
 	bool	m_isGrabbed = false;
 	bool	m_isSelected = false;

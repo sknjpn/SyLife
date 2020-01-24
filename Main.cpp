@@ -19,8 +19,8 @@ void Main()
 		World::GetInstance()->setName(U"New World");
 	}
 
-	Viewer::GetRootViewer()->addChildViewer<MainViewer>();
-	Viewer::Run();
+	EasyViewer::GetRootViewer()->addChildViewer<MainViewer>();
+	EasyViewer::Run();
 
 	World::GetInstance()->save();
 }

@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class GUITextBox :
-	public Viewer
+	public EasyViewer
 {
 	TextEditState	m_textEditState;
 	function<void(const String&)>	m_functionOnChanged;
