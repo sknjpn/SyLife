@@ -18,6 +18,7 @@ public:
 	{
 		m_audio.setLoop(true);
 		m_audio.setVolume(volume);
+		m_audio.play();
 	}
 
 	void init() override
