@@ -2,14 +2,11 @@
 #include "CurtainViewer.h"
 #include "MainViewer.h"
 #include "GUIButton.h"
+#include "GUIMusicBox.h"
 #include "World.h"
 
 TitleViewer::TitleViewer()
-	: m_audio(U"resources/music/天のきざはし.mp3")
 {
-	m_audio.setLoop(true);
-	m_audio.play();
-
 	for (int i = 0; i < 2000; ++i) UpdateBubbles();
 }
 
@@ -90,6 +87,8 @@ void TitleViewer::runContinue()
 
 void TitleViewer::init()
 {
+	addChildViewer<GUIMusicBox>(U"resources/music/天のきざはし.mp3", 1.0);
+
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
 	addChildViewer<GUIButton>(U"はじめから", [this]() { runNew(); })->setViewerRectInLocal(p.movedBy(0, 0));
