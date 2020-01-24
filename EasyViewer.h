@@ -218,8 +218,8 @@ public:
 	std::shared_ptr<EasyViewer>	setViewerRectInLocal(double w, double h) { m_viewerRectInLocal = RectF(w, h); return shared_from_this(); }
 	std::shared_ptr<EasyViewer>	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); return shared_from_this(); }
 	std::shared_ptr<EasyViewer>	setName(const String& name) { m_name = name; return shared_from_this(); }
-	void	mouseoverEnable() { m_mouseoverEnabled = true; }
-	void	mouseoverDisable() { m_mouseoverEnabled = false; }
+	std::shared_ptr<EasyViewer>	mouseoverEnable() { m_mouseoverEnabled = true; }
+	std::shared_ptr<EasyViewer>	mouseoverDisable() { m_mouseoverEnabled = false; }
 
 	Optional<Rect>	getViewport() const
 	{
