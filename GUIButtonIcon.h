@@ -53,10 +53,10 @@ public:
 		m_color = m_color.lerp(getTargetColor(), 0.25);
 
 		// 背景
-		rect.rounded(d).draw(m_color).drawFrame(frameThickness, 0.0, Palette::Black);
+		rect.rounded(5).draw(m_color).drawFrame(1.0, 0.0, Palette::Black);
 
 		// Icon描画
-		m_texture.drawAt(getViewerSize() / 2.0);
+		m_texture.drawAt(getViewerSize() / 2.0, Palette::Black);
 	}
 
 	void	setIsEnabled(bool isEnabled)
