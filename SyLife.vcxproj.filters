@@ -604,5 +604,8 @@
     <ClInclude Include="GUIMusicBox.h">
       <Filter>GUI</Filter>
     </ClInclude>
+    <ClInclude Include="GUIButtonIcon.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
