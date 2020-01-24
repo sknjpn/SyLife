@@ -76,6 +76,8 @@ void TitleViewer::runContinue()
 	}
 	else
 	{
+		FileSystem::Remove(U"world/");
+
 		World::Make();
 		World::GetInstance()->setName(U"New World");
 	}
