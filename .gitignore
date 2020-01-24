@@ -272,3 +272,4 @@ build/
 Siv3D_App
 .DS_Store
 SyLife.app/
+config.ini
