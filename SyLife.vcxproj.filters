@@ -624,5 +624,6 @@
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="EasyViewer.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="CurtainViewer.h" />
   </ItemGroup>
 </Project>
