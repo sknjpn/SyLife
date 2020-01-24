@@ -9,11 +9,11 @@ void MainViewer::StatisticsViewer::update()
 {
 	DraggableViewer::update();
 
-	RectF(getViewerSize()).rounded(16).draw(Palette::Gray).drawFrame(2.0, 0.0, Palette::Black);
+	RectF(getViewerSize()).rounded(5).draw(Palette::Gray).drawFrame(1.0, 0.0, Palette::Black);
 
-	RectF(getViewerSize()).stretched(-20).draw(Palette::Black);
+	RectF(getViewerSize()).stretched(-5).draw(Palette::Black);
 
-	moveDrawPos(20, 20);
+	moveDrawPos(10, 10);
 
 	// Logの表示
 	{
@@ -44,15 +44,11 @@ void MainViewer::StatisticsViewer::update()
 			moveDrawPos(double(l.m_statuses.size() - m_statusesSizeMax), 0.0);
 		}
 	}
-
-	setDrawPos(0, 0);
-	if (isMouseover())
-		RectF(getViewerSize()).rounded(16).draw(ColorF(1.0, 0.25));
 }
 
 void MainViewer::StatisticsViewer::init()
 {
-	setViewerRectInLocal(50, 1080 - 150, m_statusesSizeMax + 40, 140);
+	setViewerRectInLocal(50, 1080 - 150, m_statusesSizeMax + 20, 120);
 }
 
 void MainViewer::StatisticsViewer::takeLog()
