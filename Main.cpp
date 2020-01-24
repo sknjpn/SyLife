@@ -13,7 +13,8 @@ void Main()
 	// Window設定
 	if (ini.getOr<bool>(U"General", U"FullScreen", false))
 	{
-		Window::SetFullscreen(true);
+		if (Window::SetFullscreen(true))
+			Window::Maximize();
 	}
 	else
 	{
