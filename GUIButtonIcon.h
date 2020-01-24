@@ -29,13 +29,11 @@ public:
 		, m_isEnabled(isEnabled)
 	{}
 
-	void	setIcon(uint32 code) { m_code = code; m_texture = Texture(Icon(m_code, getViewerSize().x * 0.75)); }
+	void	setIcon(uint32 code) { m_code = code; m_texture = Texture(Icon(m_code, int(getViewerSize().x * 0.75))); }
 
 	void	init() override { m_color = getTargetColor(); setIcon(m_code); }
 	void	update() override
 	{
-		static const Font font(128, Typeface::Bold);
-
 		const RectF rect(getViewerSize());
 		const double d = rect.h / 3.0;
 		const double frameThickness = rect.h / 12;
