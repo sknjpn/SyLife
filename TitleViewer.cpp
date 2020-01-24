@@ -6,7 +6,6 @@
 TitleViewer::TitleViewer()
 	: m_audio(U"resources/music/world.mp3")
 {
-	setViewerRectInLocal(Scene::Size());
 	m_audio.setLoop(true);
 	m_audio.play();
 
