@@ -36,8 +36,13 @@ void MainViewer::CellMakingViewer::openPartsAssembler()
 
 void MainViewer::CellMakingViewer::release()
 {
+	m_cellAsset->setCentroidAsOrigin();
+	m_cellAsset->updateProperties();
+
 	getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
 	getParentViewer()->getChildViewer<CellBook>()->addItem(m_cellAsset);
+
+	getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
 
 	destroy();
 }
