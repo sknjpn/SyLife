@@ -19,7 +19,9 @@ void MainViewer::init()
 
 	addChildViewer<CommandPalette>();
 
-	addChildViewer<GUIMusicBox>(U"resources/music/かみさまのゆりかご.mp3");
+	INIData ini(U"config.ini");
+	if (ini.getOr<bool>(U"General", U"BGM", true))
+		addChildViewer<GUIMusicBox>(U"resources/music/かみさまのゆりかご.mp3");
 }
 
 void MainViewer::update()

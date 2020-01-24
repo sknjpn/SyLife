@@ -80,14 +80,16 @@ void TitleViewer::runContinue()
 		World::GetInstance()->setName(U"New World");
 	}
 
-	getParentViewer()->addChildViewer<MainViewer>(); 
-	
+	getParentViewer()->addChildViewer<MainViewer>();
+
 	destroy();
 }
 
 void TitleViewer::init()
 {
-	addChildViewer<GUIMusicBox>(U"resources/music/天のきざはし.mp3");
+	INIData ini(U"config.ini");
+	if (ini.getOr<bool>(U"General", U"BGM", true))
+		addChildViewer<GUIMusicBox>(U"resources/music/天のきざはし.mp3");
 
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
