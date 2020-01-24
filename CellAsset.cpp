@@ -53,6 +53,16 @@ void CellAsset::updateMass()
 	m_mass = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [](double mass, const auto& p) { return mass + p->getPartAsset()->getMass(); });
 }
 
+void CellAsset::updateDrawRadius()
+{
+	m_drawRadius = 0.0;
+
+	for (const auto& partConfig : m_partConfigs)
+		for (const auto& layer : partConfig->getPartAsset()->getShape())
+			for (const auto& p : layer.m_polygon.rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).outer())
+				m_drawRadius = Max(m_drawRadius, p.length());
+}
+
 void CellAsset::updateInertia()
 {
 	auto centroid = getCentroid();
@@ -106,6 +116,8 @@ void CellAsset::updateProperties()
 
 	// radius
 	updateRadius();
+
+	updateDrawRadius();
 
 	// material
 	updateMaterial();

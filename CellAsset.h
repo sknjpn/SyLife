@@ -18,6 +18,7 @@ class CellAsset
 	double	m_mass;
 	double	m_radius;
 	double	m_inertia;
+	double	m_drawRadius;
 
 	// timer
 	double	m_lifespanTime;	// 寿命
@@ -28,6 +29,7 @@ class CellAsset
 
 	void	updateMass();
 	void	updateRadius() { m_radius = sqrt(2 * m_inertia / m_mass); }
+	void	updateDrawRadius();
 	void	updateInertia();
 	void	updateMaxStorage();
 	void	updateMaterial();
@@ -46,6 +48,7 @@ public:
 	const Storage& getMaxStorage() const { return m_maxStorage; }
 	double	getMass() const { return m_mass; }
 	double	getRadius() const { return m_radius; }
+	double	getDrawRadius() const { return m_drawRadius; }
 	double	getInertia() const { return m_inertia; }
 	const Array<shared_ptr<PartConfig>>& getPartConfigs() const { return m_partConfigs; }
 	double	getLifespanTime() const { return m_lifespanTime; }
