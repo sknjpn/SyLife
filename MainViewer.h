@@ -81,6 +81,7 @@ class MainViewer : public EasyViewer
 		public:
 			ReleaseViewer(const shared_ptr<CellAsset>& cellAsset);
 
+			void	init() override;
 			void	update() override;
 
 			bool	isReleased() const { return !m_cellAsset; }

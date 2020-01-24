@@ -1,4 +1,4 @@
-﻿	#include "MainViewer.h"
+﻿#include "MainViewer.h"
 #include "World.h"
 #include "CellAsset.h"
 #include "CellState.h"
@@ -7,6 +7,11 @@
 
 MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
+{
+
+}
+
+void MainViewer::FieldViewer::ReleaseViewer::init()
 {
 	setBackgroundColor(Color(0, 0));
 }
