@@ -1,0 +1,27 @@
+﻿{
+  "type": "CellAsset",
+  "name": "asset_4",
+  "nameJP": "スタウラストラム",
+  "parts": [
+    {
+      "asset": "asset_5",
+      "position": "(5.19786, -7.67063)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Nucleus",
+      "position": "(5.19786, -7.67063)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Plumagenase",
+      "position": "(2.21114, 8.39131)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Spinagenase",
+      "position": "(-10.26674, -8.59984)",
+      "rotation": 0.0
+    }
+  ]
+}
