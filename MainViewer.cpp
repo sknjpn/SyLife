@@ -19,7 +19,7 @@ void MainViewer::init()
 
 	addChildViewer<CommandPalette>();
 
-	addChildViewer<GUIMusicBox>(U"resources/music/かみさまのゆりかご.mp3", 1.0);
+	addChildViewer<GUIMusicBox>(U"resources/music/かみさまのゆりかご.mp3");
 }
 
 void MainViewer::update()

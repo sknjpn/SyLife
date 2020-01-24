@@ -87,7 +87,7 @@ void TitleViewer::runContinue()
 
 void TitleViewer::init()
 {
-	addChildViewer<GUIMusicBox>(U"resources/music/天のきざはし.mp3", 1.0);
+	addChildViewer<GUIMusicBox>(U"resources/music/天のきざはし.mp3");
 
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 

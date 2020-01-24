@@ -32,12 +32,14 @@ class GUIMusicBox : public EasyViewer
 	}
 
 public:
-	GUIMusicBox(const FilePath& path, double volume)
+	GUIMusicBox(const FilePath& path)
 		: m_audio(path)
-		, m_volume(volume)
 	{
+		INIData ini(U"config.ini");
+		m_volume = ini.getOr<double>(U"General", U"MusicVolume", 1.0);
+
 		m_audio.setLoop(true);
-		m_audio.setVolume(volume);
+		m_audio.setVolume(m_volume);
 		m_audio.play();
 	}
 
@@ -52,8 +54,8 @@ public:
 
 		addChildViewer<GUIValuer>(m_volume)
 			->setViewerRectInLocal(5, 60, 50, 10);
-	}
 
+	}
 
 	void update() override
 	{
@@ -66,6 +68,12 @@ public:
 			if (m_volume != getChildViewer<GUIValuer>()->getValue())
 			{
 				m_volume = getChildViewer<GUIValuer>()->getValue();
+
+				{
+					INIData ini(U"config.ini");
+					ini.write(U"General", U"MusicVolume", m_volume);
+					ini.save(U"config.ini");
+				}
 
 				if (m_volume > 0.5) getChildViewer<GUIButtonIcon>()->setIcon(0xf028);
 				else getChildViewer<GUIButtonIcon>()->setIcon(0xf027);
