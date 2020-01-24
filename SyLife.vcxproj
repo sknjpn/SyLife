@@ -247,14 +247,6 @@
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="ProteinAsset.cpp" />
-    <ClCompile Include="GUIAssetLinker.cpp" />
-    <ClCompile Include="GUIAssetLinker_Dragger.cpp" />
-    <ClCompile Include="GUIButton.cpp" />
-    <ClCompile Include="GUIChecker.cpp" />
-    <ClCompile Include="GUIColorPicker.cpp" />
-    <ClCompile Include="GUISlider.cpp" />
-    <ClCompile Include="GUIText.cpp" />
-    <ClCompile Include="GUITextBox.cpp" />
     <ClCompile Include="GUIValuer.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />

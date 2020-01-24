@@ -383,30 +383,6 @@
     <ClCompile Include="MainViewer_FieldViewer_CellStateCaptureViewer.cpp" />
     <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp" />
     <ClCompile Include="MainViewer_StatisticsViewer.cpp" />
-    <ClCompile Include="GUIAssetLinker.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIAssetLinker_Dragger.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIButton.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIChecker.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIColorPicker.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUISlider.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIText.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUITextBox.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
     <ClCompile Include="GUIValuer.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
