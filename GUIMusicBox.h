@@ -5,9 +5,9 @@
 
 class GUIMusicBox : public EasyViewer
 {
-	Texture	m_textureVolume_mute = Texture(Icon(0xf6a9, 30));
-	Texture	m_textureVolume_max = Texture(Icon(0xf028, 30));
-	Texture	m_textureVolume_min = Texture(Icon(0xf027, 30));
+	Texture	m_textureVolume_mute = Texture(Icon(0xf6a9, 40));
+	Texture	m_textureVolume_max = Texture(Icon(0xf028, 40));
+	Texture	m_textureVolume_min = Texture(Icon(0xf027, 40));
 	Audio	m_audio;
 	double	m_volume;
 
@@ -23,19 +23,21 @@ public:
 
 	void init() override
 	{
-		setViewerRectInLocal(20, 20, 40, 50);
+		setViewerRectInLocal(20, 20, 60, 75);
 
 		addChildViewer<GUIValuer>(m_volume)
-			->setViewerRectInLocal(0, 40, 40, 10);
+			->setViewerRectInLocal(0, 60, 60, 15);
 	}
 
 
 	void update() override
 	{
+		RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(1.0, 0.0, Palette::Black);
+
 		m_volume = getChildViewer<GUIValuer>()->getValue();
 
 		m_audio.setVolume(m_volume);
 
-		m_textureVolume_max.drawAt(getViewerSize() / 2.0);
+		m_textureVolume_max.drawAt(30, 30, Palette::Black);
 	}
 };
