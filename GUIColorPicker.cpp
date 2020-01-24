@@ -1,5 +1,4 @@
-﻿#include "stdafx.h"
-#include "GUIColorPicker.h"
+﻿#include "GUIColorPicker.h"
 
 void GUIColorPicker::update()
 {

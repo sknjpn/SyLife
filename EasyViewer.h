@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <Siv3D.hpp>
+#include "common.h"
 
 class EasyViewer
 	: public std::enable_shared_from_this<EasyViewer>
