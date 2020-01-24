@@ -1,13 +1,25 @@
 ﻿#include "MainViewer.h"
+#include "TitleViewer.h"
 #include "World.h"
 
 void Main()
 {
+	INIData ini(U"config.ini");
+
 	Window::SetTitle(U"SyLife");
 	Window::SetStyle(WindowStyle::Sizable);
 	Scene::Resize(1920, 1080);
-	Window::Maximize();
-	//Window::SetFullscreen(true);
+
+	// Window設定
+	if (ini.getOr<bool>(U"General", U"FullScreen", false))
+	{
+		Window::SetFullscreen(true);
+	}
+	else
+	{
+		Window::Maximize();
+	}
+
 	// world生成
 	if (FileSystem::Exists(U"world/"))
 	{
@@ -19,7 +31,15 @@ void Main()
 		World::GetInstance()->setName(U"New World");
 	}
 
-	EasyViewer::GetRootViewer()->addChildViewer<MainViewer>();
+	if (ini.getOr<bool>(U"General", U"RunTitle", true))
+	{
+		EasyViewer::GetRootViewer()->addChildViewer<TitleViewer>();
+	}
+	else
+	{
+		EasyViewer::GetRootViewer()->addChildViewer<MainViewer>();
+	}
+
 	EasyViewer::Run();
 
 	World::GetInstance()->save();
