@@ -62,7 +62,7 @@ void MainViewer::CellAssetViewer::update()
 			.draw(ColorF(0.2))
 			.drawFrame(2.0, 0.0, Palette::Black);
 
-		auto t = Transformer2D(Mat3x2::Scale(0.75 * size / 2.0 / m_cellAsset->getRadius()).translated(size / 2.0, size / 2.0));
+		auto t = Transformer2D(Mat3x2::Scale(0.9 * size / 2.0 / m_cellAsset->getDrawRadius()).translated(size / 2.0, size / 2.0));
 		m_cellAsset->draw();
 	}
 

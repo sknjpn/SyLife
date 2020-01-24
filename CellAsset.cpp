@@ -58,9 +58,15 @@ void CellAsset::updateDrawRadius()
 	m_drawRadius = 0.0;
 
 	for (const auto& partConfig : m_partConfigs)
+	{
 		for (const auto& layer : partConfig->getPartAsset()->getShape())
-			for (const auto& p : layer.m_polygon.rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).outer())
+		{
+			auto polygon = layer.m_polygon.rotated(partConfig->getRotation()).movedBy(partConfig->getPosition());
+
+			for (auto p : polygon.outer())
 				m_drawRadius = Max(m_drawRadius, p.length());
+		}
+	}
 }
 
 void CellAsset::updateInertia()
@@ -70,7 +76,7 @@ void CellAsset::updateInertia()
 	m_inertia = accumulate(m_partConfigs.begin(), m_partConfigs.end(), 0.0, [&centroid](double acc, const auto& partConfig) {
 		auto id = (partConfig->getCentroid() - centroid).lengthSq() * partConfig->getPartAsset()->getMass();
 		auto is = partConfig->getPartAsset()->getShape().getInertia(partConfig->getPartAsset()->getMass());
-		
+
 		return acc + id + is;
 		});
 }
