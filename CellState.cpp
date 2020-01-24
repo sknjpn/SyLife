@@ -69,6 +69,28 @@ void CellState::updateCell()
 		m_yieldTimer += DeltaTime;
 	}
 
+	// 余剰分の吐き出し
+	{
+		for (const auto& protein : m_storage.getProteinList())
+		{
+			int max = m_cellAsset->getMaxStorage().numProtein(protein.first);
+			if (max < protein.second)
+			{
+				m_storage.addElement(protein.first->getMaterial().getElementRecursive() * (protein.second - max));
+				m_storage.pullProtein(protein.first, protein.second - max);
+			}
+		}
+		if (m_storage.getElement() > m_cellAsset->getMaxStorage().getElement())
+		{
+			double delta = m_storage.getElement() - m_cellAsset->getMaxStorage().getElement();
+
+			// Elementの吐き出し
+			World::GetInstance()->getTile(getPosition()).addElement(delta);
+			m_storage.pullElement(delta);
+		}
+
+	}
+
 	// 死亡処理
 	if ((m_deathTimer -= DeltaTime) <= 0.0)
 	{
@@ -120,7 +142,7 @@ void CellState::load(Deserializer<ByteArray>& reader)
 	reader >> m_startTimer;
 	reader >> m_deathTimer;
 	reader >> m_yieldTimer;
-	
+
 	m_storage.load(reader);
 
 	{
@@ -151,7 +173,7 @@ void CellState::save(Serializer<MemoryWriter>& writer) const
 	writer << m_yieldTimer;
 
 	m_storage.save(writer);
-	
+
 	writer << m_cellAsset->getName();
 
 	for (const auto& partState : m_partStates)
