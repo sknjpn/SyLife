@@ -44,8 +44,10 @@ public:
 	{
 		setViewerRectInLocal(20, 20, 60, 75);
 
-		addChildViewer<GUIButtonIcon>(0xf028, [this]() { onClicked(); })
+		addChildViewer<GUIButtonIcon>([this]() { onClicked(); })
 			->setViewerRectInLocal(5, 5, 50, 50);
+
+		getChildViewer<GUIButtonIcon>()->setIcon(0xf028);
 
 		addChildViewer<GUIValuer>(m_volume)
 			->setViewerRectInLocal(5, 60, 50, 10);

@@ -19,15 +19,14 @@ class GUIButtonIcon :
 	}
 
 public:
-	GUIButtonIcon(uint32 code, bool isEnabled = true)
-		: m_code(code)
-		, m_isEnabled(isEnabled)
+	GUIButtonIcon(bool isEnabled = true)
+		: m_isEnabled(isEnabled)
 	{}
-	GUIButtonIcon(uint32 code, function<void(void)> functionOnSelected, bool isEnabled = true)
-		: m_code(code)
-		, m_functionOnSelected(functionOnSelected)
-		, m_isEnabled(isEnabled)
-	{}
+	GUIButtonIcon(function<void(void)> functionOnSelected, bool isEnabled = true)
+		: GUIButtonIcon(isEnabled)
+	{
+		m_functionOnSelected = functionOnSelected;
+	}
 
 	void	setIcon(uint32 code) { m_code = code; m_texture = Texture(Icon(m_code, int(getViewerSize().x * 0.75))); }
 
