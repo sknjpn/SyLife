@@ -337,5 +337,7 @@ class MainViewer : public EasyViewer
 public:
 	void	init() override;
 	void	update() override;
+
+	void	addCellAssetViewer(const shared_ptr<CellAsset>& cellAsset);
 };
 

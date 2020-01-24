@@ -23,3 +23,12 @@ void MainViewer::update()
 {
 
 }
+
+void MainViewer::addCellAssetViewer(const shared_ptr<CellAsset>& cellAsset)
+{
+	if (!hasChildViewer(cellAsset->getName()))
+	{
+		addChildViewer<CellAssetViewer>(cellAsset)
+			->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
+	}
+}
