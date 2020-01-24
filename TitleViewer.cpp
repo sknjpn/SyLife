@@ -4,7 +4,7 @@
 #include "GUIButton.h"
 
 TitleViewer::TitleViewer()
-	: m_audio(U"resources/music/world.mp3")
+	: m_audio(U"resources/music/天のきざはし.mp3")
 {
 	m_audio.setLoop(true);
 	m_audio.play();
