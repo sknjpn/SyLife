@@ -6,9 +6,6 @@
 
 class GUIMusicBox : public EasyViewer
 {
-	Texture	m_textureVolume_mute = Texture(Icon(0xf6a9, 40));
-	Texture	m_textureVolume_max = Texture(Icon(0xf028, 40));
-	Texture	m_textureVolume_min = Texture(Icon(0xf027, 40));
 	Audio	m_audio;
 	double	m_volume;
 	bool	m_isEnabled = true;
@@ -84,7 +81,5 @@ public:
 			m_audio.setVolume(0.0);
 			getChildViewer<GUIValuer>()->setValue(0.0);
 		}
-
-		m_textureVolume_max.drawAt(30, 30, Palette::Black);
 	}
 };
