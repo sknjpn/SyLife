@@ -7,6 +7,8 @@ void DraggableViewer::update()
 		m_isGrabbed = true;
 		m_grabbedPos = Cursor::PosF();
 		m_deltaPos = Vec2::Zero();
+
+		moveToFront();
 	}
 
 	if (MouseL.up()) m_isGrabbed = false;

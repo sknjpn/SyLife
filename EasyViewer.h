@@ -7,6 +7,7 @@ class EasyViewer
 {
 	bool	m_mouseoverEnabled = true;
 	bool	m_isDestroyed = false;
+	bool	m_moveToFrontReserved = false;
 	Vec2	m_drawPos = Vec2::Zero();
 	RectF	m_viewerRectInLocal = RectF(Scene::Size());
 	Color	m_backgroundColor = Color(0, 0);
@@ -50,6 +51,14 @@ class EasyViewer
 		// 長さが変わる可能性があるのでintで管理
 		for (int i = 0; i < m_childViewers.size(); ++i)
 			m_childViewers[i]->process();
+
+		const auto childs = m_childViewers.filter([](const auto& viewer) { return viewer->m_moveToFrontReserved; });
+		for (const auto& child : childs)
+		{
+			m_childViewers.remove(child);
+			m_childViewers.emplace_back(child);
+			child->m_moveToFrontReserved = false;
+		}
 	}
 
 	void	removeDeadViewer()
@@ -277,6 +286,8 @@ public:
 	const Vec2& getViewerSize() const { return m_viewerRectInLocal.size; }
 	const Vec2& getDrawPos() const { return m_drawPos; }
 	const String& getName() const { return m_name; }
+
+	void	moveToFront() { m_moveToFrontReserved = true; }
 
 	virtual void	init() {}
 	virtual void	update() {}
