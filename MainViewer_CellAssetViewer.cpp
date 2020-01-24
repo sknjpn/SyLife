@@ -26,7 +26,6 @@ void MainViewer::CellAssetViewer::init()
 
 	// close
 	addChildViewer<GUIButton>(U"✖", [this]() { destroy(); })
-		->mouseoverDisable()
 		->setViewerRectInLocal(450, 5, 40, 40);
 }
 
