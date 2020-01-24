@@ -1,7 +1,7 @@
 ﻿{
   "type": "PartAsset_Synthesizer",
-  "name": "Carbonase",
-  "nameJP": "炭素合成器官",
+  "name": "Plumagenase",
+  "nameJP": "プルマゲナーゼ",
   "mass": 10.0,
   "layers": [
     {
@@ -19,7 +19,7 @@
       }
     },
     {
-      "color": "(128, 192, 255, 255)",
+      "color": "(0, 0, 192, 255)",
       "polygon": {
         "outer": [
           "(9, 5)",
@@ -32,7 +32,7 @@
       }
     },
     {
-      "color": "(128, 192, 255, 255)",
+      "color": "(0, 0, 192, 255)",
       "polygon": {
         "outer": [
           "(-1, 1)",
@@ -50,11 +50,11 @@
     "element": 10.0,
     "proteins": [
       {
-        "name": "Carbon",
+        "name": "Plumagen",
         "size": 1
       }
     ]
   },
-  "export": "Carbon",
+  "export": "Plumagen",
   "productTime": 2.0
 }

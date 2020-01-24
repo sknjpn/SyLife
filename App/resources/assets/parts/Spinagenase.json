@@ -1,7 +1,7 @@
 ﻿{
   "type": "PartAsset_Synthesizer",
-  "name": "Oxygenase",
-  "nameJP": "酸素合成器官",
+  "name": "Spinagenase",
+  "nameJP": "スピナゲナーゼ",
   "mass": 10.0,
   "layers": [
     {
@@ -19,7 +19,7 @@
       }
     },
     {
-      "color": "(0, 0, 192, 255)",
+      "color": "(128, 192, 255, 255)",
       "polygon": {
         "outer": [
           "(9, 5)",
@@ -32,7 +32,7 @@
       }
     },
     {
-      "color": "(0, 0, 192, 255)",
+      "color": "(128, 192, 255, 255)",
       "polygon": {
         "outer": [
           "(-1, 1)",
@@ -50,11 +50,11 @@
     "element": 10.0,
     "proteins": [
       {
-        "name": "Oxygen",
+        "name": "Spinagen",
         "size": 1
       }
     ]
   },
-  "export": "Oxygen",
+  "export": "Spinagen",
   "productTime": 2.0
 }
