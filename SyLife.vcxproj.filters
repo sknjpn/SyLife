@@ -367,7 +367,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainViewer.cpp" />
@@ -384,30 +383,6 @@
     <ClCompile Include="MainViewer_FieldViewer_CellStateCaptureViewer.cpp" />
     <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp" />
     <ClCompile Include="MainViewer_StatisticsViewer.cpp" />
-    <ClCompile Include="GUIAssetLinker.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIAssetLinker_Dragger.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIButton.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIChecker.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIColorPicker.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUISlider.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUIText.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="GUITextBox.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
     <ClCompile Include="GUIValuer.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
@@ -503,13 +478,17 @@
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
+    <ClCompile Include="MainViewer_CellStateViewer.cpp" />
+    <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
+    <ClCompile Include="CellAsset_Log.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraggableViewer.h" />
     <ClInclude Include="MainViewer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TinyCamera.h" />
-    <ClInclude Include="Viewer.h" />
     <ClInclude Include="GUIAssetLinker.h">
       <Filter>GUI</Filter>
     </ClInclude>
@@ -619,5 +598,14 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="TitleViewer.h" />
+    <ClInclude Include="EasyViewer.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="CurtainViewer.h" />
+    <ClInclude Include="GUIMusicBox.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIButtonIcon.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

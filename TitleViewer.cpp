@@ -1,17 +1,12 @@
-﻿/*#include "TitleViewer.h"
-#include "EditorViewer.h"
-#include "GUIButton.h"
+﻿#include "TitleViewer.h"
 #include "CurtainViewer.h"
-#include "WorldGenerateViewer.h"
-#include "WorldLoadViewer.h"
+#include "MainViewer.h"
+#include "GUIButton.h"
+#include "GUIMusicBox.h"
+#include "World.h"
 
 TitleViewer::TitleViewer()
-	: m_audio(U"resources/music/world.mp3")
 {
-	setViewerRectInLocal(Scene::Size());
-	m_audio.setLoop(true);
-	m_audio.play();
-
 	for (int i = 0; i < 2000; ++i) UpdateBubbles();
 }
 
@@ -62,18 +57,51 @@ void TitleViewer::drawBubbles()
 	}
 }
 
+void TitleViewer::runNew()
+{
+	World::Make();
+	World::GetInstance()->setName(U"New World");
+
+	getParentViewer()->addChildViewer<MainViewer>();
+
+	destroy();
+}
+
+void TitleViewer::runContinue()
+{
+	// world生成
+	if (FileSystem::Exists(U"world/"))
+	{
+		World::Load(U"world/");
+	}
+	else
+	{
+		FileSystem::Remove(U"world/");
+
+		World::Make();
+		World::GetInstance()->setName(U"New World");
+	}
+
+	getParentViewer()->addChildViewer<MainViewer>();
+
+	destroy();
+}
+
 void TitleViewer::init()
 {
+	INIData ini(U"config.ini");
+	if (ini.getOr<bool>(U"General", U"BGM", true))
+		addChildViewer<GUIMusicBox>(U"resources/music/天のきざはし.mp3");
+
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
-	const auto f1 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<WorldGenerateViewer>(); destroy(); }); };
-	addChildViewer<GUIButton>(U"はじめから", f1)->setViewerRectInLocal(p.movedBy(0, 0));
+	addChildViewer<GUIButton>(U"はじめから", [this]() { runNew(); })->setViewerRectInLocal(p.movedBy(0, 0));
 
-	const auto f2 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<WorldLoadViewer>(); destroy(); }); };
-	addChildViewer<GUIButton>(U"つづきから", f2)->setViewerRectInLocal(p.movedBy(0, 75));
+	addChildViewer<GUIButton>(U"つづきから", [this]() { runContinue(); }, FileSystem::Exists(U"world/"))->setViewerRectInLocal(p.movedBy(0, 75));
 
-	const auto f3 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };
-	addChildViewer<GUIButton>(U"エディター", f3)->setViewerRectInLocal(p.movedBy(0, 150));
+	//const auto f3 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };
+	//addChildViewer<GUIButton>(U"エディター", f3)->setViewerRectInLocal(p.movedBy(0, 150));
+	addChildViewer<GUIButton>(U"エディター", false)->setViewerRectInLocal(p.movedBy(0, 150));
 
 	const auto f4 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); };
 	addChildViewer<GUIButton>(U"終了", f4)->setViewerRectInLocal(p.movedBy(0, 225));
@@ -109,4 +137,3 @@ void TitleViewer::update()
 		drawBubbles();
 	}
 }
-*/

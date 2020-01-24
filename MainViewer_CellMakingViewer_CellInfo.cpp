@@ -3,68 +3,119 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "ProteinAsset.h"
+#include "PartAsset_Synthesizer.h"
+#include "PartAsset_Nucleus.h"
+#include "PartAsset_Needle.h"
 
 void MainViewer::CellMakingViewer::CellInfo::init()
 {
-	m_textEditState_name.text = getParentViewer<CellMakingViewer>()->getCellAsset()->getName();
+	m_textEditState_name.text = getParentViewer<CellMakingViewer>()->getCellAsset()->getNameJP();
 }
 
 void MainViewer::CellMakingViewer::CellInfo::update()
 {
+	RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);
+
 	const auto& cellAsset = getParentViewer<CellMakingViewer>()->getCellAsset();
 
 	moveDrawPos(5, 5);
 
 	// Name
 	{
-		static Font font(24);
-
-		//font(cellAsset->getName()).drawAt(Vec2(95, 20));
-
-		SimpleGUI::TextBox(m_textEditState_name, Vec2::Zero(), 190);
+		SimpleGUI::TextBox(m_textEditState_name, Vec2::Zero(), 280);
 
 		moveDrawPos(0, 40);
 	}
 
-	// Release
+	// material
 	{
-		const RectF rect = Rect(200, 200).stretched(-5);
-		const double r = rect.size.x / 2.0;
+		static Font font(16, Typeface::Default);
 
-		Circle(rect.size / 2.0, r)
-			.draw(Palette::Skyblue)
-			.drawFrame(2.0, 0.0, Palette::Black);
-
-		// part
+		// Proteins
+		font(U"この生き物を作るのに必要なもの").draw(Vec2::Zero(), Palette::Black);
+		moveDrawPos(0, 20);
 		{
-			auto t1 = Transformer2D(Mat3x2::Translate(-cellAsset->getCentroid()).scaled(r / cellAsset->getRadius() / 2.0).translated(rect.center()));
+			moveDrawPos(8, 0);
+
+			font(U"エレメント(緑色で広がっているもの)").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+			{
+				moveDrawPos(8, 0);
+				font(ToString(int(cellAsset->getMaterial().getElement())) + U"elm").draw(Vec2::Zero(), Palette::Black);
+				moveDrawPos(0, 30);
+				moveDrawPos(-8, 0);
+			}
+
+			font(U"プロテイン(合成器官で出来るもの)").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+			{
+				moveDrawPos(8, 0);
+				for (const auto& protein : cellAsset->getMaterial().getProteinList())
+				{
+					bool canMakeSelf = false;
+					for (const auto& partConfig : cellAsset->getPartConfigs())
+						if (auto synthesizer = dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+							if (synthesizer->getExport() == protein.first) { canMakeSelf = true; break; }
+
+					if (canMakeSelf) font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れます)").draw(Vec2::Zero(), Palette::Black);
+					else font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れません)").draw(Vec2::Zero(), Palette::Red);
+
+					moveDrawPos(0, 20);
+				}
+				moveDrawPos(0, 10);
+				moveDrawPos(-8, 0);
+			}
+
+			moveDrawPos(-8, 0);
+		}
+
+		font(U"この生き物が作れるプロテイン").draw(Vec2::Zero(), Palette::Black);
+		moveDrawPos(0, 20);
+		{
+			moveDrawPos(8, 0);
 
 			for (const auto& partConfig : cellAsset->getPartConfigs())
 			{
-				auto t2 = Transformer2D(partConfig->getMat3x2());
-
-				partConfig->getPartAsset()->getShape().draw(0.5);
-				partConfig->getPartAsset()->getShape().getPolygon().drawFrame(2.0, Palette::Black);
+				if (auto synthesizer = dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+				{
+					font(synthesizer->getExport()->getNameJP(), int(synthesizer->getProductTime()), U"秒ごとに").draw(Vec2::Zero(), Palette::Black);
+					moveDrawPos(0, 20);
+				}
 			}
+			moveDrawPos(0, 10);
+
+			moveDrawPos(-8, 0);
 		}
 
-		moveDrawPos(0, 200);
-	}
-
-	// material
-	{
-		static Font font(16, Typeface::Bold);
-
-		// Element
-		font(U"Element: " + ToString(cellAsset->getMaterial().getElement())).draw(Vec2::Zero(), Palette::Black);
+		font(U"この生き物の特性").draw(Vec2::Zero(), Palette::Black);
 		moveDrawPos(0, 20);
-
-		// Proteins
-		for (const auto& protein : cellAsset->getMaterial().getProteinList())
 		{
-			font(protein.first->getName() + U": " + ToString(protein.second) + U"U").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(8, 0);
 
+			font(U"孵化までの時間", int(cellAsset->getNucleusAsset()->getBornTime()), U"秒").draw(Vec2::Zero(), Palette::Black);
 			moveDrawPos(0, 20);
+
+			font(U"産卵までの時間", int(cellAsset->getNucleusAsset()->getYieldTime()), U"秒").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+
+			font(U"寿命:", int(cellAsset->getNucleusAsset()->getLifespanTime()), U"秒").draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+
+			font(U"硬さ:", int(cellAsset->getNucleusAsset()->getArmor())).draw(Vec2::Zero(), Palette::Black);
+			moveDrawPos(0, 20);
+
+			{
+				int penetrating = 0;
+
+				for (const auto& partConfig : cellAsset->getPartConfigs())
+					if (auto needle = dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+						penetrating = Max(penetrating, needle->getPenetrating());
+
+				font(U"トゲの貫通力:", penetrating).draw(Vec2::Zero(), Palette::Black);
+				moveDrawPos(0, 20);
+			}
+
+			moveDrawPos(-8, 0);
 		}
 	}
 }

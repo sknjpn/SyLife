@@ -231,8 +231,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="CellAsset_Log.cpp" />
+    <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
     <ClCompile Include="MainViewer_CellBook.cpp" />
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
+    <ClCompile Include="MainViewer_CellStateViewer.cpp" />
     <ClCompile Include="PartAsset_Eye.cpp" />
     <ClCompile Include="PartState_Eye.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
@@ -244,14 +247,6 @@
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="ProteinAsset.cpp" />
-    <ClCompile Include="GUIAssetLinker.cpp" />
-    <ClCompile Include="GUIAssetLinker_Dragger.cpp" />
-    <ClCompile Include="GUIButton.cpp" />
-    <ClCompile Include="GUIChecker.cpp" />
-    <ClCompile Include="GUIColorPicker.cpp" />
-    <ClCompile Include="GUISlider.cpp" />
-    <ClCompile Include="GUIText.cpp" />
-    <ClCompile Include="GUITextBox.cpp" />
     <ClCompile Include="GUIValuer.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -292,13 +287,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Storage.cpp" />
-    <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="CurtainViewer.h" />
+    <ClInclude Include="GUIButtonIcon.h" />
+    <ClInclude Include="GUIMusicBox.h" />
     <ClInclude Include="PartAsset_Eye.h" />
     <ClInclude Include="PartState_Eye.h" />
     <ClInclude Include="TileState.h" />
@@ -336,7 +334,7 @@
     <ClInclude Include="Storage.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="TitleViewer.h" />
-    <ClInclude Include="Viewer.h" />
+    <ClInclude Include="EasyViewer.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class TitleViewer
-	: public Viewer
+	: public EasyViewer
 {
 	class Bubble
 	{
@@ -12,8 +12,6 @@ class TitleViewer
 		double	m_timer = 0.0;
 	};
 
-	Audio	m_audio;
-
 	Array<Bubble>	m_bubbles;
 
 public:
@@ -21,6 +19,9 @@ public:
 
 	void	UpdateBubbles();
 	void	drawBubbles();
+
+	void	runNew();
+	void	runContinue();
 
 	void	init() override;
 	void	update() override;

@@ -36,8 +36,13 @@ void MainViewer::CellMakingViewer::openPartsAssembler()
 
 void MainViewer::CellMakingViewer::release()
 {
+	m_cellAsset->setCentroidAsOrigin();
+	m_cellAsset->updateProperties();
+
 	getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
 	getParentViewer()->getChildViewer<CellBook>()->addItem(m_cellAsset);
+
+	getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
 
 	destroy();
 }
@@ -48,25 +53,25 @@ void MainViewer::CellMakingViewer::init()
 	makeAsset();
 
 	// DrawRectの設定
-	setViewerRectInLocal(RectF(1400, 800).setCenter(Scene::CenterF()));
+	setViewerRectInLocal(RectF(1500, 800).setCenter(Scene::CenterF()));
 
 	addChildViewer<GUIButton>(U"ボディ編集", [this]() { openBodySculptor(); })
 		->setName(U"EditBody")
-		->setViewerRectInLocal(5, 5, 190, 35);
+		->setViewerRectInLocal(5, 5, 290, 35);
 
 	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
 		->setName(U"EditPart")
-		->setViewerRectInLocal(5, 45, 190, 35);
+		->setViewerRectInLocal(5, 45, 290, 35);
 
 	addChildViewer<GUIButton>(U"生き物配置", [this]() { release(); }, false)
 		->setName(U"生き物配置")
-		->setViewerRectInLocal(5, 85, 190, 35);
+		->setViewerRectInLocal(5, 85, 290, 35);
 
 	addChildViewer<GUIButton>(U"閉じる", [this]() { destroy(); })
-		->setViewerRectInLocal(5, 125, 190, 35);
+		->setViewerRectInLocal(5, 125, 290, 35);
 
 	addChildViewer<CellInfo>()
-		->setViewerRectInLocal(0, 165, 200, 595);
+		->setViewerRectInLocal(5, 165, 290, 595);
 
 	openBodySculptor();
 }
@@ -93,7 +98,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 	{
 		TextReader textReader(U"resources/names.txt");
 
-		m_cellAsset->setName(textReader.readAll().split_lines().choice());
+		m_cellAsset->setNameJP(textReader.readAll().split_lines().choice());
 	}
 
 	// Bodyの設定
@@ -105,7 +110,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 		bodyAsset->getMaterial().setElement(1.0);
 		auto& l = bodyAsset->getShape().emplace_back();
 		l.m_color = Palette::White;
-		l.m_polygon = Circle(15.0).asPolygon();
+		l.m_polygon = Circle(15.0).asPolygon().simplified(0.5);
 	}
 
 	// Nucleusの設定

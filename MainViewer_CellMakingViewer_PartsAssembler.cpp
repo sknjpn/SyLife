@@ -3,7 +3,7 @@
 
 void MainViewer::CellMakingViewer::PartsAssembler::init()
 {
-	setViewerRectInLocal(200, 0, 1200, 800);
+	setViewerRectInLocal(300, 0, 1200, 800);
 
 	addChildViewer<Workspace>()
 		->setCellAsset(getParentViewer<CellMakingViewer>()->getCellAsset());
@@ -12,11 +12,11 @@ void MainViewer::CellMakingViewer::PartsAssembler::init()
 
 	addChildViewer<GUIButton>(U"移動モード", [this]() { getChildViewer<Workspace>()->setMoveMode(); }, false)
 		->setName(U"移動モード")
-		->setViewerRectInLocal(5, 80, 190, 30);
+		->setViewerRectInLocal(5, 5, 190, 30);
 
 	addChildViewer<GUIButton>(U"回転モード", [this]() { getChildViewer<Workspace>()->setRotateMode(); })
 		->setName(U"回転モード")
-		->setViewerRectInLocal(5, 120, 190, 30);
+		->setViewerRectInLocal(5, 45, 190, 30);
 
 }
 

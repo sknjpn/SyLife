@@ -68,7 +68,7 @@ void MainViewer::CellMakingViewer::BodySculptor::LayerLists::update()
 			item->setSelected(true);
 			item->setViewerSize(170, m_itemHeight);
 
-			m_selectedIndex = getChildViewers<Item>().size() - 1;
+			m_selectedIndex = int(getChildViewers<Item>().size() - 1);
 		}
 	}
 }

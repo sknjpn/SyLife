@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "stdafx.h"
+#include "common.h"
 
 class PartConfig;
 class CellState;

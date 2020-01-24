@@ -80,7 +80,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 
 		if (m_state == State::RotateMode)
 		{
-			const auto t = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
+			const auto t2 = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
 
 			if (!Cursor::PreviousPosF().isZero() && !Cursor::PosF().isZero()) m_deltaRotation += Cursor::PreviousPosF().getAngle(Cursor::PosF());
 		}
@@ -94,7 +94,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 			if (dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) continue;
 			if (dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset())) continue;
 
-			auto t = Transformer2D(partConfig->getMat3x2(), true);
+			auto t2 = Transformer2D(partConfig->getMat3x2(), true);
 
 			if (partConfig->getPartAsset()->getShape().getPolygon().mouseOver())
 			{
@@ -113,7 +113,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 		if (isMouseover())
 		{
 			{
-				auto t = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
+				auto t2 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
 				selectedPart->getShape().draw(0.5);
 			}

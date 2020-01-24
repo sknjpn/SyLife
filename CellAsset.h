@@ -18,6 +18,7 @@ class CellAsset
 	double	m_mass;
 	double	m_radius;
 	double	m_inertia;
+	double	m_drawRadius;
 
 	// timer
 	double	m_lifespanTime;	// 寿命
@@ -28,6 +29,7 @@ class CellAsset
 
 	void	updateMass();
 	void	updateRadius() { m_radius = sqrt(2 * m_inertia / m_mass); }
+	void	updateDrawRadius();
 	void	updateInertia();
 	void	updateMaxStorage();
 	void	updateMaterial();
@@ -46,6 +48,7 @@ public:
 	const Storage& getMaxStorage() const { return m_maxStorage; }
 	double	getMass() const { return m_mass; }
 	double	getRadius() const { return m_radius; }
+	double	getDrawRadius() const { return m_drawRadius; }
 	double	getInertia() const { return m_inertia; }
 	const Array<shared_ptr<PartConfig>>& getPartConfigs() const { return m_partConfigs; }
 	double	getLifespanTime() const { return m_lifespanTime; }
@@ -55,17 +58,6 @@ public:
 
 	// Add
 	shared_ptr<PartConfig>& addPartConfig();
-
-	template <typename T>
-	Array<shared_ptr<T>>	getPartConfigs() const
-	{
-		Array<shared_ptr<T>> tModels;
-
-		for (auto it = m_partConfigs.begin(); it != m_partConfigs.end(); ++it)
-			if (dynamic_pointer_cast<T>(*it) != nullptr) tModels.emplace_back(dynamic_pointer_cast<T>(*it));
-
-		return tModels;
-	}
 
 	void	updateProperties();
 
@@ -81,4 +73,24 @@ public:
 
 	// TypeName
 	String	getTypeName() override { return U"CellAsset"; }
+
+	class Log
+	{
+	public:
+		class Status
+		{
+		public:
+			int	m_numCell;
+			int m_numEgg;
+
+			Status(int numCell, int numEgg)
+				: m_numCell(numCell)
+				, m_numEgg(numEgg)
+			{}
+		};
+
+		Array<Status> m_statuses;
+
+		void update(const shared_ptr<CellAsset>& cellAsset);
+	} m_log;
 };

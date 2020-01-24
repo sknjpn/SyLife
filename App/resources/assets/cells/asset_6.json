@@ -1,0 +1,47 @@
+﻿{
+  "type": "CellAsset",
+  "name": "asset_6",
+  "nameJP": "ユミケイソウ",
+  "parts": [
+    {
+      "asset": "asset_7",
+      "position": "(-0.56467, 3.83512)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Wing(left)",
+      "position": "(-13.37439, 5.02981)",
+      "rotation": -0.21899292658950068
+    },
+    {
+      "asset": "Small_Wing(right)",
+      "position": "(15.56366, 8.48113)",
+      "rotation": 0.4002719711094692
+    },
+    {
+      "asset": "Needle",
+      "position": "(-0.10007, -10.36842)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Needle",
+      "position": "(-6.47174, -5.58966)",
+      "rotation": -0.3818626185263406
+    },
+    {
+      "asset": "Needle",
+      "position": "(7.33355, -4.26223)",
+      "rotation": 0.39633271939681766
+    },
+    {
+      "asset": "Plumagenase",
+      "position": "(-1.693, 40.60503)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Nucleus",
+      "position": "(-0.56467, 3.83512)",
+      "rotation": 0.0
+    }
+  ]
+}

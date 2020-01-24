@@ -124,6 +124,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::attach(const Polygon& polygon)
 {
 	getSelectedLayer().m_polygon.append(polygon);
+	getSelectedLayer().m_polygon = getSelectedLayer().m_polygon.simplified(0.5);
 }
 
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::detach(const Polygon& polygon)
@@ -139,5 +140,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::detach(const Polygon
 
 		getSelectedLayer().m_polygon = polygons[maxIndex];
 	}
+
+	getSelectedLayer().m_polygon = getSelectedLayer().m_polygon.simplified(0.5);
 }
 

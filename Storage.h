@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Model.h"
-#include "Viewer.h"
+#include "EasyViewer.h"
 
 class ProteinAsset;
 

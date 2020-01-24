@@ -35,11 +35,11 @@
     "element": 40.0,
     "proteins": [
       {
-        "name": "Oxygen",
+        "name": "Plumagen",
         "size": 2
       },
       {
-        "name": "Carbon",
+        "name": "Spinagen",
         "size": 2
       }
     ]

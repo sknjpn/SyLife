@@ -40,6 +40,7 @@ void MainViewer::FieldViewer::update()
 		auto t = m_camera.createTransformer();
 
 		// update
+		int numUpdate = 0;
 		{
 			auto maxConut = m_isHighSpeed ? 100 : 1;
 			Stopwatch sw(true);
@@ -50,6 +51,8 @@ void MainViewer::FieldViewer::update()
 
 				getParentViewer()->
 					getChildViewer<StatisticsViewer>()->takeLog();
+
+				numUpdate++;
 
 				// 60FPSを保つ動作
 				if (sw.ms() > 15) break;
@@ -70,6 +73,7 @@ void MainViewer::FieldViewer::update()
 				if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 				{
 					addChildViewer<CellStateCaptureViewer>(cellState);
+					getParentViewer<MainViewer>()->addCellAssetViewer(cellState->getCellAsset());
 				}
 			}
 			break;
@@ -84,7 +88,7 @@ void MainViewer::FieldViewer::update()
 					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
 					if (distance < 256.0)
 					{
-						World::GetInstance()->getTile(p).addElement(Math::Lerp(0.0, 10.0, 1.0 - distance / 256.0));
+						World::GetInstance()->getTile(p).addElement(Math::Lerp(0.0, 10.0 * numUpdate, 1.0 - distance / 256.0));
 					}
 				}
 			}
