@@ -20,27 +20,28 @@ void Main()
 		Window::Maximize();
 	}
 
-	// world生成
-	if (FileSystem::Exists(U"world/"))
-	{
-		World::Load(U"world/");
-	}
-	else
-	{
-		World::Make();
-		World::GetInstance()->setName(U"New World");
-	}
-
 	if (ini.getOr<bool>(U"General", U"RunTitle", true))
 	{
 		EasyViewer::GetRootViewer()->addChildViewer<TitleViewer>();
 	}
 	else
 	{
+		// world生成
+		if (FileSystem::Exists(U"world/"))
+		{
+			World::Load(U"world/");
+		}
+		else
+		{
+			World::Make();
+			World::GetInstance()->setName(U"New World");
+		}
+
 		EasyViewer::GetRootViewer()->addChildViewer<MainViewer>();
 	}
 
 	EasyViewer::Run();
 
-	World::GetInstance()->save();
+	if (World::GetInstance())
+		World::GetInstance()->save();
 }

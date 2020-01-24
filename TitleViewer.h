@@ -22,6 +22,9 @@ public:
 	void	UpdateBubbles();
 	void	drawBubbles();
 
+	void	runNew();
+	void	runContinue();
+
 	void	init() override;
 	void	update() override;
 };
