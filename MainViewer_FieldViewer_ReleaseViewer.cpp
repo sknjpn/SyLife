@@ -13,6 +13,7 @@ MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset
 
 void MainViewer::FieldViewer::ReleaseViewer::init()
 {
+	mouseoverDisable();
 	setBackgroundColor(Color(0, 0));
 }
 
@@ -42,14 +43,17 @@ void MainViewer::FieldViewer::ReleaseViewer::update()
 	// Release
 	if (MouseL.up())
 	{
-		// CellAssetのリセット
-		m_cellAsset->setCentroidAsOrigin();
+		if (getParentViewer()->isMouseover())
+		{
+			// CellAssetのリセット
+			m_cellAsset->setCentroidAsOrigin();
 
-		// 新規Cell
-		const auto& c = World::GetInstance()->addCellState(m_cellAsset);
-		c->setPosition(Cursor::PosF());
-		c->setVelocity(Vec2::Zero());
-		c->init();
+			// 新規Cell
+			const auto& c = World::GetInstance()->addCellState(m_cellAsset);
+			c->setPosition(Cursor::PosF());
+			c->setVelocity(Vec2::Zero());
+			c->init();
+		}
 
 		destroy();
 	}

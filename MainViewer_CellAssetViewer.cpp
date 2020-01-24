@@ -21,10 +21,12 @@ void MainViewer::CellAssetViewer::init()
 
 	// name
 	addChildViewer<GUIText>(m_cellAsset->getNameJP(), Font(24, Typeface::Heavy), GUIText::Mode::DrawLeftCenter)
+		->mouseoverDisable()
 		->setViewerRectInLocal(5, 5, 400, 40);
 
 	// close
 	addChildViewer<GUIButton>(U"✖", [this]() { destroy(); })
+		->mouseoverDisable()
 		->setViewerRectInLocal(450, 5, 40, 40);
 }
 
