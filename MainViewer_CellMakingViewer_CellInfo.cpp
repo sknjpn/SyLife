@@ -41,7 +41,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 			moveDrawPos(0, 20);
 			{
 				moveDrawPos(8, 0);
-				font(ToString(int(cellAsset->getMaterial().getElement())) + U"mL").draw(Vec2::Zero(), Palette::Black);
+				font(ToString(int(cellAsset->getMaterial().getElement())) + U"elm").draw(Vec2::Zero(), Palette::Black);
 				moveDrawPos(0, 30);
 				moveDrawPos(-8, 0);
 			}
@@ -52,7 +52,14 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 				moveDrawPos(8, 0);
 				for (const auto& protein : cellAsset->getMaterial().getProteinList())
 				{
-					font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個").draw(Vec2::Zero(), Palette::Black);
+					bool canMakeSelf = false;
+					for (const auto& partConfig : cellAsset->getPartConfigs())
+						if (auto synthesizer = dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+							if (synthesizer->getExport() == protein.first) { canMakeSelf = true; break; }
+
+					if (canMakeSelf) font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れます)").draw(Vec2::Zero(), Palette::Black);
+					else font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れません)").draw(Vec2::Zero(), Palette::Red);
+
 					moveDrawPos(0, 20);
 				}
 				moveDrawPos(0, 10);
@@ -71,7 +78,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 			{
 				if (auto synthesizer = dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
 				{
-					font(synthesizer->getExport()->getNameJP()).draw(Vec2::Zero(), Palette::Black);
+					font(synthesizer->getExport()->getNameJP(), int(synthesizer->getProductTime()), U"秒ごとに").draw(Vec2::Zero(), Palette::Black);
 					moveDrawPos(0, 20);
 				}
 			}
