@@ -42,7 +42,7 @@ void MainViewer::CellMakingViewer::release()
 	getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
 	getParentViewer()->getChildViewer<CellBook>()->addItem(m_cellAsset);
 
-	getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
+	//getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
 
 	destroy();
 }
