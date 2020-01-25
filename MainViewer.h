@@ -76,7 +76,8 @@ class MainViewer : public EasyViewer
 		public:
 			CellStateCaptureViewer(const std::shared_ptr<CellState>& cellState);
 
-			void	update();
+			void	init() override;
+			void	update() override;
 		};
 
 		class ReleaseViewer

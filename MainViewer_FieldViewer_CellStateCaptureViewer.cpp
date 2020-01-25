@@ -7,6 +7,11 @@ MainViewer::FieldViewer::CellStateCaptureViewer::CellStateCaptureViewer(const st
 	
 }
 
+void MainViewer::FieldViewer::CellStateCaptureViewer::init()
+{
+	mouseoverDisable();
+}
+
 void MainViewer::FieldViewer::CellStateCaptureViewer::update()
 {
 	if (MouseL.up() || m_cellState->isDestroyed())
