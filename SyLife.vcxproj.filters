@@ -86,9 +86,6 @@
     <Filter Include="Resource Files\example\font\LogoTypeGothic">
       <UniqueIdentifier>{b3586a98-5569-49e1-b9d6-cd80cf76ce9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI">
-      <UniqueIdentifier>{e52e91a6-c002-407f-ae66-34a977dda222}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine">
       <UniqueIdentifier>{c29918de-4991-40ee-a527-3af23916600a}</UniqueIdentifier>
     </Filter>
@@ -97,6 +94,12 @@
     </Filter>
     <Filter Include="Engine\World">
       <UniqueIdentifier>{68944e25-73b7-4252-a6bb-9c7424590c73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EasyViewer">
+      <UniqueIdentifier>{801539df-d40e-4426-9024-3aadd5d50446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EasyViewer\GUI">
+      <UniqueIdentifier>{e52e91a6-c002-407f-ae66-34a977dda222}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -384,7 +387,7 @@
     <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp" />
     <ClCompile Include="MainViewer_StatisticsViewer.cpp" />
     <ClCompile Include="GUIValuer.cpp">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClCompile>
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_LayerLists_Item.cpp" />
     <ClCompile Include="Rigidbody.cpp">
@@ -490,28 +493,28 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="GUIAssetLinker.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIButton.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIChecker.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIColorPicker.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUISlider.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIText.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUITextBox.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIValuer.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
       <Filter>Engine\Util</Filter>
@@ -598,14 +601,18 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="TitleViewer.h" />
-    <ClInclude Include="EasyViewer.h" />
     <ClInclude Include="common.h" />
-    <ClInclude Include="CurtainViewer.h" />
     <ClInclude Include="GUIMusicBox.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIButtonIcon.h">
-      <Filter>GUI</Filter>
+      <Filter>EasyViewer\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyViewer.h">
+      <Filter>EasyViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="CurtainViewer.h">
+      <Filter>EasyViewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
