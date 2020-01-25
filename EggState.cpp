@@ -10,7 +10,7 @@ EggState::EggState(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 	, m_timer(m_cellAsset->getBornTime())
 {
-	setRadius(1.5 * cellAsset->getRadius() / 2.0);
+	setRadius(cellAsset->getRadius() / 2.0);
 	setMass(cellAsset->getMass() / 4.0);
 	setInertia(getMass() * getRadius() * getRadius() / 2.0);
 }
@@ -34,11 +34,16 @@ void EggState::draw()
 {
 	const double stage = 1.0 - m_timer / m_cellAsset->getBornTime();
 
-	Circle(getPosition(), getRadius()).draw(ColorF(Palette::Lightblue, 0.5 * Clamp(2.0 - stage * 2.0, 0.0, 1.0)));
+	{
+		const auto t1 = Transformer2D(getMat3x2());
+		const auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2, 0.2, 1.0)));
+
+		Circle(getRadius()).draw(ColorF(Palette::Lightblue, 0.4 * Clamp(2.0 - stage * 2.0, 0.0, 1.0)));
+	}
 
 	{
 		const auto t1 = Transformer2D(getMat3x2());
-		const auto t2 = Transformer2D(Mat3x2::Scale(0.5 * Clamp(stage * 2, 0.0, 1.0)));
+		const auto t2 = Transformer2D(Mat3x2::Scale(0.5 * Clamp(stage * 2, 0.2, 1.0)));
 
 		for (const auto& partConfig : m_cellAsset->getPartConfigs())
 		{
