@@ -1,0 +1,42 @@
+﻿{
+  "type": "CellAsset",
+  "name": "asset_2",
+  "nameJP": "ウロネマ",
+  "parts": [
+    {
+      "asset": "asset_3",
+      "position": "(0.02977, -9.16728)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Nucleus",
+      "position": "(0.02977, -9.16728)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Wing(left)",
+      "position": "(-19.22023, -14.66728)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Wing(right)",
+      "position": "(18.27977, -16.41728)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Plumagenase",
+      "position": "(-14.22023, 1.83272)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Plumagenase",
+      "position": "(-2.47023, 18.08272)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Plumagenase",
+      "position": "(14.02977, 6.58272)",
+      "rotation": 0.0
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+﻿{
+  "type": "CellAsset",
+  "name": "asset_12",
+  "nameJP": "ブレファリズマ",
+  "parts": [
+    {
+      "asset": "asset_13",
+      "position": "(0.81796, 12.87518)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Nucleus",
+      "position": "(0.81796, 12.87518)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Needle",
+      "position": "(-0.68204, -8.62482)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Wing(left)",
+      "position": "(-11.68204, -4.87482)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Wing(right)",
+      "position": "(10.31796, -6.87482)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Spinagenase",
+      "position": "(-0.43204, 5.87518)",
+      "rotation": 0.0
+    }
+  ]
+}
