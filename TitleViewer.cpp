@@ -52,7 +52,7 @@ void TitleViewer::UpdateBubbles()
 
 void TitleViewer::drawBubbles()
 {
-	static Texture texture(U"resources/image/particle.png", TextureDesc::Mipped);
+	//static Texture texture(U"resources/image/particle.png", TextureDesc::Mipped);
 
 	ScopedRenderStates2D blend(BlendState::Additive);
 
@@ -66,10 +66,11 @@ void TitleViewer::drawBubbles()
 
 		auto x = (asin(p.x / p.z) / (3.14 / 3.0) + 0.5) * Scene::Size().x;
 		auto y = (-asin(p.y / p.z) / (3.14 / 3.0) + 0.5) * Scene::Size().y;
-		auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 20.0;
+		auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 15.0;
 		auto a = Min((1800.0 - b.m_timer) / 500.0, 1.0) * 0.1;
 		
-		texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
+		Circle(x, y, r * 0.5).draw(ColorF(Palette::Lightblue, a));
+		//texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
 	}
 }
 

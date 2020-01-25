@@ -103,8 +103,9 @@ void CellState::updateCell()
 
 void CellState::draw()
 {
+	const double stage = m_startTimer / m_cellAsset->getLifespanTime();
 	auto t1 = Transformer2D(getMat3x2());
-	auto t2 = Transformer2D(Mat3x2::Scale(Min(1.0, m_startTimer + 0.5)));
+	auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2 + 0.5, 0.0, 1.0)));
 
 	// parts
 	for (const auto& p : m_partStates)
