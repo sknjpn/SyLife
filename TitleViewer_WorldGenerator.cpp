@@ -186,7 +186,7 @@ void TitleViewer::WorldGenerator::init()
 			->setName(U"elementText")
 			->setViewerRectInLocal(15, 190, 280, 30);
 
-		addChildViewer<GUIValuer>(0.25)
+		addChildViewer<GUIValuer>(0.5)
 			->setName(U"elementValuer")
 			->setViewerRectInLocal(15, 220, 150, 20);
 	}
