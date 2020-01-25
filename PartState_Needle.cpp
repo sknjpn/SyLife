@@ -8,7 +8,7 @@
 
 PartState_Needle::PartState_Needle(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
-	, m_partAsset_Needle(dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+	, m_partAsset_Needle(std::dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
 {}
 
 void PartState_Needle::draw(const CellState& cellState) const

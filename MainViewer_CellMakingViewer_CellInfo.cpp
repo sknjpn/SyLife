@@ -54,7 +54,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 				{
 					bool canMakeSelf = false;
 					for (const auto& partConfig : cellAsset->getPartConfigs())
-						if (auto synthesizer = dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+						if (auto synthesizer = std::dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
 							if (synthesizer->getExport() == protein.first) { canMakeSelf = true; break; }
 
 					if (canMakeSelf) font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れます)").draw(Vec2::Zero(), Palette::Black);
@@ -76,7 +76,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 
 			for (const auto& partConfig : cellAsset->getPartConfigs())
 			{
-				if (auto synthesizer = dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+				if (auto synthesizer = std::dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
 				{
 					font(synthesizer->getExport()->getNameJP(), int(synthesizer->getProductTime()), U"秒ごとに").draw(Vec2::Zero(), Palette::Black);
 					moveDrawPos(0, 20);
@@ -108,7 +108,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 				int penetrating = 0;
 
 				for (const auto& partConfig : cellAsset->getPartConfigs())
-					if (auto needle = dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+					if (auto needle = std::dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
 						penetrating = Max(penetrating, needle->getPenetrating());
 
 				font(U"トゲの貫通力:", penetrating).draw(Vec2::Zero(), Palette::Black);

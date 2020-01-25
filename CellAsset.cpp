@@ -143,8 +143,8 @@ std::shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
 {
 	for (const auto& partConfig : m_partConfigs)
 	{
-		if (dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset()))
-			return dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset());
+		if (std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset()))
+			return std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset());
 	}
 
 	return nullptr;
@@ -154,8 +154,8 @@ std::shared_ptr<PartAsset_Nucleus> CellAsset::getNucleusAsset() const
 {
 	for (const auto& partConfig : m_partConfigs)
 	{
-		if (dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset()))
-			return dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset());
+		if (std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset()))
+			return std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset());
 	}
 
 	return nullptr;

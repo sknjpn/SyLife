@@ -67,12 +67,12 @@ private:
 
 	// Assets
 	template <typename T>
-	std::shared_ptr<T>		makeAsset() { return dynamic_pointer_cast<T>(m_assets.emplace_back(MakeShared<T>())); }
+	std::shared_ptr<T>		makeAsset() { return std::dynamic_pointer_cast<T>(m_assets.emplace_back(MakeShared<T>())); }
 	std::shared_ptr<Asset>	makeAsset(const String& type);
 	template <typename T>
 	std::shared_ptr<T>		getAsset(const String& name) const
 	{
-		auto asset = dynamic_pointer_cast<T>(getAsset(name));
+		auto asset = std::dynamic_pointer_cast<T>(getAsset(name));
 
 		if (asset) return asset;
 		throw Error(U"存在しない名前のモデルを参照しました name:" + name);
@@ -84,7 +84,7 @@ private:
 		Array<std::shared_ptr<T>> tAssets;
 
 		for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
-			if (dynamic_pointer_cast<T>(*it) != nullptr) tAssets.emplace_back(dynamic_pointer_cast<T>(*it));
+			if (std::dynamic_pointer_cast<T>(*it) != nullptr) tAssets.emplace_back(std::dynamic_pointer_cast<T>(*it));
 
 		return tAssets;
 	}
@@ -116,7 +116,7 @@ public:
 
 	// Assets
 	template <typename T>
-	static std::shared_ptr<T>		MakeAsset() { return dynamic_pointer_cast<T>(g_instance->m_assets.emplace_back(MakeShared<T>())); }
+	static std::shared_ptr<T>		MakeAsset() { return std::dynamic_pointer_cast<T>(g_instance->m_assets.emplace_back(MakeShared<T>())); }
 	static std::shared_ptr<Asset>	MakeAsset(const String& type) { return g_instance->makeAsset(type); }
 	template <typename T>
 	static std::shared_ptr<T>		GetAsset(const String& name) { return g_instance->getAsset<T>(name); }

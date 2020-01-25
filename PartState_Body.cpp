@@ -4,7 +4,7 @@
 
 PartState_Body::PartState_Body(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
-	, m_partAsset_Body(dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset()))
+	, m_partAsset_Body(std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset()))
 {}
 
 void PartState_Body::draw(const CellState& cellState) const

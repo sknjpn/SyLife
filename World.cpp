@@ -257,7 +257,7 @@ void World::make()
 std::shared_ptr<Asset> World::getAsset(const String& name) const
 {
 	for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
-		if ((*it)->getName() == name) return dynamic_pointer_cast<Asset>(*it);
+		if ((*it)->getName() == name) return std::dynamic_pointer_cast<Asset>(*it);
 
 	throw Error(U"存在しない名前のモデルを参照しました name:" + name);
 }

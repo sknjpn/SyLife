@@ -5,7 +5,7 @@
 
 PartState_Nucleus::PartState_Nucleus(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
-	, m_partAsset_Nucleus(dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset()))
+	, m_partAsset_Nucleus(std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset()))
 {}
 
 void PartState_Nucleus::draw(const CellState& cellState) const
