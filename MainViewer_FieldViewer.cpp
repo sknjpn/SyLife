@@ -63,6 +63,20 @@ void MainViewer::FieldViewer::update()
 		// draw
 		World::GetInstance()->draw();
 
+		// Wave
+		if (m_drawWaveEnabled)
+		{
+			for (auto p : step(World::GetInstance()->getTiles().size()))
+			{
+				const auto& tile = World::GetInstance()->getTiles()[p];
+				const auto w = 3.0 * tile.getWaveVelocity() * TileLength / 2.0;
+
+				Line(Vec2::Zero(), w)
+					.movedBy(p * TileLength + Vec2(0.5, 0.5) * TileLength)
+					.drawArrow(TileLength * 0.1, Vec2(TileLength * 0.2, TileLength * 0.2), ColorF(1.0, tile.getWaveVelocity().length()));
+			}
+		}
+
 		switch (m_handAction)
 		{
 		case MainViewer::FieldViewer::HandAction::None:
