@@ -31,6 +31,10 @@ void MainViewer::CellBook::Item::update()
 		if (MouseL.down())
 		{
 			getParentViewer()->getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
+		}
+
+		if (MouseL.up())
+		{
 			getParentViewer()->getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
 		}
 	}
