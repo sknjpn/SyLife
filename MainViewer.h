@@ -120,14 +120,14 @@ class MainViewer : public EasyViewer
 
 	class CommandPalette : public EasyViewer
 	{
-		Texture	m_textureZoomIn = Texture(Icon(0xf00e, 50));
-		Texture	m_textureZoomOut = Texture(Icon(0xf010, 50));
-		Texture	m_textureFast = Texture(Icon(0xf050, 50));
-		Texture	m_textureWave = Texture(Icon(0xf5c4, 50));
-		Texture	m_textureHand = Texture(Icon(0xf25a, 50));
-		Texture	m_texturePoison = Texture(Icon(0xf714, 50));
-		Texture m_textureAddElement = Texture(Icon(0xf613, 50));
-		Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 50));
+		Texture	m_textureZoomIn = Texture(Icon(0xf00e, 45));
+		Texture	m_textureZoomOut = Texture(Icon(0xf010, 45));
+		Texture	m_textureFast = Texture(Icon(0xf050, 45));
+		Texture	m_textureWave = Texture(Icon(0xf5c4, 45));
+		Texture	m_textureHand = Texture(Icon(0xf25a, 45));
+		Texture	m_texturePoison = Texture(Icon(0xf714, 45));
+		Texture m_textureAddElement = Texture(Icon(0xf613, 45));
+		Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 45));
 
 	public:
 		void init() override;
