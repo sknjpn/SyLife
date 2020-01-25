@@ -1,5 +1,6 @@
 ﻿#include "MainViewer.h"
 #include "CellAsset.h"
+#include "CellState.h"
 #include "ProteinAsset.h"
 #include "PartAsset_Synthesizer.h"
 #include "PartAsset_Nucleus.h"
@@ -11,7 +12,22 @@
 
 MainViewer::CellAssetViewer::CellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
+	, m_cellState(nullptr)
 {
+}
+
+MainViewer::CellAssetViewer::CellAssetViewer(const std::shared_ptr<CellState>& cellState)
+	: m_cellAsset(cellState->getCellAsset())
+	, m_cellState(cellState)
+{
+}
+
+void MainViewer::CellAssetViewer::setCellState(const std::shared_ptr<CellState>& cellState)
+{
+	m_cellState = cellState;
+
+	if (!hasChildViewer<CellStateViewer>()) addChildViewer<CellStateViewer>(cellState);
+	else getChildViewer<CellStateViewer>()->setCellState(cellState);
 }
 
 void MainViewer::CellAssetViewer::init()
@@ -27,6 +43,11 @@ void MainViewer::CellAssetViewer::init()
 	// close
 	addChildViewer<GUIButton>(U"✖", [this]() { destroy(); })
 		->setViewerRectInLocal(450, 5, 40, 40);
+
+	if (m_cellState != nullptr)
+	{
+		addChildViewer<CellStateViewer>(m_cellState);
+	}
 }
 
 void MainViewer::CellAssetViewer::update()

@@ -25,6 +25,7 @@ public:
 	Storage& operator-=(const Storage& s) noexcept;
 
 	bool	contain(const Storage& s) const;
+	bool	containProtein(const Storage& s) const;
 
 	double	getElement() const { return m_element; }
 	void	setElement(double element) { m_element = element; }

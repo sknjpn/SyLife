@@ -49,8 +49,8 @@ void MainViewer::FieldViewer::update()
 			{
 				World::GetInstance()->update();
 
-				getParentViewer()->
-					getChildViewer<StatisticsViewer>()->takeLog();
+				if (auto sv = getParentViewer()->getChildViewer<StatisticsViewer>())
+					sv->takeLog();
 
 				numUpdate++;
 
@@ -73,7 +73,7 @@ void MainViewer::FieldViewer::update()
 				if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 				{
 					addChildViewer<CellStateCaptureViewer>(cellState);
-					getParentViewer<MainViewer>()->addCellAssetViewer(cellState->getCellAsset());
+					getParentViewer<MainViewer>()->addCellAssetViewer(cellState);
 				}
 			}
 			break;

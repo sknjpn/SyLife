@@ -235,7 +235,7 @@
     <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
     <ClCompile Include="MainViewer_CellBook.cpp" />
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
-    <ClCompile Include="MainViewer_CellStateViewer.cpp" />
+    <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp" />
     <ClCompile Include="PartAsset_Eye.cpp" />
     <ClCompile Include="PartState_Eye.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />

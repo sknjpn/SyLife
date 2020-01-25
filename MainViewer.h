@@ -17,27 +17,33 @@ class MainViewer : public EasyViewer
 {
 	class CellAssetViewer : public DraggableViewer
 	{
+		class CellStateViewer : public DraggableViewer
+		{
+			std::shared_ptr<CellState>	m_cellState;
+
+		public:
+			CellStateViewer(const std::shared_ptr<CellState>& cellState);
+
+			void	setCellState(const std::shared_ptr<CellState>& cellState) { m_cellState = cellState; }
+
+			void	init() override;
+			void	update() override;
+		};
+
 		std::shared_ptr<CellAsset>	m_cellAsset;
-
-	public:
-		CellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset);
-
-		void	init() override;
-		void	update() override;
-		
-		double	getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
-		void	drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
-	};
-
-	class CellStateViewer : public DraggableViewer
-	{
 		std::shared_ptr<CellState>	m_cellState;
 
 	public:
-		CellStateViewer(const std::shared_ptr<CellState>& cellState);
+		CellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset);
+		CellAssetViewer(const std::shared_ptr<CellState>& cellState);
+
+		void	setCellState(const std::shared_ptr<CellState>& cellState);
 
 		void	init() override;
 		void	update() override;
+
+		double	getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
+		void	drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
 	};
 
 	class CellBook : public EasyViewer
@@ -339,5 +345,6 @@ public:
 	void	update() override;
 
 	void	addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset);
+	void	addCellAssetViewer(const std::shared_ptr<CellState>& cellState);
 };
 

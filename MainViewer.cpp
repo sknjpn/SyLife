@@ -1,6 +1,7 @@
 ﻿#include "MainViewer.h"
 #include "GUIMusicBox.h"
 #include "GUIButton.h"
+#include "CellState.h"
 
 void MainViewer::openCellMakingViewer()
 {
@@ -15,7 +16,7 @@ void MainViewer::init()
 
 	addChildViewer<CellBook>();
 
-	addChildViewer<StatisticsViewer>();
+	// addChildViewer<StatisticsViewer>();
 
 	addChildViewer<CommandPalette>();
 
@@ -35,5 +36,19 @@ void MainViewer::addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
 	{
 		addChildViewer<CellAssetViewer>(cellAsset)
 			->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
+	}
+}
+
+void MainViewer::addCellAssetViewer(const std::shared_ptr<CellState>& cellState)
+{
+	if (!hasChildViewer(cellState->getCellAsset()->getName()))
+	{
+		addChildViewer<CellAssetViewer>(cellState)
+			->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
+	}
+	else
+	{
+		getChildViewer<CellAssetViewer>(cellState->getCellAsset()->getName())
+			->setCellState(cellState);
 	}
 }

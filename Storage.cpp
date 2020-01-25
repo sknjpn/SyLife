@@ -42,6 +42,19 @@ Storage& Storage::operator-=(const Storage& s) noexcept
 	return *this;
 }
 
+bool Storage::contain(const Storage& s) const
+{
+	return containProtein(s) && m_element >= s.m_element;
+}
+
+bool Storage::containProtein(const Storage& s) const
+{
+	for (const auto& m : s)
+		if (numProtein(m.first) < m.second) return false;
+
+	return true;
+}
+
 double Storage::getElementRecursive() const
 {
 	double sum = m_element;

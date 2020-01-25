@@ -477,11 +477,11 @@
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
-    <ClCompile Include="MainViewer_CellStateViewer.cpp" />
     <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
     <ClCompile Include="CellAsset_Log.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
+    <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainViewer.h" />
