@@ -19,6 +19,22 @@ void EggState::updateEgg()
 {
 	m_timer -= DeltaTime;
 
+	// 衝突処理
+	{
+		auto result = World::GetInstance()->getEggStateKDTree().knnSearch(2, getPosition());
+		if (result.size() == 2)
+		{
+			auto& t = World::GetInstance()->getEggStates()[result[1]];
+
+			if (t->getPosition() != getPosition() && (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length()) > 0)
+			{
+				auto f = -1000.0 * (t->getPosition() - getPosition()).normalized() * (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length());
+				addForceInWorld(f, getPosition());
+				t->addForceInWorld(-f, t->getPosition());
+			}
+		}
+	}
+
 	// 孵化
 	if (m_timer <= 0)
 	{
