@@ -12,22 +12,39 @@ TitleViewer::TitleViewer()
 
 void TitleViewer::UpdateBubbles()
 {
-	if (RandomBool(0.8))
+	while (RandomBool(0.5))
 	{
 		auto& b = m_bubbles.emplace_back();
 
 		b.m_position = Vec3(120.0 * Random(-1.0, 1.0), -100.0, 150.0 + 120.0 * Random(-1.0, 1.0));
 	}
+
 	static PerlinNoise noise1(Random(0xFFFFFFFF));
 	static PerlinNoise noise2(Random(0xFFFFFFFF));
 	static Vec3 liner(0, 0, 0);
-	for (auto& b : m_bubbles)
+
 	{
-		b.m_timer += 1.0;
-		b.m_position.x += 0.15 * noise1.noise(b.m_position * 0.02 + liner);
-		b.m_position.y += 0.15 * Random(0.25, 1.0);
-		b.m_position.z += 0.15 * noise2.noise(b.m_position * 0.02 + liner);
+		const int numThread = 12;
+		Array<ConcurrentTask<void>> tasks;
+
+		for (int i = 0; i < numThread; ++i)
+		{
+			tasks.emplace_back([this, i, numThread]()
+				{
+					for (int j = i; j < m_bubbles.size(); j += numThread)
+					{
+						m_bubbles[j].m_timer += 2.0;
+						m_bubbles[j].m_position.x += 0.30 * noise1.noise(m_bubbles[j].m_position * 0.02 + liner);
+						m_bubbles[j].m_position.y += 0.30 * Random(0.25, 1.0);
+						m_bubbles[j].m_position.z += 0.30 * noise2.noise(m_bubbles[j].m_position * 0.02 + liner);
+					}
+				});
+		}
+
+		for (auto& t : tasks)
+			while (!t.is_done());
 	}
+
 	liner.moveBy(0, 0, 0.01);
 
 	m_bubbles.remove_if([](const auto& b) { return b.m_timer > 1800.0; });
@@ -49,10 +66,9 @@ void TitleViewer::drawBubbles()
 
 		auto x = (asin(p.x / p.z) / (3.14 / 3.0) + 0.5) * Scene::Size().x;
 		auto y = (-asin(p.y / p.z) / (3.14 / 3.0) + 0.5) * Scene::Size().y;
-		auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 10.0;
+		auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 20.0;
 		auto a = Min((1800.0 - b.m_timer) / 500.0, 1.0) * 0.1;
-
-		texture.resized(r * 0.6).drawAt(x, y, ColorF(Palette::Lightblue, a));
+		
 		texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
 	}
 }
@@ -132,7 +148,7 @@ void TitleViewer::update()
 
 	// bubbles
 	{
-		for (int i = 0; i < 3; ++i) UpdateBubbles();
+		UpdateBubbles();
 
 		drawBubbles();
 	}
