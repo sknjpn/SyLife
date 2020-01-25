@@ -247,7 +247,6 @@
     <ClCompile Include="DraggableViewer.cpp" />
     <ClCompile Include="EggState.cpp" />
     <ClCompile Include="ProteinAsset.cpp" />
-    <ClCompile Include="GUIValuer.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainViewer.cpp" />

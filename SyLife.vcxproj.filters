@@ -386,9 +386,6 @@
     <ClCompile Include="MainViewer_FieldViewer_CellStateCaptureViewer.cpp" />
     <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp" />
     <ClCompile Include="MainViewer_StatisticsViewer.cpp" />
-    <ClCompile Include="GUIValuer.cpp">
-      <Filter>EasyViewer\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_LayerLists_Item.cpp" />
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Engine\Util</Filter>
