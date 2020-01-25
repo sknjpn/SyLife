@@ -76,15 +76,10 @@ void TitleViewer::drawBubbles()
 
 void TitleViewer::runNew()
 {
-	if (FileSystem::Exists(U"world/"))
-		FileSystem::Remove(U"world/");
+	for (const auto& child : getChildViewers<GUIButton>())
+		child->destroy();
 
-	World::Make();
-	World::GetInstance()->setName(U"New World");
-
-	getParentViewer()->addChildViewer<MainViewer>();
-
-	destroy();
+	addChildViewer<WorldGenerator>();
 }
 
 void TitleViewer::runContinue()

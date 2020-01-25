@@ -2,9 +2,24 @@
 
 #include "EasyViewer.h"
 
-class TitleViewer
-	: public EasyViewer
+class TitleViewer : public EasyViewer
 {
+	class WorldGenerator : public EasyViewer
+	{
+		Texture m_fieldTexture;
+		uint32	m_noiseSeedX;
+		uint32	m_noiseSeedY;
+
+		void	generate();
+
+	public:
+		void	init() override;
+		void	update() override;
+
+		void	onStart();
+		void	onContinue();
+	};
+
 	class Bubble
 	{
 	public:

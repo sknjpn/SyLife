@@ -85,7 +85,7 @@ void MainViewer::FieldViewer::update()
 
 				for (auto p : step(World::GetInstance()->getTiles().size()))
 				{
-					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
+					auto distance = (p * TileLength).distanceFrom(Cursor::PosF());
 					if (distance < 256.0)
 					{
 						World::GetInstance()->getTile(p).addElement(Math::Lerp(0.0, 10.0 * numUpdate, 1.0 - distance / 256.0));
@@ -119,7 +119,7 @@ void MainViewer::FieldViewer::update()
 			{
 				for (auto p : step(World::GetInstance()->getTiles().size()))
 				{
-					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
+					auto distance = (p * TileLength).distanceFrom(Cursor::PosF());
 					if (distance < 256.0)
 					{
 						World::GetInstance()->getTile(p).setElement(0.0);

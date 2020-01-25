@@ -29,14 +29,18 @@ struct ParticleAdapter
 
 class World
 {
-	Vec2	m_fieldSize;
-
-	double	m_tileLength;
-
-	DynamicTexture	m_tileTexture;
-
+public:
+	PerlinNoise	m_perlinNoiseX;
+	PerlinNoise	m_perlinNoiseY;
 	double	m_waveInterval;
 	double	m_elementPerTile;
+
+	void	setTileSize(const Point& size);
+
+private:
+	Vec2	m_fieldSize;
+	DynamicTexture	m_tileTexture;
+
 	double	m_waveVelocityMax;
 
 	// State
@@ -93,6 +97,8 @@ class World
 public:
 	World();
 
+	void	init();
+
 	// Field
 	const Array<std::shared_ptr<CellState>>& getCellStates() const { return m_cellStates; }
 	const Array<std::shared_ptr<EggState>>& getEggStates() const { return m_eggStates; }
@@ -102,10 +108,9 @@ public:
 	const std::shared_ptr<EggState>& addEggState(const std::shared_ptr<CellAsset>& asset);
 	TileState& getTile(const Point& point) { return m_tiles[point]; }
 	const TileState& getTile(const Point& point) const { return m_tiles[point]; }
-	TileState& getTile(const Vec2& position) { return m_tiles[(position / m_tileLength).asPoint()]; }
-	const TileState& getTile(const Vec2& position) const { return m_tiles[(position / m_tileLength).asPoint()]; }
+	TileState& getTile(const Vec2& position) { return m_tiles[(position / TileLength).asPoint()]; }
+	const TileState& getTile(const Vec2& position) const { return m_tiles[(position / TileLength).asPoint()]; }
 	const Grid<TileState>& getTiles() const { return m_tiles; }
-	double	getTileLength() const { return m_tileLength; }
 	const Vec2& getFieldSize() const { return m_fieldSize; }
 	void	generateWave();
 

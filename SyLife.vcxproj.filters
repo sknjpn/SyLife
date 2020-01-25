@@ -482,6 +482,7 @@
       <Filter>Engine\World</Filter>
     </ClCompile>
     <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp" />
+    <ClCompile Include="TitleViewer_WorldGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainViewer.h" />

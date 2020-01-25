@@ -240,6 +240,7 @@
     <ClCompile Include="PartState_Eye.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
+    <ClCompile Include="TitleViewer_WorldGenerator.cpp" />
     <ClCompile Include="World_makeModel.cpp" />
     <ClCompile Include="CellAsset.cpp" />
     <ClCompile Include="CellState.cpp" />

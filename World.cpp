@@ -17,11 +17,6 @@ void World::Make()
 	g_instance->m_filePath = U"world/";
 
 	g_instance->make();
-
-	g_instance->initField();
-
-	// Field情報の保存
-	g_instance->save();
 }
 
 void World::Load(const FilePath& filepath)
@@ -141,6 +136,18 @@ void World::initField()
 	initTiles();
 }
 
+void World::setTileSize(const Point& size)
+{
+	m_fieldSize = size * TileLength;
+	m_tiles.resize(size);
+	m_tiles_swap.resize(size);
+	m_tileGroups.clear();
+	m_tileGroups.resize(Max(int(std::thread::hardware_concurrency()), 1));
+
+	for (auto p : step(m_tiles.size()))
+		m_tileGroups[(p.y * m_tiles.size().x + p.x) % m_tileGroups.size()].emplace_back(p);
+}
+
 void World::loadAssets(const FilePath& directory)
 {
 	Array<std::shared_ptr<Asset>> assets;
@@ -176,6 +183,14 @@ void World::loadAssets(const FilePath& directory)
 
 		for (const auto& ca : cellAssets) ca->updateProperties();
 	}
+}
+
+void World::init()
+{
+	g_instance->initField();
+
+	// Field情報の保存
+	g_instance->save();
 }
 
 void World::load()
@@ -217,8 +232,7 @@ void World::load()
 		{
 			Size tileStateSize;
 			reader >> tileStateSize;
-			m_tiles.resize(tileStateSize);
-			m_tiles_swap.resize(tileStateSize);
+			setTileSize(tileStateSize);
 
 			for (auto& tileState : m_tiles)
 				tileState.load(reader);
@@ -373,20 +387,6 @@ World::World()
 	: m_cellStateKDTree(m_cellStates)
 	, m_eggStateKDTree(m_eggStates)
 {
-	JSONReader json(U"resources/generation.json");
-	m_tileLength = json[U"tileLength"].get<double>();
-	m_tiles.resize(json[U"tileSize"].get<Size>());
-	m_tiles_swap.resize(json[U"tileSize"].get<Size>());
-	m_tileGroups.resize(Max(int(std::thread::hardware_concurrency()), 1));
-
-	for (auto p : step(m_tiles.size()))
-		m_tileGroups[(p.y * m_tiles.size().x + p.x) % m_tileGroups.size()].emplace_back(p);
-
-	m_waveInterval = json[U"waveInterval"].get<double>();
-	m_elementPerTile = json[U"elementPerTile"].get<double>();
-	m_waveVelocityMax = json[U"waveVelocityMax"].get<double>();
-
-	m_fieldSize = m_tiles.size() * m_tileLength;
 	m_cellStates.reserve(0xFFFF);
 	m_eggStates.reserve(0xFFFF);
 }
@@ -409,7 +409,7 @@ void World::draw()
 		static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
 		const ScopedCustomShader2D shader(ps);
 
-		m_tileTexture.scaled(m_tileLength).draw();
+		m_tileTexture.scaled(TileLength).draw();
 	}
 
 	for (const auto& e : getEggStates())
@@ -431,9 +431,6 @@ const std::shared_ptr<EggState>& World::addEggState(const std::shared_ptr<CellAs
 
 void World::generateWave()
 {
-	const PerlinNoise perlinNoiseX(Random(0xFFFFFFFF));
-	const PerlinNoise perlinNoiseY(Random(0xFFFFFFFF));
-
 	for (auto p : step(m_tiles.size()))
 	{
 		auto& tile = m_tiles[p];
@@ -442,8 +439,8 @@ void World::generateWave()
 		const double rx = (p.x - m_tiles.size().x / 2.0) / (m_tiles.size().x / 2.0);
 		const double ry = (p.y - m_tiles.size().y / 2.0) / (m_tiles.size().y / 2.0);
 
-		const auto wx = perlinNoiseX.noise(m_tileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / m_waveInterval, m_tileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / m_waveInterval);
-		const auto wy = perlinNoiseY.noise(m_tileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / m_waveInterval, m_tileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / m_waveInterval);
+		const auto wx = m_perlinNoiseX.noise(TileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / m_waveInterval, TileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / m_waveInterval);
+		const auto wy = m_perlinNoiseY.noise(TileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / m_waveInterval, TileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / m_waveInterval);
 
 		// 最大の長さを1とする
 		tile.m_waveVelocity = Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))), Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) / Math::Sqrt2;
