@@ -29,7 +29,7 @@ void MainViewer::update()
 
 }
 
-void MainViewer::addCellAssetViewer(const shared_ptr<CellAsset>& cellAsset)
+void MainViewer::addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
 {
 	if (!hasChildViewer(cellAsset->getName()))
 	{

@@ -1,9 +1,9 @@
 ﻿#include "PartAsset_Body.h"
 #include "PartState_Body.h"
 
-shared_ptr<PartState> PartAsset_Body::makePartState(const shared_ptr<PartConfig>& partConfig) const
+std::shared_ptr<PartState> PartAsset_Body::makePartState(const std::shared_ptr<PartConfig>& partConfig) const
 {
-	return make_shared<PartState_Body>(partConfig);
+	return MakeShared<PartState_Body>(partConfig);
 }
 
 void PartAsset_Body::load(const JSONValue& json)

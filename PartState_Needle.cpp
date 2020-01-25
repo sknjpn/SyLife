@@ -6,16 +6,16 @@
 #include "PartAsset_Nucleus.h"
 #include "World.h"
 
-PartState_Needle::PartState_Needle(const shared_ptr<PartConfig>& partConfig)
+PartState_Needle::PartState_Needle(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
 	, m_partAsset_Needle(dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
 {}
 
 void PartState_Needle::draw(const CellState& cellState) const
 {
-	auto t = Transformer2D(Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
+	auto t = Transformer2D(Mat3x2::Scale(1.0, Max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
 
-	getPartConfig()->getPartAsset()->draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
+	getPartConfig()->getPartAsset()->draw(Max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
 }
 
 void PartState_Needle::update(CellState& cellState)

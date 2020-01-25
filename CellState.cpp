@@ -8,7 +8,7 @@
 #include "ProteinAsset.h"
 #include "EggState.h"
 
-CellState::CellState(const shared_ptr<CellAsset>& cellAsset)
+CellState::CellState(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 	, m_startTimer(0.0)
 	, m_deathTimer(cellAsset->getLifespanTime())
@@ -104,7 +104,7 @@ void CellState::updateCell()
 void CellState::draw()
 {
 	auto t1 = Transformer2D(getMat3x2());
-	auto t2 = Transformer2D(Mat3x2::Scale(min(1.0, m_startTimer + 0.5)));
+	auto t2 = Transformer2D(Mat3x2::Scale(Min(1.0, m_startTimer + 0.5)));
 
 	// parts
 	for (const auto& p : m_partStates)
@@ -117,7 +117,7 @@ void CellState::draw()
 	// 細胞円
 	if (false)
 	{
-		double a = min(0.5, m_deathTimer * 0.25);
+		double a = Min(0.5, m_deathTimer * 0.25);
 
 		Circle(getRadius())
 			.draw(ColorF(Palette::Lightpink, a))

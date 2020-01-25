@@ -22,9 +22,9 @@ void	MainViewer::CellMakingViewer::PartsAssembler::PartList::update()
 	moveDrawPos(0, getChildViewer<GUISlider>()->getDelta());
 }
 
-Array<shared_ptr<PartAsset>> MainViewer::CellMakingViewer::PartsAssembler::PartList::getList() const
+Array<std::shared_ptr<PartAsset>> MainViewer::CellMakingViewer::PartsAssembler::PartList::getList() const
 {
-	Array<shared_ptr<PartAsset>> assets;
+	Array<std::shared_ptr<PartAsset>> assets;
 
 	for (const auto& m : World::GetAssets<PartAsset>().removed_if([](const auto& pa) { return dynamic_pointer_cast<PartAsset_Body>(pa) ? true : false; })) assets.emplace_back(m);
 

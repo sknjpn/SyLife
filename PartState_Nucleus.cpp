@@ -3,7 +3,7 @@
 
 #include "PartConfig.h"
 
-PartState_Nucleus::PartState_Nucleus(const shared_ptr<PartConfig>& partConfig)
+PartState_Nucleus::PartState_Nucleus(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
 	, m_partAsset_Nucleus(dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset()))
 {}

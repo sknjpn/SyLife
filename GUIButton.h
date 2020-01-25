@@ -10,7 +10,7 @@ class GUIButton :
 	bool	m_isEnabled = true;
 	Color	m_color;
 	String	m_text;
-	function<void(void)>	m_functionOnSelected;
+	std::function<void(void)>	m_functionOnSelected;
 
 	Color	getTargetColor() const
 	{
@@ -22,7 +22,7 @@ public:
 		: m_text(text)
 		, m_isEnabled(isEnabled)
 	{}
-	GUIButton(const String& text, function<void(void)> functionOnSelected, bool isEnabled = true)
+	GUIButton(const String& text, std::function<void(void)> functionOnSelected, bool isEnabled = true)
 		: m_text(text) 
 		, m_functionOnSelected(functionOnSelected)
 		, m_isEnabled(isEnabled)

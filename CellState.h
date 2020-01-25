@@ -17,15 +17,15 @@ public:
 
 	Storage	m_storage;
 
-	shared_ptr<CellAsset>	m_cellAsset;
+	std::shared_ptr<CellAsset>	m_cellAsset;
 
-	Array<shared_ptr<PartState>>		m_partStates;
+	Array<std::shared_ptr<PartState>>		m_partStates;
 
 public:
-	CellState(const shared_ptr<CellAsset>& cellAsset);
+	CellState(const std::shared_ptr<CellAsset>& cellAsset);
 	CellState(Deserializer<ByteArray>& reader) { load(reader); }
 
-	const shared_ptr<CellAsset>& getCellAsset() const { return m_cellAsset; }
+	const std::shared_ptr<CellAsset>& getCellAsset() const { return m_cellAsset; }
 
 	void	updateCell();
 	void	draw();

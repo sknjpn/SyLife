@@ -3,7 +3,7 @@
 #include "CellAsset.h"
 #include "World.h"
 
-void MainViewer::CellBook::addItem(const shared_ptr<CellAsset>& cellAsset)
+void MainViewer::CellBook::addItem(const std::shared_ptr<CellAsset>& cellAsset)
 {
 	addChildViewer<Item>(cellAsset);
 }

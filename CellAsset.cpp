@@ -21,7 +21,7 @@ void CellAsset::load(const JSONValue& json)
 
 	// parts
 	for (const auto& partConfig : json[U"parts"].arrayView())
-		m_partConfigs.emplace_back(make_shared<PartConfig>())->load(partConfig);
+		m_partConfigs.emplace_back(MakeShared<PartConfig>())->load(partConfig);
 }
 
 void CellAsset::save(JSONWriter& json) const
@@ -105,9 +105,9 @@ bool CellAsset::isValid() const
 	return getBodyAsset() && getNucleusAsset();
 }
 
-shared_ptr<PartConfig>& CellAsset::addPartConfig()
+std::shared_ptr<PartConfig>& CellAsset::addPartConfig()
 {
-	return m_partConfigs.emplace_back(make_shared<PartConfig>());
+	return m_partConfigs.emplace_back(MakeShared<PartConfig>());
 }
 
 void CellAsset::updateProperties()
@@ -139,7 +139,7 @@ void CellAsset::updateProperties()
 	m_maxHitPoint = getBodyAsset()->getShape().getPolygon().area();
 }
 
-shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
+std::shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
 {
 	for (const auto& partConfig : m_partConfigs)
 	{
@@ -150,7 +150,7 @@ shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
 	return nullptr;
 }
 
-shared_ptr<PartAsset_Nucleus> CellAsset::getNucleusAsset() const
+std::shared_ptr<PartAsset_Nucleus> CellAsset::getNucleusAsset() const
 {
 	for (const auto& partConfig : m_partConfigs)
 	{

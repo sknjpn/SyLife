@@ -9,7 +9,7 @@
 #include "PartAsset_Nucleus.h"
 #include "PartAsset_Eye.h"
 
-shared_ptr<Asset> World::makeAsset(const String& type)
+std::shared_ptr<Asset> World::makeAsset(const String& type)
 {
 	if (type == U"CellAsset")			return makeAsset<CellAsset>();
 

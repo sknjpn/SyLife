@@ -9,7 +9,7 @@
 #include "GUITextBox.h"
 #include "GUIButton.h"
 
-MainViewer::CellAssetViewer::CellAssetViewer(const shared_ptr<CellAsset>& cellAsset)
+MainViewer::CellAssetViewer::CellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 {
 }
@@ -161,7 +161,7 @@ void MainViewer::CellAssetViewer::update()
 	}
 }
 
-double MainViewer::CellAssetViewer::getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> function) const
+double MainViewer::CellAssetViewer::getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> func) const
 {
 	double max = 0.0;
 
@@ -170,13 +170,13 @@ double MainViewer::CellAssetViewer::getMax(const RectF& rect, int scale, std::fu
 	{
 		if (m_cellAsset->m_log.m_statuses.size() < (i + 1) * scale) break;
 
-		max = Max(max, function(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)));
+		max = Max(max, func(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)));
 	}
 
 	return max;
 }
 
-void MainViewer::CellAssetViewer::drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> function) const
+void MainViewer::CellAssetViewer::drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> func) const
 {
 	auto t = Transformer2D(Mat3x2::Translate(rect.pos));
 
@@ -185,8 +185,8 @@ void MainViewer::CellAssetViewer::drawGraph(const RectF& rect, const Color& colo
 	{
 		if (m_cellAsset->m_log.m_statuses.size() < (i + 2) * scale) break;
 
-		double v1 = rect.h * (1.0 - function(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)) / max);
-		double v2 = rect.h * (1.0 - function(*(m_cellAsset->m_log.m_statuses.end() - (i + 2) * scale)) / max);
+		double v1 = rect.h * (1.0 - func(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)) / max);
+		double v2 = rect.h * (1.0 - func(*(m_cellAsset->m_log.m_statuses.end() - (i + 2) * scale)) / max);
 		Line(rect.w - i, v1, rect.w - i - 1, v2).draw(2.0, color);
 	}
 }

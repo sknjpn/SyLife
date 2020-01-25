@@ -7,7 +7,7 @@
 #include "PartState.h"
 #include <thread>
 
-unique_ptr<World>	World::g_instance;
+std::unique_ptr<World>	World::g_instance;
 
 void World::Make()
 {
@@ -143,7 +143,7 @@ void World::initField()
 
 void World::loadAssets(const FilePath& directory)
 {
-	Array<shared_ptr<Asset>> assets;
+	Array<std::shared_ptr<Asset>> assets;
 
 	// JSONのパスを取得
 	auto jsonFiles = FileSystem::DirectoryContents(directory, true)
@@ -240,7 +240,7 @@ void World::make()
 	loadAssets(m_filePath + U"assets/");
 }
 
-shared_ptr<Asset> World::getAsset(const String& name) const
+std::shared_ptr<Asset> World::getAsset(const String& name) const
 {
 	for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
 		if ((*it)->getName() == name) return dynamic_pointer_cast<Asset>(*it);
@@ -419,14 +419,14 @@ void World::draw()
 		if (!c->isDestroyed()) c->draw();
 }
 
-const shared_ptr<CellState>& World::addCellState(const shared_ptr<CellAsset>& asset)
+const std::shared_ptr<CellState>& World::addCellState(const std::shared_ptr<CellAsset>& asset)
 {
-	return m_cellStates.emplace_back(make_shared<CellState>(asset));
+	return m_cellStates.emplace_back(MakeShared<CellState>(asset));
 }
 
-const shared_ptr<EggState>& World::addEggState(const shared_ptr<CellAsset>& asset)
+const std::shared_ptr<EggState>& World::addEggState(const std::shared_ptr<CellAsset>& asset)
 {
-	return m_eggStates.emplace_back(make_shared<EggState>(asset));
+	return m_eggStates.emplace_back(MakeShared<EggState>(asset));
 }
 
 void World::generateWave()

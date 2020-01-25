@@ -3,7 +3,7 @@
 #include "CellState.h"
 #include "World.h"
 
-EggState::EggState(const shared_ptr<CellAsset>& cellAsset)
+EggState::EggState(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 	, m_timer(m_cellAsset->getBornTime())
 {
@@ -36,7 +36,7 @@ void EggState::draw()
 		.draw(ColorF(Palette::Papayawhip, 0.5))
 		.drawFrame(1.0, ColorF(1.0, 0.5));
 
-	m_cellAsset->draw(min(2.0, 10.0 - m_timer) * 0.25);
+	m_cellAsset->draw(Min(2.0, 10.0 - m_timer) * 0.25);
 }
 
 void EggState::load(Deserializer<ByteArray>& reader)

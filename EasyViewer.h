@@ -73,7 +73,7 @@ class EasyViewer
 
 	static std::shared_ptr<EasyViewer>& GetMouseoverViewer()
 	{
-		static std::shared_ptr<EasyViewer> mouseoverViewer = std::make_shared<EasyViewer>();
+		static std::shared_ptr<EasyViewer> mouseoverViewer = MakeShared<EasyViewer>();
 
 		return mouseoverViewer;
 	}
@@ -88,7 +88,7 @@ public:
 
 	static std::shared_ptr<EasyViewer>& GetRootViewer()
 	{
-		static std::shared_ptr<EasyViewer> rootViewer = std::make_shared<EasyViewer>();
+		static std::shared_ptr<EasyViewer> rootViewer = MakeShared<EasyViewer>();
 
 		return rootViewer;
 	}
@@ -166,7 +166,7 @@ public:
 	template <typename T, typename... Args>
 	std::shared_ptr<T>	addChildViewer(Args&&... args)
 	{
-		auto cv = std::make_shared<T>(args...);
+		auto cv = MakeShared<T>(args...);
 
 		m_childViewers.emplace_back(cv);
 		cv->m_parentViewer = shared_from_this();

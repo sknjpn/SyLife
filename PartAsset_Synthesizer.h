@@ -5,15 +5,15 @@
 class PartAsset_Synthesizer
 	: public PartAsset
 {
-	shared_ptr<ProteinAsset>	m_export;
+	std::shared_ptr<ProteinAsset>	m_export;
 	double	m_productTime;
 
 public:
 	// State
-	shared_ptr<PartState>	makePartState(const shared_ptr<PartConfig>& partConfig) const override;
+	std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;
 
 	// Get
-	const shared_ptr<ProteinAsset>& getExport() const { return m_export; }
+	const std::shared_ptr<ProteinAsset>& getExport() const { return m_export; }
 	double	getProductTime() const { return m_productTime; }
 
 	// JSON

@@ -17,24 +17,24 @@ class MainViewer : public EasyViewer
 {
 	class CellAssetViewer : public DraggableViewer
 	{
-		shared_ptr<CellAsset>	m_cellAsset;
+		std::shared_ptr<CellAsset>	m_cellAsset;
 
 	public:
-		CellAssetViewer(const shared_ptr<CellAsset>& cellAsset);
+		CellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset);
 
 		void	init() override;
 		void	update() override;
 		
-		double	getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> function) const;
-		void	drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> function) const;
+		double	getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
+		void	drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
 	};
 
 	class CellStateViewer : public DraggableViewer
 	{
-		shared_ptr<CellState>	m_cellState;
+		std::shared_ptr<CellState>	m_cellState;
 
 	public:
-		CellStateViewer(const shared_ptr<CellState>& cellState);
+		CellStateViewer(const std::shared_ptr<CellState>& cellState);
 
 		void	init() override;
 		void	update() override;
@@ -44,17 +44,17 @@ class MainViewer : public EasyViewer
 	{
 		class Item : public EasyViewer
 		{
-			shared_ptr<CellAsset> m_cellAsset;
+			std::shared_ptr<CellAsset> m_cellAsset;
 
 		public:
-			Item(const shared_ptr<CellAsset>& cellAsset);
+			Item(const std::shared_ptr<CellAsset>& cellAsset);
 
 			void	init() override;
 			void	update() override;
 		};
 
 	public:
-		void	addItem(const shared_ptr<CellAsset>& cellAsset);
+		void	addItem(const std::shared_ptr<CellAsset>& cellAsset);
 
 		void	init() override;
 		void	update() override;
@@ -65,10 +65,10 @@ class MainViewer : public EasyViewer
 		class CellStateCaptureViewer
 			: public EasyViewer
 		{
-			shared_ptr<CellState> m_cellState;
+			std::shared_ptr<CellState> m_cellState;
 
 		public:
-			CellStateCaptureViewer(const shared_ptr<CellState>& cellState);
+			CellStateCaptureViewer(const std::shared_ptr<CellState>& cellState);
 
 			void	update();
 		};
@@ -76,10 +76,10 @@ class MainViewer : public EasyViewer
 		class ReleaseViewer
 			: public EasyViewer
 		{
-			shared_ptr<CellAsset>	m_cellAsset;
+			std::shared_ptr<CellAsset>	m_cellAsset;
 
 		public:
-			ReleaseViewer(const shared_ptr<CellAsset>& cellAsset);
+			ReleaseViewer(const std::shared_ptr<CellAsset>& cellAsset);
 
 			void	init() override;
 			void	update() override;
@@ -105,7 +105,7 @@ class MainViewer : public EasyViewer
 		void	init() override;
 		void	update() override;
 
-		void	release(const shared_ptr<CellAsset>& cellAsset) { addChildViewer<ReleaseViewer>(cellAsset); m_handAction = HandAction::None; }
+		void	release(const std::shared_ptr<CellAsset>& cellAsset) { addChildViewer<ReleaseViewer>(cellAsset); m_handAction = HandAction::None; }
 
 		TinyCamera& getCamera() { return m_camera; }
 		const TinyCamera& getCamera() const { return m_camera; }
@@ -136,13 +136,13 @@ class MainViewer : public EasyViewer
 				int		m_numEgg = 0;
 
 				Status() { }
-				Status(const shared_ptr<CellAsset>& cellAsset);
+				Status(const std::shared_ptr<CellAsset>& cellAsset);
 			};
 
-			shared_ptr<CellAsset>	m_cellAsset;
+			std::shared_ptr<CellAsset>	m_cellAsset;
 			Array<Status>	m_statuses;
 
-			Log(const shared_ptr<CellAsset>& cellAsset)
+			Log(const std::shared_ptr<CellAsset>& cellAsset)
 				: m_cellAsset(cellAsset)
 			{}
 		};
@@ -163,13 +163,13 @@ class MainViewer : public EasyViewer
 		{
 			class Workspace : public EasyViewer
 			{
-				shared_ptr<PartAsset_Body>	m_bodyAsset;
+				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 				Polygon	getReversed(const Polygon& polygon) const;
 				Layer& getSelectedLayer();
 
 			public:
-				Workspace(const shared_ptr<PartAsset_Body>& bodyAsset)
+				Workspace(const std::shared_ptr<PartAsset_Body>& bodyAsset)
 					: m_bodyAsset(bodyAsset)
 				{}
 
@@ -191,10 +191,10 @@ class MainViewer : public EasyViewer
 					bool	m_barSelected = false;
 					HSV		m_hsv = Palette::White;
 					bool	m_isSelected = false;
-					shared_ptr<PartAsset_Body>	m_bodyAsset;
+					std::shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 				public:
-					Item(const shared_ptr<PartAsset_Body>& bodyAsset);
+					Item(const std::shared_ptr<PartAsset_Body>& bodyAsset);
 
 					void	setSelected(bool isSelected) { m_isSelected = isSelected; }
 					void	setHSV(const HSV& hsv) { m_hsv = hsv; }
@@ -204,10 +204,10 @@ class MainViewer : public EasyViewer
 
 				double	m_itemHeight = 100;
 				int		m_selectedIndex;
-				shared_ptr<PartAsset_Body>	m_bodyAsset;
+				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 			public:
-				LayerLists(const shared_ptr<PartAsset_Body>& bodyAsset)
+				LayerLists(const std::shared_ptr<PartAsset_Body>& bodyAsset)
 					: m_bodyAsset(bodyAsset)
 				{}
 
@@ -261,7 +261,7 @@ class MainViewer : public EasyViewer
 					RotateMode,
 				};
 
-				shared_ptr<CellAsset> m_cellAsset;
+				std::shared_ptr<CellAsset> m_cellAsset;
 
 				State	m_state = State::MoveMode;
 				Vec2	m_deltaPosition = Vec2::Zero();
@@ -271,13 +271,13 @@ class MainViewer : public EasyViewer
 				double	m_inertia;
 				double	m_radius;
 				bool	m_grabCircle;
-				shared_ptr<PartConfig>	m_selectedPartConfig;
+				std::shared_ptr<PartConfig>	m_selectedPartConfig;
 
 			public:
 				void	init() override;
 				void	update() override;
 
-				void	setCellAsset(const shared_ptr<CellAsset>& cellAsset) { m_cellAsset = cellAsset; }
+				void	setCellAsset(const std::shared_ptr<CellAsset>& cellAsset) { m_cellAsset = cellAsset; }
 
 				void	setMoveMode();
 				void	setRotateMode();
@@ -286,15 +286,15 @@ class MainViewer : public EasyViewer
 			class PartList : public EasyViewer
 			{
 				double	m_itemHeight = 80;
-				shared_ptr<PartAsset>	m_selectedPart;
+				std::shared_ptr<PartAsset>	m_selectedPart;
 
-				Array<shared_ptr<PartAsset>>	getList() const;
+				Array<std::shared_ptr<PartAsset>>	getList() const;
 
 			public:
 				void	init() override;
 				void	update() override;
 
-				const shared_ptr<PartAsset>& getSelectedPart() const { return m_selectedPart; }
+				const std::shared_ptr<PartAsset>& getSelectedPart() const { return m_selectedPart; }
 
 				void	clearSelectedPart() { m_selectedPart = nullptr; }
 
@@ -316,7 +316,7 @@ class MainViewer : public EasyViewer
 		};
 
 
-		shared_ptr<CellAsset>	m_cellAsset;
+		std::shared_ptr<CellAsset>	m_cellAsset;
 
 		void	clearEditor();
 		void	openBodySculptor();
@@ -329,7 +329,7 @@ class MainViewer : public EasyViewer
 
 		void	makeAsset();
 
-		const shared_ptr<CellAsset>& getCellAsset() const { return m_cellAsset; }
+		const std::shared_ptr<CellAsset>& getCellAsset() const { return m_cellAsset; }
 	};
 
 	void	openCellMakingViewer();
@@ -338,6 +338,6 @@ public:
 	void	init() override;
 	void	update() override;
 
-	void	addCellAssetViewer(const shared_ptr<CellAsset>& cellAsset);
+	void	addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset);
 };
 
