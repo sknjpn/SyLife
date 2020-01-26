@@ -10,6 +10,7 @@ class GUIMusicBox : public EasyViewer
 	String	m_assetName;
 	double	m_volume;
 	bool	m_isEnabled = true;
+	bool	m_isLoop = true;
 
 	void onClicked()
 	{
@@ -30,8 +31,9 @@ class GUIMusicBox : public EasyViewer
 	}
 
 public:
-	GUIMusicBox(const String& assetName)
+	GUIMusicBox(const String& assetName, bool isLoop = true)
 		: m_assetName(assetName)
+		, m_isLoop(isLoop)
 	{
 		INIData ini(U"config.ini");
 		m_volume = ini.getOr<double>(U"General", U"MusicVolume", 1.0);
@@ -51,13 +53,16 @@ public:
 
 	}
 
+	bool isPlaying() const { return AudioAsset(m_assetName).isPlaying(); }
+	void setMusic(const String& assetName) { m_assetName = assetName; }
+
 	void update() override
 	{
 		if (!m_loadComplate && AudioAsset::IsReady(m_assetName))
 		{
 			m_loadComplate = true;
-			AudioAsset(m_assetName).setLoop(true);
 			AudioAsset(m_assetName).setVolume(m_volume);
+			AudioAsset(m_assetName).setLoop(m_isLoop);
 			AudioAsset(m_assetName).play();
 		}
 
