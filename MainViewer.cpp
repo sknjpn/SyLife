@@ -33,7 +33,7 @@ void MainViewer::update()
 {
 	if (auto musicBox = getChildViewer<GUIMusicBox>())
 	{
-		const Array<String> musicList = { U"かみさまのゆりかご", U"沈む。", U"安らぎと微睡み", U"真相探求" };
+		const Array<String> musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
 
 		if (!musicBox->isPlaying()) musicBox->setMusic(musicList.choice());
 	}
