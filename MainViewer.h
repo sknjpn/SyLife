@@ -345,6 +345,8 @@ class MainViewer : public EasyViewer
 		const std::shared_ptr<CellAsset>& getCellAsset() const { return m_cellAsset; }
 	};
 
+	Stopwatch	m_uncontrolTimer;
+
 	void	openCellMakingViewer();
 
 public:
