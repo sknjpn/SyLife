@@ -77,6 +77,20 @@ void MainViewer::FieldViewer::update()
 			}
 		}
 
+		// 選択中の生き物
+		for (const auto& cellAssetViewer : getParentViewer<MainViewer>()->getChildViewers<CellAssetViewer>())
+		{
+			if (auto cellStateViewer = cellAssetViewer->getChildViewer<CellAssetViewer::CellStateViewer>())
+			{
+				const auto cellState = cellStateViewer->getCellState();
+				const auto t2 = Transformer2D(cellState->getMat3x2());
+
+				Circle(cellState->getRadius() * 1.5)
+					.draw(ColorF(Palette::Red, 0.25))
+					.drawFrame(2.0, Palette::Black);
+			}
+		}
+
 		switch (m_handAction)
 		{
 		case MainViewer::FieldViewer::HandAction::None:

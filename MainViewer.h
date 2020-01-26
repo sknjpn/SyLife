@@ -17,6 +17,7 @@ class MainViewer : public EasyViewer
 {
 	class CellAssetViewer : public DraggableViewer
 	{
+	public:
 		class CellStateViewer : public DraggableViewer
 		{
 			std::shared_ptr<CellState>	m_cellState;
@@ -24,11 +25,14 @@ class MainViewer : public EasyViewer
 		public:
 			CellStateViewer(const std::shared_ptr<CellState>& cellState);
 
+			const std::shared_ptr<CellState>& getCellState() const { return m_cellState; }
+
 			void	setCellState(const std::shared_ptr<CellState>& cellState) { m_cellState = cellState; }
 
 			void	init() override;
 			void	update() override;
 		};
+	private:
 
 		std::shared_ptr<CellAsset>	m_cellAsset;
 		std::shared_ptr<CellState>	m_cellState;
