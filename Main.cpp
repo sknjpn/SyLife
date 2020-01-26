@@ -21,13 +21,12 @@ void Main()
 #endif
 	}
 
-	INIData ini(U"config.ini");
-
 	Window::SetTitle(U"SyLife");
 	Window::SetStyle(WindowStyle::Sizable);
 	Scene::Resize(1920, 1080);
 
 	// Window設定
+	INIData ini(U"config.ini");
 	if (ini.getOr<bool>(U"General", U"FullScreen", false))
 	{
 		if (Window::SetFullscreen(true))
