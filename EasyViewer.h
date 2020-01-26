@@ -68,7 +68,7 @@ class EasyViewer
 
 		m_childViewers.remove_if([](const auto& cv) { return cv->m_isDestroyed; });
 
-		if (m_isDestroyed) m_parentViewer.reset();
+		if (m_isDestroyed) onDestroy();
 	}
 
 	static std::shared_ptr<EasyViewer>& GetMouseoverViewer()
@@ -291,4 +291,5 @@ public:
 
 	virtual void	init() {}
 	virtual void	update() {}
+	virtual void	onDestroy() {}
 };

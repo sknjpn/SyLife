@@ -23,7 +23,7 @@ void MainViewer::init()
 
 	INIData ini(U"config.ini");
 	if (ini.getOr<bool>(U"General", U"BGM", true))
-		addChildViewer<GUIMusicBox>(U"resources/music/かみさまのゆりかご.mp3");
+		addChildViewer<GUIMusicBox>(U"かみさまのゆりかご");
 
 	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
