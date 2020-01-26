@@ -23,7 +23,7 @@ void MainViewer::init()
 
 	INIData ini(U"config.ini");
 	if (ini.getOr<bool>(U"General", U"BGM", true))
-		addChildViewer<GUIMusicBox>(U"かみさまのゆりかご", false);
+		addChildViewer<GUIMusicBox>(U"", false);
 
 	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
@@ -33,7 +33,7 @@ void MainViewer::update()
 {
 	if (auto musicBox = getChildViewer<GUIMusicBox>())
 	{
-		const Array<String> musicList = { U"かみさまのゆりかご", U"沈む。" };
+		const Array<String> musicList = { U"かみさまのゆりかご", U"沈む。", U"安らぎと微睡み", U"真相探求" };
 
 		if (!musicBox->isPlaying()) musicBox->setMusic(musicList.choice());
 	}
