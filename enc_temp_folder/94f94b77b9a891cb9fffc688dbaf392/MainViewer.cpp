@@ -50,17 +50,14 @@ void MainViewer::addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
 
 void MainViewer::addCellAssetViewer(const std::shared_ptr<CellState>& cellState)
 {
-	if (hasChildViewer(cellState->getCellAsset()->getName()))
-	{
-		getChildViewer<CellAssetViewer>(cellState->getCellAsset()->getName())
-			->setCellState(cellState);
-
-		getChildViewer<CellAssetViewer>(cellState->getCellAsset()->getName())
-			->moveToFront();
-	}
-	else 
+	if (!hasChildViewer(cellState->getCellAsset()->getName()))
 	{
 		addChildViewer<CellAssetViewer>(cellState)
 			->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
+	}
+	else
+	{
+		getChildViewer<CellAssetViewer>(cellState->getCellAsset()->getName())
+			->setCellState(cellState);
 	}
 }
