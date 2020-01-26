@@ -136,6 +136,11 @@ void CellState::takeElement()
 	m_storage.addElement(value);
 }
 
+bool CellState::isNeedNutrition() const
+{
+	return !m_storage.contain(m_cellAsset->getMaterial());
+}
+
 void CellState::load(Deserializer<ByteArray>& reader)
 {
 	Rigidbody::load(reader);

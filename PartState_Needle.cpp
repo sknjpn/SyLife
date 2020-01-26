@@ -24,10 +24,16 @@ void PartState_Needle::update(CellState& cellState)
 
 	if (m_heat < 0)
 	{
+		if (!cellState.isNeedNutrition())
+		{
+			m_heat = 1.0;
+
+			return;
+		}
+
 		m_heat = 5.0;
 
 		auto p = cellState.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up().rotated(getPartConfig()->getRotation()) * 50.0);
-
 
 		for (auto i : World::GetInstance()->getCellStateKDTree().knnSearch(2, p))
 		{

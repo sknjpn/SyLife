@@ -31,6 +31,7 @@ public:
 	void	draw();
 
 	void	takeElement();
+	bool	isNeedNutrition() const;
 
 	void	load(Deserializer<ByteArray>& reader);
 	void	save(Serializer<MemoryWriter>& writer) const;
