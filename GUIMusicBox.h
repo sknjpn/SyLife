@@ -54,7 +54,7 @@ public:
 	}
 
 	bool isPlaying() const { return AudioAsset(m_assetName).isPlaying(); }
-	void setMusic(const String& assetName) { m_assetName = assetName; }
+	void setMusic(const String& assetName) { m_assetName = assetName; m_loadComplate = false; }
 
 	void update() override
 	{
