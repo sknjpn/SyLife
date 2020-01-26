@@ -14,7 +14,7 @@ void TitleViewer::WorldGenerator::generate()
 	Point size;
 	{
 		const auto v = getChildViewer<GUIValuer>(U"sizeValuer");
-		size = Point(16, 9) * int(v->getValue() * 10);
+		size = Point(16, 9) * int(v->getValue() * 10 + 1);
 	}
 
 	double waveInterval;
@@ -213,7 +213,7 @@ void TitleViewer::WorldGenerator::update()
 	// size
 	{
 		const auto v = getChildViewer<GUIValuer>(U"sizeValuer");
-		Point size = Point(16, 9) * int(v->getValue() * 10);
+		Point size = Point(16, 9) * int(v->getValue() * 10 + 1);
 
 		getChildViewer<GUIText>(U"sizeText")
 			->m_text = Format(U"タイルサイズの調整:", size.x, U"x", size.y);
@@ -256,7 +256,7 @@ void TitleViewer::WorldGenerator::onStart()
 
 	World::Make();
 	World::GetInstance()->setName(U"New World");
-	World::GetInstance()->setTileSize(Point(16, 9) * int(getChildViewer<GUIValuer>(U"sizeValuer")->getValue() * 10));
+	World::GetInstance()->setTileSize(Point(16, 9) * int(getChildViewer<GUIValuer>(U"sizeValuer")->getValue() * 10 + 1));
 	World::GetInstance()->m_waveInterval = Math::Lerp(250.0, 1250.0, getChildViewer<GUIValuer>(U"waveIntervalValuer")->getValue());
 	World::GetInstance()->m_elementPerTile = 200.0 * getChildViewer<GUIValuer>(U"elementValuer")->getValue();
 	World::GetInstance()->m_perlinNoiseX = PerlinNoise(m_noiseSeedX);
