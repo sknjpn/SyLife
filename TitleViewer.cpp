@@ -104,7 +104,13 @@ void TitleViewer::init()
 {
 	INIData ini(U"config.ini");
 	if (ini.getOr<bool>(U"General", U"BGM", true))
+	{
+#ifdef _WIN32
+		addChildViewer<GUIMusicBox>(Resource(U"resources/music/天のきざはし.mp3"));
+#else
 		addChildViewer<GUIMusicBox>(U"resources/music/天のきざはし.mp3");
+#endif // SIV3D_PLATFORM
+	}
 
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
