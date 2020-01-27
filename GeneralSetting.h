@@ -17,6 +17,7 @@ public:
 
 	bool	m_touchPanelModeEnabled;
 	bool	m_autoTurnOutEnabled;
+	bool	m_autoTurnOutTime;
 	bool	m_fullScreenEnabled;
 	bool	m_runTitleEnabled;
 	bool	m_audioEnabled;
@@ -28,6 +29,7 @@ public:
 		INIData ini(U"config.ini");
 		m_touchPanelModeEnabled = ini.getOr<bool>(U"General", U"TouchPanelModeEnabled", false);
 		m_autoTurnOutEnabled = ini.getOr<bool>(U"General", U"AutoTurnOutEnabled", false);
+		m_autoTurnOutTime = ini.getOr<double>(U"General", U"AutoTurnOutTime", 10);
 		m_fullScreenEnabled = ini.getOr<bool>(U"General", U"FullScreenEnabled", false);
 		m_runTitleEnabled = ini.getOr<bool>(U"General", U"RunTitleEnabled", true);
 		m_audioEnabled = ini.getOr<bool>(U"General", U"AudioEnabled", true);
@@ -40,6 +42,7 @@ public:
 		INIData ini(U"config.ini");	// 追記の形で書き込む
 		ini.write<bool>(U"General", U"TouchPanelModeEnabled", m_touchPanelModeEnabled);
 		ini.write<bool>(U"General", U"AutoTurnOutEnabled", m_autoTurnOutEnabled);
+		ini.write<bool>(U"General", U"AutoTurnOutTime", m_autoTurnOutTime);
 		ini.write<bool>(U"General", U"FullScreenEnabled", m_fullScreenEnabled);
 		ini.write<bool>(U"General", U"RunTitleEnabled", m_runTitleEnabled);
 		ini.write<bool>(U"General", U"AudioEnabled", m_audioEnabled);

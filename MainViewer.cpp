@@ -36,7 +36,7 @@ void MainViewer::update()
 		if (m_uncontrolTimer.isRunning() && MouseL.pressed()) m_uncontrolTimer.reset();
 		if (MouseL.up()) m_uncontrolTimer.start();
 
-		if (m_uncontrolTimer.s() > 1)
+		if (m_uncontrolTimer.s() > GeneralSetting::GetInstance().m_autoTurnOutTime)
 		{
 			if (!m_hiddenMode)
 			{
