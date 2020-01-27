@@ -297,6 +297,7 @@
     <ClInclude Include="GeneralSetting.h" />
     <ClInclude Include="GUIButtonIcon.h" />
     <ClInclude Include="GUIMusicBox.h" />
+    <ClInclude Include="HiddenViewer.h" />
     <ClInclude Include="PartAsset_Eye.h" />
     <ClInclude Include="PartState_Eye.h" />
     <ClInclude Include="TileState.h" />

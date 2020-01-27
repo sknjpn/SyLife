@@ -614,5 +614,6 @@
       <Filter>EasyViewer</Filter>
     </ClInclude>
     <ClInclude Include="GeneralSetting.h" />
+    <ClInclude Include="HiddenViewer.h" />
   </ItemGroup>
 </Project>
