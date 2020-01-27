@@ -24,10 +24,24 @@ void MainViewer::init()
 
 	// OpenCurtain
 	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
+
+	if (GeneralSetting::GetInstance().m_autoTurnOutEnabled)
+		m_uncontrolTimer.start();
 }
 
 void MainViewer::update()
 {
+	if (GeneralSetting::GetInstance().m_autoTurnOutEnabled)
+	{
+		if (m_uncontrolTimer.isRunning() && MouseL.pressed()) m_uncontrolTimer.reset();
+		if (MouseL.up()) m_uncontrolTimer.start();
+
+		if (m_uncontrolTimer.s() > 5)
+		{
+
+		}
+	}
+
 	if (auto musicBox = getChildViewer<GUIMusicBox>())
 	{
 		const Array<String> musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
