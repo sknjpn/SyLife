@@ -7,16 +7,16 @@ class CellState;
 
 class PartState
 {
-	shared_ptr<PartConfig>	m_partConfig;
+	std::shared_ptr<PartConfig>	m_partConfig;
 
 public:
-	PartState(const shared_ptr<PartConfig>& partConfig)
+	PartState(const std::shared_ptr<PartConfig>& partConfig)
 		: m_partConfig(partConfig)
 	{}
 	virtual ~PartState() {}
 
 	// Get
-	const shared_ptr<PartConfig>& getPartConfig() const { return m_partConfig; }
+	const std::shared_ptr<PartConfig>& getPartConfig() const { return m_partConfig; }
 
 	virtual void	draw(const CellState& cellState) const;
 	virtual void	update(CellState& cellState);

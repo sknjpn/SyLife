@@ -1,7 +1,7 @@
 ﻿#include "MainViewer.h"
 #include "Layer.h"
 
-MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::Item(const shared_ptr<PartAsset_Body>& bodyAsset)
+MainViewer::CellMakingViewer::BodySculptor::LayerLists::Item::Item(const std::shared_ptr<PartAsset_Body>& bodyAsset)
 	: m_bodyAsset(bodyAsset)
 {
 	const int length = 80;

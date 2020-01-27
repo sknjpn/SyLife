@@ -6,16 +6,16 @@
 #include "PartAsset_Nucleus.h"
 #include "World.h"
 
-PartState_Needle::PartState_Needle(const shared_ptr<PartConfig>& partConfig)
+PartState_Needle::PartState_Needle(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
-	, m_partAsset_Needle(dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+	, m_partAsset_Needle(std::dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
 {}
 
 void PartState_Needle::draw(const CellState& cellState) const
 {
-	auto t = Transformer2D(Mat3x2::Scale(1.0, max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
+	auto t = Transformer2D(Mat3x2::Scale(1.0, Max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
 
-	getPartConfig()->getPartAsset()->draw(max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
+	getPartConfig()->getPartAsset()->draw(Max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
 }
 
 void PartState_Needle::update(CellState& cellState)
@@ -24,10 +24,16 @@ void PartState_Needle::update(CellState& cellState)
 
 	if (m_heat < 0)
 	{
+		if (!cellState.isNeedNutrition())
+		{
+			m_heat = 1.0;
+
+			return;
+		}
+
 		m_heat = 5.0;
 
 		auto p = cellState.getWorldPosition(getPartConfig()->getPosition() + Vec2::Up().rotated(getPartConfig()->getRotation()) * 50.0);
-
 
 		for (auto i : World::GetInstance()->getCellStateKDTree().knnSearch(2, p))
 		{

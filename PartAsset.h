@@ -28,7 +28,7 @@ public:
 	void	setMass(double mass) { m_mass = mass; }
 
 	// State
-	virtual shared_ptr<PartState>	makePartState(const shared_ptr<PartConfig>& partConfig) const = 0;
+	virtual std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const = 0;
 
 	// Draw
 	void	draw(double a = 0.5) { m_shape.draw(a); }

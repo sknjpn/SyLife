@@ -42,6 +42,19 @@ Storage& Storage::operator-=(const Storage& s) noexcept
 	return *this;
 }
 
+bool Storage::contain(const Storage& s) const
+{
+	return containProtein(s) && m_element >= s.m_element;
+}
+
+bool Storage::containProtein(const Storage& s) const
+{
+	for (const auto& m : s)
+		if (numProtein(m.first) < m.second) return false;
+
+	return true;
+}
+
 double Storage::getElementRecursive() const
 {
 	double sum = m_element;
@@ -52,7 +65,7 @@ double Storage::getElementRecursive() const
 	return sum;
 }
 
-void Storage::addProtein(const shared_ptr<ProteinAsset>& asset, int size)
+void Storage::addProtein(const std::shared_ptr<ProteinAsset>& asset, int size)
 {
 	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 
@@ -60,7 +73,7 @@ void Storage::addProtein(const shared_ptr<ProteinAsset>& asset, int size)
 	else (*it).second += size;
 }
 
-void Storage::pullProtein(const shared_ptr<ProteinAsset>& asset, int size)
+void Storage::pullProtein(const std::shared_ptr<ProteinAsset>& asset, int size)
 {
 	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 
@@ -72,7 +85,7 @@ void Storage::pullProtein(const shared_ptr<ProteinAsset>& asset, int size)
 	}
 }
 
-int Storage::numProtein(const shared_ptr<ProteinAsset>& asset) const
+int Storage::numProtein(const std::shared_ptr<ProteinAsset>& asset) const
 {
 	auto it = find_if(begin(), end(), [&asset](const auto& m) { return m.first == asset; });
 

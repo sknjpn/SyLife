@@ -1,10 +1,15 @@
 ﻿#include "MainViewer.h"
 #include "CellState.h"
 
-MainViewer::FieldViewer::CellStateCaptureViewer::CellStateCaptureViewer(const shared_ptr<CellState>& cellState)
+MainViewer::FieldViewer::CellStateCaptureViewer::CellStateCaptureViewer(const std::shared_ptr<CellState>& cellState)
 	: m_cellState(cellState)
 {
 	
+}
+
+void MainViewer::FieldViewer::CellStateCaptureViewer::init()
+{
+	mouseoverDisable();
 }
 
 void MainViewer::FieldViewer::CellStateCaptureViewer::update()

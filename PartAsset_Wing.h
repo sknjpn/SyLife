@@ -9,7 +9,7 @@ class PartAsset_Wing
 	double	m_strength;
 
 public:
-	shared_ptr<PartState>	makePartState(const shared_ptr<PartConfig>& partConfig) const override;
+	std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;
 
 	// Get
 	bool	getIsRight() const { return m_isRight; }

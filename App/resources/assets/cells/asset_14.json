@@ -1,0 +1,77 @@
+﻿{
+  "type": "CellAsset",
+  "name": "asset_14",
+  "nameJP": "フタヅノクンショウモ",
+  "parts": [
+    {
+      "asset": "asset_15",
+      "position": "(1.51295, -5.53711)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Big_Nucleus",
+      "position": "(1.51295, -5.53711)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Big_Wing(left)",
+      "position": "(-12.98705, -8.03711)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Big_Wing(right)",
+      "position": "(14.01295, -8.28711)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Strong_Needle",
+      "position": "(0.26295, -21.53711)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Strong_Needle",
+      "position": "(13.76295, -16.78711)",
+      "rotation": 0.3891985939247905
+    },
+    {
+      "asset": "Strong_Needle",
+      "position": "(-13.48705, -17.53711)",
+      "rotation": -0.6236462436601139
+    },
+    {
+      "asset": "Spinagenase",
+      "position": "(-3.73705, 17.21289)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Spinagenase",
+      "position": "(1.51295, 8.46289)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Needle",
+      "position": "(-14.48705, 7.96289)",
+      "rotation": -2.120576067874653
+    },
+    {
+      "asset": "Needle",
+      "position": "(13.01295, 7.96289)",
+      "rotation": 2.033021310010941
+    },
+    {
+      "asset": "Small_Wing(left)",
+      "position": "(-12.48705, 25.21289)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Small_Wing(right)",
+      "position": "(12.01295, 23.96289)",
+      "rotation": 0.0
+    },
+    {
+      "asset": "Strong_Needle",
+      "position": "(1.51295, 33.96289)",
+      "rotation": 3.113144388709704
+    }
+  ]
+}

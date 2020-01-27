@@ -5,9 +5,9 @@
 
 #include "CellState.h"
 
-PartState_Wing::PartState_Wing(const shared_ptr<PartConfig>& partConfig)
+PartState_Wing::PartState_Wing(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
-	, m_partAsset_Wing(dynamic_pointer_cast<PartAsset_Wing>(partConfig->getPartAsset()))
+	, m_partAsset_Wing(std::dynamic_pointer_cast<PartAsset_Wing>(partConfig->getPartAsset()))
 {}
 
 void PartState_Wing::draw(const CellState& cellState) const

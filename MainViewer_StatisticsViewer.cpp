@@ -71,7 +71,7 @@ void MainViewer::StatisticsViewer::takeLog()
 	}
 }
 
-MainViewer::StatisticsViewer::Log::Status::Status(const shared_ptr<CellAsset>& cellAsset)
+MainViewer::StatisticsViewer::Log::Status::Status(const std::shared_ptr<CellAsset>& cellAsset)
 {
 	m_numCell = int(World::GetInstance()->getCellStates().count_if([&cellAsset](const auto& cs) { return cs->getCellAsset() == cellAsset; }));
 	m_numEgg = int(World::GetInstance()->getEggStates().count_if([&cellAsset](const auto& es) { return es->getCellAsset() == cellAsset; }));

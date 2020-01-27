@@ -7,7 +7,7 @@ class ProteinAsset;
 
 class Storage
 	: public Model
-	, private Array<pair<shared_ptr<ProteinAsset>, int>>
+	, private Array<std::pair<std::shared_ptr<ProteinAsset>, int>>
 {
 	double m_element;
 
@@ -25,6 +25,7 @@ public:
 	Storage& operator-=(const Storage& s) noexcept;
 
 	bool	contain(const Storage& s) const;
+	bool	containProtein(const Storage& s) const;
 
 	double	getElement() const { return m_element; }
 	void	setElement(double element) { m_element = element; }
@@ -34,10 +35,10 @@ public:
 	double	getElementRecursive() const;
 
 	// protein
-	const Array<pair<shared_ptr<ProteinAsset>, int>>& getProteinList() const { return *this; }
-	void	addProtein(const shared_ptr<ProteinAsset>& asset, int size = 1);
-	void	pullProtein(const shared_ptr<ProteinAsset>& asset, int size = 1);
-	int		numProtein(const shared_ptr<ProteinAsset>& asset) const;
+	const Array<std::pair<std::shared_ptr<ProteinAsset>, int>>& getProteinList() const { return *this; }
+	void	addProtein(const std::shared_ptr<ProteinAsset>& asset, int size = 1);
+	void	pullProtein(const std::shared_ptr<ProteinAsset>& asset, int size = 1);
+	int		numProtein(const std::shared_ptr<ProteinAsset>& asset) const;
 
 	// JSON
 	void	load(const JSONValue& json) override;

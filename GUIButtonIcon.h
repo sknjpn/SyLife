@@ -11,7 +11,7 @@ class GUIButtonIcon :
 	Color	m_color;
 	uint32	m_code;
 	Texture	m_texture;
-	function<void(void)>	m_functionOnSelected;
+	std::function<void(void)>	m_functionOnSelected;
 
 	Color	getTargetColor() const
 	{
@@ -22,7 +22,7 @@ public:
 	GUIButtonIcon(bool isEnabled = true)
 		: m_isEnabled(isEnabled)
 	{}
-	GUIButtonIcon(function<void(void)> functionOnSelected, bool isEnabled = true)
+	GUIButtonIcon(std::function<void(void)> functionOnSelected, bool isEnabled = true)
 		: GUIButtonIcon(isEnabled)
 	{
 		m_functionOnSelected = functionOnSelected;

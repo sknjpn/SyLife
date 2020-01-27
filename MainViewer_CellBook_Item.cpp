@@ -1,7 +1,7 @@
 ﻿#include "MainViewer.h"
 #include "CellAsset.h"
 
-MainViewer::CellBook::Item::Item(const shared_ptr<CellAsset>& cellAsset)
+MainViewer::CellBook::Item::Item(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 {}
 
@@ -31,6 +31,10 @@ void MainViewer::CellBook::Item::update()
 		if (MouseL.down())
 		{
 			getParentViewer()->getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
+		}
+
+		if (MouseL.up())
+		{
 			getParentViewer()->getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
 		}
 	}

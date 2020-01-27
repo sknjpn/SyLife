@@ -7,17 +7,17 @@ class Asset;
 class GUIAssetLinker 
 	: public EasyViewer
 {
-	shared_ptr<Asset>	m_asset;
-	function<void(const shared_ptr<Asset>&)>	m_functionOnChanged;
+	std::shared_ptr<Asset>	m_asset;
+	std::function<void(const std::shared_ptr<Asset>&)>	m_functionOnChanged;
 	
 public:
 	class Dragger
 		: public EasyViewer
 	{
-		shared_ptr<Asset>	m_asset;
+		std::shared_ptr<Asset>	m_asset;
 
 	public:
-		Dragger(const shared_ptr<Asset>& asset)
+		Dragger(const std::shared_ptr<Asset>& asset)
 			: m_asset(asset)
 		{}
 
@@ -43,14 +43,14 @@ public:
 		}
 
 
-		const shared_ptr<Asset>& getAsset() const { return m_asset; }
+		const std::shared_ptr<Asset>& getAsset() const { return m_asset; }
 	};
 
 public:
-	GUIAssetLinker(shared_ptr<Asset> asset = nullptr)
+	GUIAssetLinker(std::shared_ptr<Asset> asset = nullptr)
 		: m_asset(asset)
 	{}
-	GUIAssetLinker(function<void(const shared_ptr<Asset>&)> functionOnChanged, shared_ptr<Asset> asset = nullptr)
+	GUIAssetLinker(std::function<void(const std::shared_ptr<Asset>&)> functionOnChanged, std::shared_ptr<Asset> asset = nullptr)
 		: m_asset(asset)
 		, m_functionOnChanged(functionOnChanged)
 	{}

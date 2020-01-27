@@ -53,6 +53,20 @@ void MainViewer::CommandPalette::update()
 		moveDrawPos(65, 0);
 	}
 
+	// Wave Mode
+	{
+		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
+		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
+
+		auto& drawWaveEnabled = fv->m_drawWaveEnabled;
+
+		m_textureWave.drawAt(rect.center(), drawWaveEnabled ? Palette::Red : Palette::Gray);
+
+		if (rect.leftClicked()) drawWaveEnabled = !drawWaveEnabled;
+
+		moveDrawPos(65, 0);
+	}
+
 	// Mode
 	{
 		setDrawPos(5, 75);

@@ -12,7 +12,7 @@ class CellAsset
 {
 	Storage	m_material;
 	Storage	m_maxStorage;
-	Array<shared_ptr<PartConfig>>	m_partConfigs;
+	Array<std::shared_ptr<PartConfig>>	m_partConfigs;
 
 	// Rigidbody
 	double	m_mass;
@@ -41,7 +41,7 @@ public:
 
 	void	setCentroidAsOrigin();
 
-	void	removePartConfig(const shared_ptr<PartConfig>& partConfig) { m_partConfigs.remove(partConfig); }
+	void	removePartConfig(const std::shared_ptr<PartConfig>& partConfig) { m_partConfigs.remove(partConfig); }
 
 	// Get
 	const Storage& getMaterial() const { return m_material; }
@@ -50,19 +50,19 @@ public:
 	double	getRadius() const { return m_radius; }
 	double	getDrawRadius() const { return m_drawRadius; }
 	double	getInertia() const { return m_inertia; }
-	const Array<shared_ptr<PartConfig>>& getPartConfigs() const { return m_partConfigs; }
+	const Array<std::shared_ptr<PartConfig>>& getPartConfigs() const { return m_partConfigs; }
 	double	getLifespanTime() const { return m_lifespanTime; }
 	double	getBornTime() const { return m_bornTime; }
 	double	getYieldTime() const { return m_yieldTime; }
 	double	getMaxHitPoint() const { return m_maxHitPoint; }
 
 	// Add
-	shared_ptr<PartConfig>& addPartConfig();
+	std::shared_ptr<PartConfig>& addPartConfig();
 
 	void	updateProperties();
 
-	shared_ptr<PartAsset_Body> getBodyAsset() const;
-	shared_ptr<PartAsset_Nucleus> getNucleusAsset() const;
+	std::shared_ptr<PartAsset_Body> getBodyAsset() const;
+	std::shared_ptr<PartAsset_Nucleus> getNucleusAsset() const;
 
 	// draw
 	void	draw(double a = 0.5);
@@ -91,6 +91,6 @@ public:
 
 		Array<Status> m_statuses;
 
-		void update(const shared_ptr<CellAsset>& cellAsset);
+		void update(const std::shared_ptr<CellAsset>& cellAsset);
 	} m_log;
 };

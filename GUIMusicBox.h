@@ -6,9 +6,11 @@
 
 class GUIMusicBox : public EasyViewer
 {
-	Audio	m_audio;
+	bool	m_loadComplate = false;
+	String	m_assetName;
 	double	m_volume;
 	bool	m_isEnabled = true;
+	bool	m_isLoop = true;
 
 	void onClicked()
 	{
@@ -16,28 +18,25 @@ class GUIMusicBox : public EasyViewer
 		{
 			getChildViewer<GUIButtonIcon>()->setIcon(0xf6a9);
 			getChildViewer<GUIValuer>()->setValue(0.0);
-			m_audio.setVolume(0.0);
+			AudioAsset(m_assetName).setVolume(0.0);
 		}
 		else
 		{
 			getChildViewer<GUIButtonIcon>()->setIcon(0xf028);
 			getChildViewer<GUIValuer>()->setValue(m_volume);
-			m_audio.setVolume(m_volume);
+			AudioAsset(m_assetName).setVolume(m_volume);
 		}
 
 		m_isEnabled = !m_isEnabled;
 	}
 
 public:
-	GUIMusicBox(const FilePath& path)
-		: m_audio(path)
+	GUIMusicBox(const String& assetName, bool isLoop = true)
+		: m_assetName(assetName)
+		, m_isLoop(isLoop)
 	{
 		INIData ini(U"config.ini");
 		m_volume = ini.getOr<double>(U"General", U"MusicVolume", 1.0);
-
-		m_audio.setLoop(true);
-		m_audio.setVolume(m_volume);
-		m_audio.play();
 	}
 
 	void init() override
@@ -54,13 +53,24 @@ public:
 
 	}
 
+	bool isPlaying() const { return AudioAsset(m_assetName).isPlaying(); }
+	void setMusic(const String& assetName) { m_assetName = assetName; m_loadComplate = false; }
+
 	void update() override
 	{
+		if (!m_loadComplate && AudioAsset::IsReady(m_assetName))
+		{
+			m_loadComplate = true;
+			AudioAsset(m_assetName).setVolume(m_volume);
+			AudioAsset(m_assetName).setLoop(m_isLoop);
+			AudioAsset(m_assetName).play();
+		}
+
 		RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(1.0, 0.0, Palette::Black);
 
 		if (m_isEnabled)
 		{
-			m_audio.setVolume(m_volume);
+			AudioAsset(m_assetName).setVolume(m_volume);
 
 			if (m_volume != getChildViewer<GUIValuer>()->getValue())
 			{
@@ -78,8 +88,13 @@ public:
 		}
 		else
 		{
-			m_audio.setVolume(0.0);
+			AudioAsset(m_assetName).setVolume(0.0);
 			getChildViewer<GUIValuer>()->setValue(0.0);
 		}
+	}
+
+	void onDestroy() override
+	{
+		AudioAsset(m_assetName).stop();
 	}
 };

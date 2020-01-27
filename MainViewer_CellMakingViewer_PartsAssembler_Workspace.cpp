@@ -30,7 +30,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 		}
 
 		// 回転の中心
-		if (m_state == State::RotateMode && !dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) Circle(partConfig->getPosition(), 2.0).draw(Palette::Yellow).drawFrame(1.0, Palette::Black);
+		if (m_state == State::RotateMode && !std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) Circle(partConfig->getPosition(), 2.0).draw(Palette::Yellow).drawFrame(1.0, Palette::Black);
 	}
 
 	// 描画
@@ -91,8 +91,8 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 	{
 		for (const auto& partConfig : m_cellAsset->getPartConfigs())
 		{
-			if (dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) continue;
-			if (dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset())) continue;
+			if (std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) continue;
+			if (std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset())) continue;
 
 			auto t2 = Transformer2D(partConfig->getMat3x2(), true);
 

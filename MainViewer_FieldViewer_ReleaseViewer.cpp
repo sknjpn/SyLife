@@ -5,7 +5,7 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 
-MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const shared_ptr<CellAsset>& cellAsset)
+MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 {
 

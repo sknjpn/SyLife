@@ -8,7 +8,7 @@
 #include "ProteinAsset.h"
 #include "EggState.h"
 
-CellState::CellState(const shared_ptr<CellAsset>& cellAsset)
+CellState::CellState(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 	, m_startTimer(0.0)
 	, m_deathTimer(cellAsset->getLifespanTime())
@@ -103,8 +103,9 @@ void CellState::updateCell()
 
 void CellState::draw()
 {
+	const double stage = m_startTimer / m_cellAsset->getLifespanTime();
 	auto t1 = Transformer2D(getMat3x2());
-	auto t2 = Transformer2D(Mat3x2::Scale(min(1.0, m_startTimer + 0.5)));
+	auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2 + 0.5, 0.0, 1.0)));
 
 	// parts
 	for (const auto& p : m_partStates)
@@ -117,7 +118,7 @@ void CellState::draw()
 	// 細胞円
 	if (false)
 	{
-		double a = min(0.5, m_deathTimer * 0.25);
+		double a = Min(0.5, m_deathTimer * 0.25);
 
 		Circle(getRadius())
 			.draw(ColorF(Palette::Lightpink, a))
@@ -133,6 +134,11 @@ void CellState::takeElement()
 
 	World::GetInstance()->getTile(getPosition()).pullElement(value);
 	m_storage.addElement(value);
+}
+
+bool CellState::isNeedNutrition() const
+{
+	return !m_storage.contain(m_cellAsset->getMaterial());
 }
 
 void CellState::load(Deserializer<ByteArray>& reader)

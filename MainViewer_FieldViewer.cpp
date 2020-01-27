@@ -29,10 +29,10 @@ void MainViewer::FieldViewer::init()
 void MainViewer::FieldViewer::update()
 {
 	// エッジスクロール
-	if (MouseL.pressed() && Cursor::Pos().x < 32) { Rect(32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
-	if (MouseL.pressed() && Cursor::Pos().y < 32) { Rect(Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveU(); }
-	if (MouseL.pressed() && Cursor::Pos().x > Scene::Size().x - 32) { Rect(Scene::Size().x - 32, 0, 32, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
-	if (MouseL.pressed() && Cursor::Pos().y > Scene::Size().y - 32) { Rect(0, Scene::Size().y - 32, Scene::Size().x, 32).draw(ColorF(0.5)); m_camera.moveD(); }
+	if (Cursor::Pos().x < 50) { Rect(50, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
+	if (Cursor::Pos().y < 50) { Rect(Scene::Size().x, 50).draw(ColorF(0.5)); m_camera.moveU(); }
+	if (Cursor::Pos().x > Scene::Size().x - 50) { Rect(Scene::Size().x - 50, 0, 50, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
+	if (Cursor::Pos().y > Scene::Size().y - 50) { Rect(0, Scene::Size().y - 50, Scene::Size().x, 50).draw(ColorF(0.5)); m_camera.moveD(); }
 
 	{
 		// camera
@@ -49,8 +49,8 @@ void MainViewer::FieldViewer::update()
 			{
 				World::GetInstance()->update();
 
-				getParentViewer()->
-					getChildViewer<StatisticsViewer>()->takeLog();
+				if (auto sv = getParentViewer()->getChildViewer<StatisticsViewer>())
+					sv->takeLog();
 
 				numUpdate++;
 
@@ -63,6 +63,34 @@ void MainViewer::FieldViewer::update()
 		// draw
 		World::GetInstance()->draw();
 
+		// Wave
+		if (m_drawWaveEnabled)
+		{
+			for (auto p : step(World::GetInstance()->getTiles().size()))
+			{
+				const auto& tile = World::GetInstance()->getTiles()[p];
+				const auto w = 3.0 * tile.getWaveVelocity() * TileLength / 2.0;
+
+				Line(Vec2::Zero(), w)
+					.movedBy(p * TileLength + Vec2(0.5, 0.5) * TileLength)
+					.drawArrow(TileLength * 0.1, Vec2(TileLength * 0.2, TileLength * 0.2), ColorF(1.0, tile.getWaveVelocity().length()));
+			}
+		}
+
+		// 選択中の生き物
+		for (const auto& cellAssetViewer : getParentViewer<MainViewer>()->getChildViewers<CellAssetViewer>())
+		{
+			if (auto cellStateViewer = cellAssetViewer->getChildViewer<CellAssetViewer::CellStateViewer>())
+			{
+				const auto cellState = cellStateViewer->getCellState();
+				const auto t2 = Transformer2D(cellState->getMat3x2());
+
+				Circle(cellState->getRadius() * 1.5)
+					.draw(ColorF(Palette::Red, 0.25))
+					.drawFrame(2.0, Palette::Black);
+			}
+		}
+
 		switch (m_handAction)
 		{
 		case MainViewer::FieldViewer::HandAction::None:
@@ -73,7 +101,7 @@ void MainViewer::FieldViewer::update()
 				if (cellState->getRadius() > (cellState->getPosition() - Cursor::PosF()).length())
 				{
 					addChildViewer<CellStateCaptureViewer>(cellState);
-					getParentViewer<MainViewer>()->addCellAssetViewer(cellState->getCellAsset());
+					getParentViewer<MainViewer>()->addCellAssetViewer(cellState);
 				}
 			}
 			break;
@@ -85,7 +113,7 @@ void MainViewer::FieldViewer::update()
 
 				for (auto p : step(World::GetInstance()->getTiles().size()))
 				{
-					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
+					auto distance = (p * TileLength).distanceFrom(Cursor::PosF());
 					if (distance < 256.0)
 					{
 						World::GetInstance()->getTile(p).addElement(Math::Lerp(0.0, 10.0 * numUpdate, 1.0 - distance / 256.0));
@@ -119,7 +147,7 @@ void MainViewer::FieldViewer::update()
 			{
 				for (auto p : step(World::GetInstance()->getTiles().size()))
 				{
-					auto distance = (p * World::GetInstance()->getTileLength()).distanceFrom(Cursor::PosF());
+					auto distance = (p * TileLength).distanceFrom(Cursor::PosF());
 					if (distance < 256.0)
 					{
 						World::GetInstance()->getTile(p).setElement(0.0);
