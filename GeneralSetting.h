@@ -17,7 +17,7 @@ public:
 
 	bool	m_touchPanelModeEnabled;
 	bool	m_autoTurnOutEnabled;
-	bool	m_autoTurnOutTime;
+	double	m_autoTurnOutTime;
 	bool	m_fullScreenEnabled;
 	bool	m_runTitleEnabled;
 	bool	m_audioEnabled;
