@@ -28,11 +28,14 @@ void MainViewer::FieldViewer::init()
 
 void MainViewer::FieldViewer::update()
 {
-	// エッジスクロール
-	if (Cursor::Pos().x < 50) { Rect(50, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
-	if (Cursor::Pos().y < 50) { Rect(Scene::Size().x, 50).draw(ColorF(0.5)); m_camera.moveU(); }
-	if (Cursor::Pos().x > Scene::Size().x - 50) { Rect(Scene::Size().x - 50, 0, 50, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
-	if (Cursor::Pos().y > Scene::Size().y - 50) { Rect(0, Scene::Size().y - 50, Scene::Size().x, 50).draw(ColorF(0.5)); m_camera.moveD(); }
+	// エッジスクロール (タッチパネル使用時はMouseL.pressed()を要求)
+	if (!GeneralSetting::GetInstance().m_touchPanelModeEnabled || MouseL.pressed())
+	{
+		if (Cursor::Pos().x < 50) { Rect(50, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
+		if (Cursor::Pos().y < 50) { Rect(Scene::Size().x, 50).draw(ColorF(0.5)); m_camera.moveU(); }
+		if (Cursor::Pos().x > Scene::Size().x - 50) { Rect(Scene::Size().x - 50, 0, 50, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
+		if (Cursor::Pos().y > Scene::Size().y - 50) { Rect(0, Scene::Size().y - 50, Scene::Size().x, 50).draw(ColorF(0.5)); m_camera.moveD(); }
+	}
 
 	{
 		// camera
