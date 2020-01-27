@@ -17,8 +17,6 @@ void MainViewer::init()
 
 	addChildViewer<CellBook>();
 
-	// addChildViewer<StatisticsViewer>();
-
 	addChildViewer<CommandPalette>();
 
 	if (GeneralSetting::GetInstance().m_audioEnabled)
