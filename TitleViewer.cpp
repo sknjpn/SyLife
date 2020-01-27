@@ -5,11 +5,6 @@
 #include "GUIMusicBox.h"
 #include "World.h"
 
-TitleViewer::TitleViewer()
-{
-	for (int i = 0; i < 2000; ++i) UpdateBubbles();
-}
-
 void TitleViewer::UpdateBubbles()
 {
 	while (RandomBool(0.5))

@@ -30,8 +30,6 @@ class TitleViewer : public EasyViewer
 	Array<Bubble>	m_bubbles;
 
 public:
-	TitleViewer();
-
 	void	UpdateBubbles();
 	void	drawBubbles();
 
