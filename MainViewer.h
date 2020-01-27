@@ -124,7 +124,7 @@ class MainViewer : public EasyViewer
 		const TinyCamera& getCamera() const { return m_camera; }
 	};
 
-	class CommandPalette : public EasyViewer
+	class CommandPalette : public HiddenViewer
 	{
 		Texture	m_textureZoomIn = Texture(Icon(0xf00e, 45));
 		Texture	m_textureZoomOut = Texture(Icon(0xf010, 45));

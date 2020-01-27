@@ -3,11 +3,14 @@
 void MainViewer::CommandPalette::init()
 {
 	setViewerSize(65 * 4 + 5, 65 * 2 + 10);
-	setViewerPosInLocal(Scene::Size().x - getViewerSize().x - 20, 20);
+	setFirstPosInLocal(Scene::Size().x - getViewerSize().x - 20, 20);
+	setSecondPosInLocal(Scene::Size().x, 20);
 }
 
 void MainViewer::CommandPalette::update()
 {
+	HiddenViewer::update();
+
 	RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);
 
 	moveDrawPos(5, 5);
