@@ -37,7 +37,7 @@ void Main()
 		Window::Maximize();
 	}
 
-	if (ini.getOr<bool>(U"General", U"RunTitle", true))
+	if (GeneralSetting::GetInstance().m_runTitleEnabled)
 	{
 		EasyViewer::GetRootViewer()->addChildViewer<TitleViewer>();
 	}
@@ -61,4 +61,6 @@ void Main()
 
 	if (World::GetInstance())
 		World::GetInstance()->save();
+
+	GeneralSetting::GetInstance().save();
 }
