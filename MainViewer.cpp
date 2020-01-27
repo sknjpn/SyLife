@@ -40,12 +40,14 @@ void MainViewer::update()
 		{
 			if (!m_hiddenMode)
 			{
+				m_hiddenMode = true;
+
 				for (auto hv : getChildViewers<HiddenViewer>())
 					hv->moveToSecondPos();
 
 				if (auto viewer = getChildViewer<GUIButton>()) { viewer->destroy(); }
 				if (auto viewer = getChildViewer<CellMakingViewer>()) { viewer->destroy(); }
-
+				
 				for (auto viewer : getChildViewers<CellAssetViewer>())
 					viewer->destroy();
 			}
@@ -54,10 +56,14 @@ void MainViewer::update()
 		{
 			if (m_hiddenMode)
 			{
+				m_hiddenMode = false;
+
 				for (auto hv : getChildViewers<HiddenViewer>())
 					hv->moveToFirstPos();
 
 				addChildViewer<GUIButton>(U"生き物作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 250, 50);
+
+
 			}
 		}
 	}
