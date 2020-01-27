@@ -34,24 +34,22 @@ include_directories(
 
 
 set(SOURCE_FILES
-"Shape.cpp"
-"stdafx.cpp"
 "Storage.cpp"
 "TileState.cpp"
 "TitleViewer.cpp"
+"TitleViewer_WorldGenerator.cpp"
 "World.cpp"
 "World_makeModel.cpp"
 "Asset.cpp"
 "CellAsset.cpp"
 "CellAsset_Log.cpp"
 "CellState.cpp"
-"DraggableViewer.cpp"
 "EggState.cpp"
-"GUIValuer.cpp"
 "Layer.cpp"
 "Main.cpp"
 "MainViewer.cpp"
 "MainViewer_CellAssetViewer.cpp"
+"MainViewer_CellAssetViewer_CellStateViewer.cpp"
 "MainViewer_CellBook.cpp"
 "MainViewer_CellBook_Item.cpp"
 "MainViewer_CellMakingViewer.cpp"
@@ -64,7 +62,6 @@ set(SOURCE_FILES
 "MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp"
 "MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp"
 "MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp"
-"MainViewer_CellStateViewer.cpp"
 "MainViewer_CommandPalette.cpp"
 "MainViewer_FieldViewer.cpp"
 "MainViewer_FieldViewer_CellStateCaptureViewer.cpp"
@@ -89,6 +86,8 @@ set(SOURCE_FILES
 "PartState_Wing.cpp"
 "ProteinAsset.cpp"
 "Rigidbody.cpp"
+"Shape.cpp"
+"stdafx.cpp"
 )
 add_executable(Siv3D_App ${SOURCE_FILES})
 
