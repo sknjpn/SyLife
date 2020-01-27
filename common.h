@@ -8,3 +8,5 @@
 
 constexpr double DeltaTime = 1.0 / 60.0;
 constexpr double TileLength = 100.0;
+
+#include "GeneralSetting.h"

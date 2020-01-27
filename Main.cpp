@@ -5,6 +5,7 @@
 void Main()
 {
 	// loadBGM
+	if(GeneralSetting::GetInstance().m_audioEnabled)
 	{
 #ifdef _WIN32
 		AudioAsset::Register(U"天のきざはし", Resource(U"resources/music/天のきざはし.mp3"), AssetParameter::LoadAsync());
@@ -26,8 +27,7 @@ void Main()
 	Scene::Resize(1920, 1080);
 
 	// Window設定
-	INIData ini(U"config.ini");
-	if (ini.getOr<bool>(U"General", U"FullScreen", false))
+	if (GeneralSetting::GetInstance().m_fullScreenEnabled)
 	{
 		if (Window::SetFullscreen(true))
 			Window::Maximize();

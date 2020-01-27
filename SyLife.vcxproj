@@ -294,6 +294,7 @@
     <ClInclude Include="CellState.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="CurtainViewer.h" />
+    <ClInclude Include="GeneralSetting.h" />
     <ClInclude Include="GUIButtonIcon.h" />
     <ClInclude Include="GUIMusicBox.h" />
     <ClInclude Include="PartAsset_Eye.h" />

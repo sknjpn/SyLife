@@ -613,5 +613,6 @@
     <ClInclude Include="DraggableViewer.h">
       <Filter>EasyViewer</Filter>
     </ClInclude>
+    <ClInclude Include="GeneralSetting.h" />
   </ItemGroup>
 </Project>
