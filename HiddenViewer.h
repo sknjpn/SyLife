@@ -49,7 +49,7 @@ public:
 		break;
 		case HiddenViewer::Mode::MoveToSecondPos:
 		{
-			setViewerPosInLocal(posInLocal.lerp(m_firstPosInLocal, rate));
+			setViewerPosInLocal(posInLocal.lerp(m_secondPosInLocal, rate));
 		}
 		break;
 		default:
