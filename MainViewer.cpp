@@ -38,7 +38,13 @@ void MainViewer::update()
 
 		if (m_uncontrolTimer.s() > 5)
 		{
-
+			for (auto hv : getChildViewers<HiddenViewer>())
+				hv->moveToSecondPos();
+		}
+		else
+		{
+			for (auto hv : getChildViewers<HiddenViewer>())
+				hv->moveToFirstPos();
 		}
 	}
 
