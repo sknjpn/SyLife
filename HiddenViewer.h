@@ -15,6 +15,7 @@ class HiddenViewer : public EasyViewer
 	} m_mode = Mode::None;
 
 public:
+	std::shared_ptr<HiddenViewer> setFirstPosInLocal(double x, double y) { setFirstPosInLocal(Vec2(x, y)); }
 	std::shared_ptr<HiddenViewer> setFirstPosInLocal(const Vec2& pos)
 	{
 		if (m_mode == Mode::None)
@@ -26,6 +27,7 @@ public:
 		m_firstPosInLocal = pos; return std::dynamic_pointer_cast<HiddenViewer>(shared_from_this());
 	}
 
+	std::shared_ptr<HiddenViewer> setSecondPosInLocal(double x, double y) { setSecondPosInLocal(Vec2(x, y)); }
 	std::shared_ptr<HiddenViewer> setSecondPosInLocal(const Vec2& pos) { m_secondPosInLocal = pos; return std::dynamic_pointer_cast<HiddenViewer>(shared_from_this()); }
 
 	void moveToFirstPos() { m_mode = Mode::MoveToFirstPos; }
@@ -44,12 +46,12 @@ public:
 		{
 			setViewerPosInLocal(posInLocal.lerp(m_firstPosInLocal, rate));
 		}
-			break;
+		break;
 		case HiddenViewer::Mode::MoveToSecondPos:
 		{
 			setViewerPosInLocal(posInLocal.lerp(m_firstPosInLocal, rate));
 		}
-			break;
+		break;
 		default:
 			break;
 		}

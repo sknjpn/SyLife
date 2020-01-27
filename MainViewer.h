@@ -2,6 +2,7 @@
 
 #include "EasyViewer.h"
 #include "DraggableViewer.h"
+#include "HiddenViewer.h"
 #include "CellAsset.h"
 
 #include "TinyCamera.h"
@@ -50,7 +51,7 @@ class MainViewer : public EasyViewer
 		void	drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
 	};
 
-	class CellBook : public EasyViewer
+	class CellBook : public HiddenViewer
 	{
 		class Item : public EasyViewer
 		{
