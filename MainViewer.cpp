@@ -36,15 +36,29 @@ void MainViewer::update()
 		if (m_uncontrolTimer.isRunning() && MouseL.pressed()) m_uncontrolTimer.reset();
 		if (MouseL.up()) m_uncontrolTimer.start();
 
-		if (m_uncontrolTimer.s() > 5)
+		if (m_uncontrolTimer.s() > 1)
 		{
-			for (auto hv : getChildViewers<HiddenViewer>())
-				hv->moveToSecondPos();
+			if (!m_hiddenMode)
+			{
+				for (auto hv : getChildViewers<HiddenViewer>())
+					hv->moveToSecondPos();
+
+				if (auto viewer = getChildViewer<GUIButton>()) { viewer->destroy(); }
+				if (auto viewer = getChildViewer<CellMakingViewer>()) { viewer->destroy(); }
+
+				for (auto viewer : getChildViewers<CellAssetViewer>())
+					viewer->destroy();
+			}
 		}
 		else
 		{
-			for (auto hv : getChildViewers<HiddenViewer>())
-				hv->moveToFirstPos();
+			if (m_hiddenMode)
+			{
+				for (auto hv : getChildViewers<HiddenViewer>())
+					hv->moveToFirstPos();
+
+				addChildViewer<GUIButton>(U"生き物作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 250, 50);
+			}
 		}
 	}
 

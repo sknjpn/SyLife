@@ -347,6 +347,7 @@ class MainViewer : public EasyViewer
 	};
 
 	Stopwatch	m_uncontrolTimer;
+	bool	m_hiddenMode = false;
 
 	void	openCellMakingViewer();
 
