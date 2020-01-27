@@ -102,8 +102,7 @@ void TitleViewer::runContinue()
 
 void TitleViewer::init()
 {
-	INIData ini(U"config.ini");
-	if (ini.getOr<bool>(U"General", U"BGM", true))
+	if (GeneralSetting::GetInstance().m_audioEnabled)
 		addChildViewer<GUIMusicBox>(U"天のきざはし");
 
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));

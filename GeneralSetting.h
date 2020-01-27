@@ -37,7 +37,7 @@ public:
 
 	void	save() const
 	{
-		INIData ini;
+		INIData ini(U"config.ini");	// 追記の形で書き込む
 		ini.write<bool>(U"General", U"TouchPanelModeEnabled", m_touchPanelModeEnabled);
 		ini.write<bool>(U"General", U"AutoTurnOutEnabled", m_autoTurnOutEnabled);
 		ini.write<bool>(U"General", U"FullScreenEnabled", m_fullScreenEnabled);

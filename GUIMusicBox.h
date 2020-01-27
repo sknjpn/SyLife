@@ -35,8 +35,7 @@ public:
 		: m_assetName(assetName)
 		, m_isLoop(isLoop)
 	{
-		INIData ini(U"config.ini");
-		m_volume = ini.getOr<double>(U"General", U"MusicVolume", 1.0);
+		m_volume = GeneralSetting::GetInstance().m_musicVolume;
 	}
 
 	void init() override
@@ -76,11 +75,7 @@ public:
 			{
 				m_volume = getChildViewer<GUIValuer>()->getValue();
 
-				{
-					INIData ini(U"config.ini");
-					ini.write(U"General", U"MusicVolume", m_volume);
-					ini.save(U"config.ini");
-				}
+				GeneralSetting::GetInstance().m_musicVolume = m_volume;
 
 				if (m_volume > 0.5) getChildViewer<GUIButtonIcon>()->setIcon(0xf028);
 				else getChildViewer<GUIButtonIcon>()->setIcon(0xf027);

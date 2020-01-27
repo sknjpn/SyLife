@@ -21,8 +21,7 @@ void MainViewer::init()
 
 	addChildViewer<CommandPalette>();
 
-	INIData ini(U"config.ini");
-	if (ini.getOr<bool>(U"General", U"BGM", true))
+	if (GeneralSetting::GetInstance().m_audioEnabled)
 		addChildViewer<GUIMusicBox>(U"", false);
 
 	// OpenCurtain
@@ -58,7 +57,7 @@ void MainViewer::addCellAssetViewer(const std::shared_ptr<CellState>& cellState)
 		getChildViewer<CellAssetViewer>(cellState->getCellAsset()->getName())
 			->moveToFront();
 	}
-	else 
+	else
 	{
 		addChildViewer<CellAssetViewer>(cellState)
 			->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
