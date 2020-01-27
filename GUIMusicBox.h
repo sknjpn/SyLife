@@ -43,7 +43,7 @@ public:
 	{
 		setFirstPosInLocal(20, 20);
 		setSecondPosInLocal(-60, 20);
-		setViewerRectInLocal(60, 75);
+		setViewerSize(60, 75);
 
 		addChildViewer<GUIButtonIcon>([this]() { onClicked(); })
 			->setViewerRectInLocal(5, 5, 50, 50);
@@ -60,6 +60,8 @@ public:
 
 	void update() override
 	{
+		HiddenViewer::update();
+
 		if (!m_loadComplate && AudioAsset::IsReady(m_assetName))
 		{
 			m_loadComplate = true;
