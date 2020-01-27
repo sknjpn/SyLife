@@ -3,8 +3,9 @@
 #include "EasyViewer.h"
 #include "GUIButtonIcon.h"
 #include "GUIValuer.h"
+#include "HiddenViewer.h"
 
-class GUIMusicBox : public EasyViewer
+class GUIMusicBox : public HiddenViewer
 {
 	bool	m_loadComplate = false;
 	String	m_assetName;
@@ -40,7 +41,9 @@ public:
 
 	void init() override
 	{
-		setViewerRectInLocal(20, 20, 60, 75);
+		setFirstPosInLocal(20, 20);
+		setSecondPosInLocal(-60, 20);
+		setViewerRectInLocal(60, 75);
 
 		addChildViewer<GUIButtonIcon>([this]() { onClicked(); })
 			->setViewerRectInLocal(5, 5, 50, 50);
