@@ -396,12 +396,14 @@ void World::draw()
 	static bool showWave = false;
 	if (KeyP.down()) showWave = !showWave;
 
+	RectF(m_fieldSize).draw(Color(11, 22, 33));
+
 	// Tiles
 	{
 		Image image(m_tiles.size());
 
 		for (auto p : step(m_tiles.size()))
-			image[p].r = Min(255, int(m_tiles[p].getElement() * 2.5));
+			image[p] = Color(Palette::Palegreen, Min(255, int(m_tiles[p].getElement() * 2.5)));
 
 		m_tileTexture.fill(image);
 

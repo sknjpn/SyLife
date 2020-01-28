@@ -29,7 +29,10 @@ struct PSInput
 float4 PS(PSInput input) : SV_TARGET
 {
 	float t = 8.0;
-	float level = min(int(g_texture0.Sample(g_sampler0, input.uv).x * t) / t, 1.0 - 1.0 / t);
+	float x = min(int(g_texture0.Sample(g_sampler0, input.uv).x * t) / t, 1.0 - 1.0 / t);
+	float y = min(int(g_texture0.Sample(g_sampler0, input.uv).y * t) / t, 1.0 - 1.0 / t);
+	float z = min(int(g_texture0.Sample(g_sampler0, input.uv).z * t) / t, 1.0 - 1.0 / t);
+	float w = min(int(g_texture0.Sample(g_sampler0, input.uv).w * t) / t, 1.0 - 1.0 / t);
 
-	return float4(float3(0.593, 0.980, 0.593) * level, 1.0);
+	return float4(x, y, z, w);
 }
