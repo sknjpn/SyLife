@@ -42,7 +42,7 @@ public:
 		INIData ini(U"config.ini");	// 追記の形で書き込む
 		ini.write<bool>(U"General", U"TouchPanelModeEnabled", m_touchPanelModeEnabled);
 		ini.write<bool>(U"General", U"AutoTurnOutEnabled", m_autoTurnOutEnabled);
-		ini.write<bool>(U"General", U"AutoTurnOutTime", m_autoTurnOutTime);
+		ini.write<double>(U"General", U"AutoTurnOutTime", m_autoTurnOutTime);
 		ini.write<bool>(U"General", U"FullScreenEnabled", m_fullScreenEnabled);
 		ini.write<bool>(U"General", U"RunTitleEnabled", m_runTitleEnabled);
 		ini.write<bool>(U"General", U"AudioEnabled", m_audioEnabled);
