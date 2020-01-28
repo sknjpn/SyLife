@@ -146,11 +146,14 @@ void TitleViewer::WorldGenerator::generate()
 		}
 	}
 
-	Image image(size);
-	for (auto p : step(size))
-		image[p] = Math::Lerp(Color(0, 0), Palette::Palegreen, Min(tiles[p].m_element / 100.0, 1.0));
+	{
+		Image image(size);
 
-	m_fieldTexture = Texture(image);
+		for (auto p : step(size))
+			image[p] = Color(Palette::Palegreen, Min(255, int(tiles[p].m_element * 2.5)));
+
+		m_fieldTexture = Texture(image);
+	}
 }
 
 void TitleViewer::WorldGenerator::init()
@@ -244,8 +247,14 @@ void TitleViewer::WorldGenerator::update()
 		Rect(280, 195).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);
 
 		moveDrawPos(20, 10);
-		Rect(240, 135).draw(Palette::Black);
-		m_fieldTexture.resized(240, 135).draw(Palette::White);
+		Rect(240, 135).draw(Color(11, 22, 33));
+
+		const ScopedRenderStates2D state(SamplerState::ClampLinear);
+		static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
+		const ScopedCustomShader2D shader(ps);
+
+		m_fieldTexture.resized(240, 135).draw();
+
 	}
 }
 
