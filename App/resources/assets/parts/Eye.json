@@ -1,0 +1,46 @@
+﻿{
+  "type": "PartAsset_Eye",
+  "name": "Eye",
+  "nameJP": "目",
+  "mass": 20.0,
+  "layers": [
+    {
+      "color": "(0, 0, 0, 255)",
+      "polygon": {
+        "outer": [
+          "(-5, 0)",
+          "(0, -5)",
+          "(5, 0)",
+          "(0, 5)"
+        ],
+        "holes": []
+      }
+    },
+    {
+      "color": "(255, 255, 255, 255)",
+      "polygon": {
+        "outer": [
+          "(-10, 0)",
+          "(0, -10)",
+          "(10, 0)",
+          "(0, 10)"
+        ],
+        "holes": []
+      }
+    }
+  ],
+  "material": {
+    "element": 10.0,
+    "proteins": [
+      {
+        "name": "Plumagen",
+        "size": 2
+      },
+      {
+        "name": "Spinagen",
+        "size": 1
+      }
+    ]
+  },
+  "maxDistance": 250
+}
