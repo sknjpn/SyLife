@@ -393,9 +393,6 @@ World::World()
 
 void World::draw()
 {
-	static bool showWave = false;
-	if (KeyP.down()) showWave = !showWave;
-
 	RectF(m_fieldSize).draw(Color(11, 22, 33));
 
 	// Tiles
