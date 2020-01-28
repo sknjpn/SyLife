@@ -15,11 +15,6 @@ PartState_Eye::PartState_Eye(const std::shared_ptr<PartConfig>& partConfig)
 void PartState_Eye::draw(const CellState& cellState) const
 {
 	getPartConfig()->getPartAsset()->draw();
-
-	if (KeyR.pressed())
-		Circle(m_partAsset_Eye->getMaxDistance())
-		.draw(ColorF(Palette::Red, 0.1))
-		.drawFrame(2.0, Palette::Black);
 }
 
 void PartState_Eye::update(CellState& cellState)
@@ -58,8 +53,8 @@ void PartState_Eye::update(CellState& cellState)
 	}
 	else if (m_heat < 0)
 	{
-		auto p = cellState.getWorldPosition(getPartConfig()->getPosition());
-		for (auto i : World::GetInstance()->getCellStateKDTree().radiusSearch(p, m_partAsset_Eye->getMaxDistance(), true))
+		const auto position = cellState.getWorldPosition(getPartConfig()->getPosition());
+		for (auto i : World::GetInstance()->getCellStateKDTree().radiusSearch(position, m_partAsset_Eye->getMaxDistance(), true))
 		{
 			auto& t = World::GetInstance()->getCellStates()[i];
 

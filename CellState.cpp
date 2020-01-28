@@ -4,6 +4,8 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartState.h"
+#include "PartState_Eye.h"
+#include "PartAsset_Eye.h"
 #include "TileState.h"
 #include "ProteinAsset.h"
 #include "EggState.h"
@@ -103,26 +105,50 @@ void CellState::updateCell()
 
 void CellState::draw()
 {
-	const double stage = m_startTimer / m_cellAsset->getLifespanTime();
-	auto t1 = Transformer2D(getMat3x2());
-	auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2 + 0.5, 0.0, 1.0)));
-
-	// parts
-	for (const auto& p : m_partStates)
 	{
-		auto t3 = Transformer2D(p->getPartConfig()->getMat3x2());
+		const double stage = m_startTimer / m_cellAsset->getLifespanTime();
+		auto t1 = Transformer2D(getMat3x2());
+		auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2 + 0.5, 0.0, 1.0)));
 
-		p->draw(*this);
+		// parts
+		for (const auto& p : m_partStates)
+		{
+			auto t3 = Transformer2D(p->getPartConfig()->getMat3x2());
+
+			p->draw(*this);
+		}
+
+		// 細胞円
+		if (false)
+		{
+			double a = Min(0.5, m_deathTimer * 0.25);
+
+			Circle(getRadius())
+				.draw(ColorF(Palette::Lightpink, a))
+				.drawFrame(1.0, Palette::Gray);
+		}
 	}
 
-	// 細胞円
-	if (false)
+	// Eye
+	if (m_cellAsset->m_isInViewer)
 	{
-		double a = Min(0.5, m_deathTimer * 0.25);
+		for (const auto& partState : m_partStates)
+		{
+			if (auto eye = std::dynamic_pointer_cast<PartState_Eye>(partState))
+			{
+				const auto position = getWorldPosition(eye->getPartConfig()->getPosition());
 
-		Circle(getRadius())
-			.draw(ColorF(Palette::Lightpink, a))
-			.drawFrame(1.0, Palette::Gray);
+				Circle(position, eye->getPartAsset_Eye()->getMaxDistance())
+					.draw(ColorF(Palette::Red, 0.1))
+					.drawFrame(2.0, Palette::Black);
+
+				if (auto target = eye->getTargetCellState())
+				{
+					Line(getPosition(), target->getPosition())
+						.drawArrow(5.0, Vec2(25.0, 25.0), ColorF(1.0, 0.5));
+				}
+			}
+		}
 	}
 }
 

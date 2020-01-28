@@ -46,6 +46,7 @@ class MainViewer : public EasyViewer
 
 		void	init() override;
 		void	update() override;
+		void	onDestroy() override;
 
 		double	getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
 		void	drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;

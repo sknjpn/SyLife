@@ -35,6 +35,8 @@ class CellAsset
 	void	updateMaterial();
 
 public:
+	bool	m_isInViewer = false;
+
 	bool	isValid() const;
 
 	Vec2	getCentroid();

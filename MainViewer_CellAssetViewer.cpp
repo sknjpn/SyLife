@@ -14,12 +14,14 @@ MainViewer::CellAssetViewer::CellAssetViewer(const std::shared_ptr<CellAsset>& c
 	: m_cellAsset(cellAsset)
 	, m_cellState(nullptr)
 {
+
 }
 
 MainViewer::CellAssetViewer::CellAssetViewer(const std::shared_ptr<CellState>& cellState)
 	: m_cellAsset(cellState->getCellAsset())
 	, m_cellState(cellState)
 {
+
 }
 
 void MainViewer::CellAssetViewer::setCellState(const std::shared_ptr<CellState>& cellState)
@@ -32,6 +34,8 @@ void MainViewer::CellAssetViewer::setCellState(const std::shared_ptr<CellState>&
 
 void MainViewer::CellAssetViewer::init()
 {
+	m_cellAsset->m_isInViewer = true;
+
 	setName(m_cellAsset->getName());
 	setViewerSize(500, 600);
 
@@ -180,6 +184,11 @@ void MainViewer::CellAssetViewer::update()
 			moveDrawPos(-8, 0);
 		}
 	}
+}
+
+void MainViewer::CellAssetViewer::onDestroy()
+{
+	m_cellAsset->m_isInViewer = false;
 }
 
 double MainViewer::CellAssetViewer::getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> func) const

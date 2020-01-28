@@ -13,6 +13,9 @@ class PartState_Eye
 
 public:
 	PartState_Eye(const std::shared_ptr<PartConfig>& partConfig);
+	
+	const std::shared_ptr<PartAsset_Eye>& getPartAsset_Eye() const { return m_partAsset_Eye; }
+	const std::shared_ptr<CellState>& getTargetCellState() const { return m_targetCellState; }
 
 	void	draw(const CellState& cellState) const override;
 	void	update(CellState& cellState) override;
