@@ -35,8 +35,7 @@ void MainViewer::unsetHiddenMode()
 
 	addChildViewer<GUIButton>([this]() { openCellMakingViewer(); })
 		->setViewerRectInLocal(100, 50, 250, 50)
-		->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold))
-		->SetIsPenetrated(true);
+		->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold));
 }
 
 void MainViewer::init()
@@ -45,8 +44,7 @@ void MainViewer::init()
 
 	addChildViewer<GUIButton>([this]() { openCellMakingViewer(); })
 		->setViewerRectInLocal(100, 50, 250, 50)
-		->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold))
-		->SetIsPenetrated(true);
+		->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold));
 
 	addChildViewer<CellBook>();
 

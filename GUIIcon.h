@@ -15,7 +15,7 @@ public:
 		, m_scale(scale)
 		, m_code(code)
 	{
-
+		SetIsPenetrated(true);
 	}
 
 	// Set

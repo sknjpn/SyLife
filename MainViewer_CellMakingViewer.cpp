@@ -59,25 +59,21 @@ void MainViewer::CellMakingViewer::init()
 	addChildViewer<GUIButton>([this]() { openBodySculptor(); })
 		->setName(U"EditBody")
 		->setViewerRectInLocal(5, 5, 290, 35)
-		->addChildViewer<GUIText>(U"ボディ編集", Font(28, Typeface::Bold))
-		->SetIsPenetrated(true);
+		->addChildViewer<GUIText>(U"ボディ編集", Font(28, Typeface::Bold));
 
 	addChildViewer<GUIButton>([this]() { openPartsAssembler(); })
 		->setName(U"EditPart")
 		->setViewerRectInLocal(5, 45, 290, 35)
-		->addChildViewer<GUIText>(U"パーツ配置", Font(28, Typeface::Bold))
-		->SetIsPenetrated(true);
+		->addChildViewer<GUIText>(U"パーツ配置", Font(28, Typeface::Bold));
 
 	addChildViewer<GUIButton>([this]() { release(); }, false)
 		->setName(U"生き物配置")
 		->setViewerRectInLocal(5, 85, 290, 35)
-		->addChildViewer<GUIText>(U"生き物配置", Font(28, Typeface::Bold))
-		->SetIsPenetrated(true);
+		->addChildViewer<GUIText>(U"生き物配置", Font(28, Typeface::Bold));
 
 	addChildViewer<GUIButton>([this]() { destroy(); })
 		->setViewerRectInLocal(5, 125, 290, 35)
-		->addChildViewer<GUIText>(U"閉じる", Font(28, Typeface::Bold))
-		->SetIsPenetrated(true);
+		->addChildViewer<GUIText>(U"閉じる", Font(28, Typeface::Bold));
 
 	addChildViewer<CellInfo>()
 		->setViewerRectInLocal(5, 165, 290, 595);

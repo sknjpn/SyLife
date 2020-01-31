@@ -48,9 +48,7 @@ public:
 
 		addChildViewer<GUIButton>([this]() { onClicked(); })
 			->setViewerRectInLocal(5, 5, 50, 50)
-			->addChildViewer<GUIIcon>(0xf028)
-			->SetIsPenetrated(true);
-		getChildViewer<GUIButton>()->getChildViewer<GUIIcon>()->setIcon(0xf028);
+			->addChildViewer<GUIIcon>(0xf028);
 
 		addChildViewer<GUIValuer>(m_volume)
 			->setViewerRectInLocal(5, 60, 50, 10);

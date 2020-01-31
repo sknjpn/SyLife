@@ -23,7 +23,9 @@ public:
 		, m_font(font)
 		, m_mode(mode)
 		, m_color(color)
-	{}
+	{
+		SetIsPenetrated(true);
+	}
 
 	void	update() override
 	{
