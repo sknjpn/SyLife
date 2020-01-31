@@ -24,7 +24,7 @@ public:
 	void	init() override
 	{
 		setIcon(m_code);
-		SetIsPenetrated(true);
+		setIsPenetrated(true);
 	}
 
 	void	update() override

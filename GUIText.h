@@ -27,7 +27,7 @@ public:
 
 	void	init() override
 	{
-		SetIsPenetrated(true);
+		setIsPenetrated(true);
 	}
 
 	void	update() override

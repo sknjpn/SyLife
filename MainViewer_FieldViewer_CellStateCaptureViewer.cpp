@@ -9,7 +9,7 @@ MainViewer::FieldViewer::CellStateCaptureViewer::CellStateCaptureViewer(const st
 
 void MainViewer::FieldViewer::CellStateCaptureViewer::init()
 {
-	SetIsPenetrated(true);
+	setIsPenetrated(true);
 }
 
 void MainViewer::FieldViewer::CellStateCaptureViewer::update()

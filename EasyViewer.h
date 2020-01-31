@@ -247,7 +247,7 @@ public:
 	std::shared_ptr<EasyViewer>	setViewerRectInLocal(double w, double h) { m_viewerRectInLocal = RectF(w, h); return shared_from_this(); }
 	std::shared_ptr<EasyViewer>	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); return shared_from_this(); }
 	std::shared_ptr<EasyViewer>	setName(const String& name) { m_name = name; return shared_from_this(); }
-	std::shared_ptr<EasyViewer>	SetIsPenetrated(bool isPenetrated) { m_isPenetrated = isPenetrated; return shared_from_this(); }
+	std::shared_ptr<EasyViewer>	setIsPenetrated(bool isPenetrated) { m_isPenetrated = isPenetrated; return shared_from_this(); }
 
 	Optional<Rect>	getViewport() const
 	{
