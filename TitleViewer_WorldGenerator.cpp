@@ -4,6 +4,7 @@
 #include "GUIText.h"
 #include "GUIValuer.h"
 #include "GUIButton.h"
+#include "GUICurtain.h"
 
 void TitleViewer::WorldGenerator::generate()
 {
@@ -193,12 +194,12 @@ void TitleViewer::WorldGenerator::init()
 			->setViewerRectInLocal(15, 220, 150, 20);
 	}
 
-	addChildViewer<GUIButton>([this]() { onStart(); })
+	addChildViewer<GUIButton>([this]() { getParentViewer()->addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { onStart(); }); })
 		->setViewerRectInLocal(20, 270, 320, 40)
 		->addChildViewer<GUIText>(U"開始する！", Font(32, Typeface::Bold));
 
 	if (FileSystem::Exists(U"world/"))
-		addChildViewer<GUIButton>([this]() { onContinue(); })
+		addChildViewer<GUIButton>([this]() { getParentViewer()->addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { onContinue(); }); })
 		->setViewerRectInLocal(360, 270, 220, 40)
 		->addChildViewer<GUIText>(U"つづきから", Font(32, Typeface::Bold));
 

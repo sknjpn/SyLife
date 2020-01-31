@@ -107,7 +107,7 @@ void TitleViewer::init()
 		->setViewerRectInLocal(p.movedBy(0, 0))
 		->addChildViewer<GUIText>(U"はじめから", Font(40, Typeface::Bold));
 
-	addChildViewer<GUIButton>([this]() { runContinue(); }, FileSystem::Exists(U"world/"))
+	addChildViewer<GUIButton>([this]() { addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { runContinue(); }); }, FileSystem::Exists(U"world/"))
 		->setViewerRectInLocal(p.movedBy(0, 75))
 		->addChildViewer<GUIText>(U"つづきから", Font(40, Typeface::Bold));
 
