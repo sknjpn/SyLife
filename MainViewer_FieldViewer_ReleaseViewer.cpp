@@ -13,7 +13,7 @@ MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const std::shared_ptr<Cell
 
 void MainViewer::FieldViewer::ReleaseViewer::init()
 {
-	mouseoverDisable();
+	SetIsPenetrated(true);
 	setBackgroundColor(Color(0, 0));
 }
 

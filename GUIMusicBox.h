@@ -49,7 +49,7 @@ public:
 		addChildViewer<GUIButton>([this]() { onClicked(); })
 			->setViewerRectInLocal(5, 5, 50, 50)
 			->addChildViewer<GUIIcon>(0xf028)
-			->mouseoverDisable();
+			->SetIsPenetrated(true);
 		getChildViewer<GUIButton>()->getChildViewer<GUIIcon>()->setIcon(0xf028);
 
 		addChildViewer<GUIValuer>(m_volume)

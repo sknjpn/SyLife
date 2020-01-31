@@ -15,13 +15,13 @@ void MainViewer::CellMakingViewer::PartsAssembler::init()
 		->setName(U"移動モード")
 		->setViewerRectInLocal(5, 5, 190, 30)
 		->addChildViewer<GUIText>(U"移動モード", Font(24, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	addChildViewer<GUIButton>([this]() { getChildViewer<Workspace>()->setRotateMode(); })
 		->setName(U"回転モード")
 		->setViewerRectInLocal(5, 45, 190, 30)
 		->addChildViewer<GUIText>(U"回転モード", Font(24, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 }
 
 void MainViewer::CellMakingViewer::PartsAssembler::update()

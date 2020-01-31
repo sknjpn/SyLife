@@ -52,13 +52,13 @@ void MainViewer::CellMakingViewer::BodySculptor::init()
 			->setName(U"付けるスタンプ")
 			->setViewerRectInLocal(5, 80, 190, 30)
 			->addChildViewer<GUIText>(U"付けるスタンプ", Font(24, Typeface::Bold))
-			->mouseoverDisable();
+			->SetIsPenetrated(true);
 
 		addChildViewer<GUIButton>([this]() { setState(State::Shave); })
 			->setName(U"削るスタンプ")
 			->setViewerRectInLocal(5, 120, 190, 30)
 			->addChildViewer<GUIText>(U"削るスタンプ", Font(24, Typeface::Bold))
-			->mouseoverDisable();
+			->SetIsPenetrated(true);
 
 		addChildViewer<GUIText>(U"スタンプサイズ", Font(18, Typeface::Bold), GUIText::Mode::DrawLeftCenter)
 			->setViewerRectInLocal(5, 170, 165, 30);

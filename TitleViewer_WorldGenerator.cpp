@@ -196,18 +196,18 @@ void TitleViewer::WorldGenerator::init()
 	addChildViewer<GUIButton>([this]() { onStart(); })
 		->setViewerRectInLocal(20, 270, 320, 40)
 		->addChildViewer<GUIText>(U"開始する！", Font(32, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	if (FileSystem::Exists(U"world/"))
 		addChildViewer<GUIButton>([this]() { onContinue(); })
 		->setViewerRectInLocal(360, 270, 220, 40)
 		->addChildViewer<GUIText>(U"つづきから", Font(32, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	addChildViewer<GUIButton>([this]() { generate(); })
 		->setViewerRectInLocal(320, 210, 260, 30)
 		->addChildViewer<GUIText>(U"プレビュー", Font(32, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	generate();
 }

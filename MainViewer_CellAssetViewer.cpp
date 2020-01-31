@@ -42,14 +42,14 @@ void MainViewer::CellAssetViewer::init()
 
 	// name
 	addChildViewer<GUIText>(m_cellAsset->getNameJP(), Font(24, Typeface::Heavy), GUIText::Mode::DrawLeftCenter)
-		->mouseoverDisable()
+		->SetIsPenetrated(true)
 		->setViewerRectInLocal(5, 5, 400, 40);
 
 	// close
 	addChildViewer<GUIButton>([this]() { destroy(); })
 		->setViewerRectInLocal(450, 5, 40, 40)
 		->addChildViewer<GUIIcon>(0xf00d)
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	if (m_cellState != nullptr)
 	{

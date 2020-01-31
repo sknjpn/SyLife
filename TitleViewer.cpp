@@ -106,22 +106,22 @@ void TitleViewer::init()
 	addChildViewer<GUIButton>([this]() { runNew(); })
 		->setViewerRectInLocal(p.movedBy(0, 0))
 		->addChildViewer<GUIText>(U"はじめから", Font(40, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	addChildViewer<GUIButton>([this]() { runContinue(); }, FileSystem::Exists(U"world/"))
 		->setViewerRectInLocal(p.movedBy(0, 75))
 		->addChildViewer<GUIText>(U"つづきから", Font(40, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	addChildViewer<GUIButton>([this]() { /*getParentViewer()->addChildViewer<EditorViewer>();*/ destroy(); }, false)
 		->setViewerRectInLocal(p.movedBy(0, 150))
 		->addChildViewer<GUIText>(U"エディター", Font(40, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	addChildViewer<GUIButton>([this]() { addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); })
 		->setViewerRectInLocal(p.movedBy(0, 225))
 		->addChildViewer<GUIText>(U"終了", Font(40, Typeface::Bold))
-		->mouseoverDisable();
+		->SetIsPenetrated(true);
 
 	// OpenCurtain
 	addChildViewer<GUICurtain>(Color(11, 22, 33), Color(0, 0), 0.5);
