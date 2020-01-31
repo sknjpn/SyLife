@@ -1,7 +1,8 @@
 ﻿#pragma once
 
 #include "EasyViewer.h"
-#include "GUIButtonIcon.h"
+#include "GUIButton.h"
+#include "GUIIcon.h"
 #include "GUIValuer.h"
 #include "HiddenViewer.h"
 
@@ -17,13 +18,13 @@ class GUIMusicBox : public HiddenViewer
 	{
 		if (m_isEnabled)
 		{
-			getChildViewer<GUIButtonIcon>()->setIcon(0xf6a9);
+			getChildViewer<GUIButton>()->getChildViewer<GUIIcon>()->setIcon(0xf6a9);
 			getChildViewer<GUIValuer>()->setValue(0.0);
 			AudioAsset(m_assetName).setVolume(0.0);
 		}
 		else
 		{
-			getChildViewer<GUIButtonIcon>()->setIcon(0xf028);
+			getChildViewer<GUIButton>()->getChildViewer<GUIIcon>()->setIcon(0xf028);
 			getChildViewer<GUIValuer>()->setValue(m_volume);
 			AudioAsset(m_assetName).setVolume(m_volume);
 		}
@@ -45,10 +46,13 @@ public:
 		setSecondPosInLocal(-60, 20);
 		setViewerSize(60, 75);
 
-		addChildViewer<GUIButtonIcon>([this]() { onClicked(); })
-			->setViewerRectInLocal(5, 5, 50, 50);
+		{
+			const auto button = addChildViewer<GUIButton>([this]() { onClicked(); })
+				->setViewerRectInLocal(5, 5, 50, 50);
 
-		getChildViewer<GUIButtonIcon>()->setIcon(0xf028);
+			button->addChildViewer<GUIIcon>(0xf028)
+				->setViewerSize(button->getViewerSize());
+		}
 
 		addChildViewer<GUIValuer>(m_volume)
 			->setViewerRectInLocal(5, 60, 50, 10);
@@ -82,8 +86,8 @@ public:
 
 				GeneralSetting::GetInstance().m_musicVolume = m_volume;
 
-				if (m_volume > 0.5) getChildViewer<GUIButtonIcon>()->setIcon(0xf028);
-				else getChildViewer<GUIButtonIcon>()->setIcon(0xf027);
+				if (m_volume > 0.5) getChildViewer<GUIButton>()->getChildViewer<GUIIcon>()->setIcon(0xf028);
+				else getChildViewer<GUIButton>()->getChildViewer<GUIIcon>()->setIcon(0xf027);
 			}
 		}
 		else

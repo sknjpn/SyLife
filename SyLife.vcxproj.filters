@@ -601,9 +601,6 @@
     <ClInclude Include="GUIMusicBox.h">
       <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUIButtonIcon.h">
-      <Filter>EasyViewer\GUI</Filter>
-    </ClInclude>
     <ClInclude Include="EasyViewer.h">
       <Filter>EasyViewer</Filter>
     </ClInclude>
