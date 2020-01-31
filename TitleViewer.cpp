@@ -12,7 +12,7 @@ void TitleViewer::updateBubbles()
 	{
 		auto& b = m_bubbles.emplace_back();
 
-		b.m_position = Vec3(120.0 * Random(-1.0, 1.0), -100.0, 150.0 + 120.0 * Random(-1.0, 1.0));
+		b.m_position = Vec3(Random(-120.0, 120.0), -100.0, Random(30.0, 270.0));
 	}
 
 	static PerlinNoise noise1(Random(0xFFFFFFFF));
@@ -29,10 +29,11 @@ void TitleViewer::updateBubbles()
 				{
 					for (int j = i; j < m_bubbles.size(); j += numThread)
 					{
-						m_bubbles[j].m_timer += 2.0;
-						m_bubbles[j].m_position.x += 0.30 * noise1.noise(m_bubbles[j].m_position * 0.02 + liner);
-						m_bubbles[j].m_position.y += 0.30 * Random(0.25, 1.0);
-						m_bubbles[j].m_position.z += 0.30 * noise2.noise(m_bubbles[j].m_position * 0.02 + liner);
+						const auto k = 4.0;
+						m_bubbles[j].m_timer += k;
+						m_bubbles[j].m_position.x += k * 0.10 * noise1.noise(m_bubbles[j].m_position * 0.02 + liner);
+						m_bubbles[j].m_position.y += k * 0.075;
+						m_bubbles[j].m_position.z += k * 0.10 * noise2.noise(m_bubbles[j].m_position * 0.02 + liner);
 					}
 				});
 		}
@@ -48,7 +49,7 @@ void TitleViewer::updateBubbles()
 
 void TitleViewer::drawBubbles()
 {
-	//static Texture texture(U"resources/image/particle.png", TextureDesc::Mipped);
+	static Texture texture(U"resources/image/particle.png", TextureDesc::Mipped);
 
 	ScopedRenderStates2D blend(BlendState::Additive);
 
@@ -56,17 +57,20 @@ void TitleViewer::drawBubbles()
 	t += 1.0;
 	for (auto& b : m_bubbles)
 	{
-		auto s = 5.0;
-		Vec3 camPos(sin(t * 0.001 * 11) * s, sin(t * 0.001 * 13) * s, sin(t * 0.001 * 17) * s);
+		auto s = 20.0;
+		Vec3 camPos(sin(150_deg + t * 0.001 * 11) * s, sin(210_deg + t * 0.001 * 13) * s, sin(t * 0.001 * 17) * s);
 		Vec3 p = b.m_position - camPos;
 
-		auto x = (asin(p.x / p.z) / (3.14 / 3.0) + 0.5) * Scene::Size().x;
-		auto y = (-asin(p.y / p.z) / (3.14 / 3.0) + 0.5) * Scene::Size().y;
-		auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 15.0;
-		auto a = Min((1800.0 - b.m_timer) / 500.0, 1.0) * 0.1;
+		const auto x = (atan(p.x / p.z) / 30_deg + 0.5) * Scene::Size().x;
+		const auto y = (-atan(p.y / p.z) / 30_deg + 0.5) * Scene::Size().y;
+		const auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 15.0;
+		const auto a = Min((1800.0 - b.m_timer) / 500.0, 1.0) * 0.1;
+		const auto circle = Circle(x, y, r * 0.5);
 
-		Circle(x, y, r * 0.5).draw(ColorF(Palette::Lightblue, a));
-		//texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
+		if (Scene::Rect().intersects(circle))
+			circle.draw(ColorF(Palette::Lightblue, a));
+
+		texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
 	}
 }
 
