@@ -2,6 +2,7 @@
 #include "GUICurtain.h"
 #include "MainViewer.h"
 #include "GUIButton.h"
+#include "GUIText.h"
 #include "GUIMusicBox.h"
 #include "World.h"
 
@@ -102,16 +103,25 @@ void TitleViewer::init()
 
 	const auto p = RectF(500, 50).setCenter(Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
-	addChildViewer<GUIButton>(U"はじめから", [this]() { runNew(); })->setViewerRectInLocal(p.movedBy(0, 0));
+	addChildViewer<GUIButton>([this]() { runNew(); })
+		->setViewerRectInLocal(p.movedBy(0, 0))
+		->addChildViewer<GUIText>(U"はじめから", Font(40, Typeface::Bold))
+		->mouseoverDisable();
 
-	addChildViewer<GUIButton>(U"つづきから", [this]() { runContinue(); }, FileSystem::Exists(U"world/"))->setViewerRectInLocal(p.movedBy(0, 75));
+	addChildViewer<GUIButton>([this]() { runContinue(); }, FileSystem::Exists(U"world/"))
+		->setViewerRectInLocal(p.movedBy(0, 75))
+		->addChildViewer<GUIText>(U"つづきから", Font(40, Typeface::Bold))
+		->mouseoverDisable();
 
-	//const auto f3 = [this]() { addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };
-	//addChildViewer<GUIButton>(U"エディター", f3)->setViewerRectInLocal(p.movedBy(0, 150));
-	addChildViewer<GUIButton>(U"エディター", false)->setViewerRectInLocal(p.movedBy(0, 150));
+	addChildViewer<GUIButton>([this]() { /*getParentViewer()->addChildViewer<EditorViewer>();*/ destroy(); }, false)
+		->setViewerRectInLocal(p.movedBy(0, 150))
+		->addChildViewer<GUIText>(U"エディター", Font(40, Typeface::Bold))
+		->mouseoverDisable();
 
-	const auto f4 = [this]() { addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); };
-	addChildViewer<GUIButton>(U"終了", f4)->setViewerRectInLocal(p.movedBy(0, 225));
+	addChildViewer<GUIButton>([this]() { addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); })
+		->setViewerRectInLocal(p.movedBy(0, 225))
+		->addChildViewer<GUIText>(U"終了", Font(40, Typeface::Bold))
+		->mouseoverDisable();
 
 	// OpenCurtain
 	addChildViewer<GUICurtain>(Color(11, 22, 33), Color(0, 0), 0.5);

@@ -1,5 +1,6 @@
 ﻿#include "MainViewer.h"
 #include "GUIButton.h"
+#include "GUIText.h"
 
 void MainViewer::CellMakingViewer::PartsAssembler::init()
 {
@@ -10,14 +11,17 @@ void MainViewer::CellMakingViewer::PartsAssembler::init()
 
 	addChildViewer<PartList>();
 
-	addChildViewer<GUIButton>(U"移動モード", [this]() { getChildViewer<Workspace>()->setMoveMode(); }, false)
+	addChildViewer<GUIButton>([this]() { getChildViewer<Workspace>()->setMoveMode(); }, false)
 		->setName(U"移動モード")
-		->setViewerRectInLocal(5, 5, 190, 30);
+		->setViewerRectInLocal(5, 5, 190, 30)
+		->addChildViewer<GUIText>(U"移動モード", Font(24, Typeface::Bold))
+		->mouseoverDisable();
 
-	addChildViewer<GUIButton>(U"回転モード", [this]() { getChildViewer<Workspace>()->setRotateMode(); })
+	addChildViewer<GUIButton>([this]() { getChildViewer<Workspace>()->setRotateMode(); })
 		->setName(U"回転モード")
-		->setViewerRectInLocal(5, 45, 190, 30);
-
+		->setViewerRectInLocal(5, 45, 190, 30)
+		->addChildViewer<GUIText>(U"回転モード", Font(24, Typeface::Bold))
+		->mouseoverDisable();
 }
 
 void MainViewer::CellMakingViewer::PartsAssembler::update()

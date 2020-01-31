@@ -10,11 +10,12 @@ class GUIIcon : public EasyViewer
 	double	m_scale;
 
 public:
-	GUIIcon(uint32 code, double scale = 0.8, Color color = Palette::Black)
+	GUIIcon(uint32 code, double scale = 0.6, Color color = Palette::Black)
 		: m_color(color)
 		, m_scale(scale)
+		, m_code(code)
 	{
-		setIcon(code);
+
 	}
 
 	// Set
@@ -24,13 +25,11 @@ public:
 
 	void	init() override
 	{
-		mouseoverDisable();
+		setIcon(m_code);
 	}
 
 	void	update() override
 	{
-		if (getViewerSize() != m_texture.size()) setIcon(m_code);
-
 		// Icon描画
 		m_texture.drawAt(getViewerSize() / 2.0, m_color);
 	}

@@ -1,6 +1,7 @@
 ﻿#include "MainViewer.h"
 #include "GUIMusicBox.h"
 #include "GUIButton.h"
+#include "GUIText.h"
 #include "CellState.h"
 #include "GUICurtain.h"
 
@@ -32,14 +33,20 @@ void MainViewer::unsetHiddenMode()
 	for (auto hv : getChildViewers<HiddenViewer>())
 		hv->moveToFirstPos();
 
-	addChildViewer<GUIButton>(U"生き物作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 250, 50);
+	addChildViewer<GUIButton>([this]() { openCellMakingViewer(); })
+		->setViewerRectInLocal(100, 50, 250, 50)
+		->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold))
+		->mouseoverDisable();
 }
 
 void MainViewer::init()
 {
 	addChildViewer<FieldViewer>();
 
-	addChildViewer<GUIButton>(U"生き物作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 250, 50);
+	addChildViewer<GUIButton>([this]() { openCellMakingViewer(); })
+		->setViewerRectInLocal(100, 50, 250, 50)
+		->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold))
+		->mouseoverDisable();
 
 	addChildViewer<CellBook>();
 

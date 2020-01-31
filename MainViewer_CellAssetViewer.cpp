@@ -9,6 +9,7 @@
 #include "GUIText.h"
 #include "GUITextBox.h"
 #include "GUIButton.h"
+#include "GUIIcon.h"
 
 MainViewer::CellAssetViewer::CellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
@@ -45,8 +46,10 @@ void MainViewer::CellAssetViewer::init()
 		->setViewerRectInLocal(5, 5, 400, 40);
 
 	// close
-	addChildViewer<GUIButton>(U"✖", [this]() { destroy(); })
-		->setViewerRectInLocal(450, 5, 40, 40);
+	addChildViewer<GUIButton>([this]() { destroy(); })
+		->setViewerRectInLocal(450, 5, 40, 40)
+		->addChildViewer<GUIIcon>(0xf00d)
+		->mouseoverDisable();
 
 	if (m_cellState != nullptr)
 	{

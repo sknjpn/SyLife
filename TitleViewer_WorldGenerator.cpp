@@ -4,7 +4,6 @@
 #include "GUIText.h"
 #include "GUIValuer.h"
 #include "GUIButton.h"
-#include "GUIButtonIcon.h"
 
 void TitleViewer::WorldGenerator::generate()
 {
@@ -194,15 +193,21 @@ void TitleViewer::WorldGenerator::init()
 			->setViewerRectInLocal(15, 220, 150, 20);
 	}
 
-	addChildViewer<GUIButton>(U"開始する！", [this]() { onStart(); })
-		->setViewerRectInLocal(20, 270, 320, 40);
+	addChildViewer<GUIButton>([this]() { onStart(); })
+		->setViewerRectInLocal(20, 270, 320, 40)
+		->addChildViewer<GUIText>(U"開始する！", Font(32, Typeface::Bold))
+		->mouseoverDisable();
 
 	if (FileSystem::Exists(U"world/"))
-		addChildViewer<GUIButton>(U"つづきから", [this]() { onContinue(); })
-		->setViewerRectInLocal(360, 270, 220, 40);
+		addChildViewer<GUIButton>([this]() { onContinue(); })
+		->setViewerRectInLocal(360, 270, 220, 40)
+		->addChildViewer<GUIText>(U"つづきから", Font(32, Typeface::Bold))
+		->mouseoverDisable();
 
-	addChildViewer<GUIButton>(U"プレビュー", [this]() { generate(); })
-		->setViewerRectInLocal(320, 210, 260, 30);
+	addChildViewer<GUIButton>([this]() { generate(); })
+		->setViewerRectInLocal(320, 210, 260, 30)
+		->addChildViewer<GUIText>(U"プレビュー", Font(32, Typeface::Bold))
+		->mouseoverDisable();
 
 	generate();
 }

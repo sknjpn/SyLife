@@ -1,6 +1,5 @@
 ﻿#include "MainViewer.h"
 #include "World.h"
-
 #include "Rigidbody.h"
 #include "CellAsset.h"
 #include "CellState.h"
@@ -9,8 +8,6 @@
 #include "EggState.h"
 #include "TileState.h"
 #include "ProteinAsset.h"
-
-#include "GUIButton.h"
 
 void MainViewer::FieldViewer::openCellMakingViewer()
 {

@@ -170,6 +170,7 @@ public:
 
 		m_childViewers.emplace_back(cv);
 		cv->m_parentViewer = shared_from_this();
+		cv->m_viewerRectInLocal.size = m_viewerRectInLocal.size;
 		cv->init();
 
 		return cv;

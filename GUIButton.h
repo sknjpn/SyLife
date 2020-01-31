@@ -9,7 +9,6 @@ class GUIButton :
 	bool	m_isSelected = false;
 	bool	m_isEnabled = true;
 	Color	m_color;
-	String	m_text;
 	std::function<void(void)>	m_functionOnSelected;
 
 	Color	getTargetColor() const
@@ -18,13 +17,11 @@ class GUIButton :
 	}
 
 public:
-	GUIButton(const String& text, bool isEnabled = true)
-		: m_text(text)
-		, m_isEnabled(isEnabled)
+	GUIButton(bool isEnabled = true)
+		: m_isEnabled(isEnabled)
 	{}
-	GUIButton(const String& text, std::function<void(void)> functionOnSelected, bool isEnabled = true)
-		: m_text(text) 
-		, m_functionOnSelected(functionOnSelected)
+	GUIButton(std::function<void(void)> functionOnSelected, bool isEnabled = true)
+		: m_functionOnSelected(functionOnSelected)
 		, m_isEnabled(isEnabled)
 	{}
 
@@ -51,14 +48,6 @@ public:
 
 		// 背景
 		rect.rounded(d).draw(m_color).drawFrame(frameThickness, 0.0, Palette::Black);
-
-		// 文字列描画
-		{
-			const auto s = 0.75 * rect.h / 128.0;
-			const auto t = Transformer2D(Mat3x2::Scale(s));
-
-			font(m_text).drawAt(rect.center() / s, Palette::Black);
-		}
 	}
 	
 	void	setIsEnabled(bool isEnabled)
