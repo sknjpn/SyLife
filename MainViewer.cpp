@@ -9,6 +9,30 @@ void MainViewer::openCellMakingViewer()
 	if (!hasChildViewer<CellMakingViewer>()) addChildViewer<CellMakingViewer>();
 }
 
+void MainViewer::setHiddenMode()
+{
+	m_hiddenMode = true;
+
+	for (auto hv : getChildViewers<HiddenViewer>())
+		hv->moveToSecondPos();
+
+	if (auto viewer = getChildViewer<GUIButton>()) { viewer->destroy(); }
+	if (auto viewer = getChildViewer<CellMakingViewer>()) { viewer->destroy(); }
+
+	for (auto viewer : getChildViewers<CellAssetViewer>())
+		viewer->destroy();
+}
+
+void MainViewer::unsetHiddenMode()
+{
+	m_hiddenMode = false;
+
+	for (auto hv : getChildViewers<HiddenViewer>())
+		hv->moveToFirstPos();
+
+	addChildViewer<GUIButton>(U"生き物作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 250, 50);
+}
+
 void MainViewer::init()
 {
 	addChildViewer<FieldViewer>();
@@ -31,6 +55,7 @@ void MainViewer::init()
 
 void MainViewer::update()
 {
+	// HiddenModeの実行
 	if (GeneralSetting::GetInstance().m_autoTurnOutEnabled)
 	{
 		if (m_uncontrolTimer.isRunning() && MouseL.pressed()) m_uncontrolTimer.reset();
@@ -38,33 +63,11 @@ void MainViewer::update()
 
 		if (m_uncontrolTimer.s() > GeneralSetting::GetInstance().m_autoTurnOutTime)
 		{
-			if (!m_hiddenMode)
-			{
-				m_hiddenMode = true;
-
-				for (auto hv : getChildViewers<HiddenViewer>())
-					hv->moveToSecondPos();
-
-				if (auto viewer = getChildViewer<GUIButton>()) { viewer->destroy(); }
-				if (auto viewer = getChildViewer<CellMakingViewer>()) { viewer->destroy(); }
-				
-				for (auto viewer : getChildViewers<CellAssetViewer>())
-					viewer->destroy();
-			}
+			if (!m_hiddenMode) setHiddenMode();
 		}
 		else
 		{
-			if (m_hiddenMode)
-			{
-				m_hiddenMode = false;
-
-				for (auto hv : getChildViewers<HiddenViewer>())
-					hv->moveToFirstPos();
-
-				addChildViewer<GUIButton>(U"生き物作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 250, 50);
-
-
-			}
+			if (m_hiddenMode) unsetHiddenMode();
 		}
 	}
 

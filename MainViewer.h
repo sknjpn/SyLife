@@ -351,6 +351,8 @@ class MainViewer : public EasyViewer
 	bool	m_hiddenMode = false;
 
 	void	openCellMakingViewer();
+	void	setHiddenMode();
+	void	unsetHiddenMode();
 
 public:
 	void	init() override;
