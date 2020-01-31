@@ -48,6 +48,15 @@ void EggState::updateEgg()
 
 void EggState::draw()
 {
+	// 画面外ならば描画しない
+	{
+		const auto mat3x2 = Graphics2D::GetLocalTransform().inversed();
+		const auto viewRect = RectF(mat3x2.transform(Scene::Rect().pos), mat3x2.transform(Scene::Rect().size));
+		const auto circle = Circle(getPosition(), m_cellAsset->getDrawRadius());
+
+		if (!viewRect.intersects(circle)) return;
+	}
+
 	const double stage = 1.0 - m_timer / m_cellAsset->getBornTime();
 
 	{
