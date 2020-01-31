@@ -8,6 +8,8 @@ class GUIButton :
 	bool	m_isGrabbed = false;
 	bool	m_isSelected = false;
 	bool	m_isEnabled = true;
+	double	m_roundRadius = 10.0;
+	double	m_frameThickness = 2.0;
 	Color	m_color;
 	std::function<void(void)>	m_functionOnSelected;
 
@@ -25,14 +27,12 @@ public:
 		, m_isEnabled(isEnabled)
 	{}
 
+	std::shared_ptr<EasyViewer>	setFrame(double roundRadius, double frameThickness) { m_roundRadius = roundRadius, m_frameThickness = frameThickness; }
+
 	void	init() override { m_color = getTargetColor(); }
 	void	update() override
 	{
-		static const Font font(128, Typeface::Bold);
-
 		const RectF rect(getViewerSize());
-		const double d = rect.h / 3.0;
-		const double frameThickness = rect.h / 12;
 
 		if (m_isEnabled)
 		{
@@ -47,7 +47,9 @@ public:
 		m_color = m_color.lerp(getTargetColor(), 0.25);
 
 		// 背景
-		rect.rounded(d).draw(m_color).drawFrame(frameThickness, 0.0, Palette::Black);
+		rect.rounded(m_roundRadius)
+			.draw(m_color)
+			.drawFrame(m_frameThickness, 0.0, Palette::Black);
 	}
 	
 	void	setIsEnabled(bool isEnabled)
