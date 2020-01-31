@@ -20,13 +20,17 @@ public:
 		, m_duration(duration)
 		, m_st(true)
 		, m_functionOnEnd(functionOnEnd)
-	{}
+	{
+		SetIsPenetrated(true);
+	}
 	GUICurtain(Color beginColor, Color endColor, double duration)
 		: m_beginColor(beginColor)
 		, m_endColor(endColor)
 		, m_duration(duration)
 		, m_st(true)
-	{}
+	{
+		SetIsPenetrated(true);
+	}
 
 	void	update() override
 	{
