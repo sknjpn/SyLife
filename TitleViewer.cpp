@@ -1,5 +1,5 @@
 ﻿#include "TitleViewer.h"
-#include "CurtainViewer.h"
+#include "GUICurtain.h"
 #include "MainViewer.h"
 #include "GUIButton.h"
 #include "GUIMusicBox.h"
@@ -106,15 +106,15 @@ void TitleViewer::init()
 
 	addChildViewer<GUIButton>(U"つづきから", [this]() { runContinue(); }, FileSystem::Exists(U"world/"))->setViewerRectInLocal(p.movedBy(0, 75));
 
-	//const auto f3 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };
+	//const auto f3 = [this]() { addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }); };
 	//addChildViewer<GUIButton>(U"エディター", f3)->setViewerRectInLocal(p.movedBy(0, 150));
 	addChildViewer<GUIButton>(U"エディター", false)->setViewerRectInLocal(p.movedBy(0, 150));
 
-	const auto f4 = [this]() { addChildViewer<CurtainViewer>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); };
+	const auto f4 = [this]() { addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); }); };
 	addChildViewer<GUIButton>(U"終了", f4)->setViewerRectInLocal(p.movedBy(0, 225));
 
 	// OpenCurtain
-	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
+	addChildViewer<GUICurtain>(Color(11, 22, 33), Color(0, 0), 0.5);
 }
 
 void TitleViewer::update()

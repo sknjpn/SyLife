@@ -2,7 +2,7 @@
 #include "GUIMusicBox.h"
 #include "GUIButton.h"
 #include "CellState.h"
-#include "CurtainViewer.h"
+#include "GUICurtain.h"
 
 void MainViewer::openCellMakingViewer()
 {
@@ -49,7 +49,7 @@ void MainViewer::init()
 		addChildViewer<GUIMusicBox>(U"", false);
 
 	// OpenCurtain
-	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
+	addChildViewer<GUICurtain>(Color(11, 22, 33), Color(0, 0), 0.5);
 
 	if (GeneralSetting::GetInstance().m_autoTurnOutEnabled)
 		m_uncontrolTimer.start();

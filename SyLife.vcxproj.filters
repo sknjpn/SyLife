@@ -607,15 +607,15 @@
     <ClInclude Include="EasyViewer.h">
       <Filter>EasyViewer</Filter>
     </ClInclude>
-    <ClInclude Include="CurtainViewer.h">
-      <Filter>EasyViewer</Filter>
-    </ClInclude>
     <ClInclude Include="DraggableViewer.h">
       <Filter>EasyViewer</Filter>
     </ClInclude>
     <ClInclude Include="GeneralSetting.h" />
     <ClInclude Include="HiddenViewer.h" />
     <ClInclude Include="GUIIcon.h">
+      <Filter>EasyViewer\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUICurtain.h">
       <Filter>EasyViewer\GUI</Filter>
     </ClInclude>
   </ItemGroup>
