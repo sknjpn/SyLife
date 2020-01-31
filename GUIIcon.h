@@ -2,7 +2,7 @@
 
 #include "EasyViewer.h"
 
-class GUIButtonIcon : public EasyViewer
+class GUIIcon : public EasyViewer
 {
 	Color	m_color;
 	uint32	m_code;
@@ -10,12 +10,17 @@ class GUIButtonIcon : public EasyViewer
 	double	m_scale;
 
 public:
-	GUIButtonIcon(uint32 code)
+	GUIIcon(uint32 code, double scale = 0.8, Color color = Palette::Black)
+		: m_color(color)
+		, m_scale(scale)
 	{
 		setIcon(code);
 	}
 
-	void	setIcon(uint32 code) { m_code = code; m_texture = Texture(Icon(m_code, Min(getViewerSize().x, getViewerSize().y))); }
+	// Set
+	void	setColor(const Color& color) { m_color = color; }
+	void	setScale(double scale) { m_scale = scale; }
+	void	setIcon(uint32 code) { m_code = code; m_texture = Texture(Icon(m_code, int(m_scale * Min(getViewerSize().x, getViewerSize().y)))); }
 
 	void	init() override
 	{
@@ -25,7 +30,7 @@ public:
 	void	update() override
 	{
 		if (getViewerSize() != m_texture.size()) setIcon(m_code);
-		
+
 		// Icon描画
 		m_texture.drawAt(getViewerSize() / 2.0, m_color);
 	}
