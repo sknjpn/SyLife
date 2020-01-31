@@ -21,6 +21,8 @@ void MainViewer::setHiddenMode()
 
 	for (auto viewer : getChildViewers<CellAssetViewer>())
 		viewer->destroy();
+
+	getChildViewer<FieldViewer>()->m_handAction = FieldViewer::HandAction::None;
 }
 
 void MainViewer::unsetHiddenMode()
