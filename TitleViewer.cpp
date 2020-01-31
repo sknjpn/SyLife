@@ -6,7 +6,7 @@
 #include "GUIMusicBox.h"
 #include "World.h"
 
-void TitleViewer::UpdateBubbles()
+void TitleViewer::updateBubbles()
 {
 	while (RandomBool(0.5))
 	{
@@ -145,7 +145,7 @@ void TitleViewer::update()
 
 	// bubbles
 	{
-		UpdateBubbles();
+		updateBubbles();
 
 		drawBubbles();
 	}
