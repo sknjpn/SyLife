@@ -14,9 +14,7 @@ public:
 		: m_color(color)
 		, m_scale(scale)
 		, m_code(code)
-	{
-		SetIsPenetrated(true);
-	}
+	{}
 
 	// Set
 	void	setColor(const Color& color) { m_color = color; }
@@ -26,6 +24,7 @@ public:
 	void	init() override
 	{
 		setIcon(m_code);
+		SetIsPenetrated(true);
 	}
 
 	void	update() override
