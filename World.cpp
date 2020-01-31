@@ -404,7 +404,7 @@ void World::draw()
 
 		m_tileTexture.fill(image);
 
-		const ScopedRenderStates2D state(SamplerState::ClampLinear);
+		const ScopedRenderStates2D state(SamplerState::BorderLinear);
 		static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
 		const ScopedCustomShader2D shader(ps);
 
