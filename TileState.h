@@ -33,12 +33,14 @@ public:
 	{
 		reader >> m_waveVelocity;
 		reader >> m_element;
+		reader >> m_poison;
 	}
 
 	void	save(Serializer<MemoryWriter>& writer) const
 	{
 		writer << m_waveVelocity;
 		writer << m_element;
+		writer << m_poison;
 	}
 };
 
