@@ -4,7 +4,7 @@
 
 void MainViewer::CommandPalette::init()
 {
-	setViewerSize(65 * 4 + 5, 65 * 2 + 10);
+	setViewerSize(65 * 5 + 5, 65 * 2 + 10);
 	setFirstPosInLocal(Scene::Size().x - getViewerSize().x - 20, 20);
 	setSecondPosInLocal(Scene::Size().x, 20);
 
@@ -30,6 +30,11 @@ void MainViewer::CommandPalette::init()
 		->setName(U"showWave")
 		->setViewerRectInLocal(200, 5, 60, 60)
 		->addChildViewer<GUIIcon>(0xf5c4, 0.75, disableColor);
+
+	addChildViewer<GUIButton>()
+		->setName(U"closeEye")
+		->setViewerRectInLocal(265, 5, 60, 60)
+		->addChildViewer<GUIIcon>(0xf070, 0.75, disableColor);
 
 
 	addChildViewer<GUIButton>()
@@ -71,6 +76,7 @@ void MainViewer::CommandPalette::update()
 	const auto zoomOut = getChildViewer<GUIButton>(U"zoomOut");
 	const auto fastMode = getChildViewer<GUIButton>(U"fastMode");
 	const auto showWave = getChildViewer<GUIButton>(U"showWave");
+	const auto closeEye = getChildViewer<GUIButton>(U"closeEye");
 	const auto handNone = getChildViewer<GUIButton>(U"handNone");
 	const auto handPoison = getChildViewer<GUIButton>(U"handPoison");
 	const auto handAddElement = getChildViewer<GUIButton>(U"handAddElement");
@@ -80,6 +86,7 @@ void MainViewer::CommandPalette::update()
 	const auto zoomOutIcon = zoomOut->getChildViewer<GUIIcon>();
 	const auto fastModeIcon = fastMode->getChildViewer<GUIIcon>();
 	const auto showWaveIcon = showWave->getChildViewer<GUIIcon>();
+	const auto closeEyeIcon = closeEye->getChildViewer<GUIIcon>();
 	const auto handNoneIcon = handNone->getChildViewer<GUIIcon>();
 	const auto handPoisonIcon = handPoison->getChildViewer<GUIIcon>();
 	const auto handAddElementIcon = handAddElement->getChildViewer<GUIIcon>();
@@ -93,6 +100,7 @@ void MainViewer::CommandPalette::update()
 		if (zoomOut->isGrabbed()) { zoomOutIcon->setColor(enableColor); fv->getCamera().zoomOut(); }
 		if (fastMode->isSelected()) { fv->m_isHighSpeed = !fv->m_isHighSpeed; if (fv->m_isHighSpeed) { fastModeIcon->setColor(enableColor); } }
 		if (showWave->isSelected()) { fv->m_drawWaveEnabled = !fv->m_drawWaveEnabled; if (fv->m_drawWaveEnabled) { showWaveIcon->setColor(enableColor); } }
+		if (closeEye->isSelected()) getParentViewer<MainViewer>()->setHiddenMode();
 	}
 
 	// Mode

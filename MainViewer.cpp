@@ -63,20 +63,14 @@ void MainViewer::init()
 void MainViewer::update()
 {
 	// HiddenModeの実行
-	if (GeneralSetting::GetInstance().m_autoTurnOutEnabled)
+	if (m_hiddenMode && MouseL.down())
 	{
-		if (m_uncontrolTimer.isRunning() && MouseL.pressed()) m_uncontrolTimer.reset();
-		if (MouseL.up()) m_uncontrolTimer.start();
+		m_uncontrolTimer.reset();
 
-		if (m_uncontrolTimer.s() > GeneralSetting::GetInstance().m_autoTurnOutTime)
-		{
-			if (!m_hiddenMode) setHiddenMode();
-		}
-		else
-		{
-			if (m_hiddenMode) unsetHiddenMode();
-		}
+		unsetHiddenMode();
 	}
+	if (MouseL.up()) m_uncontrolTimer.start();
+	if (!m_hiddenMode && GeneralSetting::GetInstance().m_autoTurnOutEnabled && m_uncontrolTimer.s() > GeneralSetting::GetInstance().m_autoTurnOutTime) setHiddenMode();
 
 	if (auto musicBox = getChildViewer<GUIMusicBox>())
 	{
