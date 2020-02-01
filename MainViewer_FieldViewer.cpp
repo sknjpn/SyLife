@@ -127,6 +127,15 @@ void MainViewer::FieldViewer::update()
 				Circle circle(Cursor::PosF(), 256.0);
 				circle.draw(ColorF(Palette::Purple, 0.75));
 
+				for (auto p : step(World::GetInstance()->getTiles().size()))
+				{
+					auto distance = (p * TileLength).distanceFrom(Cursor::PosF());
+					if (distance < 256.0)
+					{
+						World::GetInstance()->getTile(p).addPoison(Math::Lerp(0.0, 10.0 * numUpdate, 1.0 - distance / 256.0));
+					}
+				}
+
 				for (const auto& c : World::GetInstance()->getCellStates())
 					if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
 
@@ -151,6 +160,7 @@ void MainViewer::FieldViewer::update()
 					if (distance < 256.0)
 					{
 						World::GetInstance()->getTile(p).setElement(0.0);
+						World::GetInstance()->getTile(p).setPoison(0.0);
 					}
 				}
 

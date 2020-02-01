@@ -39,7 +39,8 @@ public:
 
 private:
 	Vec2	m_fieldSize;
-	DynamicTexture	m_tileTexture;
+	DynamicTexture	m_tileTextureElement;
+	DynamicTexture	m_tileTexturePoison;
 
 	double	m_waveVelocityMax;
 

@@ -277,7 +277,10 @@ void World::updateTiles()
 
 	// SwapのElementリセット
 	for (auto& tile_swap : m_tiles_swap)
+	{
 		tile_swap.m_element = 0;
+		tile_swap.m_poison = 0;
+	}
 
 	Array<ConcurrentTask<void>> tasks;
 
@@ -312,7 +315,8 @@ void World::updateTileGroup(int groupIndex)
 				const auto& fromTile = m_tiles[p.y + y - 1][p.x + x - 1];
 				const auto sendRate = fromTile.m_sendRate[2 - x][2 - y];
 
-				m_tiles_swap[p].addElement(fromTile.getElement() * sendRate);
+				m_tiles_swap[p].m_element += (fromTile.m_element * sendRate);
+				m_tiles_swap[p].m_poison += (fromTile.m_poison * sendRate);
 			}
 		}
 	}
@@ -397,18 +401,29 @@ void World::draw()
 
 	// Tiles
 	{
-		Image image(m_tiles.size());
-
-		for (auto p : step(m_tiles.size()))
-			image[p] = Color(Palette::Palegreen, Min(255, int(m_tiles[p].getElement() * 2.5)));
-
-		m_tileTexture.fill(image);
-
-		const ScopedRenderStates2D state(SamplerState::BorderLinear);
 		static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
+		const ScopedRenderStates2D state(SamplerState::BorderLinear);
 		const ScopedCustomShader2D shader(ps);
 
-		m_tileTexture.scaled(TileLength).draw();
+		Image image(m_tiles.size());
+
+		{
+			for (auto p : step(m_tiles.size()))
+				image[p] = ColorF(Palette::Palegreen, Min(0.8, m_tiles[p].m_element * 0.01));
+
+			m_tileTextureElement.fill(image);
+
+			m_tileTextureElement.scaled(TileLength).draw();
+		}
+
+		{
+			for (auto p : step(m_tiles.size()))
+				image[p] = ColorF(Palette::Purple, Min(0.8, m_tiles[p].m_poison * 0.01));
+
+			m_tileTexturePoison.fill(image);
+
+			m_tileTexturePoison.scaled(TileLength).draw();
+		}
 	}
 
 	for (const auto& e : getEggStates())
