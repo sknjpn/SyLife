@@ -16,6 +16,9 @@ public:
 		, m_code(code)
 	{}
 
+	// Get
+	Color	getColor() const { return m_color; }
+
 	// Set
 	void	setColor(const Color& color) { m_color = color; }
 	void	setScale(double scale) { m_scale = scale; }

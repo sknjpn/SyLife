@@ -63,6 +63,7 @@ public:
 		}
 	}
 
+	bool	isSelected() const { return m_isSelected; }
 	bool	isGrabbed() const { return m_isGrabbed; }
 	bool	isEnabled() const { return m_isEnabled; }
 };

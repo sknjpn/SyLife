@@ -1,10 +1,56 @@
 ﻿#include "MainViewer.h"
+#include "GUIButton.h"
+#include "GUIIcon.h"
 
 void MainViewer::CommandPalette::init()
 {
 	setViewerSize(65 * 4 + 5, 65 * 2 + 10);
 	setFirstPosInLocal(Scene::Size().x - getViewerSize().x - 20, 20);
 	setSecondPosInLocal(Scene::Size().x, 20);
+
+	const Color disableColor = Palette::Black;
+	const Color enableColor = Palette::Red;
+
+	addChildViewer<GUIButton>()
+		->setName(U"zoomIn")
+		->setViewerRectInLocal(5, 5, 60, 60)
+		->addChildViewer<GUIIcon>(0xf00e, 0.6, disableColor);
+
+	addChildViewer<GUIButton>()
+		->setName(U"zoomOut")
+		->setViewerRectInLocal(70, 5, 60, 60)
+		->addChildViewer<GUIIcon>(0xf010, 0.6, disableColor);
+
+	addChildViewer<GUIButton>()
+		->setName(U"fastMode")
+		->setViewerRectInLocal(135, 5, 60, 60)
+		->addChildViewer<GUIIcon>(0xf050, 0.6, disableColor);
+
+	addChildViewer<GUIButton>()
+		->setName(U"showWave")
+		->setViewerRectInLocal(200, 5, 60, 60)
+		->addChildViewer<GUIIcon>(0xf5c4, 0.6, disableColor);
+
+
+	addChildViewer<GUIButton>()
+		->setName(U"handNone")
+		->setViewerRectInLocal(5, 75, 60, 60)
+		->addChildViewer<GUIIcon>(0xf25a, 0.6, disableColor);
+
+	addChildViewer<GUIButton>()
+		->setName(U"handPoison")
+		->setViewerRectInLocal(70, 75, 60, 60)
+		->addChildViewer<GUIIcon>(0xf714, 0.6, disableColor);
+
+	addChildViewer<GUIButton>()
+		->setName(U"handAddElement")
+		->setViewerRectInLocal(135, 75, 60, 60)
+		->addChildViewer<GUIIcon>(0xf613, 0.6, disableColor);
+
+	addChildViewer<GUIButton>()
+		->setName(U"handTrash")
+		->setViewerRectInLocal(200, 75, 60, 60)
+		->addChildViewer<GUIIcon>(0xf1f8, 0.6, disableColor);
 }
 
 void MainViewer::CommandPalette::update()
@@ -15,113 +61,53 @@ void MainViewer::CommandPalette::update()
 
 	moveDrawPos(5, 5);
 
+	const Color disableColor = Palette::Black;
+	const Color enableColor = Palette::Red;
+
 	const auto rect = RectF(60, 60).rounded(5);
 	const auto fv = getParentViewer()->getChildViewer<FieldViewer>();
 
-	// Zoom In
+	const auto zoomIn = getChildViewer<GUIButton>(U"zoomIn");
+	const auto zoomOut = getChildViewer<GUIButton>(U"zoomOut");
+	const auto fastMode = getChildViewer<GUIButton>(U"fastMode");
+	const auto showWave = getChildViewer<GUIButton>(U"showWave");
+	const auto handNone = getChildViewer<GUIButton>(U"handNone");
+	const auto handPoison = getChildViewer<GUIButton>(U"handPoison");
+	const auto handAddElement = getChildViewer<GUIButton>(U"handAddElement");
+	const auto handTrash = getChildViewer<GUIButton>(U"handTrash");
+
+	const auto zoomInIcon = zoomIn->getChildViewer<GUIIcon>();
+	const auto zoomOutIcon = zoomOut->getChildViewer<GUIIcon>();
+	const auto fastModeIcon = fastMode->getChildViewer<GUIIcon>();
+	const auto showWaveIcon = showWave->getChildViewer<GUIIcon>();
+	const auto handNoneIcon = handNone->getChildViewer<GUIIcon>();
+	const auto handPoisonIcon = handPoison->getChildViewer<GUIIcon>();
+	const auto handAddElementIcon = handAddElement->getChildViewer<GUIIcon>();
+	const auto handTrashIcon = handTrash->getChildViewer<GUIIcon>();
+
+	for (const auto button : getChildViewers<GUIButton>())
+		button->getChildViewer<GUIIcon>()->setColor(disableColor);
+
 	{
-		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
-
-		m_textureZoomIn.drawAt(rect.center(), colorTex);
-
-		if (rect.leftPressed()) fv->getCamera().zoomIn();
-
-		moveDrawPos(65, 0);
-	}
-
-	// Zoom Out
-	{
-		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
-
-		m_textureZoomOut.drawAt(rect.center(), colorTex);
-
-		if (rect.leftPressed()) fv->getCamera().zoomOut();
-
-		moveDrawPos(65, 0);
-	}
-
-	// Fast Mode
-	{
-		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
-
-		auto& isHighSpeed = fv->m_isHighSpeed;
-
-		m_textureFast.drawAt(rect.center(), isHighSpeed ? Palette::Red : Palette::Gray);
-
-		if (rect.leftClicked()) isHighSpeed = !isHighSpeed;
-
-		moveDrawPos(65, 0);
-	}
-
-	// Wave Mode
-	{
-		const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-		rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
-
-		auto& drawWaveEnabled = fv->m_drawWaveEnabled;
-
-		m_textureWave.drawAt(rect.center(), drawWaveEnabled ? Palette::Red : Palette::Gray);
-
-		if (rect.leftClicked()) drawWaveEnabled = !drawWaveEnabled;
-
-		moveDrawPos(65, 0);
+		if (zoomIn->isGrabbed()) { zoomInIcon->setColor(enableColor); fv->getCamera().zoomIn(); }
+		if (zoomOut->isGrabbed()) { zoomOutIcon->setColor(enableColor); fv->getCamera().zoomOut(); }
+		if (fastMode->isSelected()) { fv->m_isHighSpeed = !fv->m_isHighSpeed; if (fv->m_isHighSpeed) { fastModeIcon->setColor(enableColor); } }
+		if (showWave->isSelected()) { fv->m_drawWaveEnabled = !fv->m_drawWaveEnabled; if (fv->m_drawWaveEnabled) { showWaveIcon->setColor(enableColor); } }
 	}
 
 	// Mode
 	{
-		setDrawPos(5, 75);
+		if (handNone->isSelected()) fv->m_handAction = FieldViewer::HandAction::None;
+		if (handPoison->isSelected()) fv->m_handAction = FieldViewer::HandAction::Poison;
+		if (handAddElement->isSelected()) fv->m_handAction = FieldViewer::HandAction::AddElement;
+		if (handTrash->isSelected()) fv->m_handAction = FieldViewer::HandAction::Trash;
 
-		RectF(65 * 4 - 5, 65 - 5).stretched(5).rounded(5).draw(ColorF(0.75)).drawFrame(2.0, 0.0, Palette::Black);
-
-		// Hand
+		switch (fv->m_handAction)
 		{
-			const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-			rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
-
-			m_textureHand.drawAt(rect.center(), fv->m_handAction == FieldViewer::HandAction::None ? Palette::Red : Palette::Gray);
-
-			if (rect.leftClicked()) fv->m_handAction = FieldViewer::HandAction::None;
-
-			moveDrawPos(65, 0);
-		}
-
-		// AddElement
-		{
-			const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-			rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
-
-			m_textureAddElement.drawAt(rect.center(), fv->m_handAction == FieldViewer::HandAction::AddElement ? Palette::Red : Palette::Gray);
-
-			if (rect.leftClicked()) fv->m_handAction = FieldViewer::HandAction::AddElement;
-
-			moveDrawPos(65, 0);
-		}
-
-		// Poison
-		{
-			const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-			rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
-
-			m_texturePoison.drawAt(rect.center(), fv->m_handAction == FieldViewer::HandAction::Poison ? Palette::Red : Palette::Gray);
-
-			if (rect.leftClicked()) fv->m_handAction = FieldViewer::HandAction::Poison;
-
-			moveDrawPos(65, 0);
-		}
-
-		// Trash
-		{
-			const auto colorTex = rect.leftPressed() ? Palette::Red : Palette::Gray;
-			rect.draw(ColorF(0.8)).drawFrame(2.0, 0.0, Palette::Black);
-
-			m_textureTrashBox.drawAt(rect.center(), fv->m_handAction == FieldViewer::HandAction::Trash ? Palette::Red : Palette::Gray);
-
-			if (rect.leftClicked()) fv->m_handAction = FieldViewer::HandAction::Trash;
-
-			moveDrawPos(65, 0);
+		case FieldViewer::HandAction::None: handNoneIcon->setColor(enableColor); break;
+		case FieldViewer::HandAction::AddElement: handAddElementIcon->setColor(enableColor); break;
+		case FieldViewer::HandAction::Poison: handPoisonIcon->setColor(enableColor); break;
+		case FieldViewer::HandAction::Trash: handTrashIcon->setColor(enableColor); break;
 		}
 	}
 }
