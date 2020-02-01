@@ -105,10 +105,10 @@ public:
 				{
 					if((*it)->m_isMouseover && !(*it)->m_isPenetrated)
 					{
-						const auto parents = (*it)->getParentViewers();
+						++it;
 
-						for (auto parent : parents)
-							parent->m_isMouseover = false;
+						for (; it < viewers.rend(); ++it)
+							(*it)->m_isMouseover = false;
 					}
 				}
 			}
@@ -211,22 +211,6 @@ public:
 
 		for (const auto& cv : m_childViewers)
 			result.append(cv->getAllChildViewers());
-
-		return result;
-	}
-
-	Array<std::shared_ptr<EasyViewer>>	getParentViewers() const
-	{
-		Array<std::shared_ptr<EasyViewer>> result;
-
-		result.emplace_back(getParentViewer());
-
-		for (;;)
-		{
-			if (result.back()->isRoot()) break;
-
-			result.emplace_back(result.back()->getParentViewer());
-		}
 
 		return result;
 	}
