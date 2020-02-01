@@ -15,6 +15,7 @@ CellState::CellState(const std::shared_ptr<CellAsset>& cellAsset)
 	, m_startTimer(0.0)
 	, m_deathTimer(cellAsset->getLifespanTime())
 	, m_yieldTimer(0.0)
+	, m_bioaccumulation(0.0)
 {
 	setMass(m_cellAsset->getMass());
 	setRadius(m_cellAsset->getRadius());
@@ -90,7 +91,25 @@ void CellState::updateCell()
 			World::GetInstance()->getTile(getPosition()).addElement(delta);
 			m_storage.pullElement(delta);
 		}
+	}
 
+	// 毒の影響
+	{
+		auto get = 0.1 * World::GetInstance()->getTile(getPosition()).getPoison() * DeltaTime;
+		auto k = 100.0;
+
+		World::GetInstance()->getTile(getPosition()).pullPoison(get);
+
+		m_bioaccumulation += get;
+
+		// 死亡
+		if (m_bioaccumulation > k)
+		{
+			// Elementの吐き出し
+			World::GetInstance()->getTile(getPosition()).addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
+
+			destroy();
+		}
 	}
 
 	// 死亡処理
@@ -184,6 +203,8 @@ void CellState::load(Deserializer<ByteArray>& reader)
 	reader >> m_deathTimer;
 	reader >> m_yieldTimer;
 
+	reader >> m_bioaccumulation;
+
 	m_storage.load(reader);
 
 	{
@@ -212,6 +233,8 @@ void CellState::save(Serializer<MemoryWriter>& writer) const
 	writer << m_startTimer;
 	writer << m_deathTimer;
 	writer << m_yieldTimer;
+
+	writer << m_bioaccumulation;
 
 	m_storage.save(writer);
 

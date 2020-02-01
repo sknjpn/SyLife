@@ -14,6 +14,7 @@ public:
 	double	m_startTimer;
 	double	m_deathTimer;
 	double	m_yieldTimer;
+	double	m_bioaccumulation;	// 毒の蓄積
 
 	Storage	m_storage;
 
