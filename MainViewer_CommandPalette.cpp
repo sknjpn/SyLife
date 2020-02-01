@@ -14,43 +14,43 @@ void MainViewer::CommandPalette::init()
 	addChildViewer<GUIButton>()
 		->setName(U"zoomIn")
 		->setViewerRectInLocal(5, 5, 60, 60)
-		->addChildViewer<GUIIcon>(0xf00e, 0.6, disableColor);
+		->addChildViewer<GUIIcon>(0xf00e, 0.75, disableColor);
 
 	addChildViewer<GUIButton>()
 		->setName(U"zoomOut")
 		->setViewerRectInLocal(70, 5, 60, 60)
-		->addChildViewer<GUIIcon>(0xf010, 0.6, disableColor);
+		->addChildViewer<GUIIcon>(0xf010, 0.75, disableColor);
 
 	addChildViewer<GUIButton>()
 		->setName(U"fastMode")
 		->setViewerRectInLocal(135, 5, 60, 60)
-		->addChildViewer<GUIIcon>(0xf050, 0.6, disableColor);
+		->addChildViewer<GUIIcon>(0xf050, 0.75, disableColor);
 
 	addChildViewer<GUIButton>()
 		->setName(U"showWave")
 		->setViewerRectInLocal(200, 5, 60, 60)
-		->addChildViewer<GUIIcon>(0xf5c4, 0.6, disableColor);
+		->addChildViewer<GUIIcon>(0xf5c4, 0.75, disableColor);
 
 
 	addChildViewer<GUIButton>()
 		->setName(U"handNone")
 		->setViewerRectInLocal(5, 75, 60, 60)
-		->addChildViewer<GUIIcon>(0xf25a, 0.6, disableColor);
+		->addChildViewer<GUIIcon>(0xf25a, 0.75, disableColor);
 
 	addChildViewer<GUIButton>()
 		->setName(U"handPoison")
 		->setViewerRectInLocal(70, 75, 60, 60)
-		->addChildViewer<GUIIcon>(0xf714, 0.6, disableColor);
+		->addChildViewer<GUIIcon>(0xf714, 0.75, disableColor);
 
 	addChildViewer<GUIButton>()
 		->setName(U"handAddElement")
 		->setViewerRectInLocal(135, 75, 60, 60)
-		->addChildViewer<GUIIcon>(0xf613, 0.6, disableColor);
+		->addChildViewer<GUIIcon>(0xf613, 0.75, disableColor);
 
 	addChildViewer<GUIButton>()
 		->setName(U"handTrash")
 		->setViewerRectInLocal(200, 75, 60, 60)
-		->addChildViewer<GUIIcon>(0xf1f8, 0.6, disableColor);
+		->addChildViewer<GUIIcon>(0xf1f8, 0.75, disableColor);
 }
 
 void MainViewer::CommandPalette::update()

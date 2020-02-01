@@ -10,7 +10,7 @@ class GUIIcon : public EasyViewer
 	double	m_scale;
 
 public:
-	GUIIcon(uint32 code, double scale = 0.6, Color color = Palette::Black)
+	GUIIcon(uint32 code, double scale = 0.75, Color color = Palette::Black)
 		: m_color(color)
 		, m_scale(scale)
 		, m_code(code)
