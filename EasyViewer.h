@@ -101,14 +101,16 @@ public:
 				for (auto it = viewers.begin(); it < viewers.end(); ++it)
 					(*it)->m_isMouseover = (*it)->getViewport() && (*it)->getViewport().value().mouseOver();
 
-				for (auto it = viewers.rbegin(); it < viewers.rend(); ++it)
+				for (auto it = viewers.rbegin(); it != viewers.rend(); ++it)
 				{
 					if((*it)->m_isMouseover && !(*it)->m_isPenetrated)
 					{
 						++it;
 
-						for (; it < viewers.rend(); ++it)
+						for (; it != viewers.rend(); ++it)
 							(*it)->m_isMouseover = false;
+
+						break;
 					}
 				}
 			}

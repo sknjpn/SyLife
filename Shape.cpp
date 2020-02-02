@@ -2,6 +2,13 @@
 
 bool Shape::updateProperties()
 {
+	if (m_polygon.isEmpty())
+	{
+		m_polygon = Polygon();
+
+		return false;
+	}
+
 	// 初期化
 	m_polygon = front().m_polygon;
 

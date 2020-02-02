@@ -174,6 +174,8 @@ class MainViewer : public EasyViewer
 				Polygon	getReversed(const Polygon& polygon) const;
 				Layer& getSelectedLayer();
 
+				Polygon	getStamp() const;
+
 			public:
 				Workspace(const std::shared_ptr<PartAsset_Body>& bodyAsset)
 					: m_bodyAsset(bodyAsset)
@@ -187,6 +189,20 @@ class MainViewer : public EasyViewer
 			};
 
 		public:
+			class ColorSelector : public EasyViewer
+			{
+				const Array<Color> m_colors = { Palette::Blue, Palette::Purple, Palette::Red, Palette::Pink, Palette::Orange, Palette::Yellow, Palette::Yellowgreen, Palette::Green, Palette::Skyblue, Palette::Wheat,Palette::Black, Palette::Brown };
+				Color	m_selectedColor = Palette::Blue;
+				double	m_timer = 1.0;
+				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
+
+			public:
+				const Color& getSelectedColor() const { return m_selectedColor; }
+
+				void	init() override;
+				void	update() override;
+			};
+
 			class LayerLists : public EasyViewer
 			{
 				class Item : public EasyViewer

@@ -26,9 +26,33 @@ Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getReversed(const
 
 Layer& MainViewer::CellMakingViewer::BodySculptor::Workspace::getSelectedLayer()
 {
-	const auto slv = getParentViewer()->getChildViewer<LayerLists>();
+	const auto color = getParentViewer()->getChildViewer<ColorSelector>()->getSelectedColor();
 
-	return m_bodyAsset->getShape()[slv->getSelectedIndex()];
+	// スタンプと既存の形が重なるかどうか
+	const auto stamp = getStamp();
+	for (auto& layer : m_bodyAsset->getShape())
+		if (layer.m_color == color && layer.m_polygon.intersects(stamp)) return layer;
+
+	{
+		auto& layer = m_bodyAsset->getShape().emplace_back();
+
+		layer.m_color = color;
+
+		return layer;
+	}
+}
+
+Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStamp() const
+{
+	const auto p1 = Cursor::PreviousPosF();
+	const auto p2 = Cursor::PosF();
+	const auto r = getParentViewer<BodySculptor>()->getStampRadius();
+
+	auto stamp = (p1 == p2 ? Polygon() : Polygon({ p1 + (p1 - p2).setLength(r).rotated(-Math::HalfPi), p1 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(-Math::HalfPi) }));
+	stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PosF()));
+	stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PreviousPosF()));
+
+	return stamp;
 }
 
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::init()
@@ -42,22 +66,10 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 {
 	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), true);
 
-	m_bodyAsset->getShape().updateProperties();
-
-	// Part
-	m_bodyAsset->getShape().draw(0.5);
-	m_bodyAsset->getShape().getPolygon().drawFrame(1.0, Palette::Black);
-
 	// タッチパネル用に押し下げた瞬間は処理しない
 	if (MouseL.pressed() && !MouseL.down())
 	{
-		auto p1 = Cursor::PreviousPosF();
-		auto p2 = Cursor::PosF();
-		auto r = getParentViewer<BodySculptor>()->getStampRadius();
-
-		auto stamp = (p1 == p2 ? Polygon() : Polygon({ p1 + (p1 - p2).setLength(r).rotated(-Math::HalfPi), p1 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(Math::HalfPi), p2 + (p1 - p2).setLength(r).rotated(-Math::HalfPi) }));
-		stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PosF()));
-		stamp.append(Circle(getParentViewer<BodySculptor>()->getStampRadius()).asPolygon().movedBy(Cursor::PreviousPosF()));
+		const auto stamp = getStamp();
 
 		// Mouse
 		{
@@ -104,6 +116,92 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 	if (getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue())
 		getSelectedLayer().m_polygon.append(getReversed(getSelectedLayer().m_polygon));
 
+	// 合成
+	{
+		auto& shape = m_bodyAsset->getShape();
+
+		// 空のLayerの削除
+		shape.remove_if([](const auto& layer) { return layer.m_polygon.isEmpty(); });
+
+		// くっついているLayerの結合
+		for (;;)
+		{
+			bool flag = true;
+
+			for (auto it1 = shape.begin(); it1 != shape.end(); ++it1)
+			{
+				for (auto it2 = it1 + 1; it2 != shape.end(); ++it2)
+				{
+					if (it1->m_color == it2->m_color && it1->m_polygon.intersects(it2->m_polygon))
+					{
+						Polygon newPolygon;
+						newPolygon.append(it1->m_polygon);
+						newPolygon.append(it2->m_polygon);
+						const Color newColor = it1->m_color;
+
+						shape.erase(it2);
+						shape.erase(it1);
+
+						auto& layer = shape.emplace_back();
+						layer.m_color = newColor;
+						layer.m_polygon = newPolygon;
+
+						flag = false;
+						break;
+					}
+				}
+				if (!flag) break;
+			}
+
+			if (flag) break;
+		}
+
+		// 分離しているLayerの削除
+		{
+			Array<Polygon> polygons;
+			for (const auto& layer : m_bodyAsset->getShape()) polygons.emplace_back(layer.m_polygon);
+
+			for (;;)
+			{
+				bool flag = true;
+
+				for (auto it1 = polygons.begin(); it1 != polygons.end(); ++it1)
+				{
+					for (auto it2 = it1 + 1; it2 != polygons.end(); ++it2)
+					{
+						if (it1->intersects(*it2))
+						{
+							it1->append(*it2);
+
+							polygons.erase(it2);
+
+							flag = false;
+
+							break;
+						}
+					}
+
+					if (!flag) break;
+				}
+
+				if (flag) break;
+			}
+
+			polygons.sort_by([](const auto& p1, const auto& p2) { return p1.area() > p2.area(); });
+
+			if (!polygons.isEmpty()) m_bodyAsset->getShape().remove_if([&polygons](const auto& layer) { return !layer.m_polygon.intersects(polygons.front()); });
+		}
+	}
+
+	// 描画
+	{
+		m_bodyAsset->getShape().updateProperties();
+
+		// Part
+		m_bodyAsset->getShape().draw(0.5);
+		m_bodyAsset->getShape().getPolygon().drawFrame(1.0, Palette::Black);
+	}
+
 	// パーツの描画
 	{
 		const auto cellAsset = getParentViewer<BodySculptor>()->getParentViewer<MainViewer::CellMakingViewer>()->getCellAsset();
@@ -123,24 +221,29 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::attach(const Polygon& polygon)
 {
+	detach(polygon.calculateBuffer(-1));
 	getSelectedLayer().m_polygon.append(polygon);
-	getSelectedLayer().m_polygon = getSelectedLayer().m_polygon.simplified(0.5);
 }
 
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::detach(const Polygon& polygon)
 {
-	const auto polygons = Geometry2D::Subtract(getSelectedLayer().m_polygon, polygon);
-
-	if (polygons.empty()) getSelectedLayer().m_polygon = Polygon();
-	else
+	auto& shape = m_bodyAsset->getShape();
+	for (int i = 0; i < shape.size(); ++i)
 	{
-		int maxIndex = 0;
-		for (int i = 1; i < polygons.size(); ++i)
-			if (polygons[maxIndex].area() < polygons[i].area()) maxIndex = i;
+		auto& layer = shape[i];
+		const auto polygons = Geometry2D::Subtract(layer.m_polygon, polygon);
 
-		getSelectedLayer().m_polygon = polygons[maxIndex];
+		if (polygons.empty()) layer.m_polygon = Polygon();
+		else
+		{
+			layer.m_polygon = polygons[0];
+			for (int j = 1; j < polygons.size(); ++j)
+			{
+				auto& newLayer = shape.emplace_back();
+				newLayer.m_color = layer.m_color;
+				newLayer.m_polygon = polygons[j];
+			}
+		}
 	}
-
-	getSelectedLayer().m_polygon = getSelectedLayer().m_polygon.simplified(0.5);
 }
 
