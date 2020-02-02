@@ -31,7 +31,7 @@ public:
 	virtual std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const = 0;
 
 	// Draw
-	void	draw(double a = 0.5) { m_shape.draw(a); }
+	virtual void	draw(double a = 0.5) { m_shape.draw(a); }
 
 	// Icon
 	void	drawIcon() const override;

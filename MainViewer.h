@@ -169,22 +169,26 @@ class MainViewer : public EasyViewer
 		{
 			class Workspace : public EasyViewer
 			{
+				double	m_scale = 4.0;
+				DynamicTexture	m_texture;
 				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
 
-				Polygon	getReversed(const Polygon& polygon) const;
-				Layer& getSelectedLayer();
-
 				Polygon	getStamp() const;
+				Polygon	getStampOnImage() const { return getStamp().scaled(m_scale).movedBy(getViewerSize() / 2.0); }
+				Polygon	getStampReversed() const;
+				Polygon	getStampOnImageReversed() const { return getStampReversed().scaled(m_scale).movedBy(getViewerSize() / 2.0); }
+
+				const Color& getColor() const;
 
 			public:
 				Workspace(const std::shared_ptr<PartAsset_Body>& bodyAsset)
 					: m_bodyAsset(bodyAsset)
 				{}
 
+				void	onDestroy() override;
 				void	init() override;
 				void	update() override;
 
-				void	attach(const Polygon& polygon);
 				void	detach(const Polygon& polygon);
 			};
 
@@ -194,69 +198,25 @@ class MainViewer : public EasyViewer
 				const Array<Color> m_colors = { Palette::Blue, Palette::Purple, Palette::Red, Palette::Pink, Palette::Orange, Palette::Yellow, Palette::Yellowgreen, Palette::Green, Palette::Skyblue, Palette::Wheat,Palette::Black, Palette::Brown };
 				Color	m_selectedColor = Palette::Blue;
 				double	m_timer = 1.0;
+				bool	m_eraseMode = false;
 				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 			public:
 				const Color& getSelectedColor() const { return m_selectedColor; }
+				bool	isEraseMode() const { return m_eraseMode; }
 
 				void	init() override;
 				void	update() override;
-			};
-
-			class LayerLists : public EasyViewer
-			{
-				class Item : public EasyViewer
-				{
-					Texture	m_circleTexture;
-					Texture	m_barTexture;
-					bool	m_circleSelected = false;
-					bool	m_barSelected = false;
-					HSV		m_hsv = Palette::White;
-					bool	m_isSelected = false;
-					std::shared_ptr<PartAsset_Body>	m_bodyAsset;
-
-				public:
-					Item(const std::shared_ptr<PartAsset_Body>& bodyAsset);
-
-					void	setSelected(bool isSelected) { m_isSelected = isSelected; }
-					void	setHSV(const HSV& hsv) { m_hsv = hsv; }
-					void	update() override;
-					const HSV& getHSV() const { return m_hsv; }
-				};
-
-				double	m_itemHeight = 100;
-				int		m_selectedIndex;
-				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
-
-			public:
-				LayerLists(const std::shared_ptr<PartAsset_Body>& bodyAsset)
-					: m_bodyAsset(bodyAsset)
-				{}
-
-				void	init() override;
-				void	update() override;
-
-				int		getSelectedIndex() const { return m_selectedIndex; }
-			};
-
-			enum struct State
-			{
-				Put,
-				Shave,
 			};
 
 			bool	m_isSymmetrical;
 			double	m_scale;
-			State	m_state;
-
-			void	setState(State state);
 
 		public:
 			void	init() override;
 			void	update() override;
 
 			bool	isSymmetrical() const { return m_isSymmetrical; }
-			State	getState() const { return m_state; }
 			double	getStampRadius() const;
 		};
 

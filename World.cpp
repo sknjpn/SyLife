@@ -84,7 +84,7 @@ void World::save()
 
 	// Assets
 	{
-		for (const auto& asset : m_assets.filter([](const auto& asset) {return asset->getIsUserAsset(); }))
+		for (const auto& asset : m_assets.filter([](const auto& asset) { return asset->getIsUserAsset(); }))
 		{
 			if (asset->getTypeName() != U"CellAsset" && asset->getTypeName() != U"PartAsset_Body") continue;
 

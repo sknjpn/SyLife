@@ -25,7 +25,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 		{
 			auto t2 = Transformer2D(partConfig->getMat3x2());
 
-			partConfig->getPartAsset()->getShape().draw(0.5);
+			partConfig->getPartAsset()->draw(0.5);
 			partConfig->getPartAsset()->getShape().getPolygon().drawFrame(1.0, Palette::Black);
 		}
 
@@ -45,7 +45,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 
 			auto color = canSetPart ? Palette::Green : Palette::Red;
 
-			m_selectedPartConfig->getPartAsset()->getShape().draw(0.5);
+			m_selectedPartConfig->getPartAsset()->draw(0.5);
 			m_selectedPartConfig->getPartAsset()->getShape().getPolygon().draw(ColorF(color, 0.5));
 		}
 	}
@@ -115,7 +115,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 			{
 				auto t2 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				selectedPart->getShape().draw(0.5);
+				selectedPart->draw(0.5);
 			}
 
 			if (MouseL.up() && canSetPart)

@@ -2,7 +2,7 @@
 
 bool Shape::updateProperties()
 {
-	if (m_polygon.isEmpty())
+	if (isEmpty())
 	{
 		m_polygon = Polygon();
 

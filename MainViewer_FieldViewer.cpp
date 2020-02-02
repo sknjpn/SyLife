@@ -135,20 +135,6 @@ void MainViewer::FieldViewer::update()
 						World::GetInstance()->getTile(p).addPoison(Math::Lerp(0.0, 10.0 * numUpdate, 1.0 - distance / 256.0));
 					}
 				}
-
-				for (const auto& c : World::GetInstance()->getCellStates())
-					if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
-
-				for (const auto& e : World::GetInstance()->getEggStates())
-				{
-					if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
-					{
-						e->destroy();
-
-						// Elementの吐き出し
-						World::GetInstance()->getTile(e->getPosition()).addElement(e->getCellAsset()->getMaterial().getElementRecursive());
-					}
-				}
 			}
 			break;
 		case MainViewer::FieldViewer::HandAction::Trash:
