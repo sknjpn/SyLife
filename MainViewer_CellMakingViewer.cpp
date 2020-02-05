@@ -97,8 +97,6 @@ void MainViewer::CellMakingViewer::makeAsset()
 {
 	m_cellAsset = World::MakeAsset<CellAsset>();
 
-	Logger << m_cellAsset->getName();
-
 	// 名前をランダムに設定
 	{
 		TextReader textReader(U"resources/names.txt");
