@@ -169,14 +169,13 @@ class MainViewer : public EasyViewer
 		{
 			class Workspace : public EasyViewer
 			{
-				double	m_scale = 4.0;
 				DynamicTexture	m_texture;
 				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
 
 				Polygon	getStamp() const;
-				Polygon	getStampOnImage() const { return getStamp().scaled(m_scale).movedBy(getViewerSize() / 2.0); }
+				Polygon	getStampOnImage() const;
 				Polygon	getStampReversed() const;
-				Polygon	getStampOnImageReversed() const { return getStampReversed().scaled(m_scale).movedBy(getViewerSize() / 2.0); }
+				Polygon	getStampOnImageReversed() const;
 
 				const Color& getColor() const;
 
@@ -210,7 +209,6 @@ class MainViewer : public EasyViewer
 			};
 
 			bool	m_isSymmetrical;
-			double	m_scale;
 
 		public:
 			void	init() override;

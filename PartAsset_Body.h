@@ -12,7 +12,6 @@ public:
 
 	Texture	m_texture;
 	Image	m_image;
-	double	m_scale;
 
 	// State
 	std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;

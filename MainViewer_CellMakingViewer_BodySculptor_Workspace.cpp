@@ -30,6 +30,11 @@ Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStamp() const
 	return Polygon(outers);
 }
 
+Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampOnImage() const
+{
+	return getStamp().scaled(GeneralSetting::GetInstance().m_textureScale).movedBy(getViewerSize() / 2.0);
+}
+
 Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampReversed() const
 {
 	const auto polygon = getStamp();
@@ -51,6 +56,11 @@ Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampReversed(
 	return Polygon(outer, inners);
 }
 
+Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampOnImageReversed() const
+{
+	return getStampReversed().scaled(GeneralSetting::GetInstance().m_textureScale).movedBy(getViewerSize() / 2.0);
+}
+
 const Color& MainViewer::CellMakingViewer::BodySculptor::Workspace::getColor() const
 {
 	return getParentViewer()->getChildViewer<ColorSelector>()->getSelectedColor();
@@ -59,7 +69,6 @@ const Color& MainViewer::CellMakingViewer::BodySculptor::Workspace::getColor() c
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::onDestroy()
 {
 	m_bodyAsset->m_texture = Texture(m_bodyAsset->m_image);
-	m_bodyAsset->m_scale = m_scale;
 }
 
 void MainViewer::CellMakingViewer::BodySculptor::Workspace::init()
@@ -80,7 +89,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 	// タッチパネル用に押し下げた瞬間は処理しない
 	if (MouseL.pressed() && !MouseL.down())
 	{
-		auto t = Transformer2D(Mat3x2::Scale(m_scale).translated(getViewerSize() / 2), true);
+		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), true);
 
 		// 適用
 		if (isMouseover())
@@ -123,7 +132,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 
 	// 調整
 	{
-		for (const auto& polygon : Geometry2D::Subtract(RectF(getViewerSize()).asPolygon(), m_bodyAsset->getShape().front().m_polygon.scaled(m_scale).movedBy(getViewerSize() / 2.0)))
+		for (const auto& polygon : Geometry2D::Subtract(RectF(getViewerSize()).asPolygon(), m_bodyAsset->getShape().front().m_polygon.scaled(GeneralSetting::GetInstance().m_textureScale).movedBy(getViewerSize() / 2.0)))
 			polygon.overwrite(m_bodyAsset->m_image, Color(0, 0));
 	}
 
@@ -141,7 +150,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 	}
 
 	{
-		auto t = Transformer2D(Mat3x2::Scale(m_scale).translated(getViewerSize() / 2), true);
+		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), true);
 
 		//m_bodyAsset->getShape().front().m_polygon.draw(ColorF(1.0, 0.5));
 	}
@@ -149,7 +158,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 	// Mouse
 	if (isMouseover() && !GeneralSetting::GetInstance().m_touchPanelModeEnabled || MouseL.pressed())
 	{
-		auto t = Transformer2D(Mat3x2::Scale(m_scale).translated(getViewerSize() / 2), true);
+		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), true);
 
 		// Mouse
 		{
@@ -161,7 +170,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 
 	// パーツの描画
 	{
-		auto t = Transformer2D(Mat3x2::Scale(m_scale).translated(getViewerSize() / 2), true);
+		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), true);
 
 		const auto cellAsset = getParentViewer<BodySculptor>()->getParentViewer<MainViewer::CellMakingViewer>()->getCellAsset();
 
