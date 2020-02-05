@@ -30,6 +30,8 @@ public:
 
 	void	updateCell();
 	void	draw();
+	void	drawTexture();
+	void	drawPolygon();
 
 	void	takeElement();
 	bool	isNeedNutrition() const;

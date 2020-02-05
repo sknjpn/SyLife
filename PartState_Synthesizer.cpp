@@ -1,7 +1,4 @@
 ﻿#include "PartState_Synthesizer.h"
-
-
-
 #include "PartAsset_Synthesizer.h"
 #include "PartConfig.h"
 #include "CellState.h"
@@ -16,7 +13,15 @@ PartState_Synthesizer::PartState_Synthesizer(const std::shared_ptr<PartConfig>& 
 
 void PartState_Synthesizer::draw(const CellState& cellState) const
 {
-	getPartConfig()->getPartAsset()->draw(Min(m_timer / 2.0, 1.0) * 0.75 + 0.25);
+	for (const auto& layer : getPartConfig()->getPartAsset()->getShape())
+	{
+		layer.m_polygon
+			.rotated(getPartConfig()->getRotation())
+			.movedBy(getPartConfig()->getPosition())
+			.rotated(cellState.getRotation())
+			.movedBy(cellState.getPosition())
+			.draw(ColorF(layer.m_color, Min(m_timer / 2.0, 1.0) * 0.75 + 0.25));
+	}
 }
 
 void PartState_Synthesizer::update(CellState& cellState)

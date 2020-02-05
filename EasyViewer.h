@@ -94,6 +94,8 @@ public:
 			// ログ出力のクリア
 			ClearPrint();
 
+			Print << Profiler::GetStatistics().drawcalls;
+
 			// MouseOverの計算
 			{
 				const auto viewers = GetRootViewer()->getAllChildViewers();

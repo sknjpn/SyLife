@@ -33,3 +33,8 @@ void PartAsset_Body::draw(double a)
 		.scaled(1.0 / m_scale)
 		.drawAt(Vec2::Zero(), ColorF(1.0, a));
 }
+
+void PartAsset_Body::preRender(Image& image, double scale, const std::shared_ptr<PartConfig>& partConfig, double a) const
+{
+	m_image.overwrite(image, Point(0, 0), ColorF(1.0, a));
+}

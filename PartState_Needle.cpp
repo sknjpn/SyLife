@@ -13,9 +13,16 @@ PartState_Needle::PartState_Needle(const std::shared_ptr<PartConfig>& partConfig
 
 void PartState_Needle::draw(const CellState& cellState) const
 {
-	auto t = Transformer2D(Mat3x2::Scale(1.0, Max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
-
-	getPartConfig()->getPartAsset()->draw(Max(m_heat - 4.0, 0.0) * 0.9 + 0.1);
+	for (const auto& layer : getPartConfig()->getPartAsset()->getShape())
+	{
+		layer.m_polygon
+			.scaled(Vec2(1.0, Max(m_heat - 4.0, 0.0) * 1.0 + 1.0))
+			.rotated(getPartConfig()->getRotation())
+			.movedBy(getPartConfig()->getPosition())
+			.rotated(cellState.getRotation())
+			.movedBy(cellState.getPosition())
+			.draw(ColorF(layer.m_color, Max(m_heat - 4.0, 0.0) * 0.9 + 0.1));
+	}
 }
 
 void PartState_Needle::update(CellState& cellState)

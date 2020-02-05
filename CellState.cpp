@@ -138,6 +138,9 @@ void CellState::draw()
 		auto t1 = Transformer2D(getMat3x2());
 		auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2 + 0.5, 0.0, 1.0)));
 
+		if (m_cellAsset->m_preRenderedTexture.texture.isEmpty()) m_cellAsset->preRender();
+		m_cellAsset->m_preRenderedTexture.drawAt(Vec2::Zero());
+
 		// parts
 		for (const auto& p : m_partStates)
 		{
@@ -177,6 +180,30 @@ void CellState::draw()
 				}
 			}
 		}
+	}
+}
+
+void CellState::drawTexture()
+{
+	if (m_cellAsset->m_preRenderedTexture.texture.isEmpty()) m_cellAsset->preRender();
+
+	m_cellAsset->m_preRenderedTexture.rotated(getRotation()).drawAt(getPosition());
+}
+
+void CellState::drawPolygon()
+{
+	// parts
+	for (const auto& p : m_partStates)
+		p->draw(*this);
+
+	// 細胞円
+	if (false)
+	{
+		double a = Min(0.5, m_deathTimer * 0.25);
+
+		Circle(getRadius())
+			.draw(ColorF(Palette::Lightpink, a))
+			.drawFrame(1.0, Palette::Gray);
 	}
 }
 

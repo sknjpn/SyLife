@@ -92,6 +92,16 @@ void CellAsset::updateMaterial()
 	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getPartAsset()->getMaterial(); });
 }
 
+void CellAsset::preRender()
+{
+	Image image(800, 800);
+
+	for (const auto& partConfig : m_partConfigs)
+		partConfig->getPartAsset()->preRender(image, 4.0, partConfig);
+
+	m_preRenderedTexture = Texture(image).scaled(1.0 / 4.0);
+}
+
 void CellAsset::setCentroidAsOrigin()
 {
 	auto centroid = getCentroid();

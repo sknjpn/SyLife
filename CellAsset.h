@@ -35,6 +35,9 @@ class CellAsset
 	void	updateMaterial();
 
 public:
+	TextureRegion	m_preRenderedTexture;
+	void	preRender();
+
 	bool	m_isInViewer = false;
 
 	bool	isValid() const;

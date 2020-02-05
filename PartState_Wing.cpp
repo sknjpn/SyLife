@@ -12,9 +12,16 @@ PartState_Wing::PartState_Wing(const std::shared_ptr<PartConfig>& partConfig)
 
 void PartState_Wing::draw(const CellState& cellState) const
 {
-	auto t = Transformer2D(Mat3x2::Rotate(m_partAsset_Wing->getIsRight() ? m_p : -m_p));
-
-	getPartConfig()->getPartAsset()->draw();
+	for (const auto& layer : getPartConfig()->getPartAsset()->getShape())
+	{
+		layer.m_polygon
+			.rotated(m_partAsset_Wing->getIsRight() ? m_p : -m_p)
+			.rotated(getPartConfig()->getRotation())
+			.movedBy(getPartConfig()->getPosition())
+			.rotated(cellState.getRotation())
+			.movedBy(cellState.getPosition())
+			.draw(ColorF(layer.m_color, 0.5));
+	}
 }
 
 void PartState_Wing::update(CellState& cellState)

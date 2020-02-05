@@ -12,6 +12,5 @@ class PartState_Nucleus
 public:
 	PartState_Nucleus(const std::shared_ptr<PartConfig>& partConfig);
 
-	void	draw(const CellState& cellState) const override;
 	void	update(CellState& cellState) override;
 };
