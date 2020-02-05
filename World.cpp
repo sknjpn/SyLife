@@ -178,10 +178,10 @@ void World::loadAssets(const FilePath& directory)
 	}
 
 	// CellAssetの初期化
+	for (const auto& cellAsset : getAssets<CellAsset>())
 	{
-		const auto cellAssets = getAssets<CellAsset>();
-
-		for (const auto& ca : cellAssets) ca->updateProperties();
+		cellAsset->updateProperties();
+		cellAsset->preRender();
 	}
 }
 

@@ -40,10 +40,11 @@ void MainViewer::CellMakingViewer::release()
 	m_cellAsset->setCentroidAsOrigin();
 	m_cellAsset->updateProperties();
 
+	// Render
+	m_cellAsset->preRender();
+
 	getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
 	getParentViewer()->getChildViewer<CellBook>()->addItem(m_cellAsset);
-
-	//getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
 
 	destroy();
 }

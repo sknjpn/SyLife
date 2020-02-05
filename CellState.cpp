@@ -122,42 +122,25 @@ void CellState::updateCell()
 	}
 }
 
-void CellState::draw()
+void CellState::drawTexture()
 {
-	// 画面外ならば描画しない
+	m_cellAsset->m_preRenderedTexture.rotated(getRotation()).drawAt(getPosition());
+}
+
+void CellState::drawPolygon()
+{
+	// parts
+	for (const auto& p : m_partStates)
+		p->draw(*this);
+
+	// 細胞円
+	if (false)
 	{
-		const auto mat3x2 = Graphics2D::GetLocalTransform().inversed();
-		const auto viewRect = RectF(mat3x2.transform(Scene::Rect().pos), mat3x2.transform(Scene::Rect().size));
-		const auto circle = Circle(getPosition(), m_cellAsset->getDrawRadius());
-	
-		if (!viewRect.intersects(circle)) return;
-	}
+		double a = Min(0.5, m_deathTimer * 0.25);
 
-	{
-		const double stage = m_startTimer / m_cellAsset->getLifespanTime();
-		auto t1 = Transformer2D(getMat3x2());
-		auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2 + 0.5, 0.0, 1.0)));
-
-		if (m_cellAsset->m_preRenderedTexture.texture.isEmpty()) m_cellAsset->preRender();
-		m_cellAsset->m_preRenderedTexture.drawAt(Vec2::Zero());
-
-		// parts
-		for (const auto& p : m_partStates)
-		{
-			auto t3 = Transformer2D(p->getPartConfig()->getMat3x2());
-
-			p->draw(*this);
-		}
-
-		// 細胞円
-		if (false)
-		{
-			double a = Min(0.5, m_deathTimer * 0.25);
-
-			Circle(getRadius())
-				.draw(ColorF(Palette::Lightpink, a))
-				.drawFrame(1.0, Palette::Gray);
-		}
+		Circle(getRadius())
+			.draw(ColorF(Palette::Lightpink, a))
+			.drawFrame(1.0, Palette::Gray);
 	}
 
 	// Eye
@@ -181,30 +164,7 @@ void CellState::draw()
 			}
 		}
 	}
-}
 
-void CellState::drawTexture()
-{
-	if (m_cellAsset->m_preRenderedTexture.texture.isEmpty()) m_cellAsset->preRender();
-
-	m_cellAsset->m_preRenderedTexture.rotated(getRotation()).drawAt(getPosition());
-}
-
-void CellState::drawPolygon()
-{
-	// parts
-	for (const auto& p : m_partStates)
-		p->draw(*this);
-
-	// 細胞円
-	if (false)
-	{
-		double a = Min(0.5, m_deathTimer * 0.25);
-
-		Circle(getRadius())
-			.draw(ColorF(Palette::Lightpink, a))
-			.drawFrame(1.0, Palette::Gray);
-	}
 }
 
 void CellState::takeElement()
