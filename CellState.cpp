@@ -124,9 +124,12 @@ void CellState::updateCell()
 
 void CellState::draw()
 {
-	auto t = Transformer2D(getMat3x2());
+	const double stage = Min(1.0, m_startTimer / m_cellAsset->getLifespanTime() * 10.0);
 
-	m_cellAsset->getCellStateTexture().scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).rotated(getRotation()).drawAt(Vec2::Zero());
+	auto t1 = Transformer2D(getMat3x2());
+	auto t2 = Transformer2D(Mat3x2::Scale(Math::Lerp(0.5, 1.0, stage)));
+
+	m_cellAsset->getCellStateTexture().scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
 
 	// parts
 	for (const auto& partState : m_partStates)

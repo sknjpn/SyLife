@@ -16,8 +16,11 @@ public:
 
 	const std::shared_ptr<CellAsset>&	getCellAsset() const { return m_cellAsset; }
 
+	double	getTimer() const { return m_timer; }
+
 	void	updateEgg();
-	void	draw();
+	void	draw1();
+	void	draw2();
 
 	void	load(Deserializer<ByteArray>& reader);
 	void	save(Serializer<MemoryWriter>& writer) const;

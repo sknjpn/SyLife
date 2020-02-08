@@ -46,45 +46,22 @@ void EggState::updateEgg()
 	}
 }
 
-void EggState::draw()
+void EggState::draw1()
 {
-	// 画面外ならば描画しない
-	{
-		const auto mat3x2 = Graphics2D::GetLocalTransform().inversed();
-		const auto viewRect = RectF(mat3x2.transform(Scene::Rect().pos), mat3x2.transform(Scene::Rect().size));
-		const auto circle = Circle(getPosition(), m_cellAsset->getDrawRadius());
-
-		if (!viewRect.intersects(circle)) return;
-	}
-
 	const double stage = 1.0 - m_timer / m_cellAsset->getBornTime();
 
-	{
-		const auto t1 = Transformer2D(getMat3x2());
-		const auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2, 0.2, 1.0)));
+	m_cellAsset->getCellAssetTexture()
+		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
+		.scaled(Math::Lerp(0.25, 0.5, stage))
+		.rotated(getRotation())
+		.drawAt(getPosition(), ColorF(1.0, 0.5));
+}
 
-		Circle(getRadius()).draw(ColorF(Palette::Lightblue, 0.4 * Clamp(2.0 - stage * 2.0, 0.0, 1.0)));
-	}
+void EggState::draw2()
+{
+	const double stage = 1.0 - m_timer / m_cellAsset->getBornTime();
 
-	{
-		const auto t1 = Transformer2D(getMat3x2());
-		const auto t2 = Transformer2D(Mat3x2::Scale(0.5 * Clamp(stage * 2, 0.2, 1.0)));
-
-		for (const auto& partConfig : m_cellAsset->getPartConfigs())
-		{
-			const auto t3 = Transformer2D(partConfig->getMat3x2());
-			const auto& partAsset = partConfig->getPartAsset();
-
-			if (std::dynamic_pointer_cast<PartAsset_Body>(partAsset))
-			{
-				partAsset->draw(0.5 * Clamp(stage, 0.0, 1.0));
-			}
-			else
-			{
-				partAsset->draw(0.5 * Clamp(stage * 2 - 1.0, 0.0, 1.0));
-			}
-		}
-	}
+	Circle(getPosition(), getRadius() * 2.0 * Math::Lerp(0.25, 0.5, stage)).draw(ColorF(Palette::Lightblue, 0.5));
 }
 
 void EggState::load(Deserializer<ByteArray>& reader)
