@@ -10,7 +10,7 @@ void PartAsset::preRender(Image& image, const std::shared_ptr<PartConfig>& partC
 		.movedBy(partConfig->getPosition())
 		.scaled(GeneralSetting::GetInstance().m_textureScale)
 		.movedBy(Vec2(image.size()) / 2.0)
-		.overwrite(image, ColorF(layer.m_color, 0.5));
+		.overwrite(image, ColorF(layer.m_color, 1.0));
 }
 
 void PartAsset::load(const JSONValue& json)

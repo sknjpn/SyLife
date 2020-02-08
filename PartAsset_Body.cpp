@@ -32,5 +32,5 @@ void PartAsset_Body::draw(double a)
 
 void PartAsset_Body::preRender(Image& image, const std::shared_ptr<PartConfig>& partConfig) const
 {
-	m_image.overwrite(image, image.size() / 2 - m_image.size() / 2, ColorF(1.0, 0.5));
+	m_image.overwrite(image, image.size() / 2 - m_image.size() / 2, ColorF(1.0, 1.0));
 }
