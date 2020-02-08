@@ -7,6 +7,7 @@
 
 MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_rotation(0.0)
+	, m_position(Cursor::PosF())
 	, m_cellAsset(cellAsset)
 {
 
