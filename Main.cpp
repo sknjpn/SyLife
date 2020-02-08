@@ -4,6 +4,8 @@
 
 void Main()
 {
+	Profiler::EnableAssetCreationWarning(false);
+
 	// loadBGM
 	if(GeneralSetting::GetInstance().m_audioEnabled)
 	{
