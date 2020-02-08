@@ -97,8 +97,7 @@ RectF CellAsset::getCellAssetDrawRegion() const
 	Array<RectF> regions;
 
 	for (const auto& partConfig : m_partConfigs)
-		if (partConfig->getPartAsset()->drawOnAssetEnabled())
-			regions.emplace_back(partConfig->getPartAsset()->getShape().getPolygon().rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).boundingRect());
+		regions.emplace_back(partConfig->getPartAsset()->getShape().getPolygon().rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).boundingRect());
 
 	RectF maxRegion = regions.front();
 	for (const auto& region : regions)
@@ -121,7 +120,7 @@ RectF CellAsset::getCellStateDrawRegion() const
 	Array<RectF> regions;
 
 	for (const auto& partConfig : m_partConfigs)
-		if (partConfig->getPartAsset()->drawOnAssetEnabled())
+		if (partConfig->getPartAsset()->isPreRenderOnStateEnabled())
 			regions.emplace_back(partConfig->getPartAsset()->getShape().getPolygon().rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).boundingRect());
 
 	RectF maxRegion = regions.front();
@@ -152,10 +151,11 @@ void CellAsset::preRender()
 	Image stateDrawImage(stateDrawRegion.size.asPoint());
 
 	for (const auto& partConfig : m_partConfigs)
-	{
-		if (partConfig->getPartAsset()->drawOnAssetEnabled()) partConfig->getPartAsset()->preRender(assetDrawImage, partConfig);
-		if (partConfig->getPartAsset()->drawOnStateEnabled()) partConfig->getPartAsset()->preRender(stateDrawImage, partConfig);
-	}
+		partConfig->getPartAsset()->preRender(assetDrawImage, partConfig);
+
+	for (const auto& partConfig : m_partConfigs)
+		if (partConfig->getPartAsset()->isPreRenderOnStateEnabled())
+			partConfig->getPartAsset()->preRender(stateDrawImage, partConfig);
 
 	m_cellAssetTexture = Texture(assetDrawImage);
 	m_cellStateTexture = Texture(stateDrawImage);
