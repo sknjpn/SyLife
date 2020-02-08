@@ -23,8 +23,6 @@ public:
 	bool	drawOnAssetEnabled() const override { return false; }
 	bool	drawOnStateEnabled() const override { return true; }
 
-	void	preRender(Image& image, double scale, const std::shared_ptr<PartConfig>& partConfig, double a = 0.5) const override {}
-	
 	// TypeName
 	String	getTypeName() override { return U"PartAsset_Synthesizer"; }
 };

@@ -24,7 +24,7 @@ public:
 	bool	drawOnStateEnabled() const override { return false; }
 
 	void	draw(double a) override;
-	void	preRender(Image& image, double scale, const std::shared_ptr<PartConfig>& partConfig, double a = 0.5) const override;
+	void	preRender(Image& image, const std::shared_ptr<PartConfig>& partConfig) const override;
 	
 	// TypeName
 	String	getTypeName() override { return U"PartAsset_Body"; }

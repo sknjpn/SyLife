@@ -37,7 +37,7 @@ public:
 	// Draw
 	virtual void	draw(double a = 0.5) { m_shape.draw(a); }
 
-	virtual void	preRender(Image& image, double scale, const std::shared_ptr<PartConfig>& partConfig, double a = 0.5) const;
+	virtual void	preRender(Image& image, const std::shared_ptr<PartConfig>& partConfig) const;
 
 	// JSON
 	void	load(const JSONValue& json) override;

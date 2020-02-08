@@ -2,10 +2,15 @@
 #include "PartConfig.h"
 #include "PartState.h"
 
-void PartAsset::preRender(Image& image, double scale, const std::shared_ptr<PartConfig>& partConfig, double a) const
+void PartAsset::preRender(Image& image, const std::shared_ptr<PartConfig>& partConfig) const
 {
 	for (const auto& layer : m_shape)
-		layer.m_polygon.rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).scaled(scale).movedBy(Vec2(image.size()) / 2.0).overwrite(image, ColorF(layer.m_color, a));
+		layer.m_polygon
+		.rotated(partConfig->getRotation())
+		.movedBy(partConfig->getPosition())
+		.scaled(GeneralSetting::GetInstance().m_textureScale)
+		.movedBy(Vec2(image.size()) / 2.0)
+		.overwrite(image, ColorF(layer.m_color, 0.5));
 }
 
 void PartAsset::load(const JSONValue& json)
