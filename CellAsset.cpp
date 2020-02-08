@@ -106,7 +106,7 @@ RectF CellAsset::getCellAssetDrawRegion() const
 		maxRegion.x = Min(maxRegion.x, region.x);
 		maxRegion.y = Min(maxRegion.y, region.y);
 	}
-	
+
 	for (const auto& region : regions)
 	{
 		maxRegion.w = Max(maxRegion.tr().x, region.tr().x) - maxRegion.x;
@@ -147,14 +147,14 @@ void CellAsset::preRender()
 
 	assetDrawRegion = RectF(Max(-assetDrawRegion.br().x, assetDrawRegion.tl().x) * 2.0, Max(-assetDrawRegion.br().y, assetDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
 	stateDrawRegion = RectF(Max(-stateDrawRegion.br().x, stateDrawRegion.tl().x) * 2.0, Max(-stateDrawRegion.br().y, stateDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
-	
+
 	Image assetDrawImage(assetDrawRegion.size.asPoint());
 	Image stateDrawImage(stateDrawRegion.size.asPoint());
 
 	for (const auto& partConfig : m_partConfigs)
 	{
-		partConfig->getPartAsset()->preRender(assetDrawImage, partConfig);
-		partConfig->getPartAsset()->preRender(stateDrawImage, partConfig);
+		if (partConfig->getPartAsset()->drawOnAssetEnabled()) partConfig->getPartAsset()->preRender(assetDrawImage, partConfig);
+		if (partConfig->getPartAsset()->drawOnStateEnabled()) partConfig->getPartAsset()->preRender(stateDrawImage, partConfig);
 	}
 
 	m_cellAssetTexture = Texture(assetDrawImage);
