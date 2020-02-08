@@ -144,11 +144,11 @@ void CellAsset::preRender()
 	auto assetDrawRegion = getCellAssetDrawRegion();
 	auto stateDrawRegion = getCellStateDrawRegion();
 
-	assetDrawRegion = RectF(Max(-assetDrawRegion.br().x, assetDrawRegion.tl().x) * 2.0, Max(-assetDrawRegion.br().y, assetDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
-	stateDrawRegion = RectF(Max(-stateDrawRegion.br().x, stateDrawRegion.tl().x) * 2.0, Max(-stateDrawRegion.br().y, stateDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
+	assetDrawRegion = RectF(Max(assetDrawRegion.br().x, -assetDrawRegion.tl().x) * 2.0, Max(assetDrawRegion.br().y, -assetDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
+	stateDrawRegion = RectF(Max(stateDrawRegion.br().x, -stateDrawRegion.tl().x) * 2.0, Max(stateDrawRegion.br().y, -stateDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
 
-	Image assetDrawImage(assetDrawRegion.size.asPoint());
-	Image stateDrawImage(stateDrawRegion.size.asPoint());
+	Image assetDrawImage((assetDrawRegion.size * GeneralSetting::GetInstance().m_textureScale).asPoint());
+	Image stateDrawImage((stateDrawRegion.size * GeneralSetting::GetInstance().m_textureScale).asPoint());
 
 	for (const auto& partConfig : m_partConfigs)
 		partConfig->getPartAsset()->preRender(assetDrawImage, partConfig);
