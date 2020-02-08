@@ -35,9 +35,6 @@ public:
 
 	virtual void	preRender(Image& image, double scale, const std::shared_ptr<PartConfig>& partConfig, double a = 0.5) const;
 
-	// Icon
-	void	drawIcon() const override;
-
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;

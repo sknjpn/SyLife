@@ -8,16 +8,6 @@ void PartAsset::preRender(Image& image, double scale, const std::shared_ptr<Part
 		layer.m_polygon.rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).scaled(scale).movedBy(Vec2(image.size()) / 2.0).overwrite(image, ColorF(layer.m_color, a));
 }
 
-void PartAsset::drawIcon() const
-{
-	auto rect = m_shape.getPolygon().boundingRect();
-	rect = RectF(1.0, 1.0).scaled(Max(rect.size.x, rect.size.y)).setCenter(rect.center());
-
-	const auto t = Transformer2D(Mat3x2::Translate(-rect.pos).scaled(1.0 / rect.size.x));
-
-	m_shape.draw(0.5);
-}
-
 void PartAsset::load(const JSONValue& json)
 {
 	Asset::load(json);

@@ -29,9 +29,6 @@ public:
 	const String& getFilePath() const { return m_filepath; }
 	bool	getIsUserAsset() const { return m_isUserAsset; }
 
-	// Icon
-	virtual void	drawIcon() const {}
-
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;

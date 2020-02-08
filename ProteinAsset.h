@@ -17,9 +17,6 @@ public:
 	const Color& getColor() const { return m_color; }
 	const Storage& getMaterial() const { return m_material; }
 
-	// Icon
-	void	drawIcon() const override;
-
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;

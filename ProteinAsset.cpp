@@ -1,12 +1,5 @@
 ﻿#include "ProteinAsset.h"
 
-void ProteinAsset::drawIcon() const
-{
-	static Texture particle(U"resources/image/particle.png", TextureDesc::Mipped);
-
-	particle.resized(1.0, 1.0).drawAt(0.5, 0.5, m_color);
-}
-
 void ProteinAsset::load(const JSONValue& json)
 {
 	Asset::load(json);
