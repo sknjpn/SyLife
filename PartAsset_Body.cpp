@@ -1,5 +1,6 @@
 ﻿#include "PartAsset_Body.h"
 #include "PartState_Body.h"
+#include "PartConfig.h"
 
 std::shared_ptr<PartState> PartAsset_Body::makePartState(const std::shared_ptr<PartConfig>& partConfig) const
 {
@@ -32,5 +33,5 @@ void PartAsset_Body::draw(double a)
 
 void PartAsset_Body::preRender(Image& image, const std::shared_ptr<PartConfig>& partConfig) const
 {
-	m_image.overwrite(image, image.size() / 2 - m_image.size() / 2, ColorF(1.0, 1.0));
+	m_image.overwrite(image, (partConfig->getPosition() * GeneralSetting::GetInstance().m_textureScale).asPoint() + image.size() / 2 - m_image.size() / 2, ColorF(1.0, 1.0));
 }
