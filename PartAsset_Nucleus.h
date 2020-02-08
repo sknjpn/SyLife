@@ -20,13 +20,13 @@ public:
 	double	getYieldTime() const { return m_yieldTime; }
 	int		getArmor() const { return m_armor; }
 
-	bool	drawOnAssetEnabled() const override { return true; }
-	bool	drawOnStateEnabled() const override { return false; }
+	bool	isPreRenderOnStateEnabled() const override { return true; }
+	bool	isDrawOnStateEnabled() const override { return false; }
 
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
-	
+
 	// TypeName
 	String	getTypeName() override { return U"PartAsset_Nucleus"; }
 };

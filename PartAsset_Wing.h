@@ -19,8 +19,8 @@ public:
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
 
-	bool	drawOnAssetEnabled() const override { return false; }
-	bool	drawOnStateEnabled() const override { return true; }
+	bool	isPreRenderOnStateEnabled() const override { return false; }
+	bool	isDrawOnStateEnabled() const override { return true; }
 
 	// TypeName
 	String	getTypeName() override { return U"PartAsset_Wing"; }

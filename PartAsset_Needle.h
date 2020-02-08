@@ -15,8 +15,8 @@ public:
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
 
-	bool	drawOnAssetEnabled() const override { return false; }
-	bool	drawOnStateEnabled() const override { return true; }
+	bool	isPreRenderOnStateEnabled() const override { return false; }
+	bool	isDrawOnStateEnabled() const override { return true; }
 
 	int	getPenetrating() const { return m_penetrating; }
 
