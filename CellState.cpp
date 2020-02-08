@@ -126,24 +126,16 @@ void CellState::draw()
 {
 	const double stage = Min(1.0, m_startTimer / m_cellAsset->getLifespanTime() * 10.0);
 
-	auto t1 = Transformer2D(getMat3x2());
-	auto t2 = Transformer2D(Mat3x2::Scale(Math::Lerp(0.5, 1.0, stage)));
-
-	m_cellAsset->getCellStateTexture().scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
-
-	// parts
-	for (const auto& partState : m_partStates)
-		if (partState->getPartConfig()->getPartAsset()->isDrawOnStateEnabled())
-			partState->draw(*this);
-
-	// 細胞円
-	if (false)
 	{
-		double a = Min(0.5, m_deathTimer * 0.25);
+		auto t1 = Transformer2D(getMat3x2());
+		auto t2 = Transformer2D(Mat3x2::Scale(Math::Lerp(0.5, 1.0, stage)));
 
-		Circle(getRadius())
-			.draw(ColorF(Palette::Lightpink, a))
-			.drawFrame(1.0, Palette::Gray);
+		m_cellAsset->getCellStateTexture().scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
+
+		// parts
+		for (const auto& partState : m_partStates)
+			if (partState->getPartConfig()->getPartAsset()->isDrawOnStateEnabled())
+				partState->draw(*this);
 	}
 
 	// Eye
