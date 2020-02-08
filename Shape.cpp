@@ -8,6 +8,7 @@ void Shape::preRender()
 	{
 		layer.m_polygon
 			.movedBy(-m_polygon.boundingRect().pos)
+			.scaled(GeneralSetting::GetInstance().m_textureScale)
 			.overwrite(image, ColorF(layer.m_color, 1.0));
 	}
 
