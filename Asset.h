@@ -10,7 +10,8 @@ class Asset
 	String	m_name;
 	String	m_nameJP;
 	String	m_filepath;
-	bool	m_isUserAsset =true;
+	bool	m_isUserAsset = true;
+	Texture	m_assetIcon;
 
 public:
 	Asset();
@@ -20,6 +21,7 @@ public:
 	void	setNameJP(const String& nameJP) { m_nameJP = nameJP; }
 	void	setFilePath(const String& filepath) { m_filepath = filepath; }
 	void	setIsUserAsset(bool isUserAsset) { m_isUserAsset = isUserAsset; }
+	void	setAssetIcon(const Texture& assetIcon) { m_assetIcon = assetIcon; }
 
 	// Get
 	const String& getName() const { return m_name; }
@@ -33,7 +35,7 @@ public:
 	// JSON
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
-	
+
 	// TypeName
 	virtual String	getTypeName() { return U"Asset"; }
 };
