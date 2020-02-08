@@ -10,9 +10,9 @@ EggState::EggState(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 	, m_timer(m_cellAsset->getBornTime())
 {
-	setRadius(cellAsset->getRadius() / 2.0);
-	setMass(cellAsset->getMass() / 4.0);
-	setInertia(getMass() * getRadius() * getRadius() / 2.0);
+	setRadius(cellAsset->getRadius());
+	setMass(cellAsset->getMass());
+	setInertia(cellAsset->getInertia());
 }
 
 void EggState::updateEgg()
