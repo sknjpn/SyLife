@@ -16,9 +16,10 @@ void PartState_Synthesizer::draw(const CellState& cellState) const
 	auto t = Transformer2D(getPartConfig()->getMat3x2());
 	
 	const auto& shape = getPartConfig()->getPartAsset()->getShape();
+	const double alpha = Math::Lerp(0.1, 0.5, Min(1.0, m_timer / m_partAsset_Synthesizer->getProductTime()));
 
 	shape.getPreRenderTexture()
-		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).draw(shape.getBoundingRect().pos, ColorF(1.0, Min(m_timer / 2.0, 1.0) * 0.75 + 0.25));
+		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).draw(shape.getBoundingRect().pos, ColorF(1.0, alpha));
 }
 
 void PartState_Synthesizer::update(CellState& cellState)
