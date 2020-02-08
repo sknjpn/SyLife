@@ -24,7 +24,7 @@ public:
 
 	RectF	getTileSize() const;
 
-	void	draw(double a) const { m_preRenderTexture.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).draw(-m_polygon.boundingRect().pos, ColorF(1.0, a)); }
+	void	draw(double a) const { m_preRenderTexture.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).draw(-m_polygon.boundingRect().pos, ColorF(1.0 ,a)); }
 
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;

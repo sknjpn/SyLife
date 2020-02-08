@@ -59,6 +59,8 @@ bool Shape::updateProperties()
 
 	m_polygon = result;
 
+	preRender();
+
 	return true;
 }
 
