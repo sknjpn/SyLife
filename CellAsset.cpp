@@ -147,12 +147,18 @@ void CellAsset::preRender()
 
 	assetDrawRegion = RectF(Max(-assetDrawRegion.br().x, assetDrawRegion.tl().x) * 2.0, Max(-assetDrawRegion.br().y, assetDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
 	stateDrawRegion = RectF(Max(-stateDrawRegion.br().x, stateDrawRegion.tl().x) * 2.0, Max(-stateDrawRegion.br().y, stateDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
-	Image image(800, 800);
+	
+	Image assetDrawImage(assetDrawRegion.size.asPoint());
+	Image stateDrawImage(stateDrawRegion.size.asPoint());
 
 	for (const auto& partConfig : m_partConfigs)
-		partConfig->getPartAsset()->preRender(image, 4.0, partConfig);
+	{
+		partConfig->getPartAsset()->preRender(assetDrawImage, partConfig);
+		partConfig->getPartAsset()->preRender(stateDrawImage, partConfig);
+	}
 
-	m_preRenderedTexture = Texture(image).scaled(1.0 / 4.0);
+	m_cellAssetTexture = Texture(assetDrawImage);
+	m_cellStateTexture = Texture(stateDrawImage);
 }
 
 void CellAsset::setCentroidAsOrigin()
