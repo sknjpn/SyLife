@@ -25,7 +25,7 @@ void MainViewer::FieldViewer::CellStateCaptureViewer::update()
 	{
 		// CellStateを移動する
 		const auto t = getParentViewer<FieldViewer>()->getCamera().createTransformer();
-		const auto pos = m_cellState->getPosition().lerp(Cursor::PosF(), 0.25);
-		m_cellState->setPosition(pos);
+
+		m_cellState->setVelocity((m_cellState->getPosition().lerp(Cursor::PosF(), 0.25) - m_cellState->getPosition()) / DeltaTime);
 	}
 }
