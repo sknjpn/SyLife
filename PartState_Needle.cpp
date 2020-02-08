@@ -13,16 +13,13 @@ PartState_Needle::PartState_Needle(const std::shared_ptr<PartConfig>& partConfig
 
 void PartState_Needle::draw(const CellState& cellState) const
 {
-	for (const auto& layer : getPartConfig()->getPartAsset()->getShape())
-	{
-		layer.m_polygon
-			.scaled(Vec2(1.0, Max(m_heat - 4.0, 0.0) * 1.0 + 1.0))
-			.rotated(getPartConfig()->getRotation())
-			.movedBy(getPartConfig()->getPosition())
-			.rotated(cellState.getRotation())
-			.movedBy(cellState.getPosition())
-			.draw(ColorF(layer.m_color, Max(m_heat - 4.0, 0.0) * 0.9 + 0.1));
-	}
+	auto t1 = Transformer2D(getPartConfig()->getMat3x2());
+	auto t2 = Transformer2D(Mat3x2::Scale(1.0, Max(m_heat - 4.0, 0.0) * 1.0 + 1.0));
+
+	const auto& shape = getPartConfig()->getPartAsset()->getShape();
+
+	shape.getPreRenderTexture()
+		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).draw(shape.getBoundingRect().pos, ColorF(1.0, Max(m_heat - 4.0, 0.0) * 0.9 + 0.1));
 }
 
 void PartState_Needle::update(CellState& cellState)

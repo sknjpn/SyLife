@@ -434,21 +434,9 @@ void World::draw()
 		const auto mat3x2 = Graphics2D::GetLocalTransform().inversed();
 		const auto viewRect = RectF(mat3x2.transform(Scene::Rect().pos), mat3x2.transform(Scene::Rect().size));
 
-		for (const auto& c : m_cellStates)
-		{
-			if (!c->isDestroyed() && viewRect.intersects(Circle(c->getPosition(), c->m_cellAsset->getDrawRadius())))
-			{
-				c->drawTexture();
-			}
-		}
-
-		for (const auto& c : m_cellStates)
-		{
-			if (!c->isDestroyed() && viewRect.intersects(Circle(c->getPosition(), c->m_cellAsset->getDrawRadius())))
-			{
-				c->drawPolygon();
-			}
-		}
+		for (const auto& cellState : m_cellStates)
+			if (!cellState->isDestroyed() && viewRect.intersects(Circle(cellState->getPosition(), cellState->m_cellAsset->getDrawRadius())))
+				cellState->draw();
 	}
 }
 

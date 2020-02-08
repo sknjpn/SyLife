@@ -13,15 +13,12 @@ PartState_Synthesizer::PartState_Synthesizer(const std::shared_ptr<PartConfig>& 
 
 void PartState_Synthesizer::draw(const CellState& cellState) const
 {
-	for (const auto& layer : getPartConfig()->getPartAsset()->getShape())
-	{
-		layer.m_polygon
-			.rotated(getPartConfig()->getRotation())
-			.movedBy(getPartConfig()->getPosition())
-			.rotated(cellState.getRotation())
-			.movedBy(cellState.getPosition())
-			.draw(ColorF(layer.m_color, Min(m_timer / 2.0, 1.0) * 0.75 + 0.25));
-	}
+	auto t = Transformer2D(getPartConfig()->getMat3x2());
+	
+	const auto& shape = getPartConfig()->getPartAsset()->getShape();
+
+	shape.getPreRenderTexture()
+		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).draw(shape.getBoundingRect().pos, ColorF(1.0, Min(m_timer / 2.0, 1.0) * 0.75 + 0.25));
 }
 
 void PartState_Synthesizer::update(CellState& cellState)

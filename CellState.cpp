@@ -122,16 +122,16 @@ void CellState::updateCell()
 	}
 }
 
-void CellState::drawTexture()
+void CellState::draw()
 {
-	m_cellAsset->getCellStateTexture().scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).rotated(getRotation()).drawAt(getPosition());
-}
+	auto t = Transformer2D(getMat3x2());
 
-void CellState::drawPolygon()
-{
+	m_cellAsset->getCellStateTexture().scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).rotated(getRotation()).drawAt(Vec2::Zero());
+
 	// parts
-	for (const auto& p : m_partStates)
-		p->draw(*this);
+	for (const auto& partState : m_partStates)
+		if (partState->getPartConfig()->getPartAsset()->isDrawOnStateEnabled())
+			partState->draw(*this);
 
 	// 細胞円
 	if (false)
@@ -164,7 +164,6 @@ void CellState::drawPolygon()
 			}
 		}
 	}
-
 }
 
 void CellState::takeElement()
