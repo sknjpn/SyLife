@@ -15,6 +15,9 @@ public:
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
 
+	bool	drawOnAssetEnabled() const override { return true; }
+	bool	drawOnStateEnabled() const override { return false; }
+
 	double	getMaxDistance() const { return m_maxDistance; }
 
 	// TypeName

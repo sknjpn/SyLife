@@ -30,6 +30,10 @@ public:
 	// State
 	virtual std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const = 0;
 
+	// 描画処理を行うかどうか
+	virtual bool	drawOnAssetEnabled() const { return true; }
+	virtual bool	drawOnStateEnabled() const { return false; }
+
 	// Draw
 	virtual void	draw(double a = 0.5) { m_shape.draw(a); }
 
