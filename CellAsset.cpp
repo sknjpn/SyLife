@@ -92,6 +92,54 @@ void CellAsset::updateMaterial()
 	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getPartAsset()->getMaterial(); });
 }
 
+RectF CellAsset::getCellAssetDrawRegion() const
+{
+	Array<RectF> regions;
+
+	for (const auto& partConfig : m_partConfigs)
+		if (partConfig->getPartAsset()->drawOnAssetEnabled())
+			regions.emplace_back(partConfig->getPartAsset()->getShape().getPolygon().rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).boundingRect());
+
+	RectF maxRegion = regions.front();
+	for (const auto& region : regions)
+	{
+		maxRegion.x = Min(maxRegion.x, region.x);
+		maxRegion.y = Min(maxRegion.y, region.y);
+	}
+	
+	for (const auto& region : regions)
+	{
+		maxRegion.w = Max(maxRegion.tr().x, region.tr().x) - maxRegion.x;
+		maxRegion.h = Max(maxRegion.tr().y, region.tr().y) - maxRegion.y;
+	}
+
+	return maxRegion;
+}
+
+RectF CellAsset::getCellStateDrawRegion() const
+{
+	Array<RectF> regions;
+
+	for (const auto& partConfig : m_partConfigs)
+		if (partConfig->getPartAsset()->drawOnAssetEnabled())
+			regions.emplace_back(partConfig->getPartAsset()->getShape().getPolygon().rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).boundingRect());
+
+	RectF maxRegion = regions.front();
+	for (const auto& region : regions)
+	{
+		maxRegion.x = Min(maxRegion.x, region.x);
+		maxRegion.y = Min(maxRegion.y, region.y);
+	}
+
+	for (const auto& region : regions)
+	{
+		maxRegion.w = Max(maxRegion.tr().x, region.tr().x) - maxRegion.x;
+		maxRegion.h = Max(maxRegion.tr().y, region.tr().y) - maxRegion.y;
+	}
+
+	return maxRegion;
+}
+
 void CellAsset::preRender()
 {
 	Image image(800, 800);

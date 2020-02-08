@@ -37,6 +37,9 @@ class CellAsset
 	Texture	m_cellAssetTexture;	// 全てのパーツが描画されたTexture
 	Texture	m_cellStateTexture;	// 静的な描画のパーツのみ描画されたTexture
 
+	RectF	getCellAssetDrawRegion() const;
+	RectF	getCellStateDrawRegion() const;
+
 public:
 	TextureRegion	m_preRenderedTexture;
 	void	preRender();
