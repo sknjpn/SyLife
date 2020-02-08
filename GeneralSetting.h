@@ -23,6 +23,7 @@ public:
 	bool	m_audioEnabled;
 	double	m_musicVolume;
 	double	m_textureScale;
+	int		m_assetIconSize;
 	Size	m_sceneSize;
 
 	void	load()
@@ -36,6 +37,7 @@ public:
 		m_audioEnabled = ini.getOr<bool>(U"General", U"AudioEnabled", true);
 		m_musicVolume = ini.getOr<double>(U"General", U"MusicVolume", 1.0);
 		m_textureScale = ini.getOr<double>(U"General", U"TextureScale", 4.0);
+		m_assetIconSize = ini.getOr<int>(U"General", U"AssetIconSize", 256);
 		m_sceneSize = ini.getOr<Size>(U"General", U"SceneSize", Size(1920, 1080));
 	}
 
@@ -50,6 +52,7 @@ public:
 		ini.write<bool>(U"General", U"AudioEnabled", m_audioEnabled);
 		ini.write<double>(U"General", U"MusicVolume", m_musicVolume);
 		ini.write<double>(U"General", U"TextureScale", m_textureScale);
+		ini.write<int>(U"General", U"AssetIconSize", m_assetIconSize);
 		ini.write<Size>(U"General", U"SceneSize", m_sceneSize);
 		ini.save(U"config.ini");
 	}
