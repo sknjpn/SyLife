@@ -34,6 +34,9 @@ class CellAsset
 	void	updateMaxStorage();
 	void	updateMaterial();
 
+	Texture	m_cellAssetTexture;	// 全てのパーツが描画されたTexture
+	Texture	m_cellStateTexture;	// 静的な描画のパーツのみ描画されたTexture
+
 public:
 	TextureRegion	m_preRenderedTexture;
 	void	preRender();
