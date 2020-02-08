@@ -133,8 +133,8 @@ RectF CellAsset::getCellStateDrawRegion() const
 
 	for (const auto& region : regions)
 	{
-		maxRegion.w = Max(maxRegion.tr().x, region.tr().x) - maxRegion.x;
-		maxRegion.h = Max(maxRegion.tr().y, region.tr().y) - maxRegion.y;
+		maxRegion.w = Max(maxRegion.br().x, region.br().x) - maxRegion.x;
+		maxRegion.h = Max(maxRegion.br().y, region.br().y) - maxRegion.y;
 	}
 
 	return maxRegion;
