@@ -124,7 +124,7 @@ void CellState::updateCell()
 
 void CellState::drawTexture()
 {
-	m_cellAsset->m_preRenderedTexture.rotated(getRotation()).drawAt(getPosition());
+	m_cellAsset->getCellStateTexture().scaled(GeneralSetting::GetInstance().m_sceneSize).rotated(getRotation()).drawAt(getPosition());
 }
 
 void CellState::drawPolygon()

@@ -41,7 +41,9 @@ class CellAsset
 	RectF	getCellStateDrawRegion() const;
 
 public:
-	TextureRegion	m_preRenderedTexture;
+	const Texture& getCellAssetTexture() const { return m_cellAssetTexture; }
+	const Texture& getCellStateTexture() const { return m_cellStateTexture; }
+
 	void	preRender();
 
 	bool	m_isInViewer = false;
