@@ -10,8 +10,10 @@ class Shape
 {
 	// 合成されたもの
 	Polygon	m_polygon;
+	Texture	m_preRenderTexture;
 
 public:
+	void	preRender();
 	bool	updateProperties();
 
 	const Polygon& getPolygon() const { return m_polygon; }
@@ -22,7 +24,7 @@ public:
 
 	RectF	getTileSize() const;
 
-	void	draw(double a) const { for (const auto& l : *this) l.m_polygon.draw(ColorF(l.m_color, a)); }
+	void	draw(double a) const { m_preRenderTexture.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).draw(-m_polygon.boundingRect().pos, ColorF(1.0, a)); }
 
 	void	load(const JSONValue& json) override;
 	void	save(JSONWriter& json) const override;
