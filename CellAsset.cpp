@@ -142,6 +142,11 @@ RectF CellAsset::getCellStateDrawRegion() const
 
 void CellAsset::preRender()
 {
+	auto assetDrawRegion = getCellAssetDrawRegion();
+	auto stateDrawRegion = getCellStateDrawRegion();
+
+	assetDrawRegion = RectF(Max(-assetDrawRegion.br().x, assetDrawRegion.tl().x) * 2.0, Max(-assetDrawRegion.br().y, assetDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
+	stateDrawRegion = RectF(Max(-stateDrawRegion.br().x, stateDrawRegion.tl().x) * 2.0, Max(-stateDrawRegion.br().y, stateDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
 	Image image(800, 800);
 
 	for (const auto& partConfig : m_partConfigs)
