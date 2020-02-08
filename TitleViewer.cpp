@@ -67,9 +67,10 @@ void TitleViewer::drawBubbles()
 		const auto a = Min((1800.0 - b.m_timer) / 500.0, 1.0) * 0.2;
 		const auto circle = Circle(x, y, r * 0.5);
 
-		/*if (Scene::Rect().intersects(circle))
-			circle.draw(ColorF(Palette::Lightblue, a));
-			*/
+		if (!Scene::Rect().intersects(circle)) continue;
+
+		//circle.draw(ColorF(Palette::Lightblue, a));
+
 		texture.resized(r * 1.0).drawAt(x, y, ColorF(Palette::Lightblue, a));
 	}
 }
