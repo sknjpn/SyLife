@@ -6,7 +6,8 @@
 #include "PartAsset.h"
 
 MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const std::shared_ptr<CellAsset>& cellAsset)
-	: m_cellAsset(cellAsset)
+	: m_rotation(0.0)
+	, m_cellAsset(cellAsset)
 {
 
 }
@@ -19,25 +20,23 @@ void MainViewer::FieldViewer::ReleaseViewer::init()
 
 void MainViewer::FieldViewer::ReleaseViewer::update()
 {
-	auto fv = getParentViewer<FieldViewer>();
+	auto t1 = getParentViewer<FieldViewer>()->getCamera().createTransformer();
 
-	auto t = fv->getCamera().createTransformer();
+	m_position = m_position.lerp(Cursor::PosF(), 0.25);
 
-	Circle(Cursor::PosF(), m_cellAsset->getRadius() * 2.0)
+	if (Cursor::PosF() != m_position)
+		m_rotation = -(Cursor::PosF() - m_position).getAngle(Vec2::Up());
+
+	Circle(m_position, m_cellAsset->getRadius() * 1.5)
 		.draw(ColorF(Palette::Orange, 0.5))
 		.drawFrame(3.0, Palette::Black);
 
-	// part
 	{
-		auto t1 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
+		auto t2 = Transformer2D(Mat3x2::Scale(0.5).rotated(m_rotation).translated(m_position));
 
-		for (const auto& p : m_cellAsset->getPartConfigs())
-		{
-			auto t2 = Transformer2D(Mat3x2::Rotate(p->getRotation())
-				.translated(p->getPosition().x, p->getPosition().y));
-
-			p->getPartAsset()->getShape().draw(0.5);
-		}
+		m_cellAsset->getCellAssetTexture()
+			.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
+			.drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
 	}
 
 	// Release
@@ -50,8 +49,9 @@ void MainViewer::FieldViewer::ReleaseViewer::update()
 
 			// 新規Cell
 			const auto& c = World::GetInstance()->addCellState(m_cellAsset);
-			c->setPosition(Cursor::PosF());
-			c->setVelocity(Vec2::Zero());
+			c->setPosition(m_position);
+			c->setRotation(m_rotation);
+			c->setVelocity((m_position.lerp(Cursor::PosF(), 0.25) - m_position) / DeltaTime);
 			c->init();
 		}
 

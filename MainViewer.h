@@ -90,6 +90,8 @@ class MainViewer : public EasyViewer
 			: public EasyViewer
 		{
 			std::shared_ptr<CellAsset>	m_cellAsset;
+			Vec2	m_position;
+			double	m_rotation;
 
 		public:
 			ReleaseViewer(const std::shared_ptr<CellAsset>& cellAsset);
