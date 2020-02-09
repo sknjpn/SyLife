@@ -7,7 +7,7 @@ void Main()
 	Profiler::EnableAssetCreationWarning(false);
 
 	// loadBGM
-	if(GeneralSetting::GetInstance().m_audioEnabled)
+	if (GeneralSetting::GetInstance().m_audioEnabled)
 	{
 #ifdef _WIN32
 		AudioAsset::Register(U"天のきざはし", Resource(U"resources/music/天のきざはし.mp3"), AssetParameter::LoadAsync());
@@ -23,6 +23,10 @@ void Main()
 		AudioAsset::Register(U"安らぎと微睡み", U"resources/music/安らぎと微睡み.mp3", AssetParameter::LoadAsync());
 #endif
 	}
+
+	// Cursor設定
+	if (GeneralSetting::GetInstance().m_touchPanelModeEnabled)
+		Cursor::SetDefaultStyle(CursorStyle::Hidden);
 
 	Window::SetTitle(U"SyLife");
 	Window::SetStyle(WindowStyle::Sizable);
