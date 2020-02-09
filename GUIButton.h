@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "EasyViewer.h"
 
@@ -27,7 +27,7 @@ public:
 		, m_isEnabled(isEnabled)
 	{}
 
-	std::shared_ptr<EasyViewer>	setFrame(double roundRadius, double frameThickness) { m_roundRadius = roundRadius, m_frameThickness = frameThickness; }
+    std::shared_ptr<EasyViewer>	setFrame(double roundRadius, double frameThickness) { m_roundRadius = roundRadius, m_frameThickness = frameThickness; return shared_from_this(); }
 
 	void	init() override { m_color = getTargetColor(); }
 	void	update() override
