@@ -69,6 +69,7 @@ void MainViewer::update()
 
 		unsetHiddenMode();
 	}
+	Print << m_uncontrolTimer.ms();
 	if (MouseL.up()) m_uncontrolTimer.start();
 	if (!m_hiddenMode && GeneralSetting::GetInstance().m_autoTurnOutEnabled && m_uncontrolTimer.s() > GeneralSetting::GetInstance().m_autoTurnOutTime) setHiddenMode();
 
