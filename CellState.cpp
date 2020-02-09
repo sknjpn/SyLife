@@ -139,7 +139,7 @@ void CellState::draw()
 	}
 
 	// Eye
-	if (m_cellAsset->m_isInViewer)
+	/*if (m_cellAsset->m_isInViewer)
 	{
 		for (const auto& partState : m_partStates)
 		{
@@ -158,7 +158,7 @@ void CellState::draw()
 				}
 			}
 		}
-	}
+	}*/
 }
 
 void CellState::takeElement()
