@@ -13,10 +13,10 @@ void Particle::updateParticle()
 	m_position += m_velocity * DeltaTime;
 
 	// 壁
-	if (m_position.x < 0) m_position.x = 0;
-	if (m_position.y < 0) m_position.y = 0;
-	if (m_position.x > World::GetInstance()->getFieldSize().x - 1) m_position.x = World::GetInstance()->getFieldSize().x - 1;
-	if (m_position.y > World::GetInstance()->getFieldSize().y - 1) m_position.y = World::GetInstance()->getFieldSize().y - 1;
+	if (m_position.x < 0) { m_velocity.x = 0; m_position.x = 0; }
+	if (m_position.y < 0) { m_velocity.y = 0; m_position.y = 0; }
+	if (m_position.x > World::GetInstance()->getFieldSize().x - 1) { m_velocity.x = 0; m_position.x = World::GetInstance()->getFieldSize().x - 1; }
+	if (m_position.y > World::GetInstance()->getFieldSize().y - 1) { m_velocity.y = 0; m_position.y = World::GetInstance()->getFieldSize().y - 1; }
 
 	// 水流
 	{
