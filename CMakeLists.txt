@@ -34,7 +34,6 @@ include_directories(
 
 
 set(SOURCE_FILES
-"Storage.cpp"
 "TileState.cpp"
 "TitleViewer.cpp"
 "TitleViewer_WorldGenerator.cpp"
@@ -54,8 +53,7 @@ set(SOURCE_FILES
 "MainViewer_CellBook_Item.cpp"
 "MainViewer_CellMakingViewer.cpp"
 "MainViewer_CellMakingViewer_BodySculptor.cpp"
-"MainViewer_CellMakingViewer_BodySculptor_LayerLists.cpp"
-"MainViewer_CellMakingViewer_BodySculptor_LayerLists_Item.cpp"
+"MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp"
 "MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp"
 "MainViewer_CellMakingViewer_CellInfo.cpp"
 "MainViewer_CellMakingViewer_PartsAssembler.cpp"
@@ -88,6 +86,7 @@ set(SOURCE_FILES
 "Rigidbody.cpp"
 "Shape.cpp"
 "stdafx.cpp"
+"Storage.cpp"
 )
 add_executable(Siv3D_App ${SOURCE_FILES})
 
