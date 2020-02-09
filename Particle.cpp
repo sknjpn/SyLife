@@ -23,7 +23,7 @@ void Particle::updateParticle()
 		const double scale = 100.0;
 		const auto waveVelocity = scale * World::GetInstance()->getTile(m_position).getWaveVelocity();
 
-		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.95;
+		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.90;
 	}
 }
 
