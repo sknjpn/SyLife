@@ -6,13 +6,9 @@
 
 void CellAsset::draw(double a)
 {
-	// parts
-	for (const auto& partConfig : m_partConfigs)
-	{
-		auto t2 = Transformer2D(partConfig->getMat3x2());
-
-		partConfig->getPartAsset()->draw(a);
-	}
+	m_cellAssetTexture
+		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
+		.drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
 }
 
 void CellAsset::load(const JSONValue& json)
