@@ -96,8 +96,8 @@ void MainViewer::CommandPalette::update()
 		button->getChildViewer<GUIIcon>()->setColor(disableColor);
 
 	{
-		if (zoomIn->isGrabbed()) { zoomInIcon->setColor(enableColor); fv->getCamera().zoomIn(); }
-		if (zoomOut->isGrabbed()) { zoomOutIcon->setColor(enableColor); fv->getCamera().zoomOut(); }
+		if (zoomIn->isGrabbed() || KeyK.pressed()) { zoomInIcon->setColor(enableColor); fv->getCamera().zoomIn(); }
+		if (zoomOut->isGrabbed() || KeyL.pressed()) { zoomOutIcon->setColor(enableColor); fv->getCamera().zoomOut(); }
 		if (fastMode->isSelected()) { fv->m_isHighSpeed = !fv->m_isHighSpeed; if (fv->m_isHighSpeed) { fastModeIcon->setColor(enableColor); } }
 		if (showWave->isSelected()) { fv->m_drawWaveEnabled = !fv->m_drawWaveEnabled; if (fv->m_drawWaveEnabled) { showWaveIcon->setColor(enableColor); } }
 		if (closeEye->isSelected()) getParentViewer<MainViewer>()->setHiddenMode();
