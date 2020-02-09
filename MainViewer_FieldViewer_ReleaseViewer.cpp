@@ -46,6 +46,7 @@ void MainViewer::FieldViewer::ReleaseViewer::update()
 				.drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
 		}
 	}
+
 	// Release
 	if (MouseL.up())
 	{
