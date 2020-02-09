@@ -14,7 +14,12 @@ PartState_Eye::PartState_Eye(const std::shared_ptr<PartConfig>& partConfig)
 
 void PartState_Eye::update(CellState& cellState)
 {
+	const auto position = cellState.getWorldPosition(getPartConfig()->getPosition());
+
 	m_heat -= DeltaTime;
+
+	if (m_targetCellState && m_targetCellState->getPosition().distanceFrom(position) > m_partAsset_Eye->getMaxDistance() * 1.25)
+		m_targetCellState = nullptr;
 
 	if (m_targetCellState && !m_targetCellState->isDestroyed())
 	{
@@ -48,7 +53,6 @@ void PartState_Eye::update(CellState& cellState)
 	}
 	else if (m_heat < 0)
 	{
-		const auto position = cellState.getWorldPosition(getPartConfig()->getPosition());
 		for (auto i : World::GetInstance()->getCellStateKDTree().radiusSearch(position, m_partAsset_Eye->getMaxDistance(), true))
 		{
 			auto& t = World::GetInstance()->getCellStates()[i];
