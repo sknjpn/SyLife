@@ -95,10 +95,10 @@
     <Filter Include="Engine\World">
       <UniqueIdentifier>{68944e25-73b7-4252-a6bb-9c7424590c73}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EasyViewer">
+    <Filter Include="ViewerSystem">
       <UniqueIdentifier>{801539df-d40e-4426-9024-3aadd5d50446}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EasyViewer\GUI">
+    <Filter Include="ViewerSystem\GUI">
       <UniqueIdentifier>{e52e91a6-c002-407f-ae66-34a977dda222}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -488,28 +488,28 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="GUIAssetLinker.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIButton.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIChecker.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIColorPicker.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUISlider.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIText.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUITextBox.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUIValuer.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
       <Filter>Engine\Util</Filter>
@@ -598,21 +598,21 @@
     <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="GUIMusicBox.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="EasyViewer.h">
-      <Filter>EasyViewer</Filter>
+      <Filter>ViewerSystem</Filter>
     </ClInclude>
     <ClInclude Include="DraggableViewer.h">
-      <Filter>EasyViewer</Filter>
+      <Filter>ViewerSystem</Filter>
     </ClInclude>
     <ClInclude Include="GeneralSetting.h" />
     <ClInclude Include="HiddenViewer.h" />
     <ClInclude Include="GUIIcon.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUICurtain.h">
-      <Filter>EasyViewer\GUI</Filter>
+      <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
