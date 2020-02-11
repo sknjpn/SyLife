@@ -4,6 +4,10 @@
 
 void Main()
 {
+	// Configの作成
+	if (!FileSystem::Exists(U"config.ini"))
+		INIData().save(U"config.ini");
+
 	Profiler::EnableAssetCreationWarning(false);
 
 	// loadBGM
