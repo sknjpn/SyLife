@@ -543,6 +543,9 @@
     <ClCompile Include="TitleViewer_WorldGenerator.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
+    <ClCompile Include="EditorViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUIAssetLinker.h">
@@ -699,6 +702,9 @@
       <Filter>Viewer</Filter>
     </ClInclude>
     <ClInclude Include="TitleViewer.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorViewer.h">
       <Filter>Viewer</Filter>
     </ClInclude>
   </ItemGroup>

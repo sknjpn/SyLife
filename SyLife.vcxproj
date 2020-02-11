@@ -232,6 +232,7 @@
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="CellAsset_Log.cpp" />
+    <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
     <ClCompile Include="MainViewer_CellBook.cpp" />
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
@@ -296,6 +297,7 @@
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="EditorViewer.h" />
     <ClInclude Include="GeneralSetting.h" />
     <ClInclude Include="GUICurtain.h" />
     <ClInclude Include="GUIIcon.h" />
