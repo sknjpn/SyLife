@@ -369,7 +369,6 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainViewer.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer.cpp" />
@@ -494,11 +493,12 @@
     <ClCompile Include="Part_DepoisonerAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Engine\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainViewer.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="TinyCamera.h" />
     <ClInclude Include="GUIAssetLinker.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
@@ -560,7 +560,6 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="TitleViewer.h" />
-    <ClInclude Include="common.h" />
     <ClInclude Include="GUIMusicBox.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
@@ -570,8 +569,6 @@
     <ClInclude Include="DraggableViewer.h">
       <Filter>ViewerSystem</Filter>
     </ClInclude>
-    <ClInclude Include="GeneralSetting.h" />
-    <ClInclude Include="HiddenViewer.h" />
     <ClInclude Include="GUIIcon.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
@@ -637,6 +634,21 @@
     </ClInclude>
     <ClInclude Include="Part_DepoisonerState.h">
       <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="HiddenViewer.h">
+      <Filter>ViewerSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Engine\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralSetting.h">
+      <Filter>Engine\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Engine\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyCamera.h">
+      <Filter>Engine\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
