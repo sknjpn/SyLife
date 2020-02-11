@@ -52,7 +52,7 @@ void EggState::draw1()
 
 	m_cellAsset->getCellAssetTexture()
 		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
-		.scaled(Math::Lerp(0.25, 0.5, stage))
+		.scaled(Math::Lerp(0.125, 0.15, stage))
 		.rotated(getRotation())
 		.drawAt(getPosition(), ColorF(1.0, 0.5));
 }
@@ -61,7 +61,7 @@ void EggState::draw2()
 {
 	const double stage = 1.0 - m_timer / m_cellAsset->getBornTime();
 
-	Circle(getPosition(), getRadius() * 2.0 * Math::Lerp(0.25, 0.5, stage)).draw(ColorF(Palette::Lightblue, 0.5));
+	Circle(getPosition(), getRadius() * 2.0 * Math::Lerp(0.125, 0.25, stage)).draw(ColorF(Palette::Lightblue, 0.25));
 }
 
 void EggState::load(Deserializer<ByteArray>& reader)
