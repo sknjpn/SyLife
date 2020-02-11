@@ -101,6 +101,9 @@
     <Filter Include="ViewerSystem\GUI">
       <UniqueIdentifier>{e52e91a6-c002-407f-ae66-34a977dda222}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Viewer">
+      <UniqueIdentifier>{9c903f0b-fbfa-428c-afbb-f531802ff81d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -369,20 +372,6 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainViewer.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_CellInfo.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp" />
-    <ClCompile Include="MainViewer_CommandPalette.cpp" />
-    <ClCompile Include="MainViewer_FieldViewer.cpp" />
-    <ClCompile Include="MainViewer_FieldViewer_CellStateCaptureViewer.cpp" />
-    <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp" />
-    <ClCompile Include="MainViewer_StatisticsViewer.cpp" />
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
@@ -419,17 +408,9 @@
     <ClCompile Include="World_makeModel.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellBook.cpp" />
-    <ClCompile Include="MainViewer_CellBook_Item.cpp" />
-    <ClCompile Include="TitleViewer.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
-    <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
     <ClCompile Include="CellAsset_Log.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp" />
-    <ClCompile Include="TitleViewer_WorldGenerator.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp" />
     <ClCompile Include="Part_BodyAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
@@ -496,9 +477,74 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Engine\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellAssetViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellBook.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellBook_Item.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_CellInfo.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_CommandPalette.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_FieldViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_FieldViewer_CellStateCaptureViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainViewer_StatisticsViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleViewer.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleViewer_WorldGenerator.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MainViewer.h" />
     <ClInclude Include="GUIAssetLinker.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
@@ -559,7 +605,6 @@
     <ClInclude Include="TileState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="TitleViewer.h" />
     <ClInclude Include="GUIMusicBox.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
@@ -649,6 +694,12 @@
     </ClInclude>
     <ClInclude Include="TinyCamera.h">
       <Filter>Engine\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="MainViewer.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleViewer.h">
+      <Filter>Viewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
