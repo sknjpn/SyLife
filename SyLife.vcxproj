@@ -237,6 +237,8 @@
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
     <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp" />
+    <ClCompile Include="Part_DepoisonerAsset.cpp" />
+    <ClCompile Include="Part_DepoisonerState.cpp" />
     <ClCompile Include="Part_EyeAsset.cpp" />
     <ClCompile Include="Part_EyeState.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
@@ -299,6 +301,8 @@
     <ClInclude Include="GUIIcon.h" />
     <ClInclude Include="GUIMusicBox.h" />
     <ClInclude Include="HiddenViewer.h" />
+    <ClInclude Include="Part_DepoisonerAsset.h" />
+    <ClInclude Include="Part_DepoisonerState.h" />
     <ClInclude Include="Part_EyeAsset.h" />
     <ClInclude Include="Part_EyeState.h" />
     <ClInclude Include="Part_PoisonerAsset.h" />

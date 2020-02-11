@@ -9,6 +9,7 @@
 #include "Part_NucleusAsset.h"
 #include "Part_EyeAsset.h"
 #include "Part_PoisonerAsset.h"
+#include "Part_DepoisonerAsset.h"
 
 std::shared_ptr<Asset> World::makeAsset(const String& type)
 {
@@ -22,7 +23,8 @@ std::shared_ptr<Asset> World::makeAsset(const String& type)
 	if (type == U"Part_NeedleAsset")		return makeAsset<Part_NeedleAsset>();
 	if (type == U"Part_NucleusAsset")		return makeAsset<Part_NucleusAsset>();
 	if (type == U"Part_EyeAsset")			return makeAsset<Part_EyeAsset>();
-	if (type == U"Part_PoisonerAsset")			return makeAsset<Part_PoisonerAsset>();
+	if (type == U"Part_PoisonerAsset")		return makeAsset<Part_PoisonerAsset>();
+	if (type == U"Part_DepoisonerAsset")	return makeAsset<Part_DepoisonerAsset>();
 
 	throw Error(U"存在しないタイプのAssetを生成しようとしました\r Type:" + type);
 }
