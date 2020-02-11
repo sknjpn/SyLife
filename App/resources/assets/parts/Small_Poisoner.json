@@ -1,0 +1,34 @@
+﻿{
+  "type": "Part_PoisonerAsset",
+  "name": "Small_Poisoner",
+  "nameJP": "小さな毒器官",
+  "mass": 10.0,
+  "layers": [
+    {
+      "color": "(128, 0, 255, 255)",
+      "polygon": {
+        "outer": [
+          "(6, -5)",
+          "(11, 5)",
+          "(2, 15)",
+          "(-7, 6)",
+          "(-6, -5)",
+          "(0, -9)"
+        ],
+        "holes": []
+      }
+    }
+  ],
+  "material": {
+    "element": 20.0,
+    "proteins": [
+      {
+        "name": "Plumagen",
+        "size": 1
+      }
+    ]
+  },
+  "amount" : 10,
+  "interval" : 1.0,
+  "armor": 1
+}

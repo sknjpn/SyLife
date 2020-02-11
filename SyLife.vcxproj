@@ -240,6 +240,8 @@
     <ClCompile Include="Part_EyeAsset.cpp" />
     <ClCompile Include="Part_EyeState.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
+    <ClCompile Include="Part_PoisonerAsset.cpp" />
+    <ClCompile Include="Part_PoisonerState.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="TitleViewer_WorldGenerator.cpp" />
     <ClCompile Include="World_makeModel.cpp" />
@@ -299,6 +301,8 @@
     <ClInclude Include="HiddenViewer.h" />
     <ClInclude Include="Part_EyeAsset.h" />
     <ClInclude Include="Part_EyeState.h" />
+    <ClInclude Include="Part_PoisonerAsset.h" />
+    <ClInclude Include="Part_PoisonerState.h" />
     <ClInclude Include="TileState.h" />
     <ClInclude Include="DraggableViewer.h" />
     <ClInclude Include="EggState.h" />

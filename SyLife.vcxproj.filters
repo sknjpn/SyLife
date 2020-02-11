@@ -482,6 +482,12 @@
     <ClCompile Include="TileState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
+    <ClCompile Include="Part_PoisonerState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_PoisonerAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainViewer.h" />
@@ -612,6 +618,12 @@
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="ProteinAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_PoisonerAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_PoisonerState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
   </ItemGroup>
