@@ -1,5 +1,6 @@
 ﻿#include "TitleViewer.h"
 #include "GUICurtain.h"
+#include "EditorViewer.h"
 #include "MainViewer.h"
 #include "GUIButton.h"
 #include "GUIText.h"
@@ -116,7 +117,7 @@ void TitleViewer::init()
 		->setViewerRectInLocal(p.movedBy(0, 75))
 		->addChildViewer<GUIText>(U"つづきから", Font(40, Typeface::Bold));
 
-	addChildViewer<GUIButton>([this]() { /*getParentViewer()->addChildViewer<EditorViewer>();*/ destroy(); }, false)
+	addChildViewer<GUIButton>([this]() { getParentViewer()->addChildViewer<EditorViewer>(); destroy(); }, false)
 		->setViewerRectInLocal(p.movedBy(0, 150))
 		->addChildViewer<GUIText>(U"エディター", Font(40, Typeface::Bold));
 

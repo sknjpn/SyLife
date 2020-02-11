@@ -546,6 +546,12 @@
     <ClCompile Include="EditorViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
+    <ClCompile Include="EditorViewer_AssetList.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorViewer_AssetList_Item.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUIAssetLinker.h">
