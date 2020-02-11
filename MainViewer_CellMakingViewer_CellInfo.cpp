@@ -3,7 +3,7 @@
 #include "PartConfig.h"
 #include "PartAsset.h"
 #include "ProteinAsset.h"
-#include "PartAsset_Synthesizer.h"
+#include "Part_SynthesizerAsset.h"
 #include "Part_NucleusAsset.h"
 #include "Part_NeedleAsset.h"
 
@@ -54,7 +54,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 				{
 					bool canMakeSelf = false;
 					for (const auto& partConfig : cellAsset->getPartConfigs())
-						if (auto synthesizer = std::dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+						if (auto synthesizer = std::dynamic_pointer_cast<Part_SynthesizerAsset>(partConfig->getPartAsset()))
 							if (synthesizer->getExport() == protein.first) { canMakeSelf = true; break; }
 
 					if (canMakeSelf) font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れます)").draw(Vec2::Zero(), Palette::Black);
@@ -76,7 +76,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 
 			for (const auto& partConfig : cellAsset->getPartConfigs())
 			{
-				if (auto synthesizer = std::dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+				if (auto synthesizer = std::dynamic_pointer_cast<Part_SynthesizerAsset>(partConfig->getPartAsset()))
 				{
 					font(synthesizer->getExport()->getNameJP(), int(synthesizer->getProductTime()), U"秒ごとに").draw(Vec2::Zero(), Palette::Black);
 					moveDrawPos(0, 20);
