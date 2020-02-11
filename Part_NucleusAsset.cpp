@@ -1,12 +1,12 @@
-﻿#include "PartAsset_Nucleus.h"
-#include "PartState_Nucleus.h"
+﻿#include "Part_NucleusAsset.h"
+#include "Part_NucleusState.h"
 
-std::shared_ptr<PartState> PartAsset_Nucleus::makePartState(const std::shared_ptr<PartConfig>& partConfig) const
+std::shared_ptr<PartState> Part_NucleusAsset::makePartState(const std::shared_ptr<PartConfig>& partConfig) const
 {
-	return MakeShared<PartState_Nucleus>(partConfig);
+	return MakeShared<Part_NucleusState>(partConfig);
 }
 
-void PartAsset_Nucleus::load(const JSONValue& json)
+void Part_NucleusAsset::load(const JSONValue& json)
 {
 	PartAsset::load(json);
 
@@ -17,7 +17,7 @@ void PartAsset_Nucleus::load(const JSONValue& json)
 	m_armor = json[U"armor"].get<int>();
 }
 
-void PartAsset_Nucleus::save(JSONWriter& json) const
+void Part_NucleusAsset::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 

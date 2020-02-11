@@ -2,16 +2,16 @@
 
 #include "PartState.h"
 
-class PartAsset_Synthesizer;
+class Part_NeedleAsset;
 
-class PartState_Synthesizer
+class PartState_Needle
 	: public PartState
 {
-	std::shared_ptr<PartAsset_Synthesizer> m_partAsset_Synthesizer;
-	double	m_timer = 0.0;
+	std::shared_ptr<Part_NeedleAsset> m_Part_NeedleAsset;
+	double	m_heat = 0.0;
 
 public:
-	PartState_Synthesizer(const std::shared_ptr<PartConfig>& partConfig);
+	PartState_Needle(const std::shared_ptr<PartConfig>& partConfig);
 
 	void	draw(const CellState& cellState) const override;
 	void	update(CellState& cellState) override;

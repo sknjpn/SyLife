@@ -2,21 +2,21 @@
 
 #include "PartState.h"
 
-class PartAsset_Wing;
+class Part_WingAsset;
 
-class PartState_Wing
+class Part_WingState
 	: public PartState
 {
-	std::shared_ptr<PartAsset_Wing> m_partAsset_Wing;
+	std::shared_ptr<Part_WingAsset> m_Part_WingAsset;
 	int		m_timer = 0;
 	double	m_v = 0.0;
 	double	m_p = 0.0;
 	int		m_counter = 0;
 
 public:
-	PartState_Wing(const std::shared_ptr<PartConfig>& partConfig);
+	Part_WingState(const std::shared_ptr<PartConfig>& partConfig);
 
-	const std::shared_ptr<PartAsset_Wing>& getPartAsset_Wing() const { return m_partAsset_Wing; }
+	const std::shared_ptr<Part_WingAsset>& getPart_WingAsset() const { return m_Part_WingAsset; }
 
 	void	draw(const CellState& cellState) const override;
 	void	update(CellState& cellState) override;

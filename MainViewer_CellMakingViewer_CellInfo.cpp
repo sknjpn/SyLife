@@ -4,8 +4,8 @@
 #include "PartAsset.h"
 #include "ProteinAsset.h"
 #include "PartAsset_Synthesizer.h"
-#include "PartAsset_Nucleus.h"
-#include "PartAsset_Needle.h"
+#include "Part_NucleusAsset.h"
+#include "Part_NeedleAsset.h"
 
 void MainViewer::CellMakingViewer::CellInfo::init()
 {
@@ -108,7 +108,7 @@ void MainViewer::CellMakingViewer::CellInfo::update()
 				int penetrating = 0;
 
 				for (const auto& partConfig : cellAsset->getPartConfigs())
-					if (auto needle = std::dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+					if (auto needle = std::dynamic_pointer_cast<Part_NeedleAsset>(partConfig->getPartAsset()))
 						penetrating = Max(penetrating, needle->getPenetrating());
 
 				font(U"トゲの貫通力:", penetrating).draw(Vec2::Zero(), Palette::Black);
