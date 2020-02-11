@@ -5,6 +5,8 @@
 #include "CellState.h"
 #include "GUICurtain.h"
 
+const Array<String> g_musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
+
 void MainViewer::openCellMakingViewer()
 {
 	if (!hasChildViewer<CellMakingViewer>()) addChildViewer<CellMakingViewer>();
@@ -51,7 +53,7 @@ void MainViewer::init()
 	addChildViewer<CommandPalette>();
 
 	if (GeneralSetting::GetInstance().m_audioEnabled)
-		addChildViewer<GUIMusicBox>(U"", false);
+		addChildViewer<GUIMusicBox>(g_musicList.choice(), false);
 
 	// OpenCurtain
 	addChildViewer<GUICurtain>(Color(11, 22, 33), Color(0, 0), 0.5);
@@ -74,11 +76,7 @@ void MainViewer::update()
 	if (!m_hiddenMode && GeneralSetting::GetInstance().m_autoTurnOutEnabled && m_uncontrolTimer.s() > GeneralSetting::GetInstance().m_autoTurnOutTime) setHiddenMode();
 
 	if (auto musicBox = getChildViewer<GUIMusicBox>())
-	{
-		const Array<String> musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
-
-		if (!musicBox->isPlaying()) musicBox->setMusic(musicList.choice());
-	}
+		if (!musicBox->isPlaying()) musicBox->setMusic(g_musicList.choice());
 }
 
 void MainViewer::addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
