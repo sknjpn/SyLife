@@ -2,7 +2,7 @@
 
 #include "PartAsset.h"
 
-class PartAsset_Synthesizer
+class Part_SynthesizerAsset
 	: public PartAsset
 {
 	std::shared_ptr<ProteinAsset>	m_export;
@@ -24,5 +24,5 @@ public:
 	bool	isDrawOnStateEnabled() const override { return true; }
 
 	// TypeName
-	String	getTypeName() override { return U"PartAsset_Synthesizer"; }
+	String	getTypeName() override { return U"Part_SynthesizerAsset"; }
 };

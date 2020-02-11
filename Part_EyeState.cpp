@@ -1,24 +1,24 @@
-﻿#include "PartState_Eye.h"
-#include "PartAsset_Eye.h"
+﻿#include "Part_EyeState.h"
+#include "Part_EyeAsset.h"
 #include "PartConfig.h"
-#include "PartAsset_Wing.h"
-#include "PartState_Wing.h"
+#include "Part_WingAsset.h"
+#include "Part_WingState.h"
 #include "CellState.h"
 #include "CellAsset.h"
 #include "World.h"
 
-PartState_Eye::PartState_Eye(const std::shared_ptr<PartConfig>& partConfig)
+Part_EyeState::Part_EyeState(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
-	, m_partAsset_Eye(std::dynamic_pointer_cast<PartAsset_Eye>(partConfig->getPartAsset()))
+	, m_Part_EyeAsset(std::dynamic_pointer_cast<Part_EyeAsset>(partConfig->getPartAsset()))
 {}
 
-void PartState_Eye::update(CellState& cellState)
+void Part_EyeState::update(CellState& cellState)
 {
 	const auto position = cellState.getWorldPosition(getPartConfig()->getPosition());
 
 	m_heat -= DeltaTime;
 
-	if (m_targetCellState && m_targetCellState->getPosition().distanceFrom(position) > m_partAsset_Eye->getMaxDistance() * 1.25)
+	if (m_targetCellState && m_targetCellState->getPosition().distanceFrom(position) > m_Part_EyeAsset->getMaxDistance() * 1.25)
 		m_targetCellState = nullptr;
 
 	if (m_targetCellState && !m_targetCellState->isDestroyed())
@@ -32,9 +32,9 @@ void PartState_Eye::update(CellState& cellState)
 		{
 			for (const auto& partState : cellState.m_partStates)
 			{
-				if (auto wing = std::dynamic_pointer_cast<PartState_Wing>(partState))
+				if (auto wing = std::dynamic_pointer_cast<Part_WingState>(partState))
 				{
-					if (!wing->getPartAsset_Wing()->getIsRight()) wing->stop();
+					if (!wing->getPart_WingAsset()->getIsRight()) wing->stop();
 					else wing->move();
 				}
 			}
@@ -43,9 +43,9 @@ void PartState_Eye::update(CellState& cellState)
 		{
 			for (const auto& partState : cellState.m_partStates)
 			{
-				if (auto wing = std::dynamic_pointer_cast<PartState_Wing>(partState))
+				if (auto wing = std::dynamic_pointer_cast<Part_WingState>(partState))
 				{
-					if (wing->getPartAsset_Wing()->getIsRight()) wing->stop();
+					if (wing->getPart_WingAsset()->getIsRight()) wing->stop();
 					else wing->move();
 				}
 			}
@@ -53,7 +53,7 @@ void PartState_Eye::update(CellState& cellState)
 	}
 	else if (m_heat < 0)
 	{
-		for (auto i : World::GetInstance()->getCellStateKDTree().radiusSearch(position, m_partAsset_Eye->getMaxDistance(), true))
+		for (auto i : World::GetInstance()->getCellStateKDTree().radiusSearch(position, m_Part_EyeAsset->getMaxDistance(), true))
 		{
 			auto& t = World::GetInstance()->getCellStates()[i];
 

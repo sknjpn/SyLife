@@ -4,7 +4,7 @@
 
 class Part_EyeAsset;
 
-class PartState_Eye
+class Part_EyeState
 	: public PartState
 {
 	std::shared_ptr<Part_EyeAsset> m_Part_EyeAsset;
@@ -12,7 +12,7 @@ class PartState_Eye
 	std::shared_ptr<CellState>	m_targetCellState;
 
 public:
-	PartState_Eye(const std::shared_ptr<PartConfig>& partConfig);
+	Part_EyeState(const std::shared_ptr<PartConfig>& partConfig);
 	
 	const std::shared_ptr<Part_EyeAsset>& getPart_EyeAsset() const { return m_Part_EyeAsset; }
 	const std::shared_ptr<CellState>& getTargetCellState() const { return m_targetCellState; }

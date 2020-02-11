@@ -4,8 +4,8 @@
 #include "Storage.h"
 
 class PartConfig;
-class PartAsset_Body;
-class PartAsset_Nucleus;
+class Part_BodyAsset;
+class Part_NucleusAsset;
 
 class CellAsset
 	: public Asset
@@ -74,8 +74,8 @@ public:
 
 	void	updateProperties();
 
-	std::shared_ptr<PartAsset_Body> getBodyAsset() const;
-	std::shared_ptr<PartAsset_Nucleus> getNucleusAsset() const;
+	std::shared_ptr<Part_BodyAsset> getBodyAsset() const;
+	std::shared_ptr<Part_NucleusAsset> getNucleusAsset() const;
 
 	// draw
 	void	draw(double a = 0.5);

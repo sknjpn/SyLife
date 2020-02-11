@@ -3,7 +3,7 @@
 #include "PartConfig.h"
 #include "CellAsset.h"
 #include "GUIChecker.h"
-#include "PartAsset_Body.h"
+#include "Part_BodyAsset.h"
 
 Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStamp() const
 {

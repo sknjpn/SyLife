@@ -2,7 +2,7 @@
 
 #include "PartAsset.h"
 
-class PartAsset_Eye
+class Part_EyeAsset
 	: public PartAsset
 {
 	double	m_maxDistance;
@@ -21,5 +21,5 @@ public:
 	double	getMaxDistance() const { return m_maxDistance; }
 
 	// TypeName
-	String	getTypeName() override { return U"PartAsset_Eye"; }
+	String	getTypeName() override { return U"Part_EyeAsset"; }
 };

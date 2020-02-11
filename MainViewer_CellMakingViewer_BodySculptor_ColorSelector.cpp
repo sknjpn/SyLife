@@ -1,7 +1,7 @@
 ﻿#include "MainViewer.h"
 #include "Shape.h"
 #include "PartAsset.h"
-#include "PartAsset_Body.h"
+#include "Part_BodyAsset.h"
 
 void MainViewer::CellMakingViewer::BodySculptor::ColorSelector::init()
 {

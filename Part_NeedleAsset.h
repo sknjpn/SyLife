@@ -2,7 +2,7 @@
 
 #include "PartAsset.h"
 
-class PartAsset_Needle
+class Part_NeedleAsset
 	: public PartAsset
 {
 	int		m_penetrating;
@@ -21,5 +21,5 @@ public:
 	int	getPenetrating() const { return m_penetrating; }
 
 	// TypeName
-	String	getTypeName() override { return U"PartAsset_Needle"; }
+	String	getTypeName() override { return U"Part_NeedleAsset"; }
 };

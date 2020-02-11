@@ -2,15 +2,15 @@
 
 #include "PartState.h"
 
-class PartAsset_Body;
+class Part_BodyAsset;
 
-class PartState_Body
+class Part_BodyState
 	: public PartState
 {
-	std::shared_ptr<PartAsset_Body> m_partAsset_Body;
+	std::shared_ptr<Part_BodyAsset> m_Part_BodyAsset;
 
 public:
-	PartState_Body(const std::shared_ptr<PartConfig>& partConfig);
+	Part_BodyState(const std::shared_ptr<PartConfig>& partConfig);
 
 	void	update(CellState& cellState) override;
 };

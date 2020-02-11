@@ -4,8 +4,8 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartState.h"
-#include "PartState_Eye.h"
-#include "PartAsset_Eye.h"
+#include "Part_EyeState.h"
+#include "Part_EyeAsset.h"
 #include "TileState.h"
 #include "ProteinAsset.h"
 #include "EggState.h"
@@ -143,11 +143,11 @@ void CellState::draw()
 	{
 		for (const auto& partState : m_partStates)
 		{
-			if (auto eye = std::dynamic_pointer_cast<PartState_Eye>(partState))
+			if (auto eye = std::dynamic_pointer_cast<Part_EyeState>(partState))
 			{
 				const auto position = getWorldPosition(eye->getPartConfig()->getPosition());
 
-				Circle(position, eye->getPartAsset_Eye()->getMaxDistance())
+				Circle(position, eye->getPart_EyeAsset()->getMaxDistance())
 					.draw(ColorF(Palette::Red, 0.1))
 					.drawFrame(2.0, Palette::Black);
 

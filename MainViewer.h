@@ -9,7 +9,7 @@
 
 struct Layer;
 class PartAsset;
-class PartAsset_Body;
+class Part_BodyAsset;
 class CellAsset;
 class CellState;
 class PartConfig;
@@ -173,7 +173,7 @@ class MainViewer : public EasyViewer
 			class Workspace : public EasyViewer
 			{
 				DynamicTexture	m_texture;
-				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
+				std::shared_ptr<Part_BodyAsset>	m_bodyAsset;
 
 				Polygon	getStamp() const;
 				Polygon	getStampOnImage() const;
@@ -183,7 +183,7 @@ class MainViewer : public EasyViewer
 				const Color& getColor() const;
 
 			public:
-				Workspace(const std::shared_ptr<PartAsset_Body>& bodyAsset)
+				Workspace(const std::shared_ptr<Part_BodyAsset>& bodyAsset)
 					: m_bodyAsset(bodyAsset)
 				{}
 
@@ -201,7 +201,7 @@ class MainViewer : public EasyViewer
 				Color	m_selectedColor = Palette::Blue;
 				double	m_timer = 1.0;
 				bool	m_eraseMode = false;
-				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
+				std::shared_ptr<Part_BodyAsset>	m_bodyAsset;
 
 			public:
 				const Color& getSelectedColor() const { return m_selectedColor; }

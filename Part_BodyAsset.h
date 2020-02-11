@@ -2,11 +2,11 @@
 
 #include "PartAsset.h"
 
-class PartAsset_Body
+class Part_BodyAsset
 	: public PartAsset
 {
 public:
-	PartAsset_Body()
+	Part_BodyAsset()
 		: m_image(800, 800)
 	{}
 
@@ -27,5 +27,5 @@ public:
 	void	preRender(Image& image, const std::shared_ptr<PartConfig>& partConfig) const override;
 
 	// TypeName
-	String	getTypeName() override { return U"PartAsset_Body"; }
+	String	getTypeName() override { return U"Part_BodyAsset"; }
 };

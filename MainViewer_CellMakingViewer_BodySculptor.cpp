@@ -1,6 +1,6 @@
 ﻿#include "MainViewer.h"
 #include "CellAsset.h"
-#include "PartAsset_Body.h"
+#include "Part_BodyAsset.h"
 #include "GUIChecker.h"
 #include "GUIButton.h"
 #include "GUIText.h"

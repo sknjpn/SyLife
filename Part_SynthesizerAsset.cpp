@@ -1,14 +1,14 @@
-﻿#include "PartAsset_Synthesizer.h"
-#include "PartState_Synthesizer.h"
+﻿#include "Part_SynthesizerAsset.h"
+#include "Part_SynthesizerState.h"
 #include "World.h"
 #include "ProteinAsset.h"
 
-std::shared_ptr<PartState> PartAsset_Synthesizer::makePartState(const std::shared_ptr<PartConfig>& partConfig) const
+std::shared_ptr<PartState> Part_SynthesizerAsset::makePartState(const std::shared_ptr<PartConfig>& partConfig) const
 {
-	return MakeShared<PartState_Synthesizer>(partConfig);
+	return MakeShared<Part_SynthesizerState>(partConfig);
 }
 
-void PartAsset_Synthesizer::load(const JSONValue& json)
+void Part_SynthesizerAsset::load(const JSONValue& json)
 {
 	PartAsset::load(json);
 
@@ -16,7 +16,7 @@ void PartAsset_Synthesizer::load(const JSONValue& json)
 	m_productTime = json[U"productTime"].get<double>();
 }
 
-void PartAsset_Synthesizer::save(JSONWriter& json) const
+void Part_SynthesizerAsset::save(JSONWriter& json) const
 {
 	PartAsset::save(json);
 

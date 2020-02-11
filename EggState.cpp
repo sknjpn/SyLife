@@ -3,7 +3,7 @@
 #include "CellState.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
-#include "PartAsset_Body.h"
+#include "Part_BodyAsset.h"
 #include "World.h"
 
 EggState::EggState(const std::shared_ptr<CellAsset>& cellAsset)

@@ -1,8 +1,8 @@
 ﻿#include "MainViewer.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
-#include "PartAsset_Body.h"
-#include "PartAsset_Nucleus.h"
+#include "Part_BodyAsset.h"
+#include "Part_NucleusAsset.h"
 #include "GUISlider.h"
 #include "CellAsset.h"
 #include "World.h"
@@ -26,7 +26,7 @@ Array<std::shared_ptr<PartAsset>> MainViewer::CellMakingViewer::PartsAssembler::
 {
 	Array<std::shared_ptr<PartAsset>> assets;
 
-	for (const auto& m : World::GetAssets<PartAsset>().removed_if([](const auto& pa) { return std::dynamic_pointer_cast<PartAsset_Body>(pa) ? true : false; })) assets.emplace_back(m);
+	for (const auto& m : World::GetAssets<PartAsset>().removed_if([](const auto& pa) { return std::dynamic_pointer_cast<Part_BodyAsset>(pa) ? true : false; })) assets.emplace_back(m);
 
 	return assets;
 }
@@ -39,7 +39,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::PartList::drawAssets()
 	for (auto it = assets.begin(); it != assets.end(); ++it)
 	{
 		const auto block = RectF(170, m_itemHeight).stretched(-2.0);
-		const bool isNucleus = std::dynamic_pointer_cast<PartAsset_Nucleus>(*it) != nullptr;
+		const bool isNucleus = std::dynamic_pointer_cast<Part_NucleusAsset>(*it) != nullptr;
 
 		if (isNucleus)
 		{
@@ -51,7 +51,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::PartList::drawAssets()
 
 				for (const auto& pc : cellAsset->getPartConfigs())
 				{
-					if (std::dynamic_pointer_cast<PartAsset_Nucleus>(pc->getPartAsset()) != nullptr)
+					if (std::dynamic_pointer_cast<Part_NucleusAsset>(pc->getPartAsset()) != nullptr)
 					{
 						cellAsset->removePartConfig(pc);
 

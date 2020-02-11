@@ -396,24 +396,6 @@
     <ClCompile Include="EggState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="PartState.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartState_Body.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartState_Needle.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartState_Nucleus.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartState_Synthesizer.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartState_Wing.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
     <ClCompile Include="Asset.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
@@ -435,40 +417,7 @@
     <ClCompile Include="CellAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="PartAsset.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartAsset_Body.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartAsset_Needle.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartAsset_Nucleus.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartAsset_Synthesizer.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartAsset_Wing.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartConfig.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="TileState.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
     <ClCompile Include="World_makeModel.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="ProteinAsset.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartAsset_Eye.cpp">
-      <Filter>Engine\World</Filter>
-    </ClCompile>
-    <ClCompile Include="PartState_Eye.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
     <ClCompile Include="MainViewer_CellBook.cpp" />
@@ -482,6 +431,57 @@
     <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp" />
     <ClCompile Include="TitleViewer_WorldGenerator.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp" />
+    <ClCompile Include="Part_BodyAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_BodyState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_EyeAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_EyeState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_NeedleAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_NeedleState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_NucleusAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_NucleusState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_SynthesizerAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_SynthesizerState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_WingAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Part_WingState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="PartAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="PartConfig.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="PartState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="ProteinAsset.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="TileState.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainViewer.h" />
@@ -520,24 +520,6 @@
     <ClInclude Include="EggState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="PartState.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartState_Body.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartState_Needle.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartState_Nucleus.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartState_Synthesizer.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartState_Wing.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
     <ClInclude Include="Asset.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
@@ -559,40 +541,10 @@
     <ClInclude Include="CellAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="PartAsset.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartAsset_Body.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartAsset_Needle.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartAsset_Nucleus.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartAsset_Synthesizer.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartAsset_Wing.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartConfig.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
     <ClInclude Include="CellState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="TileState.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="ProteinAsset.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartAsset_Eye.h">
-      <Filter>Engine\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PartState_Eye.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
     <ClInclude Include="TitleViewer.h" />
@@ -613,6 +565,54 @@
     </ClInclude>
     <ClInclude Include="GUICurtain.h">
       <Filter>ViewerSystem\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_BodyAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_BodyState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_EyeAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_EyeState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_NeedleAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_NeedleState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_NucleusAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_NucleusState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_SynthesizerAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_SynthesizerState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_WingAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Part_WingState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PartAsset.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PartConfig.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PartState.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="ProteinAsset.h">
+      <Filter>Engine\World</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

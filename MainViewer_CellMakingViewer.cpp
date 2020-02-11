@@ -1,8 +1,8 @@
 ﻿#include "MainViewer.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
-#include "PartAsset_Body.h"
-#include "PartAsset_Nucleus.h"
+#include "Part_BodyAsset.h"
+#include "Part_NucleusAsset.h"
 #include "ProteinAsset.h"
 #include "CellAsset.h"
 #include "GUIButton.h"
@@ -107,7 +107,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 
 	// Bodyの設定
 	{
-		auto bodyAsset = World::MakeAsset<PartAsset_Body>();
+		auto bodyAsset = World::MakeAsset<Part_BodyAsset>();
 		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 
 		bodyAsset->setMass(1.0);
@@ -120,7 +120,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 
 	// Nucleusの設定
 	{
-		auto nucleusAsset = World::GetAssets<PartAsset_Nucleus>().back();
+		auto nucleusAsset = World::GetAssets<Part_NucleusAsset>().back();
 
 		m_cellAsset->addPartConfig()->setPartAsset(nucleusAsset);
 	}

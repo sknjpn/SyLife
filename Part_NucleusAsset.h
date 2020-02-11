@@ -2,7 +2,7 @@
 
 #include "PartAsset.h"
 
-class PartAsset_Nucleus
+class Part_NucleusAsset
 	: public PartAsset
 {
 	double	m_lifespanTime;	// 寿命
@@ -28,5 +28,5 @@ public:
 	void	save(JSONWriter& json) const override;
 
 	// TypeName
-	String	getTypeName() override { return U"PartAsset_Nucleus"; }
+	String	getTypeName() override { return U"Part_NucleusAsset"; }
 };

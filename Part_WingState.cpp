@@ -1,19 +1,19 @@
-﻿#include "PartState_Wing.h"
+﻿#include "Part_WingState.h"
 
-#include "PartAsset_Wing.h"
+#include "Part_WingAsset.h"
 #include "PartConfig.h"
 
 #include "CellState.h"
 
-PartState_Wing::PartState_Wing(const std::shared_ptr<PartConfig>& partConfig)
+Part_WingState::Part_WingState(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
-	, m_partAsset_Wing(std::dynamic_pointer_cast<PartAsset_Wing>(partConfig->getPartAsset()))
+	, m_Part_WingAsset(std::dynamic_pointer_cast<Part_WingAsset>(partConfig->getPartAsset()))
 {}
 
-void PartState_Wing::draw(const CellState& cellState) const
+void Part_WingState::draw(const CellState& cellState) const
 {
 	auto t1 = Transformer2D(getPartConfig()->getMat3x2());
-	auto t2 = Transformer2D(Mat3x2::Rotate(m_partAsset_Wing->getIsRight() ? m_p : -m_p));
+	auto t2 = Transformer2D(Mat3x2::Rotate(m_Part_WingAsset->getIsRight() ? m_p : -m_p));
 
 	const auto& shape = getPartConfig()->getPartAsset()->getShape();
 
@@ -21,7 +21,7 @@ void PartState_Wing::draw(const CellState& cellState) const
 		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).draw(shape.getBoundingRect().pos, ColorF(1.0, 0.5));
 }
 
-void PartState_Wing::update(CellState& cellState)
+void Part_WingState::update(CellState& cellState)
 {
 	if ((m_timer++) == 60)
 	{
@@ -42,14 +42,14 @@ void PartState_Wing::update(CellState& cellState)
 	m_v *= 0.95;
 }
 
-void PartState_Wing::flap(CellState& cellState)
+void Part_WingState::flap(CellState& cellState)
 {
-	const double strength = m_partAsset_Wing->getStrength();
+	const double strength = m_Part_WingAsset->getStrength();
 	auto centroid = getPartConfig()->getPartAsset()->getShape().getCentroid().rotated(getPartConfig()->getRotation());
 	cellState.addImpulseInLocal(Vec2::Up().rotated(getPartConfig()->getRotation()) * strength, getPartConfig()->getPosition() + centroid);
 }
 
-void PartState_Wing::load(Deserializer<ByteArray>& reader)
+void Part_WingState::load(Deserializer<ByteArray>& reader)
 {
 	reader >> m_timer;
 	reader >> m_v;
@@ -57,7 +57,7 @@ void PartState_Wing::load(Deserializer<ByteArray>& reader)
 	reader >> m_counter;
 }
 
-void PartState_Wing::save(Serializer<MemoryWriter>& writer) const
+void Part_WingState::save(Serializer<MemoryWriter>& writer) const
 {
 	writer << m_timer;
 	writer << m_v;

@@ -1,8 +1,8 @@
 ﻿#include "CellAsset.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
-#include "PartAsset_Body.h"
-#include "PartAsset_Nucleus.h"
+#include "Part_BodyAsset.h"
+#include "Part_NucleusAsset.h"
 
 void CellAsset::draw(double a)
 {
@@ -204,23 +204,23 @@ void CellAsset::updateProperties()
 	m_maxHitPoint = getBodyAsset()->getShape().getPolygon().area();
 }
 
-std::shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
+std::shared_ptr<Part_BodyAsset> CellAsset::getBodyAsset() const
 {
 	for (const auto& partConfig : m_partConfigs)
 	{
-		if (std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset()))
-			return std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset());
+		if (std::dynamic_pointer_cast<Part_BodyAsset>(partConfig->getPartAsset()))
+			return std::dynamic_pointer_cast<Part_BodyAsset>(partConfig->getPartAsset());
 	}
 
 	return nullptr;
 }
 
-std::shared_ptr<PartAsset_Nucleus> CellAsset::getNucleusAsset() const
+std::shared_ptr<Part_NucleusAsset> CellAsset::getNucleusAsset() const
 {
 	for (const auto& partConfig : m_partConfigs)
 	{
-		if (std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset()))
-			return std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset());
+		if (std::dynamic_pointer_cast<Part_NucleusAsset>(partConfig->getPartAsset()))
+			return std::dynamic_pointer_cast<Part_NucleusAsset>(partConfig->getPartAsset());
 	}
 
 	return nullptr;

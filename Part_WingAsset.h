@@ -2,7 +2,7 @@
 
 #include "PartAsset.h"
 
-class PartAsset_Wing
+class Part_WingAsset
 	: public PartAsset
 {
 	bool	m_isRight;
@@ -23,5 +23,5 @@ public:
 	bool	isDrawOnStateEnabled() const override { return true; }
 
 	// TypeName
-	String	getTypeName() override { return U"PartAsset_Wing"; }
+	String	getTypeName() override { return U"Part_WingAsset"; }
 };

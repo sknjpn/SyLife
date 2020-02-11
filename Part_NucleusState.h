@@ -4,13 +4,13 @@
 
 class Part_NucleusAsset;
 
-class PartState_Nucleus
+class Part_NucleusState
 	: public PartState
 {
 	std::shared_ptr<Part_NucleusAsset> m_Part_NucleusAsset;
 
 public:
-	PartState_Nucleus(const std::shared_ptr<PartConfig>& partConfig);
+	Part_NucleusState(const std::shared_ptr<PartConfig>& partConfig);
 
 	void	update(CellState& cellState) override;
 };

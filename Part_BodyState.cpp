@@ -1,12 +1,12 @@
-﻿#include "PartState_Body.h"
-#include "PartAsset_Body.h"
+﻿#include "Part_BodyState.h"
+#include "Part_BodyAsset.h"
 #include "PartConfig.h"
 
-PartState_Body::PartState_Body(const std::shared_ptr<PartConfig>& partConfig)
+Part_BodyState::Part_BodyState(const std::shared_ptr<PartConfig>& partConfig)
 	: PartState(partConfig)
-	, m_partAsset_Body(std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset()))
+	, m_Part_BodyAsset(std::dynamic_pointer_cast<Part_BodyAsset>(partConfig->getPartAsset()))
 {}
 
-void PartState_Body::update(CellState& cellState)
+void Part_BodyState::update(CellState& cellState)
 {
 }
