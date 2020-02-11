@@ -108,6 +108,9 @@ void CellState::updateCell()
 			// Elementの吐き出し
 			World::GetInstance()->getTile(getPosition()).addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
 
+			// Poisonの掃き出し
+			World::GetInstance()->getTile(getPosition()).addPoison(m_bioaccumulation);
+
 			destroy();
 		}
 	}
@@ -117,6 +120,9 @@ void CellState::updateCell()
 	{
 		// Elementの吐き出し
 		World::GetInstance()->getTile(getPosition()).addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
+
+		// Poisonの掃き出し
+		World::GetInstance()->getTile(getPosition()).addPoison(m_bioaccumulation);
 
 		destroy();
 	}

@@ -51,6 +51,7 @@ void Part_NeedleState::update(CellState& cellState)
 					t->destroy();
 					cellState.m_storage += t->m_storage;
 					cellState.m_storage += t->m_cellAsset->getMaterial();
+					cellState.m_bioaccumulation += t->m_bioaccumulation;
 				}
 			}
 		}
