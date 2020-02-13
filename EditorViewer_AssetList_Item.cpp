@@ -8,7 +8,7 @@ void EditorViewer::AssetList::Item::init()
 	addChildViewer<GUIText>(m_asset->getName(), Font(18, Typeface::Bold), GUIText::Mode::DrawAtCenter, Palette::Black)
 		->setViewerRectInLocal(120, 30);
 
-	addChildViewer<GUITexture>(m_asset->getAssetIcon(), Palette::Black)
+	addChildViewer<GUITexture>(m_asset->getAssetIcon(), GUITexture::Mode::KeepAspectRatio, Palette::Black)
 		->setViewerRectInLocal(0, 30, 120, 120);
 }
 
