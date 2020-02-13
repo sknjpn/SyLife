@@ -305,6 +305,7 @@
     <ClInclude Include="GUICurtain.h" />
     <ClInclude Include="GUIIcon.h" />
     <ClInclude Include="GUIMusicBox.h" />
+    <ClInclude Include="GUITexture.h" />
     <ClInclude Include="HiddenViewer.h" />
     <ClInclude Include="Part_DepoisonerAsset.h" />
     <ClInclude Include="Part_DepoisonerState.h" />

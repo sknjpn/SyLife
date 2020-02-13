@@ -716,5 +716,8 @@
     <ClInclude Include="EditorViewer.h">
       <Filter>Viewer</Filter>
     </ClInclude>
+    <ClInclude Include="GUITexture.h">
+      <Filter>ViewerSystem\GUI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
