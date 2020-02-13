@@ -5,6 +5,9 @@
 
 void EditorViewer::init()
 {
+	// Worldの初期化
+	World::MakeForEditor();
+
 	const auto assetList = addChildViewer<AssetList>();
 
 	for (const auto& partAsset : World::GetAssets<PartAsset>())

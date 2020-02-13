@@ -9,6 +9,15 @@
 
 std::unique_ptr<World>	World::g_instance;
 
+void World::MakeForEditor()
+{
+	g_instance = MakeUnique<World>();
+
+	// Assetのロード
+	g_instance->loadAssets(U"resources/assets/");
+	for (const auto& asset : g_instance->m_assets) asset->setIsUserAsset(false);
+}
+
 void World::Make()
 {
 	g_instance = MakeUnique<World>();
