@@ -549,9 +549,6 @@
     <ClCompile Include="EditorViewer_AssetList.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="EditorViewer_AssetList_Item.cpp">
-      <Filter>Viewer</Filter>
-    </ClCompile>
     <ClCompile Include="EditorViewer_AssetViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>

@@ -8,7 +8,7 @@
 void EditorViewer::AssetList::init()
 {
 	setViewerRectInLocal(Scene::Size().x - 200.0, 0.0, 200.0, Scene::Size().y);
-	addChildViewer<GUISlider>(getChildViewers<Item>().size() * 25.0)->setViewerRectInLocal(RectF(180.0, 0, 20.0, Scene::Size().y));
+	addChildViewer<GUISlider>()->setViewerRectInLocal(RectF(180.0, 0, 20.0, Scene::Size().y));
 }
 
 void EditorViewer::AssetList::update()
@@ -24,6 +24,15 @@ void EditorViewer::AssetList::update()
 		const auto& item = *it;
 
 		item->setViewerPosInLocal(0, (it - items.begin()) * 25.0 - getChildViewer<GUISlider>()->getDelta());
+	}
+
+	// 入力
+	for (const auto& item : items)
+	{
+		if (item->isSelected())
+		{
+
+		}
 	}
 }
 
