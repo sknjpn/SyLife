@@ -325,6 +325,7 @@ class MainViewer : public EasyViewer
 public:
 	void	init() override;
 	void	update() override;
+	void	onDestroy() override;
 
 	void	addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset);
 	void	addCellAssetViewer(const std::shared_ptr<CellState>& cellState);

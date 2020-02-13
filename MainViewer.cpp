@@ -4,6 +4,7 @@
 #include "GUIText.h"
 #include "CellState.h"
 #include "GUICurtain.h"
+#include "World.h"
 
 const Array<String> g_musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
 
@@ -77,6 +78,12 @@ void MainViewer::update()
 
 	if (auto musicBox = getChildViewer<GUIMusicBox>())
 		if (!musicBox->isPlaying()) musicBox->setMusic(g_musicList.choice());
+}
+
+void MainViewer::onDestroy()
+{
+	if (World::GetInstance())
+		World::GetInstance()->save();
 }
 
 void MainViewer::addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)

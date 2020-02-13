@@ -69,8 +69,5 @@ void Main()
 
 	EasyViewer::Run();
 
-	if (World::GetInstance())
-		World::GetInstance()->save();
-
 	GeneralSetting::GetInstance().save();
 }
