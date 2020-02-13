@@ -27,4 +27,5 @@ void EditorViewer::AssetList::update()
 
 void EditorViewer::AssetList::addAsset(const std::shared_ptr<Asset>& asset)
 {
+	addChildViewer<Item>(asset);
 }
