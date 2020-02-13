@@ -24,6 +24,7 @@ public:
 	void	setAssetIcon(const Texture& assetIcon) { m_assetIcon = assetIcon; }
 
 	// Get
+	const Texture& getAssetIcon() const { return m_assetIcon; }
 	const String& getName() const { return m_name; }
 	const String& getNameJP() const { return m_nameJP; }
 	const String& getFilePath() const { return m_filepath; }

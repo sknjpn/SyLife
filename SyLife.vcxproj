@@ -235,6 +235,7 @@
     <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="EditorViewer_AssetList.cpp" />
     <ClCompile Include="EditorViewer_AssetList_Item.cpp" />
+    <ClCompile Include="EditorViewer_AssetViewer.cpp" />
     <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
     <ClCompile Include="MainViewer_CellBook.cpp" />
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
