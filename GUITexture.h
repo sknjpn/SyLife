@@ -34,17 +34,17 @@ public:
 
 		switch (m_mode)
 		{
-		case GUIText::Mode::KeepScale:
+		case GUITexture::Mode::KeepScale:
 			m_texture.drawAt(getViewerSize() / 2.0, m_color);
 			break;
-		case GUIText::Mode::KeepAspectRatio:
+		case GUITexture::Mode::KeepAspectRatio:
 		{
 			const double scale = Min(getViewerSize().x / m_texture.width(), getViewerSize().y / m_texture.height());
 
 			m_texture.scaled(scale).drawAt(getViewerSize() / 2.0, m_color);
 		}
 		break;
-		case GUIText::Mode::Maximize:
+		case GUITexture::Mode::Maximize:
 			m_texture.fitted(getViewerSize()).draw(m_color);
 			break;
 		default:
