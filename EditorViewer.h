@@ -25,19 +25,6 @@ public:
 
 	class AssetList : public EasyViewer
 	{
-		class Item : public EasyViewer
-		{
-			std::shared_ptr<Asset>	m_asset;
-
-		public:
-			Item(const std::shared_ptr<Asset>& asset)
-				: m_asset(asset)
-			{}
-
-			void init() override;
-			void update() override;
-		};
-
 	public:
 		void init() override;
 		void update() override;
