@@ -2,7 +2,7 @@
 
 void EditorViewer::AssetViewer::init()
 {
-	setViewerRectInLocal(200, 0, Scene::Width() - 200 - 200, Scene::Size().y);
+	setViewerRectInLocal(200, 0, Scene::Width() - 200 - 200, Scene::Height());
 }
 
 void EditorViewer::AssetViewer::update()

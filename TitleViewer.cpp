@@ -62,8 +62,8 @@ void TitleViewer::drawBubbles()
 		Vec3 camPos(sin(150_deg + t * 0.001 * 11) * s, sin(210_deg + t * 0.001 * 13) * s, sin(t * 0.001 * 17) * s);
 		Vec3 p = b.m_position - camPos;
 
-		const auto x = (atan(p.x / p.z) / 30_deg + 0.5) * Scene::Size().x;
-		const auto y = (-atan(p.y / p.z) / 30_deg + 0.5) * Scene::Size().y;
+		const auto x = (atan(p.x / p.z) / 30_deg + 0.5) * Scene::Width();
+		const auto y = (-atan(p.y / p.z) / 30_deg + 0.5) * Scene::Height();
 		const auto r = 2000.0 / p.length() * Min(b.m_timer / 1000.0, 1.0) * 15.0;
 		const auto a = Min((1800.0 - b.m_timer) / 500.0, 1.0) * 0.2;
 		const auto circle = Circle(x, y, r * 0.5);

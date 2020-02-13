@@ -11,8 +11,8 @@ void MainViewer::CellBook::addItem(const std::shared_ptr<CellAsset>& cellAsset)
 void MainViewer::CellBook::init()
 {
 	setViewerSize(130, 800);
-	setFirstPosInLocal(Scene::Size().x - 150, 180);
-	setSecondPosInLocal(Scene::Size().x, 180);
+	setFirstPosInLocal(Scene::Width() - 150, 180);
+	setSecondPosInLocal(Scene::Width(), 180);
 
 	addChildViewer<GUISlider>(0)->setViewerRectInLocal(RectF(130 - 20, 0, 20, 800));
 

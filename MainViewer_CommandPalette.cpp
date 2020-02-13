@@ -5,8 +5,8 @@
 void MainViewer::CommandPalette::init()
 {
 	setViewerSize(65 * 5 + 5, 65 * 2 + 10);
-	setFirstPosInLocal(Scene::Size().x - getViewerSize().x - 20, 20);
-	setSecondPosInLocal(Scene::Size().x, 20);
+	setFirstPosInLocal(Scene::Width() - getViewerSize().x - 20, 20);
+	setSecondPosInLocal(Scene::Width(), 20);
 
 	const Color disableColor = Palette::Black;
 	const Color enableColor = Palette::Red;

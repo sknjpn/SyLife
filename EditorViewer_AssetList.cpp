@@ -7,8 +7,8 @@
 
 void EditorViewer::AssetList::init()
 {
-	setViewerRectInLocal(Scene::Size().x - 200.0, 0.0, 200.0, Scene::Size().y);
-	addChildViewer<GUISlider>(0.0)->setViewerRectInLocal(RectF(180.0, 0, 20.0, Scene::Size().y));
+	setViewerRectInLocal(Scene::Width() - 200.0, 0.0, 200.0, Scene::Height());
+	addChildViewer<GUISlider>(0.0)->setViewerRectInLocal(RectF(180.0, 0, 20.0, Scene::Height()));
 }
 
 void EditorViewer::AssetList::update()
