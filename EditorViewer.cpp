@@ -2,6 +2,7 @@
 #include "World.h"
 #include "PartAsset.h"
 #include "ProteinAsset.h"
+#include "Asset.h"
 
 void EditorViewer::init()
 {
@@ -23,5 +24,5 @@ void EditorViewer::update()
 
 void EditorViewer::openAsset(const std::shared_ptr<Asset>& asset)
 {
-
+	addChildViewer<AssetViewer>(asset);
 }

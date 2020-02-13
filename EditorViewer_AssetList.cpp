@@ -8,7 +8,7 @@
 void EditorViewer::AssetList::init()
 {
 	setViewerRectInLocal(Scene::Size().x - 200.0, 0.0, 200.0, Scene::Size().y);
-	addChildViewer<GUISlider>()->setViewerRectInLocal(RectF(180.0, 0, 20.0, Scene::Size().y));
+	addChildViewer<GUISlider>(0.0)->setViewerRectInLocal(RectF(180.0, 0, 20.0, Scene::Size().y));
 }
 
 void EditorViewer::AssetList::update()
@@ -27,17 +27,23 @@ void EditorViewer::AssetList::update()
 	}
 
 	// 入力
-	for (const auto& item : items)
+	for (auto it = items.begin(); it != items.end(); ++it)
 	{
+		const auto& item = *it;
+
 		if (item->isSelected())
 		{
+			const auto& asset = m_assets[it - items.begin()];
 
+			getParentViewer<EditorViewer>()->openAsset(asset);
 		}
 	}
 }
 
 void EditorViewer::AssetList::addAsset(const std::shared_ptr<Asset>& asset)
 {
+	m_assets.emplace_back(asset);
+
 	const Vec2 size(180.0, 25.0);
 
 	addChildViewer<GUIButton>()
