@@ -1,8 +1,11 @@
 ﻿#include "EditorViewer.h"
+#include "Asset.h"
 
 void EditorViewer::AssetViewer::init()
 {
 	setViewerRectInLocal(200, 0, Scene::Width() - 200 - 200, Scene::Height());
+
+	m_asset->makeEditor(shared_from_this());
 }
 
 void EditorViewer::AssetViewer::update()
