@@ -33,3 +33,7 @@ void ProteinAsset::save(JSONWriter& json) const
 		json.endObject();
 	}
 }
+
+void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer>& parent) const
+{
+}

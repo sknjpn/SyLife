@@ -231,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="Asset_Editor.cpp" />
     <ClCompile Include="CellAsset_Log.cpp" />
     <ClCompile Include="EditorViewer.cpp" />
     <ClCompile Include="EditorViewer_AssetList.cpp" />
@@ -247,6 +248,7 @@
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
     <ClCompile Include="Part_PoisonerAsset.cpp" />
     <ClCompile Include="Part_PoisonerState.cpp" />
+    <ClCompile Include="ProteinAsset_Editor.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="TitleViewer_WorldGenerator.cpp" />
     <ClCompile Include="World_makeModel.cpp" />
@@ -296,6 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
+    <ClInclude Include="Asset_Editor.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
     <ClInclude Include="common.h" />
@@ -312,6 +315,7 @@
     <ClInclude Include="Part_EyeState.h" />
     <ClInclude Include="Part_PoisonerAsset.h" />
     <ClInclude Include="Part_PoisonerState.h" />
+    <ClInclude Include="ProteinAsset_Editor.h" />
     <ClInclude Include="TileState.h" />
     <ClInclude Include="DraggableViewer.h" />
     <ClInclude Include="EggState.h" />

@@ -2,6 +2,8 @@
 
 #include "Model.h"
 
+class EasyViewer;
+
 // AssetManagerに登録可能なModel
 // JSONファイルに対応している
 class Asset
@@ -36,4 +38,7 @@ public:
 
 	// TypeName
 	virtual String	getTypeName() { return U"Asset"; }
+
+	// parentにEditorを追加する
+	virtual void	makeEditor(const std::shared_ptr<EasyViewer>& parent) const {}
 };

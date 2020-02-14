@@ -552,6 +552,12 @@
     <ClCompile Include="EditorViewer_AssetViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
+    <ClCompile Include="ProteinAsset_Editor.cpp">
+      <Filter>Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Asset_Editor.cpp">
+      <Filter>Engine\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUIAssetLinker.h">
@@ -715,6 +721,12 @@
     </ClInclude>
     <ClInclude Include="GUITexture.h">
       <Filter>ViewerSystem\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ProteinAsset_Editor.h">
+      <Filter>Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Asset_Editor.h">
+      <Filter>Engine\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
