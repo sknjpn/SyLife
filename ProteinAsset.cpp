@@ -28,14 +28,14 @@ void ProteinAsset::save(JSONWriter& json) const
 	// material
 	{
 		json.key(U"material").startObject();
-		
+
 		m_material.save(json);
-		
+
 		json.endObject();
 	}
 }
 
-void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer>& parent) const
+void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer>& parent)
 {
-	parent->addChildViewer<ProteinAsset_Editor>(shared_from_this());
+	parent->addChildViewer<ProteinAsset_Editor>(std::dynamic_pointer_cast<Asset>(shared_from_this()));
 }

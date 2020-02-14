@@ -40,5 +40,5 @@ public:
 	virtual String	getTypeName() { return U"Asset"; }
 
 	// parentにEditorを追加する
-	virtual void	makeEditor(const std::shared_ptr<EasyViewer>& parent) const {}
+	virtual void	makeEditor(const std::shared_ptr<EasyViewer>& parent) {}
 };

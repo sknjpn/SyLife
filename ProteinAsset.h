@@ -24,5 +24,5 @@ public:
 	// TypeName
 	String	getTypeName() override { return U"ProteinAsset"; }
 
-	void	makeEditor(const std::shared_ptr<EasyViewer>& parent) const override;
+	void	makeEditor(const std::shared_ptr<EasyViewer>& parent) override;
 };
