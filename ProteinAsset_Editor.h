@@ -1,16 +1,14 @@
 ﻿#pragma once
 
-#include "EasyViewer.h"
+#include "Asset_Editor.h"
 
 class ProteinAsset;
 
-class ProteinAsset_Editor : public EasyViewer
+class ProteinAsset_Editor : public Asset_Editor
 {
-	std::shared_ptr<ProteinAsset> m_proteinAsset;
-
 public:
-	ProteinAsset_Editor(const std::shared_ptr<ProteinAsset>& proteinAsset)
-		: m_proteinAsset(proteinAsset)
+	ProteinAsset_Editor(const std::shared_ptr<Asset>& asset)
+		: Asset_Editor(asset)
 	{}
 
 	void	init() override;

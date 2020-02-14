@@ -37,5 +37,5 @@ void ProteinAsset::save(JSONWriter& json) const
 
 void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer>& parent) const
 {
-	parent->addChildViewer<ProteinAsset_Editor>();
+	parent->addChildViewer<ProteinAsset_Editor>(shared_from_this());
 }

@@ -2,6 +2,10 @@
 
 void ProteinAsset_Editor::init()
 {
-	// 名前
+	Asset_Editor::init();
+}
 
+void ProteinAsset_Editor::update()
+{
+	Asset_Editor::update();
 }
