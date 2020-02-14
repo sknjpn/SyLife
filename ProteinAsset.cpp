@@ -1,4 +1,5 @@
 ﻿#include "ProteinAsset.h"
+#include "ProteinAsset_Editor.h"
 
 void ProteinAsset::load(const JSONValue& json)
 {
@@ -36,4 +37,5 @@ void ProteinAsset::save(JSONWriter& json) const
 
 void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer>& parent) const
 {
+	parent->addChildViewer<ProteinAsset_Editor>();
 }
