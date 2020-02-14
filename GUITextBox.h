@@ -17,6 +17,8 @@ public:
 		, m_textEditState(text)
 	{}
 
+	const String&	getValue() const { return m_textEditState.text; }
+
 	void	update() override
 	{
 		RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);
