@@ -20,7 +20,7 @@ public:
 
 	// Get
 	const String& getText() const { return getChildViewer<GUIText>()->m_text; }
-	
+
 	void	init() override
 	{
 		addChildViewer<GUIText>(U"", Font(16), GUIText::Mode::DrawLeftCenter);
@@ -38,12 +38,9 @@ public:
 		{
 			auto newCursorPos = TextInput::UpdateText(getText(), m_cursorPos, TextInputMode::AllowBackSpace);
 
-			if (newCursorPos != m_cursorPos)
-			{
-				m_functionOnChanged(getText());
+			if (newCursorPos != m_cursorPos && m_functionOnChanged) m_functionOnChanged(getText());
 
-				m_cursorPos = newCursorPos;
-			}
+			m_cursorPos = newCursorPos;
 		}
 
 		// 位置調整
