@@ -10,19 +10,17 @@ class GUITextBox :
 	bool	m_isSelected;
 	std::function<void(const String&)>	m_functionOnChanged;
 
-	const String& getText() const { return getChildViewer<GUIText>()->m_text; }
 	String& getText() { return getChildViewer<GUIText>()->m_text; }
 
 public:
-	GUITextBox() = default;
-	GUITextBox(std::function<void(const String&)> functionOnChanged)
-		: m_functionOnChanged(functionOnChanged)
-	{}
+	// Set
+	std::shared_ptr<EasyViewer>	setText(const String& text) { getChildViewer<GUIText>()->m_text = text; return shared_from_this(); }
+	std::shared_ptr<EasyViewer> setFunctionOnChanged(std::function<void(const String&)> functionOnChanged) { m_functionOnChanged = functionOnChanged; return shared_from_this(); }
+	std::shared_ptr<EasyViewer> setFont(const Font& font) { getChildViewer<GUIText>()->m_font = font; return shared_from_this(); }
 
-	const String& getValue() const { return getChildViewer<GUIText>()->m_text; }
-
-	void	setFont(const Font& font) { getChildViewer<GUIText>()->m_font = font; }
-
+	// Get
+	const String& getText() const { return getChildViewer<GUIText>()->m_text; }
+	
 	void	init() override
 	{
 		addChildViewer<GUIText>(U"", Font(16), GUIText::Mode::DrawLeftCenter);
