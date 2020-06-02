@@ -1,5 +1,5 @@
 ﻿{
-  "type": "PartAsset_Wing",
+  "type": "Part_WingAsset",
   "name": "Big_Wing(left)",
   "nameJP": "大きな羽(左)",
   "mass": 40.0,

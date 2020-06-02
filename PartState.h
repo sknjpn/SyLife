@@ -18,8 +18,8 @@ public:
 	// Get
 	const std::shared_ptr<PartConfig>& getPartConfig() const { return m_partConfig; }
 
-	virtual void	draw(const CellState& cellState) const;
-	virtual void	update(CellState& cellState);
+	virtual void	draw(const CellState& cellState) const {}
+	virtual void	update(CellState& cellState) {}
 
 	virtual void	load(Deserializer<ByteArray>& reader) {}
 	virtual void	save(Serializer<MemoryWriter>& writer) const {}

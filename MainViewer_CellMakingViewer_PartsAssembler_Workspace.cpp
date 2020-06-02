@@ -2,8 +2,8 @@
 #include "CellAsset.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
-#include "PartAsset_Body.h"
-#include "PartAsset_Nucleus.h"
+#include "Part_BodyAsset.h"
+#include "Part_NucleusAsset.h"
 #include "GUIButton.h"
 
 void MainViewer::CellMakingViewer::PartsAssembler::Workspace::init()
@@ -25,12 +25,12 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 		{
 			auto t2 = Transformer2D(partConfig->getMat3x2());
 
-			partConfig->getPartAsset()->getShape().draw(0.5);
+			partConfig->getPartAsset()->draw(0.5);
 			partConfig->getPartAsset()->getShape().getPolygon().drawFrame(1.0, Palette::Black);
 		}
 
 		// 回転の中心
-		if (m_state == State::RotateMode && !std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) Circle(partConfig->getPosition(), 2.0).draw(Palette::Yellow).drawFrame(1.0, Palette::Black);
+		if (m_state == State::RotateMode && !std::dynamic_pointer_cast<Part_BodyAsset>(partConfig->getPartAsset())) Circle(partConfig->getPosition(), 2.0).draw(Palette::Yellow).drawFrame(1.0, Palette::Black);
 	}
 
 	// 描画
@@ -45,7 +45,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 
 			auto color = canSetPart ? Palette::Green : Palette::Red;
 
-			m_selectedPartConfig->getPartAsset()->getShape().draw(0.5);
+			m_selectedPartConfig->getPartAsset()->draw(0.5);
 			m_selectedPartConfig->getPartAsset()->getShape().getPolygon().draw(ColorF(color, 0.5));
 		}
 	}
@@ -91,8 +91,8 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 	{
 		for (const auto& partConfig : m_cellAsset->getPartConfigs())
 		{
-			if (std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset())) continue;
-			if (std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset())) continue;
+			if (std::dynamic_pointer_cast<Part_BodyAsset>(partConfig->getPartAsset())) continue;
+			if (std::dynamic_pointer_cast<Part_NucleusAsset>(partConfig->getPartAsset())) continue;
 
 			auto t2 = Transformer2D(partConfig->getMat3x2(), true);
 
@@ -115,7 +115,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 			{
 				auto t2 = Transformer2D(Mat3x2::Translate(Cursor::PosF()));
 
-				selectedPart->getShape().draw(0.5);
+				selectedPart->draw(0.5);
 			}
 
 			if (MouseL.up() && canSetPart)

@@ -1,42 +1,89 @@
 ﻿#include "MainViewer.h"
 #include "GUIMusicBox.h"
 #include "GUIButton.h"
+#include "GUIText.h"
 #include "CellState.h"
-#include "CurtainViewer.h"
+#include "GUICurtain.h"
+#include "World.h"
+
+const Array<String> g_musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
 
 void MainViewer::openCellMakingViewer()
 {
 	if (!hasChildViewer<CellMakingViewer>()) addChildViewer<CellMakingViewer>();
 }
 
+void MainViewer::setHiddenMode()
+{
+	m_hiddenMode = true;
+
+	for (auto hv : getChildViewers<HiddenViewer>())
+		hv->moveToSecondPos();
+
+	if (auto viewer = getChildViewer<GUIButton>()) { viewer->destroy(); }
+	if (auto viewer = getChildViewer<CellMakingViewer>()) { viewer->destroy(); }
+
+	for (auto viewer : getChildViewers<CellAssetViewer>())
+		viewer->destroy();
+
+	getChildViewer<FieldViewer>()->m_handAction = FieldViewer::HandAction::None;
+}
+
+void MainViewer::unsetHiddenMode()
+{
+	m_hiddenMode = false;
+
+	for (auto hv : getChildViewers<HiddenViewer>())
+		hv->moveToFirstPos();
+
+	addChildViewer<GUIButton>([this]() { openCellMakingViewer(); })
+		->setViewerRectInLocal(100, 50, 250, 50)
+		->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold));
+}
+
 void MainViewer::init()
 {
 	addChildViewer<FieldViewer>();
 
-	addChildViewer<GUIButton>(U"生き物作成", [this]() { openCellMakingViewer(); })->setViewerRectInLocal(100, 50, 250, 50);
+	addChildViewer<GUIButton>([this]() { openCellMakingViewer(); })
+		->setViewerRectInLocal(100, 50, 250, 50)
+		->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold));
 
 	addChildViewer<CellBook>();
 
-	// addChildViewer<StatisticsViewer>();
-
 	addChildViewer<CommandPalette>();
 
-	INIData ini(U"config.ini");
-	if (ini.getOr<bool>(U"General", U"BGM", true))
-		addChildViewer<GUIMusicBox>(U"", false);
+	if (GeneralSetting::GetInstance().m_audioEnabled)
+		addChildViewer<GUIMusicBox>(g_musicList.choice(), false);
 
 	// OpenCurtain
-	addChildViewer<CurtainViewer>(Color(11, 22, 33), Color(0, 0), 0.5);
+	addChildViewer<GUICurtain>(Color(11, 22, 33), Color(0, 0), 0.5);
+
+	if (GeneralSetting::GetInstance().m_autoTurnOutEnabled)
+		m_uncontrolTimer.start();
 }
 
 void MainViewer::update()
 {
-	if (auto musicBox = getChildViewer<GUIMusicBox>())
+	// HiddenModeの実行
+	if (m_hiddenMode && MouseL.down())
 	{
-		const Array<String> musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
+		m_uncontrolTimer.reset();
 
-		if (!musicBox->isPlaying()) musicBox->setMusic(musicList.choice());
+		unsetHiddenMode();
 	}
+
+	if (MouseL.up()) m_uncontrolTimer.restart();
+	if (!m_hiddenMode && GeneralSetting::GetInstance().m_autoTurnOutEnabled && m_uncontrolTimer.s() > GeneralSetting::GetInstance().m_autoTurnOutTime) setHiddenMode();
+
+	if (auto musicBox = getChildViewer<GUIMusicBox>())
+		if (!musicBox->isPlaying()) musicBox->setMusic(g_musicList.choice());
+}
+
+void MainViewer::onDestroy()
+{
+	if (World::GetInstance())
+		World::GetInstance()->save();
 }
 
 void MainViewer::addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
@@ -58,7 +105,7 @@ void MainViewer::addCellAssetViewer(const std::shared_ptr<CellState>& cellState)
 		getChildViewer<CellAssetViewer>(cellState->getCellAsset()->getName())
 			->moveToFront();
 	}
-	else 
+	else
 	{
 		addChildViewer<CellAssetViewer>(cellState)
 			->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));

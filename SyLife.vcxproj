@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6b4a3256-295f-4453-9fcc-4103bcc74810}</ProjectGuid>
+    <ProjectGuid>{a5e1ab76-71a0-42c7-b3e4-7374c338de09}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SyLife</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -44,8 +44,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SIV3D_0_4_2)\lib\Windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SIV3D_0_4_3)\include;$(SIV3D_0_4_3)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SIV3D_0_4_3)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\Intermediate\</IntDir>
     <TargetName>$(ProjectName)(debug)</TargetName>
@@ -53,8 +53,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SIV3D_0_4_2)\lib\Windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SIV3D_0_4_3)\include;$(SIV3D_0_4_3)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SIV3D_0_4_3)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\Intermediate\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
@@ -231,14 +231,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="Asset_Editor.cpp" />
     <ClCompile Include="CellAsset_Log.cpp" />
+    <ClCompile Include="EditorViewer.cpp" />
+    <ClCompile Include="EditorViewer_AssetList.cpp" />
+    <ClCompile Include="EditorViewer_AssetViewer.cpp" />
     <ClCompile Include="MainViewer_CellAssetViewer.cpp" />
     <ClCompile Include="MainViewer_CellBook.cpp" />
     <ClCompile Include="MainViewer_CellBook_Item.cpp" />
     <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp" />
-    <ClCompile Include="PartAsset_Eye.cpp" />
-    <ClCompile Include="PartState_Eye.cpp" />
+    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp" />
+    <ClCompile Include="Part_DepoisonerAsset.cpp" />
+    <ClCompile Include="Part_DepoisonerState.cpp" />
+    <ClCompile Include="Part_EyeAsset.cpp" />
+    <ClCompile Include="Part_EyeState.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp" />
+    <ClCompile Include="Part_PoisonerAsset.cpp" />
+    <ClCompile Include="Part_PoisonerState.cpp" />
+    <ClCompile Include="ProteinAsset_Editor.cpp" />
     <ClCompile Include="TitleViewer.cpp" />
     <ClCompile Include="TitleViewer_WorldGenerator.cpp" />
     <ClCompile Include="World_makeModel.cpp" />
@@ -252,8 +262,6 @@
     <ClCompile Include="MainViewer.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_LayerLists.cpp" />
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_LayerLists_Item.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_CellInfo.cpp" />
     <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler.cpp" />
@@ -266,19 +274,19 @@
     <ClCompile Include="MainViewer_StatisticsViewer.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="PartAsset.cpp" />
-    <ClCompile Include="PartAsset_Body.cpp" />
-    <ClCompile Include="PartAsset_Needle.cpp" />
-    <ClCompile Include="PartAsset_Nucleus.cpp" />
-    <ClCompile Include="PartAsset_Synthesizer.cpp" />
-    <ClCompile Include="PartAsset_Wing.cpp" />
+    <ClCompile Include="Part_BodyAsset.cpp" />
+    <ClCompile Include="Part_NeedleAsset.cpp" />
+    <ClCompile Include="Part_NucleusAsset.cpp" />
+    <ClCompile Include="Part_SynthesizerAsset.cpp" />
+    <ClCompile Include="Part_WingAsset.cpp" />
     <ClCompile Include="PartConfig.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PartState.cpp" />
-    <ClCompile Include="PartState_Body.cpp" />
-    <ClCompile Include="PartState_Needle.cpp" />
-    <ClCompile Include="PartState_Nucleus.cpp" />
-    <ClCompile Include="PartState_Synthesizer.cpp" />
-    <ClCompile Include="PartState_Wing.cpp" />
+    <ClCompile Include="Part_BodyState.cpp" />
+    <ClCompile Include="Part_NeedleState.cpp" />
+    <ClCompile Include="Part_NucleusState.cpp" />
+    <ClCompile Include="Part_SynthesizerState.cpp" />
+    <ClCompile Include="Part_WingState.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -290,14 +298,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
+    <ClInclude Include="Asset_Editor.h" />
     <ClInclude Include="CellAsset.h" />
     <ClInclude Include="CellState.h" />
     <ClInclude Include="common.h" />
-    <ClInclude Include="CurtainViewer.h" />
-    <ClInclude Include="GUIButtonIcon.h" />
+    <ClInclude Include="EditorViewer.h" />
+    <ClInclude Include="GeneralSetting.h" />
+    <ClInclude Include="GUICurtain.h" />
+    <ClInclude Include="GUIIcon.h" />
     <ClInclude Include="GUIMusicBox.h" />
-    <ClInclude Include="PartAsset_Eye.h" />
-    <ClInclude Include="PartState_Eye.h" />
+    <ClInclude Include="GUITexture.h" />
+    <ClInclude Include="HiddenViewer.h" />
+    <ClInclude Include="Part_DepoisonerAsset.h" />
+    <ClInclude Include="Part_DepoisonerState.h" />
+    <ClInclude Include="Part_EyeAsset.h" />
+    <ClInclude Include="Part_EyeState.h" />
+    <ClInclude Include="Part_PoisonerAsset.h" />
+    <ClInclude Include="Part_PoisonerState.h" />
+    <ClInclude Include="ProteinAsset_Editor.h" />
     <ClInclude Include="TileState.h" />
     <ClInclude Include="DraggableViewer.h" />
     <ClInclude Include="EggState.h" />
@@ -314,19 +332,19 @@
     <ClInclude Include="MainViewer.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="PartAsset.h" />
-    <ClInclude Include="PartAsset_Body.h" />
-    <ClInclude Include="PartAsset_Needle.h" />
-    <ClInclude Include="PartAsset_Nucleus.h" />
-    <ClInclude Include="PartAsset_Synthesizer.h" />
-    <ClInclude Include="PartAsset_Wing.h" />
+    <ClInclude Include="Part_BodyAsset.h" />
+    <ClInclude Include="Part_NeedleAsset.h" />
+    <ClInclude Include="Part_NucleusAsset.h" />
+    <ClInclude Include="Part_SynthesizerAsset.h" />
+    <ClInclude Include="Part_WingAsset.h" />
     <ClInclude Include="PartConfig.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PartState.h" />
-    <ClInclude Include="PartState_Body.h" />
-    <ClInclude Include="PartState_Needle.h" />
-    <ClInclude Include="PartState_Nucleus.h" />
-    <ClInclude Include="PartState_Synthesizer.h" />
-    <ClInclude Include="PartState_Wing.h" />
+    <ClInclude Include="Part_BodyState.h" />
+    <ClInclude Include="Part_NeedleState.h" />
+    <ClInclude Include="Part_NucleusState.h" />
+    <ClInclude Include="Part_SynthesizerState.h" />
+    <ClInclude Include="Part_WingState.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="stdafx.h" />

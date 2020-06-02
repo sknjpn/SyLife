@@ -1,18 +1,14 @@
 ﻿#include "CellAsset.h"
 #include "PartAsset.h"
 #include "PartConfig.h"
-#include "PartAsset_Body.h"
-#include "PartAsset_Nucleus.h"
+#include "Part_BodyAsset.h"
+#include "Part_NucleusAsset.h"
 
 void CellAsset::draw(double a)
 {
-	// parts
-	for (const auto& partConfig : m_partConfigs)
-	{
-		auto t2 = Transformer2D(partConfig->getMat3x2());
-
-		partConfig->getPartAsset()->draw(a);
-	}
+	m_cellAssetTexture
+		.scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
+		.drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
 }
 
 void CellAsset::load(const JSONValue& json)
@@ -92,6 +88,75 @@ void CellAsset::updateMaterial()
 	m_material = accumulate(m_partConfigs.begin(), m_partConfigs.end(), Storage(), [](Storage acc, const auto& p) { return acc += p->getPartAsset()->getMaterial(); });
 }
 
+RectF CellAsset::getCellAssetDrawRegion() const
+{
+	Array<RectF> regions;
+
+	for (const auto& partConfig : m_partConfigs)
+		regions.emplace_back(partConfig->getPartAsset()->getShape().getPolygon().rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).boundingRect());
+
+	RectF maxRegion = regions.front();
+	for (const auto& region : regions)
+	{
+		maxRegion.x = Min(maxRegion.x, region.x);
+		maxRegion.y = Min(maxRegion.y, region.y);
+	}
+
+	for (const auto& region : regions)
+	{
+		maxRegion.w = Max(maxRegion.tr().x, region.tr().x) - maxRegion.x;
+		maxRegion.h = Max(maxRegion.tr().y, region.tr().y) - maxRegion.y;
+	}
+
+	return maxRegion;
+}
+
+RectF CellAsset::getCellStateDrawRegion() const
+{
+	Array<RectF> regions;
+
+	for (const auto& partConfig : m_partConfigs)
+		if (partConfig->getPartAsset()->isPreRenderOnStateEnabled())
+			regions.emplace_back(partConfig->getPartAsset()->getShape().getPolygon().rotated(partConfig->getRotation()).movedBy(partConfig->getPosition()).boundingRect());
+
+	RectF maxRegion = regions.front();
+	for (const auto& region : regions)
+	{
+		maxRegion.x = Min(maxRegion.x, region.x);
+		maxRegion.y = Min(maxRegion.y, region.y);
+	}
+
+	for (const auto& region : regions)
+	{
+		maxRegion.w = Max(maxRegion.br().x, region.br().x) - maxRegion.x;
+		maxRegion.h = Max(maxRegion.br().y, region.br().y) - maxRegion.y;
+	}
+
+	return maxRegion;
+}
+
+void CellAsset::preRender()
+{
+	auto assetDrawRegion = getCellAssetDrawRegion();
+	auto stateDrawRegion = getCellStateDrawRegion();
+
+	assetDrawRegion = RectF(Max(assetDrawRegion.br().x, -assetDrawRegion.tl().x) * 2.0, Max(assetDrawRegion.br().y, -assetDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
+	stateDrawRegion = RectF(Max(stateDrawRegion.br().x, -stateDrawRegion.tl().x) * 2.0, Max(stateDrawRegion.br().y, -stateDrawRegion.tl().y) * 2.0).setCenter(Vec2::Zero());
+
+	Image assetDrawImage((assetDrawRegion.size * GeneralSetting::GetInstance().m_textureScale).asPoint());
+	Image stateDrawImage((stateDrawRegion.size * GeneralSetting::GetInstance().m_textureScale).asPoint());
+
+	for (const auto& partConfig : m_partConfigs)
+		partConfig->getPartAsset()->preRender(assetDrawImage, partConfig);
+
+	for (const auto& partConfig : m_partConfigs)
+		if (partConfig->getPartAsset()->isPreRenderOnStateEnabled())
+			partConfig->getPartAsset()->preRender(stateDrawImage, partConfig);
+
+	m_cellAssetTexture = Texture(assetDrawImage);
+	m_cellStateTexture = Texture(stateDrawImage);
+}
+
 void CellAsset::setCentroidAsOrigin()
 {
 	auto centroid = getCentroid();
@@ -139,23 +204,23 @@ void CellAsset::updateProperties()
 	m_maxHitPoint = getBodyAsset()->getShape().getPolygon().area();
 }
 
-std::shared_ptr<PartAsset_Body> CellAsset::getBodyAsset() const
+std::shared_ptr<Part_BodyAsset> CellAsset::getBodyAsset() const
 {
 	for (const auto& partConfig : m_partConfigs)
 	{
-		if (std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset()))
-			return std::dynamic_pointer_cast<PartAsset_Body>(partConfig->getPartAsset());
+		if (std::dynamic_pointer_cast<Part_BodyAsset>(partConfig->getPartAsset()))
+			return std::dynamic_pointer_cast<Part_BodyAsset>(partConfig->getPartAsset());
 	}
 
 	return nullptr;
 }
 
-std::shared_ptr<PartAsset_Nucleus> CellAsset::getNucleusAsset() const
+std::shared_ptr<Part_NucleusAsset> CellAsset::getNucleusAsset() const
 {
 	for (const auto& partConfig : m_partConfigs)
 	{
-		if (std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset()))
-			return std::dynamic_pointer_cast<PartAsset_Nucleus>(partConfig->getPartAsset());
+		if (std::dynamic_pointer_cast<Part_NucleusAsset>(partConfig->getPartAsset()))
+			return std::dynamic_pointer_cast<Part_NucleusAsset>(partConfig->getPartAsset());
 	}
 
 	return nullptr;

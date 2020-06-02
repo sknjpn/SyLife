@@ -2,12 +2,14 @@
 
 #include "CellAsset.h"
 #include "ProteinAsset.h"
-#include "PartAsset_Body.h"
-#include "PartAsset_Synthesizer.h"
-#include "PartAsset_Wing.h"
-#include "PartAsset_Needle.h"
-#include "PartAsset_Nucleus.h"
-#include "PartAsset_Eye.h"
+#include "Part_BodyAsset.h"
+#include "Part_SynthesizerAsset.h"
+#include "Part_WingAsset.h"
+#include "Part_NeedleAsset.h"
+#include "Part_NucleusAsset.h"
+#include "Part_EyeAsset.h"
+#include "Part_PoisonerAsset.h"
+#include "Part_DepoisonerAsset.h"
 
 std::shared_ptr<Asset> World::makeAsset(const String& type)
 {
@@ -15,12 +17,14 @@ std::shared_ptr<Asset> World::makeAsset(const String& type)
 
 	if (type == U"ProteinAsset")		return makeAsset<ProteinAsset>();
 
-	if (type == U"PartAsset_Body")			return makeAsset<PartAsset_Body>();
-	if (type == U"PartAsset_Synthesizer")	return makeAsset<PartAsset_Synthesizer>();
-	if (type == U"PartAsset_Wing")			return makeAsset<PartAsset_Wing>();
-	if (type == U"PartAsset_Needle")		return makeAsset<PartAsset_Needle>();
-	if (type == U"PartAsset_Nucleus")		return makeAsset<PartAsset_Nucleus>();
-	if (type == U"PartAsset_Eye")			return makeAsset<PartAsset_Eye>();
+	if (type == U"Part_BodyAsset")			return makeAsset<Part_BodyAsset>();
+	if (type == U"Part_SynthesizerAsset")	return makeAsset<Part_SynthesizerAsset>();
+	if (type == U"Part_WingAsset")			return makeAsset<Part_WingAsset>();
+	if (type == U"Part_NeedleAsset")		return makeAsset<Part_NeedleAsset>();
+	if (type == U"Part_NucleusAsset")		return makeAsset<Part_NucleusAsset>();
+	if (type == U"Part_EyeAsset")			return makeAsset<Part_EyeAsset>();
+	if (type == U"Part_PoisonerAsset")		return makeAsset<Part_PoisonerAsset>();
+	if (type == U"Part_DepoisonerAsset")	return makeAsset<Part_DepoisonerAsset>();
 
 	throw Error(U"存在しないタイプのAssetを生成しようとしました\r Type:" + type);
 }

@@ -30,11 +30,14 @@ public:
 	// State
 	virtual std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const = 0;
 
-	// Draw
-	void	draw(double a = 0.5) { m_shape.draw(a); }
+	// 描画処理を行うかどうか
+	virtual bool	isPreRenderOnStateEnabled() const { return true; }
+	virtual bool	isDrawOnStateEnabled() const { return false; }
 
-	// Icon
-	void	drawIcon() const override;
+	// Draw
+	virtual void	draw(double a = 0.5) { m_shape.draw(a); }
+
+	virtual void	preRender(Image& image, const std::shared_ptr<PartConfig>& partConfig) const;
 
 	// JSON
 	void	load(const JSONValue& json) override;

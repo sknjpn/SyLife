@@ -9,6 +9,15 @@
 
 std::unique_ptr<World>	World::g_instance;
 
+void World::MakeForEditor()
+{
+	g_instance = MakeUnique<World>();
+
+	// Assetのロード
+	g_instance->loadAssets(U"resources/assets/");
+	for (const auto& asset : g_instance->m_assets) asset->setIsUserAsset(false);
+}
+
 void World::Make()
 {
 	g_instance = MakeUnique<World>();
@@ -84,9 +93,9 @@ void World::save()
 
 	// Assets
 	{
-		for (const auto& asset : m_assets.filter([](const auto& asset) {return asset->getIsUserAsset(); }))
+		for (const auto& asset : m_assets.filter([](const auto& asset) { return asset->getIsUserAsset(); }))
 		{
-			if (asset->getTypeName() != U"CellAsset" && asset->getTypeName() != U"PartAsset_Body") continue;
+			if (asset->getTypeName() != U"CellAsset" && asset->getTypeName() != U"Part_BodyAsset") continue;
 
 			JSONWriter json;
 			json.startObject();
@@ -178,10 +187,10 @@ void World::loadAssets(const FilePath& directory)
 	}
 
 	// CellAssetの初期化
+	for (const auto& cellAsset : getAssets<CellAsset>())
 	{
-		const auto cellAssets = getAssets<CellAsset>();
-
-		for (const auto& ca : cellAssets) ca->updateProperties();
+		cellAsset->updateProperties();
+		cellAsset->preRender();
 	}
 }
 
@@ -277,7 +286,10 @@ void World::updateTiles()
 
 	// SwapのElementリセット
 	for (auto& tile_swap : m_tiles_swap)
+	{
 		tile_swap.m_element = 0;
+		tile_swap.m_poison = 0;
+	}
 
 	Array<ConcurrentTask<void>> tasks;
 
@@ -312,7 +324,8 @@ void World::updateTileGroup(int groupIndex)
 				const auto& fromTile = m_tiles[p.y + y - 1][p.x + x - 1];
 				const auto sendRate = fromTile.m_sendRate[2 - x][2 - y];
 
-				m_tiles_swap[p].addElement(fromTile.getElement() * sendRate);
+				m_tiles_swap[p].m_element += (fromTile.m_element * sendRate);
+				m_tiles_swap[p].m_poison += (fromTile.m_poison * sendRate);
 			}
 		}
 	}
@@ -393,30 +406,52 @@ World::World()
 
 void World::draw()
 {
-	static bool showWave = false;
-	if (KeyP.down()) showWave = !showWave;
+	RectF(m_fieldSize).draw(Color(11, 22, 33));
 
 	// Tiles
 	{
-		Image image(m_tiles.size());
-
-		for (auto p : step(m_tiles.size()))
-			image[p].r = Min(255, int(m_tiles[p].getElement() * 2.5));
-
-		m_tileTexture.fill(image);
-
-		const ScopedRenderStates2D state(SamplerState::ClampLinear);
 		static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
+		const ScopedRenderStates2D state(SamplerState::BorderLinear);
 		const ScopedCustomShader2D shader(ps);
 
-		m_tileTexture.scaled(TileLength).draw();
+		Image image(m_tiles.size());
+
+		{
+			for (auto p : step(m_tiles.size()))
+				image[p] = ColorF(Palette::Palegreen, Min(0.8, m_tiles[p].m_element * 0.01));
+
+			m_tileTextureElement.fill(image);
+
+			m_tileTextureElement.scaled(TileLength).draw();
+		}
+
+		{
+			for (auto p : step(m_tiles.size()))
+				image[p] = ColorF(Palette::Purple, Min(0.8, m_tiles[p].m_poison * 0.01));
+
+			m_tileTexturePoison.fill(image);
+
+			m_tileTexturePoison.scaled(TileLength).draw();
+		}
 	}
 
-	for (const auto& e : getEggStates())
-		if (!e->isDestroyed()) e->draw();
+	// Texture
+	{
+		const auto mat3x2 = Graphics2D::GetLocalTransform().inversed();
+		const auto viewRect = RectF(mat3x2.transform(Scene::Rect().pos), mat3x2.transform(Scene::Rect().size));
 
-	for (const auto& c : m_cellStates)
-		if (!c->isDestroyed()) c->draw();
+		for (const auto& eggState : m_eggStates)
+			if (!eggState->isDestroyed() && viewRect.intersects(Circle(eggState->getPosition(), eggState->getCellAsset()->getDrawRadius())))
+				eggState->draw1();
+
+		for (const auto& eggState : m_eggStates)
+			if (!eggState->isDestroyed() && viewRect.intersects(Circle(eggState->getPosition(), eggState->getCellAsset()->getDrawRadius())))
+				eggState->draw2();
+
+		for (const auto& cellState : m_cellStates)
+			if (!cellState->isDestroyed() && viewRect.intersects(Circle(cellState->getPosition(), cellState->m_cellAsset->getDrawRadius())))
+				cellState->draw();
+	}
 }
 
 const std::shared_ptr<CellState>& World::addCellState(const std::shared_ptr<CellAsset>& asset)

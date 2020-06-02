@@ -10,15 +10,20 @@ void MainViewer::CellBook::addItem(const std::shared_ptr<CellAsset>& cellAsset)
 
 void MainViewer::CellBook::init()
 {
-	setViewerRectInLocal(1920 - 150, 180, 130, 800);
+	setViewerSize(130, 800);
+	setFirstPosInLocal(Scene::Width() - 150, 180);
+	setSecondPosInLocal(Scene::Width(), 180);
+
 	addChildViewer<GUISlider>(0)->setViewerRectInLocal(RectF(130 - 20, 0, 20, 800));
 
 	for (const auto& cellAsset : World::GetAssets<CellAsset>())
-		if(cellAsset->isValid()) addItem(cellAsset);
+		if (cellAsset->isValid()) addItem(cellAsset);
 }
 
 void MainViewer::CellBook::update()
 {
+	HiddenViewer::update();
+
 	const auto items = getChildViewers<Item>();
 
 	getChildViewer<GUISlider>()->setHeight(items.size() * 100.0);

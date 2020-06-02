@@ -1,7 +1,29 @@
 ﻿#include "Shape.h"
 
+void Shape::preRender()
+{
+	Image image((m_polygon.boundingRect().size * GeneralSetting::GetInstance().m_textureScale).asPoint());
+
+	for (const auto& layer : *this)
+	{
+		layer.m_polygon
+			.movedBy(-m_polygon.boundingRect().pos)
+			.scaled(GeneralSetting::GetInstance().m_textureScale)
+			.overwrite(image, ColorF(layer.m_color, 1.0));
+	}
+
+	m_preRenderTexture = Texture(image);
+}
+
 bool Shape::updateProperties()
 {
+	if (isEmpty())
+	{
+		m_polygon = Polygon();
+
+		return false;
+	}
+
 	// 初期化
 	m_polygon = front().m_polygon;
 
@@ -37,6 +59,8 @@ bool Shape::updateProperties()
 	}
 
 	m_polygon = result;
+
+	preRender();
 
 	return true;
 }

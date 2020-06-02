@@ -2,13 +2,14 @@
 
 #include "EasyViewer.h"
 #include "DraggableViewer.h"
+#include "HiddenViewer.h"
 #include "CellAsset.h"
 
 #include "TinyCamera.h"
 
 struct Layer;
 class PartAsset;
-class PartAsset_Body;
+class Part_BodyAsset;
 class CellAsset;
 class CellState;
 class PartConfig;
@@ -45,12 +46,13 @@ class MainViewer : public EasyViewer
 
 		void	init() override;
 		void	update() override;
+		void	onDestroy() override;
 
 		double	getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
 		void	drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
 	};
 
-	class CellBook : public EasyViewer
+	class CellBook : public HiddenViewer
 	{
 		class Item : public EasyViewer
 		{
@@ -88,6 +90,9 @@ class MainViewer : public EasyViewer
 			: public EasyViewer
 		{
 			std::shared_ptr<CellAsset>	m_cellAsset;
+			Vec2	m_position;
+			double	m_rotation;
+			bool	m_isInited = false;
 
 		public:
 			ReleaseViewer(const std::shared_ptr<CellAsset>& cellAsset);
@@ -123,17 +128,8 @@ class MainViewer : public EasyViewer
 		const TinyCamera& getCamera() const { return m_camera; }
 	};
 
-	class CommandPalette : public EasyViewer
+	class CommandPalette : public HiddenViewer
 	{
-		Texture	m_textureZoomIn = Texture(Icon(0xf00e, 45));
-		Texture	m_textureZoomOut = Texture(Icon(0xf010, 45));
-		Texture	m_textureFast = Texture(Icon(0xf050, 45));
-		Texture	m_textureWave = Texture(Icon(0xf5c4, 45));
-		Texture	m_textureHand = Texture(Icon(0xf25a, 45));
-		Texture	m_texturePoison = Texture(Icon(0xf714, 45));
-		Texture m_textureAddElement = Texture(Icon(0xf613, 45));
-		Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 45));
-
 	public:
 		void init() override;
 		void update() override;
@@ -176,78 +172,52 @@ class MainViewer : public EasyViewer
 		{
 			class Workspace : public EasyViewer
 			{
-				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
+				DynamicTexture	m_texture;
+				std::shared_ptr<Part_BodyAsset>	m_bodyAsset;
 
-				Polygon	getReversed(const Polygon& polygon) const;
-				Layer& getSelectedLayer();
+				Polygon	getStamp() const;
+				Polygon	getStampOnImage() const;
+				Polygon	getStampReversed() const;
+				Polygon	getStampOnImageReversed() const;
+
+				const Color& getColor() const;
 
 			public:
-				Workspace(const std::shared_ptr<PartAsset_Body>& bodyAsset)
+				Workspace(const std::shared_ptr<Part_BodyAsset>& bodyAsset)
 					: m_bodyAsset(bodyAsset)
 				{}
 
+				void	onDestroy() override;
 				void	init() override;
 				void	update() override;
 
-				void	attach(const Polygon& polygon);
 				void	detach(const Polygon& polygon);
 			};
 
 		public:
-			class LayerLists : public EasyViewer
+			class ColorSelector : public EasyViewer
 			{
-				class Item : public EasyViewer
-				{
-					Texture	m_circleTexture;
-					Texture	m_barTexture;
-					bool	m_circleSelected = false;
-					bool	m_barSelected = false;
-					HSV		m_hsv = Palette::White;
-					bool	m_isSelected = false;
-					std::shared_ptr<PartAsset_Body>	m_bodyAsset;
-
-				public:
-					Item(const std::shared_ptr<PartAsset_Body>& bodyAsset);
-
-					void	setSelected(bool isSelected) { m_isSelected = isSelected; }
-					void	setHSV(const HSV& hsv) { m_hsv = hsv; }
-					void	update() override;
-					const HSV& getHSV() const { return m_hsv; }
-				};
-
-				double	m_itemHeight = 100;
-				int		m_selectedIndex;
-				std::shared_ptr<PartAsset_Body>	m_bodyAsset;
+				const Array<Color> m_colors = { Palette::Blue, Palette::Purple, Palette::Red, Palette::Pink, Palette::Orange, Palette::Yellow, Palette::Yellowgreen, Palette::Green, Palette::Skyblue, Palette::Wheat,Palette::Black, Palette::Brown };
+				Color	m_selectedColor = Palette::Blue;
+				double	m_timer = 1.0;
+				bool	m_eraseMode = false;
+				std::shared_ptr<Part_BodyAsset>	m_bodyAsset;
 
 			public:
-				LayerLists(const std::shared_ptr<PartAsset_Body>& bodyAsset)
-					: m_bodyAsset(bodyAsset)
-				{}
+				const Color& getSelectedColor() const { return m_selectedColor; }
+				bool	isEraseMode() const { return m_eraseMode; }
 
 				void	init() override;
 				void	update() override;
-
-				int		getSelectedIndex() const { return m_selectedIndex; }
-			};
-
-			enum struct State
-			{
-				Put,
-				Shave,
 			};
 
 			bool	m_isSymmetrical;
-			double	m_scale;
-			State	m_state;
-
-			void	setState(State state);
 
 		public:
 			void	init() override;
 			void	update() override;
 
 			bool	isSymmetrical() const { return m_isSymmetrical; }
-			State	getState() const { return m_state; }
 			double	getStampRadius() const;
 		};
 
@@ -346,12 +316,16 @@ class MainViewer : public EasyViewer
 	};
 
 	Stopwatch	m_uncontrolTimer;
+	bool	m_hiddenMode = false;
 
 	void	openCellMakingViewer();
+	void	setHiddenMode();
+	void	unsetHiddenMode();
 
 public:
 	void	init() override;
 	void	update() override;
+	void	onDestroy() override;
 
 	void	addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset);
 	void	addCellAssetViewer(const std::shared_ptr<CellState>& cellState);

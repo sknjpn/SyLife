@@ -1,11 +1,5 @@
 ﻿#include "ProteinAsset.h"
-
-void ProteinAsset::drawIcon() const
-{
-	static Texture particle(U"resources/image/particle.png", TextureDesc::Mipped);
-
-	particle.resized(1.0, 1.0).drawAt(0.5, 0.5, m_color);
-}
+#include "ProteinAsset_Editor.h"
 
 void ProteinAsset::load(const JSONValue& json)
 {
@@ -34,9 +28,14 @@ void ProteinAsset::save(JSONWriter& json) const
 	// material
 	{
 		json.key(U"material").startObject();
-		
+
 		m_material.save(json);
-		
+
 		json.endObject();
 	}
+}
+
+void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer>& parent)
+{
+	parent->addChildViewer<ProteinAsset_Editor>(std::dynamic_pointer_cast<Asset>(shared_from_this()));
 }

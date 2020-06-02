@@ -39,7 +39,8 @@ public:
 
 private:
 	Vec2	m_fieldSize;
-	DynamicTexture	m_tileTexture;
+	DynamicTexture	m_tileTextureElement;
+	DynamicTexture	m_tileTexturePoison;
 
 	double	m_waveVelocityMax;
 
@@ -128,6 +129,7 @@ public:
 	static void	Remove(const std::shared_ptr<Asset>& asset) { g_instance->m_assets.remove(asset); }
 	static void	Clear() { g_instance->m_assets.clear(); }
 
+	static void MakeForEditor();
 	static void Make();
 	static void Load(const FilePath& filepath);
 	static const std::unique_ptr<World>& GetInstance() { return g_instance; }

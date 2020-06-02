@@ -4,6 +4,8 @@
 #include "PartAsset.h"
 #include "PartConfig.h"
 #include "PartState.h"
+#include "Part_EyeState.h"
+#include "Part_EyeAsset.h"
 #include "TileState.h"
 #include "ProteinAsset.h"
 #include "EggState.h"
@@ -13,6 +15,7 @@ CellState::CellState(const std::shared_ptr<CellAsset>& cellAsset)
 	, m_startTimer(0.0)
 	, m_deathTimer(cellAsset->getLifespanTime())
 	, m_yieldTimer(0.0)
+	, m_bioaccumulation(0.0)
 {
 	setMass(m_cellAsset->getMass());
 	setRadius(m_cellAsset->getRadius());
@@ -88,7 +91,28 @@ void CellState::updateCell()
 			World::GetInstance()->getTile(getPosition()).addElement(delta);
 			m_storage.pullElement(delta);
 		}
+	}
 
+	// 毒の影響
+	{
+		auto get = 0.1 * World::GetInstance()->getTile(getPosition()).getPoison() * DeltaTime;
+		auto k = 100.0;
+
+		World::GetInstance()->getTile(getPosition()).pullPoison(get);
+
+		m_bioaccumulation += get;
+
+		// 死亡
+		if (m_bioaccumulation > k)
+		{
+			// Elementの吐き出し
+			World::GetInstance()->getTile(getPosition()).addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
+
+			// Poisonの掃き出し
+			World::GetInstance()->getTile(getPosition()).addPoison(m_bioaccumulation);
+
+			destroy();
+		}
 	}
 
 	// 死亡処理
@@ -97,33 +121,50 @@ void CellState::updateCell()
 		// Elementの吐き出し
 		World::GetInstance()->getTile(getPosition()).addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
 
+		// Poisonの掃き出し
+		World::GetInstance()->getTile(getPosition()).addPoison(m_bioaccumulation);
+
 		destroy();
 	}
 }
 
 void CellState::draw()
 {
-	const double stage = m_startTimer / m_cellAsset->getLifespanTime();
-	auto t1 = Transformer2D(getMat3x2());
-	auto t2 = Transformer2D(Mat3x2::Scale(Clamp(stage * 2 + 0.5, 0.0, 1.0)));
+	const double stage = Min(1.0, m_startTimer / m_cellAsset->getLifespanTime() * 10.0);
 
-	// parts
-	for (const auto& p : m_partStates)
 	{
-		auto t3 = Transformer2D(p->getPartConfig()->getMat3x2());
+		auto t1 = Transformer2D(getMat3x2());
+		auto t2 = Transformer2D(Mat3x2::Scale(Math::Lerp(0.25, 1.0, stage)));
 
-		p->draw(*this);
+		m_cellAsset->getCellStateTexture().scaled(1.0 / GeneralSetting::GetInstance().m_textureScale).drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
+
+		// parts
+		for (const auto& partState : m_partStates)
+			if (partState->getPartConfig()->getPartAsset()->isDrawOnStateEnabled())
+				partState->draw(*this);
 	}
 
-	// 細胞円
-	if (false)
+	// Eye
+	/*if (m_cellAsset->m_isInViewer)
 	{
-		double a = Min(0.5, m_deathTimer * 0.25);
+		for (const auto& partState : m_partStates)
+		{
+			if (auto eye = std::dynamic_pointer_cast<Part_EyeState>(partState))
+			{
+				const auto position = getWorldPosition(eye->getPartConfig()->getPosition());
 
-		Circle(getRadius())
-			.draw(ColorF(Palette::Lightpink, a))
-			.drawFrame(1.0, Palette::Gray);
-	}
+				Circle(position, eye->getPart_EyeAsset()->getMaxDistance())
+					.draw(ColorF(Palette::Red, 0.1))
+					.drawFrame(2.0, Palette::Black);
+
+				if (auto target = eye->getTargetCellState())
+				{
+					Line(getPosition(), target->getPosition())
+						.drawArrow(5.0, Vec2(25.0, 25.0), ColorF(1.0, 0.5));
+				}
+			}
+		}
+	}*/
 }
 
 void CellState::takeElement()
@@ -148,6 +189,8 @@ void CellState::load(Deserializer<ByteArray>& reader)
 	reader >> m_startTimer;
 	reader >> m_deathTimer;
 	reader >> m_yieldTimer;
+
+	reader >> m_bioaccumulation;
 
 	m_storage.load(reader);
 
@@ -177,6 +220,8 @@ void CellState::save(Serializer<MemoryWriter>& writer) const
 	writer << m_startTimer;
 	writer << m_deathTimer;
 	writer << m_yieldTimer;
+
+	writer << m_bioaccumulation;
 
 	m_storage.save(writer);
 

@@ -1,11 +1,12 @@
 ﻿#include "MainViewer.h"
 #include "PartConfig.h"
 #include "PartAsset.h"
-#include "PartAsset_Body.h"
-#include "PartAsset_Nucleus.h"
+#include "Part_BodyAsset.h"
+#include "Part_NucleusAsset.h"
 #include "ProteinAsset.h"
 #include "CellAsset.h"
 #include "GUIButton.h"
+#include "GUIText.h"
 #include "World.h"
 
 void MainViewer::CellMakingViewer::clearEditor()
@@ -39,10 +40,11 @@ void MainViewer::CellMakingViewer::release()
 	m_cellAsset->setCentroidAsOrigin();
 	m_cellAsset->updateProperties();
 
+	// Render
+	m_cellAsset->preRender();
+
 	getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
 	getParentViewer()->getChildViewer<CellBook>()->addItem(m_cellAsset);
-
-	//getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
 
 	destroy();
 }
@@ -55,20 +57,24 @@ void MainViewer::CellMakingViewer::init()
 	// DrawRectの設定
 	setViewerRectInLocal(RectF(1500, 800).setCenter(Scene::CenterF()));
 
-	addChildViewer<GUIButton>(U"ボディ編集", [this]() { openBodySculptor(); })
+	addChildViewer<GUIButton>([this]() { openBodySculptor(); })
 		->setName(U"EditBody")
-		->setViewerRectInLocal(5, 5, 290, 35);
+		->setViewerRectInLocal(5, 5, 290, 35)
+		->addChildViewer<GUIText>(U"ボディ編集", Font(28, Typeface::Bold));
 
-	addChildViewer<GUIButton>(U"パーツ配置", [this]() { openPartsAssembler(); })
+	addChildViewer<GUIButton>([this]() { openPartsAssembler(); })
 		->setName(U"EditPart")
-		->setViewerRectInLocal(5, 45, 290, 35);
+		->setViewerRectInLocal(5, 45, 290, 35)
+		->addChildViewer<GUIText>(U"パーツ配置", Font(28, Typeface::Bold));
 
-	addChildViewer<GUIButton>(U"生き物配置", [this]() { release(); }, false)
+	addChildViewer<GUIButton>([this]() { release(); }, false)
 		->setName(U"生き物配置")
-		->setViewerRectInLocal(5, 85, 290, 35);
+		->setViewerRectInLocal(5, 85, 290, 35)
+		->addChildViewer<GUIText>(U"生き物配置", Font(28, Typeface::Bold));
 
-	addChildViewer<GUIButton>(U"閉じる", [this]() { destroy(); })
-		->setViewerRectInLocal(5, 125, 290, 35);
+	addChildViewer<GUIButton>([this]() { destroy(); })
+		->setViewerRectInLocal(5, 125, 290, 35)
+		->addChildViewer<GUIText>(U"閉じる", Font(28, Typeface::Bold));
 
 	addChildViewer<CellInfo>()
 		->setViewerRectInLocal(5, 165, 290, 595);
@@ -92,8 +98,6 @@ void MainViewer::CellMakingViewer::makeAsset()
 {
 	m_cellAsset = World::MakeAsset<CellAsset>();
 
-	Logger << m_cellAsset->getName();
-
 	// 名前をランダムに設定
 	{
 		TextReader textReader(U"resources/names.txt");
@@ -103,19 +107,20 @@ void MainViewer::CellMakingViewer::makeAsset()
 
 	// Bodyの設定
 	{
-		auto bodyAsset = World::MakeAsset<PartAsset_Body>();
+		auto bodyAsset = World::MakeAsset<Part_BodyAsset>();
 		m_cellAsset->addPartConfig()->setPartAsset(bodyAsset);
 
 		bodyAsset->setMass(1.0);
 		bodyAsset->getMaterial().setElement(1.0);
 		auto& l = bodyAsset->getShape().emplace_back();
 		l.m_color = Palette::White;
-		l.m_polygon = Circle(15.0).asPolygon().simplified(0.5);
+		l.m_polygon = Circle(15.0).asPolygon();
+		Circle(15.0).asPolygon().scaled(4.0).movedBy(400, 400).overwrite(bodyAsset->m_image, Palette::White, true);
 	}
 
 	// Nucleusの設定
 	{
-		auto nucleusAsset = World::GetAssets<PartAsset_Nucleus>().back();
+		auto nucleusAsset = World::GetAssets<Part_NucleusAsset>().back();
 
 		m_cellAsset->addPartConfig()->setPartAsset(nucleusAsset);
 	}

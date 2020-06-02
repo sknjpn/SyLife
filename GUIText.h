@@ -25,6 +25,11 @@ public:
 		, m_color(color)
 	{}
 
+	void	init() override
+	{
+		setIsPenetrated(true);
+	}
+
 	void	update() override
 	{
 		const RectF rect(getViewerSize());

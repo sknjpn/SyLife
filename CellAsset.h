@@ -4,8 +4,8 @@
 #include "Storage.h"
 
 class PartConfig;
-class PartAsset_Body;
-class PartAsset_Nucleus;
+class Part_BodyAsset;
+class Part_NucleusAsset;
 
 class CellAsset
 	: public Asset
@@ -34,7 +34,20 @@ class CellAsset
 	void	updateMaxStorage();
 	void	updateMaterial();
 
+	Texture	m_cellAssetTexture;	// 全てのパーツが描画されたTexture
+	Texture	m_cellStateTexture;	// 静的な描画のパーツのみ描画されたTexture
+
+	RectF	getCellAssetDrawRegion() const;
+	RectF	getCellStateDrawRegion() const;
+
 public:
+	const Texture& getCellAssetTexture() const { return m_cellAssetTexture; }
+	const Texture& getCellStateTexture() const { return m_cellStateTexture; }
+
+	void	preRender();
+
+	bool	m_isInViewer = false;
+
 	bool	isValid() const;
 
 	Vec2	getCentroid();
@@ -61,8 +74,8 @@ public:
 
 	void	updateProperties();
 
-	std::shared_ptr<PartAsset_Body> getBodyAsset() const;
-	std::shared_ptr<PartAsset_Nucleus> getNucleusAsset() const;
+	std::shared_ptr<Part_BodyAsset> getBodyAsset() const;
+	std::shared_ptr<Part_NucleusAsset> getNucleusAsset() const;
 
 	// draw
 	void	draw(double a = 0.5);

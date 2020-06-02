@@ -1,6 +1,5 @@
 ﻿#include "MainViewer.h"
 #include "World.h"
-
 #include "Rigidbody.h"
 #include "CellAsset.h"
 #include "CellState.h"
@@ -9,8 +8,6 @@
 #include "EggState.h"
 #include "TileState.h"
 #include "ProteinAsset.h"
-
-#include "GUIButton.h"
 
 void MainViewer::FieldViewer::openCellMakingViewer()
 {
@@ -28,11 +25,14 @@ void MainViewer::FieldViewer::init()
 
 void MainViewer::FieldViewer::update()
 {
-	// エッジスクロール
-	if (Cursor::Pos().x < 50) { Rect(50, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveL(); }
-	if (Cursor::Pos().y < 50) { Rect(Scene::Size().x, 50).draw(ColorF(0.5)); m_camera.moveU(); }
-	if (Cursor::Pos().x > Scene::Size().x - 50) { Rect(Scene::Size().x - 50, 0, 50, Scene::Size().y).draw(ColorF(0.5)); m_camera.moveR(); }
-	if (Cursor::Pos().y > Scene::Size().y - 50) { Rect(0, Scene::Size().y - 50, Scene::Size().x, 50).draw(ColorF(0.5)); m_camera.moveD(); }
+	// エッジスクロール (タッチパネル使用時はMouseL.pressed()を要求)
+	if (!GeneralSetting::GetInstance().m_touchPanelModeEnabled || MouseL.pressed())
+	{
+		if (Cursor::Pos().x < 50) { Rect(50, Scene::Height()).draw(ColorF(0.5)); m_camera.moveL(); }
+		if (Cursor::Pos().y < 50) { Rect(Scene::Width(), 50).draw(ColorF(0.5)); m_camera.moveU(); }
+		if (Cursor::Pos().x > Scene::Width() - 50) { Rect(Scene::Width() - 50, 0, 50, Scene::Height()).draw(ColorF(0.5)); m_camera.moveR(); }
+		if (Cursor::Pos().y > Scene::Height() - 50) { Rect(0, Scene::Height() - 50, Scene::Width(), 50).draw(ColorF(0.5)); m_camera.moveD(); }
+	}
 
 	{
 		// camera
@@ -127,17 +127,12 @@ void MainViewer::FieldViewer::update()
 				Circle circle(Cursor::PosF(), 256.0);
 				circle.draw(ColorF(Palette::Purple, 0.75));
 
-				for (const auto& c : World::GetInstance()->getCellStates())
-					if (Circle(c->getPosition(), c->getRadius()).intersects(circle)) c->m_deathTimer = 0.0;
-
-				for (const auto& e : World::GetInstance()->getEggStates())
+				for (auto p : step(World::GetInstance()->getTiles().size()))
 				{
-					if (Circle(e->getPosition(), e->getRadius()).intersects(circle))
+					auto distance = (p * TileLength).distanceFrom(Cursor::PosF());
+					if (distance < 256.0)
 					{
-						e->destroy();
-
-						// Elementの吐き出し
-						World::GetInstance()->getTile(e->getPosition()).addElement(e->getCellAsset()->getMaterial().getElementRecursive());
+						World::GetInstance()->getTile(p).addPoison(Math::Lerp(0.0, 10.0 * numUpdate, 1.0 - distance / 256.0));
 					}
 				}
 			}
@@ -151,6 +146,7 @@ void MainViewer::FieldViewer::update()
 					if (distance < 256.0)
 					{
 						World::GetInstance()->getTile(p).setElement(0.0);
+						World::GetInstance()->getTile(p).setPoison(0.0);
 					}
 				}
 

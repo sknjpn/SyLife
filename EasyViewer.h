@@ -5,7 +5,8 @@
 class EasyViewer
 	: public std::enable_shared_from_this<EasyViewer>
 {
-	bool	m_mouseoverEnabled = true;
+	bool	m_isMouseover = false;
+	bool	m_isPenetrated = false;	// 下のものを当たり判定をするかどうか
 	bool	m_isDestroyed = false;
 	bool	m_moveToFrontReserved = false;
 	Vec2	m_drawPos = Vec2::Zero();
@@ -71,13 +72,6 @@ class EasyViewer
 		if (m_isDestroyed) onDestroy();
 	}
 
-	static std::shared_ptr<EasyViewer>& GetMouseoverViewer()
-	{
-		static std::shared_ptr<EasyViewer> mouseoverViewer = MakeShared<EasyViewer>();
-
-		return mouseoverViewer;
-	}
-
 public:
 	EasyViewer() = default;
 	~EasyViewer() = default;
@@ -104,10 +98,21 @@ public:
 			{
 				const auto viewers = GetRootViewer()->getAllChildViewers();
 
-				GetMouseoverViewer() = nullptr;
-
 				for (auto it = viewers.begin(); it < viewers.end(); ++it)
-					if ((*it)->m_mouseoverEnabled && (*it)->getViewport() && (*it)->getViewport().value().mouseOver()) GetMouseoverViewer() = *it;
+					(*it)->m_isMouseover = (*it)->getViewport() && (*it)->getViewport().value().mouseOver();
+
+				for (auto it = viewers.rbegin(); it != viewers.rend(); ++it)
+				{
+					if((*it)->m_isMouseover && !(*it)->m_isPenetrated)
+					{
+						++it;
+
+						for (; it != viewers.rend(); ++it)
+							(*it)->m_isMouseover = false;
+
+						break;
+					}
+				}
 			}
 
 			// EasyViewer 更新
@@ -170,6 +175,7 @@ public:
 
 		m_childViewers.emplace_back(cv);
 		cv->m_parentViewer = shared_from_this();
+		cv->m_viewerRectInLocal.size = m_viewerRectInLocal.size;
 		cv->init();
 
 		return cv;
@@ -227,8 +233,7 @@ public:
 	std::shared_ptr<EasyViewer>	setViewerRectInLocal(double w, double h) { m_viewerRectInLocal = RectF(w, h); return shared_from_this(); }
 	std::shared_ptr<EasyViewer>	moveDrawPos(double dx, double dy) { setDrawPos(m_drawPos.movedBy(dx, dy)); return shared_from_this(); }
 	std::shared_ptr<EasyViewer>	setName(const String& name) { m_name = name; return shared_from_this(); }
-	std::shared_ptr<EasyViewer>	mouseoverEnable() { m_mouseoverEnabled = true; return shared_from_this(); }
-	std::shared_ptr<EasyViewer>	mouseoverDisable() { m_mouseoverEnabled = false; return shared_from_this(); }
+	std::shared_ptr<EasyViewer>	setIsPenetrated(bool isPenetrated) { m_isPenetrated = isPenetrated; return shared_from_this(); }
 
 	Optional<Rect>	getViewport() const
 	{
@@ -264,16 +269,7 @@ public:
 		return tRect;
 	}
 
-	bool	isMouseover(bool recursive = false) const
-	{
-		if (shared_from_this() == GetMouseoverViewer()) return true;
-
-		if (recursive)
-			for (const auto& cv : m_childViewers)
-				if (cv->isMouseover()) return true;
-
-		return false;
-	}
+	bool	isMouseover() const { return m_isMouseover; }
 	bool	isRoot() const { return GetRootViewer() == shared_from_this(); }
 	RectF	getViewerRectInWorld() const { return isRoot() ? RectF(Scene::Rect()) : RectF(getViewerPosInWorld(), m_viewerRectInLocal.size); }
 	Vec2	getViewerPosInWorld() const

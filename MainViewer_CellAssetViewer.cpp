@@ -2,24 +2,27 @@
 #include "CellAsset.h"
 #include "CellState.h"
 #include "ProteinAsset.h"
-#include "PartAsset_Synthesizer.h"
-#include "PartAsset_Nucleus.h"
-#include "PartAsset_Needle.h"
+#include "Part_SynthesizerAsset.h"
+#include "Part_NucleusAsset.h"
+#include "Part_NeedleAsset.h"
 #include "PartConfig.h"
 #include "GUIText.h"
 #include "GUITextBox.h"
 #include "GUIButton.h"
+#include "GUIIcon.h"
 
 MainViewer::CellAssetViewer::CellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
 	: m_cellAsset(cellAsset)
 	, m_cellState(nullptr)
 {
+
 }
 
 MainViewer::CellAssetViewer::CellAssetViewer(const std::shared_ptr<CellState>& cellState)
 	: m_cellAsset(cellState->getCellAsset())
 	, m_cellState(cellState)
 {
+
 }
 
 void MainViewer::CellAssetViewer::setCellState(const std::shared_ptr<CellState>& cellState)
@@ -32,17 +35,19 @@ void MainViewer::CellAssetViewer::setCellState(const std::shared_ptr<CellState>&
 
 void MainViewer::CellAssetViewer::init()
 {
+	m_cellAsset->m_isInViewer = true;
+
 	setName(m_cellAsset->getName());
 	setViewerSize(500, 600);
 
 	// name
 	addChildViewer<GUIText>(m_cellAsset->getNameJP(), Font(24, Typeface::Heavy), GUIText::Mode::DrawLeftCenter)
-		->mouseoverDisable()
 		->setViewerRectInLocal(5, 5, 400, 40);
 
 	// close
-	addChildViewer<GUIButton>(U"✖", [this]() { destroy(); })
-		->setViewerRectInLocal(450, 5, 40, 40);
+	addChildViewer<GUIButton>([this]() { destroy(); })
+		->setViewerRectInLocal(450, 5, 40, 40)
+		->addChildViewer<GUIIcon>(0xf00d);
 
 	if (m_cellState != nullptr)
 	{
@@ -116,7 +121,7 @@ void MainViewer::CellAssetViewer::update()
 				{
 					bool canMakeSelf = false;
 					for (const auto& partConfig : m_cellAsset->getPartConfigs())
-						if (auto synthesizer = std::dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+						if (auto synthesizer = std::dynamic_pointer_cast<Part_SynthesizerAsset>(partConfig->getPartAsset()))
 							if (synthesizer->getExport() == protein.first) { canMakeSelf = true; break; }
 
 					if (canMakeSelf) font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れます)").draw(Vec2::Zero(), Palette::Black);
@@ -138,7 +143,7 @@ void MainViewer::CellAssetViewer::update()
 
 			for (const auto& partConfig : m_cellAsset->getPartConfigs())
 			{
-				if (auto synthesizer = std::dynamic_pointer_cast<PartAsset_Synthesizer>(partConfig->getPartAsset()))
+				if (auto synthesizer = std::dynamic_pointer_cast<Part_SynthesizerAsset>(partConfig->getPartAsset()))
 				{
 					font(synthesizer->getExport()->getNameJP(), int(synthesizer->getProductTime()), U"秒ごとに").draw(Vec2::Zero(), Palette::Black);
 					moveDrawPos(0, 20);
@@ -170,7 +175,7 @@ void MainViewer::CellAssetViewer::update()
 				int penetrating = 0;
 
 				for (const auto& partConfig : m_cellAsset->getPartConfigs())
-					if (auto needle = std::dynamic_pointer_cast<PartAsset_Needle>(partConfig->getPartAsset()))
+					if (auto needle = std::dynamic_pointer_cast<Part_NeedleAsset>(partConfig->getPartAsset()))
 						penetrating = Max(penetrating, needle->getPenetrating());
 
 				font(U"トゲの貫通力:", penetrating).draw(Vec2::Zero(), Palette::Black);
@@ -180,6 +185,11 @@ void MainViewer::CellAssetViewer::update()
 			moveDrawPos(-8, 0);
 		}
 	}
+}
+
+void MainViewer::CellAssetViewer::onDestroy()
+{
+	m_cellAsset->m_isInViewer = false;
 }
 
 double MainViewer::CellAssetViewer::getMax(const RectF& rect, int scale, std::function<double(const CellAsset::Log::Status&)> func) const

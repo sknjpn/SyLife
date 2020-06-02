@@ -4,7 +4,14 @@
 
 void Main()
 {
+	// Configの作成
+	if (!FileSystem::Exists(U"config.ini"))
+		INIData().save(U"config.ini");
+
+	Profiler::EnableAssetCreationWarning(false);
+
 	// loadBGM
+	if (GeneralSetting::GetInstance().m_audioEnabled)
 	{
 #ifdef _WIN32
 		AudioAsset::Register(U"天のきざはし", Resource(U"resources/music/天のきざはし.mp3"), AssetParameter::LoadAsync());
@@ -21,15 +28,18 @@ void Main()
 #endif
 	}
 
+	// Cursor設定
+	if (GeneralSetting::GetInstance().m_touchPanelModeEnabled)
+		Cursor::SetDefaultStyle(CursorStyle::Hidden);
+
 	Window::SetTitle(U"SyLife");
 	Window::SetStyle(WindowStyle::Sizable);
 	Scene::Resize(1920, 1080);
 
 	// Window設定
-	INIData ini(U"config.ini");
-	if (ini.getOr<bool>(U"General", U"FullScreen", false))
+	if (GeneralSetting::GetInstance().m_fullScreenEnabled)
 	{
-		if (Window::SetFullscreen(true))
+		if (!Window::SetFullscreen(true))
 			Window::Maximize();
 	}
 	else
@@ -37,7 +47,7 @@ void Main()
 		Window::Maximize();
 	}
 
-	if (ini.getOr<bool>(U"General", U"RunTitle", true))
+	if (GeneralSetting::GetInstance().m_runTitleEnabled)
 	{
 		EasyViewer::GetRootViewer()->addChildViewer<TitleViewer>();
 	}
@@ -59,6 +69,5 @@ void Main()
 
 	EasyViewer::Run();
 
-	if (World::GetInstance())
-		World::GetInstance()->save();
+	GeneralSetting::GetInstance().save();
 }

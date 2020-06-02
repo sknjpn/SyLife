@@ -13,17 +13,17 @@ void Particle::updateParticle()
 	m_position += m_velocity * DeltaTime;
 
 	// 壁
-	if (m_position.x < 0) m_position.x = 0;
-	if (m_position.y < 0) m_position.y = 0;
-	if (m_position.x > World::GetInstance()->getFieldSize().x) m_position.x = World::GetInstance()->getFieldSize().x;
-	if (m_position.y > World::GetInstance()->getFieldSize().y) m_position.y = World::GetInstance()->getFieldSize().y;
+	if (m_position.x < 0) { m_velocity.x = 0; m_position.x = 0; }
+	if (m_position.y < 0) { m_velocity.y = 0; m_position.y = 0; }
+	if (m_position.x > World::GetInstance()->getFieldSize().x - 1) { m_velocity.x = 0; m_position.x = World::GetInstance()->getFieldSize().x - 1; }
+	if (m_position.y > World::GetInstance()->getFieldSize().y - 1) { m_velocity.y = 0; m_position.y = World::GetInstance()->getFieldSize().y - 1; }
 
 	// 水流
 	{
 		const double scale = 100.0;
 		const auto waveVelocity = scale * World::GetInstance()->getTile(m_position).getWaveVelocity();
 
-		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.95;
+		m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.90;
 	}
 }
 
