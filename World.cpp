@@ -299,7 +299,7 @@ void World::updateTiles() {
     tasks.emplace_back(&World::updateTileGroup, this, i);
 
   for (auto &t : tasks)
-    while (!t.is_done())
+    while (!t.isReady())
       ;
 
   // Tileのswapから本体にコピー

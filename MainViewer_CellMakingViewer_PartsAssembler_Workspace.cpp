@@ -17,7 +17,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::init()
 
 void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 {
-	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), true);
+	auto t = Transformer2D(Mat3x2::Scale(4).translated(400, 400), TransformCursor::Yes);
 
 	// 描画
 	for (const auto& partConfig : m_cellAsset->getPartConfigs())
@@ -80,7 +80,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 
 		if (m_state == State::RotateMode)
 		{
-			const auto t2 = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), true);
+			const auto t2 = Transformer2D(Mat3x2::Translate(m_selectedPartConfig->getPosition()), TransformCursor::Yes);
 
 			if (!Cursor::PreviousPosF().isZero() && !Cursor::PosF().isZero()) m_deltaRotation += Cursor::PreviousPosF().getAngle(Cursor::PosF());
 		}
@@ -94,7 +94,7 @@ void MainViewer::CellMakingViewer::PartsAssembler::Workspace::update()
 			if (std::dynamic_pointer_cast<Part_BodyAsset>(partConfig->getPartAsset())) continue;
 			if (std::dynamic_pointer_cast<Part_NucleusAsset>(partConfig->getPartAsset())) continue;
 
-			auto t2 = Transformer2D(partConfig->getMat3x2(), true);
+			auto t2 = Transformer2D(partConfig->getMat3x2(), TransformCursor::Yes);
 
 			if (partConfig->getPartAsset()->getShape().getPolygon().mouseOver())
 			{

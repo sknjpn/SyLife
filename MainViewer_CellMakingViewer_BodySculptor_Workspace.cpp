@@ -89,7 +89,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 	// タッチパネル用に押し下げた瞬間は処理しない
 	if (MouseL.pressed() && !MouseL.down())
 	{
-		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), true);
+		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), TransformCursor::Yes);
 
 		// 適用
 		if (isMouseover())
@@ -150,7 +150,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 	}
 
 	{
-		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), true);
+		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), TransformCursor::Yes);
 
 		//m_bodyAsset->getShape().front().m_polygon.draw(ColorF(1.0, 0.5));
 	}
@@ -158,7 +158,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 	// Mouse
 	if (isMouseover() && !GeneralSetting::GetInstance().m_touchPanelModeEnabled || MouseL.pressed())
 	{
-		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), true);
+		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), TransformCursor::Yes);
 
 		// Mouse
 		{
@@ -170,7 +170,7 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
 
 	// パーツの描画
 	{
-		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), true);
+		auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), TransformCursor::Yes);
 
 		const auto cellAsset = getParentViewer<BodySculptor>()->getParentViewer<MainViewer::CellMakingViewer>()->getCellAsset();
 

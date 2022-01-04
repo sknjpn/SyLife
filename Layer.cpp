@@ -28,6 +28,8 @@ void Layer::save(JSON &json) const {
   // color
   json[U"color"] = m_color;
 
+  // TODO:Enable JSON Save
+  /*
   // polygon
   json.key(U"polygon").startObject();
   {
@@ -41,5 +43,5 @@ void Layer::save(JSON &json) const {
     }
     json.endArray();
   }
-  json.endObject();
+  json.endObject();*/
 }

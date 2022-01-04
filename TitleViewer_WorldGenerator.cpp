@@ -149,7 +149,7 @@ void TitleViewer::WorldGenerator::generate() {
       }
 
       for (auto &t : tasks)
-        while (!t.is_done())
+        while (!t.isReady())
           ;
 
       for (auto p : step(size))

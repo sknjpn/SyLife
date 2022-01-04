@@ -115,7 +115,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 		auto& l = bodyAsset->getShape().emplace_back();
 		l.m_color = Palette::White;
 		l.m_polygon = Circle(15.0).asPolygon();
-		Circle(15.0).asPolygon().scaled(4.0).movedBy(400, 400).overwrite(bodyAsset->m_image, Palette::White, true);
+		Circle(15.0).asPolygon().scaled(4.0).movedBy(400, 400).overwrite(bodyAsset->m_image, Palette::White, Antialiased::Yes);
 	}
 
 	// Nucleusの設定

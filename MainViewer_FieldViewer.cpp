@@ -43,7 +43,7 @@ void MainViewer::FieldViewer::update()
 		int numUpdate = 0;
 		{
 			auto maxConut = m_isHighSpeed ? 100 : 1;
-			Stopwatch sw(true);
+			Stopwatch sw(StartImmediately::Yes);
 			int i = 0;
 			for (; i < maxConut; ++i)
 			{
