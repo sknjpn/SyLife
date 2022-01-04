@@ -83,7 +83,7 @@ void World::save() {
 
     json.startObject();
 
-    json.key(U"name").write(m_name);
+    json[U"name"] = m_name;
 
     json.endObject();
 

@@ -29,7 +29,7 @@ void PartAsset::save(JSON &json) const {
   Asset::save(json);
 
   // mass
-  json.key(U"mass").write(m_mass);
+  json[U"mass"] = m_mass;
 
   // layers
   m_shape.save(json);

@@ -28,6 +28,6 @@ void Asset::save(JSON &json) const {
   Model::save(json);
 
   // name
-  json.key(U"name").write(m_name);
-  json.key(U"nameJP").write(m_nameJP);
+  json[U"name"] = m_name;
+  json[U"nameJP"] = m_nameJP;
 }

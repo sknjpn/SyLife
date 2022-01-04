@@ -114,7 +114,7 @@ void Storage::load(const JSON &json) {
 
 void Storage::save(JSON &json) const {
   // element
-  json.key(U"element").write(m_element);
+  json[U"element"] = m_element;
 
   // proteins
   {
@@ -123,8 +123,8 @@ void Storage::save(JSON &json) const {
     for (const auto &protein : *this) {
       json.startObject();
 
-      json.key(U"name").write(protein.first->getName());
-      json.key(U"size").write(protein.second);
+      json[U"name"] = protein.first->getName();
+      json[U"size"] = protein.second;
 
       json.endObject();
     }

@@ -18,10 +18,10 @@ void ProteinAsset::save(JSON &json) const {
   Asset::save(json);
 
   // radius
-  json.key(U"radius").write(m_radius);
+  json[U"radius"] = m_radius;
 
   // color
-  json.key(U"color").write(m_color);
+  json[U"color"] = m_color;
 
   // material
   {

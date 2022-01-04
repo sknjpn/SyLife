@@ -20,9 +20,9 @@ void Part_NucleusAsset::save(JSON &json) const {
   PartAsset::save(json);
 
   // time
-  json.key(U"lifespanTime").write(m_lifespanTime);
-  json.key(U"bornTime").write(m_bornTime);
-  json.key(U"yieldTime").write(m_yieldTime);
+  json[U"lifespanTime"] = m_lifespanTime;
+  json[U"bornTime"] = m_bornTime;
+  json[U"yieldTime"] = m_yieldTime;
 
-  json.key(U"armor").write(m_armor);
+  json[U"armor"] = m_armor;
 }

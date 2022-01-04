@@ -23,11 +23,11 @@ void PartConfig::save(JSON &json) const {
   Model::save(json);
 
   // asset
-  json.key(U"asset").write(m_partAsset->getName());
+  json[U"asset"] = m_partAsset->getName();
 
   // position
-  json.key(U"position").write(m_position);
+  json[U"position"] = m_position;
 
   // rotation
-  json.key(U"rotation").write(m_rotation);
+  json[U"rotation"] = m_rotation;
 }

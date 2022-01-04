@@ -26,7 +26,7 @@ void Layer::save(JSON &json) const {
   Model::save(json);
 
   // color
-  json.key(U"color").write(m_color);
+  json[U"color"] = m_color;
 
   // polygon
   json.key(U"polygon").startObject();
