@@ -492,10 +492,10 @@ void World::generateWave() {
     const double rx = (p.x - m_tiles.size().x / 2.0) / (m_tiles.size().x / 2.0);
     const double ry = (p.y - m_tiles.size().y / 2.0) / (m_tiles.size().y / 2.0);
 
-    const auto wx = m_perlinNoiseX.noise(
+    const auto wx = m_perlinNoiseX.noise2D(
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / m_waveInterval,
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / m_waveInterval);
-    const auto wy = m_perlinNoiseY.noise(
+    const auto wy = m_perlinNoiseY.noise2D(
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / m_waveInterval,
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / m_waveInterval);
 
