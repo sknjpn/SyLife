@@ -18,14 +18,14 @@ Asset::Asset() {
 }
 
 void Asset::load(const JSON &json) {
-  Model::load(json);
+  Object::load(json);
 
   m_name = json[U"name"].getString();
   m_nameJP = json[U"nameJP"].getString();
 }
 
 void Asset::save(JSON &json) const {
-  Model::save(json);
+  Object::save(json);
 
   // name
   json[U"name"] = m_name;

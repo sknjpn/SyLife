@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "Model.h"
+#include "Object.h"
 
 #include "Layer.h"
 
-class Shape : public Model, public Array<Layer> {
+class Shape : public Object, public Array<Layer> {
   // 合成されたもの
   Polygon m_polygon;
   Texture m_preRenderTexture;

@@ -1,11 +1,11 @@
 ﻿#pragma once
 
 #include "EasyViewer.h"
-#include "Model.h"
+#include "Object.h"
 
 class ProteinAsset;
 
-class Storage : public Model,
+class Storage : public Object,
                 private Array<std::pair<std::shared_ptr<ProteinAsset>, int>> {
   double m_element;
 

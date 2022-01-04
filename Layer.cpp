@@ -1,7 +1,7 @@
 ﻿#include "Layer.h"
 
 void Layer::load(const JSON &json) {
-  Model::load(json);
+  Object::load(json);
 
   // color
   m_color = json[U"color"].get<Color>();
@@ -23,7 +23,7 @@ void Layer::load(const JSON &json) {
 }
 
 void Layer::save(JSON &json) const {
-  Model::save(json);
+  Object::save(json);
 
   // color
   json[U"color"] = m_color;

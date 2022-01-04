@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "Model.h"
+#include "Object.h"
 
-struct Layer : public Model {
+struct Layer : public Object {
   Polygon m_polygon;
   Color m_color;
 

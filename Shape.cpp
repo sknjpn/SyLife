@@ -104,7 +104,7 @@ RectF Shape::getTileSize() const {
 }
 
 void Shape::load(const JSON &json) {
-  Model::load(json);
+  Object::load(json);
 
   // layers
   for (auto layer : json[U"layers"].arrayView())
@@ -114,7 +114,7 @@ void Shape::load(const JSON &json) {
 }
 
 void Shape::save(JSON &json) const {
-  Model::save(json);
+  Object::save(json);
 
   // TODO:Enable JSON Save
   /*

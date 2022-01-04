@@ -7,7 +7,7 @@ Vec2 PartConfig::getCentroid() const {
 }
 
 void PartConfig::load(const JSON &json) {
-  Model::load(json);
+  Object::load(json);
 
   // asset
   m_partAsset = World::GetAsset<PartAsset>(json[U"asset"].getString());
@@ -20,7 +20,7 @@ void PartConfig::load(const JSON &json) {
 }
 
 void PartConfig::save(JSON &json) const {
-  Model::save(json);
+  Object::save(json);
 
   // asset
   json[U"asset"] = m_partAsset->getName();

@@ -2,9 +2,9 @@
 
 #include "common.h"
 
-class Model : public std::enable_shared_from_this<Model> {
+class Object : public std::enable_shared_from_this<Object> {
 public:
-  virtual ~Model() = default;
+  virtual ~Object() = default;
 
   // JSON
   virtual void load(const JSON &json) {}

@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include "Model.h"
+#include "Object.h"
 
 class EasyViewer;
 
 // AssetManagerに登録可能なModel
 // JSONファイルに対応している
-class Asset : public Model {
+class Asset : public Object {
   String m_name;
   String m_nameJP;
   String m_filepath;

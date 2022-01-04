@@ -85,7 +85,7 @@
     <ClCompile Include="Main.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
+    <ClCompile Include="Object.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
@@ -534,7 +534,7 @@
     <ClInclude Include="Layer.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
+    <ClInclude Include="Object.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">

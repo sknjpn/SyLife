@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "Model.h"
+#include "Object.h"
 
 class PartAsset;
 
-class PartConfig : public Model {
+class PartConfig : public Object {
   std::shared_ptr<PartAsset> m_partAsset;
   Vec2 m_position;
   double m_rotation;
