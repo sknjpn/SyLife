@@ -253,7 +253,8 @@ void TitleViewer::WorldGenerator::update()
 		Rect(240, 135).draw(Color(11, 22, 33));
 
 		const ScopedRenderStates2D state(SamplerState::BorderLinear);
-		static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
+		// TODO:Enable PixelShader
+		//static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), { { U"PSConstants2D", 0 } });
 		const ScopedCustomShader2D shader(ps);
 
 		m_fieldTexture.resized(240, 135).draw();
