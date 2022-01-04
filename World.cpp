@@ -171,10 +171,9 @@ void World::loadAssets(const FilePath &directory) {
 
   // 名前の読み込み(リンクがあるため、Loadの前に名前の登録を行う)
   for (auto &jsonFile : jsonFiles) {
-    JSON json(jsonFile);
+    JSON json = JSON::Load(jsonFile);
 
-    const auto asset =
-        assets.emplace_back(makeAsset(json[U"type"].getString()));
+    const auto asset = assets.emplace_back(makeAsset(json[U"type"].getString()));
     asset->setName(json[U"name"].getString());
     asset->setFilePath(jsonFile);
   }
@@ -183,7 +182,7 @@ void World::loadAssets(const FilePath &directory) {
   for (const auto &m : assets) {
     Logger << m->getName() + U"を読み込み中";
 
-    JSON json(m->getFilePath());
+    JSON json = JSON::Load(m->getFilePath());
     m->load(json);
 
     Logger << m->getName() + U"を読み込み成功";
