@@ -220,7 +220,7 @@ public:
     m_drawPos = pos;
     m_transformer.reset();
     m_transformer =
-        std::make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), true);
+        std::make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), TransformCursor::Yes);
     return shared_from_this();
   }
   std::shared_ptr<EasyViewer> setDrawPos(double x, double y) {

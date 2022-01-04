@@ -1,0 +1,35 @@
+﻿{
+  "type": "Part_NucleusAsset",
+  "name": "Small_Nucleus",
+  "nameJP": "小さな核",
+  "mass": 10.0,
+  "layers": [
+    {
+      "color": "(255, 0, 38, 255)",
+      "polygon": {
+        "outer": [
+          "(6, -5)",
+          "(11, 5)",
+          "(2, 15)",
+          "(-7, 6)",
+          "(-6, -5)",
+          "(0, -9)"
+        ],
+        "holes": []
+      }
+    }
+  ],
+  "material": {
+    "element": 20.0,
+    "proteins": [
+      {
+        "name": "Plumagen",
+        "size": 1
+      }
+    ]
+  },
+  "lifespanTime": 25.0,
+  "bornTime": 20.0,
+  "yieldTime": 5.0,
+  "armor": 1
+}
