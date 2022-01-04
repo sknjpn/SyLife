@@ -35,6 +35,5 @@ void Part_BodyAsset::preRender(
       image,
       (partConfig->getPosition() * GeneralSetting::GetInstance().m_textureScale)
               .asPoint() +
-          image.size() / 2 - m_image.size() / 2,
-      ColorF(1.0, 1.0));
+          image.size() / 2 - m_image.size() / 2);
 }
