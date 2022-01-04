@@ -416,11 +416,10 @@ void World::draw() {
 
   // Tiles
   {
-    static const PixelShader ps(
-        U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"),
-        {{U"PSConstants2D", 0}});
-    const ScopedRenderStates2D state(SamplerState::BorderLinear);
-    const ScopedCustomShader2D shader(ps);
+	// TODO:Enable Shader
+    //static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), {{U"PSConstants2D", 0}});
+    //const ScopedRenderStates2D state(SamplerState::BorderLinear);
+    //const ScopedCustomShader2D shader(ps);
 
     Image image(m_tiles.size());
 
