@@ -286,7 +286,7 @@ public:
     if (isRoot())
       return Scene::Rect();
 
-    auto tRect = Rect(getViewerRectInWorld());
+    auto tRect = getViewerRectInWorld().asRect();
 
     if (!getParentViewer()->getViewport())
       return none;
