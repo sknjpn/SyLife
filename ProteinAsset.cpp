@@ -1,41 +1,39 @@
 ﻿#include "ProteinAsset.h"
 #include "ProteinAsset_Editor.h"
 
-void ProteinAsset::load(const JSONValue& json)
-{
-	Asset::load(json);
+void ProteinAsset::load(const JSON &json) {
+  Asset::load(json);
 
-	// radius
-	m_radius = json[U"radius"].get<double>();
+  // radius
+  m_radius = json[U"radius"].get<double>();
 
-	// color
-	m_color = json[U"color"].get<Color>();
+  // color
+  m_color = json[U"color"].get<Color>();
 
-	// material
-	m_material.load(json[U"material"]);
+  // material
+  m_material.load(json[U"material"]);
 }
 
-void ProteinAsset::save(JSONWriter& json) const
-{
-	Asset::save(json);
+void ProteinAsset::save(JSON &json) const {
+  Asset::save(json);
 
-	// radius
-	json.key(U"radius").write(m_radius);
+  // radius
+  json.key(U"radius").write(m_radius);
 
-	// color
-	json.key(U"color").write(m_color);
+  // color
+  json.key(U"color").write(m_color);
 
-	// material
-	{
-		json.key(U"material").startObject();
+  // material
+  {
+    json.key(U"material").startObject();
 
-		m_material.save(json);
+    m_material.save(json);
 
-		json.endObject();
-	}
+    json.endObject();
+  }
 }
 
-void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer>& parent)
-{
-	parent->addChildViewer<ProteinAsset_Editor>(std::dynamic_pointer_cast<Asset>(shared_from_this()));
+void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer> &parent) {
+  parent->addChildViewer<ProteinAsset_Editor>(
+      std::dynamic_pointer_cast<Asset>(shared_from_this()));
 }

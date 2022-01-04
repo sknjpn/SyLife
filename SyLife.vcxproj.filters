@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -60,12 +56,6 @@
     <Filter Include="Engine">
       <UniqueIdentifier>{bbfdc5c5-dcf5-49cd-9b70-eba330ac3bb8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Util">
-      <UniqueIdentifier>{fb492576-bce5-4913-9c41-1e246c17a17a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\World">
-      <UniqueIdentifier>{8fb01d27-9f65-4646-8818-15f6f4c4ed18}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Viewer">
       <UniqueIdentifier>{25c31974-51be-457e-9af8-78bac51c8d49}</UniqueIdentifier>
     </Filter>
@@ -74,6 +64,12 @@
     </Filter>
     <Filter Include="ViewerSystem\GUI">
       <UniqueIdentifier>{789613b8-23c5-408d-9feb-f59119c2f2b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Util">
+      <UniqueIdentifier>{fb492576-bce5-4913-9c41-1e246c17a17a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\World">
+      <UniqueIdentifier>{8fb01d27-9f65-4646-8818-15f6f4c4ed18}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

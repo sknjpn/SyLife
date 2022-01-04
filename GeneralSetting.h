@@ -28,7 +28,7 @@ public:
 
 	void	load()
 	{
-		INIData ini(U"config.ini");
+		INI ini(U"config.ini");
 		m_touchPanelModeEnabled = ini.getOr<bool>(U"General", U"TouchPanelModeEnabled", false);
 		m_autoTurnOutEnabled = ini.getOr<bool>(U"General", U"AutoTurnOutEnabled", false);
 		m_autoTurnOutTime = ini.getOr<double>(U"General", U"AutoTurnOutTime", 10);
@@ -43,7 +43,7 @@ public:
 
 	void	save() const
 	{
-		INIData ini(U"config.ini");	// 追記の形で書き込む
+		INI ini(U"config.ini");	// 追記の形で書き込む
 		ini.write<bool>(U"General", U"TouchPanelModeEnabled", m_touchPanelModeEnabled);
 		ini.write<bool>(U"General", U"AutoTurnOutEnabled", m_autoTurnOutEnabled);
 		ini.write<double>(U"General", U"AutoTurnOutTime", m_autoTurnOutTime);
