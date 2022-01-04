@@ -75,6 +75,8 @@ void World::update() {
 }
 
 void World::save() {
+  // TODO:Enable Save System
+  /*
   Logger << U"WORLD SAVE : " << m_filePath;
 
   // World
@@ -132,7 +134,7 @@ void World::save() {
 
     BinaryWriter binWriter(m_filePath + U"field");
     binWriter.write(writer.getWriter().data(), writer.getWriter().size());
-  }
+  }*/
 }
 
 void World::initField() {
