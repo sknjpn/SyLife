@@ -21,21 +21,14 @@ void CellAsset::load(const JSON &json) {
 void CellAsset::save(JSON &json) const {
   Asset::save(json);
 
-  // TODO:JSONの配列書き込み処理
-  /*
-
   // parts
-  json.key(U"parts").startArray();
+  Array<JSON> jsonArray;
   {
     for (const auto &partConfig : m_partConfigs) {
-      json.startObject();
-
-      partConfig->save(json);
-
-      json.endObject();
+      partConfig->save(jsonArray.emplace_back());
     }
   }
-  json.endArray();*/
+  json[U"parts"] = jsonArray;
 }
 
 Vec2 CellAsset::getCentroid() {

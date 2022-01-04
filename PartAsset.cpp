@@ -34,13 +34,12 @@ void PartAsset::save(JSON &json) const {
   // layers
   m_shape.save(json);
 
-  // TODO:Enable JSON Save
   // material
-  /*{
-    json.key(U"material").startObject();
+  {
+    JSON jsonMaterial;
 
-    m_material.save(json);
+    m_material.save(jsonMaterial);
 
-    json.endObject();
-  }*/ 
+    json[U"material"] = jsonMaterial;
+  }
 }

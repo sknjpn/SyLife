@@ -23,16 +23,14 @@ void ProteinAsset::save(JSON &json) const {
   // color
   json[U"color"] = m_color;
 
-  // TODO:Enable JSON Save
-  /*
   // material
   {
-    json.key(U"material").startObject();
+    JSON jsonMaterial;
 
-    m_material.save(json);
+    m_material.save(jsonMaterial);
 
-    json.endObject();
-  }*/
+    json[U"material"] = jsonMaterial;
+  }
 }
 
 void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer> &parent) {

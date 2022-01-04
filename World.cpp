@@ -75,19 +75,13 @@ void World::update() {
 }
 
 void World::save() {
-  // TODO:Enable Save System
-  /*
   Logger << U"WORLD SAVE : " << m_filePath;
 
   // World
   {
     JSON json;
 
-    json.startObject();
-
     json[U"name"] = m_name;
-
-    json.endObject();
 
     json.save(m_filePath + U"world.json");
   }
@@ -101,13 +95,10 @@ void World::save() {
         continue;
 
       JSON json;
-      json.startObject();
 
-      json.key(U"type").writeString(asset->getTypeName());
+      json[U"type"] = asset->getTypeName();
 
       asset->save(json);
-
-      json.endObject();
 
       json.save(m_filePath + U"assets/" + asset->getName() + U".json");
     }
@@ -131,10 +122,10 @@ void World::save() {
     writer << m_tiles.size();
     for (const auto &tileState : m_tiles)
       tileState.save(writer);
-
-    BinaryWriter binWriter(m_filePath + U"field");
-    binWriter.write(writer.getWriter().data(), writer.getWriter().size());
-  }*/
+	
+	BinaryWriter binWriter(m_filePath + U"field");
+    binWriter.write(writer->getBlob().data(), writer->size());
+  }
 }
 
 void World::initField() {
@@ -207,9 +198,9 @@ void World::load() {
 
   // World
   {
-    JSON json;
+    JSON json = JSON::Load(m_filePath + U"world.json");
 
-    m_name = json.getString();
+    m_name = json[U"name"].getString();
   }
 
   // Assets

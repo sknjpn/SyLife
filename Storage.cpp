@@ -113,26 +113,21 @@ void Storage::load(const JSON &json) {
 }
 
 void Storage::save(JSON &json) const {
-  // TODO:Enable JSON Save
-  /*
   // element
   json[U"element"] = m_element;
 
   // proteins
   {
-    json.key(U"proteins").startArray();
+    Array<JSON> jsonArray;
 
     for (const auto &protein : *this) {
-      json.startObject();
-
-      json[U"name"] = protein.first->getName();
-      json[U"size"] = protein.second;
-
-      json.endObject();
+      JSON &j = jsonArray.emplace_back();
+      j[U"name"] = protein.first->getName();
+      j[U"size"] = protein.second;
     }
 
-    json.endArray();
-  }*/
+    json[U"proteins"] = jsonArray;
+  }
 }
 
 void Storage::load(Deserializer<BinaryReader> &reader) {
