@@ -42,6 +42,6 @@ public:
   // JSON
   void load(const JSON &json) override;
   void save(JSON &json) const override;
-  void load(Deserializer<ByteArray> &reader);
+  void load(Deserializer<BinaryReader> &reader);
   void save(Serializer<MemoryWriter> &writer) const;
 };

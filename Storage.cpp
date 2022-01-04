@@ -133,7 +133,7 @@ void Storage::save(JSON &json) const {
   }
 }
 
-void Storage::load(Deserializer<ByteArray> &reader) {
+void Storage::load(Deserializer<BinaryReader> &reader) {
   // element
   reader >> m_element;
 

@@ -219,7 +219,7 @@ void World::load() {
 
   // Field
   {
-    Deserializer<ByteArray> reader(m_filePath + U"field");
+    Deserializer<BinaryReader> reader(m_filePath + U"field");
 
     {
       int cellStateSize;
