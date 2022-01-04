@@ -29,16 +29,16 @@ void TitleViewer::updateBubbles() {
           const auto k = 4.0;
           m_bubbles[j].m_timer += k;
           m_bubbles[j].m_position.x +=
-              k * 0.10 * noise1.noise(m_bubbles[j].m_position * 0.02 + liner);
+              k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
           m_bubbles[j].m_position.y += k * 0.075;
           m_bubbles[j].m_position.z +=
-              k * 0.10 * noise2.noise(m_bubbles[j].m_position * 0.02 + liner);
+              k * 0.10 * noise2.noise3D(m_bubbles[j].m_position * 0.02 + liner);
         }
       });
     }
 
     for (auto &t : tasks)
-      while (!t.is_done())
+      while (!t.isReady())
         ;
   }
 

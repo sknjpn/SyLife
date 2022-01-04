@@ -16,6 +16,6 @@ void Part_WingAsset::load(const JSON &json) {
 void Part_WingAsset::save(JSON &json) const {
   PartAsset::save(json);
 
-  json.key(U"isRight").writeBool(m_isRight);
-  json.key(U"strength").writeDouble(m_strength);
+  json[U"isRight"] = m_isRight;
+  json[U"strength"] = m_strength;
 }

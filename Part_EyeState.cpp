@@ -53,7 +53,7 @@ void Part_EyeState::update(CellState& cellState)
 	}
 	else if (m_heat < 0)
 	{
-		for (auto i : World::GetInstance()->getCellStateKDTree().radiusSearch(position, m_Part_EyeAsset->getMaxDistance(), true))
+		for (auto i : World::GetInstance()->getCellStateKDTree().radiusSearch(position, m_Part_EyeAsset->getMaxDistance(), SortByDistance::Yes))
 		{
 			auto& t = World::GetInstance()->getCellStates()[i];
 

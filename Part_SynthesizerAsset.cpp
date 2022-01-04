@@ -19,5 +19,5 @@ void Part_SynthesizerAsset::save(JSON &json) const {
   PartAsset::save(json);
 
   json[U"export"] = m_export->getName();
-  json.key(U"productTime").writeDouble(m_productTime);
+  json[U"productTime"] = m_productTime;
 }

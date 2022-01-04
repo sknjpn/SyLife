@@ -116,6 +116,8 @@ void Shape::load(const JSON &json) {
 void Shape::save(JSON &json) const {
   Model::save(json);
 
+  // TODO:Enable JSON Save
+  /*
   // layers
   {
     json.key(U"layers").startArray();
@@ -129,5 +131,5 @@ void Shape::save(JSON &json) const {
     }
 
     json.endArray();
-  }
+  }*/
 }

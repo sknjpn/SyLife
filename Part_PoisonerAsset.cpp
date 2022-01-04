@@ -16,6 +16,6 @@ void Part_PoisonerAsset::load(const JSON &json) {
 void Part_PoisonerAsset::save(JSON &json) const {
   PartAsset::save(json);
 
-  json.key(U"amount").writeDouble(m_amount);
-  json.key(U"interval").writeDouble(m_interval);
+  json[U"amount"] = m_amount;
+  json[U"interval"] = m_interval;
 }

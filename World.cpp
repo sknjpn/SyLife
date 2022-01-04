@@ -163,7 +163,7 @@ void World::loadAssets(const FilePath &directory) {
   Array<std::shared_ptr<Asset>> assets;
 
   // JSONのパスを取得
-  auto jsonFiles = FileSystem::DirectoryContents(directory, true)
+  auto jsonFiles = FileSystem::DirectoryContents(directory, Recursive::Yes)
                        .removed_if([](const auto &dc) {
                          return FileSystem::IsDirectory(dc) ||
                                 FileSystem::Extension(dc) != U"json";

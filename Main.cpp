@@ -39,8 +39,7 @@ void Main()
 	// Window設定
 	if (GeneralSetting::GetInstance().m_fullScreenEnabled)
 	{
-		if (!Window::SetFullscreen(true))
-			Window::Maximize();
+		Window::SetFullscreen(true);
 	}
 	else
 	{

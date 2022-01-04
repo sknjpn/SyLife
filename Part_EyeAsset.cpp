@@ -15,5 +15,5 @@ void Part_EyeAsset::load(const JSON &json) {
 void Part_EyeAsset::save(JSON &json) const {
   PartAsset::save(json);
 
-  json.key(U"maxDistance").writeDouble(m_maxDistance);
+  json[U"maxDistance"] = m_maxDistance;
 }

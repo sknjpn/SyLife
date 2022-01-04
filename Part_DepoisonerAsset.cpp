@@ -15,5 +15,5 @@ void Part_DepoisonerAsset::load(const JSON &json) {
 void Part_DepoisonerAsset::save(JSON &json) const {
   PartAsset::save(json);
 
-  json.key(U"amount").writeDouble(m_amount);
+  json[U"amount"] = m_amount;
 }

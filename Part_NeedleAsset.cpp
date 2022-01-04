@@ -15,5 +15,5 @@ void Part_NeedleAsset::load(const JSON &json) {
 void Part_NeedleAsset::save(JSON &json) const {
   PartAsset::save(json);
 
-  json.key(U"penetrating").writeDouble(m_penetrating);
+  json[U"penetrating"] = m_penetrating;
 }

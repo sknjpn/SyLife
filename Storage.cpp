@@ -113,6 +113,8 @@ void Storage::load(const JSON &json) {
 }
 
 void Storage::save(JSON &json) const {
+  // TODO:Enable JSON Save
+  /*
   // element
   json[U"element"] = m_element;
 
@@ -130,7 +132,7 @@ void Storage::save(JSON &json) const {
     }
 
     json.endArray();
-  }
+  }*/
 }
 
 void Storage::load(Deserializer<BinaryReader> &reader) {
