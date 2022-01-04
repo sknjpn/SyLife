@@ -44,10 +44,10 @@ void TitleViewer::WorldGenerator::generate() {
     const double rx = (p.x - size.x / 2.0) / (size.x / 2.0);
     const double ry = (p.y - size.y / 2.0) / (size.y / 2.0);
 
-    const auto wx = perlinNoiseX.noise(
+    const auto wx = perlinNoiseX.noise2D(
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / waveInterval,
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / waveInterval);
-    const auto wy = perlinNoiseY.noise(
+    const auto wy = perlinNoiseY.noise2D(
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).x / waveInterval,
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / waveInterval);
 
