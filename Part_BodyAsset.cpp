@@ -4,7 +4,7 @@
 
 std::shared_ptr<PartState> Part_BodyAsset::makePartState(
     const std::shared_ptr<PartConfig> &partConfig) const {
-  return MakeShared<Part_BodyState>(partConfig);
+  return std::make_shared<Part_BodyState>(partConfig);
 }
 
 void Part_BodyAsset::load(const JSON &json) {

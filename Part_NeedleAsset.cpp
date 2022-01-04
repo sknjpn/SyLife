@@ -3,7 +3,7 @@
 
 std::shared_ptr<PartState> Part_NeedleAsset::makePartState(
     const std::shared_ptr<PartConfig> &partConfig) const {
-  return MakeShared<Part_NeedleState>(partConfig);
+  return std::make_shared<Part_NeedleState>(partConfig);
 }
 
 void Part_NeedleAsset::load(const JSON &json) {

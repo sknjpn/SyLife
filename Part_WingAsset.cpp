@@ -3,7 +3,7 @@
 
 std::shared_ptr<PartState> Part_WingAsset::makePartState(
     const std::shared_ptr<PartConfig> &partConfig) const {
-  return MakeShared<Part_WingState>(partConfig);
+  return std::make_shared<Part_WingState>(partConfig);
 }
 
 void Part_WingAsset::load(const JSON &json) {

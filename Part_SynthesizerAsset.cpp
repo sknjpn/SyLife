@@ -5,7 +5,7 @@
 
 std::shared_ptr<PartState> Part_SynthesizerAsset::makePartState(
     const std::shared_ptr<PartConfig> &partConfig) const {
-  return MakeShared<Part_SynthesizerState>(partConfig);
+  return std::make_shared<Part_SynthesizerState>(partConfig);
 }
 
 void Part_SynthesizerAsset::load(const JSON &json) {

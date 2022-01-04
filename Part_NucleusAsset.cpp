@@ -3,7 +3,7 @@
 
 std::shared_ptr<PartState> Part_NucleusAsset::makePartState(
     const std::shared_ptr<PartConfig> &partConfig) const {
-  return MakeShared<Part_NucleusState>(partConfig);
+  return std::make_shared<Part_NucleusState>(partConfig);
 }
 
 void Part_NucleusAsset::load(const JSON &json) {

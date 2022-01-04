@@ -3,7 +3,7 @@
 
 std::shared_ptr<PartState> Part_EyeAsset::makePartState(
     const std::shared_ptr<PartConfig> &partConfig) const {
-  return MakeShared<Part_EyeState>(partConfig);
+  return std::make_shared<Part_EyeState>(partConfig);
 }
 
 void Part_EyeAsset::load(const JSON &json) {

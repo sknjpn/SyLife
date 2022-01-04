@@ -3,7 +3,7 @@
 
 std::shared_ptr<PartState> Part_PoisonerAsset::makePartState(
     const std::shared_ptr<PartConfig> &partConfig) const {
-  return MakeShared<Part_PoisonerState>(partConfig);
+  return std::make_shared<Part_PoisonerState>(partConfig);
 }
 
 void Part_PoisonerAsset::load(const JSON &json) {

@@ -14,7 +14,8 @@ void CellAsset::load(const JSON &json) {
 
   // parts
   for (const auto &partConfig : json[U"parts"].arrayView())
-    m_partConfigs.emplace_back(MakeShared<PartConfig>())->load(partConfig);
+    m_partConfigs.emplace_back(std::make_shared<PartConfig>())
+        ->load(partConfig);
 }
 
 void CellAsset::save(JSON &json) const {
@@ -187,7 +188,7 @@ void CellAsset::setCentroidAsOrigin() {
 bool CellAsset::isValid() const { return getBodyAsset() && getNucleusAsset(); }
 
 std::shared_ptr<PartConfig> &CellAsset::addPartConfig() {
-  return m_partConfigs.emplace_back(MakeShared<PartConfig>());
+  return m_partConfigs.emplace_back(std::make_shared<PartConfig>());
 }
 
 void CellAsset::updateProperties() {

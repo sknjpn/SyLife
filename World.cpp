@@ -10,7 +10,7 @@
 std::unique_ptr<World> World::g_instance;
 
 void World::MakeForEditor() {
-  g_instance = MakeUnique<World>();
+  g_instance = std::make_unique<World>();
 
   // Assetのロード
   g_instance->loadAssets(U"resources/assets/");
@@ -19,7 +19,7 @@ void World::MakeForEditor() {
 }
 
 void World::Make() {
-  g_instance = MakeUnique<World>();
+  g_instance = std::make_unique<World>();
 
   // FilePathの設定
   g_instance->m_filePath = U"world/";
@@ -28,7 +28,7 @@ void World::Make() {
 }
 
 void World::Load(const FilePath &filepath) {
-  g_instance = MakeUnique<World>();
+  g_instance = std::make_unique<World>();
 
   g_instance->m_filePath = filepath;
 
@@ -227,7 +227,7 @@ void World::load() {
       m_cellStates.resize(cellStateSize);
 
       for (auto &cellState : m_cellStates)
-        cellState = MakeShared<CellState>(reader);
+        cellState = std::make_shared<CellState>(reader);
     }
 
     {
@@ -236,7 +236,7 @@ void World::load() {
       m_eggStates.resize(eggStateSize);
 
       for (auto &eggState : m_eggStates)
-        eggState = MakeShared<EggState>(reader);
+        eggState = std::make_shared<EggState>(reader);
     }
 
     {
@@ -475,12 +475,12 @@ void World::draw() {
 
 const std::shared_ptr<CellState> &
 World::addCellState(const std::shared_ptr<CellAsset> &asset) {
-  return m_cellStates.emplace_back(MakeShared<CellState>(asset));
+  return m_cellStates.emplace_back(std::make_shared<CellState>(asset));
 }
 
 const std::shared_ptr<EggState> &
 World::addEggState(const std::shared_ptr<CellAsset> &asset) {
-  return m_eggStates.emplace_back(MakeShared<EggState>(asset));
+  return m_eggStates.emplace_back(std::make_shared<EggState>(asset));
 }
 
 void World::generateWave() {
