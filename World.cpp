@@ -448,9 +448,9 @@ void World::draw() {
 
   // Texture
   {
-    const auto mat3x2 = Graphics2D::GetLocalTransform().inversed();
-    const auto viewRect = RectF(mat3x2.transform(Scene::Rect().pos),
-                                mat3x2.transform(Scene::Rect().size));
+    const auto mat3x2 = Graphics2D::GetLocalTransform().inverse();
+    const auto viewRect = RectF(mat3x2.transformPoint(Scene::Rect().pos),
+                                mat3x2.transformPoint(Scene::Rect().size));
 
     for (const auto &eggState : m_eggStates)
       if (!eggState->isDestroyed() &&
