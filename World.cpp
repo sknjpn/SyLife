@@ -292,7 +292,7 @@ void World::updateTiles() {
     tile_swap.m_poison = 0;
   }
 
-  Array<ConcurrentTask<void>> tasks;
+  Array<AsyncTask<void>> tasks;
 
   for (int i = 0; i < m_tileGroups.size(); ++i)
     // World::updateTileGroup(i);
@@ -418,10 +418,11 @@ void World::draw() {
 
   // Tiles
   {
-	// TODO:Enable Shader
-    //static const PixelShader ps(U"resources/tile" SIV3D_SELECT_SHADER(U".hlsl", U".frag"), {{U"PSConstants2D", 0}});
-    //const ScopedRenderStates2D state(SamplerState::BorderLinear);
-    //const ScopedCustomShader2D shader(ps);
+    // TODO:Enable Shader
+    // static const PixelShader ps(U"resources/tile"
+    // SIV3D_SELECT_SHADER(U".hlsl", U".frag"), {{U"PSConstants2D", 0}}); const
+    // ScopedRenderStates2D state(SamplerState::BorderLinear); const
+    // ScopedCustomShader2D shader(ps);
 
     Image image(m_tiles.size());
 
