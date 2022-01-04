@@ -21,18 +21,18 @@ class EasyViewer : public std::enable_shared_from_this<EasyViewer> {
 
     // 自身の更新
     if (!isRoot()) {
-      ScopedViewport2D sv;
-      Transformer2D t;
+      std::unique_ptr<ScopedViewport2D> sv;
+	  std::unique_ptr<Transformer2D> t;
 
       if (getViewport()) {
         const auto delta = getViewerPosInWorld() - getViewport().value().pos;
 
-        sv = getViewport() ? ScopedViewport2D(getViewport())
-                           : ScopedViewport2D(Rect());
-        t = Transformer2D(Mat3x2::Translate(delta),
+        sv = getViewport() ? std::make_unique<ScopedViewport2D>(getViewport())
+                           : std::make_unique<ScopedViewport2D>(Rect());
+        t = std::make_unique<Transformer2D>(Mat3x2::Translate(delta),
                           Mat3x2::Translate(getViewerPosInWorld() + delta));
       } else
-        sv = ScopedViewport2D(Rect());
+        sv = std::make_unique<ScopedViewport2D>(Rect());
 
       RectF(m_viewerRectInLocal.size).draw(m_backgroundColor);
 
