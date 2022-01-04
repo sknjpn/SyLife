@@ -18,14 +18,14 @@ public:
 		: m_beginColor(beginColor)
 		, m_endColor(endColor)
 		, m_duration(duration)
-		, m_st(true)
+		, m_st(s3d::StartImmediately::Yes)
 		, m_functionOnEnd(functionOnEnd)
 	{}
 	GUICurtain(Color beginColor, Color endColor, double duration)
 		: m_beginColor(beginColor)
 		, m_endColor(endColor)
 		, m_duration(duration)
-		, m_st(true)
+		, m_st(s3d::StartImmediately::Yes)
 	{}
 
 	void	init() override
