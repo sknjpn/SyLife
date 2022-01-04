@@ -229,7 +229,7 @@ class MainViewer : public EasyViewer
 				class TrashBox : public EasyViewer
 				{
 					bool	m_isSelected = false;
-					Texture	m_textureTrashBox = Texture(Icon(0xf1f8, 80));
+					Texture	m_textureTrashBox = Texture{ 0xf1f8_icon, 80 };
 
 				public:
 					void	select() { m_isSelected = true; }

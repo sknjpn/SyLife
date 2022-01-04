@@ -22,7 +22,8 @@ public:
 	// Set
 	void	setColor(const Color& color) { m_color = color; }
 	void	setScale(double scale) { m_scale = scale; }
-	void	setIcon(uint32 code) { m_code = code; m_texture = Texture(Icon(m_code, int(m_scale * Min(getViewerSize().x, getViewerSize().y)))); }
+	// TODO:fix texture load
+	void	setIcon(uint32 code) { m_code = code; m_texture = Texture(Icon(m_code, int(m_scale * Min(getViewerSize().x, getViewerSize().y))));*/ }
 
 	void	init() override
 	{
