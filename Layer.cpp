@@ -14,9 +14,10 @@ void Layer::load(const JSON& json) {
     for (const auto& v : json[U"polygon"][U"outer"].arrayView())
       outer.emplace_back(v.get<Vec2>());
 
-    for (const auto& hole : json[U"polygon"][U"holes"].arrayView())
-      for (const auto& v : hole.arrayView())
-        outer.emplace_back(v.get<Vec2>());
+    if (json[U"polygon"][U"holes"].isArray())
+      for (const auto& hole : json[U"polygon"][U"holes"].arrayView())
+        for (const auto& v : hole.arrayView())
+          outer.emplace_back(v.get<Vec2>());
 
     m_polygon = Polygon(outer, holes);
   }

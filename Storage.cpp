@@ -100,11 +100,13 @@ void Storage::load(const JSON& json) {
   m_element = json[U"element"].get<double>();
 
   // proteins
-  for (auto protein : json[U"proteins"].arrayView()) {
-    const auto& asset = World::GetAsset<ProteinAsset>(protein[U"name"].getString());
-    const int   size = protein[U"size"].get<int>();
+  if (json[U"proteins"].isArray()) {
+    for (auto protein : json[U"proteins"].arrayView()) {
+      const auto& asset = World::GetAsset<ProteinAsset>(protein[U"name"].getString());
+      const int   size = protein[U"size"].get<int>();
 
-    emplace_back(asset, size);
+      emplace_back(asset, size);
+    }
   }
 }
 
@@ -122,7 +124,7 @@ void Storage::save(JSON& json) const {
       j[U"size"] = protein.second;
     }
 
-    json[U"proteins"] = jsonArray;
+	json[U"proteins"] = jsonArray;
   }
 }
 
