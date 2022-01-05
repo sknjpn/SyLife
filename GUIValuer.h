@@ -5,9 +5,9 @@
 class GUIValuer
     : public EasyViewer {
   bool   m_isGrabbed = false;
-  double m_grabbedPos;
-  double m_value;
-  Color  m_color;
+  double m_grabbedPos = 0.0;
+  double m_value = 0.0;
+  Color  m_color = Color(255);
 
   Circle getButton() const {
     const double w = getViewerSize().x;
@@ -16,8 +16,7 @@ class GUIValuer
     return Circle(h / 2 + (w - h) * m_value, h / 2, h / 2);
   }
 
-  Color getTargetColor() const { return m_isGrabbed ? Color(192) : isMouseover() ? Palette::Skyblue :
-                                                                                   Palette::White; }
+  Color getTargetColor() const { return m_isGrabbed ? Color(192) : (isMouseover() ? Palette::Skyblue : Palette::White); }
 
 public:
   GUIValuer(double value = 0.0)

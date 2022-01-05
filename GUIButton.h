@@ -8,7 +8,7 @@ class GUIButton : public EasyViewer {
   bool   m_isEnabled = true;
   double m_roundRadius = 10.0;
   double m_frameThickness = 2.0;
-  Color  m_color;
+  Color  m_color = Color(64);
 
   std::function<void(void)> m_functionOnSelected;
 
