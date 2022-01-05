@@ -35,11 +35,14 @@ void Layer::save(JSON& json) const {
     jsonPolygon[U"outer"] = m_polygon.outer();
 
     // holes
-    Array<JSON> jsonArrayHoles;
-    for (auto hole : m_polygon.inners()) {
-      jsonArrayHoles.emplace_back(hole);
+    {
+      Array<JSON> jsonArrayHoles;
+
+      for (Array<Vec2> hole : m_polygon.inners())
+        jsonArrayHoles.emplace_back(hole);
+
+      jsonPolygon[U"holes"] = jsonArrayHoles;
     }
-    jsonPolygon[U"holes"] = jsonArrayHoles;
   }
   json[U"polygon"] = jsonPolygon;
 }
