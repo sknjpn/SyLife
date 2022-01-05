@@ -22,17 +22,10 @@ class EasyViewer : public std::enable_shared_from_this<EasyViewer> {
 
     // 自身の更新
     if (!isRoot()) {
-      std::unique_ptr<ScopedViewport2D> sv;
-      std::unique_ptr<Transformer2D>    t;
-
-      if (getViewport()) {
-        const auto delta = getViewerPosInWorld() - getViewport().value().pos;
-
-        sv = getViewport() ? std::make_unique<ScopedViewport2D>(getViewport()) : std::make_unique<ScopedViewport2D>(Rect());
-        t = std::make_unique<Transformer2D>(Mat3x2::Translate(delta),
-            Mat3x2::Translate(getViewerPosInWorld() + delta));
-      } else
-        sv = std::make_unique<ScopedViewport2D>(Rect());
+      const auto sv = ScopedViewport2D(getViewport());
+      const auto t = getViewport() ?
+          Transformer2D(Mat3x2::Translate(getViewerPosInWorld() - getViewport().value().pos), Mat3x2::Translate(getViewerPosInWorld() + getViewerPosInWorld() - getViewport().value().pos)) :
+          Transformer2D();
 
       RectF(m_viewerRectInLocal.size).draw(m_backgroundColor);
 
@@ -41,7 +34,7 @@ class EasyViewer : public std::enable_shared_from_this<EasyViewer> {
       m_transformer.reset();
       m_drawPos = Vec2::Zero();
 
-      // フレーム描画
+      // フレーム描画 (for Debug)
       if (KeyL.pressed())
         RectF(m_viewerRectInLocal.size)
             .drawFrame(2.0, 0.0, isMouseover() ? Palette::Red : Palette::Green);
@@ -52,8 +45,8 @@ class EasyViewer : public std::enable_shared_from_this<EasyViewer> {
     for (int i = 0; i < m_childViewers.size(); ++i)
       m_childViewers[i]->process();
 
-    const auto childs = m_childViewers.filter(
-        [](const auto& viewer) { return viewer->m_moveToFrontReserved; });
+    const auto childs = m_childViewers.filter([](const auto& viewer) { return viewer->m_moveToFrontReserved; });
+
     for (const auto& child : childs) {
       m_childViewers.remove(child);
       m_childViewers.emplace_back(child);
@@ -213,71 +206,84 @@ public:
     return result;
   }
 
-  // Set
   std::shared_ptr<EasyViewer> setBackgroundColor(const Color& color) {
     m_backgroundColor = color;
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setDrawPos(const Vec2& pos) {
     m_drawPos = pos;
     m_transformer.reset();
     m_transformer = std::make_unique<Transformer2D>(Mat3x2::Translate(m_drawPos), TransformCursor::Yes);
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setDrawPos(double x, double y) {
     setDrawPos(Vec2(x, y));
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerSize(const Vec2& size) {
     m_viewerRectInLocal.size = size;
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerSize(double x, double y) {
     setViewerSize(Vec2(x, y));
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerPosInLocal(const Vec2& pos) {
     m_viewerRectInLocal.pos = pos;
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerPosInLocal(double x, double y) {
     setViewerPosInLocal(Vec2(x, y));
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerRectInLocal(const Vec2& pos,
       const Vec2&                                              size) {
     m_viewerRectInLocal = RectF(pos, size);
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerRectInLocal(const Rect& rect) {
     m_viewerRectInLocal = rect;
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerRectInLocal(const RectF& rect) {
     m_viewerRectInLocal = rect;
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerRectInLocal(const Vec2& size) {
     m_viewerRectInLocal = RectF(size);
     return shared_from_this();
   }
-  std::shared_ptr<EasyViewer> setViewerRectInLocal(double x, double y, double w,
-      double h) {
+
+  std::shared_ptr<EasyViewer> setViewerRectInLocal(double x, double y, double w,double h) {
     m_viewerRectInLocal = RectF(x, y, w, h);
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setViewerRectInLocal(double w, double h) {
     m_viewerRectInLocal = RectF(w, h);
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> moveDrawPos(double dx, double dy) {
     setDrawPos(m_drawPos.movedBy(dx, dy));
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setName(const String& name) {
     m_name = name;
     return shared_from_this();
   }
+
   std::shared_ptr<EasyViewer> setIsPenetrated(bool isPenetrated) {
     m_isPenetrated = isPenetrated;
     return shared_from_this();
@@ -296,6 +302,7 @@ public:
 
     if (pRect.contains(tRect))
       return tRect;
+
     if (!pRect.intersects(tRect))
       return none;
 
@@ -319,17 +326,20 @@ public:
   }
 
   bool  isMouseover() const { return m_isMouseover; }
+
   bool  isRoot() const { return GetRootViewer() == shared_from_this(); }
+
   RectF getViewerRectInWorld() const {
     return isRoot() ? RectF(Scene::Rect()) : RectF(getViewerPosInWorld(), m_viewerRectInLocal.size);
   }
+
   Vec2 getViewerPosInWorld() const {
     if (isRoot())
       return Vec2::Zero();
     else
-      return m_viewerRectInLocal.pos.movedBy(
-          getParentViewer()->getViewerPosInWorld());
+      return m_viewerRectInLocal.pos.movedBy(getParentViewer()->getViewerPosInWorld());
   }
+
   const RectF&  getViewerRectInLocal() const { return m_viewerRectInLocal; }
   const Vec2&   getViewerPosInLocal() const { return m_viewerRectInLocal.pos; }
   const Vec2&   getViewerSize() const { return m_viewerRectInLocal.size; }
