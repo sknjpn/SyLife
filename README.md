@@ -1,8 +1,12 @@
 # SyLife
+インタラクティブな生態系シミュレータです。
+生き物をユーザーが作成し、生態系を構築することができます。
+タッチパネルによる操作に対応しています。
 
-Nutrition
- => どのパーツも必要なもの double
+# Build
+OpenSiv3D v0.6.3をインストール後にSyLife.slnを開きビルドをしてください。
 
-Molecule
- => 一部パーツについて必要なもの int
- => Moleculeの生成パーツでNutritionから作る
+# Requirements
+Windows
+macOS(バージョンアップに対応中)
+Linux(バージョンアップに対応中)
