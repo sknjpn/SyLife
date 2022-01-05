@@ -167,11 +167,10 @@ public:
     return cv;
   }
 
+  // 再帰的にViewerをDestroyする。Rootの場合はChildViewerのみ再帰的にDestroyを行う
   void destroy() {
-    if (isRoot())
-      return;
-
-    m_isDestroyed = true;
+    if (!isRoot())
+      m_isDestroyed = true;
 
     for (auto& cv : m_childViewers)
       cv->destroy();
