@@ -25,8 +25,7 @@ public:
   void setMass(double mass) { m_mass = mass; }
 
   // State
-  virtual std::shared_ptr<PartState>
-  makePartState(const std::shared_ptr<PartConfig>& partConfig) const = 0;
+  virtual std::shared_ptr<PartState> makePartState(const std::shared_ptr<PartConfig>& partConfig) const = 0;
 
   // 描画処理を行うかどうか
   virtual bool isPreRenderOnStateEnabled() const { return true; }

@@ -11,8 +11,7 @@ public:
   Image   m_image;
 
   // State
-  std::shared_ptr<PartState>
-  makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;
+  std::shared_ptr<PartState> makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;
 
   // JSON
   void load(const JSON& json) override;
