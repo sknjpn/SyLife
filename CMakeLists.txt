@@ -60,7 +60,7 @@ set(SOURCE_FILES
 "MainViewer_FieldViewer_CellStateCaptureViewer.cpp"
 "MainViewer_FieldViewer_ReleaseViewer.cpp"
 "MainViewer_StatisticsViewer.cpp"
-"Model.cpp"
+"Object.cpp"
 "Part_BodyAsset.cpp"
 "Part_BodyState.cpp"
 "Part_DepoisonerAsset.cpp"

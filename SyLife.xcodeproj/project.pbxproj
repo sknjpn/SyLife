@@ -32,7 +32,7 @@
 		09CDEAA523EFEB0100BE65E8 /* MainViewer_CellBook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDEA7023EFEB0000BE65E8 /* MainViewer_CellBook.cpp */; };
 		09CDEAA623EFEB0100BE65E8 /* PartAsset_Needle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDEA7123EFEB0000BE65E8 /* PartAsset_Needle.cpp */; };
 		09CDEAA723EFEB0100BE65E8 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDEA7223EFEB0000BE65E8 /* World.cpp */; };
-		09CDEAA823EFEB0100BE65E8 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDEA7323EFEB0000BE65E8 /* Model.cpp */; };
+		09CDEAA823EFEB0100BE65E8 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDEA7323EFEB0000BE65E8 /* Object.cpp */; };
 		09CDEAA923EFEB0100BE65E8 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDEA7423EFEB0000BE65E8 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp */; };
 		09CDEAAA23EFEB0100BE65E8 /* PartConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDEA7523EFEB0000BE65E8 /* PartConfig.cpp */; };
 		09CDEAAB23EFEB0100BE65E8 /* CellAsset_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09CDEA7623EFEB0000BE65E8 /* CellAsset_Log.cpp */; };
@@ -118,7 +118,7 @@
 		09CDEA7023EFEB0000BE65E8 /* MainViewer_CellBook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellBook.cpp; sourceTree = SOURCE_ROOT; };
 		09CDEA7123EFEB0000BE65E8 /* PartAsset_Needle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset_Needle.cpp; sourceTree = SOURCE_ROOT; };
 		09CDEA7223EFEB0000BE65E8 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = SOURCE_ROOT; };
-		09CDEA7323EFEB0000BE65E8 /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = SOURCE_ROOT; };
+		09CDEA7323EFEB0000BE65E8 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = SOURCE_ROOT; };
 		09CDEA7423EFEB0000BE65E8 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp; sourceTree = SOURCE_ROOT; };
 		09CDEA7523EFEB0000BE65E8 /* PartConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartConfig.cpp; sourceTree = SOURCE_ROOT; };
 		09CDEA7623EFEB0000BE65E8 /* CellAsset_Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellAsset_Log.cpp; sourceTree = SOURCE_ROOT; };
@@ -268,7 +268,7 @@
 				09CDEA8423EFEB0100BE65E8 /* MainViewer_FieldViewer.cpp */,
 				09CDEA6623EFEB0000BE65E8 /* MainViewer_StatisticsViewer.cpp */,
 				09CDEA8D23EFEB0100BE65E8 /* MainViewer.cpp */,
-				09CDEA7323EFEB0000BE65E8 /* Model.cpp */,
+				09CDEA7323EFEB0000BE65E8 /* Object.cpp */,
 				09CDEA6F23EFEB0000BE65E8 /* PartAsset_Body.cpp */,
 				09CDEA8823EFEB0100BE65E8 /* PartAsset_Eye.cpp */,
 				09CDEA7123EFEB0000BE65E8 /* PartAsset_Needle.cpp */,
@@ -403,7 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09CDEAA223EFEB0100BE65E8 /* PartState_Eye.cpp in Sources */,
-				09CDEAA823EFEB0100BE65E8 /* Model.cpp in Sources */,
+				09CDEAA823EFEB0100BE65E8 /* Object.cpp in Sources */,
 				09CDEA9123EFEB0100BE65E8 /* Main.cpp in Sources */,
 				09CDEAA923EFEB0100BE65E8 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp in Sources */,
 				09CDEAAB23EFEB0100BE65E8 /* CellAsset_Log.cpp in Sources */,

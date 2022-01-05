@@ -2,26 +2,24 @@
 
 #include "PartAsset.h"
 
-class Part_PoisonerAsset
-	: public PartAsset
-{
-	double	m_amount;
-	double	m_interval;
+class Part_PoisonerAsset : public PartAsset {
+  double m_amount;
+  double m_interval;
 
 public:
-	std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;
+  std::shared_ptr<PartState> makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;
 
-	// Get
-	double	getAmount() const { return m_amount; }
-	double	getInterval() const { return m_interval; }
+  // Get
+  double getAmount() const { return m_amount; }
+  double getInterval() const { return m_interval; }
 
-	// JSON
-	void	load(const JSONValue& json) override;
-	void	save(JSONWriter& json) const override;
+  // JSON
+  void load(const JSON& json) override;
+  void save(JSON& json) const override;
 
-	bool	isPreRenderOnStateEnabled() const override { return true; }
-	bool	isDrawOnStateEnabled() const override { return false; }
+  bool isPreRenderOnStateEnabled() const override { return true; }
+  bool isDrawOnStateEnabled() const override { return false; }
 
-	// TypeName
-	String	getTypeName() override { return U"Part_PoisonerAsset"; }
+  // TypeName
+  String getTypeName() override { return U"Part_PoisonerAsset"; }
 };

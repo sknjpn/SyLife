@@ -2,27 +2,27 @@
 
 #include "PartAsset.h"
 
-class Part_SynthesizerAsset
-	: public PartAsset
-{
-	std::shared_ptr<ProteinAsset>	m_export;
-	double	m_productTime;
+class Part_SynthesizerAsset : public PartAsset {
+  std::shared_ptr<ProteinAsset> m_export;
+
+  double m_productTime;
 
 public:
-	// State
-	std::shared_ptr<PartState>	makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;
+  // State
+  std::shared_ptr<PartState> makePartState(const std::shared_ptr<PartConfig>& partConfig) const override;
 
-	// Get
-	const std::shared_ptr<ProteinAsset>& getExport() const { return m_export; }
-	double	getProductTime() const { return m_productTime; }
+  // Get
+  const std::shared_ptr<ProteinAsset>& getExport() const { return m_export; }
 
-	// JSON
-	void	load(const JSONValue& json) override;
-	void	save(JSONWriter& json) const override;
+  double getProductTime() const { return m_productTime; }
 
-	bool	isPreRenderOnStateEnabled() const override { return false; }
-	bool	isDrawOnStateEnabled() const override { return true; }
+  // JSON
+  void load(const JSON& json) override;
+  void save(JSON& json) const override;
 
-	// TypeName
-	String	getTypeName() override { return U"Part_SynthesizerAsset"; }
+  bool isPreRenderOnStateEnabled() const override { return false; }
+  bool isDrawOnStateEnabled() const override { return true; }
+
+  // TypeName
+  String getTypeName() override { return U"Part_SynthesizerAsset"; }
 };

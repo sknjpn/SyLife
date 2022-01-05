@@ -1,13 +1,11 @@
 ﻿#pragma once
 
-#include "Model.h"
+#include "Object.h"
 
-struct Layer
-	: public Model
-{
-	Polygon	m_polygon;
-	Color	m_color;
+struct Layer : public Object {
+  Polygon m_polygon;
+  Color   m_color;
 
-	void	load(const JSONValue& json) override;
-	void	save(JSONWriter& json) const override;
+  void load(const JSON& json) override;
+  void save(JSON& json) const override;
 };

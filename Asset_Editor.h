@@ -4,24 +4,25 @@
 
 class Asset;
 
-class Asset_Editor : public EasyViewer
-{
-	std::shared_ptr<Asset> m_asset;
+class Asset_Editor : public EasyViewer {
+  std::shared_ptr<Asset> m_asset;
 
-	bool	m_isChanged = false;
+  bool m_isChanged = false;
 
 public:
-	Asset_Editor(const std::shared_ptr<Asset>& asset)
-		: m_asset(asset)
-	{}
+  Asset_Editor(const std::shared_ptr<Asset>& asset)
+      : m_asset(asset) {
+  }
 
-	bool	setIsChanged() { m_isChanged = true; }
-	
-	template<typename T>
-	std::shared_ptr<T>	getAsset() const { return std::dynamic_pointer_cast<T>(m_asset); }
+  bool setIsChanged() { m_isChanged = true; }
 
-	void	init() override;
-	void	update() override;
+  template <typename T>
+  std::shared_ptr<T> getAsset() const {
+    return std::dynamic_pointer_cast<T>(m_asset);
+  }
 
-	virtual void	apply() const;
+  void init() override;
+  void update() override;
+
+  virtual void apply() const;
 };
