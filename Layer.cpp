@@ -28,20 +28,17 @@ void Layer::save(JSON& json) const {
   // color
   json[U"color"] = m_color;
 
-  // TODO:Enable JSON Save
-  /*
   // polygon
-  json.key(U"polygon").startObject();
+  JSON jsonPolygon;
   {
-    // outer
-    json.key(U"outer").writeArray(m_polygon.outer());
+    json[U"outer"] = m_polygon.outer();
 
     // holes
-    json.key(U"holes").startArray();
+    Array<JSON> jsonArrayHoles;
     for (auto hole : m_polygon.inners()) {
-      json.writeArray(hole);
+      jsonArrayHoles.emplace_back(hole);
     }
-    json.endArray();
+    jsonPolygon[U"holes"] = jsonArrayHoles;
   }
-  json.endObject();*/
+  json[U"polygon"] = jsonPolygon;
 }
