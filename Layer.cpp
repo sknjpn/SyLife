@@ -31,7 +31,7 @@ void Layer::save(JSON& json) const {
   // polygon
   JSON jsonPolygon;
   {
-    json[U"outer"] = m_polygon.outer();
+    jsonPolygon[U"outer"] = m_polygon.outer();
 
     // holes
     Array<JSON> jsonArrayHoles;
