@@ -327,19 +327,10 @@ public:
   }
 
   bool isMouseover() const { return m_isMouseover; }
-
   bool isRoot() const { return GetRootViewer() == shared_from_this(); }
 
-  RectF getViewerRectInWorld() const {
-    return isRoot() ? RectF(Scene::Rect()) : RectF(getViewerPosInWorld(), m_viewerRectInLocal.size);
-  }
-
-  Vec2 getViewerPosInWorld() const {
-    if (isRoot())
-      return Vec2::Zero();
-    else
-      return m_viewerRectInLocal.pos.movedBy(getParentViewer()->getViewerPosInWorld());
-  }
+  RectF getViewerRectInWorld() const { return isRoot() ? RectF(Scene::Rect()) : RectF(getViewerPosInWorld(), m_viewerRectInLocal.size); }
+  Vec2  getViewerPosInWorld() const { return isRoot() ? Vec2::Zero() : m_viewerRectInLocal.pos.movedBy(getParentViewer()->getViewerPosInWorld()); }
 
   const RectF&  getViewerRectInLocal() const { return m_viewerRectInLocal; }
   const Vec2&   getViewerPosInLocal() const { return m_viewerRectInLocal.pos; }
