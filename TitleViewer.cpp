@@ -18,26 +18,34 @@ void TitleViewer::updateBubbles() {
   static PerlinNoise noise2(Random(0xFFFFFFFF));
   static Vec3        liner(0, 0, 0);
 
-  {
-    const int              numThread = 12;
-    Array<AsyncTask<void>> tasks;
+#ifdef USE_MULTITHREAD
+  const int              numThread = 12;
+  Array<AsyncTask<void>> tasks;
 
-    for (int i = 0; i < numThread; ++i) {
-      tasks.emplace_back([this, i, numThread]() {
-        for (int j = i; j < m_bubbles.size(); j += numThread) {
-          const auto k = 4.0;
-          m_bubbles[j].m_timer += k;
-          m_bubbles[j].m_position.x += k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
-          m_bubbles[j].m_position.y += k * 0.075;
-          m_bubbles[j].m_position.z += k * 0.10 * noise2.noise3D(m_bubbles[j].m_position * 0.02 + liner);
-        }
-      });
-    }
-
-    for (auto& t : tasks)
-      while (!t.isReady())
-        ;
+  for (int i = 0; i < numThread; ++i) {
+    tasks.emplace_back([this, i, numThread]() {
+      for (int j = i; j < m_bubbles.size(); j += numThread) {
+        const auto k = 4.0;
+        m_bubbles[j].m_timer += k;
+        m_bubbles[j].m_position.x += k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
+        m_bubbles[j].m_position.y += k * 0.075;
+        m_bubbles[j].m_position.z += k * 0.10 * noise2.noise3D(m_bubbles[j].m_position * 0.02 + liner);
+      }
+    });
   }
+
+  for (auto& t : tasks)
+    while (!t.isReady())
+      ;
+#else
+  for (int j = 0; j < m_bubbles.size(); ++j) {
+    const auto k = 4.0;
+    m_bubbles[j].m_timer += k;
+    m_bubbles[j].m_position.x += k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
+    m_bubbles[j].m_position.y += k * 0.075;
+    m_bubbles[j].m_position.z += k * 0.10 * noise2.noise3D(m_bubbles[j].m_position * 0.02 + liner);
+  }
+#endif
 
   liner.moveBy(0, 0, 0.01);
 
