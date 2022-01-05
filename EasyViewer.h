@@ -110,9 +110,7 @@ public:
     }
   }
 
-  std::shared_ptr<EasyViewer> getParentViewer() const {
-    return m_parentViewer.lock();
-  }
+  std::shared_ptr<EasyViewer> getParentViewer() const { return m_parentViewer.lock(); }
 
   template <typename T>
   std::shared_ptr<T> getParentViewer() const {
@@ -264,7 +262,7 @@ public:
     return shared_from_this();
   }
 
-  std::shared_ptr<EasyViewer> setViewerRectInLocal(double x, double y, double w,double h) {
+  std::shared_ptr<EasyViewer> setViewerRectInLocal(double x, double y, double w, double h) {
     m_viewerRectInLocal = RectF(x, y, w, h);
     return shared_from_this();
   }
@@ -325,9 +323,9 @@ public:
     return tRect;
   }
 
-  bool  isMouseover() const { return m_isMouseover; }
+  bool isMouseover() const { return m_isMouseover; }
 
-  bool  isRoot() const { return GetRootViewer() == shared_from_this(); }
+  bool isRoot() const { return GetRootViewer() == shared_from_this(); }
 
   RectF getViewerRectInWorld() const {
     return isRoot() ? RectF(Scene::Rect()) : RectF(getViewerPosInWorld(), m_viewerRectInLocal.size);
