@@ -119,7 +119,9 @@ void TitleViewer::WorldGenerator::generate() {
 
   for (int i = 0; i < 2500; ++i) {
     {
-      Grid<double>           elementMap_swap(size);
+      Grid<double> elementMap_swap(size);
+
+#ifdef USE_MULTITHREAD
       Array<AsyncTask<void>> tasks;
 
       for (int ty = 0; ty < size.y; ++ty) {
@@ -138,6 +140,19 @@ void TitleViewer::WorldGenerator::generate() {
       for (auto& t : tasks)
         while (!t.isReady())
           ;
+#else
+      for (int ty = 0; ty < size.y; ++ty) {
+        for (int tx = 0; tx < size.x; ++tx) {
+          elementMap_swap[ty][tx] = 0.0;
+
+          for (int x = -1; x <= 1; ++x)
+            for (int y = -1; y <= 1; ++y)
+              if (tx + x != -1 && tx + x != size.x && ty + y != -1 && ty + y != size.y)
+                elementMap_swap[ty][tx] += tiles[ty + y][tx + x].m_sendRate[1 - x][1 - y] * tiles[ty + y][tx + x].m_element;
+        }
+      }
+
+#endif
 
       for (auto p : step(size))
         tiles[p].m_element = elementMap_swap[p];

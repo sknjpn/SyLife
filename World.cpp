@@ -276,6 +276,7 @@ void World::updateTiles() {
     tile_swap.m_poison = 0;
   }
 
+#ifdef USE_MULTITHREAD
   Array<AsyncTask<void>> tasks;
 
   for (int i = 0; i < m_tileGroups.size(); ++i)
@@ -285,6 +286,10 @@ void World::updateTiles() {
   for (auto& t : tasks)
     while (!t.isReady())
       ;
+#else
+  for (int i = 0; i < m_tileGroups.size(); ++i)
+    World::updateTileGroup(i);
+#endif
 
   // Tileのswapから本体にコピー
   std::memcpy(&m_tiles[0][0], &m_tiles_swap[0][0], m_tiles.size_bytes());
