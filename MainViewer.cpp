@@ -72,6 +72,8 @@ void MainViewer::update() {
 
   if (auto musicBox = getChildViewer<GUIMusicBox>())
     if (!musicBox->isPlaying()) musicBox->setMusic(g_musicList.choice());
+
+  if (KeyP.down()) World::GetInstance()->save();
 }
 
 void MainViewer::onDestroy() {
