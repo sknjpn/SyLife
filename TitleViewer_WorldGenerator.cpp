@@ -38,7 +38,7 @@ void TitleViewer::WorldGenerator::generate() {
   PerlinNoise perlinNoiseX(m_noiseSeedX);
   PerlinNoise perlinNoiseY(m_noiseSeedY);
 
-  for (auto p : step(size)) {
+  for (Point p : step(size)) {
     //外的圧力比
     const double rx = (p.x - size.x / 2.0) / (size.x / 2.0);
     const double ry = (p.y - size.y / 2.0) / (size.y / 2.0);
@@ -61,7 +61,7 @@ void TitleViewer::WorldGenerator::generate() {
     auto&        sendRate = tiles[p].m_sendRate;
 
     // 初期化
-    for (auto point : step(Size(3, 3)))
+    for (Point point : step(Size(3, 3)))
       sendRate[point.x][point.y] = 0.0;
 
     // 周囲
@@ -154,7 +154,7 @@ void TitleViewer::WorldGenerator::generate() {
 
 #endif
 
-      for (auto p : step(size))
+      for (Point p : step(size))
         tiles[p].m_element = elementMap_swap[p];
     }
   }
@@ -162,8 +162,8 @@ void TitleViewer::WorldGenerator::generate() {
   {
     Image image(size);
 
-    for (auto p : step(size))
-      image[p] = Color(Palette::Palegreen, Min(255, int(tiles[p].m_element * 2.5)));
+    for (Point p : step(size))
+      image[p] = Color(Palette::Palegreen, Color::value_type(Min(255, int(tiles[p].m_element * 2.5))));
 
     m_fieldTexture = Texture(image);
   }
