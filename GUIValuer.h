@@ -16,8 +16,7 @@ class GUIValuer
     return Circle(h / 2 + (w - h) * m_value, h / 2, h / 2);
   }
 
-  Color getTargetColor() const { return m_isGrabbed ? Color(192) : isMouseover() ? Palette::Skyblue :
-                                                                                   Palette::White; }
+  Color getTargetColor() const { return m_isGrabbed ? Color(192) : (isMouseover() ? Palette::Skyblue : Palette::White); }
 
 public:
   GUIValuer(double value = 0.0)
