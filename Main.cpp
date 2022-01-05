@@ -42,7 +42,8 @@ void Main() {
 
   Window::SetTitle(U"SyLife");
   Window::SetStyle(WindowStyle::Sizable);
-  Scene::Resize(2560, 1440);
+  Scene::SetResizeMode(ResizeMode::Keep);
+  Scene::Resize(GeneralSetting::GetInstance().m_sceneSize);
 
   // Window設定
   if (GeneralSetting::GetInstance().m_fullScreenEnabled) {
