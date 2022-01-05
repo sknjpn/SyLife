@@ -1,6 +1,6 @@
 ﻿#include "Layer.h"
 
-void Layer::load(const JSON &json) {
+void Layer::load(const JSON& json) {
   Object::load(json);
 
   // color
@@ -8,21 +8,21 @@ void Layer::load(const JSON &json) {
 
   // polygon
   {
-    Array<Vec2> outer;
+    Array<Vec2>        outer;
     Array<Array<Vec2>> holes;
 
-    for (const auto &v : json[U"polygon"][U"outer"].arrayView())
+    for (const auto& v : json[U"polygon"][U"outer"].arrayView())
       outer.emplace_back(v.get<Vec2>());
 
-    for (const auto &hole : json[U"polygon"][U"holes"].arrayView())
-      for (const auto &v : hole.arrayView())
+    for (const auto& hole : json[U"polygon"][U"holes"].arrayView())
+      for (const auto& v : hole.arrayView())
         outer.emplace_back(v.get<Vec2>());
 
     m_polygon = Polygon(outer, holes);
   }
 }
 
-void Layer::save(JSON &json) const {
+void Layer::save(JSON& json) const {
   Object::save(json);
 
   // color

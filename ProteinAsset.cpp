@@ -1,7 +1,7 @@
 ﻿#include "ProteinAsset.h"
 #include "ProteinAsset_Editor.h"
 
-void ProteinAsset::load(const JSON &json) {
+void ProteinAsset::load(const JSON& json) {
   Asset::load(json);
 
   // radius
@@ -14,7 +14,7 @@ void ProteinAsset::load(const JSON &json) {
   m_material.load(json[U"material"]);
 }
 
-void ProteinAsset::save(JSON &json) const {
+void ProteinAsset::save(JSON& json) const {
   Asset::save(json);
 
   // radius
@@ -33,7 +33,7 @@ void ProteinAsset::save(JSON &json) const {
   }
 }
 
-void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer> &parent) {
+void ProteinAsset::makeEditor(const std::shared_ptr<EasyViewer>& parent) {
   parent->addChildViewer<ProteinAsset_Editor>(
       std::dynamic_pointer_cast<Asset>(shared_from_this()));
 }

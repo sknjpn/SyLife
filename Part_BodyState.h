@@ -5,13 +5,11 @@
 class Part_BodyAsset;
 
 class Part_BodyState
-	: public PartState
-{
-	std::shared_ptr<Part_BodyAsset> m_Part_BodyAsset;
+    : public PartState {
+  std::shared_ptr<Part_BodyAsset> m_Part_BodyAsset;
 
 public:
-	Part_BodyState(const std::shared_ptr<PartConfig>& partConfig);
+  Part_BodyState(const std::shared_ptr<PartConfig>& partConfig);
 
-	void	update(CellState& cellState) override;
+  void update(CellState& cellState) override;
 };
-

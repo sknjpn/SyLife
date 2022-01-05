@@ -2,10 +2,9 @@
 #include "MainViewer.h"
 #include "ProteinAsset.h"
 
-
 MainViewer::CellAssetViewer::CellStateViewer::CellStateViewer(
-    const std::shared_ptr<CellState> &cellState)
-    : m_cellState(cellState) {}
+    const std::shared_ptr<CellState>& cellState)
+    : m_cellState(cellState) { }
 
 void MainViewer::CellAssetViewer::CellStateViewer::init() {
   setViewerRectInLocal(5, 345, 200, 250);
@@ -30,10 +29,7 @@ void MainViewer::CellAssetViewer::CellStateViewer::update() {
     font(U"現在選択中の生き物の状態").draw(Vec2::Zero(), Palette::Black);
     moveDrawPos(0, 20);
 
-    font(U"寿命:",
-         Ceil(m_cellState->getCellAsset()->getLifespanTime() -
-              m_cellState->m_startTimer),
-         U"秒")
+    font(U"寿命:", Ceil(m_cellState->getCellAsset()->getLifespanTime() - m_cellState->m_startTimer), U"秒")
         .draw(Vec2::Zero(), Palette::Black);
     moveDrawPos(0, 20);
 
@@ -46,9 +42,8 @@ void MainViewer::CellAssetViewer::CellStateViewer::update() {
           .draw(Vec2::Zero(), Palette::Black);
       moveDrawPos(0, 20);
 
-      for (const auto &protein : m_cellState->m_storage.getProteinList()) {
-        font(protein.first->getNameJP() + U": " + ToString(protein.second) +
-             U"個")
+      for (const auto& protein : m_cellState->m_storage.getProteinList()) {
+        font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個")
             .draw(Vec2::Zero(), Palette::Black);
 
         moveDrawPos(0, 20);
@@ -57,12 +52,8 @@ void MainViewer::CellAssetViewer::CellStateViewer::update() {
       moveDrawPos(-8, 0);
     }
 
-    if (m_cellState->m_storage.contain(
-            m_cellState->getCellAsset()->getMaterial())) {
-      font(U"産卵まで",
-           Ceil(m_cellState->getCellAsset()->getYieldTime() -
-                m_cellState->m_yieldTimer),
-           U"秒")
+    if (m_cellState->m_storage.contain(m_cellState->getCellAsset()->getMaterial())) {
+      font(U"産卵まで", Ceil(m_cellState->getCellAsset()->getYieldTime() - m_cellState->m_yieldTimer), U"秒")
           .draw(Vec2::Zero(), Palette::Black);
       moveDrawPos(0, 20);
     } else {
@@ -75,8 +66,7 @@ void MainViewer::CellAssetViewer::CellStateViewer::update() {
 
       {
         int num = int(
-            Max(0.0, m_cellState->getCellAsset()->getMaterial().getElement() -
-                         m_cellState->m_storage.getElement()));
+            Max(0.0, m_cellState->getCellAsset()->getMaterial().getElement() - m_cellState->m_storage.getElement()));
 
         if (num > 0) {
           font(U"エレメント:", num, U"elm").draw(Vec2::Zero(), Palette::Red);
@@ -84,10 +74,9 @@ void MainViewer::CellAssetViewer::CellStateViewer::update() {
         }
       }
 
-      for (const auto &protein :
-           m_cellState->getCellAsset()->getMaterial().getProteinList()) {
-        int num = Max(0, protein.second -
-                             m_cellState->m_storage.numProtein(protein.first));
+      for (const auto& protein :
+          m_cellState->getCellAsset()->getMaterial().getProteinList()) {
+        int num = Max(0, protein.second - m_cellState->m_storage.numProtein(protein.first));
 
         if (num > 0) {
           font(protein.first->getNameJP() + U": " + ToString(num) + U"個")

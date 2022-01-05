@@ -12,23 +12,17 @@ void Main() {
   // loadBGM
   if (GeneralSetting::GetInstance().m_audioEnabled) {
 #ifdef _WIN32
-    AudioAsset::Register(U"天のきざはし",
-                         Resource(U"resources/music/天のきざはし.mp3"));
+    AudioAsset::Register(U"天のきざはし", Resource(U"resources/music/天のきざはし.mp3"));
     AudioAsset::Register(U"沈む。", Resource(U"resources/music/沈む。.mp3"));
-    AudioAsset::Register(U"かみさまのゆりかご",
-                         Resource(U"resources/music/かみさまのゆりかご.mp3"));
-    AudioAsset::Register(U"真相探求",
-                         Resource(U"resources/music/真相探求.mp3"));
-    AudioAsset::Register(U"安らぎと微睡み",
-                         Resource(U"resources/music/安らぎと微睡み.mp3"));
+    AudioAsset::Register(U"かみさまのゆりかご", Resource(U"resources/music/かみさまのゆりかご.mp3"));
+    AudioAsset::Register(U"真相探求", Resource(U"resources/music/真相探求.mp3"));
+    AudioAsset::Register(U"安らぎと微睡み", Resource(U"resources/music/安らぎと微睡み.mp3"));
 #else
     AudioAsset::Register(U"天のきざはし", U"resources/music/天のきざはし.mp3");
     AudioAsset::Register(U"沈む。", U"resources/music/沈む。.mp3");
-    AudioAsset::Register(U"かみさまのゆりかご",
-                         U"resources/music/かみさまのゆりかご.mp3");
+    AudioAsset::Register(U"かみさまのゆりかご", U"resources/music/かみさまのゆりかご.mp3");
     AudioAsset::Register(U"真相探求", U"resources/music/真相探求.mp3");
-    AudioAsset::Register(U"安らぎと微睡み",
-                         U"resources/music/安らぎと微睡み.mp3");
+    AudioAsset::Register(U"安らぎと微睡み", U"resources/music/安らぎと微睡み.mp3");
 #endif
     AudioAsset::LoadAsync(U"天のきざはし");
     AudioAsset::LoadAsync(U"沈む。");

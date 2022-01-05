@@ -4,14 +4,11 @@
 
 class ProteinAsset;
 
-class ProteinAsset_Editor : public Asset_Editor
-{
+class ProteinAsset_Editor : public Asset_Editor {
 public:
-	ProteinAsset_Editor(const std::shared_ptr<Asset>& asset)
-		: Asset_Editor(asset)
-	{}
+  ProteinAsset_Editor(const std::shared_ptr<Asset>& asset)
+      : Asset_Editor(asset) { }
 
-	void	init() override;
-	void	update() override;
+  void init() override;
+  void update() override;
 };
-

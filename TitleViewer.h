@@ -2,40 +2,37 @@
 
 #include "EasyViewer.h"
 
-class TitleViewer : public EasyViewer
-{
-	class WorldGenerator : public EasyViewer
-	{
-		Texture m_fieldTexture;
-		uint32	m_noiseSeedX;
-		uint32	m_noiseSeedY;
+class TitleViewer : public EasyViewer {
+  class WorldGenerator : public EasyViewer {
+    Texture m_fieldTexture;
+    uint32  m_noiseSeedX;
+    uint32  m_noiseSeedY;
 
-		void	generate();
+    void generate();
 
-	public:
-		void	init() override;
-		void	update() override;
+  public:
+    void init() override;
+    void update() override;
 
-		void	onStart();
-		void	onContinue();
-	};
+    void onStart();
+    void onContinue();
+  };
 
-	class Bubble
-	{
-	public:
-		Vec3	m_position;
-		double	m_timer = 0.0;
-	};
+  class Bubble {
+  public:
+    Vec3   m_position;
+    double m_timer = 0.0;
+  };
 
-	Array<Bubble>	m_bubbles;
+  Array<Bubble> m_bubbles;
 
 public:
-	void	updateBubbles();
-	void	drawBubbles();
+  void updateBubbles();
+  void drawBubbles();
 
-	void	runNew();
-	void	runContinue();
+  void runNew();
+  void runContinue();
 
-	void	init() override;
-	void	update() override;
+  void init() override;
+  void update() override;
 };

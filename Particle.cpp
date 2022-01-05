@@ -2,7 +2,7 @@
 #include "TileState.h"
 #include "World.h"
 
-void Particle::addForce(const Vec2 &force) {
+void Particle::addForce(const Vec2& force) {
   m_velocity += force / m_mass * DeltaTime;
 }
 
@@ -31,20 +31,19 @@ void Particle::updateParticle() {
   // 水流
   {
     const double scale = 100.0;
-    const auto waveVelocity =
-        scale * World::GetInstance()->getTile(m_position).getWaveVelocity();
+    const auto   waveVelocity = scale * World::GetInstance()->getTile(m_position).getWaveVelocity();
 
     m_velocity = waveVelocity + (m_velocity - waveVelocity) * 0.90;
   }
 }
 
-void Particle::load(Deserializer<BinaryReader> &reader) {
+void Particle::load(Deserializer<BinaryReader>& reader) {
   reader >> m_mass;
   reader >> m_position;
   reader >> m_velocity;
 }
 
-void Particle::save(Serializer<MemoryWriter> &writer) const {
+void Particle::save(Serializer<MemoryWriter>& writer) const {
   writer << m_mass;
   writer << m_position;
   writer << m_velocity;

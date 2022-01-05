@@ -7,10 +7,8 @@
 #include "Part_SynthesizerAsset.h"
 #include "ProteinAsset.h"
 
-
 void MainViewer::CellMakingViewer::CellInfo::init() {
-  m_textEditState_name.text =
-      getParentViewer<CellMakingViewer>()->getCellAsset()->getNameJP();
+  m_textEditState_name.text = getParentViewer<CellMakingViewer>()->getCellAsset()->getNameJP();
 }
 
 void MainViewer::CellMakingViewer::CellInfo::update() {
@@ -19,7 +17,7 @@ void MainViewer::CellMakingViewer::CellInfo::update() {
       .draw(Palette::White)
       .drawFrame(2.0, 0.0, Palette::Black);
 
-  const auto &cellAsset = getParentViewer<CellMakingViewer>()->getCellAsset();
+  const auto& cellAsset = getParentViewer<CellMakingViewer>()->getCellAsset();
 
   moveDrawPos(5, 5);
 
@@ -56,24 +54,21 @@ void MainViewer::CellMakingViewer::CellInfo::update() {
       moveDrawPos(0, 20);
       {
         moveDrawPos(8, 0);
-        for (const auto &protein : cellAsset->getMaterial().getProteinList()) {
+        for (const auto& protein : cellAsset->getMaterial().getProteinList()) {
           bool canMakeSelf = false;
-          for (const auto &partConfig : cellAsset->getPartConfigs())
-            if (auto synthesizer =
-                    std::dynamic_pointer_cast<Part_SynthesizerAsset>(
-                        partConfig->getPartAsset()))
+          for (const auto& partConfig : cellAsset->getPartConfigs())
+            if (auto synthesizer = std::dynamic_pointer_cast<Part_SynthesizerAsset>(
+                    partConfig->getPartAsset()))
               if (synthesizer->getExport() == protein.first) {
                 canMakeSelf = true;
                 break;
               }
 
           if (canMakeSelf)
-            font(protein.first->getNameJP() + U": " + ToString(protein.second) +
-                 U"個" + U"(自分で作れます)")
+            font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れます)")
                 .draw(Vec2::Zero(), Palette::Black);
           else
-            font(protein.first->getNameJP() + U": " + ToString(protein.second) +
-                 U"個" + U"(自分で作れません)")
+            font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れません)")
                 .draw(Vec2::Zero(), Palette::Red);
 
           moveDrawPos(0, 20);
@@ -90,11 +85,11 @@ void MainViewer::CellMakingViewer::CellInfo::update() {
     {
       moveDrawPos(8, 0);
 
-      for (const auto &partConfig : cellAsset->getPartConfigs()) {
+      for (const auto& partConfig : cellAsset->getPartConfigs()) {
         if (auto synthesizer = std::dynamic_pointer_cast<Part_SynthesizerAsset>(
                 partConfig->getPartAsset())) {
           font(synthesizer->getExport()->getNameJP(),
-               int(synthesizer->getProductTime()), U"秒ごとに")
+              int(synthesizer->getProductTime()), U"秒ごとに")
               .draw(Vec2::Zero(), Palette::Black);
           moveDrawPos(0, 20);
         }
@@ -110,17 +105,17 @@ void MainViewer::CellMakingViewer::CellInfo::update() {
       moveDrawPos(8, 0);
 
       font(U"孵化までの時間", int(cellAsset->getNucleusAsset()->getBornTime()),
-           U"秒")
+          U"秒")
           .draw(Vec2::Zero(), Palette::Black);
       moveDrawPos(0, 20);
 
       font(U"産卵までの時間", int(cellAsset->getNucleusAsset()->getYieldTime()),
-           U"秒")
+          U"秒")
           .draw(Vec2::Zero(), Palette::Black);
       moveDrawPos(0, 20);
 
       font(U"寿命:", int(cellAsset->getNucleusAsset()->getLifespanTime()),
-           U"秒")
+          U"秒")
           .draw(Vec2::Zero(), Palette::Black);
       moveDrawPos(0, 20);
 
@@ -131,7 +126,7 @@ void MainViewer::CellMakingViewer::CellInfo::update() {
       {
         int penetrating = 0;
 
-        for (const auto &partConfig : cellAsset->getPartConfigs())
+        for (const auto& partConfig : cellAsset->getPartConfigs())
           if (auto needle = std::dynamic_pointer_cast<Part_NeedleAsset>(
                   partConfig->getPartAsset()))
             penetrating = Max(penetrating, needle->getPenetrating());

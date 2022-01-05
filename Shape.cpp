@@ -1,11 +1,9 @@
 ﻿#include "Shape.h"
 
 void Shape::preRender() {
-  Image image((m_polygon.boundingRect().size *
-               GeneralSetting::GetInstance().m_textureScale)
-                  .asPoint());
+  Image image((m_polygon.boundingRect().size * GeneralSetting::GetInstance().m_textureScale).asPoint());
 
-  for (const auto &layer : *this) {
+  for (const auto& layer : *this) {
     layer.m_polygon.movedBy(-m_polygon.boundingRect().pos)
         .scaled(GeneralSetting::GetInstance().m_textureScale)
         .overwrite(image, ColorF(layer.m_color, 1.0));
@@ -25,7 +23,7 @@ bool Shape::updateProperties() {
   m_polygon = front().m_polygon;
 
   Array<Polygon> copies;
-  for (const auto &l : *this) {
+  for (const auto& l : *this) {
     if (l.m_polygon.isEmpty())
       return false;
 
@@ -85,15 +83,14 @@ RectF Shape::getTileSize() const {
   if (m_polygon.isEmpty())
     return RectF();
 
-  RectF result(m_polygon.vertices().front().x, m_polygon.vertices().front().y,
-               0, 0);
-  for (const auto &v : m_polygon.vertices()) {
+  RectF result(m_polygon.vertices().front().x, m_polygon.vertices().front().y, 0, 0);
+  for (const auto& v : m_polygon.vertices()) {
     if (v.x < result.x)
       result.x = v.x;
     if (v.y < result.y)
       result.y = v.y;
   }
-  for (const auto &v : m_polygon.vertices()) {
+  for (const auto& v : m_polygon.vertices()) {
     if (result.br().x < v.x)
       result.w = v.x - result.x;
     if (result.br().y < v.y)
@@ -103,7 +100,7 @@ RectF Shape::getTileSize() const {
   return result;
 }
 
-void Shape::load(const JSON &json) {
+void Shape::load(const JSON& json) {
   Object::load(json);
 
   // layers
@@ -113,7 +110,7 @@ void Shape::load(const JSON &json) {
   updateProperties();
 }
 
-void Shape::save(JSON &json) const {
+void Shape::save(JSON& json) const {
   Object::save(json);
 
   // TODO:Enable JSON Save

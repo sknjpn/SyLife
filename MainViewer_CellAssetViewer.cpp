@@ -11,17 +11,18 @@
 #include "Part_SynthesizerAsset.h"
 #include "ProteinAsset.h"
 
+MainViewer::CellAssetViewer::CellAssetViewer(
+    const std::shared_ptr<CellAsset>& cellAsset)
+    : m_cellAsset(cellAsset)
+    , m_cellState(nullptr) { }
 
 MainViewer::CellAssetViewer::CellAssetViewer(
-    const std::shared_ptr<CellAsset> &cellAsset)
-    : m_cellAsset(cellAsset), m_cellState(nullptr) {}
-
-MainViewer::CellAssetViewer::CellAssetViewer(
-    const std::shared_ptr<CellState> &cellState)
-    : m_cellAsset(cellState->getCellAsset()), m_cellState(cellState) {}
+    const std::shared_ptr<CellState>& cellState)
+    : m_cellAsset(cellState->getCellAsset())
+    , m_cellState(cellState) { }
 
 void MainViewer::CellAssetViewer::setCellState(
-    const std::shared_ptr<CellState> &cellState) {
+    const std::shared_ptr<CellState>& cellState) {
   m_cellState = cellState;
 
   if (!hasChildViewer<CellStateViewer>())
@@ -38,7 +39,7 @@ void MainViewer::CellAssetViewer::init() {
 
   // name
   addChildViewer<GUIText>(m_cellAsset->getNameJP(), Font(24, Typeface::Heavy),
-                          GUIText::Mode::DrawLeftCenter)
+      GUIText::Mode::DrawLeftCenter)
       ->setViewerRectInLocal(5, 5, 400, 40);
 
   // close
@@ -63,7 +64,7 @@ void MainViewer::CellAssetViewer::update() {
   {
     setDrawPos(10, 50);
 
-    RectF rect(480, 80);
+    RectF     rect(480, 80);
     const int scale = 60;
 
     rect.draw(Color(11, 22, 33)).drawFrame(1.0, 0.0, Palette::Black);
@@ -71,14 +72,13 @@ void MainViewer::CellAssetViewer::update() {
     rect = rect.stretched(-5);
 
     double max1 = getMax(rect, scale,
-                         [](const auto &status) { return status.m_numCell; });
-    double max2 =
-        getMax(rect, scale, [](const auto &status) { return status.m_numEgg; });
+        [](const auto& status) { return status.m_numCell; });
+    double max2 = getMax(rect, scale, [](const auto& status) { return status.m_numEgg; });
 
     drawGraph(rect, Palette::Green, Max(max1, max2), scale,
-              [](const auto &status) { return status.m_numEgg; });
+        [](const auto& status) { return status.m_numEgg; });
     drawGraph(rect, Palette::Red, Max(max1, max2), scale,
-              [](const auto &status) { return status.m_numCell; });
+        [](const auto& status) { return status.m_numCell; });
   }
 
   // アイコン
@@ -124,25 +124,22 @@ void MainViewer::CellAssetViewer::update() {
       moveDrawPos(0, 20);
       {
         moveDrawPos(8, 0);
-        for (const auto &protein :
-             m_cellAsset->getMaterial().getProteinList()) {
+        for (const auto& protein :
+            m_cellAsset->getMaterial().getProteinList()) {
           bool canMakeSelf = false;
-          for (const auto &partConfig : m_cellAsset->getPartConfigs())
-            if (auto synthesizer =
-                    std::dynamic_pointer_cast<Part_SynthesizerAsset>(
-                        partConfig->getPartAsset()))
+          for (const auto& partConfig : m_cellAsset->getPartConfigs())
+            if (auto synthesizer = std::dynamic_pointer_cast<Part_SynthesizerAsset>(
+                    partConfig->getPartAsset()))
               if (synthesizer->getExport() == protein.first) {
                 canMakeSelf = true;
                 break;
               }
 
           if (canMakeSelf)
-            font(protein.first->getNameJP() + U": " + ToString(protein.second) +
-                 U"個" + U"(自分で作れます)")
+            font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れます)")
                 .draw(Vec2::Zero(), Palette::Black);
           else
-            font(protein.first->getNameJP() + U": " + ToString(protein.second) +
-                 U"個" + U"(自分で作れません)")
+            font(protein.first->getNameJP() + U": " + ToString(protein.second) + U"個" + U"(自分で作れません)")
                 .draw(Vec2::Zero(), Palette::Red);
 
           moveDrawPos(0, 20);
@@ -159,11 +156,11 @@ void MainViewer::CellAssetViewer::update() {
     {
       moveDrawPos(8, 0);
 
-      for (const auto &partConfig : m_cellAsset->getPartConfigs()) {
+      for (const auto& partConfig : m_cellAsset->getPartConfigs()) {
         if (auto synthesizer = std::dynamic_pointer_cast<Part_SynthesizerAsset>(
                 partConfig->getPartAsset())) {
           font(synthesizer->getExport()->getNameJP(),
-               int(synthesizer->getProductTime()), U"秒ごとに")
+              int(synthesizer->getProductTime()), U"秒ごとに")
               .draw(Vec2::Zero(), Palette::Black);
           moveDrawPos(0, 20);
         }
@@ -179,17 +176,16 @@ void MainViewer::CellAssetViewer::update() {
       moveDrawPos(8, 0);
 
       font(U"孵化までの時間",
-           int(m_cellAsset->getNucleusAsset()->getBornTime()), U"秒")
+          int(m_cellAsset->getNucleusAsset()->getBornTime()), U"秒")
           .draw(Vec2::Zero(), Palette::Black);
       moveDrawPos(0, 20);
 
       font(U"産卵までの時間",
-           int(m_cellAsset->getNucleusAsset()->getYieldTime()), U"秒")
+          int(m_cellAsset->getNucleusAsset()->getYieldTime()), U"秒")
           .draw(Vec2::Zero(), Palette::Black);
       moveDrawPos(0, 20);
 
-      font(U"寿命:", int(m_cellAsset->getNucleusAsset()->getLifespanTime()),
-           U"秒")
+      font(U"寿命:", int(m_cellAsset->getNucleusAsset()->getLifespanTime()), U"秒")
           .draw(Vec2::Zero(), Palette::Black);
       moveDrawPos(0, 20);
 
@@ -200,9 +196,8 @@ void MainViewer::CellAssetViewer::update() {
       {
         int penetrating = 0;
 
-        for (const auto &partConfig : m_cellAsset->getPartConfigs())
-          if (auto needle = std::dynamic_pointer_cast<Part_NeedleAsset>(
-                  partConfig->getPartAsset()))
+        for (const auto& partConfig : m_cellAsset->getPartConfigs())
+          if (auto needle = std::dynamic_pointer_cast<Part_NeedleAsset>(partConfig->getPartAsset()))
             penetrating = Max(penetrating, needle->getPenetrating());
 
         font(U"トゲの貫通力:", penetrating).draw(Vec2::Zero(), Palette::Black);
@@ -219,8 +214,8 @@ void MainViewer::CellAssetViewer::onDestroy() {
 }
 
 double MainViewer::CellAssetViewer::getMax(
-    const RectF &rect, int scale,
-    std::function<double(const CellAsset::Log::Status &)> func) const {
+    const RectF& rect, int scale,
+    std::function<double(const CellAsset::Log::Status&)> func) const {
   double max = 0.0;
 
   // 最大値
@@ -229,15 +224,15 @@ double MainViewer::CellAssetViewer::getMax(
       break;
 
     max = Max(max,
-              func(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)));
+        func(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)));
   }
 
   return max;
 }
 
 void MainViewer::CellAssetViewer::drawGraph(
-    const RectF &rect, const Color &color, double max, int scale,
-    std::function<double(const CellAsset::Log::Status &)> func) const {
+    const RectF& rect, const Color& color, double max, int scale,
+    std::function<double(const CellAsset::Log::Status&)> func) const {
   auto t = Transformer2D(Mat3x2::Translate(rect.pos));
 
   // 描画
@@ -245,14 +240,8 @@ void MainViewer::CellAssetViewer::drawGraph(
     if (m_cellAsset->m_log.m_statuses.size() < (i + 2) * scale)
       break;
 
-    double v1 =
-        rect.h *
-        (1.0 -
-         func(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)) / max);
-    double v2 =
-        rect.h *
-        (1.0 -
-         func(*(m_cellAsset->m_log.m_statuses.end() - (i + 2) * scale)) / max);
+    double v1 = rect.h * (1.0 - func(*(m_cellAsset->m_log.m_statuses.end() - (i + 1) * scale)) / max);
+    double v2 = rect.h * (1.0 - func(*(m_cellAsset->m_log.m_statuses.end() - (i + 2) * scale)) / max);
     Line(rect.w - i, v1, rect.w - i - 1, v2).draw(2.0, color);
   }
 }

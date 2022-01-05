@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Rigidbody.h"
-
 #include "Storage.h"
 
 class CellAsset;
@@ -21,10 +20,10 @@ public:
   Array<std::shared_ptr<PartState>> m_partStates;
 
 public:
-  CellState(const std::shared_ptr<CellAsset> &cellAsset);
-  CellState(Deserializer<BinaryReader> &reader) { load(reader); }
+  CellState(const std::shared_ptr<CellAsset>& cellAsset);
+  CellState(Deserializer<BinaryReader>& reader) { load(reader); }
 
-  const std::shared_ptr<CellAsset> &getCellAsset() const { return m_cellAsset; }
+  const std::shared_ptr<CellAsset>& getCellAsset() const { return m_cellAsset; }
 
   void updateCell();
   void draw();
@@ -32,6 +31,6 @@ public:
   void takeElement();
   bool isNeedNutrition() const;
 
-  void load(Deserializer<BinaryReader> &reader);
-  void save(Serializer<MemoryWriter> &writer) const;
+  void load(Deserializer<BinaryReader>& reader);
+  void save(Serializer<MemoryWriter>& writer) const;
 };

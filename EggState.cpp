@@ -6,9 +6,9 @@
 #include "Part_BodyAsset.h"
 #include "World.h"
 
-
-EggState::EggState(const std::shared_ptr<CellAsset> &cellAsset)
-    : m_cellAsset(cellAsset), m_timer(m_cellAsset->getBornTime()) {
+EggState::EggState(const std::shared_ptr<CellAsset>& cellAsset)
+    : m_cellAsset(cellAsset)
+    , m_timer(m_cellAsset->getBornTime()) {
   setRadius(cellAsset->getRadius());
   setMass(cellAsset->getMass());
   setInertia(cellAsset->getInertia());
@@ -19,17 +19,12 @@ void EggState::updateEgg() {
 
   // 衝突処理
   {
-    auto result =
-        World::GetInstance()->getEggStateKDTree().knnSearch(2, getPosition());
+    auto result = World::GetInstance()->getEggStateKDTree().knnSearch(2, getPosition());
     if (result.size() == 2) {
-      auto &t = World::GetInstance()->getEggStates()[result[1]];
+      auto& t = World::GetInstance()->getEggStates()[result[1]];
 
-      if (t->getPosition() != getPosition() &&
-          (getRadius() + t->getRadius() -
-           (t->getPosition() - getPosition()).length()) > 0) {
-        auto f = -1000.0 * (t->getPosition() - getPosition()).normalized() *
-                 (getRadius() + t->getRadius() -
-                  (t->getPosition() - getPosition()).length());
+      if (t->getPosition() != getPosition() && (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length()) > 0) {
+        auto f = -1000.0 * (t->getPosition() - getPosition()).normalized() * (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length());
         addForceInWorld(f, getPosition());
         t->addForceInWorld(-f, t->getPosition());
       }
@@ -40,7 +35,7 @@ void EggState::updateEgg() {
   if (m_timer <= 0) {
     destroy();
 
-    const auto &c = World::GetInstance()->addCellState(getCellAsset());
+    const auto& c = World::GetInstance()->addCellState(getCellAsset());
     c->setPosition(getPosition());
     c->setRotation(getRotation());
   }
@@ -63,7 +58,7 @@ void EggState::draw2() {
       .draw(ColorF(Palette::Lightblue, 0.25));
 }
 
-void EggState::load(Deserializer<BinaryReader> &reader) {
+void EggState::load(Deserializer<BinaryReader>& reader) {
   Rigidbody::load(reader);
 
   {
@@ -75,7 +70,7 @@ void EggState::load(Deserializer<BinaryReader> &reader) {
   reader >> m_timer;
 }
 
-void EggState::save(Serializer<MemoryWriter> &writer) const {
+void EggState::save(Serializer<MemoryWriter>& writer) const {
   Rigidbody::save(writer);
 
   writer << m_cellAsset->getName();

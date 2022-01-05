@@ -4,11 +4,10 @@
 Asset::Asset() {
   // 一意な名前とパスの作成
   for (int i = 0;; ++i) {
-    const String name = Format(U"asset_", i);
+    const String   name = Format(U"asset_", i);
     const FilePath filepath = Format(U"asset_", i, U".json");
 
-    if (!World::HasAsset(name) &&
-        !FileSystem::Exists(World::GetDirectory() + U"assets/" + filepath)) {
+    if (!World::HasAsset(name) && !FileSystem::Exists(World::GetDirectory() + U"assets/" + filepath)) {
       m_name = name;
       m_filepath = filepath;
 
@@ -17,14 +16,14 @@ Asset::Asset() {
   }
 }
 
-void Asset::load(const JSON &json) {
+void Asset::load(const JSON& json) {
   Object::load(json);
 
   m_name = json[U"name"].getString();
   m_nameJP = json[U"nameJP"].getString();
 }
 
-void Asset::save(JSON &json) const {
+void Asset::save(JSON& json) const {
   Object::save(json);
 
   // name

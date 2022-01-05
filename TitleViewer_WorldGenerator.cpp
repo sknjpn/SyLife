@@ -51,17 +51,14 @@ void TitleViewer::WorldGenerator::generate() {
         TileLength * (Vec2(p) + Vec2(0.5, 0.5)).y / waveInterval);
 
     // 最大の長さを1とする
-    Vec2 waveVelocity =
-        Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))),
-             Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) /
-        Math::Sqrt2;
+    Vec2 waveVelocity = Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))), Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry)))) / Math::Sqrt2;
 
-    const Vec2 d = waveVelocity * 0.015;
+    const Vec2   d = waveVelocity * 0.015;
     const double l = 0.01;
     const double w = 1.0 + l * 2;
-    const RectF rect = RectF(-l, -l, w, w).movedBy(d);
+    const RectF  rect = RectF(-l, -l, w, w).movedBy(d);
     const double area = rect.area();
-    auto &sendRate = tiles[p].m_sendRate;
+    auto&        sendRate = tiles[p].m_sendRate;
 
     // 初期化
     for (auto point : step(Size(3, 3)))
@@ -69,17 +66,13 @@ void TitleViewer::WorldGenerator::generate() {
 
     // 周囲
     if (rect.tl().x < 0.0)
-      sendRate[0][1] = (-rect.tl().x) *
-                       (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)) / area;
+      sendRate[0][1] = (-rect.tl().x) * (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)) / area;
     if (rect.tl().y < 0.0)
-      sendRate[1][0] = (-rect.tl().y) *
-                       (Min(rect.br().x, 1.0) - Max(rect.tl().x, 0.0)) / area;
+      sendRate[1][0] = (-rect.tl().y) * (Min(rect.br().x, 1.0) - Max(rect.tl().x, 0.0)) / area;
     if (rect.br().x > 1.0)
-      sendRate[2][1] = (rect.br().x - 1) *
-                       (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)) / area;
+      sendRate[2][1] = (rect.br().x - 1) * (Min(rect.br().y, 1.0) - Max(rect.tl().y, 0.0)) / area;
     if (rect.br().y > 1.0)
-      sendRate[1][2] = (rect.br().y - 1) *
-                       (Min(rect.br().x, 1.0) - Max(rect.tl().x, 0.0)) / area;
+      sendRate[1][2] = (rect.br().y - 1) * (Min(rect.br().x, 1.0) - Max(rect.tl().x, 0.0)) / area;
     if (rect.tl().x < 0.0 && rect.tl().y < 0.0)
       sendRate[0][0] = (-rect.tl().x) * (-rect.tl().y) / area;
     if (rect.tl().x < 0.0 && rect.br().y > 1.0)
@@ -90,9 +83,7 @@ void TitleViewer::WorldGenerator::generate() {
       sendRate[2][2] = (rect.br().x - 1.0) * (rect.br().y - 1.0) / area;
 
     // 中心
-    sendRate[1][1] = 1.0 - sendRate[0][0] - sendRate[1][0] - sendRate[2][0] -
-                     sendRate[0][1] - sendRate[2][1] - sendRate[0][2] -
-                     sendRate[1][2] - sendRate[2][2];
+    sendRate[1][1] = 1.0 - sendRate[0][0] - sendRate[1][0] - sendRate[2][0] - sendRate[0][1] - sendRate[2][1] - sendRate[0][2] - sendRate[1][2] - sendRate[2][2];
 
     // 存在しないところの分を移動
     {
@@ -123,12 +114,12 @@ void TitleViewer::WorldGenerator::generate() {
     }
   }
 
-  for (auto &t : tiles)
+  for (auto& t : tiles)
     t.m_element = element;
 
   for (int i = 0; i < 2500; ++i) {
     {
-      Grid<double> elementMap_swap(size);
+      Grid<double>           elementMap_swap(size);
       Array<AsyncTask<void>> tasks;
 
       for (int ty = 0; ty < size.y; ++ty) {
@@ -138,16 +129,13 @@ void TitleViewer::WorldGenerator::generate() {
 
             for (int x = -1; x <= 1; ++x)
               for (int y = -1; y <= 1; ++y)
-                if (tx + x != -1 && tx + x != size.x && ty + y != -1 &&
-                    ty + y != size.y)
-                  elementMap_swap[ty][tx] +=
-                      tiles[ty + y][tx + x].m_sendRate[1 - x][1 - y] *
-                      tiles[ty + y][tx + x].m_element;
+                if (tx + x != -1 && tx + x != size.x && ty + y != -1 && ty + y != size.y)
+                  elementMap_swap[ty][tx] += tiles[ty + y][tx + x].m_sendRate[1 - x][1 - y] * tiles[ty + y][tx + x].m_element;
           }
         });
       }
 
-      for (auto &t : tasks)
+      for (auto& t : tasks)
         while (!t.isReady())
           ;
 
@@ -160,8 +148,7 @@ void TitleViewer::WorldGenerator::generate() {
     Image image(size);
 
     for (auto p : step(size))
-      image[p] =
-          Color(Palette::Palegreen, Min(255, int(tiles[p].m_element * 2.5)));
+      image[p] = Color(Palette::Palegreen, Min(255, int(tiles[p].m_element * 2.5)));
 
     m_fieldTexture = Texture(image);
   }
@@ -172,12 +159,12 @@ void TitleViewer::WorldGenerator::init() {
   setViewerPosInLocal(Scene::Center() - getViewerSize() / 2.0);
 
   addChildViewer<GUIText>(U"ワールド生成設定", Font(32, Typeface::Heavy),
-                          GUIText::Mode::DrawAtCenter)
+      GUIText::Mode::DrawAtCenter)
       ->setViewerRectInLocal(5, 5, 580, 40);
 
   {
     addChildViewer<GUIText>(U"タイルサイズの調整", Font(18, Typeface::Bold),
-                            GUIText::Mode::DrawLeftCenter)
+        GUIText::Mode::DrawLeftCenter)
         ->setName(U"sizeText")
         ->setViewerRectInLocal(15, 50, 280, 30);
 
@@ -188,7 +175,7 @@ void TitleViewer::WorldGenerator::init() {
 
   {
     addChildViewer<GUIText>(U"波の間隔の調整", Font(18, Typeface::Bold),
-                            GUIText::Mode::DrawLeftCenter)
+        GUIText::Mode::DrawLeftCenter)
         ->setName(U"waveIntervalText")
         ->setViewerRectInLocal(15, 120, 280, 30);
 
@@ -199,7 +186,7 @@ void TitleViewer::WorldGenerator::init() {
 
   {
     addChildViewer<GUIText>(U"平均エレメント量の調整", Font(18, Typeface::Bold),
-                            GUIText::Mode::DrawLeftCenter)
+        GUIText::Mode::DrawLeftCenter)
         ->setName(U"elementText")
         ->setViewerRectInLocal(15, 190, 280, 30);
 
@@ -241,10 +228,9 @@ void TitleViewer::WorldGenerator::update() {
   // size
   {
     const auto v = getChildViewer<GUIValuer>(U"sizeValuer");
-    Point size = Point(16, 9) * int(v->getValue() * 10 + 1);
+    Point      size = Point(16, 9) * int(v->getValue() * 10 + 1);
 
-    getChildViewer<GUIText>(U"sizeText")->m_text =
-        Format(U"タイルサイズの調整:", size.x, U"x", size.y);
+    getChildViewer<GUIText>(U"sizeText")->m_text = Format(U"タイルサイズの調整:", size.x, U"x", size.y);
   }
 
   // waveInterval
@@ -252,8 +238,7 @@ void TitleViewer::WorldGenerator::update() {
     const auto v = getChildViewer<GUIValuer>(U"waveIntervalValuer");
     const auto waveInterval = Math::Lerp(250.0, 1250.0, v->getValue());
 
-    getChildViewer<GUIText>(U"waveIntervalText")->m_text =
-        Format(U"波の間隔の調整:", int(waveInterval));
+    getChildViewer<GUIText>(U"waveIntervalText")->m_text = Format(U"波の間隔の調整:", int(waveInterval));
   }
 
   // element
@@ -261,8 +246,7 @@ void TitleViewer::WorldGenerator::update() {
     const auto v = getChildViewer<GUIValuer>(U"elementValuer");
     const auto element = v->getValue() * 200.0;
 
-    getChildViewer<GUIText>(U"elementText")->m_text =
-        Format(U"平均エレメント量の調整:", int(element), U"elm");
+    getChildViewer<GUIText>(U"elementText")->m_text = Format(U"平均エレメント量の調整:", int(element), U"elm");
   }
 
   // field
@@ -278,9 +262,7 @@ void TitleViewer::WorldGenerator::update() {
     Rect(240, 135).draw(Color(11, 22, 33));
 
     const ScopedRenderStates2D state(SamplerState::BorderLinear);
-    static const PixelShader ps =
-        HLSL{U"resources/tile.hlsl", U"PS"} |
-        GLSL{U"resources/tile.frag", {{U"PSConstants2D", 0}}};
+    static const PixelShader   ps = HLSL { U"resources/tile.hlsl", U"PS" } | GLSL { U"resources/tile.frag", { { U"PSConstants2D", 0 } } };
     const ScopedCustomShader2D shader(ps);
 
     m_fieldTexture.resized(240, 135).draw();
@@ -293,14 +275,9 @@ void TitleViewer::WorldGenerator::onStart() {
 
   World::Make();
   World::GetInstance()->setName(U"New World");
-  World::GetInstance()->setTileSize(
-      Point(16, 9) *
-      int(getChildViewer<GUIValuer>(U"sizeValuer")->getValue() * 10 + 1));
-  World::GetInstance()->m_waveInterval =
-      Math::Lerp(250.0, 1250.0,
-                 getChildViewer<GUIValuer>(U"waveIntervalValuer")->getValue());
-  World::GetInstance()->m_elementPerTile =
-      200.0 * getChildViewer<GUIValuer>(U"elementValuer")->getValue();
+  World::GetInstance()->setTileSize(Point(16, 9) * int(getChildViewer<GUIValuer>(U"sizeValuer")->getValue() * 10 + 1));
+  World::GetInstance()->m_waveInterval = Math::Lerp(250.0, 1250.0, getChildViewer<GUIValuer>(U"waveIntervalValuer")->getValue());
+  World::GetInstance()->m_elementPerTile = 200.0 * getChildViewer<GUIValuer>(U"elementValuer")->getValue();
   World::GetInstance()->m_perlinNoiseX = PerlinNoise(m_noiseSeedX);
   World::GetInstance()->m_perlinNoiseY = PerlinNoise(m_noiseSeedY);
   World::GetInstance()->init();

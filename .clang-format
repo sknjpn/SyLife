@@ -1,0 +1,23 @@
+---
+BasedOnStyle: WebKit
+AlignConsecutiveDeclarations: true
+AccessModifierOffset: -2
+AlignTrailingComments: true
+AllowShortBlocksOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
+BreakBeforeBraces: Attach 
+IndentWidth: 2
+DerivePointerAlignment: false
+PointerAlignment: Left
+AllowShortFunctionsOnASingleLine: All
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: 'Yes'
+BreakBeforeTernaryOperators: false
+BreakConstructorInitializers: BeforeComma
+ColumnLimit: 0
+IncludeBlocks: Merge
+AlignConsecutiveMacros: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+NamespaceIndentation: All

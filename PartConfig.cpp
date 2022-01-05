@@ -6,7 +6,7 @@ Vec2 PartConfig::getCentroid() const {
   return m_position + m_partAsset->getShape().getCentroid().rotated(m_rotation);
 }
 
-void PartConfig::load(const JSON &json) {
+void PartConfig::load(const JSON& json) {
   Object::load(json);
 
   // asset
@@ -19,7 +19,7 @@ void PartConfig::load(const JSON &json) {
   m_rotation = json[U"rotation"].get<double>();
 }
 
-void PartConfig::save(JSON &json) const {
+void PartConfig::save(JSON& json) const {
   Object::save(json);
 
   // asset

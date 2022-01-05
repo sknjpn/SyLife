@@ -7,20 +7,19 @@
 #include "MainViewer.h"
 #include "World.h"
 
-
 void TitleViewer::updateBubbles() {
   while (RandomBool(0.5)) {
-    auto &b = m_bubbles.emplace_back();
+    auto& b = m_bubbles.emplace_back();
 
     b.m_position = Vec3(Random(-120.0, 120.0), -100.0, Random(30.0, 270.0));
   }
 
   static PerlinNoise noise1(Random(0xFFFFFFFF));
   static PerlinNoise noise2(Random(0xFFFFFFFF));
-  static Vec3 liner(0, 0, 0);
+  static Vec3        liner(0, 0, 0);
 
   {
-    const int numThread = 12;
+    const int              numThread = 12;
     Array<AsyncTask<void>> tasks;
 
     for (int i = 0; i < numThread; ++i) {
@@ -28,23 +27,21 @@ void TitleViewer::updateBubbles() {
         for (int j = i; j < m_bubbles.size(); j += numThread) {
           const auto k = 4.0;
           m_bubbles[j].m_timer += k;
-          m_bubbles[j].m_position.x +=
-              k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
+          m_bubbles[j].m_position.x += k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
           m_bubbles[j].m_position.y += k * 0.075;
-          m_bubbles[j].m_position.z +=
-              k * 0.10 * noise2.noise3D(m_bubbles[j].m_position * 0.02 + liner);
+          m_bubbles[j].m_position.z += k * 0.10 * noise2.noise3D(m_bubbles[j].m_position * 0.02 + liner);
         }
       });
     }
 
-    for (auto &t : tasks)
+    for (auto& t : tasks)
       while (!t.isReady())
         ;
   }
 
   liner.moveBy(0, 0, 0.01);
 
-  m_bubbles.remove_if([](const auto &b) { return b.m_timer > 1800.0; });
+  m_bubbles.remove_if([](const auto& b) { return b.m_timer > 1800.0; });
 }
 
 void TitleViewer::drawBubbles() {
@@ -54,10 +51,9 @@ void TitleViewer::drawBubbles() {
 
   static double t = 0.0;
   t += 1.0;
-  for (auto &b : m_bubbles) {
+  for (auto& b : m_bubbles) {
     auto s = 20.0;
-    Vec3 camPos(sin(150_deg + t * 0.001 * 11) * s,
-                sin(210_deg + t * 0.001 * 13) * s, sin(t * 0.001 * 17) * s);
+    Vec3 camPos(sin(150_deg + t * 0.001 * 11) * s, sin(210_deg + t * 0.001 * 13) * s, sin(t * 0.001 * 17) * s);
     Vec3 p = b.m_position - camPos;
 
     const auto x = (atan(p.x / p.z) / 30_deg + 0.5) * Scene::Width();
@@ -76,7 +72,7 @@ void TitleViewer::drawBubbles() {
 }
 
 void TitleViewer::runNew() {
-  for (const auto &child : getChildViewers<GUIButton>())
+  for (const auto& child : getChildViewers<GUIButton>())
     child->destroy();
 
   addChildViewer<WorldGenerator>();
@@ -103,15 +99,15 @@ void TitleViewer::init() {
   const auto p = RectF(500, 50).setCenter(
       Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
-  addChildViewer<GUIButton>([this]() { runNew(); })
+  addChildViewer<GUIButton>([this]() {
+    runNew();
+  })
       ->setViewerRectInLocal(p.movedBy(0, 0))
       ->addChildViewer<GUIText>(U"はじめから", Font(40, Typeface::Bold));
 
-  addChildViewer<GUIButton>(
-      [this]() {
-        addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5,
-                                   [this]() { runContinue(); });
-      },
+  addChildViewer<GUIButton>([this]() {
+    addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { runContinue(); });
+  },
       FileSystem::Exists(U"world/"))
       ->setViewerRectInLocal(p.movedBy(0, 75))
       ->addChildViewer<GUIText>(U"つづきから", Font(40, Typeface::Bold));
@@ -124,8 +120,7 @@ void TitleViewer::init() {
       ->addChildViewer<GUIText>(U"エディター", Font(40, Typeface::Bold));
 
   addChildViewer<GUIButton>([this]() {
-    addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5,
-                               [this]() { System::Exit(); });
+    addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); });
   })
       ->setViewerRectInLocal(p.movedBy(0, 225))
       ->addChildViewer<GUIText>(U"終了", Font(40, Typeface::Bold));
@@ -137,7 +132,7 @@ void TitleViewer::init() {
 void TitleViewer::update() {
   // title
   {
-    auto te = Transformer2D(Mat3x2::Scale(1.4, Scene::Center()));
+    auto        te = Transformer2D(Mat3x2::Scale(1.4, Scene::Center()));
     static Font titleFont(256, Typeface::Bold);
     static auto t = 1.0;
     t += 1.0 / 60.0;

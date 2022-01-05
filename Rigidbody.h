@@ -34,26 +34,24 @@ public:
     m_inertia = getMass() * m_radius * m_radius * 0.5;
   }
 
-  Vec2 getVelocityAt(const Vec2 &position) const {
-    return getVelocity() +
-           (position - getPosition()).rotated(m_rotation) * m_angularVelocity;
+  Vec2 getVelocityAt(const Vec2& position) const {
+    return getVelocity() + (position - getPosition()).rotated(m_rotation) * m_angularVelocity;
   }
-  Vec2 getWorldPosition(const Vec2 &localPosition) const {
+  Vec2 getWorldPosition(const Vec2& localPosition) const {
     return getPosition() + localPosition.rotated(m_rotation);
   }
 
-  void addForceInWorld(const Vec2 &force, const Vec2 &worldPosition);
-  void addForceInLocal(const Vec2 &force, const Vec2 &localPosition) {
+  void addForceInWorld(const Vec2& force, const Vec2& worldPosition);
+  void addForceInLocal(const Vec2& force, const Vec2& localPosition) {
     addForceInWorld(force.rotated(m_rotation), getWorldPosition(localPosition));
   }
-  void addImpulseInLocal(const Vec2 &impulse, const Vec2 &localPosition) {
-    addImpulseInWorld(impulse.rotated(m_rotation),
-                      getWorldPosition(localPosition));
+  void addImpulseInLocal(const Vec2& impulse, const Vec2& localPosition) {
+    addImpulseInWorld(impulse.rotated(m_rotation), getWorldPosition(localPosition));
   }
-  void addImpulseInWorld(const Vec2 &impulse, const Vec2 &worldPosition);
+  void addImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition);
 
   void updateRigidbody();
 
-  void load(Deserializer<BinaryReader> &reader);
-  void save(Serializer<MemoryWriter> &writer) const;
+  void load(Deserializer<BinaryReader>& reader);
+  void save(Serializer<MemoryWriter>& writer) const;
 };

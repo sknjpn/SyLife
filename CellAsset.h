@@ -10,6 +10,7 @@ class Part_NucleusAsset;
 class CellAsset : public Asset {
   Storage m_material;
   Storage m_maxStorage;
+
   Array<std::shared_ptr<PartConfig>> m_partConfigs;
 
   // Rigidbody
@@ -39,8 +40,8 @@ class CellAsset : public Asset {
   RectF getCellStateDrawRegion() const;
 
 public:
-  const Texture &getCellAssetTexture() const { return m_cellAssetTexture; }
-  const Texture &getCellStateTexture() const { return m_cellStateTexture; }
+  const Texture& getCellAssetTexture() const { return m_cellAssetTexture; }
+  const Texture& getCellStateTexture() const { return m_cellStateTexture; }
 
   void preRender();
 
@@ -52,39 +53,40 @@ public:
 
   void setCentroidAsOrigin();
 
-  void removePartConfig(const std::shared_ptr<PartConfig> &partConfig) {
+  void removePartConfig(const std::shared_ptr<PartConfig>& partConfig) {
     m_partConfigs.remove(partConfig);
   }
 
   // Get
-  const Storage &getMaterial() const { return m_material; }
-  const Storage &getMaxStorage() const { return m_maxStorage; }
+  const Storage& getMaterial() const { return m_material; }
+  const Storage& getMaxStorage() const { return m_maxStorage; }
+
   double getMass() const { return m_mass; }
   double getRadius() const { return m_radius; }
   double getDrawRadius() const { return m_drawRadius; }
   double getInertia() const { return m_inertia; }
-  const Array<std::shared_ptr<PartConfig>> &getPartConfigs() const {
-    return m_partConfigs;
-  }
+
+  const Array<std::shared_ptr<PartConfig>>& getPartConfigs() const { return m_partConfigs; }
+
   double getLifespanTime() const { return m_lifespanTime; }
   double getBornTime() const { return m_bornTime; }
   double getYieldTime() const { return m_yieldTime; }
   double getMaxHitPoint() const { return m_maxHitPoint; }
 
   // Add
-  std::shared_ptr<PartConfig> &addPartConfig();
+  std::shared_ptr<PartConfig>& addPartConfig();
 
   void updateProperties();
 
-  std::shared_ptr<Part_BodyAsset> getBodyAsset() const;
+  std::shared_ptr<Part_BodyAsset>    getBodyAsset() const;
   std::shared_ptr<Part_NucleusAsset> getNucleusAsset() const;
 
   // draw
   void draw(double a = 0.5);
 
   // JSON
-  void load(const JSON &json) override;
-  void save(JSON &json) const override;
+  void load(const JSON& json) override;
+  void save(JSON& json) const override;
 
   // TypeName
   String getTypeName() override { return U"CellAsset"; }
@@ -96,11 +98,13 @@ public:
       int m_numCell;
       int m_numEgg;
 
-      Status(int numCell, int numEgg) : m_numCell(numCell), m_numEgg(numEgg) {}
+      Status(int numCell, int numEgg)
+          : m_numCell(numCell)
+          , m_numEgg(numEgg) { }
     };
 
     Array<Status> m_statuses;
 
-    void update(const std::shared_ptr<CellAsset> &cellAsset);
+    void update(const std::shared_ptr<CellAsset>& cellAsset);
   } m_log;
 };

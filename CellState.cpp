@@ -10,17 +10,18 @@
 #include "TileState.h"
 #include "World.h"
 
-
-CellState::CellState(const std::shared_ptr<CellAsset> &cellAsset)
-    : m_cellAsset(cellAsset), m_startTimer(0.0),
-      m_deathTimer(cellAsset->getLifespanTime()), m_yieldTimer(0.0),
-      m_bioaccumulation(0.0) {
+CellState::CellState(const std::shared_ptr<CellAsset>& cellAsset)
+    : m_cellAsset(cellAsset)
+    , m_startTimer(0.0)
+    , m_deathTimer(cellAsset->getLifespanTime())
+    , m_yieldTimer(0.0)
+    , m_bioaccumulation(0.0) {
   setMass(m_cellAsset->getMass());
   setRadius(m_cellAsset->getRadius());
   setInertia(m_cellAsset->getInertia());
 
   // parts
-  for (const auto &partConfig : m_cellAsset->getPartConfigs())
+  for (const auto& partConfig : m_cellAsset->getPartConfigs())
     m_partStates.emplace_back(
         partConfig->getPartAsset()->makePartState(partConfig));
 }
@@ -28,17 +29,12 @@ CellState::CellState(const std::shared_ptr<CellAsset> &cellAsset)
 void CellState::updateCell() {
   // 衝突処理
   {
-    auto result =
-        World::GetInstance()->getCellStateKDTree().knnSearch(2, getPosition());
+    auto result = World::GetInstance()->getCellStateKDTree().knnSearch(2, getPosition());
     if (result.size() == 2) {
-      auto &t = World::GetInstance()->getCellStates()[result[1]];
+      auto& t = World::GetInstance()->getCellStates()[result[1]];
 
-      if (t->getPosition() != getPosition() &&
-          (getRadius() + t->getRadius() -
-           (t->getPosition() - getPosition()).length()) > 0) {
-        auto f = -1000.0 * (t->getPosition() - getPosition()).normalized() *
-                 (getRadius() + t->getRadius() -
-                  (t->getPosition() - getPosition()).length());
+      if (t->getPosition() != getPosition() && (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length()) > 0) {
+        auto f = -1000.0 * (t->getPosition() - getPosition()).normalized() * (getRadius() + t->getRadius() - (t->getPosition() - getPosition()).length());
         addForceInWorld(f, getPosition());
         t->addForceInWorld(-f, t->getPosition());
       }
@@ -49,7 +45,7 @@ void CellState::updateCell() {
   m_startTimer += DeltaTime;
 
   // parts
-  for (const auto &p : m_partStates)
+  for (const auto& p : m_partStates)
     p->update(*this);
 
   // Elementの取り込み
@@ -61,7 +57,7 @@ void CellState::updateCell() {
       m_yieldTimer = 0.0;
       m_storage -= m_cellAsset->getMaterial();
 
-      const auto &e = World::GetInstance()->addEggState(m_cellAsset);
+      const auto& e = World::GetInstance()->addEggState(m_cellAsset);
       e->setPosition(getPosition());
       e->setRotation(Random(Math::TwoPi));
       e->setVelocity(Vec2(1.0, 0.0).rotated(rand() / 360.0));
@@ -72,18 +68,16 @@ void CellState::updateCell() {
 
   // 余剰分の吐き出し
   {
-    for (const auto &protein : m_storage.getProteinList()) {
+    for (const auto& protein : m_storage.getProteinList()) {
       int max = m_cellAsset->getMaxStorage().numProtein(protein.first);
       if (max < protein.second) {
         m_storage.addElement(
-            protein.first->getMaterial().getElementRecursive() *
-            (protein.second - max));
+            protein.first->getMaterial().getElementRecursive() * (protein.second - max));
         m_storage.pullProtein(protein.first, protein.second - max);
       }
     }
     if (m_storage.getElement() > m_cellAsset->getMaxStorage().getElement()) {
-      double delta =
-          m_storage.getElement() - m_cellAsset->getMaxStorage().getElement();
+      double delta = m_storage.getElement() - m_cellAsset->getMaxStorage().getElement();
 
       // Elementの吐き出し
       World::GetInstance()->getTile(getPosition()).addElement(delta);
@@ -93,8 +87,7 @@ void CellState::updateCell() {
 
   // 毒の影響
   {
-    auto get = 0.1 * World::GetInstance()->getTile(getPosition()).getPoison() *
-               DeltaTime;
+    auto get = 0.1 * World::GetInstance()->getTile(getPosition()).getPoison() * DeltaTime;
     auto k = 100.0;
 
     World::GetInstance()->getTile(getPosition()).pullPoison(get);
@@ -106,8 +99,7 @@ void CellState::updateCell() {
       // Elementの吐き出し
       World::GetInstance()
           ->getTile(getPosition())
-          .addElement(m_storage.getElementRecursive() +
-                      m_cellAsset->getMaterial().getElementRecursive());
+          .addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
 
       // Poisonの掃き出し
       World::GetInstance()->getTile(getPosition()).addPoison(m_bioaccumulation);
@@ -121,8 +113,7 @@ void CellState::updateCell() {
     // Elementの吐き出し
     World::GetInstance()
         ->getTile(getPosition())
-        .addElement(m_storage.getElementRecursive() +
-                    m_cellAsset->getMaterial().getElementRecursive());
+        .addElement(m_storage.getElementRecursive() + m_cellAsset->getMaterial().getElementRecursive());
 
     // Poisonの掃き出し
     World::GetInstance()->getTile(getPosition()).addPoison(m_bioaccumulation);
@@ -132,8 +123,7 @@ void CellState::updateCell() {
 }
 
 void CellState::draw() {
-  const double stage =
-      Min(1.0, m_startTimer / m_cellAsset->getLifespanTime() * 10.0);
+  const double stage = Min(1.0, m_startTimer / m_cellAsset->getLifespanTime() * 10.0);
 
   {
     auto t1 = Transformer2D(getMat3x2());
@@ -144,7 +134,7 @@ void CellState::draw() {
         .drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
 
     // parts
-    for (const auto &partState : m_partStates)
+    for (const auto& partState : m_partStates)
       if (partState->getPartConfig()->getPartAsset()->isDrawOnStateEnabled())
         partState->draw(*this);
   }
@@ -176,10 +166,8 @@ void CellState::draw() {
 }
 
 void CellState::takeElement() {
-  const double space =
-      m_cellAsset->getMaxStorage().getElement() - m_storage.getElement();
-  const double amount =
-      World::GetInstance()->getTile(getPosition()).getElement();
+  const double space = m_cellAsset->getMaxStorage().getElement() - m_storage.getElement();
+  const double amount = World::GetInstance()->getTile(getPosition()).getElement();
   const double value = Min(space, amount);
 
   World::GetInstance()->getTile(getPosition()).pullElement(value);
@@ -190,7 +178,7 @@ bool CellState::isNeedNutrition() const {
   return !m_storage.contain(m_cellAsset->getMaterial());
 }
 
-void CellState::load(Deserializer<BinaryReader> &reader) {
+void CellState::load(Deserializer<BinaryReader>& reader) {
   Rigidbody::load(reader);
 
   reader >> m_startTimer;
@@ -208,7 +196,7 @@ void CellState::load(Deserializer<BinaryReader> &reader) {
   }
 
   // parts
-  for (const auto &partConfig : m_cellAsset->getPartConfigs()) {
+  for (const auto& partConfig : m_cellAsset->getPartConfigs()) {
     const auto partState = m_partStates.emplace_back(
         partConfig->getPartAsset()->makePartState(partConfig));
     partState->load(reader);
@@ -220,7 +208,7 @@ void CellState::load(Deserializer<BinaryReader> &reader) {
   setInertia(m_cellAsset->getInertia());
 }
 
-void CellState::save(Serializer<MemoryWriter> &writer) const {
+void CellState::save(Serializer<MemoryWriter>& writer) const {
   Rigidbody::save(writer);
 
   writer << m_startTimer;
@@ -233,6 +221,6 @@ void CellState::save(Serializer<MemoryWriter> &writer) const {
 
   writer << m_cellAsset->getName();
 
-  for (const auto &partState : m_partStates)
+  for (const auto& partState : m_partStates)
     partState->save(writer);
 }

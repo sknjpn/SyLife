@@ -7,6 +7,6 @@ public:
   virtual ~Object() = default;
 
   // JSON
-  virtual void load(const JSON &json) {}
-  virtual void save(JSON &json) const {}
+  virtual void load(const JSON& json) { }
+  virtual void save(JSON& json) const { }
 };
