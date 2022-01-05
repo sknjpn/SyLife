@@ -113,20 +113,13 @@ void Shape::load(const JSON& json) {
 void Shape::save(JSON& json) const {
   Object::save(json);
 
-  // TODO:Enable JSON Save
-  /*
   // layers
   {
-    json.key(U"layers").startArray();
+    Array<JSON> jsonArrayLayers;
 
-    for (const auto &layer : *this) {
-      json.startObject();
+    for (const auto& layer : *this)
+      layer.save(jsonArrayLayers.emplace_back());
 
-      layer.save(json);
-
-      json.endObject();
-    }
-
-    json.endArray();
-  }*/
+    json[U"layers"] = jsonArrayLayers;
+  }
 }
