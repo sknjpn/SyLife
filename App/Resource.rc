@@ -119,11 +119,11 @@ Resource(engine/soundfont/GMGSx.sf2.zstdcmp)
 //
 //////////////////////////////////////////////////////
 
-Resource(resources/music/かみさまのゆりかご.mp3)
-Resource(resources/music/沈む。.mp3)
-Resource(resources/music/天のきざはし.mp3)
-Resource(resources/music/真相探求.mp3)
-Resource(resources/music/安らぎと微睡み.mp3)
+//Resource(resources/music/かみさまのゆりかご.mp3)
+//Resource(resources/music/沈む。.mp3)
+//Resource(resources/music/天のきざはし.mp3)
+//Resource(resources/music/真相探求.mp3)
+//Resource(resources/music/安らぎと微睡み.mp3)
 
 /* examples 
 

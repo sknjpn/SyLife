@@ -9,26 +9,31 @@ void Main() {
 
   Profiler::EnableAssetCreationWarning(false);
 
+  const Array<FilePathView> musicFiles = {
+    U"天のきざはし",
+    U"沈む。",
+    U"かみさまのゆりかご",
+    U"真相探求",
+    U"安らぎと微睡み"
+  };
+
+  for (const auto& musicFile : musicFiles)
+    if (!FileSystem::Exists(U"resources/music/" + musicFile + U".mp3"))
+      GeneralSetting::GetInstance().m_audioEnabled = false;
+
   // loadBGM
   if (GeneralSetting::GetInstance().m_audioEnabled) {
-#ifdef _WIN32
-    AudioAsset::Register(U"天のきざはし", Resource(U"resources/music/天のきざはし.mp3"));
-    AudioAsset::Register(U"沈む。", Resource(U"resources/music/沈む。.mp3"));
-    AudioAsset::Register(U"かみさまのゆりかご", Resource(U"resources/music/かみさまのゆりかご.mp3"));
-    AudioAsset::Register(U"真相探求", Resource(U"resources/music/真相探求.mp3"));
-    AudioAsset::Register(U"安らぎと微睡み", Resource(U"resources/music/安らぎと微睡み.mp3"));
+#if defined(_WIN32) && defined(USE_MUSIC_RESOURCE_FILES)
+
+    for (const auto& musicFile : musicFiles)
+      AudioAsset::Register(musicFile, Resource(U"resources/music/" + musicFile + U".mp3"));
 #else
-    AudioAsset::Register(U"天のきざはし", U"resources/music/天のきざはし.mp3");
-    AudioAsset::Register(U"沈む。", U"resources/music/沈む。.mp3");
-    AudioAsset::Register(U"かみさまのゆりかご", U"resources/music/かみさまのゆりかご.mp3");
-    AudioAsset::Register(U"真相探求", U"resources/music/真相探求.mp3");
-    AudioAsset::Register(U"安らぎと微睡み", U"resources/music/安らぎと微睡み.mp3");
+    for (const auto& musicFile : musicFiles)
+      AudioAsset::Register(musicFile, U"resources/music/" + musicFile + U".mp3");
 #endif
-    AudioAsset::LoadAsync(U"天のきざはし");
-    AudioAsset::LoadAsync(U"沈む。");
-    AudioAsset::LoadAsync(U"かみさまのゆりかご");
-    AudioAsset::LoadAsync(U"真相探求");
-    AudioAsset::LoadAsync(U"安らぎと微睡み");
+
+    for (const auto& musicFile : musicFiles)
+      AudioAsset::LoadAsync(musicFile);
   }
 
   // Cursor設定
