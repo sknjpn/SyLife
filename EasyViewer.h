@@ -108,6 +108,10 @@ public:
       // destroyされたEasyViewerの削除
       GetRootViewer()->removeDeadViewer();
     }
+
+    // アプリの終了時に各Viewerの削除処理を行う
+    GetRootViewer()->destroy();
+    GetRootViewer()->removeDeadViewer();
   }
 
   std::shared_ptr<EasyViewer> getParentViewer() const { return m_parentViewer.lock(); }
