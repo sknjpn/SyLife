@@ -69,10 +69,10 @@ class TinyCamera
 
   // 移動に対するコントロール条件
   std::array<std::function<bool()>, 4> m_controls = {
-    []() { return KeyW.pressed(); },
-    []() { return KeyA.pressed(); },
-    []() { return KeyS.pressed(); },
-    []() { return KeyD.pressed(); },
+    []() { return (KeyW.pressed() || KeyUp.pressed()); },
+    []() { return (KeyA.pressed() || KeyLeft.pressed()); },
+    []() { return (KeyS.pressed() || KeyDown.pressed()); },
+    []() { return (KeyD.pressed() || KeyRight.pressed()); },
   };
 
   // 最小最大の拡大率
