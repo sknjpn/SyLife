@@ -13,7 +13,7 @@
 |Platform|Requirements|
 |:------------------:|:------------------------------|
 |Windows|Windows 7 SP1 / 8.1 / 10 / 11 (64-bit)<br>Microsoft Visual C++ 2022 17.3<br>Windows 10 SDK<br>Intel / AMD CPU|
-|macOS|macOS Mojave / Catalina / Big Sur / Monterey<br>Xcode 11.3 or newer (Big Sur requires Xcode 12.5 or newer)<br>Intel CPU / Apple Silicon (Rosetta mode)*<br>OpenGL 4.1 compatible hardware|
+|macOS|macOS Mojave / Catalina / Big Sur / Monterey<br>Xcode 11.3 or newer (Big Sur requires Xcode 12.5 or newer)<br>Intel CPU / Apple Silicon (Rosetta mode)<br>OpenGL 4.1 compatible hardware|
 |Linux|GCC 9.3.0 (with Boost 1.71.0) / GCC 11.2 (with Boost 1.74.0)<br>Intel / AMD CPU<br>OpenGL 4.1 compatible hardware|
 |Web|Web browser with WebAssembly and WebGL2 support|
 
