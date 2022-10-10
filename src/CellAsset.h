@@ -7,7 +7,8 @@ class PartConfig;
 class Part_BodyAsset;
 class Part_NucleusAsset;
 
-class CellAsset : public Asset {
+class CellAsset : public Asset
+{
   Storage m_material;
   Storage m_maxStorage;
 
@@ -53,7 +54,8 @@ public:
 
   void setCentroidAsOrigin();
 
-  void removePartConfig(const std::shared_ptr<PartConfig>& partConfig) {
+  void removePartConfig(const std::shared_ptr<PartConfig>& partConfig)
+  {
     m_partConfigs.remove(partConfig);
   }
 
@@ -91,16 +93,20 @@ public:
   // TypeName
   String getTypeName() override { return U"CellAsset"; }
 
-  class Log {
+  class Log
+  {
   public:
-    class Status {
+    class Status
+    {
     public:
       int m_numCell;
       int m_numEgg;
 
       Status(int numCell, int numEgg)
-          : m_numCell(numCell)
-          , m_numEgg(numEgg) { }
+        : m_numCell(numCell)
+        , m_numEgg(numEgg)
+      {
+      }
     };
 
     Array<Status> m_statuses;

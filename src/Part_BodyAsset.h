@@ -2,10 +2,13 @@
 
 #include "PartAsset.h"
 
-class Part_BodyAsset : public PartAsset {
+class Part_BodyAsset : public PartAsset
+{
 public:
   Part_BodyAsset()
-      : m_image(800, 800) { }
+    : m_image(800, 800)
+  {
+  }
 
   Texture m_texture;
   Image   m_image;
@@ -21,7 +24,7 @@ public:
   bool isDrawOnStateEnabled() const override { return false; }
 
   void draw(double a) override;
-  void preRender(Image&                  image,
+  void preRender(Image& image,
       const std::shared_ptr<PartConfig>& partConfig) const override;
 
   // TypeName

@@ -13,10 +13,13 @@ class CellAsset;
 class CellState;
 class PartConfig;
 
-class MainViewer : public EasyViewer {
-  class CellAssetViewer : public DraggableViewer {
+class MainViewer : public EasyViewer
+{
+  class CellAssetViewer : public DraggableViewer
+  {
   public:
-    class CellStateViewer : public DraggableViewer {
+    class CellStateViewer : public DraggableViewer
+    {
       std::shared_ptr<CellState> m_cellState;
 
     public:
@@ -48,8 +51,10 @@ class MainViewer : public EasyViewer {
     void   drawGraph(const RectF& rect, const Color& color, double max, int scale, std::function<double(const CellAsset::Log::Status&)> func) const;
   };
 
-  class CellBook : public HiddenViewer {
-    class Item : public EasyViewer {
+  class CellBook : public HiddenViewer
+  {
+    class Item : public EasyViewer
+    {
       std::shared_ptr<CellAsset> m_cellAsset;
 
     public:
@@ -66,9 +71,11 @@ class MainViewer : public EasyViewer {
     void update() override;
   };
 
-  class FieldViewer : public EasyViewer {
+  class FieldViewer : public EasyViewer
+  {
     class CellStateCaptureViewer
-        : public EasyViewer {
+      : public EasyViewer
+    {
       std::shared_ptr<CellState> m_cellState;
 
     public:
@@ -79,7 +86,8 @@ class MainViewer : public EasyViewer {
     };
 
     class ReleaseViewer
-        : public EasyViewer {
+      : public EasyViewer
+    {
       std::shared_ptr<CellAsset> m_cellAsset;
 
       Vec2   m_position;
@@ -100,7 +108,8 @@ class MainViewer : public EasyViewer {
     void openCellMakingViewer();
 
   public:
-    enum class HandAction {
+    enum class HandAction
+    {
       None,
       AddElement,
       Poison,
@@ -114,24 +123,29 @@ class MainViewer : public EasyViewer {
     void init() override;
     void update() override;
 
-    void release(const std::shared_ptr<CellAsset>& cellAsset) {
+    void release(const std::shared_ptr<CellAsset>& cellAsset)
+    {
       addChildViewer<ReleaseViewer>(cellAsset);
       m_handAction = HandAction::None;
     }
 
-    TinyCamera&       getCamera() { return m_camera; }
+    TinyCamera& getCamera() { return m_camera; }
     const TinyCamera& getCamera() const { return m_camera; }
   };
 
-  class CommandPalette : public HiddenViewer {
+  class CommandPalette : public HiddenViewer
+  {
   public:
     void init() override;
     void update() override;
   };
 
-  class StatisticsViewer : public DraggableViewer {
-    struct Log {
-      struct Status {
+  class StatisticsViewer : public DraggableViewer
+  {
+    struct Log
+    {
+      struct Status
+      {
         int m_numCell = 0;
         int m_numEgg = 0;
 
@@ -143,7 +157,9 @@ class MainViewer : public EasyViewer {
       Array<Status>              m_statuses;
 
       Log(const std::shared_ptr<CellAsset>& cellAsset)
-          : m_cellAsset(cellAsset) { }
+        : m_cellAsset(cellAsset)
+      {
+      }
     };
 
     Array<Log> m_logs;
@@ -156,9 +172,12 @@ class MainViewer : public EasyViewer {
     void takeLog();
   };
 
-  class CellMakingViewer : public EasyViewer {
-    class BodySculptor : public EasyViewer {
-      class Workspace : public EasyViewer {
+  class CellMakingViewer : public EasyViewer
+  {
+    class BodySculptor : public EasyViewer
+    {
+      class Workspace : public EasyViewer
+      {
         DynamicTexture                  m_texture;
         std::shared_ptr<Part_BodyAsset> m_bodyAsset;
 
@@ -171,7 +190,9 @@ class MainViewer : public EasyViewer {
 
       public:
         Workspace(const std::shared_ptr<Part_BodyAsset>& bodyAsset)
-            : m_bodyAsset(bodyAsset) { }
+          : m_bodyAsset(bodyAsset)
+        {
+        }
 
         void onDestroy() override;
         void init() override;
@@ -181,7 +202,8 @@ class MainViewer : public EasyViewer {
       };
 
     public:
-      class ColorSelector : public EasyViewer {
+      class ColorSelector : public EasyViewer
+      {
         const Array<Color> m_colors = { Palette::Blue, Palette::Purple, Palette::Red, Palette::Pink, Palette::Orange, Palette::Yellow, Palette::Yellowgreen, Palette::Green, Palette::Skyblue, Palette::Wheat, Palette::Black, Palette::Brown };
 
         Color  m_selectedColor = Palette::Blue;
@@ -208,12 +230,15 @@ class MainViewer : public EasyViewer {
       double getStampRadius() const;
     };
 
-    class PartsAssembler : public EasyViewer {
+    class PartsAssembler : public EasyViewer
+    {
     public:
-      class Workspace : public EasyViewer {
-        class TrashBox : public EasyViewer {
+      class Workspace : public EasyViewer
+      {
+        class TrashBox : public EasyViewer
+        {
           bool    m_isSelected = false;
-          Texture m_textureTrashBox = Texture { 0xf1f8_icon, 80 };
+          Texture m_textureTrashBox = Texture{ 0xf1f8_icon, 80 };
 
         public:
           void select() { m_isSelected = true; }
@@ -222,7 +247,8 @@ class MainViewer : public EasyViewer {
           void update() override;
         };
 
-        enum struct State {
+        enum struct State
+        {
           MoveMode,
           RotateMode,
         };
@@ -249,7 +275,8 @@ class MainViewer : public EasyViewer {
         void setRotateMode();
       };
 
-      class PartList : public EasyViewer {
+      class PartList : public EasyViewer
+      {
         double                     m_itemHeight = 80;
         std::shared_ptr<PartAsset> m_selectedPart;
 
@@ -271,7 +298,8 @@ class MainViewer : public EasyViewer {
       void update() override;
     };
 
-    class CellInfo : public EasyViewer {
+    class CellInfo : public EasyViewer
+    {
       TextEditState m_textEditState_name;
 
     public:

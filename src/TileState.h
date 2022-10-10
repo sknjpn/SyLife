@@ -4,7 +4,8 @@
 
 class World;
 
-class TileState {
+class TileState
+{
   friend class World;
 
   double m_element = 0.0;
@@ -26,17 +27,20 @@ public:
   void addPoison(double poison) { m_poison += poison; }
   void pullPoison(double poison) { m_poison -= poison; }
 
-  Color getColor() const {
+  Color getColor() const
+  {
     return Math::Lerp(Color(0, 0), Palette::Palegreen, Min(m_element / 100.0, 1.0));
   }
 
-  void load(Deserializer<BinaryReader>& reader) {
+  void load(Deserializer<BinaryReader>& reader)
+  {
     reader >> m_waveVelocity;
     reader >> m_element;
     reader >> m_poison;
   }
 
-  void save(Serializer<MemoryWriter>& writer) const {
+  void save(Serializer<MemoryWriter>& writer) const
+  {
     writer << m_waveVelocity;
     writer << m_element;
     writer << m_poison;

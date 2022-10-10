@@ -6,7 +6,8 @@ class EasyViewer;
 
 // AssetManagerに登録可能なModel
 // JSONファイルに対応している
-class Asset : public Object {
+class Asset : public Object
+{
   String  m_name;
   String  m_nameJP;
   String  m_filepath;
@@ -25,9 +26,9 @@ public:
 
   // Get
   const Texture& getAssetIcon() const { return m_assetIcon; }
-  const String&  getName() const { return m_name; }
-  const String&  getNameJP() const { return m_nameJP; }
-  const String&  getFilePath() const { return m_filepath; }
+  const String& getName() const { return m_name; }
+  const String& getNameJP() const { return m_nameJP; }
+  const String& getFilePath() const { return m_filepath; }
   bool           getIsUserAsset() const { return m_isUserAsset; }
 
   // JSON

@@ -5,7 +5,8 @@
 #include "PartConfig.h"
 #include "Part_BodyAsset.h"
 
-Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStamp() const {
+Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStamp() const
+{
   const auto p1 = Cursor::PreviousPosF();
   const auto p2 = Cursor::PosF();
   const auto r = getParentViewer<BodySculptor>()->getStampRadius();
@@ -16,22 +17,26 @@ Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStamp() const 
 
   Array<Vec2> outers;
   double      delta = 1.0 / r;
-  for (double ang = delta; ang < Math::Pi; ang += delta) {
+  for (double ang = delta; ang < Math::Pi; ang += delta)
+  {
     outers.emplace_back(p1 + (v * r).rotated(Math::HalfPi + ang));
   }
 
-  for (double ang = delta; ang < Math::Pi; ang += delta) {
+  for (double ang = delta; ang < Math::Pi; ang += delta)
+  {
     outers.emplace_back(p2 + (v * r).rotated(-Math::HalfPi + ang));
   }
 
   return Polygon(outers);
 }
 
-Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampOnImage() const {
+Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampOnImage() const
+{
   return getStamp().scaled(GeneralSetting::GetInstance().m_textureScale).movedBy(getViewerSize() / 2.0);
 }
 
-Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampReversed() const {
+Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampReversed() const
+{
   const auto polygon = getStamp();
 
   auto outer = polygon.outer();
@@ -40,7 +45,8 @@ Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampReversed(
   outer.reverse();
 
   auto inners = polygon.inners();
-  for (auto& hole : inners) {
+  for (auto& hole : inners)
+  {
     for (auto& point : hole)
       point.x *= -1;
 
@@ -50,19 +56,23 @@ Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampReversed(
   return Polygon(outer, inners);
 }
 
-Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampOnImageReversed() const {
+Polygon MainViewer::CellMakingViewer::BodySculptor::Workspace::getStampOnImageReversed() const
+{
   return getStampReversed().scaled(GeneralSetting::GetInstance().m_textureScale).movedBy(getViewerSize() / 2.0);
 }
 
-const Color& MainViewer::CellMakingViewer::BodySculptor::Workspace::getColor() const {
+const Color& MainViewer::CellMakingViewer::BodySculptor::Workspace::getColor() const
+{
   return getParentViewer()->getChildViewer<ColorSelector>()->getSelectedColor();
 }
 
-void MainViewer::CellMakingViewer::BodySculptor::Workspace::onDestroy() {
+void MainViewer::CellMakingViewer::BodySculptor::Workspace::onDestroy()
+{
   m_bodyAsset->m_texture = Texture(m_bodyAsset->m_image);
 }
 
-void MainViewer::CellMakingViewer::BodySculptor::Workspace::init() {
+void MainViewer::CellMakingViewer::BodySculptor::Workspace::init()
+{
   setBackgroundColor(Color(11, 22, 33));
 
   setViewerRectInLocal(200, 0, 800, 800);
@@ -72,29 +82,38 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::init() {
   m_texture.fill(m_bodyAsset->m_image);
 }
 
-void MainViewer::CellMakingViewer::BodySculptor::Workspace::update() {
+void MainViewer::CellMakingViewer::BodySculptor::Workspace::update()
+{
   const bool reverseEnabled = getParentViewer<BodySculptor>()->getChildViewer<GUIChecker>(U"左右対称")->getValue();
 
   // タッチパネル用に押し下げた瞬間は処理しない
-  if (MouseL.pressed() && !MouseL.down()) {
+  if (MouseL.pressed() && !MouseL.down())
+  {
     auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), TransformCursor::Yes);
 
     // 適用
-    if (isMouseover()) {
-      if (MouseL.pressed()) {
-        if (!getParentViewer()->getChildViewer<ColorSelector>()->isEraseMode()) {
+    if (isMouseover())
+    {
+      if (MouseL.pressed())
+      {
+        if (!getParentViewer()->getChildViewer<ColorSelector>()->isEraseMode())
+        {
           m_bodyAsset->getShape().front().m_polygon.append(getStamp());
           getStampOnImage().overwrite(m_bodyAsset->m_image, getColor());
 
-          if (reverseEnabled) {
+          if (reverseEnabled)
+          {
             m_bodyAsset->getShape().front().m_polygon.append(getStampReversed());
             getStampOnImageReversed().overwrite(m_bodyAsset->m_image, getColor());
           }
-        } else {
+        }
+        else
+        {
           detach(getStamp());
           getStampOnImage().overwrite(m_bodyAsset->m_image, Color(0, 0));
 
-          if (reverseEnabled) {
+          if (reverseEnabled)
+          {
             detach(getStampReversed());
             getStampOnImageReversed().overwrite(m_bodyAsset->m_image, Color(0, 0));
           }
@@ -136,7 +155,8 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update() {
   }
 
   // Mouse
-  if (isMouseover() && !GeneralSetting::GetInstance().m_touchPanelModeEnabled || MouseL.pressed()) {
+  if (isMouseover() && !GeneralSetting::GetInstance().m_touchPanelModeEnabled || MouseL.pressed())
+  {
     auto t = Transformer2D(Mat3x2::Scale(GeneralSetting::GetInstance().m_textureScale).translated(getViewerSize() / 2), TransformCursor::Yes);
 
     // Mouse
@@ -153,7 +173,8 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update() {
 
     const auto cellAsset = getParentViewer<BodySculptor>()->getParentViewer<MainViewer::CellMakingViewer>()->getCellAsset();
 
-    for (const auto& p : cellAsset->getPartConfigs()) {
+    for (const auto& p : cellAsset->getPartConfigs())
+    {
       // 二度も同じものを描画しない
       if (p->getPartAsset() == m_bodyAsset) continue;
 
@@ -165,13 +186,14 @@ void MainViewer::CellMakingViewer::BodySculptor::Workspace::update() {
   }
 }
 
-void MainViewer::CellMakingViewer::BodySculptor::Workspace::detach(const Polygon& polygon) {
+void MainViewer::CellMakingViewer::BodySculptor::Workspace::detach(const Polygon& polygon)
+{
   const auto polygons = Geometry2D::Subtract(m_bodyAsset->getShape().front().m_polygon, polygon);
 
   if (polygons.isEmpty())
     m_bodyAsset->getShape().front().m_polygon = Polygon();
   else
     m_bodyAsset->getShape().front().m_polygon = polygons
-                                                    .sorted_by([](const auto& p1, const auto& p2) { return p1.area() > p2.area(); })
-                                                    .front();
+    .sorted_by([](const auto& p1, const auto& p2) { return p1.area() > p2.area(); })
+    .front();
 }

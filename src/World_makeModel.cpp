@@ -10,7 +10,8 @@
 #include "ProteinAsset.h"
 #include "World.h"
 
-std::shared_ptr<Asset> World::makeAsset(const String& type) {
+std::shared_ptr<Asset> World::makeAsset(const String& type)
+{
   if (type == U"CellAsset") return makeAsset<CellAsset>();
 
   if (type == U"ProteinAsset") return makeAsset<ProteinAsset>();

@@ -1,10 +1,12 @@
 ﻿#include "Rigidbody.h"
 
-void Rigidbody::addForceInWorld(const Vec2& force, const Vec2& worldPosition) {
+void Rigidbody::addForceInWorld(const Vec2& force, const Vec2& worldPosition)
+{
   addImpulseInWorld(force * DeltaTime, worldPosition);
 }
 
-void Rigidbody::addImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition) {
+void Rigidbody::addImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition)
+{
   // 運動量
   const Vec2 momentum = getVelocity() * getMass() + impulse;
 
@@ -21,7 +23,8 @@ void Rigidbody::addImpulseInWorld(const Vec2& impulse, const Vec2& worldPosition
   m_angularVelocity = angularMomentum / m_inertia;
 }
 
-void Rigidbody::updateRigidbody() {
+void Rigidbody::updateRigidbody()
+{
   // 回転運動
   m_rotation += m_angularVelocity * DeltaTime;
 
@@ -29,7 +32,8 @@ void Rigidbody::updateRigidbody() {
   m_angularVelocity *= 0.95;
 }
 
-void Rigidbody::load(Deserializer<BinaryReader>& reader) {
+void Rigidbody::load(Deserializer<BinaryReader>& reader)
+{
   Particle::load(reader);
 
   reader >> m_radius;
@@ -38,7 +42,8 @@ void Rigidbody::load(Deserializer<BinaryReader>& reader) {
   reader >> m_angularVelocity;
 }
 
-void Rigidbody::save(Serializer<MemoryWriter>& writer) const {
+void Rigidbody::save(Serializer<MemoryWriter>& writer) const
+{
   Particle::save(writer);
 
   writer << m_radius;

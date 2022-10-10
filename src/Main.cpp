@@ -2,7 +2,8 @@
 #include "TitleViewer.h"
 #include "World.h"
 
-void Main() {
+void Main()
+{
   // Configの作成
   if (!FileSystem::Exists(U"config.ini"))
     INI().save(U"config.ini");
@@ -22,7 +23,8 @@ void Main() {
       GeneralSetting::GetInstance().m_audioEnabled = false;
 
   // loadBGM
-  if (GeneralSetting::GetInstance().m_audioEnabled) {
+  if (GeneralSetting::GetInstance().m_audioEnabled)
+  {
 #if defined(_WIN32) && defined(USE_MUSIC_RESOURCE_FILES)
 
     for (const auto& musicFile : musicFiles)
@@ -46,19 +48,28 @@ void Main() {
   Scene::Resize(GeneralSetting::GetInstance().m_sceneSize);
 
   // Window設定
-  if (GeneralSetting::GetInstance().m_fullScreenEnabled) {
+  if (GeneralSetting::GetInstance().m_fullScreenEnabled)
+  {
     Window::SetFullscreen(true);
-  } else {
+  }
+  else
+  {
     Window::Maximize();
   }
 
-  if (GeneralSetting::GetInstance().m_runTitleEnabled) {
+  if (GeneralSetting::GetInstance().m_runTitleEnabled)
+  {
     EasyViewer::GetRootViewer()->addChildViewer<TitleViewer>();
-  } else {
+  }
+  else
+  {
     // world生成
-    if (FileSystem::Exists(U"world/")) {
+    if (FileSystem::Exists(U"world/"))
+    {
       World::Load(U"world/");
-    } else {
+    }
+    else
+    {
       World::Make();
       World::GetInstance()->setName(U"New World");
     }

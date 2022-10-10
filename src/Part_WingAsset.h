@@ -2,7 +2,8 @@
 
 #include "PartAsset.h"
 
-class Part_WingAsset : public PartAsset {
+class Part_WingAsset : public PartAsset
+{
   bool   m_isRight;
   double m_strength;
 

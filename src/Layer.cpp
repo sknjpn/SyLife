@@ -1,6 +1,7 @@
 ﻿#include "Layer.h"
 
-void Layer::load(const JSON& json) {
+void Layer::load(const JSON& json)
+{
   Object::load(json);
 
   // color
@@ -23,7 +24,8 @@ void Layer::load(const JSON& json) {
   }
 }
 
-void Layer::save(JSON& json) const {
+void Layer::save(JSON& json) const
+{
   Object::save(json);
 
   // color

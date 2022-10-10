@@ -3,7 +3,8 @@
 #include "Layer.h"
 #include "Object.h"
 
-class Shape : public Object, public Array<Layer> {
+class Shape : public Object, public Array<Layer>
+{
   // 合成されたもの
   Polygon m_polygon;
   Texture m_preRenderTexture;
@@ -20,13 +21,14 @@ public:
 
   RectF getTileSize() const;
 
-  const RectF&   getBoundingRect() const { return m_polygon.boundingRect(); }
+  const RectF& getBoundingRect() const { return m_polygon.boundingRect(); }
   const Texture& getPreRenderTexture() const { return m_preRenderTexture; }
 
-  void draw(double a) const {
+  void draw(double a) const
+  {
     m_preRenderTexture
-        .scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
-        .draw(m_polygon.boundingRect().pos, ColorF(1.0, a));
+      .scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
+      .draw(m_polygon.boundingRect().pos, ColorF(1.0, a));
   }
 
   void load(const JSON& json) override;

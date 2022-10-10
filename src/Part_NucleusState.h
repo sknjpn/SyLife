@@ -5,7 +5,8 @@
 class Part_NucleusAsset;
 
 class Part_NucleusState
-    : public PartState {
+  : public PartState
+{
   std::shared_ptr<Part_NucleusAsset> m_Part_NucleusAsset;
 
 public:

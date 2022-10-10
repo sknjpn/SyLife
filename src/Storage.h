@@ -5,12 +5,15 @@
 
 class ProteinAsset;
 
-class Storage : public Object, private Array<std::pair<std::shared_ptr<ProteinAsset>, int>> {
+class Storage : public Object, private Array<std::pair<std::shared_ptr<ProteinAsset>, int>>
+{
   double m_element;
 
 public:
   Storage()
-      : m_element(0.0) { }
+    : m_element(0.0)
+  {
+  }
 
   // operator
   Storage  operator+(const Storage& s) const { return Storage(*this) += s; }

@@ -2,7 +2,8 @@
 
 #include "PartAsset.h"
 
-class Part_NucleusAsset : public PartAsset {
+class Part_NucleusAsset : public PartAsset
+{
   double m_lifespanTime; // 寿命
   double m_bornTime;     // 生まれるまでの時間
   double m_yieldTime;    // 生むのにかかる時間

@@ -4,7 +4,8 @@
 
 class CellAsset;
 
-class EggState : public Rigidbody {
+class EggState : public Rigidbody
+{
   std::shared_ptr<CellAsset> m_cellAsset;
 
   double m_timer;

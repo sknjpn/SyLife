@@ -2,7 +2,8 @@
 
 #include "PartAsset.h"
 
-class Part_PoisonerAsset : public PartAsset {
+class Part_PoisonerAsset : public PartAsset
+{
   double m_amount;
   double m_interval;
 

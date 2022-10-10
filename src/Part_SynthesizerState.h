@@ -4,7 +4,8 @@
 
 class Part_SynthesizerAsset;
 
-class Part_SynthesizerState : public PartState {
+class Part_SynthesizerState : public PartState
+{
   std::shared_ptr<Part_SynthesizerAsset> m_Part_SynthesizerAsset;
 
   double m_timer = 0.0;

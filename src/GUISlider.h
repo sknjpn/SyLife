@@ -3,25 +3,32 @@
 #include "EasyViewer.h"
 
 class GUISlider
-    : public EasyViewer {
+  : public EasyViewer
+{
   bool   m_isGrabbed = false;
   double m_grabbedPos;
   double m_height;
   double m_value;
   Color  m_color;
 
-  Color  getTargetColor() const { return m_isGrabbed ? Color(192) : getButton().mouseOver() ? Palette::Skyblue :
-                                                                                              Palette::White; }
+  Color  getTargetColor() const
+  {
+    return m_isGrabbed ? Color(192) : getButton().mouseOver() ? Palette::Skyblue :
+      Palette::White;
+  }
   RectF  getButton() const { return RectF(getViewerSize().x, getButtonHeight()).setPos(0, m_value * (getViewerSize().y - getButtonHeight())); }
   double getButtonHeight() const { return Min(getViewerSize().y * (getViewerSize().y / m_height), getViewerSize().y); }
 
 public:
   GUISlider(double height)
-      : m_height(height)
-      , m_value(0.0) { }
+    : m_height(height)
+    , m_value(0.0)
+  {
+  }
 
   void init() override { m_color = getTargetColor(); }
-  void update() override {
+  void update() override
+  {
     const double w = getViewerSize().x;
     const double vh = getViewerSize().y;
     const double bh = Min(vh * (vh / m_height), vh);
@@ -29,7 +36,8 @@ public:
     const double d = w / 3.0;
     const double frameThickness = w / 12;
 
-    if (isMouseover() && MouseL.down()) {
+    if (isMouseover() && MouseL.down())
+    {
       m_isGrabbed = true;
 
       if (getButton().mouseOver())
@@ -40,7 +48,8 @@ public:
 
     if (MouseL.up()) m_isGrabbed = false;
 
-    if (m_isGrabbed && vh < m_height) {
+    if (m_isGrabbed && vh < m_height)
+    {
       m_grabbedPos += Cursor::DeltaF().y / (getViewerSize().y - Min(vh * (vh / m_height), vh));
       m_value = Clamp<double>(m_grabbedPos, 0.0, 1.0);
     }

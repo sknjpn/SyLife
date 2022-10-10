@@ -9,7 +9,8 @@
 
 std::unique_ptr<World> World::g_instance;
 
-void World::MakeForEditor() {
+void World::MakeForEditor()
+{
   g_instance = std::make_unique<World>();
 
   // Assetのロード
@@ -18,7 +19,8 @@ void World::MakeForEditor() {
     asset->setIsUserAsset(false);
 }
 
-void World::Make() {
+void World::Make()
+{
   g_instance = std::make_unique<World>();
 
   // FilePathの設定
@@ -27,7 +29,8 @@ void World::Make() {
   g_instance->make();
 }
 
-void World::Load(const FilePath& filepath) {
+void World::Load(const FilePath& filepath)
+{
   g_instance = std::make_unique<World>();
 
   g_instance->m_filePath = filepath;
@@ -35,10 +38,12 @@ void World::Load(const FilePath& filepath) {
   g_instance->load();
 }
 
-void World::update() {
+void World::update()
+{
   // Cell
   {
-    for (const auto& cellState : m_cellStates) {
+    for (const auto& cellState : m_cellStates)
+    {
       if (cellState->isDestroyed())
         continue;
 
@@ -55,7 +60,8 @@ void World::update() {
 
   // Egg
   {
-    for (const auto& eggState : getEggStates()) {
+    for (const auto& eggState : getEggStates())
+    {
       if (eggState->isDestroyed())
         continue;
 
@@ -71,7 +77,8 @@ void World::update() {
   updateTiles();
 }
 
-void World::save() {
+void World::save()
+{
   Logger << U"WORLD SAVE : " << m_filePath;
 
   // World
@@ -85,7 +92,8 @@ void World::save() {
 
   // Assets
   {
-    for (const auto& asset : m_assets.filter([](const auto& asset) { return asset->getIsUserAsset(); })) {
+    for (const auto& asset : m_assets.filter([](const auto& asset) { return asset->getIsUserAsset(); }))
+    {
       if (asset->getTypeName() != U"CellAsset" && asset->getTypeName() != U"Part_BodyAsset")
         continue;
 
@@ -123,7 +131,8 @@ void World::save() {
   }
 }
 
-void World::initField() {
+void World::initField()
+{
   // Tiles
   for (auto& tile : m_tiles)
     tile.m_element = m_elementPerTile;
@@ -133,7 +142,8 @@ void World::initField() {
   initTiles();
 }
 
-void World::setTileSize(const Point& size) {
+void World::setTileSize(const Point& size)
+{
   m_fieldSize = size * TileLength;
   m_tiles.resize(size);
   m_tiles_swap.resize(size);
@@ -142,20 +152,23 @@ void World::setTileSize(const Point& size) {
 
   for (auto p : step(m_tiles.size()))
     m_tileGroups[(p.y * m_tiles.size().x + p.x) % m_tileGroups.size()]
-        .emplace_back(p);
+    .emplace_back(p);
 }
 
-void World::loadAssets(const FilePath& directory) {
+void World::loadAssets(const FilePath& directory)
+{
   Array<std::shared_ptr<Asset>> assets;
 
   // JSONのパスを取得
   auto jsonFiles = FileSystem::DirectoryContents(directory, Recursive::Yes)
-                       .removed_if([](const auto& dc) {
-                         return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json";
-                       });
+    .removed_if([](const auto& dc)
+{
+  return FileSystem::IsDirectory(dc) || FileSystem::Extension(dc) != U"json";
+    });
 
   // 名前の読み込み(リンクがあるため、Loadの前に名前の登録を行う)
-  for (auto& jsonFile : jsonFiles) {
+  for (auto& jsonFile : jsonFiles)
+  {
     JSON json = JSON::Load(jsonFile);
 
     const auto asset = assets.emplace_back(makeAsset(json[U"type"].getString()));
@@ -164,7 +177,8 @@ void World::loadAssets(const FilePath& directory) {
   }
 
   // 読み込み
-  for (const auto& m : assets) {
+  for (const auto& m : assets)
+  {
     Logger << m->getName() + U"を読み込み中";
 
     JSON json = JSON::Load(m->getFilePath());
@@ -174,20 +188,23 @@ void World::loadAssets(const FilePath& directory) {
   }
 
   // CellAssetの初期化
-  for (const auto& cellAsset : getAssets<CellAsset>()) {
+  for (const auto& cellAsset : getAssets<CellAsset>())
+  {
     cellAsset->updateProperties();
     cellAsset->preRender();
   }
 }
 
-void World::init() {
+void World::init()
+{
   g_instance->initField();
 
   // Field情報の保存
   g_instance->save();
 }
 
-void World::load() {
+void World::load()
+{
   Logger << U"WORLD LOAD : " << m_filePath;
 
   // World
@@ -238,7 +255,8 @@ void World::load() {
   }
 }
 
-void World::make() {
+void World::make()
+{
   // ディレクトリの作成
   FileSystem::CreateDirectories(m_filePath);
   FileSystem::CreateDirectories(m_filePath + U"assets/");
@@ -250,7 +268,8 @@ void World::make() {
   loadAssets(m_filePath + U"assets/");
 }
 
-std::shared_ptr<Asset> World::getAsset(const String& name) const {
+std::shared_ptr<Asset> World::getAsset(const String& name) const
+{
   for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
     if ((*it)->getName() == name)
       return std::dynamic_pointer_cast<Asset>(*it);
@@ -258,7 +277,8 @@ std::shared_ptr<Asset> World::getAsset(const String& name) const {
   throw Error(U"存在しない名前のモデルを参照しました name:" + name);
 }
 
-bool World::hasAsset(const String& name) const {
+bool World::hasAsset(const String& name) const
+{
   for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
     if ((*it)->getName() == name)
       return true;
@@ -266,12 +286,14 @@ bool World::hasAsset(const String& name) const {
   return false;
 }
 
-void World::updateTiles() {
+void World::updateTiles()
+{
   // Tileの本体からswapにコピー
   std::memcpy(&m_tiles_swap[0][0], &m_tiles[0][0], m_tiles.size_bytes());
 
   // SwapのElementリセット
-  for (auto& tile_swap : m_tiles_swap) {
+  for (auto& tile_swap : m_tiles_swap)
+  {
     tile_swap.m_element = 0;
     tile_swap.m_poison = 0;
   }
@@ -295,18 +317,22 @@ void World::updateTiles() {
   std::memcpy(&m_tiles[0][0], &m_tiles_swap[0][0], m_tiles.size_bytes());
 }
 
-void World::updateTileGroup(int groupIndex) {
+void World::updateTileGroup(int groupIndex)
+{
   const int xMax = m_tiles.size().x - 1;
   const int yMax = m_tiles.size().y - 1;
 
-  for (const auto& p : m_tileGroups[groupIndex]) {
-    for (int x = 0; x < 3; ++x) {
+  for (const auto& p : m_tileGroups[groupIndex])
+  {
+    for (int x = 0; x < 3; ++x)
+    {
       if (p.x == 0 && x == 0)
         continue;
       if (p.x == xMax && x == 2)
         continue;
 
-      for (int y = 0; y < 3; ++y) {
+      for (int y = 0; y < 3; ++y)
+      {
         if (p.y == 0 && y == 0)
           continue;
         if (p.y == yMax && y == 2)
@@ -322,10 +348,12 @@ void World::updateTileGroup(int groupIndex) {
   }
 }
 
-void World::initTiles() {
+void World::initTiles()
+{
   // SendRateの計算
-  for (auto p : step(m_tiles.size())) {
-    auto&        tile = m_tiles[p];
+  for (auto p : step(m_tiles.size()))
+  {
+    auto& tile = m_tiles[p];
     const Vec2   d = tile.m_waveVelocity * 0.015;
     const double l = 0.01;
     const double w = 1.0 + l * 2;
@@ -358,26 +386,34 @@ void World::initTiles() {
     tile.m_sendRate[1][1] = 1.0 - tile.m_sendRate[0][0] - tile.m_sendRate[1][0] - tile.m_sendRate[2][0] - tile.m_sendRate[0][1] - tile.m_sendRate[2][1] - tile.m_sendRate[0][2] - tile.m_sendRate[1][2] - tile.m_sendRate[2][2];
 
     // 存在しないところの分を移動
-    if (p.x == 0) {
-      for (int i = 0; i < 3; ++i) {
+    if (p.x == 0)
+    {
+      for (int i = 0; i < 3; ++i)
+      {
         tile.m_sendRate[1][i] += tile.m_sendRate[0][i];
         tile.m_sendRate[0][i] = 0;
       }
     }
-    if (p.y == 0) {
-      for (int i = 0; i < 3; ++i) {
+    if (p.y == 0)
+    {
+      for (int i = 0; i < 3; ++i)
+      {
         tile.m_sendRate[i][1] += tile.m_sendRate[i][0];
         tile.m_sendRate[i][0] = 0;
       }
     }
-    if (p.x == m_tiles.size().x - 1) {
-      for (int i = 0; i < 3; ++i) {
+    if (p.x == m_tiles.size().x - 1)
+    {
+      for (int i = 0; i < 3; ++i)
+      {
         tile.m_sendRate[1][i] += tile.m_sendRate[2][i];
         tile.m_sendRate[2][i] = 0;
       }
     }
-    if (p.y == m_tiles.size().y - 1) {
-      for (int i = 0; i < 3; ++i) {
+    if (p.y == m_tiles.size().y - 1)
+    {
+      for (int i = 0; i < 3; ++i)
+      {
         tile.m_sendRate[i][1] += tile.m_sendRate[i][2];
         tile.m_sendRate[i][2] = 0;
       }
@@ -386,19 +422,21 @@ void World::initTiles() {
 }
 
 World::World()
-    : m_cellStateKDTree(m_cellStates)
-    , m_eggStateKDTree(m_eggStates) {
+  : m_cellStateKDTree(m_cellStates)
+  , m_eggStateKDTree(m_eggStates)
+{
   m_cellStates.reserve(0xFFFF);
   m_eggStates.reserve(0xFFFF);
 }
 
-void World::draw() {
+void World::draw()
+{
   RectF(m_fieldSize).draw(Color(11, 22, 33));
 
   // Tiles
   {
     const ScopedRenderStates2D state(SamplerState::BorderLinear);
-    static const PixelShader   ps = HLSL { U"resources/tile.hlsl", U"PS" } | GLSL { U"resources/tile.frag", { { U"PSConstants2D", 0 } } };
+    static const PixelShader   ps = HLSL{ U"resources/tile.hlsl", U"PS" } | GLSL{ U"resources/tile.frag", { { U"PSConstants2D", 0 } } };
     const ScopedCustomShader2D shader(ps);
 
     Image image(m_tiles.size());
@@ -443,17 +481,21 @@ void World::draw() {
 }
 
 const std::shared_ptr<CellState>&
-World::addCellState(const std::shared_ptr<CellAsset>& asset) {
+World::addCellState(const std::shared_ptr<CellAsset>& asset)
+{
   return m_cellStates.emplace_back(std::make_shared<CellState>(asset));
 }
 
 const std::shared_ptr<EggState>&
-World::addEggState(const std::shared_ptr<CellAsset>& asset) {
+World::addEggState(const std::shared_ptr<CellAsset>& asset)
+{
   return m_eggStates.emplace_back(std::make_shared<EggState>(asset));
 }
 
-void World::generateWave() {
-  for (auto p : step(m_tiles.size())) {
+void World::generateWave()
+{
+  for (auto p : step(m_tiles.size()))
+  {
     auto& tile = m_tiles[p];
 
     //外的圧力比
@@ -470,6 +512,6 @@ void World::generateWave() {
     // 最大の長さを1とする
     tile.m_waveVelocity = Vec2(Math::Lerp(wx, rx > 0 ? -1.0 : 1.0, EaseInExpo(Abs(rx))),
                               Math::Lerp(wy, ry > 0 ? -1.0 : 1.0, EaseInExpo(Abs(ry))))
-        / Math::Sqrt2;
+      / Math::Sqrt2;
   }
 }

@@ -2,7 +2,8 @@
 
 #include "PartAsset.h"
 
-class Part_EyeAsset : public PartAsset {
+class Part_EyeAsset : public PartAsset
+{
   double m_maxDistance;
 
 public:

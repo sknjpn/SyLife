@@ -2,15 +2,19 @@
 #include "MainViewer.h"
 
 MainViewer::FieldViewer::CellStateCaptureViewer::CellStateCaptureViewer(const std::shared_ptr<CellState>& cellState)
-    : m_cellState(cellState) {
+  : m_cellState(cellState)
+{
 }
 
-void MainViewer::FieldViewer::CellStateCaptureViewer::init() {
+void MainViewer::FieldViewer::CellStateCaptureViewer::init()
+{
   setIsPenetrated(true);
 }
 
-void MainViewer::FieldViewer::CellStateCaptureViewer::update() {
-  if (MouseL.up() || m_cellState->isDestroyed()) {
+void MainViewer::FieldViewer::CellStateCaptureViewer::update()
+{
+  if (MouseL.up() || m_cellState->isDestroyed())
+  {
     destroy();
     return;
   }

@@ -2,7 +2,8 @@
 #include "GUIIcon.h"
 #include "MainViewer.h"
 
-void MainViewer::CommandPalette::init() {
+void MainViewer::CommandPalette::init()
+{
   setViewerSize(65 * 5 + 5, 65 * 2 + 10);
   setFirstPosInLocal(Scene::Width() - getViewerSize().x - 20, 20);
   setSecondPosInLocal(Scene::Width(), 20);
@@ -11,52 +12,53 @@ void MainViewer::CommandPalette::init() {
   const Color enableColor = Palette::Red;
 
   addChildViewer<GUIButton>()
-      ->setName(U"zoomIn")
-      ->setViewerRectInLocal(5, 5, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf00e, 0.75, disableColor);
+    ->setName(U"zoomIn")
+    ->setViewerRectInLocal(5, 5, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf00e, 0.75, disableColor);
 
   addChildViewer<GUIButton>()
-      ->setName(U"zoomOut")
-      ->setViewerRectInLocal(70, 5, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf010, 0.75, disableColor);
+    ->setName(U"zoomOut")
+    ->setViewerRectInLocal(70, 5, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf010, 0.75, disableColor);
 
   addChildViewer<GUIButton>()
-      ->setName(U"fastMode")
-      ->setViewerRectInLocal(135, 5, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf050, 0.75, disableColor);
+    ->setName(U"fastMode")
+    ->setViewerRectInLocal(135, 5, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf050, 0.75, disableColor);
 
   addChildViewer<GUIButton>()
-      ->setName(U"showWave")
-      ->setViewerRectInLocal(200, 5, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf5c4, 0.75, disableColor);
+    ->setName(U"showWave")
+    ->setViewerRectInLocal(200, 5, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf5c4, 0.75, disableColor);
 
   addChildViewer<GUIButton>()
-      ->setName(U"closeEye")
-      ->setViewerRectInLocal(265, 5, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf070, 0.75, disableColor);
+    ->setName(U"closeEye")
+    ->setViewerRectInLocal(265, 5, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf070, 0.75, disableColor);
 
   addChildViewer<GUIButton>()
-      ->setName(U"handNone")
-      ->setViewerRectInLocal(5, 75, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf25a, 0.75, disableColor);
+    ->setName(U"handNone")
+    ->setViewerRectInLocal(5, 75, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf25a, 0.75, disableColor);
 
   addChildViewer<GUIButton>()
-      ->setName(U"handPoison")
-      ->setViewerRectInLocal(70, 75, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf714, 0.75, disableColor);
+    ->setName(U"handPoison")
+    ->setViewerRectInLocal(70, 75, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf714, 0.75, disableColor);
 
   addChildViewer<GUIButton>()
-      ->setName(U"handAddElement")
-      ->setViewerRectInLocal(135, 75, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf613, 0.75, disableColor);
+    ->setName(U"handAddElement")
+    ->setViewerRectInLocal(135, 75, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf613, 0.75, disableColor);
 
   addChildViewer<GUIButton>()
-      ->setName(U"handTrash")
-      ->setViewerRectInLocal(200, 75, 60, 60)
-      ->addChildViewer<GUIIcon>(0xf1f8, 0.75, disableColor);
+    ->setName(U"handTrash")
+    ->setViewerRectInLocal(200, 75, 60, 60)
+    ->addChildViewer<GUIIcon>(0xf1f8, 0.75, disableColor);
 }
 
-void MainViewer::CommandPalette::update() {
+void MainViewer::CommandPalette::update()
+{
   HiddenViewer::update();
 
   RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);
@@ -93,19 +95,23 @@ void MainViewer::CommandPalette::update() {
     button->getChildViewer<GUIIcon>()->setColor(disableColor);
 
   {
-    if (zoomIn->isGrabbed() || KeyK.pressed()) {
+    if (zoomIn->isGrabbed() || KeyK.pressed())
+    {
       zoomInIcon->setColor(enableColor);
       fv->getCamera().zoomIn();
     }
-    if (zoomOut->isGrabbed() || KeyL.pressed()) {
+    if (zoomOut->isGrabbed() || KeyL.pressed())
+    {
       zoomOutIcon->setColor(enableColor);
       fv->getCamera().zoomOut();
     }
-    if (fastMode->isSelected()) {
+    if (fastMode->isSelected())
+    {
       fv->m_isHighSpeed = !fv->m_isHighSpeed;
       if (fv->m_isHighSpeed) { fastModeIcon->setColor(enableColor); }
     }
-    if (showWave->isSelected()) {
+    if (showWave->isSelected())
+    {
       fv->m_drawWaveEnabled = !fv->m_drawWaveEnabled;
       if (fv->m_drawWaveEnabled) { showWaveIcon->setColor(enableColor); }
     }
@@ -119,7 +125,8 @@ void MainViewer::CommandPalette::update() {
     if (handAddElement->isSelected()) fv->m_handAction = FieldViewer::HandAction::AddElement;
     if (handTrash->isSelected()) fv->m_handAction = FieldViewer::HandAction::Trash;
 
-    switch (fv->m_handAction) {
+    switch (fv->m_handAction)
+    {
     case FieldViewer::HandAction::None: handNoneIcon->setColor(enableColor); break;
     case FieldViewer::HandAction::AddElement: handAddElementIcon->setColor(enableColor); break;
     case FieldViewer::HandAction::Poison: handPoisonIcon->setColor(enableColor); break;

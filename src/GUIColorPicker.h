@@ -2,7 +2,8 @@
 
 #include "EasyViewer.h"
 
-class GUIColorPicker : public EasyViewer {
+class GUIColorPicker : public EasyViewer
+{
   HSV  m_color;
   bool m_isGrabbed = false;
 
@@ -10,13 +11,18 @@ class GUIColorPicker : public EasyViewer {
 
 public:
   GUIColorPicker(const Color& color = Palette::White)
-      : m_color(color) { }
+    : m_color(color)
+  {
+  }
 
   GUIColorPicker(std::function<void(const Color&)> functionOnChanged, const Color& color = Palette::White)
-      : m_functionOnChanged(functionOnChanged)
-      , m_color(color) { }
+    : m_functionOnChanged(functionOnChanged)
+    , m_color(color)
+  {
+  }
 
-  void update() override {
+  void update() override
+  {
     // size 160, 116
 
     RectF(getViewerSize()).rounded(5).draw(Palette::White).drawFrame(2.0, 0.0, Palette::Black);

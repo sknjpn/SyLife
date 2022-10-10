@@ -7,8 +7,10 @@
 #include "MainViewer.h"
 #include "World.h"
 
-void TitleViewer::updateBubbles() {
-  while (RandomBool(0.5)) {
+void TitleViewer::updateBubbles()
+{
+  while (RandomBool(0.5))
+  {
     auto& b = m_bubbles.emplace_back();
 
     b.m_position = Vec3(Random(-120.0, 120.0), -100.0, Random(30.0, 270.0));
@@ -22,15 +24,18 @@ void TitleViewer::updateBubbles() {
   const int              numThread = 12;
   Array<AsyncTask<void>> tasks;
 
-  for (int i = 0; i < numThread; ++i) {
-    tasks.emplace_back([this, i, numThread]() {
-      for (int j = i; j < m_bubbles.size(); j += numThread) {
-        const auto k = 4.0;
-        m_bubbles[j].m_timer += k;
-        m_bubbles[j].m_position.x += k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
-        m_bubbles[j].m_position.y += k * 0.075;
-        m_bubbles[j].m_position.z += k * 0.10 * noise2.noise3D(m_bubbles[j].m_position * 0.02 + liner);
-      }
+  for (int i = 0; i < numThread; ++i)
+  {
+    tasks.emplace_back([this, i, numThread]()
+ {
+   for (int j = i; j < m_bubbles.size(); j += numThread)
+   {
+     const auto k = 4.0;
+     m_bubbles[j].m_timer += k;
+     m_bubbles[j].m_position.x += k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
+     m_bubbles[j].m_position.y += k * 0.075;
+     m_bubbles[j].m_position.z += k * 0.10 * noise2.noise3D(m_bubbles[j].m_position * 0.02 + liner);
+   }
     });
   }
 
@@ -38,7 +43,8 @@ void TitleViewer::updateBubbles() {
     while (!t.isReady())
       ;
 #else
-  for (int j = 0; j < m_bubbles.size(); ++j) {
+  for (int j = 0; j < m_bubbles.size(); ++j)
+  {
     const auto k = 4.0;
     m_bubbles[j].m_timer += k;
     m_bubbles[j].m_position.x += k * 0.10 * noise1.noise3D(m_bubbles[j].m_position * 0.02 + liner);
@@ -52,14 +58,16 @@ void TitleViewer::updateBubbles() {
   m_bubbles.remove_if([](const auto& b) { return b.m_timer > 1800.0; });
 }
 
-void TitleViewer::drawBubbles() {
+void TitleViewer::drawBubbles()
+{
   static Texture texture(U"resources/image/particle.png", TextureDesc::Mipped);
 
   ScopedRenderStates2D blend(BlendState::Additive);
 
   static double t = 0.0;
   t += 1.0;
-  for (auto& b : m_bubbles) {
+  for (auto& b : m_bubbles)
+  {
     auto s = 20.0;
     Vec3 camPos(sin(150_deg + t * 0.001 * 11) * s, sin(210_deg + t * 0.001 * 13) * s, sin(t * 0.001 * 17) * s);
     Vec3 p = b.m_position - camPos;
@@ -79,18 +87,23 @@ void TitleViewer::drawBubbles() {
   }
 }
 
-void TitleViewer::runNew() {
+void TitleViewer::runNew()
+{
   for (const auto& child : getChildViewers<GUIButton>())
     child->destroy();
 
   addChildViewer<WorldGenerator>();
 }
 
-void TitleViewer::runContinue() {
+void TitleViewer::runContinue()
+{
   // world生成
-  if (FileSystem::Exists(U"world/")) {
+  if (FileSystem::Exists(U"world/"))
+  {
     World::Load(U"world/");
-  } else {
+  }
+  else
+  {
     World::Make();
     World::GetInstance()->setName(U"New World");
   }
@@ -100,44 +113,50 @@ void TitleViewer::runContinue() {
   destroy();
 }
 
-void TitleViewer::init() {
+void TitleViewer::init()
+{
   if (GeneralSetting::GetInstance().m_audioEnabled)
     addChildViewer<GUIMusicBox>(U"天のきざはし");
 
   const auto p = RectF(500, 50).setCenter(
       Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 
-  addChildViewer<GUIButton>([this]() {
-    runNew();
+  addChildViewer<GUIButton>([this]()
+ {
+   runNew();
   })
-      ->setViewerRectInLocal(p.movedBy(0, 0))
-      ->addChildViewer<GUIText>(U"はじめから", Font(40, Typeface::Bold));
+    ->setViewerRectInLocal(p.movedBy(0, 0))
+    ->addChildViewer<GUIText>(U"はじめから", Font(40, Typeface::Bold));
 
-  addChildViewer<GUIButton>([this]() {
-    addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { runContinue(); });
+  addChildViewer<GUIButton>([this]()
+ {
+   addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { runContinue(); });
   },
       FileSystem::Exists(U"world/"))
-      ->setViewerRectInLocal(p.movedBy(0, 75))
-      ->addChildViewer<GUIText>(U"つづきから", Font(40, Typeface::Bold));
+    ->setViewerRectInLocal(p.movedBy(0, 75))
+    ->addChildViewer<GUIText>(U"つづきから", Font(40, Typeface::Bold));
 
-  addChildViewer<GUIButton>([this]() {
-    getParentViewer()->addChildViewer<EditorViewer>();
-    destroy();
+  addChildViewer<GUIButton>([this]()
+ {
+   getParentViewer()->addChildViewer<EditorViewer>();
+   destroy();
   })
-      ->setViewerRectInLocal(p.movedBy(0, 150))
-      ->addChildViewer<GUIText>(U"エディター", Font(40, Typeface::Bold));
+    ->setViewerRectInLocal(p.movedBy(0, 150))
+    ->addChildViewer<GUIText>(U"エディター", Font(40, Typeface::Bold));
 
-  addChildViewer<GUIButton>([this]() {
-    addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); });
+  addChildViewer<GUIButton>([this]()
+ {
+   addChildViewer<GUICurtain>(Color(0, 0), Color(11, 22, 33), 0.5, [this]() { System::Exit(); });
   })
-      ->setViewerRectInLocal(p.movedBy(0, 225))
-      ->addChildViewer<GUIText>(U"終了", Font(40, Typeface::Bold));
+    ->setViewerRectInLocal(p.movedBy(0, 225))
+    ->addChildViewer<GUIText>(U"終了", Font(40, Typeface::Bold));
 
   // OpenCurtain
   addChildViewer<GUICurtain>(Color(11, 22, 33), Color(0, 0), 0.5);
 }
 
-void TitleViewer::update() {
+void TitleViewer::update()
+{
   // title
   {
     auto        te = Transformer2D(Mat3x2::Scale(1.4, Scene::Center()));

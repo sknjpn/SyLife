@@ -15,24 +15,29 @@ class ProteinAsset;
 class PartConfig;
 
 template <typename T>
-struct ParticleAdapter {
+struct ParticleAdapter
+{
   using dataset_type = Array<std::shared_ptr<T>>;
   using point_type = Vec2;
   using element_type = double;
   static constexpr int32 Dimensions = 2;
 
-  static const element_type* GetPointer(const point_type& point) {
+  static const element_type* GetPointer(const point_type& point)
+  {
     return &point.x;
   }
-  static element_type GetElement(const dataset_type& dataset, size_t index, size_t dim) {
+  static element_type GetElement(const dataset_type& dataset, size_t index, size_t dim)
+  {
     return dataset[index]->getPosition().elem(dim);
   }
-  static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other) {
+  static element_type DistanceSq(const dataset_type& dataset, size_t index, const element_type* other)
+  {
     return dataset[index]->getPosition().distanceFromSq(Vec2(other[0], other[1]));
   }
 };
 
-class World {
+class World
+{
 public:
   PerlinNoise m_perlinNoiseX;
   PerlinNoise m_perlinNoiseY;
@@ -72,12 +77,14 @@ private:
 
   // Assets
   template <typename T>
-  std::shared_ptr<T> makeAsset() {
+  std::shared_ptr<T> makeAsset()
+  {
     return std::dynamic_pointer_cast<T>(m_assets.emplace_back(std::make_shared<T>()));
   }
   std::shared_ptr<Asset> makeAsset(const String& type);
   template <typename T>
-  std::shared_ptr<T> getAsset(const String& name) const {
+  std::shared_ptr<T> getAsset(const String& name) const
+  {
     auto asset = std::dynamic_pointer_cast<T>(getAsset(name));
 
     if (asset)
@@ -86,7 +93,8 @@ private:
   }
   std::shared_ptr<Asset> getAsset(const String& name) const;
   template <typename T>
-  Array<std::shared_ptr<T>> getAssets() const {
+  Array<std::shared_ptr<T>> getAssets() const
+  {
     Array<std::shared_ptr<T>> tAssets;
 
     for (auto it = m_assets.begin(); it != m_assets.end(); ++it)
@@ -107,55 +115,67 @@ public:
   void init();
 
   // Field
-  const Array<std::shared_ptr<CellState>>& getCellStates() const {
+  const Array<std::shared_ptr<CellState>>& getCellStates() const
+  {
     return m_cellStates;
   }
-  const Array<std::shared_ptr<EggState>>& getEggStates() const {
+  const Array<std::shared_ptr<EggState>>& getEggStates() const
+  {
     return m_eggStates;
   }
-  const KDTree<ParticleAdapter<CellState>>& getCellStateKDTree() const {
+  const KDTree<ParticleAdapter<CellState>>& getCellStateKDTree() const
+  {
     return m_cellStateKDTree;
   }
-  const KDTree<ParticleAdapter<EggState>>& getEggStateKDTree() const {
+  const KDTree<ParticleAdapter<EggState>>& getEggStateKDTree() const
+  {
     return m_eggStateKDTree;
   }
   const std::shared_ptr<CellState>& addCellState(const std::shared_ptr<CellAsset>& asset);
-  const std::shared_ptr<EggState>&  addEggState(const std::shared_ptr<CellAsset>& asset);
+  const std::shared_ptr<EggState>& addEggState(const std::shared_ptr<CellAsset>& asset);
 
-  TileState&             getTile(const Point& point) { return m_tiles[point]; }
-  const TileState&       getTile(const Point& point) const { return m_tiles[point]; }
-  TileState&             getTile(const Vec2& position) { return m_tiles[(position / TileLength).asPoint()]; }
-  const TileState&       getTile(const Vec2& position) const { return m_tiles[(position / TileLength).asPoint()]; }
+  TileState& getTile(const Point& point) { return m_tiles[point]; }
+  const TileState& getTile(const Point& point) const { return m_tiles[point]; }
+  TileState& getTile(const Vec2& position) { return m_tiles[(position / TileLength).asPoint()]; }
+  const TileState& getTile(const Vec2& position) const { return m_tiles[(position / TileLength).asPoint()]; }
   const Grid<TileState>& getTiles() const { return m_tiles; }
-  const Vec2&            getFieldSize() const { return m_fieldSize; }
+  const Vec2& getFieldSize() const { return m_fieldSize; }
   void                   generateWave();
 
   // Assets
   template <typename T>
-  static std::shared_ptr<T> MakeAsset() {
+  static std::shared_ptr<T> MakeAsset()
+  {
     return std::dynamic_pointer_cast<T>(g_instance->m_assets.emplace_back(std::make_shared<T>()));
   }
-  static std::shared_ptr<Asset> MakeAsset(const String& type) {
+  static std::shared_ptr<Asset> MakeAsset(const String& type)
+  {
     return g_instance->makeAsset(type);
   }
   template <typename T>
-  static std::shared_ptr<T> GetAsset(const String& name) {
+  static std::shared_ptr<T> GetAsset(const String& name)
+  {
     return g_instance->getAsset<T>(name);
   }
-  static std::shared_ptr<Asset> GetAsset(const String& name) {
+  static std::shared_ptr<Asset> GetAsset(const String& name)
+  {
     return g_instance->getAsset(name);
   }
-  static const Array<std::shared_ptr<Asset>>& GetAssets() {
+  static const Array<std::shared_ptr<Asset>>& GetAssets()
+  {
     return g_instance->m_assets;
   }
   template <typename T>
-  static Array<std::shared_ptr<T>> GetAssets() {
+  static Array<std::shared_ptr<T>> GetAssets()
+  {
     return g_instance->getAssets<T>();
   }
-  static bool HasAsset(const String& name) {
+  static bool HasAsset(const String& name)
+  {
     return g_instance->hasAsset(name);
   }
-  static void Remove(const std::shared_ptr<Asset>& asset) {
+  static void Remove(const std::shared_ptr<Asset>& asset)
+  {
     g_instance->m_assets.remove(asset);
   }
   static void Clear() { g_instance->m_assets.clear(); }

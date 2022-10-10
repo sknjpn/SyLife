@@ -2,7 +2,8 @@
 
 #include "PartAsset.h"
 
-class Part_NeedleAsset : public PartAsset {
+class Part_NeedleAsset : public PartAsset
+{
   int m_penetrating;
 
 public:

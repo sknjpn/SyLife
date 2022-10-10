@@ -7,7 +7,8 @@
 class PartState;
 class PartConfig;
 
-class PartAsset : public Asset {
+class PartAsset : public Asset
+{
 protected:
   double  m_mass;
   Storage m_material;
@@ -17,9 +18,9 @@ public:
   // Get
   double         getMass() const { return m_mass; }
   const Storage& getMaterial() const { return m_material; }
-  const Shape&   getShape() const { return m_shape; }
-  Storage&       getMaterial() { return m_material; }
-  Shape&         getShape() { return m_shape; }
+  const Shape& getShape() const { return m_shape; }
+  Storage& getMaterial() { return m_material; }
+  Shape& getShape() { return m_shape; }
 
   // Set
   void setMass(double mass) { m_mass = mass; }
