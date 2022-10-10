@@ -16,7 +16,7 @@ public:
   {
   }
 
-  bool setIsChanged() { m_isChanged = true; }
+  bool setIsChanged() { m_isChanged = true; return m_isChanged; }
 
   template <typename T>
   std::shared_ptr<T> getAsset() const
