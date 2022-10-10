@@ -7,7 +7,68 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C17789A1CE0AA7C00BB8AD0 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1778991CE0AA7C00BB8AD0 /* Main.cpp */; };
+		0971B64F28F45972008B71E2 /* TileState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5D928F45970008B71E2 /* TileState.cpp */; };
+		0971B65028F45972008B71E2 /* Part_SynthesizerState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5DC28F45970008B71E2 /* Part_SynthesizerState.cpp */; };
+		0971B65128F45972008B71E2 /* MainViewer_CellMakingViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5DD28F45970008B71E2 /* MainViewer_CellMakingViewer.cpp */; };
+		0971B65228F45972008B71E2 /* Rigidbody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5E028F45970008B71E2 /* Rigidbody.cpp */; };
+		0971B65328F45972008B71E2 /* Part_WingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5E228F45970008B71E2 /* Part_WingState.cpp */; };
+		0971B65428F45972008B71E2 /* Part_PoisonerState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5E428F45970008B71E2 /* Part_PoisonerState.cpp */; };
+		0971B65528F45972008B71E2 /* EggState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5E728F45970008B71E2 /* EggState.cpp */; };
+		0971B65628F45972008B71E2 /* CellState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5E928F45970008B71E2 /* CellState.cpp */; };
+		0971B65728F45972008B71E2 /* Part_PoisonerAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5EB28F45970008B71E2 /* Part_PoisonerAsset.cpp */; };
+		0971B65828F45972008B71E2 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5ED28F45970008B71E2 /* Particle.cpp */; };
+		0971B65928F45972008B71E2 /* TitleViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5F028F45970008B71E2 /* TitleViewer.cpp */; };
+		0971B65A28F45972008B71E2 /* Part_WingAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5F128F45970008B71E2 /* Part_WingAsset.cpp */; };
+		0971B65B28F45972008B71E2 /* Part_NucleusState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5F428F45970008B71E2 /* Part_NucleusState.cpp */; };
+		0971B65C28F45972008B71E2 /* EditorViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5F728F45971008B71E2 /* EditorViewer.cpp */; };
+		0971B65D28F45972008B71E2 /* Part_BodyAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5F828F45971008B71E2 /* Part_BodyAsset.cpp */; };
+		0971B65E28F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5F928F45971008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp */; };
+		0971B65F28F45972008B71E2 /* PartAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5FB28F45971008B71E2 /* PartAsset.cpp */; };
+		0971B66028F45972008B71E2 /* Part_DepoisonerState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5FC28F45971008B71E2 /* Part_DepoisonerState.cpp */; };
+		0971B66128F45972008B71E2 /* CellAsset_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B5FE28F45971008B71E2 /* CellAsset_Log.cpp */; };
+		0971B66228F45972008B71E2 /* MainViewer_CommandPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60028F45971008B71E2 /* MainViewer_CommandPalette.cpp */; };
+		0971B66328F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60128F45971008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp */; };
+		0971B66428F45972008B71E2 /* PartConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60228F45971008B71E2 /* PartConfig.cpp */; };
+		0971B66528F45972008B71E2 /* Part_BodyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60328F45971008B71E2 /* Part_BodyState.cpp */; };
+		0971B66628F45972008B71E2 /* MainViewer_FieldViewer_ReleaseViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60528F45971008B71E2 /* MainViewer_FieldViewer_ReleaseViewer.cpp */; };
+		0971B66728F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60628F45971008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp */; };
+		0971B66828F45972008B71E2 /* Part_SynthesizerAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60828F45971008B71E2 /* Part_SynthesizerAsset.cpp */; };
+		0971B66928F45972008B71E2 /* Part_NeedleAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60928F45971008B71E2 /* Part_NeedleAsset.cpp */; };
+		0971B66A28F45972008B71E2 /* TitleViewer_WorldGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B60C28F45971008B71E2 /* TitleViewer_WorldGenerator.cpp */; };
+		0971B66B28F45972008B71E2 /* Part_NucleusAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61028F45971008B71E2 /* Part_NucleusAsset.cpp */; };
+		0971B66C28F45972008B71E2 /* EditorViewer_AssetViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61228F45971008B71E2 /* EditorViewer_AssetViewer.cpp */; };
+		0971B66D28F45972008B71E2 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61328F45971008B71E2 /* Object.cpp */; };
+		0971B66E28F45972008B71E2 /* MainViewer_CellAssetViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61528F45971008B71E2 /* MainViewer_CellAssetViewer.cpp */; };
+		0971B66F28F45972008B71E2 /* MainViewer_CellMakingViewer_CellInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61728F45971008B71E2 /* MainViewer_CellMakingViewer_CellInfo.cpp */; };
+		0971B67028F45972008B71E2 /* Part_EyeAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61828F45971008B71E2 /* Part_EyeAsset.cpp */; };
+		0971B67128F45972008B71E2 /* MainViewer_FieldViewer_CellStateCaptureViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61A28F45971008B71E2 /* MainViewer_FieldViewer_CellStateCaptureViewer.cpp */; };
+		0971B67228F45972008B71E2 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61B28F45971008B71E2 /* World.cpp */; };
+		0971B67328F45972008B71E2 /* MainViewer_FieldViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61D28F45971008B71E2 /* MainViewer_FieldViewer.cpp */; };
+		0971B67428F45972008B71E2 /* EditorViewer_AssetList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61E28F45971008B71E2 /* EditorViewer_AssetList.cpp */; };
+		0971B67528F45972008B71E2 /* Part_NeedleState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B61F28F45971008B71E2 /* Part_NeedleState.cpp */; };
+		0971B67628F45972008B71E2 /* Part_EyeState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B62528F45971008B71E2 /* Part_EyeState.cpp */; };
+		0971B67728F45972008B71E2 /* MainViewer_CellBook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B62A28F45971008B71E2 /* MainViewer_CellBook.cpp */; };
+		0971B67828F45972008B71E2 /* MainViewer_CellAssetViewer_CellStateViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B62B28F45971008B71E2 /* MainViewer_CellAssetViewer_CellStateViewer.cpp */; };
+		0971B67928F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B62D28F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler.cpp */; };
+		0971B67A28F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B62E28F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor.cpp */; };
+		0971B67B28F45972008B71E2 /* MainViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63028F45972008B71E2 /* MainViewer.cpp */; };
+		0971B67C28F45972008B71E2 /* PartState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63128F45972008B71E2 /* PartState.cpp */; };
+		0971B67D28F45972008B71E2 /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63328F45972008B71E2 /* Asset.cpp */; };
+		0971B67E28F45972008B71E2 /* Asset_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63428F45972008B71E2 /* Asset_Editor.cpp */; };
+		0971B67F28F45972008B71E2 /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63528F45972008B71E2 /* Shape.cpp */; };
+		0971B68028F45972008B71E2 /* Storage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63628F45972008B71E2 /* Storage.cpp */; };
+		0971B68128F45972008B71E2 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63928F45972008B71E2 /* stdafx.cpp */; };
+		0971B68228F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63A28F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp */; };
+		0971B68328F45972008B71E2 /* Part_DepoisonerAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63C28F45972008B71E2 /* Part_DepoisonerAsset.cpp */; };
+		0971B68428F45972008B71E2 /* MainViewer_StatisticsViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B63D28F45972008B71E2 /* MainViewer_StatisticsViewer.cpp */; };
+		0971B68528F45972008B71E2 /* ProteinAsset_Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B64128F45972008B71E2 /* ProteinAsset_Editor.cpp */; };
+		0971B68628F45972008B71E2 /* ProteinAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B64228F45972008B71E2 /* ProteinAsset.cpp */; };
+		0971B68728F45972008B71E2 /* CellAsset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B64328F45972008B71E2 /* CellAsset.cpp */; };
+		0971B68828F45972008B71E2 /* MainViewer_CellBook_Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B64528F45972008B71E2 /* MainViewer_CellBook_Item.cpp */; };
+		0971B68928F45972008B71E2 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B64628F45972008B71E2 /* Layer.cpp */; };
+		0971B68A28F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B64728F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp */; };
+		0971B68B28F45972008B71E2 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B64B28F45972008B71E2 /* Main.cpp */; };
+		0971B68C28F45972008B71E2 /* World_makeModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0971B64D28F45972008B71E2 /* World_makeModel.cpp */; };
 		2C1778A31CE0B65500BB8AD0 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C1778A21CE0B65500BB8AD0 /* icon.icns */; };
 		2C5C46DD26B4F00D005E8C85 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5C46DC26B4F00D005E8C85 /* libcurl.tbd */; };
 		2C5C46DF26B4F014005E8C85 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5C46DE26B4F014005E8C85 /* AudioToolbox.framework */; };
@@ -40,9 +101,126 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0971B5D928F45970008B71E2 /* TileState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileState.cpp; sourceTree = "<group>"; };
+		0971B5DA28F45970008B71E2 /* Part_PoisonerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_PoisonerState.h; sourceTree = "<group>"; };
+		0971B5DB28F45970008B71E2 /* EggState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EggState.h; sourceTree = "<group>"; };
+		0971B5DC28F45970008B71E2 /* Part_SynthesizerState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_SynthesizerState.cpp; sourceTree = "<group>"; };
+		0971B5DD28F45970008B71E2 /* MainViewer_CellMakingViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer.cpp; sourceTree = "<group>"; };
+		0971B5DE28F45970008B71E2 /* Part_SynthesizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_SynthesizerState.h; sourceTree = "<group>"; };
+		0971B5DF28F45970008B71E2 /* Part_SynthesizerAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_SynthesizerAsset.h; sourceTree = "<group>"; };
+		0971B5E028F45970008B71E2 /* Rigidbody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rigidbody.cpp; sourceTree = "<group>"; };
+		0971B5E128F45970008B71E2 /* GUIChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIChecker.h; sourceTree = "<group>"; };
+		0971B5E228F45970008B71E2 /* Part_WingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_WingState.cpp; sourceTree = "<group>"; };
+		0971B5E328F45970008B71E2 /* GUIColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIColorPicker.h; sourceTree = "<group>"; };
+		0971B5E428F45970008B71E2 /* Part_PoisonerState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_PoisonerState.cpp; sourceTree = "<group>"; };
+		0971B5E528F45970008B71E2 /* Part_NucleusAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_NucleusAsset.h; sourceTree = "<group>"; };
+		0971B5E628F45970008B71E2 /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = "<group>"; };
+		0971B5E728F45970008B71E2 /* EggState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EggState.cpp; sourceTree = "<group>"; };
+		0971B5E828F45970008B71E2 /* HiddenViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiddenViewer.h; sourceTree = "<group>"; };
+		0971B5E928F45970008B71E2 /* CellState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellState.cpp; sourceTree = "<group>"; };
+		0971B5EA28F45970008B71E2 /* Part_DepoisonerAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_DepoisonerAsset.h; sourceTree = "<group>"; };
+		0971B5EB28F45970008B71E2 /* Part_PoisonerAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_PoisonerAsset.cpp; sourceTree = "<group>"; };
+		0971B5EC28F45970008B71E2 /* Part_PoisonerAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_PoisonerAsset.h; sourceTree = "<group>"; };
+		0971B5ED28F45970008B71E2 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		0971B5EE28F45970008B71E2 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		0971B5EF28F45970008B71E2 /* CellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellState.h; sourceTree = "<group>"; };
+		0971B5F028F45970008B71E2 /* TitleViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleViewer.cpp; sourceTree = "<group>"; };
+		0971B5F128F45970008B71E2 /* Part_WingAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_WingAsset.cpp; sourceTree = "<group>"; };
+		0971B5F228F45970008B71E2 /* Part_WingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_WingState.h; sourceTree = "<group>"; };
+		0971B5F328F45970008B71E2 /* GUICurtain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUICurtain.h; sourceTree = "<group>"; };
+		0971B5F428F45970008B71E2 /* Part_NucleusState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_NucleusState.cpp; sourceTree = "<group>"; };
+		0971B5F528F45970008B71E2 /* GUIAssetLinker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIAssetLinker.h; sourceTree = "<group>"; };
+		0971B5F628F45971008B71E2 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
+		0971B5F728F45971008B71E2 /* EditorViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditorViewer.cpp; sourceTree = "<group>"; };
+		0971B5F828F45971008B71E2 /* Part_BodyAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_BodyAsset.cpp; sourceTree = "<group>"; };
+		0971B5F928F45971008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp; sourceTree = "<group>"; };
+		0971B5FA28F45971008B71E2 /* GUIIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIIcon.h; sourceTree = "<group>"; };
+		0971B5FB28F45971008B71E2 /* PartAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartAsset.cpp; sourceTree = "<group>"; };
+		0971B5FC28F45971008B71E2 /* Part_DepoisonerState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_DepoisonerState.cpp; sourceTree = "<group>"; };
+		0971B5FD28F45971008B71E2 /* Rigidbody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rigidbody.h; sourceTree = "<group>"; };
+		0971B5FE28F45971008B71E2 /* CellAsset_Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellAsset_Log.cpp; sourceTree = "<group>"; };
+		0971B5FF28F45971008B71E2 /* GUIMusicBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIMusicBox.h; sourceTree = "<group>"; };
+		0971B60028F45971008B71E2 /* MainViewer_CommandPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CommandPalette.cpp; sourceTree = "<group>"; };
+		0971B60128F45971008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp; sourceTree = "<group>"; };
+		0971B60228F45971008B71E2 /* PartConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartConfig.cpp; sourceTree = "<group>"; };
+		0971B60328F45971008B71E2 /* Part_BodyState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_BodyState.cpp; sourceTree = "<group>"; };
+		0971B60428F45971008B71E2 /* PartAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartAsset.h; sourceTree = "<group>"; };
+		0971B60528F45971008B71E2 /* MainViewer_FieldViewer_ReleaseViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_FieldViewer_ReleaseViewer.cpp; sourceTree = "<group>"; };
+		0971B60628F45971008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp; sourceTree = "<group>"; };
+		0971B60728F45971008B71E2 /* GUIText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIText.h; sourceTree = "<group>"; };
+		0971B60828F45971008B71E2 /* Part_SynthesizerAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_SynthesizerAsset.cpp; sourceTree = "<group>"; };
+		0971B60928F45971008B71E2 /* Part_NeedleAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_NeedleAsset.cpp; sourceTree = "<group>"; };
+		0971B60A28F45971008B71E2 /* Part_DepoisonerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_DepoisonerState.h; sourceTree = "<group>"; };
+		0971B60B28F45971008B71E2 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shape.h; sourceTree = "<group>"; };
+		0971B60C28F45971008B71E2 /* TitleViewer_WorldGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleViewer_WorldGenerator.cpp; sourceTree = "<group>"; };
+		0971B60D28F45971008B71E2 /* MainViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewer.h; sourceTree = "<group>"; };
+		0971B60E28F45971008B71E2 /* DraggableViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableViewer.h; sourceTree = "<group>"; };
+		0971B60F28F45971008B71E2 /* Part_EyeState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_EyeState.h; sourceTree = "<group>"; };
+		0971B61028F45971008B71E2 /* Part_NucleusAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_NucleusAsset.cpp; sourceTree = "<group>"; };
+		0971B61128F45971008B71E2 /* Part_BodyAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_BodyAsset.h; sourceTree = "<group>"; };
+		0971B61228F45971008B71E2 /* EditorViewer_AssetViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditorViewer_AssetViewer.cpp; sourceTree = "<group>"; };
+		0971B61328F45971008B71E2 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
+		0971B61428F45971008B71E2 /* Part_NeedleState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_NeedleState.h; sourceTree = "<group>"; };
+		0971B61528F45971008B71E2 /* MainViewer_CellAssetViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellAssetViewer.cpp; sourceTree = "<group>"; };
+		0971B61628F45971008B71E2 /* Part_EyeAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_EyeAsset.h; sourceTree = "<group>"; };
+		0971B61728F45971008B71E2 /* MainViewer_CellMakingViewer_CellInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_CellInfo.cpp; sourceTree = "<group>"; };
+		0971B61828F45971008B71E2 /* Part_EyeAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_EyeAsset.cpp; sourceTree = "<group>"; };
+		0971B61928F45971008B71E2 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
+		0971B61A28F45971008B71E2 /* MainViewer_FieldViewer_CellStateCaptureViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_FieldViewer_CellStateCaptureViewer.cpp; sourceTree = "<group>"; };
+		0971B61B28F45971008B71E2 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		0971B61C28F45971008B71E2 /* TileState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileState.h; sourceTree = "<group>"; };
+		0971B61D28F45971008B71E2 /* MainViewer_FieldViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_FieldViewer.cpp; sourceTree = "<group>"; };
+		0971B61E28F45971008B71E2 /* EditorViewer_AssetList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditorViewer_AssetList.cpp; sourceTree = "<group>"; };
+		0971B61F28F45971008B71E2 /* Part_NeedleState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_NeedleState.cpp; sourceTree = "<group>"; };
+		0971B62028F45971008B71E2 /* ProteinAsset_Editor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProteinAsset_Editor.h; sourceTree = "<group>"; };
+		0971B62128F45971008B71E2 /* EditorViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewer.h; sourceTree = "<group>"; };
+		0971B62228F45971008B71E2 /* GUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIButton.h; sourceTree = "<group>"; };
+		0971B62328F45971008B71E2 /* GUIValuer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIValuer.h; sourceTree = "<group>"; };
+		0971B62428F45971008B71E2 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
+		0971B62528F45971008B71E2 /* Part_EyeState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_EyeState.cpp; sourceTree = "<group>"; };
+		0971B62628F45971008B71E2 /* Asset_Editor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset_Editor.h; sourceTree = "<group>"; };
+		0971B62728F45971008B71E2 /* PartState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartState.h; sourceTree = "<group>"; };
+		0971B62828F45971008B71E2 /* Part_BodyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_BodyState.h; sourceTree = "<group>"; };
+		0971B62928F45971008B71E2 /* PartConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartConfig.h; sourceTree = "<group>"; };
+		0971B62A28F45971008B71E2 /* MainViewer_CellBook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellBook.cpp; sourceTree = "<group>"; };
+		0971B62B28F45971008B71E2 /* MainViewer_CellAssetViewer_CellStateViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellAssetViewer_CellStateViewer.cpp; sourceTree = "<group>"; };
+		0971B62C28F45971008B71E2 /* Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = "<group>"; };
+		0971B62D28F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_PartsAssembler.cpp; sourceTree = "<group>"; };
+		0971B62E28F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_BodySculptor.cpp; sourceTree = "<group>"; };
+		0971B62F28F45972008B71E2 /* GeneralSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSetting.h; sourceTree = "<group>"; };
+		0971B63028F45972008B71E2 /* MainViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer.cpp; sourceTree = "<group>"; };
+		0971B63128F45972008B71E2 /* PartState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartState.cpp; sourceTree = "<group>"; };
+		0971B63228F45972008B71E2 /* GUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUISlider.h; sourceTree = "<group>"; };
+		0971B63328F45972008B71E2 /* Asset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asset.cpp; sourceTree = "<group>"; };
+		0971B63428F45972008B71E2 /* Asset_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asset_Editor.cpp; sourceTree = "<group>"; };
+		0971B63528F45972008B71E2 /* Shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
+		0971B63628F45972008B71E2 /* Storage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Storage.cpp; sourceTree = "<group>"; };
+		0971B63728F45972008B71E2 /* ProteinAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProteinAsset.h; sourceTree = "<group>"; };
+		0971B63828F45972008B71E2 /* TitleViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewer.h; sourceTree = "<group>"; };
+		0971B63928F45972008B71E2 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
+		0971B63A28F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp; sourceTree = "<group>"; };
+		0971B63B28F45972008B71E2 /* EasyViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyViewer.h; sourceTree = "<group>"; };
+		0971B63C28F45972008B71E2 /* Part_DepoisonerAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Part_DepoisonerAsset.cpp; sourceTree = "<group>"; };
+		0971B63D28F45972008B71E2 /* MainViewer_StatisticsViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_StatisticsViewer.cpp; sourceTree = "<group>"; };
+		0971B63E28F45972008B71E2 /* Part_WingAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_WingAsset.h; sourceTree = "<group>"; };
+		0971B63F28F45972008B71E2 /* GUITexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUITexture.h; sourceTree = "<group>"; };
+		0971B64028F45972008B71E2 /* CellAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellAsset.h; sourceTree = "<group>"; };
+		0971B64128F45972008B71E2 /* ProteinAsset_Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProteinAsset_Editor.cpp; sourceTree = "<group>"; };
+		0971B64228F45972008B71E2 /* ProteinAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProteinAsset.cpp; sourceTree = "<group>"; };
+		0971B64328F45972008B71E2 /* CellAsset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellAsset.cpp; sourceTree = "<group>"; };
+		0971B64428F45972008B71E2 /* TinyCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyCamera.h; sourceTree = "<group>"; };
+		0971B64528F45972008B71E2 /* MainViewer_CellBook_Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellBook_Item.cpp; sourceTree = "<group>"; };
+		0971B64628F45972008B71E2 /* Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
+		0971B64728F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp; sourceTree = "<group>"; };
+		0971B64828F45972008B71E2 /* Part_NucleusState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_NucleusState.h; sourceTree = "<group>"; };
+		0971B64928F45972008B71E2 /* GUITextBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUITextBox.h; sourceTree = "<group>"; };
+		0971B64A28F45972008B71E2 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		0971B64B28F45972008B71E2 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		0971B64C28F45972008B71E2 /* Part_NeedleAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part_NeedleAsset.h; sourceTree = "<group>"; };
+		0971B64D28F45972008B71E2 /* World_makeModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World_makeModel.cpp; sourceTree = "<group>"; };
+		0971B64E28F45972008B71E2 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		2C1778841CE0A9EA00BB8AD0 /* SyLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1778921CE0A9EA00BB8AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C1778991CE0AA7C00BB8AD0 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
 		2C1778A21CE0B65500BB8AD0 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		2C5C46DC26B4F00D005E8C85 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		2C5C46DE26B4F014005E8C85 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -135,7 +313,124 @@
 		2C1778981CE0AA7C00BB8AD0 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				2C1778991CE0AA7C00BB8AD0 /* Main.cpp */,
+				0971B63428F45972008B71E2 /* Asset_Editor.cpp */,
+				0971B62628F45971008B71E2 /* Asset_Editor.h */,
+				0971B63328F45972008B71E2 /* Asset.cpp */,
+				0971B5E628F45970008B71E2 /* Asset.h */,
+				0971B5FE28F45971008B71E2 /* CellAsset_Log.cpp */,
+				0971B64328F45972008B71E2 /* CellAsset.cpp */,
+				0971B64028F45972008B71E2 /* CellAsset.h */,
+				0971B5E928F45970008B71E2 /* CellState.cpp */,
+				0971B5EF28F45970008B71E2 /* CellState.h */,
+				0971B64A28F45972008B71E2 /* common.h */,
+				0971B60E28F45971008B71E2 /* DraggableViewer.h */,
+				0971B63B28F45972008B71E2 /* EasyViewer.h */,
+				0971B61E28F45971008B71E2 /* EditorViewer_AssetList.cpp */,
+				0971B61228F45971008B71E2 /* EditorViewer_AssetViewer.cpp */,
+				0971B5F728F45971008B71E2 /* EditorViewer.cpp */,
+				0971B62128F45971008B71E2 /* EditorViewer.h */,
+				0971B5E728F45970008B71E2 /* EggState.cpp */,
+				0971B5DB28F45970008B71E2 /* EggState.h */,
+				0971B62F28F45972008B71E2 /* GeneralSetting.h */,
+				0971B5F528F45970008B71E2 /* GUIAssetLinker.h */,
+				0971B62228F45971008B71E2 /* GUIButton.h */,
+				0971B5E128F45970008B71E2 /* GUIChecker.h */,
+				0971B5E328F45970008B71E2 /* GUIColorPicker.h */,
+				0971B5F328F45970008B71E2 /* GUICurtain.h */,
+				0971B5FA28F45971008B71E2 /* GUIIcon.h */,
+				0971B5FF28F45971008B71E2 /* GUIMusicBox.h */,
+				0971B63228F45972008B71E2 /* GUISlider.h */,
+				0971B60728F45971008B71E2 /* GUIText.h */,
+				0971B64928F45972008B71E2 /* GUITextBox.h */,
+				0971B63F28F45972008B71E2 /* GUITexture.h */,
+				0971B62328F45971008B71E2 /* GUIValuer.h */,
+				0971B5E828F45970008B71E2 /* HiddenViewer.h */,
+				0971B64628F45972008B71E2 /* Layer.cpp */,
+				0971B62C28F45971008B71E2 /* Layer.h */,
+				0971B64B28F45972008B71E2 /* Main.cpp */,
+				0971B62B28F45971008B71E2 /* MainViewer_CellAssetViewer_CellStateViewer.cpp */,
+				0971B61528F45971008B71E2 /* MainViewer_CellAssetViewer.cpp */,
+				0971B64528F45972008B71E2 /* MainViewer_CellBook_Item.cpp */,
+				0971B62A28F45971008B71E2 /* MainViewer_CellBook.cpp */,
+				0971B60128F45971008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp */,
+				0971B5F928F45971008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp */,
+				0971B62E28F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor.cpp */,
+				0971B61728F45971008B71E2 /* MainViewer_CellMakingViewer_CellInfo.cpp */,
+				0971B63A28F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp */,
+				0971B64728F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp */,
+				0971B60628F45971008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp */,
+				0971B62D28F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler.cpp */,
+				0971B5DD28F45970008B71E2 /* MainViewer_CellMakingViewer.cpp */,
+				0971B60028F45971008B71E2 /* MainViewer_CommandPalette.cpp */,
+				0971B61A28F45971008B71E2 /* MainViewer_FieldViewer_CellStateCaptureViewer.cpp */,
+				0971B60528F45971008B71E2 /* MainViewer_FieldViewer_ReleaseViewer.cpp */,
+				0971B61D28F45971008B71E2 /* MainViewer_FieldViewer.cpp */,
+				0971B63D28F45972008B71E2 /* MainViewer_StatisticsViewer.cpp */,
+				0971B63028F45972008B71E2 /* MainViewer.cpp */,
+				0971B60D28F45971008B71E2 /* MainViewer.h */,
+				0971B61328F45971008B71E2 /* Object.cpp */,
+				0971B5EE28F45970008B71E2 /* Object.h */,
+				0971B5F828F45971008B71E2 /* Part_BodyAsset.cpp */,
+				0971B61128F45971008B71E2 /* Part_BodyAsset.h */,
+				0971B60328F45971008B71E2 /* Part_BodyState.cpp */,
+				0971B62828F45971008B71E2 /* Part_BodyState.h */,
+				0971B63C28F45972008B71E2 /* Part_DepoisonerAsset.cpp */,
+				0971B5EA28F45970008B71E2 /* Part_DepoisonerAsset.h */,
+				0971B5FC28F45971008B71E2 /* Part_DepoisonerState.cpp */,
+				0971B60A28F45971008B71E2 /* Part_DepoisonerState.h */,
+				0971B61828F45971008B71E2 /* Part_EyeAsset.cpp */,
+				0971B61628F45971008B71E2 /* Part_EyeAsset.h */,
+				0971B62528F45971008B71E2 /* Part_EyeState.cpp */,
+				0971B60F28F45971008B71E2 /* Part_EyeState.h */,
+				0971B60928F45971008B71E2 /* Part_NeedleAsset.cpp */,
+				0971B64C28F45972008B71E2 /* Part_NeedleAsset.h */,
+				0971B61F28F45971008B71E2 /* Part_NeedleState.cpp */,
+				0971B61428F45971008B71E2 /* Part_NeedleState.h */,
+				0971B61028F45971008B71E2 /* Part_NucleusAsset.cpp */,
+				0971B5E528F45970008B71E2 /* Part_NucleusAsset.h */,
+				0971B5F428F45970008B71E2 /* Part_NucleusState.cpp */,
+				0971B64828F45972008B71E2 /* Part_NucleusState.h */,
+				0971B5EB28F45970008B71E2 /* Part_PoisonerAsset.cpp */,
+				0971B5EC28F45970008B71E2 /* Part_PoisonerAsset.h */,
+				0971B5E428F45970008B71E2 /* Part_PoisonerState.cpp */,
+				0971B5DA28F45970008B71E2 /* Part_PoisonerState.h */,
+				0971B60828F45971008B71E2 /* Part_SynthesizerAsset.cpp */,
+				0971B5DF28F45970008B71E2 /* Part_SynthesizerAsset.h */,
+				0971B5DC28F45970008B71E2 /* Part_SynthesizerState.cpp */,
+				0971B5DE28F45970008B71E2 /* Part_SynthesizerState.h */,
+				0971B5F128F45970008B71E2 /* Part_WingAsset.cpp */,
+				0971B63E28F45972008B71E2 /* Part_WingAsset.h */,
+				0971B5E228F45970008B71E2 /* Part_WingState.cpp */,
+				0971B5F228F45970008B71E2 /* Part_WingState.h */,
+				0971B5FB28F45971008B71E2 /* PartAsset.cpp */,
+				0971B60428F45971008B71E2 /* PartAsset.h */,
+				0971B60228F45971008B71E2 /* PartConfig.cpp */,
+				0971B62928F45971008B71E2 /* PartConfig.h */,
+				0971B5ED28F45970008B71E2 /* Particle.cpp */,
+				0971B62428F45971008B71E2 /* Particle.h */,
+				0971B63128F45972008B71E2 /* PartState.cpp */,
+				0971B62728F45971008B71E2 /* PartState.h */,
+				0971B64128F45972008B71E2 /* ProteinAsset_Editor.cpp */,
+				0971B62028F45971008B71E2 /* ProteinAsset_Editor.h */,
+				0971B64228F45972008B71E2 /* ProteinAsset.cpp */,
+				0971B63728F45972008B71E2 /* ProteinAsset.h */,
+				0971B5E028F45970008B71E2 /* Rigidbody.cpp */,
+				0971B5FD28F45971008B71E2 /* Rigidbody.h */,
+				0971B63528F45972008B71E2 /* Shape.cpp */,
+				0971B60B28F45971008B71E2 /* Shape.h */,
+				0971B63928F45972008B71E2 /* stdafx.cpp */,
+				0971B61928F45971008B71E2 /* stdafx.h */,
+				0971B63628F45972008B71E2 /* Storage.cpp */,
+				0971B5F628F45971008B71E2 /* Storage.h */,
+				0971B5D928F45970008B71E2 /* TileState.cpp */,
+				0971B61C28F45971008B71E2 /* TileState.h */,
+				0971B64428F45972008B71E2 /* TinyCamera.h */,
+				0971B60C28F45971008B71E2 /* TitleViewer_WorldGenerator.cpp */,
+				0971B5F028F45970008B71E2 /* TitleViewer.cpp */,
+				0971B63828F45972008B71E2 /* TitleViewer.h */,
+				0971B64D28F45972008B71E2 /* World_makeModel.cpp */,
+				0971B61B28F45971008B71E2 /* World.cpp */,
+				0971B64E28F45972008B71E2 /* World.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -242,7 +537,68 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C17789A1CE0AA7C00BB8AD0 /* Main.cpp in Sources */,
+				0971B68A28F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp in Sources */,
+				0971B67C28F45972008B71E2 /* PartState.cpp in Sources */,
+				0971B66D28F45972008B71E2 /* Object.cpp in Sources */,
+				0971B65328F45972008B71E2 /* Part_WingState.cpp in Sources */,
+				0971B67228F45972008B71E2 /* World.cpp in Sources */,
+				0971B65828F45972008B71E2 /* Particle.cpp in Sources */,
+				0971B68928F45972008B71E2 /* Layer.cpp in Sources */,
+				0971B66828F45972008B71E2 /* Part_SynthesizerAsset.cpp in Sources */,
+				0971B67A28F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor.cpp in Sources */,
+				0971B65D28F45972008B71E2 /* Part_BodyAsset.cpp in Sources */,
+				0971B65C28F45972008B71E2 /* EditorViewer.cpp in Sources */,
+				0971B67D28F45972008B71E2 /* Asset.cpp in Sources */,
+				0971B66A28F45972008B71E2 /* TitleViewer_WorldGenerator.cpp in Sources */,
+				0971B65F28F45972008B71E2 /* PartAsset.cpp in Sources */,
+				0971B64F28F45972008B71E2 /* TileState.cpp in Sources */,
+				0971B66028F45972008B71E2 /* Part_DepoisonerState.cpp in Sources */,
+				0971B67528F45972008B71E2 /* Part_NeedleState.cpp in Sources */,
+				0971B67328F45972008B71E2 /* MainViewer_FieldViewer.cpp in Sources */,
+				0971B67828F45972008B71E2 /* MainViewer_CellAssetViewer_CellStateViewer.cpp in Sources */,
+				0971B68728F45972008B71E2 /* CellAsset.cpp in Sources */,
+				0971B65728F45972008B71E2 /* Part_PoisonerAsset.cpp in Sources */,
+				0971B66428F45972008B71E2 /* PartConfig.cpp in Sources */,
+				0971B66B28F45972008B71E2 /* Part_NucleusAsset.cpp in Sources */,
+				0971B65028F45972008B71E2 /* Part_SynthesizerState.cpp in Sources */,
+				0971B66328F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp in Sources */,
+				0971B65428F45972008B71E2 /* Part_PoisonerState.cpp in Sources */,
+				0971B68C28F45972008B71E2 /* World_makeModel.cpp in Sources */,
+				0971B68828F45972008B71E2 /* MainViewer_CellBook_Item.cpp in Sources */,
+				0971B65B28F45972008B71E2 /* Part_NucleusState.cpp in Sources */,
+				0971B67028F45972008B71E2 /* Part_EyeAsset.cpp in Sources */,
+				0971B65A28F45972008B71E2 /* Part_WingAsset.cpp in Sources */,
+				0971B68328F45972008B71E2 /* Part_DepoisonerAsset.cpp in Sources */,
+				0971B65528F45972008B71E2 /* EggState.cpp in Sources */,
+				0971B67928F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler.cpp in Sources */,
+				0971B66628F45972008B71E2 /* MainViewer_FieldViewer_ReleaseViewer.cpp in Sources */,
+				0971B65128F45972008B71E2 /* MainViewer_CellMakingViewer.cpp in Sources */,
+				0971B66928F45972008B71E2 /* Part_NeedleAsset.cpp in Sources */,
+				0971B66F28F45972008B71E2 /* MainViewer_CellMakingViewer_CellInfo.cpp in Sources */,
+				0971B67128F45972008B71E2 /* MainViewer_FieldViewer_CellStateCaptureViewer.cpp in Sources */,
+				0971B68028F45972008B71E2 /* Storage.cpp in Sources */,
+				0971B68428F45972008B71E2 /* MainViewer_StatisticsViewer.cpp in Sources */,
+				0971B67428F45972008B71E2 /* EditorViewer_AssetList.cpp in Sources */,
+				0971B67728F45972008B71E2 /* MainViewer_CellBook.cpp in Sources */,
+				0971B66C28F45972008B71E2 /* EditorViewer_AssetViewer.cpp in Sources */,
+				0971B67F28F45972008B71E2 /* Shape.cpp in Sources */,
+				0971B66E28F45972008B71E2 /* MainViewer_CellAssetViewer.cpp in Sources */,
+				0971B66528F45972008B71E2 /* Part_BodyState.cpp in Sources */,
+				0971B68628F45972008B71E2 /* ProteinAsset.cpp in Sources */,
+				0971B68228F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp in Sources */,
+				0971B66228F45972008B71E2 /* MainViewer_CommandPalette.cpp in Sources */,
+				0971B67E28F45972008B71E2 /* Asset_Editor.cpp in Sources */,
+				0971B68128F45972008B71E2 /* stdafx.cpp in Sources */,
+				0971B66128F45972008B71E2 /* CellAsset_Log.cpp in Sources */,
+				0971B65928F45972008B71E2 /* TitleViewer.cpp in Sources */,
+				0971B65E28F45972008B71E2 /* MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp in Sources */,
+				0971B67628F45972008B71E2 /* Part_EyeState.cpp in Sources */,
+				0971B68B28F45972008B71E2 /* Main.cpp in Sources */,
+				0971B66728F45972008B71E2 /* MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp in Sources */,
+				0971B65228F45972008B71E2 /* Rigidbody.cpp in Sources */,
+				0971B68528F45972008B71E2 /* ProteinAsset_Editor.cpp in Sources */,
+				0971B67B28F45972008B71E2 /* MainViewer.cpp in Sources */,
+				0971B65628F45972008B71E2 /* CellState.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
