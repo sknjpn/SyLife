@@ -4,7 +4,7 @@
 ## Introduction
 インタラクティブかつマルチプラットフォームで動作可能な生態系シミュレータです。
 - 生き物をユーザー自身がデザインし、生態系の構築とシミュレーションが可能
-- Windows, (macOS), (Linux), (Web Browser)に対応
+- Windows, macOS, (Linux), (Web Browser)に対応
 - タッチパネルによる操作に対応
 
 ## Requirements
@@ -25,6 +25,9 @@
 
 ### macOS
 - [OpenSiv3Dをインストール](https://siv3d.github.io/ja-jp/)する。
+- `/Applications`に`siv3d_v0.6.5_macOS`を配置し、内部の`examples`もしくは同様のフォルダ内に`SyLife`リポジトリをクローンする。
+`/Applications/siv3d_v0.6.5_macOS/projects/SyLife`
+- プロジェクトを開いてビルドする。
 
 ### Linux
 - [OpenSiv3Dをインストール](https://siv3d.github.io/ja-jp/)する。
