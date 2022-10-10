@@ -73,190 +73,190 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Asset.cpp">
+    <ClCompile Include="src\Asset.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Asset_Editor.cpp">
+    <ClCompile Include="src\Asset_Editor.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Layer.cpp">
+    <ClCompile Include="src\Layer.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="src\Main.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
+    <ClCompile Include="src\Object.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Particle.cpp">
+    <ClCompile Include="src\Particle.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
+    <ClCompile Include="src\Rigidbody.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
+    <ClCompile Include="src\Shape.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="src\stdafx.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Storage.cpp">
+    <ClCompile Include="src\Storage.cpp">
       <Filter>Engine\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Part_BodyAsset.cpp">
+    <ClCompile Include="src\Part_BodyAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_BodyState.cpp">
+    <ClCompile Include="src\Part_BodyState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_DepoisonerAsset.cpp">
+    <ClCompile Include="src\Part_DepoisonerAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_DepoisonerState.cpp">
+    <ClCompile Include="src\Part_DepoisonerState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_EyeAsset.cpp">
+    <ClCompile Include="src\Part_EyeAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_EyeState.cpp">
+    <ClCompile Include="src\Part_EyeState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_NeedleAsset.cpp">
+    <ClCompile Include="src\Part_NeedleAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_NeedleState.cpp">
+    <ClCompile Include="src\Part_NeedleState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_NucleusAsset.cpp">
+    <ClCompile Include="src\Part_NucleusAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_NucleusState.cpp">
+    <ClCompile Include="src\Part_NucleusState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_PoisonerAsset.cpp">
+    <ClCompile Include="src\Part_PoisonerAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_PoisonerState.cpp">
+    <ClCompile Include="src\Part_PoisonerState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_SynthesizerAsset.cpp">
+    <ClCompile Include="src\Part_SynthesizerAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_SynthesizerState.cpp">
+    <ClCompile Include="src\Part_SynthesizerState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_WingAsset.cpp">
+    <ClCompile Include="src\Part_WingAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="Part_WingState.cpp">
+    <ClCompile Include="src\Part_WingState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="CellAsset.cpp">
+    <ClCompile Include="src\CellAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="CellAsset_Log.cpp">
+    <ClCompile Include="src\CellAsset_Log.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="CellState.cpp">
+    <ClCompile Include="src\CellState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="EggState.cpp">
+    <ClCompile Include="src\EggState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="PartAsset.cpp">
+    <ClCompile Include="src\PartAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="PartConfig.cpp">
+    <ClCompile Include="src\PartConfig.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="PartState.cpp">
+    <ClCompile Include="src\PartState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="ProteinAsset.cpp">
+    <ClCompile Include="src\ProteinAsset.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="ProteinAsset_Editor.cpp">
+    <ClCompile Include="src\ProteinAsset_Editor.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="TileState.cpp">
+    <ClCompile Include="src\TileState.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
+    <ClCompile Include="src\World.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="World_makeModel.cpp">
+    <ClCompile Include="src\World_makeModel.cpp">
       <Filter>Engine\World</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer.cpp">
+    <ClCompile Include="src\MainViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellAssetViewer.cpp">
+    <ClCompile Include="src\MainViewer_CellAssetViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellAssetViewer_CellStateViewer.cpp">
+    <ClCompile Include="src\MainViewer_CellAssetViewer_CellStateViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellBook.cpp">
+    <ClCompile Include="src\MainViewer_CellBook.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellBook_Item.cpp">
+    <ClCompile Include="src\MainViewer_CellBook_Item.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer_BodySculptor.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer_BodySculptor_ColorSelector.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer_BodySculptor_Workspace.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer_CellInfo.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer_CellInfo.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer_PartsAssembler.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer_PartsAssembler_PartList.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer_PartsAssembler_Workspace.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp">
+    <ClCompile Include="src\MainViewer_CellMakingViewer_PartsAssembler_Workspace_TrashBox.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_CommandPalette.cpp">
+    <ClCompile Include="src\MainViewer_CommandPalette.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_FieldViewer.cpp">
+    <ClCompile Include="src\MainViewer_FieldViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_FieldViewer_CellStateCaptureViewer.cpp">
+    <ClCompile Include="src\MainViewer_FieldViewer_CellStateCaptureViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_FieldViewer_ReleaseViewer.cpp">
+    <ClCompile Include="src\MainViewer_FieldViewer_ReleaseViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="MainViewer_StatisticsViewer.cpp">
+    <ClCompile Include="src\MainViewer_StatisticsViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="TitleViewer.cpp">
+    <ClCompile Include="src\TitleViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="TitleViewer_WorldGenerator.cpp">
+    <ClCompile Include="src\TitleViewer_WorldGenerator.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="EditorViewer.cpp">
+    <ClCompile Include="src\EditorViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="EditorViewer_AssetList.cpp">
+    <ClCompile Include="src\EditorViewer_AssetList.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="EditorViewer_AssetViewer.cpp">
+    <ClCompile Include="src\EditorViewer_AssetViewer.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -519,172 +519,172 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asset.h">
+    <ClInclude Include="src\Asset.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Asset_Editor.h">
+    <ClInclude Include="src\Asset_Editor.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="common.h">
+    <ClInclude Include="src\common.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="GeneralSetting.h">
+    <ClInclude Include="src\GeneralSetting.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Layer.h">
+    <ClInclude Include="src\Layer.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
+    <ClInclude Include="src\Object.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h">
+    <ClInclude Include="src\Particle.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Rigidbody.h">
+    <ClInclude Include="src\Rigidbody.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
+    <ClInclude Include="src\Shape.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="src\stdafx.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Storage.h">
+    <ClInclude Include="src\Storage.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="TinyCamera.h">
+    <ClInclude Include="src\TinyCamera.h">
       <Filter>Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Part_BodyAsset.h">
+    <ClInclude Include="src\Part_BodyAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_BodyState.h">
+    <ClInclude Include="src\Part_BodyState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_DepoisonerAsset.h">
+    <ClInclude Include="src\Part_DepoisonerAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_DepoisonerState.h">
+    <ClInclude Include="src\Part_DepoisonerState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_EyeAsset.h">
+    <ClInclude Include="src\Part_EyeAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_EyeState.h">
+    <ClInclude Include="src\Part_EyeState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_NeedleAsset.h">
+    <ClInclude Include="src\Part_NeedleAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_NeedleState.h">
+    <ClInclude Include="src\Part_NeedleState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_NucleusAsset.h">
+    <ClInclude Include="src\Part_NucleusAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_NucleusState.h">
+    <ClInclude Include="src\Part_NucleusState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_PoisonerAsset.h">
+    <ClInclude Include="src\Part_PoisonerAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_PoisonerState.h">
+    <ClInclude Include="src\Part_PoisonerState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_SynthesizerAsset.h">
+    <ClInclude Include="src\Part_SynthesizerAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_SynthesizerState.h">
+    <ClInclude Include="src\Part_SynthesizerState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_WingAsset.h">
+    <ClInclude Include="src\Part_WingAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="Part_WingState.h">
+    <ClInclude Include="src\Part_WingState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="CellAsset.h">
+    <ClInclude Include="src\CellAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="CellState.h">
+    <ClInclude Include="src\CellState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="EggState.h">
+    <ClInclude Include="src\EggState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="PartAsset.h">
+    <ClInclude Include="src\PartAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="PartConfig.h">
+    <ClInclude Include="src\PartConfig.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="PartState.h">
+    <ClInclude Include="src\PartState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="ProteinAsset.h">
+    <ClInclude Include="src\ProteinAsset.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="ProteinAsset_Editor.h">
+    <ClInclude Include="src\ProteinAsset_Editor.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="TileState.h">
+    <ClInclude Include="src\TileState.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
+    <ClInclude Include="src\World.h">
       <Filter>Engine\World</Filter>
     </ClInclude>
-    <ClInclude Include="MainViewer.h">
+    <ClInclude Include="src\MainViewer.h">
       <Filter>Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="TitleViewer.h">
+    <ClInclude Include="src\TitleViewer.h">
       <Filter>Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="EditorViewer.h">
+    <ClInclude Include="src\EditorViewer.h">
       <Filter>Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="GUIValuer.h">
+    <ClInclude Include="src\GUIValuer.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUIAssetLinker.h">
+    <ClInclude Include="src\GUIAssetLinker.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUIButton.h">
+    <ClInclude Include="src\GUIButton.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUIChecker.h">
+    <ClInclude Include="src\GUIChecker.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUIColorPicker.h">
+    <ClInclude Include="src\GUIColorPicker.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUICurtain.h">
+    <ClInclude Include="src\GUICurtain.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUIIcon.h">
+    <ClInclude Include="src\GUIIcon.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUIMusicBox.h">
+    <ClInclude Include="src\GUIMusicBox.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUISlider.h">
+    <ClInclude Include="src\GUISlider.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUIText.h">
+    <ClInclude Include="src\GUIText.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUITextBox.h">
+    <ClInclude Include="src\GUITextBox.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUITexture.h">
+    <ClInclude Include="src\GUITexture.h">
       <Filter>ViewerSystem\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="HiddenViewer.h">
+    <ClInclude Include="src\HiddenViewer.h">
       <Filter>ViewerSystem</Filter>
     </ClInclude>
-    <ClInclude Include="DraggableViewer.h">
+    <ClInclude Include="src\DraggableViewer.h">
       <Filter>ViewerSystem</Filter>
     </ClInclude>
-    <ClInclude Include="EasyViewer.h">
+    <ClInclude Include="src\EasyViewer.h">
       <Filter>ViewerSystem</Filter>
     </ClInclude>
   </ItemGroup>
