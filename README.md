@@ -31,9 +31,15 @@
 
 ### Linux
 - [OpenSiv3Dをインストール](https://siv3d.github.io/ja-jp/)する。
+- `mkdir build && cd build && cmake .. && cd .. && cmake --build build`
+- 完成した実行ファイルをAppフォルダに移動する。
+- resourcesフォルダにengineフォルダを移動し、実行する。
 
 ### Web
 - [Emscriptenをインストール](https://emscripten.org/docs/getting_started/downloads.html)する。
+- [emscriptenのテンプレート](https://github.com/sknjpn/OpenSiv3DForWeb-VSCode)をダウンロードする。
+- srcフォルダにこのプロジェクトのsrcフォルダを移動し、compile.rspをアップデートする。
+- コンパイルして実行する。
 
 ## License
 SyLife is made available under the [MIT License](LICENSE).

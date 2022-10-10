@@ -297,9 +297,11 @@ void TitleViewer::WorldGenerator::update()
     moveDrawPos(20, 10);
     Rect(240, 135).draw(Color(11, 22, 33));
 
+# if !SIV3D_PLATFORM(WEB)
     const ScopedRenderStates2D state(SamplerState::BorderLinear);
     static const PixelShader   ps = HLSL{ U"resources/tile.hlsl", U"PS" } | GLSL{ U"resources/tile.frag", { { U"PSConstants2D", 0 } } };
     const ScopedCustomShader2D shader(ps);
+# endif
 
     m_fieldTexture.resized(240, 135).draw();
   }
