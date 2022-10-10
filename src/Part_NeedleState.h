@@ -4,7 +4,8 @@
 
 class Part_NeedleAsset;
 
-class Part_NeedleState : public PartState {
+class Part_NeedleState : public PartState
+{
   std::shared_ptr<Part_NeedleAsset> m_Part_NeedleAsset;
 
   double m_heat = 0.0;

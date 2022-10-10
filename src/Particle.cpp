@@ -2,28 +2,34 @@
 #include "TileState.h"
 #include "World.h"
 
-void Particle::addForce(const Vec2& force) {
+void Particle::addForce(const Vec2& force)
+{
   m_velocity += force / m_mass * DeltaTime;
 }
 
-void Particle::updateParticle() {
+void Particle::updateParticle()
+{
   // 並進運動
   m_position += m_velocity * DeltaTime;
 
   // 壁
-  if (m_position.x < 0) {
+  if (m_position.x < 0)
+  {
     m_velocity.x = 0;
     m_position.x = 0;
   }
-  if (m_position.y < 0) {
+  if (m_position.y < 0)
+  {
     m_velocity.y = 0;
     m_position.y = 0;
   }
-  if (m_position.x > World::GetInstance()->getFieldSize().x - 1) {
+  if (m_position.x > World::GetInstance()->getFieldSize().x - 1)
+  {
     m_velocity.x = 0;
     m_position.x = World::GetInstance()->getFieldSize().x - 1;
   }
-  if (m_position.y > World::GetInstance()->getFieldSize().y - 1) {
+  if (m_position.y > World::GetInstance()->getFieldSize().y - 1)
+  {
     m_velocity.y = 0;
     m_position.y = World::GetInstance()->getFieldSize().y - 1;
   }
@@ -37,13 +43,15 @@ void Particle::updateParticle() {
   }
 }
 
-void Particle::load(Deserializer<BinaryReader>& reader) {
+void Particle::load(Deserializer<BinaryReader>& reader)
+{
   reader >> m_mass;
   reader >> m_position;
   reader >> m_velocity;
 }
 
-void Particle::save(Serializer<MemoryWriter>& writer) const {
+void Particle::save(Serializer<MemoryWriter>& writer) const
+{
   writer << m_mass;
   writer << m_position;
   writer << m_velocity;

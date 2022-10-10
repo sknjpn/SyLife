@@ -6,10 +6,13 @@
 
 Part_DepoisonerState::Part_DepoisonerState(
     const std::shared_ptr<PartConfig>& partConfig)
-    : PartState(partConfig)
-    , m_Part_DepoisonerAsset(std::dynamic_pointer_cast<Part_DepoisonerAsset>(partConfig->getPartAsset())) { }
+  : PartState(partConfig)
+  , m_Part_DepoisonerAsset(std::dynamic_pointer_cast<Part_DepoisonerAsset>(partConfig->getPartAsset()))
+{
+}
 
-void Part_DepoisonerState::update(CellState& cellState) {
+void Part_DepoisonerState::update(CellState& cellState)
+{
   cellState.m_bioaccumulation = Max(0.0, cellState.m_bioaccumulation - m_Part_DepoisonerAsset->getAmount() * DeltaTime);
 }
 

@@ -6,7 +6,8 @@
 class CellAsset;
 class PartState;
 
-class CellState : public Rigidbody {
+class CellState : public Rigidbody
+{
 public:
   double m_startTimer;
   double m_deathTimer;

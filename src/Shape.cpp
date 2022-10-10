@@ -1,19 +1,23 @@
 ﻿#include "Shape.h"
 
-void Shape::preRender() {
+void Shape::preRender()
+{
   Image image((m_polygon.boundingRect().size * GeneralSetting::GetInstance().m_textureScale).asPoint());
 
-  for (const auto& layer : *this) {
+  for (const auto& layer : *this)
+  {
     layer.m_polygon.movedBy(-m_polygon.boundingRect().pos)
-        .scaled(GeneralSetting::GetInstance().m_textureScale)
-        .overwrite(image, ColorF(layer.m_color, 1.0));
+      .scaled(GeneralSetting::GetInstance().m_textureScale)
+      .overwrite(image, ColorF(layer.m_color, 1.0));
   }
 
   m_preRenderTexture = Texture(image);
 }
 
-bool Shape::updateProperties() {
-  if (isEmpty()) {
+bool Shape::updateProperties()
+{
+  if (isEmpty())
+  {
     m_polygon = Polygon();
 
     return false;
@@ -23,7 +27,8 @@ bool Shape::updateProperties() {
   m_polygon = front().m_polygon;
 
   Array<Polygon> copies;
-  for (const auto& l : *this) {
+  for (const auto& l : *this)
+  {
     if (l.m_polygon.isEmpty())
       return false;
 
@@ -31,13 +36,16 @@ bool Shape::updateProperties() {
   }
 
   Polygon result;
-  while (!copies.empty()) {
+  while (!copies.empty())
+  {
     bool flag = true;
 
-    for (auto it = copies.begin(); it != copies.end(); ++it) {
+    for (auto it = copies.begin(); it != copies.end(); ++it)
+    {
       auto polygons = Geometry2D::Or(result, *it);
 
-      if (polygons.size() == 1) {
+      if (polygons.size() == 1)
+      {
         result = polygons.front();
         copies.erase(it);
 
@@ -58,13 +66,15 @@ bool Shape::updateProperties() {
   return true;
 }
 
-double Shape::getInertia(double mass) const {
+double Shape::getInertia(double mass) const
+{
   const auto centroid = m_polygon.centroid();
   const auto numTriangles = m_polygon.num_triangles();
   const auto area = m_polygon.area();
 
   double inertia = 0;
-  for (int i = 0; i < numTriangles; ++i) {
+  for (int i = 0; i < numTriangles; ++i)
+  {
     const auto triangle = m_polygon.triangle(i);
     const auto v0 = triangle.p0 - triangle.centroid();
     const auto v1 = triangle.p1 - triangle.centroid();
@@ -79,18 +89,21 @@ double Shape::getInertia(double mass) const {
   return inertia;
 }
 
-RectF Shape::getTileSize() const {
+RectF Shape::getTileSize() const
+{
   if (m_polygon.isEmpty())
     return RectF();
 
   RectF result(m_polygon.vertices().front().x, m_polygon.vertices().front().y, 0, 0);
-  for (const auto& v : m_polygon.vertices()) {
+  for (const auto& v : m_polygon.vertices())
+  {
     if (v.x < result.x)
       result.x = v.x;
     if (v.y < result.y)
       result.y = v.y;
   }
-  for (const auto& v : m_polygon.vertices()) {
+  for (const auto& v : m_polygon.vertices())
+  {
     if (result.br().x < v.x)
       result.w = v.x - result.x;
     if (result.br().y < v.y)
@@ -100,7 +113,8 @@ RectF Shape::getTileSize() const {
   return result;
 }
 
-void Shape::load(const JSON& json) {
+void Shape::load(const JSON& json)
+{
   Object::load(json);
 
   // layers
@@ -110,7 +124,8 @@ void Shape::load(const JSON& json) {
   updateProperties();
 }
 
-void Shape::save(JSON& json) const {
+void Shape::save(JSON& json) const
+{
   Object::save(json);
 
   // layers

@@ -2,7 +2,8 @@
 
 #include "PartAsset.h"
 
-class Part_DepoisonerAsset : public PartAsset {
+class Part_DepoisonerAsset : public PartAsset
+{
   double m_amount;
 
 public:

@@ -2,13 +2,17 @@
 #include "MainViewer.h"
 
 MainViewer::CellBook::Item::Item(const std::shared_ptr<CellAsset>& cellAsset)
-    : m_cellAsset(cellAsset) { }
+  : m_cellAsset(cellAsset)
+{
+}
 
-void MainViewer::CellBook::Item::init() {
+void MainViewer::CellBook::Item::init()
+{
   setViewerSize(100, 100);
 }
 
-void MainViewer::CellBook::Item::update() {
+void MainViewer::CellBook::Item::update()
+{
   RectF(getViewerSize()).stretched(-5).draw(Palette::Black);
 
   {
@@ -19,14 +23,17 @@ void MainViewer::CellBook::Item::update() {
 
   RectF(getViewerSize()).rounded(5).drawFrame(5.0, 0.0, Palette::White).drawFrame(1.0, 0.0, Palette::Black);
 
-  if (isMouseover()) {
+  if (isMouseover())
+  {
     RectF(getViewerSize()).rounded(5).draw(ColorF(1.0, 0.25));
 
-    if (MouseL.down()) {
+    if (MouseL.down())
+    {
       getParentViewer()->getParentViewer()->getChildViewer<FieldViewer>()->release(m_cellAsset);
     }
 
-    if (MouseL.up()) {
+    if (MouseL.up())
+    {
       getParentViewer()->getParentViewer<MainViewer>()->addCellAssetViewer(m_cellAsset);
     }
   }

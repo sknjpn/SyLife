@@ -6,19 +6,23 @@
 #include "World.h"
 
 MainViewer::FieldViewer::ReleaseViewer::ReleaseViewer(const std::shared_ptr<CellAsset>& cellAsset)
-    : m_cellAsset(cellAsset) {
+  : m_cellAsset(cellAsset)
+{
 }
 
-void MainViewer::FieldViewer::ReleaseViewer::init() {
+void MainViewer::FieldViewer::ReleaseViewer::init()
+{
   setIsPenetrated(true);
   setBackgroundColor(Color(0, 0));
 }
 
-void MainViewer::FieldViewer::ReleaseViewer::update() {
+void MainViewer::FieldViewer::ReleaseViewer::update()
+{
   {
     auto t1 = getParentViewer<FieldViewer>()->getCamera().createTransformer();
 
-    if (!m_isInited) {
+    if (!m_isInited)
+    {
       m_isInited = true;
       m_rotation = 0.0;
       m_position = Cursor::PosF();
@@ -30,21 +34,23 @@ void MainViewer::FieldViewer::ReleaseViewer::update() {
       m_rotation = -(Cursor::PosF() - m_position).getAngle(Vec2::Up());
 
     Circle(m_position, m_cellAsset->getRadius() * 1.5)
-        .draw(ColorF(Palette::Orange, 0.5))
-        .drawFrame(3.0, Palette::Black);
+      .draw(ColorF(Palette::Orange, 0.5))
+      .drawFrame(3.0, Palette::Black);
 
     {
       auto t2 = Transformer2D(Mat3x2::Scale(0.5).rotated(m_rotation).translated(m_position));
 
       m_cellAsset->getCellAssetTexture()
-          .scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
-          .drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
+        .scaled(1.0 / GeneralSetting::GetInstance().m_textureScale)
+        .drawAt(Vec2::Zero(), ColorF(1.0, 0.5));
     }
   }
 
   // Release
-  if (MouseL.up()) {
-    if (getParentViewer()->isMouseover() || !Scene::Rect().mouseOver()) {
+  if (MouseL.up())
+  {
+    if (getParentViewer()->isMouseover() || !Scene::Rect().mouseOver())
+    {
       auto t1 = getParentViewer<FieldViewer>()->getCamera().createTransformer();
 
       // CellAssetのリセット

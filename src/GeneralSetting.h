@@ -1,10 +1,12 @@
 ﻿#pragma once
 
-class GeneralSetting {
+class GeneralSetting
+{
   GeneralSetting() { load(); }
 
 public:
-  static GeneralSetting& GetInstance() {
+  static GeneralSetting& GetInstance()
+  {
     static GeneralSetting g_instance;
 
     return g_instance;
@@ -21,7 +23,8 @@ public:
   int    m_assetIconSize;
   Size   m_sceneSize;
 
-  void load() {
+  void load()
+  {
     INI ini(U"config.ini");
     m_touchPanelModeEnabled = ini.getOr<bool>(U"General", U"TouchPanelModeEnabled", false);
     m_autoTurnOutEnabled = ini.getOr<bool>(U"General", U"AutoTurnOutEnabled", false);
@@ -35,7 +38,8 @@ public:
     m_sceneSize = ini.getOr<Size>(U"General", U"SceneSize", Size(2560, 1440));
   }
 
-  void save() const {
+  void save() const
+  {
     INI ini(U"config.ini"); // 追記の形で書き込む
     ini.write<bool>(U"General", U"TouchPanelModeEnabled",
         m_touchPanelModeEnabled);

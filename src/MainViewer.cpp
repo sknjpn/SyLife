@@ -8,11 +8,13 @@
 
 const Array<String> g_musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
 
-void MainViewer::openCellMakingViewer() {
+void MainViewer::openCellMakingViewer()
+{
   if (!hasChildViewer<CellMakingViewer>()) addChildViewer<CellMakingViewer>();
 }
 
-void MainViewer::setHiddenMode() {
+void MainViewer::setHiddenMode()
+{
   m_hiddenMode = true;
 
   for (auto hv : getChildViewers<HiddenViewer>())
@@ -27,23 +29,25 @@ void MainViewer::setHiddenMode() {
   getChildViewer<FieldViewer>()->m_handAction = FieldViewer::HandAction::None;
 }
 
-void MainViewer::unsetHiddenMode() {
+void MainViewer::unsetHiddenMode()
+{
   m_hiddenMode = false;
 
   for (auto hv : getChildViewers<HiddenViewer>())
     hv->moveToFirstPos();
 
   addChildViewer<GUIButton>([this]() { openCellMakingViewer(); })
-      ->setViewerRectInLocal(100, 50, 250, 50)
-      ->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold));
+    ->setViewerRectInLocal(100, 50, 250, 50)
+    ->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold));
 }
 
-void MainViewer::init() {
+void MainViewer::init()
+{
   addChildViewer<FieldViewer>();
 
   addChildViewer<GUIButton>([this]() { openCellMakingViewer(); })
-      ->setViewerRectInLocal(100, 50, 250, 50)
-      ->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold));
+    ->setViewerRectInLocal(100, 50, 250, 50)
+    ->addChildViewer<GUIText>(U"生き物作成", Font(32, Typeface::Bold));
 
   addChildViewer<CellBook>();
 
@@ -59,9 +63,11 @@ void MainViewer::init() {
     m_uncontrolTimer.start();
 }
 
-void MainViewer::update() {
+void MainViewer::update()
+{
   // HiddenModeの実行
-  if (m_hiddenMode && MouseL.down()) {
+  if (m_hiddenMode && MouseL.down())
+  {
     m_uncontrolTimer.reset();
 
     unsetHiddenMode();
@@ -76,27 +82,34 @@ void MainViewer::update() {
   if (KeyP.down()) World::GetInstance()->save();
 }
 
-void MainViewer::onDestroy() {
+void MainViewer::onDestroy()
+{
   if (World::GetInstance())
     World::GetInstance()->save();
 }
 
-void MainViewer::addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset) {
-  if (!hasChildViewer(cellAsset->getName())) {
+void MainViewer::addCellAssetViewer(const std::shared_ptr<CellAsset>& cellAsset)
+{
+  if (!hasChildViewer(cellAsset->getName()))
+  {
     addChildViewer<CellAssetViewer>(cellAsset)
-        ->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
+      ->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
   }
 }
 
-void MainViewer::addCellAssetViewer(const std::shared_ptr<CellState>& cellState) {
-  if (hasChildViewer(cellState->getCellAsset()->getName())) {
+void MainViewer::addCellAssetViewer(const std::shared_ptr<CellState>& cellState)
+{
+  if (hasChildViewer(cellState->getCellAsset()->getName()))
+  {
     getChildViewer<CellAssetViewer>(cellState->getCellAsset()->getName())
-        ->setCellState(cellState);
+      ->setCellState(cellState);
 
     getChildViewer<CellAssetViewer>(cellState->getCellAsset()->getName())
-        ->moveToFront();
-  } else {
+      ->moveToFront();
+  }
+  else
+  {
     addChildViewer<CellAssetViewer>(cellState)
-        ->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
+      ->setViewerPosInLocal(Vec2(1.0, 1.0).setLength(50.0 * getChildViewers<CellAssetViewer>().size()));
   }
 }

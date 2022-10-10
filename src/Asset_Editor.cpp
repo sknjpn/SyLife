@@ -3,7 +3,8 @@
 #include "GUIText.h"
 #include "GUITextBox.h"
 
-void Asset_Editor::init() {
+void Asset_Editor::init()
+{
   // name
   {
     /*		addChildViewer<GUIText>(U"名前", Font(18), GUIText::Mode::DrawLeftCenter)
@@ -16,10 +17,12 @@ void Asset_Editor::init() {
   }
 }
 
-void Asset_Editor::update() {
+void Asset_Editor::update()
+{
 }
 
-void Asset_Editor::apply() const {
+void Asset_Editor::apply() const
+{
   // m_asset->setName(getChildViewer<GUITextBox>(U"name")->getValue());
   // m_asset->setNameJP(getChildViewer<GUITextBox>(U"nameJP")->getValue());
   // m_asset->setFilePath(getChildViewer<GUITextBox>(U"filepath")->getValue());

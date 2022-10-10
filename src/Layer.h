@@ -2,7 +2,8 @@
 
 #include "Object.h"
 
-struct Layer : public Object {
+struct Layer : public Object
+{
   Polygon m_polygon;
   Color   m_color;
 

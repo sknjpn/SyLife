@@ -2,32 +2,39 @@
 
 #include "EasyViewer.h"
 
-class GUITexture : public EasyViewer {
+class GUITexture : public EasyViewer
+{
 public:
   Texture m_texture;
   Color   m_color;
 
-  enum class Mode {
+  enum class Mode
+  {
     KeepScale,
     KeepAspectRatio,
     Maximize,
   } m_mode
-      = Mode::KeepAspectRatio;
+  = Mode::KeepAspectRatio;
 
 public:
   GUITexture(const Texture& texture, Mode mode = Mode::KeepAspectRatio, const Color& color = ColorF(1.0))
-      : m_texture(texture)
-      , m_mode(mode)
-      , m_color(color) { }
+    : m_texture(texture)
+    , m_mode(mode)
+    , m_color(color)
+  {
+  }
 
-  void init() override {
+  void init() override
+  {
     setIsPenetrated(true);
   }
 
-  void update() override {
+  void update() override
+  {
     const RectF rect(getViewerSize());
 
-    switch (m_mode) {
+    switch (m_mode)
+    {
     case GUITexture::Mode::KeepScale:
       m_texture.drawAt(getViewerSize() / 2.0, m_color);
       break;

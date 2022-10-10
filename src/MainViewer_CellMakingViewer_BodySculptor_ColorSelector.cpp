@@ -3,17 +3,20 @@
 #include "Part_BodyAsset.h"
 #include "Shape.h"
 
-void MainViewer::CellMakingViewer::BodySculptor::ColorSelector::init() {
+void MainViewer::CellMakingViewer::BodySculptor::ColorSelector::init()
+{
   setViewerRectInLocal(1010, 20, 180, 980);
 
   m_selectedColor = m_colors.choice();
 }
 
-void MainViewer::CellMakingViewer::BodySculptor::ColorSelector::update() {
+void MainViewer::CellMakingViewer::BodySculptor::ColorSelector::update()
+{
   m_timer = Math::Lerp(m_timer, 1.0, 0.1);
 
   moveDrawPos(60, 0);
-  for (auto it = m_colors.begin(); it != m_colors.end(); ++it) {
+  for (auto it = m_colors.begin(); it != m_colors.end(); ++it)
+  {
     if (m_selectedColor == *it && !m_eraseMode) moveDrawPos(m_timer * -60, 0);
 
     Polygon polygon({ { 0, 15 }, { 45, 0 }, { 200, 0 }, { 200, 30 }, { 45, 30 } });
@@ -25,7 +28,8 @@ void MainViewer::CellMakingViewer::BodySculptor::ColorSelector::update() {
 
     if (m_selectedColor == *it && !m_eraseMode)
       moveDrawPos(m_timer * 60, 0);
-    else if (polygon.leftClicked() && isMouseover()) {
+    else if (polygon.leftClicked() && isMouseover())
+    {
       m_timer = 0.0;
       m_selectedColor = *it;
       m_eraseMode = false;
@@ -48,7 +52,8 @@ void MainViewer::CellMakingViewer::BodySculptor::ColorSelector::update() {
 
     if (m_eraseMode)
       moveDrawPos(m_timer * 60, 0);
-    else if (Rect(200, 60).leftClicked() && isMouseover()) {
+    else if (Rect(200, 60).leftClicked() && isMouseover())
+    {
       m_timer = 0.0;
       m_eraseMode = true;
     }

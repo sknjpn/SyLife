@@ -3,7 +3,8 @@
 #include "EasyViewer.h"
 
 class GUICurtain
-    : public EasyViewer {
+  : public EasyViewer
+{
   Stopwatch m_st;
   Color     m_beginColor;
   Color     m_endColor;
@@ -15,25 +16,32 @@ class GUICurtain
 
 public:
   GUICurtain(Color beginColor, Color endColor, double duration, std::function<void(void)> functionOnEnd)
-      : m_beginColor(beginColor)
-      , m_endColor(endColor)
-      , m_duration(duration)
-      , m_st(s3d::StartImmediately::Yes)
-      , m_functionOnEnd(functionOnEnd) { }
+    : m_beginColor(beginColor)
+    , m_endColor(endColor)
+    , m_duration(duration)
+    , m_st(s3d::StartImmediately::Yes)
+    , m_functionOnEnd(functionOnEnd)
+  {
+  }
   GUICurtain(Color beginColor, Color endColor, double duration)
-      : m_beginColor(beginColor)
-      , m_endColor(endColor)
-      , m_duration(duration)
-      , m_st(s3d::StartImmediately::Yes) { }
+    : m_beginColor(beginColor)
+    , m_endColor(endColor)
+    , m_duration(duration)
+    , m_st(s3d::StartImmediately::Yes)
+  {
+  }
 
-  void init() override {
+  void init() override
+  {
     setIsPenetrated(true);
   }
 
-  void update() override {
+  void update() override
+  {
     RectF(getViewerSize()).draw(getColor());
 
-    if (m_st.sF() > m_duration) {
+    if (m_st.sF() > m_duration)
+    {
       if (m_functionOnEnd) m_functionOnEnd();
 
       destroy();

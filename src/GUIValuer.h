@@ -3,13 +3,15 @@
 #include "EasyViewer.h"
 
 class GUIValuer
-    : public EasyViewer {
+  : public EasyViewer
+{
   bool   m_isGrabbed = false;
   double m_grabbedPos = 0.0;
   double m_value = 0.0;
   Color  m_color = Color(255);
 
-  Circle getButton() const {
+  Circle getButton() const
+  {
     const double w = getViewerSize().x;
     const double h = getViewerSize().y;
 
@@ -20,13 +22,17 @@ class GUIValuer
 
 public:
   GUIValuer(double value = 0.0)
-      : m_value(value) { }
+    : m_value(value)
+  {
+  }
 
-  void init() override {
+  void init() override
+  {
     m_color = getTargetColor();
   }
 
-  void update() override {
+  void update() override
+  {
     const double w = getViewerSize().x;
     const double h = getViewerSize().y;
 

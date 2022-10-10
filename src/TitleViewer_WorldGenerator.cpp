@@ -6,7 +6,8 @@
 #include "TitleViewer.h"
 #include "World.h"
 
-void TitleViewer::WorldGenerator::generate() {
+void TitleViewer::WorldGenerator::generate()
+{
   m_noiseSeedX = Random(0xFFFFFFFF);
   m_noiseSeedY = Random(0xFFFFFFFF);
 
@@ -28,7 +29,8 @@ void TitleViewer::WorldGenerator::generate() {
     element = v->getValue() * 200.0;
   }
 
-  struct Tile {
+  struct Tile
+  {
     double m_element;
     double m_sendRate[3][3];
   };
@@ -38,7 +40,8 @@ void TitleViewer::WorldGenerator::generate() {
   PerlinNoise perlinNoiseX(m_noiseSeedX);
   PerlinNoise perlinNoiseY(m_noiseSeedY);
 
-  for (Point p : step(size)) {
+  for (Point p : step(size))
+  {
     //外的圧力比
     const double rx = (p.x - size.x / 2.0) / (size.x / 2.0);
     const double ry = (p.y - size.y / 2.0) / (size.y / 2.0);
@@ -58,7 +61,7 @@ void TitleViewer::WorldGenerator::generate() {
     const double w = 1.0 + l * 2;
     const RectF  rect = RectF(-l, -l, w, w).movedBy(d);
     const double area = rect.area();
-    auto&        sendRate = tiles[p].m_sendRate;
+    auto& sendRate = tiles[p].m_sendRate;
 
     // 初期化
     for (Point point : step(Size(3, 3)))
@@ -87,26 +90,34 @@ void TitleViewer::WorldGenerator::generate() {
 
     // 存在しないところの分を移動
     {
-      if (p.x == 0) {
-        for (int i = 0; i < 3; ++i) {
+      if (p.x == 0)
+      {
+        for (int i = 0; i < 3; ++i)
+        {
           sendRate[1][i] += sendRate[0][i];
           sendRate[0][i] = 0;
         }
       }
-      if (p.y == 0) {
-        for (int i = 0; i < 3; ++i) {
+      if (p.y == 0)
+      {
+        for (int i = 0; i < 3; ++i)
+        {
           sendRate[i][1] += sendRate[i][0];
           sendRate[i][0] = 0;
         }
       }
-      if (p.x == size.x - 1) {
-        for (int i = 0; i < 3; ++i) {
+      if (p.x == size.x - 1)
+      {
+        for (int i = 0; i < 3; ++i)
+        {
           sendRate[1][i] += sendRate[2][i];
           sendRate[2][i] = 0;
         }
       }
-      if (p.y == size.y - 1) {
-        for (int i = 0; i < 3; ++i) {
+      if (p.y == size.y - 1)
+      {
+        for (int i = 0; i < 3; ++i)
+        {
           sendRate[i][1] += sendRate[i][2];
           sendRate[i][2] = 0;
         }
@@ -117,23 +128,27 @@ void TitleViewer::WorldGenerator::generate() {
   for (auto& t : tiles)
     t.m_element = element;
 
-  for (int i = 0; i < 2500; ++i) {
+  for (int i = 0; i < 2500; ++i)
+  {
     {
       Grid<double> elementMap_swap(size);
 
 #ifdef USE_MULTITHREAD
       Array<AsyncTask<void>> tasks;
 
-      for (int ty = 0; ty < size.y; ++ty) {
-        tasks.emplace_back([&tiles, &elementMap_swap, &size, ty]() {
-          for (int tx = 0; tx < size.x; ++tx) {
-            elementMap_swap[ty][tx] = 0.0;
+      for (int ty = 0; ty < size.y; ++ty)
+      {
+        tasks.emplace_back([&tiles, &elementMap_swap, &size, ty]()
+ {
+   for (int tx = 0; tx < size.x; ++tx)
+   {
+     elementMap_swap[ty][tx] = 0.0;
 
-            for (int x = -1; x <= 1; ++x)
-              for (int y = -1; y <= 1; ++y)
-                if (tx + x != -1 && tx + x != size.x && ty + y != -1 && ty + y != size.y)
-                  elementMap_swap[ty][tx] += tiles[ty + y][tx + x].m_sendRate[1 - x][1 - y] * tiles[ty + y][tx + x].m_element;
-          }
+     for (int x = -1; x <= 1; ++x)
+       for (int y = -1; y <= 1; ++y)
+         if (tx + x != -1 && tx + x != size.x && ty + y != -1 && ty + y != size.y)
+           elementMap_swap[ty][tx] += tiles[ty + y][tx + x].m_sendRate[1 - x][1 - y] * tiles[ty + y][tx + x].m_element;
+   }
         });
       }
 
@@ -141,8 +156,10 @@ void TitleViewer::WorldGenerator::generate() {
         while (!t.isReady())
           ;
 #else
-      for (int ty = 0; ty < size.y; ++ty) {
-        for (int tx = 0; tx < size.x; ++tx) {
+      for (int ty = 0; ty < size.y; ++ty)
+      {
+        for (int tx = 0; tx < size.x; ++tx)
+        {
           elementMap_swap[ty][tx] = 0.0;
 
           for (int x = -1; x <= 1; ++x)
@@ -169,76 +186,80 @@ void TitleViewer::WorldGenerator::generate() {
   }
 }
 
-void TitleViewer::WorldGenerator::init() {
+void TitleViewer::WorldGenerator::init()
+{
   setViewerSize(600, 320);
   setViewerPosInLocal(Scene::Center() - getViewerSize() / 2.0);
 
   addChildViewer<GUIText>(U"ワールド生成設定", Font(32, Typeface::Heavy),
       GUIText::Mode::DrawAtCenter)
-      ->setViewerRectInLocal(5, 5, 580, 40);
+    ->setViewerRectInLocal(5, 5, 580, 40);
 
   {
     addChildViewer<GUIText>(U"タイルサイズの調整", Font(18, Typeface::Bold),
         GUIText::Mode::DrawLeftCenter)
-        ->setName(U"sizeText")
-        ->setViewerRectInLocal(15, 50, 280, 30);
+      ->setName(U"sizeText")
+      ->setViewerRectInLocal(15, 50, 280, 30);
 
     addChildViewer<GUIValuer>(0.3)
-        ->setName(U"sizeValuer")
-        ->setViewerRectInLocal(15, 80, 150, 20);
+      ->setName(U"sizeValuer")
+      ->setViewerRectInLocal(15, 80, 150, 20);
   }
 
   {
     addChildViewer<GUIText>(U"波の間隔の調整", Font(18, Typeface::Bold),
         GUIText::Mode::DrawLeftCenter)
-        ->setName(U"waveIntervalText")
-        ->setViewerRectInLocal(15, 120, 280, 30);
+      ->setName(U"waveIntervalText")
+      ->setViewerRectInLocal(15, 120, 280, 30);
 
     addChildViewer<GUIValuer>(0.25)
-        ->setName(U"waveIntervalValuer")
-        ->setViewerRectInLocal(15, 150, 150, 20);
+      ->setName(U"waveIntervalValuer")
+      ->setViewerRectInLocal(15, 150, 150, 20);
   }
 
   {
     addChildViewer<GUIText>(U"平均エレメント量の調整", Font(18, Typeface::Bold),
         GUIText::Mode::DrawLeftCenter)
-        ->setName(U"elementText")
-        ->setViewerRectInLocal(15, 190, 280, 30);
+      ->setName(U"elementText")
+      ->setViewerRectInLocal(15, 190, 280, 30);
 
     addChildViewer<GUIValuer>(0.5)
-        ->setName(U"elementValuer")
-        ->setViewerRectInLocal(15, 220, 150, 20);
+      ->setName(U"elementValuer")
+      ->setViewerRectInLocal(15, 220, 150, 20);
   }
 
-  addChildViewer<GUIButton>([this]() {
-    getParentViewer()->addChildViewer<GUICurtain>(
-        Color(0, 0), Color(11, 22, 33), 0.5, [this]() { onStart(); });
+  addChildViewer<GUIButton>([this]()
+ {
+   getParentViewer()->addChildViewer<GUICurtain>(
+       Color(0, 0), Color(11, 22, 33), 0.5, [this]() { onStart(); });
   })
-      ->setViewerRectInLocal(20, 270, 320, 40)
-      ->addChildViewer<GUIText>(U"開始する！", Font(32, Typeface::Bold));
+    ->setViewerRectInLocal(20, 270, 320, 40)
+    ->addChildViewer<GUIText>(U"開始する！", Font(32, Typeface::Bold));
 
   if (FileSystem::Exists(U"world/"))
-    addChildViewer<GUIButton>([this]() {
-      getParentViewer()->addChildViewer<GUICurtain>(
-          Color(0, 0), Color(11, 22, 33), 0.5, [this]() { onContinue(); });
+    addChildViewer<GUIButton>([this]()
+ {
+   getParentViewer()->addChildViewer<GUICurtain>(
+       Color(0, 0), Color(11, 22, 33), 0.5, [this]() { onContinue(); });
     })
-        ->setViewerRectInLocal(360, 270, 220, 40)
-        ->addChildViewer<GUIText>(U"つづきから", Font(32, Typeface::Bold));
+    ->setViewerRectInLocal(360, 270, 220, 40)
+      ->addChildViewer<GUIText>(U"つづきから", Font(32, Typeface::Bold));
 
-  addChildViewer<GUIButton>([this]() { generate(); })
+    addChildViewer<GUIButton>([this]() { generate(); })
       ->setViewerRectInLocal(320, 210, 260, 30)
       ->addChildViewer<GUIText>(U"プレビュー", Font(32, Typeface::Bold));
 
-  generate();
+    generate();
 }
 
-void TitleViewer::WorldGenerator::update() {
+void TitleViewer::WorldGenerator::update()
+{
   setViewerPosInLocal(Scene::Center() - getViewerSize() / 2.0);
 
   RectF(getViewerSize())
-      .rounded(5)
-      .draw(ColorF(Palette::Lightblue))
-      .drawFrame(2.0, 0.0, Palette::Black);
+    .rounded(5)
+    .draw(ColorF(Palette::Lightblue))
+    .drawFrame(2.0, 0.0, Palette::Black);
 
   // size
   {
@@ -269,22 +290,23 @@ void TitleViewer::WorldGenerator::update() {
     setDrawPos(310, 55);
 
     Rect(280, 195)
-        .rounded(5)
-        .draw(Palette::White)
-        .drawFrame(2.0, 0.0, Palette::Black);
+      .rounded(5)
+      .draw(Palette::White)
+      .drawFrame(2.0, 0.0, Palette::Black);
 
     moveDrawPos(20, 10);
     Rect(240, 135).draw(Color(11, 22, 33));
 
     const ScopedRenderStates2D state(SamplerState::BorderLinear);
-    static const PixelShader   ps = HLSL { U"resources/tile.hlsl", U"PS" } | GLSL { U"resources/tile.frag", { { U"PSConstants2D", 0 } } };
+    static const PixelShader   ps = HLSL{ U"resources/tile.hlsl", U"PS" } | GLSL{ U"resources/tile.frag", { { U"PSConstants2D", 0 } } };
     const ScopedCustomShader2D shader(ps);
 
     m_fieldTexture.resized(240, 135).draw();
   }
 }
 
-void TitleViewer::WorldGenerator::onStart() {
+void TitleViewer::WorldGenerator::onStart()
+{
   if (FileSystem::Exists(U"world/"))
     FileSystem::Remove(U"world/");
 
@@ -302,7 +324,8 @@ void TitleViewer::WorldGenerator::onStart() {
   getParentViewer()->destroy();
 }
 
-void TitleViewer::WorldGenerator::onContinue() {
+void TitleViewer::WorldGenerator::onContinue()
+{
   World::Load(U"world/");
 
   GetRootViewer()->addChildViewer<MainViewer>();

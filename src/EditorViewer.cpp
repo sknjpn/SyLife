@@ -4,7 +4,8 @@
 #include "ProteinAsset.h"
 #include "World.h"
 
-void EditorViewer::init() {
+void EditorViewer::init()
+{
   // Worldの初期化
   World::MakeForEditor();
 
@@ -17,10 +18,12 @@ void EditorViewer::init() {
     assetList->addAsset(proteinAsset);
 }
 
-void EditorViewer::update() {
+void EditorViewer::update()
+{
 }
 
-void EditorViewer::openAsset(const std::shared_ptr<Asset>& asset) {
+void EditorViewer::openAsset(const std::shared_ptr<Asset>& asset)
+{
   // 古いViewerの削除
   if (auto assetViewer = getChildViewer<AssetViewer>())
     assetViewer->destroy();

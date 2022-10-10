@@ -5,7 +5,8 @@
 */
 
 // 表示領域からTransformerを作成できる
-class BasicCamera {
+class BasicCamera
+{
 protected:
   RectF  m_screen = Scene::Rect();   // 投影先の領域
   Vec2   m_center = Scene::Center(); // 切り取り領域の中心
@@ -15,8 +16,10 @@ public:
   BasicCamera() = default;
 
   BasicCamera(const Vec2& center, double scale)
-      : m_center(center)
-      , m_scale(scale) { }
+    : m_center(center)
+    , m_scale(scale)
+  {
+  }
 
   // 描画対象の切り取り領域を返す
   [[nodiscard]] RectF getCameraRect() const { return RectF(m_screen.size / m_scale).setCenter(m_center); }
@@ -27,7 +30,8 @@ public:
   [[nodiscard]] Transformer2D    createTransformer() const { return Transformer2D(getGraphics2DMat3x2(), getCursorMat3x2()); }
 
   // 描画対象の切り取り領域を設定する
-  void setCameraRect(const RectF& rect) {
+  void setCameraRect(const RectF& rect)
+  {
     setCenter(rect.center());
     setScale(Max(Scene::Width() / rect.w, Scene::Height() / rect.h));
   }
@@ -41,14 +45,15 @@ public:
   void setScale(double scale) { m_scale = scale; }
 
   // 描画対象の切り取り領域の中心を返す
-  const Vec2&  getCentroid() const noexcept { return m_center; }
+  const Vec2& getCentroid() const noexcept { return m_center; }
   const RectF& getScreen() const noexcept { return m_screen; }
 
   double getScale() const noexcept { return m_scale; }
 };
 
 class TinyCamera
-    : public BasicCamera {
+  : public BasicCamera
+{
   // 追従目標の値
   Vec2   m_targetCenter = Scene::Size() * 0.5;
   double m_targetScale = 1.0;
@@ -83,7 +88,8 @@ class TinyCamera
   Optional<RectF> m_restrictedRect = RectF(Scene::Rect());
 
   // 拡大縮小を行う
-  void magnify() {
+  void magnify()
+  {
     const auto delta = 1.0 + m_scalingSensitivity * m_wheelControl();
     const auto cursorPos = (Cursor::PosF() - m_screen.center()) / m_targetScale + m_targetCenter;
 
@@ -92,26 +98,30 @@ class TinyCamera
   }
 
   // 中心の移動を行う
-  void move() {
+  void move()
+  {
     if (m_controls[0]()) { m_targetCenter.y -= m_movingSensitivity * m_screen.h / m_targetScale; }
     if (m_controls[1]()) { m_targetCenter.x -= m_movingSensitivity * m_screen.w / m_targetScale; }
     if (m_controls[2]()) { m_targetCenter.y += m_movingSensitivity * m_screen.h / m_targetScale; }
     if (m_controls[3]()) { m_targetCenter.x += m_movingSensitivity * m_screen.w / m_targetScale; }
   }
 
-  void follow() {
+  void follow()
+  {
     m_center = Math::Lerp(m_center, m_targetCenter, m_followingSpeed);
     m_scale = 1.0 / Math::Lerp(1.0 / m_scale, 1.0 / m_targetScale, m_followingSpeed);
   }
 
-  void restrictScale() {
+  void restrictScale()
+  {
     if (m_minScale) m_scale = Max(m_scale, m_minScale.value());
     if (m_maxScale) m_scale = Min(m_scale, m_maxScale.value());
 
     if (m_restrictedRect) m_scale = Max({ m_scale, m_screen.h / m_restrictedRect.value().h, m_screen.w / m_restrictedRect.value().w });
   }
 
-  void restrictRect() {
+  void restrictRect()
+  {
     if (!m_restrictedRect || m_restrictedRect.value().contains(getCameraRect())) return;
 
     const auto tl = m_restrictedRect.value().tl() - getCameraRect().tl();
@@ -123,14 +133,16 @@ class TinyCamera
     if (br.y < 0) { m_center.moveBy(0, br.y); }
   }
 
-  void restrictTargetScale() {
+  void restrictTargetScale()
+  {
     if (m_minScale) m_targetScale = Max(m_targetScale, m_minScale.value());
     if (m_maxScale) m_targetScale = Min(m_targetScale, m_maxScale.value());
 
     if (m_restrictedRect) m_targetScale = Max({ m_targetScale, m_screen.h / m_restrictedRect.value().h, m_screen.w / m_restrictedRect.value().w });
   }
 
-  void restrictTargetRect() {
+  void restrictTargetRect()
+  {
     if (!m_restrictedRect || m_restrictedRect.value().contains(getTargetCameraRect())) return;
 
     const auto tl = m_restrictedRect.value().tl() - getTargetCameraRect().tl();
@@ -145,8 +157,10 @@ class TinyCamera
 public:
   TinyCamera() = default;
 
-  void update(bool controlEnabled = true) {
-    if (controlEnabled && (m_controlOutOfScreenEnabled || m_screen.mouseOver())) {
+  void update(bool controlEnabled = true)
+  {
+    if (controlEnabled && (m_controlOutOfScreenEnabled || m_screen.mouseOver()))
+    {
       magnify();
 
       restrictTargetScale();
@@ -160,7 +174,8 @@ public:
   }
 
   // 切り取り領域の制限領域の設定
-  void setRestrictedRect(Optional<RectF> restrictedRect) {
+  void setRestrictedRect(Optional<RectF> restrictedRect)
+  {
     m_restrictedRect = restrictedRect;
 
     restrictScale();
@@ -170,7 +185,8 @@ public:
   }
 
   // 最大拡大率の設定
-  void setMaxScale(Optional<double> maxScale) {
+  void setMaxScale(Optional<double> maxScale)
+  {
     m_maxScale = maxScale;
 
     restrictScale();
@@ -180,7 +196,8 @@ public:
   }
 
   // 最小拡大率の設定
-  void setMinScale(Optional<double> minScale) {
+  void setMinScale(Optional<double> minScale)
+  {
     m_minScale = minScale;
 
     restrictScale();
@@ -204,24 +221,29 @@ public:
 
   RectF getTargetCameraRect() const { return RectF(m_screen.size / m_targetScale).setCenter(m_targetCenter); }
 
-  void moveU() {
+  void moveU()
+  {
     m_targetCenter.y -= m_movingSensitivity * m_screen.h / m_targetScale;
     restrictTargetRect();
   }
-  void moveL() {
+  void moveL()
+  {
     m_targetCenter.x -= m_movingSensitivity * m_screen.w / m_targetScale;
     restrictTargetRect();
   }
-  void moveD() {
+  void moveD()
+  {
     m_targetCenter.y += m_movingSensitivity * m_screen.h / m_targetScale;
     restrictTargetRect();
   }
-  void moveR() {
+  void moveR()
+  {
     m_targetCenter.x += m_movingSensitivity * m_screen.w / m_targetScale;
     restrictTargetRect();
   }
 
-  void zoomIn(double d = 0.2) {
+  void zoomIn(double d = 0.2)
+  {
     const auto delta = 1.0 + m_scalingSensitivity * (-d);
     const auto cursorPos = Vec2::Zero() / m_targetScale + m_targetCenter;
 
@@ -230,7 +252,8 @@ public:
 
     restrictTargetScale();
   }
-  void zoomOut(double d = 0.2) {
+  void zoomOut(double d = 0.2)
+  {
     const auto delta = 1.0 + m_scalingSensitivity * d;
     const auto cursorPos = Vec2::Zero() / m_targetScale + m_targetCenter;
 

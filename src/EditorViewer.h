@@ -4,7 +4,8 @@
 
 class Asset;
 
-class EditorViewer : public EasyViewer {
+class EditorViewer : public EasyViewer
+{
 
 public:
   void init() override;
@@ -12,12 +13,15 @@ public:
 
   void openAsset(const std::shared_ptr<Asset>& asset);
 
-  class AssetViewer : public EasyViewer {
+  class AssetViewer : public EasyViewer
+  {
     std::shared_ptr<Asset> m_asset;
 
   public:
     AssetViewer(const std::shared_ptr<Asset>& asset)
-        : m_asset(asset) { }
+      : m_asset(asset)
+    {
+    }
 
     void init() override;
     void update() override;
@@ -25,7 +29,8 @@ public:
     const std::shared_ptr<Asset>& getAsset() const { return m_asset; }
   };
 
-  class AssetList : public EasyViewer {
+  class AssetList : public EasyViewer
+  {
     Array<std::shared_ptr<Asset>> m_assets;
 
   public:

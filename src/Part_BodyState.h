@@ -5,7 +5,8 @@
 class Part_BodyAsset;
 
 class Part_BodyState
-    : public PartState {
+  : public PartState
+{
   std::shared_ptr<Part_BodyAsset> m_Part_BodyAsset;
 
 public:

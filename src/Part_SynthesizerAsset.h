@@ -2,7 +2,8 @@
 
 #include "PartAsset.h"
 
-class Part_SynthesizerAsset : public PartAsset {
+class Part_SynthesizerAsset : public PartAsset
+{
   std::shared_ptr<ProteinAsset> m_export;
 
   double m_productTime;

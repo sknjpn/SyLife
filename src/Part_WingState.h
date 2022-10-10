@@ -4,7 +4,8 @@
 
 class Part_WingAsset;
 
-class Part_WingState : public PartState {
+class Part_WingState : public PartState
+{
   std::shared_ptr<Part_WingAsset> m_Part_WingAsset;
 
   int    m_timer = 0;
@@ -15,7 +16,8 @@ class Part_WingState : public PartState {
 public:
   Part_WingState(const std::shared_ptr<PartConfig>& partConfig);
 
-  const std::shared_ptr<Part_WingAsset>& getPart_WingAsset() const {
+  const std::shared_ptr<Part_WingAsset>& getPart_WingAsset() const
+  {
     return m_Part_WingAsset;
   }
 
@@ -25,7 +27,8 @@ public:
   void flap(CellState& cellState);
 
   void stop() { m_counter = 1; }
-  void move() {
+  void move()
+  {
     m_counter = 0;
     m_timer = Max(m_timer, 30);
   }
