@@ -9,3 +9,6 @@ config.ini
 
 # Save dir
 world/
+
+# .vscode
+.vscode/settings.json
