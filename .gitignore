@@ -12,3 +12,6 @@ world/
 
 # .vscode
 .vscode/settings.json
+
+# Web
+index.*
