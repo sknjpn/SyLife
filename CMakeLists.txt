@@ -80,12 +80,3 @@ find_package(Siv3D)
 target_link_libraries(SyLife PUBLIC Siv3D::Siv3D)
 
 target_compile_features(SyLife PRIVATE cxx_std_20)
-
-if(BUILD_TESTING)
-enable_testing()
-add_test(
-  NAME Test
-  COMMAND SyLife
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-  )
-endif()
