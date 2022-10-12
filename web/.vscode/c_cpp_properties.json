@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Web",
+            "includePath": [
+                "${workspaceFolder}/../src",
+                "${workspaceFolder}/OpenSiv3D/include",
+                "${workspaceFolder}/OpenSiv3D/include/ThirdParty"
+            ],
+            "compilerPath": "${env:EMSDK}/upstream/emscripten/emcc",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "clang-x86",
+            "defines": [
+                "__EMSCRIPTEN__"
+            ],
+            "forcedInclude": [
+                "${workspaceFolder}/.vscode/Undefs.h"
+            ],
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

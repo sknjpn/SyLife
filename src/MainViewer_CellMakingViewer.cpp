@@ -100,7 +100,7 @@ void MainViewer::CellMakingViewer::makeAsset()
 
   // 名前をランダムに設定
   {
-    TextReader textReader(U"resources/names.txt");
+    TextReader textReader(U"assets/names.txt");
 
     m_cellAsset->setNameJP(textReader.readAll().split_lines().choice());
   }

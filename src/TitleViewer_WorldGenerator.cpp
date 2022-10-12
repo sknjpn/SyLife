@@ -299,7 +299,7 @@ void TitleViewer::WorldGenerator::update()
 
 # if !SIV3D_PLATFORM(WEB)
     const ScopedRenderStates2D state(SamplerState::BorderLinear);
-    static const PixelShader   ps = HLSL{ U"resources/tile.hlsl", U"PS" } | GLSL{ U"resources/tile.frag", { { U"PSConstants2D", 0 } } };
+    static const PixelShader   ps = HLSL{ U"assets/tile.hlsl", U"PS" } | GLSL{ U"assets/tile.frag", { { U"PSConstants2D", 0 } } };
     const ScopedCustomShader2D shader(ps);
 # endif
 

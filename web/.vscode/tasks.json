@@ -1,0 +1,63 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Run Local Server and Open Browser",
+            "command": "emrun",
+            "args": [
+                "--hostname", "localhost",
+                "--port", "8080",
+                "index.html"
+            ],
+            "group": "none"
+        },
+        {
+            "type": "shell",
+            "label": "Run Local Server",
+            "command": "emrun",
+            "args": 
+            [
+                "--hostname", "localhost",
+                "--port", "8080",
+                "--no_browser",
+                "index.html"
+            ],
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": "Now listening at",
+                    }
+                }
+            ],
+            "group": "none"
+        },
+        {
+            "label": "Stop Local Server",
+            "type": "shell",
+            "command": "echo ${input:terminate}",
+            "group": "none"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "terminate",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "Run Local Server"
+        }
+    ]
+}

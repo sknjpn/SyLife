@@ -14,7 +14,8 @@ void World::MakeForEditor()
   g_instance = std::make_unique<World>();
 
   // Assetのロード
-  g_instance->loadAssets(U"resources/assets/");
+  g_instance->loadAssets(U"assets/proteins");
+  g_instance->loadAssets(U"assets/parts");
   for (const auto& asset : g_instance->m_assets)
     asset->setIsUserAsset(false);
 }
@@ -215,7 +216,8 @@ void World::load()
   }
 
   // Assets
-  loadAssets(U"resources/assets/");
+  loadAssets(U"assets/proteins");
+  loadAssets(U"assets/parts");
   for (const auto& asset : m_assets)
     asset->setIsUserAsset(false);
   loadAssets(m_filePath + U"assets/");
@@ -262,7 +264,8 @@ void World::make()
   FileSystem::CreateDirectories(m_filePath + U"assets/");
 
   // Assetsのロード
-  loadAssets(U"resources/assets/");
+  loadAssets(U"assets/proteins");
+  loadAssets(U"assets/parts");
   for (const auto& asset : m_assets)
     asset->setIsUserAsset(false);
   loadAssets(m_filePath + U"assets/");
@@ -437,7 +440,7 @@ void World::draw()
   {
 # if !SIV3D_PLATFORM(WEB)
     const ScopedRenderStates2D state(SamplerState::BorderLinear);
-    static const PixelShader   ps = HLSL{ U"resources/tile.hlsl", U"PS" } | GLSL{ U"resources/tile.frag", { { U"PSConstants2D", 0 } } };
+    static const PixelShader   ps = HLSL{ U"assets/tile.hlsl", U"PS" } | GLSL{ U"assets/tile.frag", { { U"PSConstants2D", 0 } } };
     const ScopedCustomShader2D shader(ps);
 # endif
 

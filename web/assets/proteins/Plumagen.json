@@ -1,0 +1,11 @@
+﻿{
+  "type": "ProteinAsset",
+  "name": "Plumagen",
+  "nameJP": "プルマゲン",
+  "radius": 4.0,
+  "color": "(0, 128, 255, 255)",
+  "material": {
+    "element": 10.0,
+    "proteins": []
+  }
+}

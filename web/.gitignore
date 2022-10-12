@@ -1,0 +1,14 @@
+# Build dir
+build/
+
+# Web
+index.*
+
+# config file
+config.ini
+
+# Save dir
+world/
+
+# .vscode
+.vscode/settings.json
