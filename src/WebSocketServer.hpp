@@ -29,6 +29,11 @@ struct WebSocketServer
         while (true)
         {
           auto rcvd = m_conn->recv_msg_txt();
+          if(rcvd.second)
+          {
+            Console << U"Disconnected";
+            break;
+          }
           std::lock_guard<std::mutex> lock(m_mtx);
           m_recv.emplace_back(rcvd.first);
           Console << Unicode::FromUTF8(rcvd.first);
