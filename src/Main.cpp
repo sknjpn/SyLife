@@ -14,9 +14,9 @@ void Main()
   WebSocketServer wss(3000);
   while (System::Update())
   {
-    std::lock_guard<std::mutex> lock(wss.m_mtx);
+    std::lock_guard<std::mutex> lock(wss.getMutex());
     ClearPrint();
-    Print << wss.m_users.size();
+    Print << wss.getUsers().size();
   }
 #endif
 
