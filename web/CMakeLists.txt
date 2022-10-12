@@ -83,6 +83,8 @@ add_executable(index.html
   ../src/TileState.cpp
   ../src/TitleViewer.cpp
   ../src/TitleViewer_WorldGenerator.cpp
+  ../src/WebSocketClient.cpp
+  ../src/WebSocketServer.cpp
   ../src/World.cpp
   ../src/World_makeModel.cpp
 )

@@ -2,7 +2,7 @@
 #include "TitleViewer.h"
 #include "World.h"
 #ifdef SYLIFE_WEB
-#include "WebSocket.hpp"
+#include "WebSocketClient.hpp"
 #endif
 #ifdef SYLIFE_SERVER
 #include "WebSocketServer.hpp"
@@ -21,17 +21,17 @@ void Main()
 #endif
 
 #ifdef SYLIFE_WEB
-  WebSocket ws("ws://localhost:3000");
-  ws.SendText("Hello World!");
+  WebSocketClient ws("ws://localhost:3000");
+  ws.sendText("Hello World!");
 
   int cnt = 0;
   while (System::Update())
   {
     if ((cnt++) % 60 == 0)
-      ws.SendText("Hello World!");
+      ws.sendText("Hello World!");
 
-    if (ws.hasReceivedText())
-      Console << Unicode::FromUTF8(ws.getReceivedTextAndPopFromBuffer());
+    while(auto recv = ws.recvText())
+      Console << Unicode::FromUTF8(recv.value());
   }
 #endif
 
