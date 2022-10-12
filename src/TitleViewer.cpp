@@ -59,7 +59,7 @@ void TitleViewer::updateBubbles()
 
 void TitleViewer::drawBubbles()
 {
-  static Texture texture(U"resources/image/particle.png", TextureDesc::Mipped);
+  static Texture texture(U"assets/particle.png", TextureDesc::Mipped);
 
   ScopedRenderStates2D blend(BlendState::Additive);
 

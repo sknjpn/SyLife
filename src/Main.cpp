@@ -4,6 +4,8 @@
 
 void Main()
 {
+  Profiler::EnableAssetCreationWarning(false);
+
   // Configの作成
   if (!FileSystem::Exists(U"config.ini"))
     INI().save(U"config.ini");
