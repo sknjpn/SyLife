@@ -69,7 +69,7 @@ add_executable(SyLife
   ../src/TitleViewer_WorldGenerator.cpp
   ../src/World.cpp
   ../src/World_makeModel.cpp
-  )
+)
 
 find_package(Siv3D)
 
