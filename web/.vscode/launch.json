@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/SyLife",
+            "args": [],
+            "environment": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "http://localhost:8080/index.html",
+            "webRoot": "${workspaceFolder}",
+            "preLaunchTask": "Run Local Server",
+            "postDebugTask": "Stop Local Server"
+        }
+    ]
+}

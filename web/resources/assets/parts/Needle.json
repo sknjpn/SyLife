@@ -1,0 +1,48 @@
+﻿{
+  "type": "Part_NeedleAsset",
+  "name": "Needle",
+  "nameJP": "トゲ",
+  "mass": 30.0,
+  "layers": [
+    {
+      "color": "(128, 0, 128, 255)",
+      "polygon": {
+        "outer": [
+          "(-5, 0)",
+          "(0, -5)",
+          "(5, 0)",
+          "(0, 5)"
+        ],
+        "holes": []
+      }
+    },
+    {
+      "color": "(255, 0, 0, 255)",
+      "polygon": {
+        "outer": [
+          "(-4, 0)",
+          "(-1, -30)",
+          "(0, -50)",
+          "(1, -30)",
+          "(4, 0)",
+          "(0, 2)"
+        ],
+        "holes": []
+      }
+    }
+  ],
+  "material": {
+    "element": 20.0,
+    "proteins": [
+      {
+        "name": "Plumagen",
+        "size": 1
+      },
+      {
+        "name": "Spinagen",
+        "size": 1
+      }
+    ]
+  },
+  "penetrating": 1
+}
