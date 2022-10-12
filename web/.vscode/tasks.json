@@ -5,33 +5,6 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "Build: Debug",
-            "command": "emcc",
-            "args": [
-                "@.vscode/Compile.rsp",
-                "@.vscode/Compile.Debug.rsp",
-                "@.vscode/Link.rsp",
-                "@.vscode/Link.Debug.rsp"
-            ],
-            "group": "build"
-        },
-        {
-            "type": "shell",
-            "label": "Build: Release",
-            "command": "emcc",
-            "args": [
-                "@.vscode/Compile.rsp",
-                "@.vscode/Compile.Release.rsp",
-                "@.vscode/Link.rsp",
-                "@.vscode/Link.Release.rsp"
-            ],
-            "group":{
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "type": "shell",
             "label": "Run Local Server and Open Browser",
             "command": "emrun",
             "args": [

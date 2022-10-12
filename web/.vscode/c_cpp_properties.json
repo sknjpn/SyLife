@@ -1,16 +1,22 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "Web",
             "includePath": [
-                "${workspaceFolder}/src"
+                "${workspaceFolder}/../src",
+                "${workspaceFolder}/OpenSiv3D/include",
+                "${workspaceFolder}/OpenSiv3D/include/ThirdParty"
             ],
-            "defines": [],
-            "compilerPath": "/usr/bin/g++",
-            "cStandard": "gnu17",
-            "cppStandard": "gnu++20",
-            "intelliSenseMode": "linux-gcc-x64",
-            "configurationProvider": "ms-vscode.cmake-tools"
+            "compilerPath": "${env:EMSDK}/upstream/emscripten/emcc",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "clang-x86",
+            "defines": [
+                "__EMSCRIPTEN__"
+            ],
+            "forcedInclude": [
+                "${workspaceFolder}/.vscode/Undefs.h"
+            ]
         }
     ],
     "version": 4
