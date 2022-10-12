@@ -2,7 +2,6 @@
 #include "EditorViewer.h"
 #include "GUIButton.h"
 #include "GUICurtain.h"
-#include "GUIMusicBox.h"
 #include "GUIText.h"
 #include "MainViewer.h"
 #include "World.h"
@@ -115,9 +114,6 @@ void TitleViewer::runContinue()
 
 void TitleViewer::init()
 {
-  if (GeneralSetting::GetInstance().m_audioEnabled)
-    addChildViewer<GUIMusicBox>(U"天のきざはし");
-
   const auto p = RectF(500, 50).setCenter(
       Vec2(Scene::Center()).movedBy(0.0, Scene::Height() * 0.2));
 

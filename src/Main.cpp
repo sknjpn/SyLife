@@ -8,36 +8,6 @@ void Main()
   if (!FileSystem::Exists(U"config.ini"))
     INI().save(U"config.ini");
 
-  Profiler::EnableAssetCreationWarning(false);
-
-  const Array<FilePathView> musicFiles = {
-    U"天のきざはし",
-    U"沈む。",
-    U"かみさまのゆりかご",
-    U"真相探求",
-    U"安らぎと微睡み"
-  };
-
-  for (const auto& musicFile : musicFiles)
-    if (!FileSystem::Exists(U"resources/music/" + musicFile + U".mp3"))
-      GeneralSetting::GetInstance().m_audioEnabled = false;
-
-  // loadBGM
-  if (GeneralSetting::GetInstance().m_audioEnabled)
-  {
-#if defined(_WIN32) && defined(USE_MUSIC_RESOURCE_FILES)
-
-    for (const auto& musicFile : musicFiles)
-      AudioAsset::Register(musicFile, Resource(U"resources/music/" + musicFile + U".mp3"));
-#else
-    for (const auto& musicFile : musicFiles)
-      AudioAsset::Register(musicFile, U"resources/music/" + musicFile + U".mp3");
-#endif
-
-    for (const auto& musicFile : musicFiles)
-      AudioAsset::LoadAsync(musicFile);
-  }
-
   // Cursor設定
   if (GeneralSetting::GetInstance().m_touchPanelModeEnabled)
     Cursor::SetDefaultStyle(CursorStyle::Hidden);

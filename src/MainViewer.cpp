@@ -2,11 +2,8 @@
 #include "CellState.h"
 #include "GUIButton.h"
 #include "GUICurtain.h"
-#include "GUIMusicBox.h"
 #include "GUIText.h"
 #include "World.h"
-
-const Array<String> g_musicList = { U"かみさまのゆりかご", U"沈む。", U"真相探求" };
 
 void MainViewer::openCellMakingViewer()
 {
@@ -53,9 +50,6 @@ void MainViewer::init()
 
   addChildViewer<CommandPalette>();
 
-  if (GeneralSetting::GetInstance().m_audioEnabled)
-    addChildViewer<GUIMusicBox>(g_musicList.choice(), false);
-
   // OpenCurtain
   addChildViewer<GUICurtain>(Color(11, 22, 33), Color(0, 0), 0.5);
 
@@ -75,9 +69,6 @@ void MainViewer::update()
 
   if (MouseL.up()) m_uncontrolTimer.restart();
   if (!m_hiddenMode && GeneralSetting::GetInstance().m_autoTurnOutEnabled && m_uncontrolTimer.s() > GeneralSetting::GetInstance().m_autoTurnOutTime) setHiddenMode();
-
-  if (auto musicBox = getChildViewer<GUIMusicBox>())
-    if (!musicBox->isPlaying()) musicBox->setMusic(g_musicList.choice());
 
   if (KeyP.down()) World::GetInstance()->save();
 }
