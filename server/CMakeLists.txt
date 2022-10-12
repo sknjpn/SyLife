@@ -72,8 +72,10 @@ add_executable(SyLife
   ../src/World_makeModel.cpp
 )
 
-find_package(Siv3D)
+find_package(Siv3D REQUIRED)
+find_package(Crow REQUIRED)
 
 target_link_libraries(SyLife PUBLIC Siv3D::Siv3D)
+target_link_libraries(SyLife PUBLIC Crow::Crow)
 
 target_compile_features(SyLife PRIVATE cxx_std_20)
