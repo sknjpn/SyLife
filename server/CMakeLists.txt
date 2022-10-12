@@ -5,6 +5,7 @@ set(CMAKE_C_COMPILER "gcc-9")
 set(CMAKE_CXX_COMPILER "g++-9")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+add_compile_options(-DSYLIFE_SERVER)
 
 add_executable(SyLife
   ../src/Asset.cpp

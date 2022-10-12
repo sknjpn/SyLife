@@ -5,7 +5,9 @@
             "includePath": [
                 "${workspaceFolder}/../src"
             ],
-            "defines": [],
+            "defines": [
+                "SYLIFE_SERVER"
+            ],
             "compilerPath": "/usr/bin/g++",
             "cStandard": "gnu17",
             "cppStandard": "gnu++20",
