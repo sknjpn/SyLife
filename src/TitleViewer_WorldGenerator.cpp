@@ -297,7 +297,7 @@ void TitleViewer::WorldGenerator::update()
     moveDrawPos(20, 10);
     Rect(240, 135).draw(Color(11, 22, 33));
 
-# if !SIV3D_PLATFORM(WEB)
+# ifndef SYLIFE_WEB
     const ScopedRenderStates2D state(SamplerState::BorderLinear);
     static const PixelShader   ps = HLSL{ U"assets/tile.hlsl", U"PS" } | GLSL{ U"assets/tile.frag", { { U"PSConstants2D", 0 } } };
     const ScopedCustomShader2D shader(ps);
