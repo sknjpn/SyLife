@@ -72,6 +72,11 @@ add_executable(SyLife
   ../src/World_makeModel.cpp
 )
 
+target_include_directories(SyLife PUBLIC 
+  ../src
+  ../thirdparty
+)
+
 find_package(Siv3D REQUIRED)
 find_package(Crow REQUIRED)
 
