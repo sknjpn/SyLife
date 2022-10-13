@@ -1,40 +1,9 @@
 ﻿#include "MainViewer.h"
 #include "TitleViewer.h"
 #include "World.h"
-#ifdef SYLIFE_WEB
-#include "WebSocketClient.hpp"
-#endif
-#ifdef SYLIFE_SERVER
-#include "WebSocketServer.hpp"
-#endif
 
 void Main()
 {
-#ifdef SYLIFE_SERVER
-  WebSocketServer wss(3000);
-  while (System::Update())
-  {
-    std::lock_guard<std::mutex> lock(wss.getMutex());
-    ClearPrint();
-    Print << wss.getUsers().size();
-  }
-#endif
-
-#ifdef SYLIFE_WEB
-  WebSocketClient ws("ws://localhost:3000");
-  ws.sendText("Hello World!");
-
-  int cnt = 0;
-  while (System::Update())
-  {
-    if ((cnt++) % 60 == 0)
-      ws.sendText("Hello World!");
-
-    while(auto recv = ws.recvText())
-      Console << Unicode::FromUTF8(recv.value());
-  }
-#endif
-
   Profiler::EnableAssetCreationWarning(false);
 
   // Configの作成
