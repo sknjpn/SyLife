@@ -3,9 +3,12 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/../src"
+                "${workspaceFolder}/../src",
+                "${workspaceFolder}/../thirdparty"
             ],
-            "defines": [],
+            "defines": [
+                "SYLIFE_SERVER"
+            ],
             "compilerPath": "/usr/bin/g++",
             "cStandard": "gnu17",
             "cppStandard": "gnu++20",

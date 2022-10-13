@@ -44,7 +44,7 @@ void MainViewer::CellAssetViewer::init()
   setViewerSize(500, 600);
 
   // name
-  addChildViewer<GUIText>(m_cellAsset->getNameJP(), Font(24, Typeface::Heavy),
+  addChildViewer<GUIText>(m_cellAsset->getNameJP(), Font(24, Typeface::Bold),
       GUIText::Mode::DrawLeftCenter)
     ->setViewerRectInLocal(5, 5, 400, 40);
 

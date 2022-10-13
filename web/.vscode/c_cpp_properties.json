@@ -12,7 +12,8 @@
             "cppStandard": "c++20",
             "intelliSenseMode": "clang-x86",
             "defines": [
-                "__EMSCRIPTEN__"
+                "__EMSCRIPTEN__",
+                "SYLIFE_WEB"
             ],
             "forcedInclude": [
                 "${workspaceFolder}/.vscode/Undefs.h"

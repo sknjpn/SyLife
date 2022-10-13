@@ -5,6 +5,7 @@ set(CMAKE_C_COMPILER "gcc-9")
 set(CMAKE_CXX_COMPILER "g++-9")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+add_compile_options(-DSYLIFE_SERVER)
 
 add_executable(SyLife
   ../src/Asset.cpp
@@ -67,11 +68,18 @@ add_executable(SyLife
   ../src/TileState.cpp
   ../src/TitleViewer.cpp
   ../src/TitleViewer_WorldGenerator.cpp
+  ../src/WebSocketClient.cpp
+  ../src/WebSocketServer.cpp
   ../src/World.cpp
   ../src/World_makeModel.cpp
 )
 
-find_package(Siv3D)
+target_include_directories(SyLife PUBLIC 
+  ../src
+  ../thirdparty
+)
+
+find_package(Siv3D REQUIRED)
 
 target_link_libraries(SyLife PUBLIC Siv3D::Siv3D)
 

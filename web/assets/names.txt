@@ -1,48 +1,42 @@
-アウラコセイラ
-センチュウ
-アメーバ
-コメツブケイソウ
-フタヅノクンショウモ
-オキシトリカ
-ナベカムリ
-ミドリゾウリムシ
-ホロスティカ
-アオミドロ
-パンドリナ
-ロクソデス
-ラッパムシ
-アンフィレプタス
-アスピディスカ
-ケイソウ	
-スタウラストラム
-グラウコマ
-ミクラステリアス
-ポリトマ
-ウサギワムシ
-ツボカムリ
-シュードウロスティラ
-コナヒゲムシ
-レンバディオン
-タイヨウチュウ
-スピロストマム
-シオミズケムシ
-コバンケイソウ
-プラナリア
-ムレミカヅキモ
-ウロコカムリ
-ヒルガタワムシ
-スチロニキア
-ウロネマ
-ユードリナ
-ゾウリムシ
-ニッチア
-ミクラクティニウム
-ソライロラッパムシ
-ユミケイソウ
-ツヅミモ
-サメハダクンショウモ
-イタチムシ
-ミドリムシ
-プラクトミセス
-カイミジンコ
-ブレファリズマ
+Aura coceira
+centipede
+Amoeba
+Laminaria japonica
+Pteridophyllum japonicum
+Oxytricha
+Nabekamuri
+Holosticha
+Pandorina
+Loxodes
+Trumpet Beetle
+Amphireptus
+Aspidisca
+Stauraastrum
+Glaucoma
+Micrasterias
+Polytoma
+Rabbit worm
+Pseudorasbora parviflora
+Pseudorostyla
+Pseudorasbora parviflora
+Lembadion
+Pseudorostoma viridis
+Spirostomum
+Pseudorostoma viridis
+Pterocnemis volvulus
+planaria
+Paphiopedilum australis
+Psocarpus hirgatissimus
+Stilonichia
+Uronema
+Eudolina
+Zooligobranchia
+Nicchia
+Mikulactinium
+Solai lorapid beetle
+Eumycetes
+Sphaeroderma lucidum
+Weasel Bug
+Plactomyces
+Daphnia magna
+Brepharizma
