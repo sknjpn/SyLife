@@ -191,7 +191,7 @@ void TitleViewer::WorldGenerator::init()
   setViewerSize(600, 320);
   setViewerPosInLocal(Scene::Center() - getViewerSize() / 2.0);
 
-  addChildViewer<GUIText>(U"ワールド生成設定", Font(32, Typeface::Heavy),
+  addChildViewer<GUIText>(U"ワールド生成設定", Font(32, Typeface::Bold),
       GUIText::Mode::DrawAtCenter)
     ->setViewerRectInLocal(5, 5, 580, 40);
 
