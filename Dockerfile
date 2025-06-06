@@ -1,4 +1,4 @@
-FROM emscripten/emsdk:latest
+FROM emscripten/emsdk:2.0.34
 
 WORKDIR /app
 
