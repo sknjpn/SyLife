@@ -1,12 +1,14 @@
-FROM emscripten/emsdk:2.0.34
+FROM emscripten/emsdk:3.1.20
+
+RUN apt update && apt install -y ninja-build nginx
 
 WORKDIR /app
 
 COPY ./ ./
 
-RUN mkdir -p /app/web/build && cd /app/web/build && cmake -DCMAKE_BUILD_TYPE=Release .. && make
+RUN mkdir -p /app/web/build && cd /app/web/build && cmake -G Ninja -DCMAKE_BUILD_TYPE=Release .. && ninja
 
-RUN apt update && apt install -y nginx && cp -r /app/web/build/web/* /usr/share/nginx/html/
+RUN cp -r /app/web/build/html/* /usr/share/nginx/html/
 
 EXPOSE 80
 
