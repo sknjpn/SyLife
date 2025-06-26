@@ -1,2 +1,150 @@
-server/src
-web/src
+# Build directories
+build/
+build-*/
+bin/
+lib/
+*.app/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# C++ object files
+*.o
+*.obj
+*.lo
+*.slo
+*.ko
+
+# Shared objects
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Static libraries
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Profiling data
+*.gcda
+*.gcno
+*.gcov
+gmon.out
+
+# Coverage data
+*.info
+coverage/
+coverage_html/
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.log
+*.bak
+*.cache
+*.tlog
+*.tmp
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Qt Creator
+CMakeLists.txt.user*
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+
+# IDEs
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Runtime files
+config.ini
+*.world
+world/
+test_world*/
+*.log
+
+# Package files
+*.tar.gz
+*.zip
+*.deb
+*.rpm
+
+# Web build artifacts
+*.wasm
+*.js.mem
+*.html (generated)
+*.data
+
+# Emscripten
+*.bc
+*.js (generated)
+
+# Siv3D specific
+engine/
+resources/engine/
+
+# Test artifacts
+test_data/
+*.test
+Testing/
+
+# Documentation build
+docs/html/
+docs/latex/
+docs/xml/
+
+# Clang tools
+.clangd/
+compile_flags.txt
+
+# Sanitizer output
+*.san
+
+# Custom project files
+# Add any project-specific files here

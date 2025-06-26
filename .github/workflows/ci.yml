@@ -1,0 +1,226 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build_type: [Debug, Release]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Install Linux dependencies
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          ninja-build \
+          libgl1-mesa-dev \
+          libglu1-mesa-dev \
+          xorg-dev \
+          lcov \
+          clang-tidy \
+          cppcheck
+
+    - name: Install Windows dependencies
+      if: runner.os == 'Windows'
+      run: |
+        choco install cmake ninja
+
+    - name: Install macOS dependencies
+      if: runner.os == 'macOS'
+      run: |
+        brew install cmake ninja lcov
+
+    - name: Setup OpenSiv3D (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        # Download and install OpenSiv3D for Linux
+        wget https://github.com/Siv3D/OpenSiv3D/releases/download/v0.6.15/OpenSiv3D_0.6.15_Linux.tar.gz
+        tar -xzf OpenSiv3D_0.6.15_Linux.tar.gz
+        sudo dpkg -i OpenSiv3D_0.6.15_Linux.deb || true
+        sudo apt-get install -f
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{github.workspace}}/build
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{github.workspace}}/build
+      run: |
+        cmake $GITHUB_WORKSPACE \
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+          -DSYLIFE_BUILD_TESTS=ON \
+          -DSYLIFE_ENABLE_COVERAGE=${{ matrix.build_type == 'Debug' && runner.os == 'Linux' }} \
+          -DSYLIFE_ENABLE_SANITIZERS=${{ matrix.build_type == 'Debug' && runner.os == 'Linux' }} \
+          -GNinja
+
+    - name: Build
+      working-directory: ${{github.workspace}}/build
+      shell: bash
+      run: cmake --build . --config ${{ matrix.build_type }} --parallel
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      shell: bash
+      run: |
+        ctest --build-config ${{ matrix.build_type }} \
+              --output-on-failure \
+              --parallel \
+              --timeout 300
+
+    - name: Generate Coverage Report
+      if: matrix.build_type == 'Debug' && runner.os == 'Linux'
+      working-directory: ${{github.workspace}}/build
+      run: |
+        lcov --capture --directory . --output-file coverage.info
+        lcov --remove coverage.info '/usr/*' '*/test/*' '*/tests/*' --output-file coverage.info
+        lcov --list coverage.info
+
+    - name: Upload Coverage to Codecov
+      if: matrix.build_type == 'Debug' && runner.os == 'Linux'
+      uses: codecov/codecov-action@v3
+      with:
+        files: ${{github.workspace}}/build/coverage.info
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+    - name: Static Analysis (Linux)
+      if: matrix.build_type == 'Debug' && runner.os == 'Linux'
+      working-directory: ${{github.workspace}}/build
+      run: |
+        # Run clang-tidy
+        find ../lib ../include -name "*.cpp" -o -name "*.h" | xargs clang-tidy -p .
+        
+        # Run cppcheck
+        cppcheck --enable=all --inconclusive --xml --xml-version=2 \
+                 ../lib ../include 2> cppcheck.xml || true
+
+    - name: Upload Static Analysis Results
+      if: matrix.build_type == 'Debug' && runner.os == 'Linux'
+      uses: actions/upload-artifact@v3
+      with:
+        name: static-analysis-results
+        path: |
+          ${{github.workspace}}/build/cppcheck.xml
+
+  web-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Setup Emscripten
+      uses: mymindstorm/setup-emsdk@v12
+      with:
+        version: 3.1.20
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{github.workspace}}/build-web
+
+    - name: Configure CMake for Web
+      shell: bash
+      working-directory: ${{github.workspace}}/build-web
+      run: |
+        emcmake cmake $GITHUB_WORKSPACE \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DSYLIFE_BUILD_DESKTOP=OFF \
+          -DSYLIFE_BUILD_WEB=ON \
+          -DSYLIFE_BUILD_TESTS=OFF \
+          -GNinja
+
+    - name: Build Web Version
+      working-directory: ${{github.workspace}}/build-web
+      shell: bash
+      run: cmake --build . --config Release --parallel
+
+    - name: Upload Web Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: sylife-web
+        path: ${{github.workspace}}/build-web/web/
+
+  security-scan:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+  package:
+    needs: [test, web-build]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake ninja-build
+
+    - name: Setup OpenSiv3D
+      run: |
+        wget https://github.com/Siv3D/OpenSiv3D/releases/download/v0.6.15/OpenSiv3D_0.6.15_Linux.tar.gz
+        tar -xzf OpenSiv3D_0.6.15_Linux.tar.gz
+        sudo dpkg -i OpenSiv3D_0.6.15_Linux.deb || true
+        sudo apt-get install -f
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{github.workspace}}/build
+
+    - name: Configure CMake
+      working-directory: ${{github.workspace}}/build
+      run: |
+        cmake $GITHUB_WORKSPACE \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DSYLIFE_BUILD_TESTS=OFF \
+          -GNinja
+
+    - name: Build and Package
+      working-directory: ${{github.workspace}}/build
+      run: |
+        cmake --build . --config Release --parallel
+        cpack
+
+    - name: Upload Package Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: sylife-packages
+        path: ${{github.workspace}}/build/*.tar.gz
