@@ -1,0 +1,338 @@
+name: Automated Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.0.0)'
+        required: true
+        type: string
+      prerelease:
+        description: 'Is this a pre-release?'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  # ======================================
+  # Create Release
+  # ======================================
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      release_id: ${{ steps.create_release.outputs.id }}
+      tag_name: ${{ steps.get_version.outputs.tag_name }}
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Get Version
+      id: get_version
+      run: |
+        if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+          echo "tag_name=v${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          echo "prerelease=${{ github.event.inputs.prerelease }}" >> $GITHUB_OUTPUT
+        else
+          echo "tag_name=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          echo "prerelease=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Generate Release Notes
+      id: release_notes
+      run: |
+        # Generate changelog from git log
+        if git tag --list | grep -q .; then
+          LAST_TAG=$(git tag --sort=-version:refname | head -n 2 | tail -n 1)
+          if [[ -n "$LAST_TAG" ]]; then
+            COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          fi
+        else
+          COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges)
+        fi
+        
+        cat > release_notes.md << EOF
+        # SyLife Release ${{ steps.get_version.outputs.version }}
+        
+        ## What's New
+        
+        ${COMMITS}
+        
+        ## Downloads
+        
+        - **Desktop (Linux x64)**: SyLife-Linux-x64.tar.gz
+        - **Desktop (Windows x64)**: SyLife-Windows-x64.zip  
+        - **Desktop (macOS)**: SyLife-macOS.dmg
+        - **Web Version**: SyLife-Web.zip
+        - **Source Code**: Source code archives
+        
+        ## Installation
+        
+        ### Desktop
+        1. Download the appropriate package for your platform
+        2. Extract/Install the package
+        3. Run SyLife executable
+        
+        ### Web
+        1. Download SyLife-Web.zip
+        2. Extract to web server directory
+        3. Open index.html in browser
+        
+        ## System Requirements
+        
+        - **OS**: Linux, Windows 10+, macOS 10.15+
+        - **RAM**: 4GB minimum, 8GB recommended
+        - **Graphics**: OpenGL 3.3+ support
+        - **Storage**: 500MB available space
+        
+        ## Known Issues
+        
+        - Check [GitHub Issues](https://github.com/sknjpn/SyLife/issues) for current known issues
+        
+        ---
+        
+        🤖 Generated with [Claude Code](https://claude.ai/code)
+        EOF
+        
+        echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+        cat release_notes.md >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.get_version.outputs.tag_name }}
+        release_name: SyLife ${{ steps.get_version.outputs.version }}
+        body: ${{ steps.release_notes.outputs.release_notes }}
+        draft: false
+        prerelease: ${{ steps.get_version.outputs.prerelease }}
+
+  # ======================================
+  # Build Release Packages
+  # ======================================
+  build-packages:
+    name: Build Release Packages
+    needs: create-release
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: Linux-x64
+            artifact_name: SyLife-Linux-x64.tar.gz
+          - os: windows-latest
+            platform: Windows-x64  
+            artifact_name: SyLife-Windows-x64.zip
+          - os: macos-latest
+            platform: macOS
+            artifact_name: SyLife-macOS.dmg
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    # Platform-specific dependencies
+    - name: Install Linux Dependencies
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential cmake ninja-build \
+          libgl1-mesa-dev libglu1-mesa-dev \
+          xorg-dev libasound2-dev \
+          wget tar
+
+    - name: Install Windows Dependencies
+      if: matrix.os == 'windows-latest'
+      run: |
+        choco install cmake ninja
+
+    - name: Install macOS Dependencies
+      if: matrix.os == 'macos-latest'
+      run: |
+        brew install cmake ninja
+
+    # Build
+    - name: Configure Release Build
+      run: |
+        cmake -B build \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DSYLIFE_BUILD_DESKTOP=ON \
+          -DSYLIFE_BUILD_TESTS=OFF \
+          -DSYLIFE_ENABLE_LTO=ON \
+          -DCMAKE_INSTALL_PREFIX=install \
+          -GNinja
+
+    - name: Build
+      run: cmake --build build --config Release --parallel
+
+    - name: Install
+      run: cmake --install build --config Release
+
+    # Package for each platform
+    - name: Package Linux
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        cd install
+        tar -czf ../${{ matrix.artifact_name }} *
+        cd ..
+
+    - name: Package Windows
+      if: matrix.os == 'windows-latest'
+      run: |
+        cd install
+        7z a ../${{ matrix.artifact_name }} *
+        cd ..
+
+    - name: Package macOS
+      if: matrix.os == 'macos-latest'
+      run: |
+        # Create DMG package
+        mkdir -p dmg_staging/SyLife.app/Contents/MacOS
+        mkdir -p dmg_staging/SyLife.app/Contents/Resources
+        
+        cp -r install/* dmg_staging/SyLife.app/Contents/MacOS/
+        
+        # Create Info.plist
+        cat > dmg_staging/SyLife.app/Contents/Info.plist << EOF
+        <?xml version="1.0" encoding="UTF-8"?>
+        <plist version="1.0">
+        <dict>
+          <key>CFBundleExecutable</key>
+          <string>SyLife</string>
+          <key>CFBundleIdentifier</key>
+          <string>com.sylife.app</string>
+          <key>CFBundleName</key>
+          <string>SyLife</string>
+          <key>CFBundleVersion</key>
+          <string>${{ needs.create-release.outputs.tag_name }}</string>
+        </dict>
+        </plist>
+        EOF
+        
+        hdiutil create -volname "SyLife" -srcfolder dmg_staging -ov -format UDZO ${{ matrix.artifact_name }}
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.create-release.outputs.upload_url }}
+        asset_path: ./${{ matrix.artifact_name }}
+        asset_name: ${{ matrix.artifact_name }}
+        asset_content_type: application/octet-stream
+
+  # ======================================
+  # Build Web Version
+  # ======================================
+  build-web:
+    name: Build Web Version
+    needs: create-release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Setup Emscripten
+      uses: mymindstorm/setup-emsdk@v12
+      with:
+        version: latest
+
+    - name: Build Web Version
+      run: |
+        mkdir build-web
+        cd build-web
+        emcmake cmake .. \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DSYLIFE_BUILD_WEB=ON \
+          -DSYLIFE_BUILD_DESKTOP=OFF
+        cmake --build . --parallel
+
+    - name: Package Web Version
+      run: |
+        cd build-web/web
+        zip -r ../../SyLife-Web.zip *
+        cd ../..
+
+    - name: Upload Web Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.create-release.outputs.upload_url }}
+        asset_path: ./SyLife-Web.zip
+        asset_name: SyLife-Web.zip
+        asset_content_type: application/zip
+
+  # ======================================
+  # Deploy Documentation
+  # ======================================
+  deploy-docs:
+    name: Deploy Documentation
+    needs: create-release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Doxygen
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y doxygen graphviz
+
+    - name: Generate Documentation
+      run: |
+        doxygen Doxyfile
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/html
+
+  # ======================================
+  # Notify Release
+  # ======================================
+  notify-release:
+    name: Notify Release
+    needs: [create-release, build-packages, build-web]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+    - name: Notify Success
+      if: ${{ needs.build-packages.result == 'success' && needs.build-web.result == 'success' }}
+      run: |
+        echo "🎉 Release ${{ needs.create-release.outputs.tag_name }} published successfully!"
+        echo "📦 Packages built for all platforms"
+        echo "🌐 Web version deployed"
+        echo "📚 Documentation updated"
+
+    - name: Notify Failure
+      if: ${{ needs.build-packages.result == 'failure' || needs.build-web.result == 'failure' }}
+      run: |
+        echo "❌ Release build failed"
+        exit 1

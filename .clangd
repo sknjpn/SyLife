@@ -1,0 +1,101 @@
+# clangd configuration for enhanced IntelliSense
+# Provides better C++ language server support
+
+CompileFlags:
+  Add:
+    # Enable all warnings for better error detection
+    - "-Wall"
+    - "-Wextra"
+    - "-Wpedantic"
+    - "-Wcast-align"
+    - "-Wcast-qual"
+    - "-Wctor-dtor-privacy"
+    - "-Wdisabled-optimization"
+    - "-Wformat=2"
+    - "-Winit-self"
+    - "-Wlogical-op"
+    - "-Wmissing-declarations"
+    - "-Wmissing-include-dirs"
+    - "-Wnoexcept"
+    - "-Wold-style-cast"
+    - "-Woverloaded-virtual"
+    - "-Wredundant-decls"
+    - "-Wshadow"
+    - "-Wsign-conversion"
+    - "-Wsign-promo"
+    - "-Wstrict-null-sentinel"
+    - "-Wstrict-overflow=5"
+    - "-Wswitch-default"
+    - "-Wundef"
+    - "-Wunused"
+    - "-Wuseless-cast"
+    
+    # Modern C++ features
+    - "-std=c++20"
+    - "-stdlib=libstdc++"
+    
+    # Optimization for better analysis
+    - "-O2"
+    - "-DNDEBUG"
+    
+    # Include paths
+    - "-Iinclude"
+    - "-Imodules"
+    - "-Imodules/core/include"
+    - "-Imodules/ecs/include"
+    - "-Imodules/logging/include"
+    - "-Imodules/deps/include"
+
+  Remove:
+    # Remove flags that might confuse clangd
+    - "-march=*"
+    - "-mtune=*"
+
+Diagnostics:
+  # Enable additional diagnostics
+  ClangTidy:
+    Add:
+      - "bugprone-*"
+      - "cert-*"
+      - "cppcoreguidelines-*"
+      - "google-*"
+      - "hicpp-*"
+      - "llvm-*"
+      - "misc-*"
+      - "modernize-*"
+      - "performance-*"
+      - "portability-*"
+      - "readability-*"
+    Remove:
+      # Disable overly pedantic checks
+      - "readability-magic-numbers"
+      - "cppcoreguidelines-avoid-magic-numbers"
+      - "google-readability-todo"
+      - "llvm-header-guard"
+      - "misc-non-private-member-variables-in-classes"
+
+  # Suppress common false positives
+  Suppress:
+    - "unused-parameter"
+    - "unused-variable" 
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  Designators: true
+
+Hover:
+  ShowAKA: true
+
+# Index settings for better performance
+Index:
+  Background: Build
+  StandardLibrary: true
+
+# Completion settings
+Completion:
+  AllScopes: true
+  
+# Semantic highlighting
+SemanticHighlighting: true

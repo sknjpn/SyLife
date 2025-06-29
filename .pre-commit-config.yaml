@@ -1,0 +1,106 @@
+# Pre-commit configuration for SyLife project
+# Install: pip install pre-commit && pre-commit install
+
+repos:
+  # Code formatting
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v19.1.6
+    hooks:
+      - id: clang-format
+        args: [--style=file]
+        files: \.(cpp|hpp|c|h|cc|cxx)$
+
+  # General code quality
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: \.md$
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-xml
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+
+  # CMake formatting
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
+    rev: v0.6.13
+    hooks:
+      - id: cmake-format
+        args: [--in-place]
+      - id: cmake-lint
+
+  # C++ static analysis
+  - repo: local
+    hooks:
+      - id: cppcheck
+        name: cppcheck
+        entry: cppcheck
+        language: system
+        files: \.(cpp|hpp|c|h|cc|cxx)$
+        args:
+          - --enable=warning,style,performance,portability
+          - --inline-suppr
+          - --suppressions-list=.cppcheck-suppressions
+          - --error-exitcode=1
+          - --std=c++20
+
+  # Security checks
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+
+  # Markdown and documentation
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.42.0
+    hooks:
+      - id: markdownlint
+        args: [--fix]
+
+  # Commit message validation
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.29.1
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+
+  # Custom hooks for SyLife project
+  - repo: local
+    hooks:
+      # Ensure test files exist for new source files
+      - id: test-coverage-check
+        name: Check test coverage
+        entry: scripts/check_test_coverage.sh
+        language: script
+        files: \.(cpp|hpp)$
+        exclude: test_.*\.(cpp|hpp)$
+
+      # Validate module structure
+      - id: module-structure-check
+        name: Validate module structure
+        entry: scripts/validate_module_structure.sh
+        language: script
+        files: ^modules/
+
+      # Check for TODO/FIXME comments in production code
+      - id: todo-check
+        name: Check for TODO/FIXME
+        entry: bash -c 'if grep -n "TODO\|FIXME" "$@"; then echo "Found TODO/FIXME in production code"; exit 1; fi'
+        language: system
+        files: \.(cpp|hpp|h)$
+        exclude: (test_.*|.*_test)\.(cpp|hpp|h)$
+
+exclude: |
+  (?x)^(
+    build-.*|
+    thirdparty/.*|
+    .*\.pb\.cc|
+    .*\.pb\.h
+  )$

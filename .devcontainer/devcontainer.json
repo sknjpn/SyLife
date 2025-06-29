@@ -1,0 +1,127 @@
+{
+    "name": "SyLife C++ Development",
+    "image": "mcr.microsoft.com/devcontainers/cpp:0-ubuntu-22.04",
+    
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "18"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.11"
+        }
+    },
+    
+    // Use 'postCreateCommand' to run commands after the container is created
+    "postCreateCommand": {
+        "install-deps": "sudo apt-get update && sudo apt-get install -y build-essential cmake ninja-build pkg-config libgtest-dev libgmock-dev clang-format clang-tidy cppcheck valgrind gcovr lcov curl wget python3-pip && cd /usr/src/gtest && sudo cmake . && sudo cmake --build . && sudo cp lib/*.a /usr/lib/ || true",
+        "install-python-tools": "pip3 install --user pre-commit cpplint",
+        "setup-git": "git config --global pull.rebase true && git config --global init.defaultBranch main && git config --global core.autocrlf input",
+        "init-submodules": "git submodule update --init --recursive",
+        "setup-pre-commit": "./scripts/setup_pre_commit.sh || true",
+        "setup-dev-env": "./scripts/setup_development_environment.sh || true"
+    },
+    
+    // Configure tool-specific properties
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack", 
+                "ms-vscode.cmake-tools",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "eamodio.gitlens",
+                "gruntfuggly.todo-tree",
+                "usernamehw.errorlens",
+                "ms-vscode.vscode-json",
+                "esbenp.prettier-vscode",
+                "cheshirekow.cmake-format",
+                "twxs.cmake",
+                "vadimcn.vscode-lldb",
+                "github.copilot",
+                "ms-vscode.hexeditor",
+                "streetsidesoftware.code-spell-checker",
+                "matepek.vscode-catch2-test-adapter",
+                "ms-vscode.test-adapter-converter",
+                "hbenl.vscode-test-explorer",
+                "ms-vscode.vscode-github-actions",
+                "redhat.vscode-yaml"
+            ],
+            
+            "settings": {
+                "C_Cpp.default.cppStandard": "c++20",
+                "C_Cpp.default.cStandard": "c17",
+                "C_Cpp.default.intelliSenseMode": "gcc-x64",
+                "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+                "C_Cpp.intelliSenseEngine": "disabled",
+                "C_Cpp.errorSquiggles": "disabled",
+                
+                "clangd.arguments": [
+                    "--background-index",
+                    "--clang-tidy", 
+                    "--completion-style=detailed",
+                    "--header-insertion=iwyu",
+                    "--pch-storage=memory",
+                    "--pretty",
+                    "--all-scopes-completion"
+                ],
+                
+                "cmake.buildDirectory": "${workspaceFolder}/build-container",
+                "cmake.generator": "Ninja",
+                "cmake.configureOnOpen": true,
+                "cmake.buildBeforeRun": true,
+                
+                "editor.formatOnSave": true,
+                "editor.tabSize": 4,
+                "editor.insertSpaces": true,
+                "files.trimTrailingWhitespace": true,
+                "files.insertFinalNewline": true,
+                
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    }
+                }
+            }
+        }
+    },
+    
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root
+    // "remoteUser": "root",
+    
+    // Forward ports for development server
+    "forwardPorts": [8080, 3000, 5000],
+    "portsAttributes": {
+        "8080": {
+            "label": "Web Server",
+            "onAutoForward": "openPreview"
+        }
+    },
+    
+    // Mount source code
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspaces/SyLife,type=bind,consistency=cached"
+    ],
+    
+    // Set environment variables
+    "containerEnv": {
+        "DEBIAN_FRONTEND": "noninteractive",
+        "SYLIFE_DEV_CONTAINER": "1"
+    },
+    
+    // Configure container runtime
+    "runArgs": [
+        "--security-opt", "seccomp=unconfined",
+        "--cap-add=SYS_PTRACE"
+    ],
+    
+    // Use 'onCreateCommand' to run one-time setup commands
+    "onCreateCommand": "echo 'SyLife development container created successfully!'",
+    
+    // Configure container lifecycle
+    "shutdownAction": "stopContainer",
+    "overrideCommand": false,
+    "workspaceFolder": "/workspaces/SyLife"
+}
