@@ -127,6 +127,8 @@ jobs:
 
   web-build:
     runs-on: ubuntu-latest
+    # Temporarily disabled until Siv3D dependency is resolved
+    if: false
 
     steps:
     - uses: actions/checkout@v4

@@ -40,14 +40,14 @@ jobs:
 
     - name: Install Google Test
       run: |
-        cd /usr/src/gtest
-        sudo cmake .
-        sudo cmake --build . --parallel
-        sudo cp lib/*.a /usr/lib/
-        cd /usr/src/gmock
-        sudo cmake .
-        sudo cmake --build . --parallel
-        sudo cp lib/*.a /usr/lib/
+        # Google Test is now included in googletest package
+        cd /usr/src/googletest
+        sudo cmake -B build -S .
+        sudo cmake --build build --parallel
+        sudo cp build/lib/*.a /usr/lib/ || true
+        # Legacy paths for compatibility
+        sudo ln -sf /usr/src/googletest/googletest /usr/src/gtest || true
+        sudo ln -sf /usr/src/googletest/googlemock /usr/src/gmock || true
 
     # Configure CMake for modular components only
     - name: Configure CMake
