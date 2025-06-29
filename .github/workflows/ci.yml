@@ -21,7 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
 
@@ -97,7 +97,7 @@ jobs:
 
     - name: Upload Coverage to Codecov
       if: matrix.build_type == 'Debug' && runner.os == 'Linux'
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         files: ${{github.workspace}}/build/coverage.info
         flags: unittests
@@ -117,7 +117,7 @@ jobs:
 
     - name: Upload Static Analysis Results
       if: matrix.build_type == 'Debug' && runner.os == 'Linux'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: static-analysis-results
         path: |
@@ -127,7 +127,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
 
@@ -156,7 +156,7 @@ jobs:
       run: cmake --build . --config Release --parallel
 
     - name: Upload Web Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: sylife-web
         path: ${{github.workspace}}/build-web/web/
@@ -166,7 +166,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
@@ -187,7 +187,7 @@ jobs:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
 
@@ -221,7 +221,7 @@ jobs:
         cpack
 
     - name: Upload Package Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: sylife-packages
         path: ${{github.workspace}}/build/*.tar.gz
