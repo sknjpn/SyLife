@@ -1,0 +1,170 @@
+name: Modular Components CI
+
+on:
+  push:
+    branches: [ master, develop, claude ]
+  pull_request:
+    branches: [ master, develop ]
+  workflow_dispatch:
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  # ======================================
+  # モジュラーコンポーネントのテスト
+  # ======================================
+  modular-test:
+    name: Modular Components Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          ninja-build \
+          libgtest-dev \
+          libgmock-dev \
+          clang-tidy \
+          cppcheck \
+          gcovr \
+          lcov
+
+    - name: Install Google Test
+      run: |
+        cd /usr/src/gtest
+        sudo cmake .
+        sudo cmake --build . --parallel
+        sudo cp lib/*.a /usr/lib/
+        cd /usr/src/gmock
+        sudo cmake .
+        sudo cmake --build . --parallel
+        sudo cp lib/*.a /usr/lib/
+
+    # Configure CMake for modular components only
+    - name: Configure CMake
+      run: |
+        cmake -B build-modular modules/ \
+          -DCMAKE_BUILD_TYPE=Debug \
+          -DSYLIFE_BUILD_TESTS=ON \
+          -DSYLIFE_ENABLE_COVERAGE=ON \
+          -GNinja
+
+    # Build modular components
+    - name: Build
+      run: cmake --build build-modular --parallel
+
+    # Run tests
+    - name: Run Tests
+      working-directory: build-modular
+      run: ctest --output-on-failure --parallel
+
+    # Generate coverage report
+    - name: Generate Coverage Report
+      run: |
+        cd build-modular
+        gcovr --root .. --html --html-details -o coverage.html
+        gcovr --root .. --xml -o coverage.xml
+
+    # Upload coverage
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: build-modular/coverage.xml
+        fail_ci_if_error: false
+
+    # Run static analysis
+    - name: Run Static Analysis
+      run: |
+        find modules -name "*.cpp" -o -name "*.h" | \
+        xargs clang-tidy -p build-modular --config-file=.clang-tidy
+
+    # Run security analysis
+    - name: Run Security Analysis
+      run: |
+        cppcheck --enable=all \
+                 --inconclusive \
+                 --xml \
+                 --xml-version=2 \
+                 --suppressions-list=.cppcheck-suppressions \
+                 modules/ 2> cppcheck.xml || true
+
+    # Upload test artifacts
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: modular-test-results
+        path: |
+          build-modular/coverage.html
+          build-modular/coverage.xml
+          cppcheck.xml
+
+  # ======================================
+  # 基本コンパイル確認（Siv3D不要部分）
+  # ======================================
+  basic-compilation:
+    name: Basic Compilation Check
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build_type: [Release]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Linux Dependencies
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake ninja-build
+
+    - name: Install Windows Dependencies
+      if: matrix.os == 'windows-latest'
+      run: |
+        choco install cmake ninja
+
+    - name: Install macOS Dependencies
+      if: matrix.os == 'macos-latest'
+      run: |
+        brew install cmake ninja
+
+    # Test modular components compilation only
+    - name: Test Modular Compilation
+      run: |
+        cmake -B build-basic modules/ \
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+          -DSYLIFE_BUILD_TESTS=OFF
+        cmake --build build-basic --parallel
+
+  # ======================================
+  # 通知
+  # ======================================
+  notify:
+    name: Notify Results
+    needs: [modular-test, basic-compilation]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+    - name: Notify Success
+      if: ${{ needs.modular-test.result == 'success' && needs.basic-compilation.result == 'success' }}
+      run: |
+        echo "✅ All modular tests passed! Modular architecture is working correctly."
+
+    - name: Notify Failure
+      if: ${{ needs.modular-test.result == 'failure' || needs.basic-compilation.result == 'failure' }}
+      run: |
+        echo "❌ Some tests failed. Please check the modular components."
+        exit 1
