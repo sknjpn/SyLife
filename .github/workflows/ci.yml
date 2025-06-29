@@ -69,6 +69,8 @@ jobs:
         cmake $GITHUB_WORKSPACE \
           -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
           -DSYLIFE_BUILD_TESTS=ON \
+          -DSYLIFE_BUILD_DESKTOP=OFF \
+          -DSYLIFE_BUILD_WEB=OFF \
           -DSYLIFE_ENABLE_COVERAGE=${{ matrix.build_type == 'Debug' && runner.os == 'Linux' }} \
           -DSYLIFE_ENABLE_SANITIZERS=${{ matrix.build_type == 'Debug' && runner.os == 'Linux' }} \
           -GNinja

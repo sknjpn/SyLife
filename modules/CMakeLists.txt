@@ -1,5 +1,6 @@
 # SyLife Modules - Modern Modular Architecture
 cmake_minimum_required(VERSION 3.20)
+project(SyLifeModules LANGUAGES CXX)
 
 # Add each module as a subdirectory
 add_subdirectory(core)
