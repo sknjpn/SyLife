@@ -1,0 +1,20 @@
+# Cppcheck suppressions for SyLife project
+
+# Third-party libraries
+*:thirdparty/*
+*:build/*
+*:build-*/*
+
+# OpenSiv3D framework suppressions
+*:*/Siv3D/*
+*:*/OpenSiv3D/*
+
+# False positives for modern C++
+useStlAlgorithm
+unusedFunction:*test*
+missingIncludeSystem
+unmatchedSuppression
+
+# Specific file suppressions
+constParameter:src/Main.cpp
+passedByValue:src/*Asset*.cpp

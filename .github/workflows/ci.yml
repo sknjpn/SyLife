@@ -1,14 +1,15 @@
-name: CI
+name: SyLife CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ master, develop, claude ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ master, develop ]
+  workflow_dispatch:
 
 env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
+  CMAKE_BUILD_PARALLEL_LEVEL: 4
 
 jobs:
   test:
