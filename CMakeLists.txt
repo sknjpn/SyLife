@@ -25,7 +25,8 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 option(SYLIFE_BUILD_DESKTOP "Build desktop application" ON)
 option(SYLIFE_BUILD_WEB "Build web application" OFF)
 option(SYLIFE_BUILD_TESTS "Build tests" ON)
-option(SYLIFE_BUILD_EXAMPLES "Build examples" OFF)
+option(SYLIFE_BUILD_EXAMPLES "Build examples" ON)
+option(SYLIFE_BUILD_BENCHMARKS "Build benchmarks" OFF)
 option(SYLIFE_BUILD_DOCS "Build documentation" OFF)
 option(SYLIFE_ENABLE_COVERAGE "Enable test coverage" OFF)
 option(SYLIFE_ENABLE_SANITIZERS "Enable sanitizers" OFF)
@@ -85,6 +86,7 @@ endif()
 
 # Add subdirectories
 add_subdirectory(lib)
+add_subdirectory(modules)
 
 # Only build apps if Siv3D is available
 if(TARGET Siv3D AND SYLIFE_BUILD_DESKTOP)
